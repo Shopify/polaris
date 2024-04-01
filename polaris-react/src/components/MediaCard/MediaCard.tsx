@@ -16,7 +16,7 @@ import {Box} from '../Box';
 import {InlineStack} from '../InlineStack';
 import {BlockStack} from '../BlockStack';
 
-import styles from './MediaCard.module.scss';
+import styles from './MediaCard.module.css';
 
 type Size = 'small' | 'medium';
 
@@ -171,7 +171,9 @@ export function MediaCard({
                 {headerMarkup}
                 {popoverOrDismissMarkup}
               </InlineStack>
-              <p className={styles.Description}>{description}</p>
+              <Text as="p" variant="bodySm">
+                {description}
+              </Text>
               {actionMarkup}
             </BlockStack>
           </Box>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Cell} from './components';
-import styles from './Grid.module.scss';
+import styles from './Grid.module.css';
 
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

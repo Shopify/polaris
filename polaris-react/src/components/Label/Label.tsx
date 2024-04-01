@@ -1,8 +1,9 @@
 import React from 'react';
 
+import {Text} from '../Text';
 import {classNames} from '../../utilities/css';
 
-import styles from './Label.module.scss';
+import styles from './Label.module.css';
 
 export interface LabelProps {
   /** Label content */
@@ -32,7 +33,9 @@ export function Label({children, id, hidden, requiredIndicator}: LabelProps) {
           requiredIndicator && styles.RequiredIndicator,
         )}
       >
-        {children}
+        <Text as="span" variant="bodyMd">
+          {children}
+        </Text>
       </label>
     </div>
   );

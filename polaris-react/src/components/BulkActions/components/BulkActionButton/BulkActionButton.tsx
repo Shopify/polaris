@@ -1,14 +1,14 @@
 import React, {useRef} from 'react';
 import {MenuHorizontalIcon} from '@shopify/polaris-icons';
 
-import type {DisableableAction} from '../../../../types';
+import type {DestructableAction, DisableableAction} from '../../../../types';
 import type {ButtonProps} from '../../../Button';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {Tooltip} from '../../../Tooltip';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
-import styles from '../../BulkActions.module.scss';
+import styles from '../../BulkActions.module.css';
 
 export type BulkActionButtonProps = {
   disclosure?: boolean;
@@ -16,7 +16,8 @@ export type BulkActionButtonProps = {
   handleMeasurement?(width: number): void;
   showContentInButton?: boolean;
   size?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
-} & DisableableAction;
+} & DisableableAction &
+  DestructableAction;
 
 export function BulkActionButton({
   handleMeasurement,
@@ -27,6 +28,7 @@ export function BulkActionButton({
   disclosure,
   accessibilityLabel,
   disabled,
+  destructive,
   indicator,
   showContentInButton,
   size,
@@ -51,6 +53,7 @@ export function BulkActionButton({
       accessibilityLabel={
         isActivatorForMoreActionsPopover ? content : accessibilityLabel
       }
+      tone={destructive ? 'critical' : undefined}
       disclosure={disclosure && showContentInButton}
       onClick={onAction}
       disabled={disabled}
@@ -68,7 +71,7 @@ export function BulkActionButton({
   return (
     <div className={styles.BulkActionButton} ref={bulkActionButton}>
       {isActivatorForMoreActionsPopover ? (
-        <Tooltip content={content} preferredPosition="above">
+        <Tooltip content={content} preferredPosition="below">
           {buttonMarkup}
         </Tooltip>
       ) : (

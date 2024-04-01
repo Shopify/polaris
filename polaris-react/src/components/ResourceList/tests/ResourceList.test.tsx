@@ -1,12 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {Root, Node, Element} from '@shopify/react-testing';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {BulkActions} from '../../BulkActions';
-import type {useIsSelectAllActionsSticky} from '../../SelectAllActions';
-import {SelectAllActions} from '../../SelectAllActions';
-import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
 import {EmptySearchResult} from '../../EmptySearchResult';
 import {EmptyState} from '../../EmptyState';
@@ -16,22 +12,8 @@ import {ResourceItem} from '../../ResourceItem';
 import {Pagination} from '../../Pagination';
 import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {ResourceList} from '../ResourceList';
-import styles from '../ResourceList.module.scss';
-
-jest.mock('../../SelectAllActions', () => ({
-  ...jest.requireActual('../../SelectAllActions'),
-  useIsSelectAllActionsSticky: jest.fn(),
-}));
-
-function mockUseIsSelectAllActionsSticky(
-  args: ReturnType<typeof useIsSelectAllActionsSticky>,
-) {
-  const useIsSelectAllActionsSticky: jest.Mock = jest.requireMock(
-    '../../SelectAllActions',
-  ).useIsSelectAllActionsSticky;
-
-  useIsSelectAllActionsSticky.mockReturnValue(args);
-}
+import {UnstyledButton} from '../../UnstyledButton';
+import styles from '../ResourceList.module.css';
 
 function getResourceItemCheckbox<T extends Root<unknown> | Element<unknown>>(
   wrapper: T,
@@ -72,28 +54,6 @@ const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
 const defaultWindowWidth = window.innerWidth;
 
 describe('<ResourceList />', () => {
-  mockUseIsSelectAllActionsSticky({
-    selectAllActionsIntersectionRef: {current: null},
-    tableMeasurerRef: {current: null},
-    isSelectAllActionsSticky: false,
-    selectAllActionsAbsoluteOffset: 0,
-    selectAllActionsMaxWidth: 0,
-    selectAllActionsOffsetLeft: 0,
-    selectAllActionsOffsetBottom: 0,
-    computeTableDimensions: jest.fn(),
-    scrollbarPastTopOffset: 0,
-    selectAllActionsPastTopOffset: 0,
-    isScrolledPastTop: false,
-  });
-
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
-  afterEach(() => {
-    matchMedia.restore();
-  });
-
   describe('renderItem', () => {
     it('renders list items', () => {
       const resourceList = mountWithApp(
@@ -134,14 +94,14 @@ describe('<ResourceList />', () => {
       expect(resourceList).not.toContainReactComponent(CheckableButton);
     });
 
-    it('does not render a `SelectAllActions` if the `selectable` prop is not provided', () => {
+    it('does not render a `BulkActions` if the `selectable` prop is not provided', () => {
       const resourceList = mountWithApp(
         <ResourceList items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(resourceList).not.toContainReactComponent(SelectAllActions);
+      expect(resourceList).not.toContainReactComponent(BulkActions);
     });
 
-    it('does render SelectAllActions if the promotedBulkActions prop is provided', () => {
+    it('does render BulkActions if the promotedBulkActions prop is provided', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
@@ -149,7 +109,7 @@ describe('<ResourceList />', () => {
           promotedBulkActions={promotedBulkActions}
         />,
       );
-      expect(resourceList).toContainReactComponent(SelectAllActions);
+      expect(resourceList).toContainReactComponent(BulkActions);
     });
 
     it('renders bulk actions if the bulkActions prop is provided', () => {
@@ -160,7 +120,7 @@ describe('<ResourceList />', () => {
           bulkActions={bulkActions}
         />,
       );
-      expect(resourceList).toContainReactComponent(SelectAllActions);
+      expect(resourceList).toContainReactComponent(BulkActions);
     });
 
     it('renders a `CheckableButton` if the `selectable` prop is true', () => {
@@ -170,16 +130,16 @@ describe('<ResourceList />', () => {
       expect(resourceList).toContainReactComponent(CheckableButton);
     });
 
-    it('renders a `SelectAllActions` if the `selectable` prop is true', () => {
+    it('renders a `BulkActions` if the `selectable` prop is true', () => {
       const resourceList = mountWithApp(
         <ResourceList selectable items={itemsWithID} renderItem={renderItem} />,
       );
-      expect(resourceList).toContainReactComponent(SelectAllActions);
+      expect(resourceList).toContainReactComponent(BulkActions);
     });
   });
 
   describe('hasMoreItems', () => {
-    it('does not add a prop of paginatedSelectAllAction to SelectAllActions if omitted', () => {
+    it('does not add a prop of paginatedSelectAllAction to BulkActions if omitted', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
@@ -187,12 +147,12 @@ describe('<ResourceList />', () => {
           bulkActions={bulkActions}
         />,
       );
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         paginatedSelectAllAction: undefined,
       });
     });
 
-    it('adds a prop of paginatedSelectAllAction to SelectAllActions if included', () => {
+    it('adds a prop of paginatedSelectAllAction to BulkActions if included', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={itemsNoID}
@@ -202,7 +162,7 @@ describe('<ResourceList />', () => {
         />,
       );
       expect(
-        resourceList.find(SelectAllActions)!.props.paginatedSelectAllAction,
+        resourceList.find(BulkActions)!.props.paginatedSelectAllAction,
       ).toBeDefined();
     });
   });
@@ -977,11 +937,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         selectMode: false,
       });
       resourceList.setProps({selectedItems: ['1']});
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         selectMode: true,
       });
     });
@@ -996,11 +956,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         selectMode: true,
       });
       resourceList.setProps({selectedItems: []});
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         selectMode: false,
       });
     });
@@ -1081,7 +1041,6 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          expect(resourceList).not.toContainReactComponent(SelectAllActions);
           expect(resourceList).not.toContainReactComponent(BulkActions);
         });
       });
@@ -1260,7 +1219,7 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         paginatedSelectAllAction: {
           content: 'Select all 2+ customers in this filter',
           onAction: expect.any(Function),
@@ -1282,9 +1241,9 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
+      resourceList.find(BulkActions)!.find(UnstyledButton)!.trigger('onClick');
 
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         paginatedSelectAllText: 'All 2+ customers in this filter are selected',
       });
     });
@@ -1301,7 +1260,7 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         paginatedSelectAllAction: {
           content: 'Select all 2+ customers in your store',
           onAction: expect.any(Function),
@@ -1322,40 +1281,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      resourceList.find(BulkActions)!.find(Button)!.trigger('onClick');
+      resourceList.find(BulkActions)!.find(UnstyledButton)!.trigger('onClick');
 
-      expect(resourceList).toContainReactComponent(SelectAllActions, {
+      expect(resourceList).toContainReactComponent(BulkActions, {
         paginatedSelectAllText: 'All 2+ customers in your store are selected',
       });
-    });
-  });
-
-  describe('computeTableDimensions', () => {
-    it('invokes the computeTableDimensions callback when the number of items changes', () => {
-      const computeTableDimensions = jest.fn();
-      mockUseIsSelectAllActionsSticky({
-        selectAllActionsIntersectionRef: {current: null},
-        tableMeasurerRef: {current: null},
-        isSelectAllActionsSticky: false,
-        selectAllActionsAbsoluteOffset: 0,
-        selectAllActionsMaxWidth: 0,
-        selectAllActionsOffsetLeft: 0,
-        selectAllActionsOffsetBottom: 0,
-        computeTableDimensions,
-        scrollbarPastTopOffset: 0,
-        selectAllActionsPastTopOffset: 0,
-        isScrolledPastTop: false,
-      });
-      const newItems = [...itemsWithID, {id: 12, url: '//shopify.com'}];
-      const resourceList = mountWithApp(
-        <ResourceList items={itemsWithID} renderItem={renderItem} />,
-      );
-
-      expect(computeTableDimensions).toHaveBeenCalledTimes(1);
-
-      resourceList.setProps({items: newItems});
-
-      expect(computeTableDimensions).toHaveBeenCalledTimes(2);
     });
   });
 

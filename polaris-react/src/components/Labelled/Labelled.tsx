@@ -8,7 +8,7 @@ import type {LabelProps} from '../Label';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 
-import styles from './Labelled.module.scss';
+import styles from './Labelled.module.css';
 
 export {labelID};
 
@@ -66,7 +66,7 @@ export function Labelled({
       id={helpTextID(id)}
       aria-disabled={disabled}
     >
-      <Text as="span" tone="subdued" breakWord>
+      <Text as="span" tone="subdued" variant="bodyMd" breakWord>
         {helpText}
       </Text>
     </div>

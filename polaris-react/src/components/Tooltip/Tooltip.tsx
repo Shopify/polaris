@@ -5,6 +5,7 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
+import {Text} from '../Text';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useToggle} from '../../utilities/use-toggle';
@@ -12,7 +13,7 @@ import {classNames} from '../../utilities/css';
 
 import {TooltipOverlay} from './components';
 import type {TooltipOverlayProps} from './components';
-import styles from './Tooltip.module.scss';
+import styles from './Tooltip.module.css';
 
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpaceScale, '400'>;
@@ -189,7 +190,9 @@ export function Tooltip({
         zIndexOverride={zIndexOverride}
         instant={!shouldAnimate}
       >
-        {content}
+        <Text as="span" variant="bodyMd">
+          {content}
+        </Text>
       </TooltipOverlay>
     </Portal>
   ) : null;

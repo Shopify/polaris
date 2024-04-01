@@ -15,7 +15,7 @@ import type {
   ComboboxListboxOptionType,
 } from '../../utilities/combobox';
 
-import styles from './Combobox.module.scss';
+import styles from './Combobox.module.css';
 import {TextField} from './components';
 
 export interface ComboboxProps {
@@ -31,7 +31,7 @@ export interface ComboboxProps {
   willLoadMoreOptions?: boolean;
   /** Height to set on the Popover Pane. */
   height?: string;
-  /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
+  /** Callback fired when the bottom of the listbox is reached. Use to lazy load when listbox option data is paginated. */
   onScrolledToBottom?(): void;
   /** Callback fired when the popover closes */
   onClose?(): void;

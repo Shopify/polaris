@@ -11,7 +11,7 @@ import {LegacyStack} from '../../../../../LegacyStack';
 // eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../../../TextContainer';
 
-import styles from './Message.module.scss';
+import styles from './Message.module.css';
 
 export interface MessageProps {
   title: string;

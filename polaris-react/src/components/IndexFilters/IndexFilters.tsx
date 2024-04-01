@@ -28,7 +28,7 @@ import type {
   SortButtonChoice,
 } from './types';
 import {IndexFiltersMode} from './types';
-import styles from './IndexFilters.module.scss';
+import styles from './IndexFilters.module.css';
 
 const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
 
@@ -75,7 +75,7 @@ export interface IndexFiltersProps
   /** The primary action to display  */
   primaryAction?: IndexFiltersPrimaryAction;
   /** The cancel action to display */
-  cancelAction: IndexFiltersCancelAction;
+  cancelAction?: IndexFiltersCancelAction;
   /** Optional callback invoked when a merchant begins to edit a view */
   onEditStart?: (mode: ActionableIndexFiltersMode) => void;
   /** The current mode of the IndexFilters component. Used to determine which view to show */
@@ -100,10 +100,13 @@ export interface IndexFiltersProps
   filteringAccessibilityTooltip?: string;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
-  /** Optional override to the default keyboard shortcuts available */
+  /** Optional override to the default keyboard shortcuts available. Should be set to true for all instances
+   * of this component not controlling a root-level index */
   disableKeyboardShortcuts?: boolean;
   /** Whether to display the edit columns button with the other default mode filter actions */
   showEditColumnsButton?: boolean;
+  /** Whether or not to auto-focus the search field when it renders */
+  autoFocusSearchField?: boolean;
 }
 
 export function IndexFilters({
@@ -143,6 +146,7 @@ export function IndexFilters({
   closeOnChildOverlayClick,
   disableKeyboardShortcuts,
   showEditColumnsButton,
+  autoFocusSearchField = true,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -152,10 +156,10 @@ export function IndexFilters({
     value: filtersFocused,
     setFalse: setFiltersUnFocused,
     setTrue: setFiltersFocused,
-  } = useToggle(mode === IndexFiltersMode.Filtering);
+  } = useToggle(mode === IndexFiltersMode.Filtering && autoFocusSearchField);
 
   const handleModeChange = (newMode: IndexFiltersMode) => {
-    if (newMode === IndexFiltersMode.Filtering) {
+    if (newMode === IndexFiltersMode.Filtering && autoFocusSearchField) {
       setFiltersFocused();
     } else {
       setFiltersUnFocused();
@@ -165,7 +169,8 @@ export function IndexFilters({
   useOnValueChange(mode, handleModeChange);
 
   useEventListener('keydown', (event) => {
-    if (disableKeyboardShortcuts) return;
+    const hasNoFiltersOrSearch = hideQueryField && hideFilters;
+    if (disableKeyboardShortcuts || hasNoFiltersOrSearch) return;
 
     const {key} = event;
     const tag = document?.activeElement?.tagName;
@@ -219,7 +224,7 @@ export function IndexFilters({
   const onExecutedPrimaryAction = useExecutedCallback(primaryAction?.onAction);
 
   const onExecutedCancelAction = useCallback(() => {
-    cancelAction.onAction?.();
+    cancelAction?.onAction?.();
     setMode(IndexFiltersMode.Default);
   }, [cancelAction, setMode]);
 
@@ -233,10 +238,12 @@ export function IndexFilters({
   }, [onExecutedPrimaryAction, primaryAction]);
 
   const enhancedCancelAction = useMemo(() => {
-    return {
-      ...cancelAction,
-      onAction: onExecutedCancelAction,
-    };
+    return cancelAction
+      ? {
+          ...cancelAction,
+          onAction: onExecutedCancelAction,
+        }
+      : undefined;
   }, [cancelAction, onExecutedCancelAction]);
 
   const beginEdit = useCallback(
@@ -248,14 +255,15 @@ export function IndexFilters({
   );
 
   const updateButtonsMarkup = useMemo(
-    () => (
-      <UpdateButtons
-        primaryAction={enhancedPrimaryAction}
-        cancelAction={enhancedCancelAction}
-        viewNames={viewNames}
-        disabled={disabled}
-      />
-    ),
+    () =>
+      enhancedCancelAction || enhancedPrimaryAction ? (
+        <UpdateButtons
+          primaryAction={enhancedPrimaryAction}
+          cancelAction={enhancedCancelAction}
+          viewNames={viewNames}
+          disabled={disabled}
+        />
+      ) : null,
     [enhancedPrimaryAction, enhancedCancelAction, disabled, viewNames],
   );
 

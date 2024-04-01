@@ -1,0 +1,10 @@
+.ActionMenu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  @media print {
+    /* stylelint-disable-next-line declaration-no-important -- Enforce print styles */
+    display: none !important;
+  }
+}

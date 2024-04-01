@@ -5,7 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {Button} from '../../../Button';
 import type {ColumnVisibilityData} from '../../types';
-import styles from '../../DataTable.module.scss';
+import styles from '../../DataTable.module.css';
 
 export interface NavigationProps {
   columnVisibilityData: ColumnVisibilityData[];

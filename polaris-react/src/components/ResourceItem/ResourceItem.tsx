@@ -25,11 +25,13 @@ import {
 } from '../../utilities/resource-list';
 import type {ResourceListSelectedItems} from '../../utilities/resource-list';
 
-import styles from './ResourceItem.module.scss';
+import styles from './ResourceItem.module.css';
 
 type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 
 interface BaseProps {
+  /** Whether or not interaction is disabled */
+  disabled?: boolean;
   /** Visually hidden text for screen readers used for item link */
   accessibilityLabel?: string;
   /** Individual item name used by various text labels */
@@ -159,6 +161,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       dataHref,
       breakpoints,
       onMouseOver,
+      disabled,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -183,7 +186,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                 label={checkboxAccessibilityLabel}
                 labelHidden
                 checked={selected}
-                disabled={loading}
+                disabled={loading || disabled}
                 bleedInlineStart="300"
                 bleedInlineEnd="300"
                 bleedBlockStart="300"
@@ -219,6 +222,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       selectMode && styles.selectMode,
       persistActions && styles.persistActions,
       focusedInner && styles.focusedInner,
+      disabled && styles.disabled,
     );
 
     const listItemClassName = classNames(
@@ -351,7 +355,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
           <div
             ref={this.setNode}
             className={className}
-            onClick={this.handleClick}
+            onClick={disabled ? () => {} : this.handleClick}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             onKeyUp={this.handleKeyUp}
@@ -359,7 +363,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             onMouseOut={this.handleMouseOut}
             data-href={url}
           >
-            {accessibleMarkup}
+            {disabled ? null : accessibleMarkup}
             {containerMarkup}
           </div>
         </div>
@@ -458,12 +462,13 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   // This fires onClick when there is a URL on the item
   private handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
     const {
+      disabled,
       onClick = noop,
       context: {selectMode},
     } = this.props;
     const {key} = event;
 
-    if (key === 'Enter' && this.props.url && !selectMode) {
+    if (key === 'Enter' && this.props.url && !selectMode && !disabled) {
       onClick();
     }
   };

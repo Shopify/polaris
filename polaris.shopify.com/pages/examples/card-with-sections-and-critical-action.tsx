@@ -8,6 +8,7 @@ import {
   Text,
 } from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
+import {DeleteIcon, EditIcon} from '@shopify/polaris-icons';
 
 function CardWithSectionsAndCriticalAction() {
   return (
@@ -28,20 +29,18 @@ function CardWithSectionsAndCriticalAction() {
             </Text>
             <ButtonGroup>
               <Button
-                variant="plain"
+                icon={DeleteIcon}
+                variant="tertiary"
                 tone="critical"
                 onClick={() => {}}
                 accessibilityLabel="Delete"
-              >
-                Delete
-              </Button>
+              />
               <Button
-                variant="plain"
+                icon={EditIcon}
+                variant="tertiary"
                 onClick={() => {}}
                 accessibilityLabel="Edit"
-              >
-                Edit
-              </Button>
+              />
             </ButtonGroup>
           </InlineGrid>
           <Text as="p" variant="bodyMd">

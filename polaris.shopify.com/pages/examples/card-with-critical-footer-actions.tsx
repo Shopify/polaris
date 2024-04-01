@@ -29,7 +29,7 @@ function CardWithCriticalFooterActions() {
         <InlineStack align="end">
           <ButtonGroup>
             <Button
-              variant="primary"
+              variant="secondary"
               tone="critical"
               onClick={() => {}}
               accessibilityLabel="Cancel shipment"

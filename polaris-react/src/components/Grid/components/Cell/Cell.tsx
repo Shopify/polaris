@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 
-import styles from './Cell.module.scss';
+import styles from './Cell.module.css';
 
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

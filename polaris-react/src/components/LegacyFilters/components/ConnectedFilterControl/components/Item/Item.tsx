@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
 import {useToggle} from '../../../../../../utilities/use-toggle';
-import styles from '../../ConnectedFilterControl.module.scss';
+import styles from '../../ConnectedFilterControl.module.css';
 
 interface ItemProps {
   children?: React.ReactNode;

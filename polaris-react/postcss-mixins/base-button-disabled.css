@@ -1,0 +1,11 @@
+@define-mixin base-button-disabled {
+  transition: none;
+  box-shadow: none;
+  border-color: var(--p-color-border-disabled);
+  background: var(--p-color-bg-fill-disabled);
+  color: var(--p-color-text-disabled);
+
+  svg {
+    fill: var(--p-color-icon-disabled);
+  }
+}

@@ -12,7 +12,7 @@ import {Combobox} from '../Combobox';
 import {Listbox, AutoSelection} from '../Listbox';
 
 import {MappedAction, MappedOption} from './components';
-import styles from './Autocomplete.module.scss';
+import styles from './Autocomplete.module.css';
 
 export interface AutocompleteProps {
   /** A unique identifier for the Autocomplete */

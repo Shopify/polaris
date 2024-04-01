@@ -7,8 +7,9 @@ import {InlineError, errorTextID} from '../InlineError';
 import {BlockStack} from '../BlockStack';
 import {Box} from '../Box';
 import {Bleed} from '../Bleed';
+import {Text} from '../Text';
 
-import styles from './ChoiceList.module.scss';
+import styles from './ChoiceList.module.css';
 
 interface Choice {
   /** Value of the choice */
@@ -71,12 +72,10 @@ export function ChoiceList({
   const finalName = allowMultiple ? `${name}[]` : name;
 
   const titleMarkup = title ? (
-    <Box
-      as="legend"
-      paddingBlockEnd={{xs: '500', md: '100'}}
-      visuallyHidden={titleHidden}
-    >
-      {title}
+    <Box as="legend" paddingBlockEnd={{xs: '0', md: '100'}}>
+      <Text as="span" variant="bodyMd" visuallyHidden={titleHidden}>
+        {title}
+      </Text>
     </Box>
   ) : null;
 

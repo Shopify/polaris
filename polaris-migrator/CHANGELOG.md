@@ -1,5 +1,39 @@
 # @shopify/polaris-migrator
 
+## 0.28.3
+
+### Patch Changes
+
+- Updated dependencies [[`1e613de8b`](https://github.com/Shopify/polaris/commit/1e613de8b3938bc30c722382a8e78e75e50be9cd)]:
+  - @shopify/polaris-tokens@8.9.0
+  - @shopify/stylelint-polaris@15.4.1
+
+## 0.28.2
+
+### Patch Changes
+
+- [#11754](https://github.com/Shopify/polaris/pull/11754) [`f57db81df`](https://github.com/Shopify/polaris/commit/f57db81df961e9147d4da00abecbe2fd89cc1702) Thanks [@jesstelford](https://github.com/jesstelford)! - Move migrations to v14 since the node v20 requirement will be the only change in v13
+
+- Updated dependencies [[`f6ba2b2a8`](https://github.com/Shopify/polaris/commit/f6ba2b2a8a8beae9ab235437caf5bfbacc50741f)]:
+  - @shopify/stylelint-polaris@15.4.0
+
+## 0.28.1
+
+### Patch Changes
+
+- Updated dependencies [[`dfcdaa109`](https://github.com/Shopify/polaris/commit/dfcdaa109a699db0d08d046fefda9eb336ddb60f)]:
+  - @shopify/stylelint-polaris@15.3.0
+
+## 0.28.0
+
+### Minor Changes
+
+- [#11596](https://github.com/Shopify/polaris/pull/11596) [`c8fabc011`](https://github.com/Shopify/polaris/commit/c8fabc011f375787acbf13bfa62fc2f47b66bf3d) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `font` custom properties in polaris-react v14.0.0
+
+### Patch Changes
+
+- [#11603](https://github.com/Shopify/polaris/pull/11603) [`2c53d6476`](https://github.com/Shopify/polaris/commit/2c53d64762ff545f56787e932e0b0935c45b5fdc) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated migration to replace deprecated `font` custom properties in polaris-react v14.0.0
+
 ## 0.27.4
 
 ### Patch Changes

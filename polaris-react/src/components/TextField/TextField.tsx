@@ -23,7 +23,7 @@ import {useEventListener} from '../../utilities/use-event-listener';
 
 import {Resizer, Spinner} from './components';
 import type {SpinnerProps} from './components';
-import styles from './TextField.module.scss';
+import styles from './TextField.module.css';
 
 type Type =
   | 'text'
@@ -329,13 +329,17 @@ export function TextField({
       id={`${id}-Prefix`}
       ref={prefixRef}
     >
-      {prefix}
+      <Text as="span" variant="bodyMd">
+        {prefix}
+      </Text>
     </div>
   ) : null;
 
   const suffixMarkup = suffix ? (
     <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
-      {suffix}
+      <Text as="span" variant="bodyMd">
+        {suffix}
+      </Text>
     </div>
   ) : null;
 
@@ -375,7 +379,9 @@ export function TextField({
         aria-atomic="true"
         onClick={handleClickChild}
       >
-        {characterCountText}
+        <Text as="span" variant="bodyMd">
+          {characterCountText}
+        </Text>
       </div>
     );
   }

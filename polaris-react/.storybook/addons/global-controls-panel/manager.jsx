@@ -40,6 +40,12 @@ export const featureFlagOptions = {
   //   defaultValue: false,
   //   control: {type: 'boolean'},
   // },
+  dynamicTopBarAndReframe: {
+    name: 'dynamicTopBarAndReframe',
+    description: 'Toggle the top bar and reframe feature flag',
+    defaultValue: false,
+    control: {type: 'boolean'},
+  },
 };
 
 export const gridOptions = {

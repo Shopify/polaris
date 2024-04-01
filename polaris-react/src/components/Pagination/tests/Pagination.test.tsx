@@ -272,14 +272,11 @@ describe('<Pagination />', () => {
         });
       });
 
-      it('uses Button and ButtonGroup as subcomponents', () => {
+      it('uses Button as subcomponent', () => {
         const pagination = mountWithApp(
           <Pagination nextURL="/next" previousURL="/prev" type={type} />,
         );
 
-        expect(pagination).toContainReactComponent(ButtonGroup, {
-          variant: 'segmented',
-        });
         expect(pagination).toContainReactComponent(Button, {url: '/prev'});
         expect(pagination).toContainReactComponent(Button, {url: '/next'});
       });
@@ -316,19 +313,19 @@ describe('<Pagination />', () => {
   });
 
   describe('type: table', () => {
-    it('places the content at the end of the container', () => {
+    it('places the content centreally within the container', () => {
       const pagination = mountWithApp(
         <Pagination hasNext nextURL="/next" previousURL="/prev" type="table" />,
       );
 
       expect(pagination).toContainReactComponent(InlineStack, {
-        align: 'end',
+        align: 'center',
         blockAlign: 'center',
       });
     });
 
     describe('label', () => {
-      it('spaces the content apart within the container', () => {
+      it('spaces the content centrally within the container', () => {
         const pagination = mountWithApp(
           <Pagination
             hasNext
@@ -340,7 +337,7 @@ describe('<Pagination />', () => {
         );
 
         expect(pagination).toContainReactComponent(InlineStack, {
-          align: 'space-between',
+          align: 'center',
           blockAlign: 'center',
         });
       });

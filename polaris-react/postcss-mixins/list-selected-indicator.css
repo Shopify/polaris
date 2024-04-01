@@ -1,0 +1,12 @@
+@define-mixin list-selected-indicator {
+  content: '';
+  background-color: var(--p-color-bg-fill-brand);
+  position: absolute;
+  top: 0;
+  left: calc(-1 * var(--p-space-200));
+  height: 100%;
+  display: block;
+  width: var(--p-border-width-050);
+  border-top-right-radius: var(--p-border-radius-100);
+  border-bottom-right-radius: var(--p-border-radius-100);
+}

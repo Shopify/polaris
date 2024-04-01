@@ -279,6 +279,9 @@ export type {PageActionsProps} from './components/PageActions';
 export {Pagination} from './components/Pagination';
 export type {PaginationProps} from './components/Pagination';
 
+export {Picker as AlphaPicker} from './components/Picker';
+export type {PickerProps as AlphaPickerProps} from './components/Picker';
+
 export {PolarisTestProvider} from './components/PolarisTestProvider';
 export type {WithPolarisTestProviderOptions} from './components/PolarisTestProvider';
 
@@ -368,6 +371,9 @@ export type {TextContainerProps} from './components/TextContainer';
 export {TextField} from './components/TextField';
 export type {TextFieldProps} from './components/TextField';
 
+export type {ThemeProviderProps} from './components/ThemeProvider/ThemeProvider';
+export {ThemeProvider} from './components/ThemeProvider/ThemeProvider';
+
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
 
@@ -420,6 +426,7 @@ export {
 export {useFrame, FrameContext} from './utilities/frame';
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
+export {useCopyToClipboard} from './utilities/use-copy-to-clipboard';
 export {useEventListener} from './utilities/use-event-listener';
 export {useTheme} from './utilities/use-theme';
 export {useIndexResourceState} from './utilities/use-index-resource-state';

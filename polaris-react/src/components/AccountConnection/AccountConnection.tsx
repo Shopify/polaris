@@ -66,14 +66,16 @@ export function AccountConnection({
   );
 
   const detailsMarkup = details ? (
-    <Text as="span" tone="subdued">
+    <Text as="span" variant="bodyMd" tone="subdued">
       {details}
     </Text>
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
     <Box paddingBlockStart={breakpoints.mdUp ? '400' : '500'}>
-      {termsOfService}
+      <Text as="span" variant="bodyMd">
+        {termsOfService}
+      </Text>
     </Box>
   ) : null;
 

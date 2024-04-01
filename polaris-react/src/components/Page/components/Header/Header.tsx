@@ -32,7 +32,7 @@ import {FilterActionsProvider} from '../../../FilterActionsProvider';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
-import styles from './Header.module.scss';
+import styles from './Header.module.css';
 
 type MaybeJSX = JSX.Element | null;
 
@@ -99,6 +99,11 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
+  const hasActionGroupsOrSecondaryActions =
+    actionGroups.length > 0 ||
+    (isInterface(secondaryActions) && secondaryActions.length > 0) ||
+    isReactElement(secondaryActions);
+
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
       <Box maxWidth="100%" paddingInlineEnd="100" printHidden>
@@ -121,12 +126,18 @@ export function Header({
     ) : null;
 
   const pageTitleMarkup = (
-    <div className={styles.TitleWrapper}>
+    <div
+      className={classNames(
+        styles.TitleWrapper,
+        !hasActionGroupsOrSecondaryActions && styles.TitleWrapperExpand,
+      )}
+    >
       <Title
         title={title}
         subtitle={subtitle}
         titleMetadata={titleMetadata}
         compactTitle={compactTitle}
+        hasSubtitleMaxWidth={hasActionGroupsOrSecondaryActions}
       />
     </div>
   );
@@ -298,14 +309,13 @@ function shouldShowIconOnly(
   isMobile: boolean,
   action: PrimaryAction,
 ): PrimaryAction {
-  let {content, accessibilityLabel, icon} = action;
+  let {content, accessibilityLabel} = action;
+  const {icon} = action;
   if (icon == null) return {...action, icon: undefined};
 
   if (isMobile) {
     accessibilityLabel = accessibilityLabel || content;
     content = undefined;
-  } else {
-    icon = undefined;
   }
 
   return {

@@ -10,7 +10,7 @@ import {Text} from '../Text';
 import type {Error} from '../../types';
 import {useToggle} from '../../utilities/use-toggle';
 
-import styles from './Select.module.scss';
+import styles from './Select.module.css';
 
 interface StrictOption {
   /** Machine value of the option; this is the value passed to `onChange` */
@@ -161,6 +161,7 @@ export function Select({
     <Box paddingInlineEnd="100">
       <Text
         as="span"
+        variant="bodyMd"
         tone={
           tone && tone === 'magic' && !focused ? 'magic-subdued' : 'subdued'
         }

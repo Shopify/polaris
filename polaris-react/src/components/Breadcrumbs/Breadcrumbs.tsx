@@ -13,7 +13,7 @@ export interface BreadcrumbsProps {
 export function Breadcrumbs({backAction}: BreadcrumbsProps) {
   const {content} = backAction;
 
-  const breadcrumbMarkup = (
+  return (
     <Button
       key={content}
       url={'url' in backAction ? backAction.url : undefined}
@@ -23,6 +23,4 @@ export function Breadcrumbs({backAction}: BreadcrumbsProps) {
       accessibilityLabel={backAction.accessibilityLabel ?? content}
     />
   );
-
-  return <nav role="navigation">{breadcrumbMarkup}</nav>;
 }

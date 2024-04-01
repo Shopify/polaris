@@ -4,7 +4,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {elementChildren} from '../../utilities/components';
 
 import {Item} from './components';
-import styles from './ButtonGroup.module.scss';
+import styles from './ButtonGroup.module.css';
 
 type Gap = 'extraTight' | 'tight' | 'loose';
 

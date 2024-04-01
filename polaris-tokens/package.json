@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "8.8.0",
+  "version": "8.9.0",
   "description": "",
   "main": "dist/cjs/build/index.js",
   "module": "dist/esm/build/index.mjs",
@@ -26,7 +26,6 @@
     "dev": "rollup -c -w",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
-    "lint:styles": "stylelint '**/*.{css,scss}'",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo build"
   },

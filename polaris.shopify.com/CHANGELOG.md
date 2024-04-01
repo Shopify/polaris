@@ -1,5 +1,110 @@
 # polaris.shopify.com
 
+## 0.66.2
+
+### Patch Changes
+
+- [#11776](https://github.com/Shopify/polaris/pull/11776) [`ca8eb99ea`](https://github.com/Shopify/polaris/commit/ca8eb99eac8273437638c4871df4ab84bb7e51ec) Thanks [@sarahill](https://github.com/sarahill)! - Updated common action patterns example
+
+- Updated dependencies [[`880f31b44`](https://github.com/Shopify/polaris/commit/880f31b44baa1cfc4a58320f466ccc5c6438bf48), [`1e613de8b`](https://github.com/Shopify/polaris/commit/1e613de8b3938bc30c722382a8e78e75e50be9cd), [`d689bd8f4`](https://github.com/Shopify/polaris/commit/d689bd8f485ba36247bddf9da705f014cb701f4c), [`c3aefafe2`](https://github.com/Shopify/polaris/commit/c3aefafe2752d1514632dfb6563739df565273f5)]:
+  - @shopify/polaris@12.23.0
+  - @shopify/polaris-tokens@8.9.0
+  - @shopify/polaris-icons@8.9.0
+
+## 0.66.1
+
+### Patch Changes
+
+- Updated dependencies [[`8d636390a`](https://github.com/Shopify/polaris/commit/8d636390a699c13b2148320e7147794e1f92e46a), [`b1a0efc7d`](https://github.com/Shopify/polaris/commit/b1a0efc7d60b300fd7ff0923eb215ea8f29b63bd)]:
+  - @shopify/polaris@12.22.1
+
+## 0.66.0
+
+### Minor Changes
+
+- [#11720](https://github.com/Shopify/polaris/pull/11720) [`97184dc80`](https://github.com/Shopify/polaris/commit/97184dc80237cedeef2a85cb0ff72540fbf57d1c) Thanks [@sarahill](https://github.com/sarahill)! - Added common action guidance.
+
+* [#11690](https://github.com/Shopify/polaris/pull/11690) [`c78f125c7`](https://github.com/Shopify/polaris/commit/c78f125c704d8cda94bd9dfa645b5085ae3160cb) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updates images for icon design guidance
+
+### Patch Changes
+
+- [#11747](https://github.com/Shopify/polaris/pull/11747) [`5cff96245`](https://github.com/Shopify/polaris/commit/5cff96245e2a1516aa78f56374af0740d4e1fc19) Thanks [@sarahill](https://github.com/sarahill)! - Updated card layout patterns to match common action patterns.
+
+- Updated dependencies [[`e0ae9565c`](https://github.com/Shopify/polaris/commit/e0ae9565cc9384075abcd45d9a24bbd8c326a30b), [`9c24a465c`](https://github.com/Shopify/polaris/commit/9c24a465c5e001e148bde335bf6319e924f4b1d6), [`f6ba2b2a8`](https://github.com/Shopify/polaris/commit/f6ba2b2a8a8beae9ab235437caf5bfbacc50741f), [`4699bb229`](https://github.com/Shopify/polaris/commit/4699bb229ba9d1e76257f99da99c0b95f9d3e041), [`c3ba6ae1b`](https://github.com/Shopify/polaris/commit/c3ba6ae1bb827848cb3eb4dceaabd2725f19e3ea), [`1543246b7`](https://github.com/Shopify/polaris/commit/1543246b7ed5cf65163032f14a39ec18d65d2d9f), [`42c298ea7`](https://github.com/Shopify/polaris/commit/42c298ea790eb13d426e402b83feb23184483415), [`3e011e3b6`](https://github.com/Shopify/polaris/commit/3e011e3b6130519cd0bf3e7b81d701b5e9d52a90), [`e7ab4a8f5`](https://github.com/Shopify/polaris/commit/e7ab4a8f51141bb3ab82647e3083a186f13432d1), [`831a683a2`](https://github.com/Shopify/polaris/commit/831a683a25adcd7ecae2d799b451ddf8b84b689a), [`6d8ef8c99`](https://github.com/Shopify/polaris/commit/6d8ef8c99a0b9b1c91bf845ca1139291f7b63fc7), [`ad6315845`](https://github.com/Shopify/polaris/commit/ad6315845f4a511bbaeba2c256b01b8f497e8bda)]:
+  - @shopify/polaris@12.22.0
+
+## 0.65.0
+
+### Minor Changes
+
+- [#11703](https://github.com/Shopify/polaris/pull/11703) [`add5ffbea`](https://github.com/Shopify/polaris/commit/add5ffbea0616e11de3a2d3540f80af576812c40) Thanks [@lgriffee](https://github.com/lgriffee)! - Added shadow token design guidance
+
+### Patch Changes
+
+- Updated dependencies [[`423ffb755`](https://github.com/Shopify/polaris/commit/423ffb7554fae7dda5fce95004156d1801425a6f), [`da680f36a`](https://github.com/Shopify/polaris/commit/da680f36a7f81c3ecb1dcdcc9ebdcae6f6c6e756), [`00e276407`](https://github.com/Shopify/polaris/commit/00e276407b5c74c3749a30bf4005678b332de6bb), [`3554a1004`](https://github.com/Shopify/polaris/commit/3554a1004d4ec92d74817a43fde7fa798236365a), [`6a1a5a6c4`](https://github.com/Shopify/polaris/commit/6a1a5a6c4d1e4755003adf12a5026b44096505a6), [`90a3cb1fb`](https://github.com/Shopify/polaris/commit/90a3cb1fb3fb8ca26807e7b17b11bd2fe4c0c7a1)]:
+  - @shopify/polaris-icons@8.8.0
+  - @shopify/polaris@12.21.0
+
+## 0.64.0
+
+### Minor Changes
+
+- [#11674](https://github.com/Shopify/polaris/pull/11674) [`042b428be`](https://github.com/Shopify/polaris/commit/042b428beb4cdbbe607a6d4bd2ab91c03616bb8a) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated BulkActions to show titles of sections if provided
+
+* [#11683](https://github.com/Shopify/polaris/pull/11683) [`8a0e1b32f`](https://github.com/Shopify/polaris/commit/8a0e1b32f5067784d7b8c0b889aad99a2498488e) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Update design guidance for icons
+
+- [#11634](https://github.com/Shopify/polaris/pull/11634) [`27ca061a6`](https://github.com/Shopify/polaris/commit/27ca061a6f9d3f1cf8ead018b42fe3745d875e6d) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Adds guidance on optimzing icons to contribution page
+
+### Patch Changes
+
+- Updated dependencies [[`c2e443ec9`](https://github.com/Shopify/polaris/commit/c2e443ec9b4e2e0eeb839516cc710b9d62296732), [`ab2877249`](https://github.com/Shopify/polaris/commit/ab28772495610ffffa208a0e8fc6903a2fc92e25), [`ac563025e`](https://github.com/Shopify/polaris/commit/ac563025ef83ff3ce049e0db10e2356341dd4e9e), [`75dcb5443`](https://github.com/Shopify/polaris/commit/75dcb5443f166f4073e81431d4a0b9891ec9e051), [`042b428be`](https://github.com/Shopify/polaris/commit/042b428beb4cdbbe607a6d4bd2ab91c03616bb8a), [`9eebf1a45`](https://github.com/Shopify/polaris/commit/9eebf1a458d20cc59f902b93feda620126e6189d), [`8c7302e11`](https://github.com/Shopify/polaris/commit/8c7302e11ce4daa71e8b4143f8608cde367b1731), [`4263d9ada`](https://github.com/Shopify/polaris/commit/4263d9ada703343063fbb9cb944ef433ac02b37c), [`9b1b74447`](https://github.com/Shopify/polaris/commit/9b1b7444783560ccb2281451c6deec63923ce58b), [`eeea3b96c`](https://github.com/Shopify/polaris/commit/eeea3b96c2e19dcf0076d16f0182ffb1420694ac)]:
+  - @shopify/polaris@12.20.0
+  - @shopify/polaris-icons@8.7.0
+
+## 0.63.4
+
+### Patch Changes
+
+- Updated dependencies [[`0371de812`](https://github.com/Shopify/polaris/commit/0371de812c0b28c4a1dc8b506ec5e8bab7aa7fe0)]:
+  - @shopify/polaris@12.19.2
+
+## 0.63.3
+
+### Patch Changes
+
+- Updated dependencies [[`abb3bf0e4`](https://github.com/Shopify/polaris/commit/abb3bf0e4fcecfab87d0888b9c0846fe9ea45f1e), [`f1c5110ae`](https://github.com/Shopify/polaris/commit/f1c5110aebddfbd1b2ee4bc356ef8b3db9285d8e), [`adf8600ad`](https://github.com/Shopify/polaris/commit/adf8600ad61b33adb903fe995bd79f71e99bb8bb)]:
+  - @shopify/polaris-icons@8.6.0
+  - @shopify/polaris@12.19.1
+
+## 0.63.2
+
+### Patch Changes
+
+- Updated dependencies [[`0134d2378`](https://github.com/Shopify/polaris/commit/0134d23784a48475d7c260337b777f448179a9b1), [`1f81501c8`](https://github.com/Shopify/polaris/commit/1f81501c8c3862fad4ffd9a4058d3fc70e5ae39a), [`1ac638246`](https://github.com/Shopify/polaris/commit/1ac63824611d3b0167b4ed9e133746e95e62faa0), [`b95fc9807`](https://github.com/Shopify/polaris/commit/b95fc980782d0cadc63825c9803aed9e0cf0699c)]:
+  - @shopify/polaris@12.19.0
+
+## 0.63.1
+
+### Patch Changes
+
+- Updated dependencies [[`b60ba0710`](https://github.com/Shopify/polaris/commit/b60ba07103831f169423a94b63610b211eefa555), [`4db32af27`](https://github.com/Shopify/polaris/commit/4db32af27edb547d5c3f6fe1fbd81b1737cc5152), [`9aed8c18f`](https://github.com/Shopify/polaris/commit/9aed8c18f328165f4be8a4fcca9efe23944bd63b), [`376e6ded7`](https://github.com/Shopify/polaris/commit/376e6ded7bc64cd7b4947fc56a1ea563cae26549), [`8a9225306`](https://github.com/Shopify/polaris/commit/8a92253064a2a2e572f58eae71312dc895b5fbf1), [`92d02613b`](https://github.com/Shopify/polaris/commit/92d02613b7aa063f0939e610baaf28e256d8b3e6), [`b79741cf8`](https://github.com/Shopify/polaris/commit/b79741cf8a632f741d9c4c4100e9b51f6865f183), [`bef27c076`](https://github.com/Shopify/polaris/commit/bef27c076f8b1ca2efda61bf6a178c4a18972698)]:
+  - @shopify/polaris@12.18.0
+  - @shopify/polaris-icons@8.5.0
+
+## 0.63.0
+
+### Minor Changes
+
+- [#11596](https://github.com/Shopify/polaris/pull/11596) [`c8fabc011`](https://github.com/Shopify/polaris/commit/c8fabc011f375787acbf13bfa62fc2f47b66bf3d) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `font` custom properties in polaris-react v14.0.0
+
+* [#11568](https://github.com/Shopify/polaris/pull/11568) [`525194767`](https://github.com/Shopify/polaris/commit/5251947674301c9aac9121bde2d88c7e328707ff) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the stacking logic of multiple Toasts to take up less screen real estate
+
+### Patch Changes
+
+- Updated dependencies [[`b65f1e679`](https://github.com/Shopify/polaris/commit/b65f1e679bd96db4ff9097b36d719b371cf33f8a), [`47dac1b2e`](https://github.com/Shopify/polaris/commit/47dac1b2e7fe566965804cd0ee11029d2fb5fafb), [`0b38b6115`](https://github.com/Shopify/polaris/commit/0b38b61156092ab60263bfd330e4ac4a9fd793d2), [`23d8297ff`](https://github.com/Shopify/polaris/commit/23d8297ff6138dae5044d015e143d4a4a7bb99eb), [`1ba3181b6`](https://github.com/Shopify/polaris/commit/1ba3181b6f8442871bf25cf2e46ab44fdbb657e1), [`165bc6eae`](https://github.com/Shopify/polaris/commit/165bc6eae0401b91dc8623259abcfdc7d0999351), [`78ed5fe0d`](https://github.com/Shopify/polaris/commit/78ed5fe0d616db8c2cf76f59f9528211f81c23b3), [`3937739d2`](https://github.com/Shopify/polaris/commit/3937739d2554c2e86ae61c5fbd04cc360b44c457), [`f829ed487`](https://github.com/Shopify/polaris/commit/f829ed48702315e88f89383874eca110eaecf0f9), [`525194767`](https://github.com/Shopify/polaris/commit/5251947674301c9aac9121bde2d88c7e328707ff), [`5ab254b3b`](https://github.com/Shopify/polaris/commit/5ab254b3bb49f04f97757ed5b5c9be16dee02f40)]:
+  - @shopify/polaris-icons@8.3.0
+  - @shopify/polaris@12.16.0
+
 ## 0.62.8
 
 ### Patch Changes

@@ -1,12 +1,10 @@
 import React from 'react';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 import {ChevronDownIcon} from '@shopify/polaris-icons';
 
 import {FilterPill} from '../FilterPill';
 import type {FilterPillProps} from '../FilterPill';
 import {Popover} from '../../../../Popover';
-import {Text} from '../../../../Text';
 import {Icon} from '../../../../Icon';
 import {Button} from '../../../../Button';
 import {UnstyledButton} from '../../../../UnstyledButton';
@@ -21,13 +19,11 @@ describe('<Filters />', () => {
 
   beforeEach(() => {
     originalScroll = HTMLElement.prototype.scroll;
-    matchMedia.mock();
     mockUseBreakpoints(false);
   });
 
   afterEach(() => {
     HTMLElement.prototype.scroll = originalScroll;
-    matchMedia.restore();
     jest.clearAllMocks();
   });
 
@@ -49,23 +45,6 @@ describe('<Filters />', () => {
     it('renders the label inside the Popover activator', () => {
       const wrapper = mountWithApp(<FilterPill {...defaultProps} />);
       expect(wrapper).toContainReactText(defaultProps.label);
-    });
-
-    it('renders with bodyLg variant when on a small screen', () => {
-      mockUseBreakpoints(true);
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {});
-      expect(wrapper).toContainReactComponent(Text, {
-        variant: 'bodyLg',
-        children: defaultProps.label,
-      });
-    });
-
-    it('renders with bodySm variant when on a larger screen', () => {
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />);
-      expect(wrapper).toContainReactComponent(Text, {
-        variant: 'bodySm',
-        children: defaultProps.label,
-      });
     });
 
     it('will return null if disabled', () => {

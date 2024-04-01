@@ -26,7 +26,7 @@ export default defineConfig(() => ({
   css: {
     modules: {
       generateScopedName: generateScopedName({includeHash: false}),
-      globalModulePaths: [/global\.scss$/],
+      globalModulePaths: [/global\.css$/],
     },
   },
 }));

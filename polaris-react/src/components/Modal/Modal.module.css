@@ -1,0 +1,23 @@
+.Body,
+.NoScrollBody {
+  flex-grow: 1;
+
+  @media (--p-breakpoints-md-up) {
+    flex-grow: unset;
+  }
+}
+
+.IFrame {
+  /* stylelint-disable-next-line -- Polaris component custom properties */
+  --pc-modal-frame-small-width: 620px;
+  display: block;
+  /* stylelint-disable-next-line -- Polaris component custom properties */
+  width: var(--pc-modal-frame-small-width);
+  max-width: 100vw;
+  border: none;
+
+  @media (--p-breakpoints-md-up) {
+    /* stylelint-disable-next-line -- Polaris component custom properties */
+    max-width: var(--pc-modal-frame-small-width);
+  }
+}

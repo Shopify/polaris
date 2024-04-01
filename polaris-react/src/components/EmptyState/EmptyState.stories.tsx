@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, EmptyState, Link} from '@shopify/polaris';
+import {LegacyCard, EmptyState, Link, Text} from '@shopify/polaris';
 
 export default {
   component: EmptyState,
@@ -18,7 +18,9 @@ export function Default() {
         }}
         image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
       >
-        <p>Track and receive your incoming inventory from suppliers.</p>
+        <Text as="p" variant="bodyMd">
+          Track and receive your incoming inventory from suppliers.
+        </Text>
       </EmptyState>
     </LegacyCard>
   );
@@ -35,18 +37,20 @@ export function WithSubduedFooterContext() {
           url: 'https://help.shopify.com',
         }}
         footerContent={
-          <p>
+          <Text as="p" variant="bodyMd">
             If you don’t want to add a transfer, you can import your inventory
             from{' '}
             <Link monochrome url="/settings">
               settings
             </Link>
             .
-          </p>
+          </Text>
         }
         image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
       >
-        <p>Track and receive your incoming inventory from suppliers.</p>
+        <Text as="p" variant="bodyMd">
+          Track and receive your incoming inventory from suppliers.
+        </Text>
       </EmptyState>
     </LegacyCard>
   );
@@ -61,11 +65,11 @@ export function WithFullWidthLayout() {
         image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
         fullWidth
       >
-        <p>
+        <Text as="p" variant="bodyMd">
           You can use the Files section to upload images, videos, and other
           documents. This example shows the content with a centered layout and
           full width.
-        </p>
+        </Text>
       </EmptyState>
     </LegacyCard>
   );
@@ -82,7 +86,9 @@ export function WithoutContentContainer() {
       }}
       image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
     >
-      <p>Track and receive your incoming inventory from suppliers.</p>
+      <Text as="p" variant="bodyMd">
+        Track and receive your incoming inventory from suppliers.
+      </Text>
     </EmptyState>
   );
 }

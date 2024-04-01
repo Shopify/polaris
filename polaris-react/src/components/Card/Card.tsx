@@ -41,13 +41,11 @@ export const Card = ({
 }: CardProps) => {
   const breakpoints = useBreakpoints();
   const defaultBorderRadius: BorderRadiusAliasOrScale = '300';
-  const isSmUp = Boolean(breakpoints.smUp);
   const hasBorderRadius = Boolean(breakpoints[`${roundedAbove}Up`]);
 
   return (
     <WithinContentContext.Provider value>
       <ShadowBevel
-        bevel={isSmUp}
         boxShadow="100"
         borderRadius={hasBorderRadius ? defaultBorderRadius : '0'}
         zIndex="32"
