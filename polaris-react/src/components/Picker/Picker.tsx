@@ -18,6 +18,7 @@ import type {ListboxProps, OptionProps} from '../Listbox';
 import {Listbox} from '../Listbox';
 import type {IconProps} from '../Icon';
 import {Icon} from '../Icon';
+import {escapeRegex} from '../../utilities/string';
 
 import {Activator, SearchField} from './components';
 import type {ActivatorProps} from './components';
@@ -44,7 +45,8 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
 }
 
 const FILTER_REGEX = (value: string) => new RegExp(value, 'i');
-const QUERY_REGEX = (value: string) => new RegExp(`^${value}$`, 'i');
+const QUERY_REGEX = (value: string) =>
+  new RegExp(`^${escapeRegex(value)}$`, 'i');
 
 export function Picker({
   activator,
