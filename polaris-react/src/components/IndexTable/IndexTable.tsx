@@ -134,7 +134,7 @@ export interface TableHeadingRect {
   offsetLeft: number;
 }
 
-const SCROLL_BAR_PADDING = 4;
+const SCROLL_BAR_PADDING = 16;
 const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
 
 function IndexTableBase({
@@ -188,8 +188,7 @@ function IndexTableBase({
 
   const [tableInitialized, setTableInitialized] = useState(false);
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
-  const [hideScrollContainer, setHideScrollContainer] =
-    useState<boolean>(false);
+  const [hideScrollContainer, setHideScrollContainer] = useState<boolean>(true);
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
