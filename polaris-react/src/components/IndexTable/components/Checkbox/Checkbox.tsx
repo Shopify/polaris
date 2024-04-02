@@ -23,7 +23,6 @@ export const Checkbox = memo(function Checkbox({
   const {resourceName} = useIndexValue();
   const {itemId, selected, disabled, onInteraction} = useContext(RowContext);
 
-  const wrapperClassName = classNames(styles.Wrapper);
   const label = accessibilityLabel
     ? accessibilityLabel
     : i18n.translate('Polaris.IndexTable.selectItem', {
@@ -33,11 +32,7 @@ export const Checkbox = memo(function Checkbox({
   return (
     <CheckboxWrapper>
       <div className={styles.TableCellContentContainer}>
-        <div
-          className={wrapperClassName}
-          onClick={onInteraction}
-          onKeyUp={noop}
-        >
+        <div className={styles.Wrapper} onClick={onInteraction} onKeyUp={noop}>
           <PolarisCheckbox
             id={`Select-${itemId}`}
             label={label}
