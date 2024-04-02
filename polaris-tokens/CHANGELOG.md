@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.10.0
+
+### Minor Changes
+
+- [#11801](https://github.com/Shopify/polaris/pull/11801) [`f6308995e`](https://github.com/Shopify/polaris/commit/f6308995e3ef8b5f8f017471d23a08577243b323) Thanks [@sophschneider](https://github.com/sophschneider)! - Added white alpha ramp and more dark experimental tokens
+
 ## 8.9.0
 
 ### Minor Changes

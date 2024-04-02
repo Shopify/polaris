@@ -1,5 +1,20 @@
 # Changelog
 
+## 12.25.0
+
+### Minor Changes
+
+- [#11802](https://github.com/Shopify/polaris/pull/11802) [`3d93f8daf`](https://github.com/Shopify/polaris/commit/3d93f8daf212e6248908b6669c578196003188eb) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `useHover`, `useFocus`, `useFocusIn`, and `useMediaQuery` hooks for building Copy to Clipboard actions
+
+* [#11801](https://github.com/Shopify/polaris/pull/11801) [`f6308995e`](https://github.com/Shopify/polaris/commit/f6308995e3ef8b5f8f017471d23a08577243b323) Thanks [@sophschneider](https://github.com/sophschneider)! - Added white alpha ramp and more dark experimental tokens
+
+### Patch Changes
+
+- [#11617](https://github.com/Shopify/polaris/pull/11617) [`2ff9427b3`](https://github.com/Shopify/polaris/commit/2ff9427b35f7de408c75d8987790ca5047ea6b1b) Thanks [@jesstelford](https://github.com/jesstelford)! - [IndexTable] Unify sticky table header rendering with regular heading for consistency
+
+- Updated dependencies [[`f6308995e`](https://github.com/Shopify/polaris/commit/f6308995e3ef8b5f8f017471d23a08577243b323)]:
+  - @shopify/polaris-tokens@8.10.0
+
 ## 12.24.0
 
 ### Minor Changes
