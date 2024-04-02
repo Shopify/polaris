@@ -28,7 +28,7 @@ const sizes: NonNullable<AvatarProps['size']>[] = [
   'xs',
 ];
 
-type Style = typeof STYLE_CLASSES[number];
+type Style = (typeof STYLE_CLASSES)[number];
 
 const styleInitialsDefault: {
   [S in Style]: string;
