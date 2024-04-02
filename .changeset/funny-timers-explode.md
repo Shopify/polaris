@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-[IndexTable] Fixed shift click bug in Firefox
+Fixed Shift + click selection of `IndexTable.Row` not working in Firefox
