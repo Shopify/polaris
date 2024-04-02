@@ -61,7 +61,7 @@ export function Picker({
   ...listboxProps
 }: PickerProps) {
   const activatorRef = React.createRef<HTMLButtonElement>();
-  const [activeItem, setActiveItem] = useState<string>();
+  const [activeItems, setActiveItems] = useState<string[]>([]);
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
@@ -164,13 +164,35 @@ export function Picker({
     [options],
   );
 
-  const firstSelectedOption = reactChildrenText(
-    options.find((option) => option.value === activeItem)?.children,
+  const handleSelect = useCallback(
+    (selected: string) => {
+      setQuery('');
+      updateText('');
+      listboxProps.onSelect?.(selected);
+
+      if (!allowMultiple) {
+        handleClose();
+        setActiveItems([selected]);
+        return;
+      }
+
+      setActiveItems((selectedOptions) => {
+        return activeItems.includes(selected)
+          ? selectedOptions.filter((option) => option !== selected)
+          : [...selectedOptions, selected];
+      });
+    },
+    [updateText, listboxProps, allowMultiple, activeItems, handleClose],
   );
 
-  const queryMatchesExistingOption = options.some((option) =>
-    QUERY_REGEX(query).exec(reactChildrenText(option.children)),
+  const firstSelectedOption = reactChildrenText(
+    options.find((option) => option.value === activeItems?.[0])?.children,
   );
+
+  const queryMatchesExistingOption = options.some((option) => {
+    const matcher = QUERY_REGEX(query);
+    return reactChildrenText(option.children).match(matcher);
+  });
 
   return (
     <Popover
@@ -219,23 +241,11 @@ export function Picker({
             value={listboxOptionContextValue}
           >
             <Box paddingBlock="200">
-              <Listbox
-                {...listboxProps}
-                onSelect={(selected: string) => {
-                  setQuery('');
-                  updateText('');
-                  setActiveItem(selected);
-                  listboxProps.onSelect?.(selected);
-
-                  if (!allowMultiple) {
-                    handleClose();
-                  }
-                }}
-              >
+              <Listbox {...listboxProps} onSelect={handleSelect}>
                 {filteredOptions?.map((option) => (
                   <Listbox.Option
                     key={option.value}
-                    selected={option.value === activeItem}
+                    selected={activeItems.some((item) => item === option.value)}
                     {...option}
                   />
                 ))}

@@ -59,6 +59,15 @@ export function DetailsPage() {
   const [vendors, setVendors] = useState([
     {value: 'The North Face', children: 'The North Face'},
     {value: 'Patagonia', children: 'Patagonia'},
+    {value: 'Arc’teryx', children: 'Arc’teryx'},
+    {value: 'Marmot', children: 'Marmot'},
+    {value: 'Black Diamond', children: 'Black Diamond'},
+    {value: 'Mountain Hardwear', children: 'Mountain Hardwear'},
+    {value: 'Columbia', children: 'Columbia'},
+    {value: 'Canada Goose', children: 'Canada Goose'},
+    {value: 'Merrell', children: 'Merrell'},
+    {value: 'Salomon', children: 'Salomon'},
+    {value: 'Burton', children: 'Burton'},
   ]);
   const skipToContentRef = useRef<HTMLAnchorElement>(null);
   const [toastActive, setToastActive] = useState(false);
@@ -649,6 +658,27 @@ export function DetailsPage() {
                 options={options}
                 onChange={setSelected}
                 value={selected}
+              />
+              <br />
+              <AlphaPicker
+                allowMultiple
+                onSelect={handleSelect}
+                activator={{
+                  label: 'Vendor',
+                  placeholder: 'None selected',
+                }}
+                searchField={{
+                  label: 'Search vendors',
+                  placeholder: 'Search or add new vendor',
+                  autoComplete: 'off',
+                  value: query,
+                  onChange: (value) => setQuery(value),
+                }}
+                options={vendors}
+                addAction={{
+                  value: query,
+                  children: `Add ${query}`,
+                }}
               />
               <br />
               <AlphaPicker
