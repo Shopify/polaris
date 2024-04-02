@@ -1,0 +1,11 @@
+name: RotateRight
+description: Used in media editing for rotating an image clockwise.
+keywords:
+  - Rotate
+  - Right
+  - Clockwise
+authors:
+  - David Goligorsky
+  - Arda Karaçizmeli
+date_added: 2024-03-28
+date_modified: 2024-03-28
