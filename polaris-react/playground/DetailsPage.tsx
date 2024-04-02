@@ -45,6 +45,7 @@ import {
   FooterHelp,
   Link,
   AlphaPicker,
+  BlockStack,
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
@@ -56,19 +57,6 @@ export function DetailsPage() {
     nameFieldValue: 'Jaded Pixel',
   });
   const [query, setQuery] = useState('');
-  const [vendors, setVendors] = useState([
-    {value: 'The North Face', children: 'The North Face'},
-    {value: 'Patagonia', children: 'Patagonia'},
-    {value: 'Arc’teryx', children: 'Arc’teryx'},
-    {value: 'Marmot', children: 'Marmot'},
-    {value: 'Black Diamond', children: 'Black Diamond'},
-    {value: 'Mountain Hardwear', children: 'Mountain Hardwear'},
-    {value: 'Columbia', children: 'Columbia'},
-    {value: 'Canada Goose', children: 'Canada Goose'},
-    {value: 'Merrell', children: 'Merrell'},
-    {value: 'Salomon', children: 'Salomon'},
-    {value: 'Burton', children: 'Burton'},
-  ]);
   const skipToContentRef = useRef<HTMLAnchorElement>(null);
   const [toastActive, setToastActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -93,16 +81,6 @@ export function DetailsPage() {
   );
   const [supportSubject, setSupportSubject] = useState('');
   const [supportMessage, setSupportMessage] = useState('');
-
-  const handleSelect = (selected: string) => {
-    setQuery('');
-    if (vendors.some((vendor) => vendor.children === selected)) return;
-
-    setVendors((vendors) => [
-      ...vendors,
-      {value: selected, children: selected},
-    ]);
-  };
 
   const handleDiscard = useCallback(() => {
     setEmailFieldValue(defaultState.current.emailFieldValue);
@@ -653,53 +631,74 @@ export function DetailsPage() {
         <Layout.Section variant="oneThird">
           <LegacyCard title="Organization">
             <LegacyCard.Section>
-              <Select
-                label="Product type"
-                options={options}
-                onChange={setSelected}
-                value={selected}
-              />
-              <br />
-              <AlphaPicker
-                allowMultiple
-                onSelect={handleSelect}
-                activator={{
-                  label: 'Vendor',
-                  placeholder: 'None selected',
-                }}
-                searchField={{
-                  label: 'Search vendors',
-                  placeholder: 'Search or add new vendor',
-                  autoComplete: 'off',
-                  value: query,
-                  onChange: (value) => setQuery(value),
-                }}
-                options={vendors}
-                addAction={{
-                  value: query,
-                  children: `Add ${query}`,
-                }}
-              />
-              <br />
-              <AlphaPicker
-                onSelect={handleSelect}
-                activator={{
-                  label: 'Vendor',
-                  placeholder: 'None selected',
-                }}
-                searchField={{
-                  label: 'Search vendors',
-                  placeholder: 'Search or add new vendor',
-                  autoComplete: 'off',
-                  value: query,
-                  onChange: (value) => setQuery(value),
-                }}
-                options={vendors}
-                addAction={{
-                  value: query,
-                  children: `Add ${query}`,
-                }}
-              />
+              <BlockStack gap="200">
+                <Select
+                  label="Product type"
+                  options={options}
+                  onChange={setSelected}
+                  value={selected}
+                />
+
+                <AlphaPicker
+                  allowMultiple
+                  activator={{
+                    label: 'Tags',
+                    placeholder: 'None selected',
+                  }}
+                  searchField={{
+                    label: 'Search tags',
+                    placeholder: 'Search or add new tags',
+                    autoComplete: 'off',
+                    value: query,
+                    onChange: (value) => setQuery(value),
+                  }}
+                  options={[
+                    {value: 'Outdoors', children: 'Outdoors'},
+                    {value: 'Adventure', children: 'Adventure'},
+                    {value: 'Hiking', children: 'Hiking'},
+                    {value: 'Camping', children: 'Camping'},
+                    {value: 'Backpacking', children: 'Backpacking'},
+                    {value: 'Mountaineering', children: 'Mountaineering'},
+                    {value: 'Skiing', children: 'Skiing'},
+                    {value: 'Snowboarding', children: 'Snowboarding'},
+                  ]}
+                  addAction={{
+                    value: query,
+                    children: `Add ${query}`,
+                  }}
+                />
+
+                <AlphaPicker
+                  activator={{
+                    label: 'Vendor',
+                    placeholder: 'None selected',
+                  }}
+                  searchField={{
+                    label: 'Search vendors',
+                    placeholder: 'Search or add new vendor',
+                    autoComplete: 'off',
+                    value: query,
+                    onChange: (value) => setQuery(value),
+                  }}
+                  options={[
+                    {value: 'The North Face', children: 'The North Face'},
+                    {value: 'Patagonia', children: 'Patagonia'},
+                    {value: 'Arc’teryx', children: 'Arc’teryx'},
+                    {value: 'Marmot', children: 'Marmot'},
+                    {value: 'Black Diamond', children: 'Black Diamond'},
+                    {value: 'Mountain Hardwear', children: 'Mountain Hardwear'},
+                    {value: 'Columbia', children: 'Columbia'},
+                    {value: 'Canada Goose', children: 'Canada Goose'},
+                    {value: 'Merrell', children: 'Merrell'},
+                    {value: 'Salomon', children: 'Salomon'},
+                    {value: 'Burton', children: 'Burton'},
+                  ]}
+                  addAction={{
+                    value: query,
+                    children: `Add ${query}`,
+                  }}
+                />
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section title="Collections" />
             <LegacyCard.Section title="Tags" />
