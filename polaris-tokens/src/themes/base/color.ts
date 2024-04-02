@@ -1018,11 +1018,11 @@ export const color: {
   },
   'color-tooltip-tail-down-border-experimental': {
     value: colors.gray[9],
-    description: 'The border color for tool tip tails pointing down.',
+    description: 'The border color for tooltip tails pointing down.',
   },
   'color-tooltip-tail-up-border-experimental': {
     value: colors.gray[8],
-    description: 'The border color for tool tip tails pointing up.',
+    description: 'The border color for tooltip tails pointing up.',
   },
   'color-border-gradient-experimental': {
     value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
