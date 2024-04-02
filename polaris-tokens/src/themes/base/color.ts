@@ -153,8 +153,8 @@ export type ColorBorderAlias =
   | 'input-border-active'
   | 'input-border-hover'
   | 'input-border'
-  | 'tooltip-border-tail-down-experimental'
-  | 'tooltip-border-tail-up-experimental';
+  | 'tooltip-tail-down-border-experimental'
+  | 'tooltip-tail-up-border-experimental';
 
 export type ColorIconAlias =
   | 'icon-active'
@@ -1016,11 +1016,11 @@ export const color: {
     description:
       'The active state (on press) color for borders on an inverse background.',
   },
-  'color-tooltip-border-tail-down-experimental': {
+  'color-tooltip-tail-down-border-experimental': {
     value: colors.gray[9],
     description: 'The border color for tool tip tails pointing down.',
   },
-  'color-tooltip-border-tail-up-experimental': {
+  'color-tooltip-tail-up-border-experimental': {
     value: colors.gray[8],
     description: 'The border color for tool tip tails pointing up.',
   },

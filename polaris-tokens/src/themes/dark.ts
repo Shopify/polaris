@@ -31,10 +31,10 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-bg-fill-brand-active': {value: colors.gray[4]},
     'color-bg-surface-brand-selected': {value: colors.gray[14]},
     'color-border-secondary': {value: colors.gray[13]},
-    'color-tooltip-border-tail-down-experimental': {
+    'color-tooltip-tail-down-border-experimental': {
       value: 'rgba(60, 60, 60, 1)',
     },
-    'color-tooltip-border-tail-up-experimental': {
+    'color-tooltip-tail-up-border-experimental': {
       value: 'rgba(71, 71, 71, 1)',
     },
     'color-border-gradient-experimental': {
