@@ -123,44 +123,13 @@ git commit -m "[Manual] Migrate X from Polaris v12 to v13"
 
 ### Text
 
-#### Replace `variant="heading2xl"` prop with `variant="headingXl"`
+#### Replace `variant="heading3xl"` prop with `variant="heading2xl"`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue heading2xl --toValue headingXl "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <Text variant="heading2xl" /> prop`,
-    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="heading2xl"`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Text variant="heading2xl">
-+ <Text variant="headingXl">
-```
-
-</CollapsibleDetails>
-
-#### Replace `variant="heading3xl"` prop with `variant="headingXl"`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue heading3xl --toValue headingXl "**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue heading3xl --toValue heading2xl "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -180,7 +149,7 @@ git commit -m "[Manual] Migrate X from Polaris v12 to v13"
 
 ```diff
 - <Text variant="heading3xl">
-+ <Text variant="headingXl">
++ <Text variant="heading2xl">
 ```
 
 </CollapsibleDetails>
@@ -194,18 +163,18 @@ To replace deprecated `font` custom properties, you can run the [v13-styles-repl
 <CollapsibleDetails summary="💡 Migration example">
 
 ```diff
-- font-size: var(--p-font-size-750);
-+ font-size: var(--p-font-size-600);
+- font-size: var(--p-font-size-800);
++ font-size: var(--p-font-size-750);
 ```
 
 ```diff
-- letter-spacing: var(--p-font-letter-spacing-denser);
-+ letter-spacing: var(--p-font-letter-spacing-dense);
+- letter-spacing: var(--p-font-letter-spacing-densest);
++ letter-spacing: var(--p-font-letter-spacing-denser);
 ```
 
 ```diff
-- line-height: var(--p-font-line-height-1000);
-+ line-height: var(--p-font-line-height-800);
+- line-height: var(--p-font-line-height-1200);
++ line-height: var(--p-font-line-height-1000);
 ```
 
 </CollapsibleDetails>
@@ -226,33 +195,25 @@ To replace deprecated `font` custom properties, you can run the [v13-styles-repl
     code={{
       title:
         'Check RegExp for hardcoded font custom properties across all file types',
-      code: String.raw`(?:--p-font-size-750|--p-font-size-800|--p-font-size-900|--p-font-size-1000|--p-font-letter-spacing-denser|--p-font-letter-spacing-densest|--p-font-line-height-1000|--p-font-line-height-1200)|--p-text-heading-3xl-font-family|--p-text-heading-3xl-font-size|--p-text-heading-3xl-font-weight|--p-text-heading-3xl-font-letter-spacing|--p-text-heading-3xl-font-line-height|--p-text-heading-2xl-font-family|--p-text-heading-2xl-font-size|--p-text-heading-2xl-font-weight|--p-text-heading-2xl-font-letter-spacing|--p-text-heading-2xl-font-line-height(?![\w-])`,
+      code: String.raw`(?:--p-font-size-800|--p-font-size-900|--p-font-size-1000|--p-font-letter-spacing-densest|--p-font-line-height-1200|--p-text-heading-3xl-font-family|--p-text-heading-3xl-font-size|--p-text-heading-3xl-font-weight|--p-text-heading-3xl-font-letter-spacing|--p-text-heading-3xl-font-line-height(?![\w-])`,
     }}
   />
 </CollapsibleDetails>
 
 <CollapsibleDetails summary="➡️ Token replacement mappings">
 
-| Deprecated Token                           | Replacement Value                         |
-| ------------------------------------------ | ----------------------------------------- |
-| `--p-font-size-750`                        | `--p-font-size-600`                       |
-| `--p-font-size-800`                        | `--p-font-size-600`                       |
-| `--p-font-size-900`                        | `--p-font-size-600`                       |
-| `--p-font-size-1000`                       | `--p-font-size-600`                       |
-| `--p-font-letter-spacing-denser`           | `--p-font-letter-spacing-dense`           |
-| `--p-font-letter-spacing-densest`          | `--p-font-letter-spacing-dense`           |
-| `--p-font-line-height-1000`                | `--p-font-line-height-800`                |
-| `--p-font-line-height-1200`                | `--p-font-line-height-800`                |
-| `--p-text-heading-2xl-font-family`         | `--p-text-heading-xl-font-family`         |
-| `--p-text-heading-2xl-font-size`           | `--p-text-heading-xl-font-size`           |
-| `--p-text-heading-2xl-font-weight`         | `--p-text-heading-xl-font-weight`         |
-| `--p-text-heading-2xl-font-letter-spacing` | `--p-text-heading-xl-font-letter-spacing` |
-| `--p-text-heading-2xl-font-line-height`    | `--p-text-heading-xl-font-line-height`    |
-| `--p-text-heading-3xl-font-family`         | `--p-text-heading-xl-font-family`         |
-| `--p-text-heading-3xl-font-size`           | `--p-text-heading-xl-font-size`           |
-| `--p-text-heading-3xl-font-weight`         | `--p-text-heading-xl-font-weight`         |
-| `--p-text-heading-3xl-font-letter-spacing` | `--p-text-heading-xl-font-letter-spacing` |
-| `--p-text-heading-3xl-font-line-height`    | `--p-text-heading-xl-font-line-height`    |
+| Deprecated Token                           | Replacement Value                          |
+| ------------------------------------------ | ------------------------------------------ |
+| `--p-font-size-800`                        | `--p-font-size-750`                        |
+| `--p-font-size-900`                        | `--p-font-size-750`                        |
+| `--p-font-size-1000`                       | `--p-font-size-750`                        |
+| `--p-font-letter-spacing-densest`          | `--p-font-letter-spacing-denser`           |
+| `--p-font-line-height-1200`                | `--p-font-line-height-1000`                |
+| `--p-text-heading-3xl-font-family`         | `--p-text-heading-2xl-font-family`         |
+| `--p-text-heading-3xl-font-size`           | `--p-text-heading-2xl-font-size`           |
+| `--p-text-heading-3xl-font-weight`         | `--p-text-heading-2xl-font-weight`         |
+| `--p-text-heading-3xl-font-letter-spacing` | `--p-text-heading-2xl-font-letter-spacing` |
+| `--p-text-heading-3xl-font-line-height`    | `--p-text-heading-2xl-font-line-height`    |
 
 </CollapsibleDetails>
 

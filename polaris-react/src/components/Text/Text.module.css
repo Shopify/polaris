@@ -125,6 +125,18 @@
   }
 }
 
+.heading2xl {
+  font-size: var(--p-font-size-600);
+  font-weight: var(--p-font-weight-bold);
+  letter-spacing: var(--p-font-letter-spacing-denser);
+  line-height: var(--p-font-line-height-800);
+
+  @media (--p-breakpoints-md-up) {
+    font-size: var(--p-font-size-750);
+    line-height: var(--p-font-line-height-1000);
+  }
+}
+
 .bodyXs {
   font-size: var(--p-font-size-300);
   font-weight: var(--p-font-weight-regular);
