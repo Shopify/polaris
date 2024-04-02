@@ -63,5 +63,8 @@
     "js-yaml": "^4.0.0",
     "rehype-parse": "^7.0.1",
     "unified": "^9.2.1"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }
