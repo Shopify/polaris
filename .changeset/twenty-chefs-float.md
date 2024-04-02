@@ -2,4 +2,4 @@
 '@shopify/polaris-migrator': patch
 ---
 
-Updated v14 font migration based on deprecation updates
+Removed `Text` `heading2xl` and associated tokens from v14 font migration
