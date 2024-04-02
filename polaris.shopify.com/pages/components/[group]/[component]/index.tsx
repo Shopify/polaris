@@ -78,7 +78,7 @@ const componentUnionTypeDeprecations: {
   };
 } = {
   Text: {
-    Variant: ['heading2xl', 'heading3xl'],
+    Variant: ['heading3xl'],
   },
 };
 
