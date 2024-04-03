@@ -228,8 +228,13 @@ function IndexTableBase({
   );
 
   const handleSelectAllItemsInStore = useCallback(() => {
-    handleClearSelection();
-  }, [handleClearSelection]);
+    handleSelectionChange(
+      selectedItemsCount === SELECT_ALL_ITEMS
+        ? SelectionType.Page
+        : SelectionType.All,
+      true,
+    );
+  }, [handleSelectionChange, selectedItemsCount]);
 
   const calculateFirstHeaderOffset = useCallback(() => {
     if (!selectable) {
