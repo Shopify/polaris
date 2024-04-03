@@ -6,24 +6,18 @@ import {
   metaThemeLightHighContrast,
   metaThemeLightHighContrastPartial,
 } from './light-high-contrast';
-import {
-  metaThemeLightMobile,
-  metaThemeLightMobilePartial,
-} from './light-mobile';
 import {metaThemeDark, metaThemeDarkPartial} from './dark';
 
 export {createMetaTheme} from './utils';
 
 export const metaThemes: MetaThemes = {
   light: metaThemeLight,
-  'light-mobile': metaThemeLightMobile,
   'light-high-contrast-experimental': metaThemeLightHighContrast,
   'dark-experimental': metaThemeDark,
 };
 
 export const metaThemePartials: MetaThemePartials = {
   light: metaThemeLightPartial,
-  'light-mobile': metaThemeLightMobilePartial,
   'light-high-contrast-experimental': metaThemeLightHighContrastPartial,
   'dark-experimental': metaThemeDarkPartial,
 };
