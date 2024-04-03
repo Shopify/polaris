@@ -78,7 +78,7 @@ export function BulkActionButton({
         animationDelayIndex
           ? ({
               '--pc-bulk-action-button-animation-delay': `calc(var(--p-motion-duration-50) * ${
-                animationDelayIndex * 0.75
+                animationDelayIndex * 0.5
               })`,
             } as React.CSSProperties)
           : undefined
