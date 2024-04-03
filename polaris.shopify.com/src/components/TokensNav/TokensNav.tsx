@@ -47,10 +47,6 @@ const navItems: NavItem[] = [
     url: `/tokens/space`,
   },
   {
-    title: 'Text',
-    url: `/tokens/text`,
-  },
-  {
     title: 'Width',
     url: `/tokens/width`,
   },
