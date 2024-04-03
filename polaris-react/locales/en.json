@@ -229,6 +229,7 @@
       "selectAllLabel": "Select all {resourceNamePlural}",
       "selected": "{selectedItemsCount} selected",
       "undo": "Undo",
+      "clearAll": "Clear selection",
       "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Select {resourceName}",
       "selectButtonText": "Select",

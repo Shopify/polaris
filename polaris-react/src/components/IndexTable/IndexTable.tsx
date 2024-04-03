@@ -175,9 +175,6 @@ function IndexTableBase({
   const handleSelectionChange = useIndexSelectionChange();
   const handleClearSelection = useIndexClearSelection();
 
-  // eslint-disable-next-line no-console
-  console.log(handleClearSelection);
-
   const i18n = useI18n();
 
   const {value: hasMoreLeftColumns, toggle: toggleHasMoreLeftColumns} =
@@ -231,13 +228,8 @@ function IndexTableBase({
   );
 
   const handleSelectAllItemsInStore = useCallback(() => {
-    handleSelectionChange(
-      selectedItemsCount === SELECT_ALL_ITEMS
-        ? SelectionType.Page
-        : SelectionType.All,
-      true,
-    );
-  }, [handleSelectionChange, selectedItemsCount]);
+    handleClearSelection();
+  }, [handleClearSelection]);
 
   const calculateFirstHeaderOffset = useCallback(() => {
     if (!selectable) {
@@ -1139,11 +1131,8 @@ function IndexTableBase({
 
     const actionText =
       selectedItemsCount === SELECT_ALL_ITEMS
-        ? i18n.translate('Polaris.IndexTable.undo')
+        ? i18n.translate('Polaris.IndexTable.clearAll')
         : customActionText;
-
-    // eslint-disable-next-line @shopify/no-debugger
-    debugger;
 
     return {
       content: actionText,
