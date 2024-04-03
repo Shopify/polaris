@@ -175,6 +175,8 @@ function IndexTableBase({
   const handleSelectionChange = useIndexSelectionChange();
   const handleClearSelection = useIndexClearSelection();
 
+  console.log('handleClearSelection', handleClearSelection);
+
   const i18n = useI18n();
 
   const {value: hasMoreLeftColumns, toggle: toggleHasMoreLeftColumns} =
