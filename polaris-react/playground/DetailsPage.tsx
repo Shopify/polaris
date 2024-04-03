@@ -648,7 +648,6 @@ export function DetailsPage() {
                   searchField={{
                     label: 'Search tags',
                     placeholder: 'Search or add new tags',
-                    autoComplete: 'off',
                     value: query,
                     onChange: (value) => setQuery(value),
                   }}
@@ -676,7 +675,6 @@ export function DetailsPage() {
                   searchField={{
                     label: 'Search vendors',
                     placeholder: 'Search or add new vendor',
-                    autoComplete: 'off',
                     value: query,
                     onChange: (value) => setQuery(value),
                   }}
