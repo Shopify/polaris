@@ -66,5 +66,10 @@
   },
   "peerDependencies": {
     "react": "*"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   }
 }
