@@ -26,7 +26,7 @@ interface SelectionContextType {
     selection?: string | Range,
     position?: number,
   ): void;
-  handleClearSelection(): void;
+  handleClearSelection?(): void;
 }
 
 export const IndexContext = createContext<IndexContextType | undefined>(

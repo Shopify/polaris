@@ -21,7 +21,7 @@ export function useIndexSelectionChange() {
 
 export function useIndexClearSelection() {
   const context = useContext(IndexSelectionContext);
-  if (context === undefined) {
+  if (context === undefined || context.handleClearSelection === undefined) {
     throw new Error(`Missing IndexProvider context`);
   }
   return context.handleClearSelection;
