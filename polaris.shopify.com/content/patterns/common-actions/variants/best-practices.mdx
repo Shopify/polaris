@@ -14,9 +14,11 @@ keywords:
 
     <Stack gap="400">
 
-    ## Icons and labels
+    ## Content
 
     Actions should always clearly communicate their purpose by using a text label, an icon, or a combination of both.
+    
+    See the [actionable language guidelines](/content/actionable-language#buttons) for more detail.
 
     </Stack>
 
@@ -42,7 +44,7 @@ keywords:
 
     ![An image showing a list with a long label: "Add options like size and color.](/images/patterns/common-actions/common-actions-best-practices-long-labels@2x.png)
 
-    Add unnecessary words to the action label. Instead, use the surrounding context and placement to communicate the outcome of an action.
+    Add unnecessary words to the action label. Instead, use context and placement to communicate the outcome of an action.
 
   </Medium>
 
@@ -213,5 +215,88 @@ keywords:
     Rely on color alone to indicate interactivity.
 
   </Medium>
+
+</LayoutSection>
+
+
+<LayoutSection card>
+
+  <ExtraLarge>
+
+    <Text>
+
+      <Stack gap="400">
+
+      ## Platform considerations
+
+      Use interactions native to the device and type of input the merchant is using.
+
+      </Stack>
+
+    </Text>
+
+  </ExtraLarge>
+
+  <Text>
+
+    <Stack gap="400">
+
+    ### Desktop
+
+    Actions on desktop and mobile should consider both cursor and touch interactions, but the primary interaction for the desktop is cursor-based. Take advantage of added real-estate and interactions by using progressive disclosure to expose actions in context when the merchant needs them.
+
+    </Stack>
+
+  </Text>
+
+  <Small variant="do">
+
+    ![An image showing two icon only actions in a hover state with supporting tooltips. There's an add action with the tooltip "Add item" and a remove action the tooltip "Remove item".](/images/patterns/common-actions/common-actions-best-practices-desktop-tooltip@2x.png)
+
+    Clarify icon only actions with a tooltip using the verb + noun format for the label.
+
+  </Small>
+
+  <Small variant="do">
+    <video width="100%" height="auto" controls playsInline muted loop>
+      <source
+        src="/images/patterns/common-actions/common-actions-best-practices-desktop-tooltip-delay.mp4"
+        type="video/mp4"
+      />
+    Delay the appearance of tooltips attached to common actions as they can be intrusive.
+    </video>
+
+    Delay the appearance of tooltips attached to common actions as they can be intrusive.
+
+  </Small>
+
+  <Text>
+  </Text>
+
+  <Large variant="do">
+
+    ![An image of two cards with items displaying actions on hover.](/images/patterns/common-actions/common-actions-best-practices-desktop-hover@2x.png)
+
+    Show list item actions like edit, delete, copy, and remove on hover.
+
+  </Large>
+
+  <Text>
+
+    <Stack gap="400">
+
+    ### Mobile
+
+    The primary interaction for the mobile is touch-based. Optimize for touch enabled devices by considering placement and target size of actions.
+
+    </Stack>
+
+  </Text>
+
+  <Large>
+
+    ![An image showing tags on desktop and responsive web.](/images/patterns/common-actions/common-actions-best-practices-mobile@2x.png)
+
+  </Large>
 
 </LayoutSection>
