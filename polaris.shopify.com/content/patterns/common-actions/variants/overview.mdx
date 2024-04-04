@@ -30,7 +30,7 @@ url: /patterns/common-actions/overview
 
     ![Two tertiary buttons with the circle plus icon and an Add {object} label.](/images/patterns/common-actions/types/common-action-types-add-circle-plus-icon@2x.png)
 
-    Use the circle plus icon in activators that don’t have a defined container like tertiary buttons.
+    Use the circle plus icon in buttons that don’t have a defined container like tertiary buttons.
 
   </Medium>
 
@@ -38,37 +38,45 @@ url: /patterns/common-actions/overview
 
     ![Two secondary buttons with the plus icon and an Add {object} label.](/images/patterns/common-actions/types/common-action-types-add-plus-icon@2x.png)
 
-    Use the plus icon when a button has a defined shape or filled background.
+    Use the plus icon when a button has a defined shape or filled background. The plus icon supports the action while balancing the weight of the element with the rest of the UI.
 
   </Medium>
 
   <Medium variant="do">
 
-    ![A single select option list of customers with an add customer action at the bottom of the list of options.](/images/patterns/common-actions/types/common-action-types-add-do-bottom-list@2x.png)
+    ![An image of two cards with a few list items and the add action at the bottom.](/images/patterns/common-actions/types/common-action-types-add-list-bottom@2x.png)
 
-    Place add actions at the bottom of a list of items or options.
-
-  </Medium>
-
-  <Medium variant="dont">
-
-    ![A card with a header and an add action to the right of the card title. The card has a list of items in the body.](/images/patterns/common-actions/types/common-action-types-add-dont-top-list@2x.png)
-
-    Place add actions at the top of a list of items or options.
+    Place add actions at the bottom of a list unless the list will likely be long. For example, a table or list of selected resources.
 
   </Medium>
 
   <Medium variant="do">
 
-    ![A table with an Add location action in the card header to the right.](/images/patterns/common-actions/types/common-action-types-add-do-top-table@2x.png)
+    ![A select list of options with an add option at the botto of the list, outside of the scrollable area.](/images/patterns/common-actions/types/common-action-types-add-select-list-bottom@2x.png)
 
-    Place add actions associated with a table in the card or page header. This keeps the action discoverable.
+    Place add actions at the bottom of a list of selectable options. For example, when picking a collection or tag to add to a product. Keep the action visible by placing it outside of the scrollable area.  
+
+  </Medium>
+
+  <Medium variant="do">
+
+    ![Two cards each with long lists of resources in a viewable state with a main add action in the list header.](/images/patterns/common-actions/types/common-action-types-add-list-top@2x.png)
+
+    Place add actions in the header in long lists of resources.
+  
+  </Medium>
+
+  <Medium variant="do">
+
+    ![A table of locations with the add action in the card header above the table.](/images/patterns/common-actions/types/common-action-types-add-table-top@2x.png)
+
+    Place add actions associated with a table in the card, table, or page header.
 
   </Medium>
 
   <Medium variant="dont">
 
-    ![A table with selectable items, pagination, and input fields. There is an add products action in the card footer to the right.](/images/patterns/common-actions/types/common-action-types-add-dont-bottom-table@2x.png)
+    ![A table of products with an add action at the bottom of the table.](/images/patterns/common-actions/types/common-action-types-add-table-bottom@2x.png)
 
     Place add actions at the bottom of a table. This risks them getting lost and can cause confusion.
 
@@ -94,7 +102,7 @@ url: /patterns/common-actions/overview
 
     ![The polaris copy icon in a neutral and hover state with a “Copy item” tooltip.](/images/patterns/common-actions/types/common-action-types-copy-copy-icon@2x.png)
 
-    Use the copy icon with a tertiary icon button for strings of text.
+    Use the clipboard icon with a tertiary icon button for copying a string of text.
 
   </Small>
 
@@ -102,21 +110,51 @@ url: /patterns/common-actions/overview
 
     ![The polaris link icon in a neutral and hover state with a “Copy link" tooltip.](/images/patterns/common-actions/types/common-action-types-copy-link-icon@2x.png)
 
-    Use the link icon with a tertiary icon button for deep links and URLs.
+    Use the link icon with a tertiary icon button for copying deep links and URLs.
 
   </Small>
 
-  <Text>
+  <Medium variant="do">
 
-  </Text>
+    <video width="100%" height="auto" controls playsInline muted loop>
+      <source
+        src="/images/patterns/common-actions/types/common-action-types-copy-hover.mp4"
+        type="video/mp4"
+      />
+      Provide feedback inline using a confirmation check icon post-click or tap.
+    </video>
 
-  <Large variant="do">
+    Show copy actions on hover for cursor interactions. See the [copy to clipboard](https://storybook.polaris.shopify.com/?path=/story/all-components-button--copy-to-clipboard) example.
 
-    ![A card with a customer email displaying a "checkmark" icon with a tooltip displaying a "Copied" label to indicate the email has been successfully copied to the clipboard.](/images/patterns/common-actions/types/common-action-types-copy-copied-feedback-tooltip@2x.png)
+  </Medium>
 
-    Use a confirmation “copied” tooltip appearing post-click or tap.
+  <Medium variant="do">
 
-  </Large>
+    <video width="100%" height="auto" controls playsInline muted loop>
+      <source
+        src="/images/patterns/common-actions/types/common-action-types-copy-copied-feedback-tooltip.mp4"
+        type="video/mp4"
+      />
+      Provide feedback inline using a confirmation check icon post-click or tap.
+    </video>
+
+    Provide feedback inline using a confirmation check icon post-click or tap.
+
+  </Medium>
+
+    <Medium variant="do">
+
+    <video width="100%" height="auto" controls playsInline muted loop>
+      <source
+        src="/images/patterns/common-actions/types/common-action-types-copy-copied-feedback-toast.mp4"
+        type="video/mp4"
+      />
+      Use a confirmation “copied to clipboard” toast message when “copy” is within an action list.
+    </video>
+
+    Use a confirmation “copied to clipboard” toast message when the action is within an action list.
+
+  </Medium>
 
 </LayoutSection>
 
@@ -134,35 +172,34 @@ url: /patterns/common-actions/overview
 
   </Text>
 
-  <Small variant="do">
+  <Large>
 
-    ![A list of action with a delete action at the bottom using the destructive styling along with the "delete" icon.](/images/patterns/common-actions/types/common-action-types-delete-do-list-of-actions@2x.png)
+    ![A row of buttons in different variations.](/images/patterns/common-actions/types/common-action-types-delete@2x.png)
 
-    Use the delete icon with a critical item in a list of actions.
+  </Large>
 
-  </Small>
-
-  <Small variant="dont">
-
-    ![A list of actions all using the default styling with no icons.](/images/patterns/common-actions/types/common-action-types-delete-dont-list-of-actions@2x.png)
-
-    Use default styling and standalone text for delete actions within a list of actions.
-
-  </Small>
 
   <Medium variant="do">
 
-    ![A list of menu items with each item displaying a delete icon using the tertiary icon button style.](/images/patterns/common-actions/types/common-action-types-delete-action-inline@2x.png)
+    ![A list of action with a delete action at the bottom using the destructive styling along with the "delete" icon.](/images/patterns/common-actions/types/common-action-types-delete-do-list-of-actions@2x.png)
 
-    Place delete actions inline to the right of a list item. Default to the delete icon with a tertiary icon button.
+    Use the delete icon with a destructive item in an [action list](https://polaris.shopify.com/components/lists/action-list?example=action-list-with-destructive-item).
 
   </Medium>
 
-    <Medium variant="caution">
+  <Medium variant="do">
 
-    ![A list of menu items with each item displaying a delete icon using the tertiary critical icon button style.](/images/patterns/common-actions/types/common-action-types-delete-caution-many-destructive-buttons@2x.png)
+    ![A list of action with a delete action at the bottom using the destructive styling along with the "delete" icon.](/images/patterns/common-actions/types/common-action-types-delete-do-list-of-actions-bottom@2x.png)
 
-    Avoid overusing buttons with critical styles within a single view. Overusing the critical color can dilute the meaning and importance of the action.
+    Always place delete actions at the bottom of an action list.
+
+  </Medium>
+
+  <Medium variant="do">
+
+    ![Two icon only delete buttons with one in a hover state with a "Delete item" tooltip displayed.](/images/patterns/common-actions/types/common-action-types-delete-icon@2x.png)
+
+    Use the delete icon for delete actions in lists.
 
   </Medium>
 
@@ -174,19 +211,41 @@ url: /patterns/common-actions/overview
 
   </Medium>
 
-  <Medium variant="dont">
+  <Medium variant="do">
 
-    ![An image of a modal with two primary buttons. Save uses the default primary button style and delete uses the primary critical button style.](/images/patterns/common-actions/types/common-action-types-delete-two-primary-buttons@2x.png)
+    ![A list of menu items with each item displaying a delete icon using the tertiary icon button style.](/images/patterns/common-actions/types/common-action-types-delete-action-inline@2x.png)
 
-    Pair primary critical and primary buttons together.
+    Place list item delete actions inline to the right. Default to a tertiary button with the delete icon.
+
+  </Medium>
+
+  <Medium variant="do">
+
+    <video width="100%" height="auto" controls playsInline muted loop>
+      <source
+        src="/images/patterns/common-actions/types/common-action-types-delete-action-inline-hover.mp4"
+        type="video/mp4"
+      />
+      Display list item delete actions on hover when using a cursor.
+    </video>
+
+    Display list item delete actions on hover when using a cursor.
 
   </Medium>
 
   <Medium variant="dont">
 
-    ![A list of locations with each item displaying a delete action inline to the right using a primary critical button style.](/images/patterns/common-actions/types/common-action-types-delete-dont-fill-destructive-buttons@2x.png)
+    ![A list of menu items with each item displaying a delete icon using the tertiary critical icon button style.](/images/patterns/common-actions/types/common-action-types-delete-dont-fill-destructive-buttons@2x.png)
 
-    Use buttons with critical styles for list item delete actions.
+    Don’t overuse critical styled buttons within a single view as it can dilute the meaning and importance of the action.
+
+  </Medium>
+
+  <Medium variant="dont">
+
+    ![An image of a modal with two primary buttons. Save uses the default primary button style and delete uses the primary critical button style.](/images/patterns/common-actions/types/common-action-types-delete-two-primary-buttons@2x.png)
+
+    Don’t pair primary critical buttons with other button variants and tones that look jarring and create visual competition between elements.
 
   </Medium>
 
@@ -360,7 +419,7 @@ url: /patterns/common-actions/overview
 
     ![A list of collections with one item in a hover state with the option to remove it displayed inline to the right using the "x" icon.](/images/patterns/common-actions/types/common-action-types-remove-on-hover@2x.png)
 
-    Show remove actions on hover on non touch enabled devices in dense UIs.
+    Show remove actions on hover when the merchant is using a curosr to navigate.
 
   </Medium>
 
