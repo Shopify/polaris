@@ -20,7 +20,7 @@ describe('<Picker />', () => {
   it('renders a SearchField', () => {
     const picker = mountWithApp(
       <Picker
-        searchField={{label: 'Input', autoComplete: 'off'}}
+        searchField={{label: 'Input'}}
         activator={{label: 'Choose something'}}
       />,
     );
@@ -51,7 +51,7 @@ describe('<Picker />', () => {
         activator={{}}
         addAction={addAction}
         options={[{value: 'one', children: 'One'}]}
-        searchField={{label: '', autoComplete: 'off'}}
+        searchField={{label: ''}}
       />,
     );
 
@@ -68,11 +68,7 @@ describe('<Picker />', () => {
     ];
 
     const picker = mountWithApp(
-      <Picker
-        activator={{}}
-        options={options}
-        searchField={{label: '', autoComplete: 'off'}}
-      />,
+      <Picker activator={{}} options={options} searchField={{label: ''}} />,
     );
 
     picker.find('button')!.trigger('onClick');
