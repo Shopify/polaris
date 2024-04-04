@@ -1,0 +1,10 @@
+name: Crop
+description: Used in media editing for croping an image.
+keywords:
+  - crop
+authors:
+  - David Goligorsky
+  - Joe Thomas
+  - Arda Karaçizmeli
+date_added: 2024-03-28
+date_modified: 2024-03-28

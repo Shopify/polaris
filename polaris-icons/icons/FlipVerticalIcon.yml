@@ -1,0 +1,11 @@
+name: Flip vertical
+description: Used in media editing for flipping an image vertically.
+keywords:
+  - flip
+  - mirror
+  - vertical
+authors:
+  - David Goligorsky
+  - Arda Karaçizmeli
+date_added: 2024-03-28
+date_modified: 2024-03-28
