@@ -4,6 +4,7 @@ on:
   issue_comment:
     types:
       - created
+  pull_request:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
