@@ -88,7 +88,6 @@ const tokenGroupPatterns: TokenGroupPatterns = {
   breakpoints: /width/,
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
-  text: /font|letter-spacing|line-height/,
   font: /font|letter-spacing|line-height/,
   height: /height|min-height|max-height/,
   motion: /animation/,

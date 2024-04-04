@@ -8,7 +8,6 @@ import {height} from './height';
 import {motion} from './motion';
 import {shadow} from './shadow';
 import {space} from './space';
-import {text} from './text';
 import {width} from './width';
 import {zIndex} from './zIndex';
 
@@ -21,7 +20,6 @@ export const metaThemeBase = createMetaThemeBase({
   motion,
   shadow,
   space,
-  text,
   width,
   zIndex,
 });
