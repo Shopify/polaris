@@ -91,12 +91,13 @@ export function SearchField({
         className={styles.SearchField}
         value={value}
         type={type}
-        aria-activedescendant={activeOptionId}
         role="combobox"
+        placeholder={placeholder}
+        autoComplete="off"
+        aria-activedescendant={activeOptionId}
         aria-haspopup="listbox"
         aria-autocomplete="list"
         aria-expanded="true"
-        placeholder={placeholder}
         aria-controls={listboxId}
         onFocus={handleFocus}
         onBlur={handleBlur}
