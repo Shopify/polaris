@@ -1,9 +1,9 @@
-name: FlipHorizontal
-description: Used in media editing for flipping an image horizontally.
+name: Flip vertical
+description: Used in media editing for flipping an image vertically.
 keywords:
   - flip
   - mirror
-  - horizontal
+  - vertical
 authors:
   - David Goligorsky
   - Arda Karaçizmeli
