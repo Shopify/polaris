@@ -1,5 +1,26 @@
 # Changelog
 
+## 12.26.0
+
+### Minor Changes
+
+- [#11785](https://github.com/Shopify/polaris/pull/11785) [`2a2f635ba`](https://github.com/Shopify/polaris/commit/2a2f635bab5ce511a5195d1e545f153fac6a6579) Thanks [@mrcthms](https://github.com/mrcthms)! - Added the `defaultPaginatedSelectAllText` prop to `IndexTable` to support customizing the label of the checkbox in the header that selects all rows across pages when the table `hasMoreItems`
+
+### Patch Changes
+
+- [#11833](https://github.com/Shopify/polaris/pull/11833) [`810532c58`](https://github.com/Shopify/polaris/commit/810532c58d5538d5304f17c09b9d60a76dc6d5bb) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Revert responsive text style updates
+
+* [#11810](https://github.com/Shopify/polaris/pull/11810) [`66dc0392a`](https://github.com/Shopify/polaris/commit/66dc0392a24ec726eeae470320ab90484221ccaf) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed Shift + click selection of `IndexTable.Row` not working in Firefox
+
+- [#11811](https://github.com/Shopify/polaris/pull/11811) [`9aea67322`](https://github.com/Shopify/polaris/commit/9aea6732290c83a4306795d14073f5a6dd62678f) Thanks [@lgriffee](https://github.com/lgriffee)! - Undeprecated `heading2xl` variant in `Text` component
+
+* [#11817](https://github.com/Shopify/polaris/pull/11817) [`936765c92`](https://github.com/Shopify/polaris/commit/936765c92242de7be5956ffb872143a55b12ac00) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - [IndexTable] Initially hide the scrollbar and update scrollbar padding
+
+- [#11819](https://github.com/Shopify/polaris/pull/11819) [`35eb10c4f`](https://github.com/Shopify/polaris/commit/35eb10c4f049cf8edf62eeef0ba380d20887d54f) Thanks [@kyledurand](https://github.com/kyledurand)! - Added multi select functionality to AlphaPicker
+
+- Updated dependencies [[`fd5b31d59`](https://github.com/Shopify/polaris/commit/fd5b31d59f8452e487a4696f907fbbb606749ae9), [`4b730c84d`](https://github.com/Shopify/polaris/commit/4b730c84dc3a636ea04570e36ad7b3bb39b24277)]:
+  - @shopify/polaris-icons@8.10.0
+
 ## 12.25.0
 
 ### Minor Changes
