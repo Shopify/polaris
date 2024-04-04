@@ -15,6 +15,9 @@ jobs:
       - name: Checkout default branch
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Create snapshot
         uses: Shopify/snapit@main
         env:
