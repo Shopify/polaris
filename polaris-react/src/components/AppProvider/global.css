@@ -53,13 +53,18 @@
 
 html,
 body {
-  font-size: var(--p-font-size-325);
-  line-height: var(--p-font-line-height-500);
+  font-size: var(--p-font-size-400);
+  line-height: var(--p-font-line-height-600);
   font-weight: var(--p-font-weight-regular);
   font-feature-settings: 'calt' 0;
   letter-spacing: initial;
   color: var(--p-color-text);
   -webkit-tap-highlight-color: transparent;
+
+  @media (--p-breakpoints-md-up) {
+    font-size: var(--p-font-size-325);
+    line-height: var(--p-font-line-height-500);
+  }
 }
 
 html,
@@ -114,6 +119,7 @@ html {
   @media (--p-breakpoints-sm-down) {
     html {
       font: -apple-system-body;
+      -webkit-text-size-adjust: calc(100% * (16 / 17));
     }
   }
 }
