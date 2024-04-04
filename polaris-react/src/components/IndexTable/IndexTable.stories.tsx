@@ -1483,7 +1483,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
             title: 'Amount spent',
           },
         ]}
-        defaultPaginatedSelectAllText="Select everything in this store"
+        paginatedSelectAllText="Select everything in this store"
       >
         {rowMarkup}
       </IndexTable>

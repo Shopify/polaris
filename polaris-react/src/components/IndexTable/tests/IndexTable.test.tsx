@@ -438,7 +438,7 @@ describe('<IndexTable>', () => {
           itemCount={2}
           promotedBulkActions={[{content: 'promoted action'}]}
           onSelectionChange={onSelectionChangeSpy}
-          defaultPaginatedSelectAllText={customString}
+          paginatedSelectAllText={customString}
         >
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,

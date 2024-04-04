@@ -19,7 +19,7 @@ export function IndexProvider({
   hasMoreItems,
   condensed,
   selectable: isSelectableIndex = true,
-  defaultPaginatedSelectAllText,
+  paginatedSelectAllText: defaultPaginatedSelectAllText,
 }: IndexProviderProps) {
   const {
     paginatedSelectAllText,
