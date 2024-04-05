@@ -3,7 +3,7 @@
   "version": "0.67.3",
   "private": true,
   "engines": {
-    "node": "^16.17.0 || >=18.12.0"
+    "node": ">=20.10.0"
   },
   "scripts": {
     "build": "yarn concurrently \"yarn gen-colors\" \"yarn gen-assets\" \"playroom build\" && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",

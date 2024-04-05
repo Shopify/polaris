@@ -11,7 +11,7 @@
     "url": "https://github.com/Shopify/polaris/issues"
   },
   "engines": {
-    "node": "^16.17.0 || >=18.12.0"
+    "node": ">=20.10.0"
   },
   "publishConfig": {
     "access": "public",
@@ -84,7 +84,7 @@
     "@storybook/preview-api": "^7.6.4",
     "@storybook/react": "^7.6.4",
     "@storybook/react-vite": "^7.6.4",
-    "@types/node": "^16.11.11",
+    "@types/node": "^20.10.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@types/react-transition-group": "^4.4.2",

@@ -13,7 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16.17.0', '18.12.0', '20.11.1']
+        node-version: [
+            # The minimum required node version for consumers
+            '20.10.0',
+            # Make sure it's working on the v21 line (even though it's non-LTS)
+            '21.x',
+            # Ensure it's working for the latest versions of node too
+            'latest',
+          ]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -30,7 +37,8 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Setup Node with v${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        id: setup_node
         with:
           node-version: ${{ matrix.node-version }}
           cache: yarn
@@ -43,9 +51,9 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris.shopify.com/.next/cache
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v3-${{ github.sha }}
+          key: ${{ runner.os }}-node${{ steps.setup_node.outputs.node-version }}-test-v4-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node-version }}-test-v3-
+            ${{ runner.os }}-node${{ steps.setup_node.outputs.node-version }}-test-v4-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
