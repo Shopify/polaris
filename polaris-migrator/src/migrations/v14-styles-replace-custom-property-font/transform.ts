@@ -13,12 +13,5 @@ const replacementMaps = {
     '--p-font-size-1000': '--p-font-size-750',
     '--p-font-letter-spacing-densest': '--p-font-letter-spacing-denser',
     '--p-font-line-height-1200': '--p-font-line-height-1000',
-    '--p-text-heading-3xl-font-family': '--p-text-heading-2xl-font-family',
-    '--p-text-heading-3xl-font-size': '--p-text-heading-2xl-font-size',
-    '--p-text-heading-3xl-font-weight': '--p-text-heading-2xl-font-weight',
-    '--p-text-heading-3xl-font-letter-spacing':
-      '--p-text-heading-2xl-font-letter-spacing',
-    '--p-text-heading-3xl-font-line-height':
-      '--p-text-heading-2xl-font-line-height',
   },
 };
