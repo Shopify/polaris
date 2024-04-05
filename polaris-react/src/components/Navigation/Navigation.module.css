@@ -50,6 +50,10 @@
   }
 }
 
+.NavigationFrame-TopBarAndReframe {
+  border-top-left-radius: var(--p-border-radius-300);
+}
+
 .PrimaryNavigation {
   display: flex;
   overflow: auto;

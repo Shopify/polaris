@@ -22,6 +22,7 @@ import type {
   ToastPropsWithID,
 } from '../../utilities/frame';
 import {UseTheme} from '../../utilities/use-theme';
+import {UseFeatures} from '../../utilities/features';
 
 import {
   ToastManager,
@@ -238,13 +239,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         }
       : {};
 
-    const frameClassName = classNames(
-      styles.Frame,
-      navigation && styles.hasNav,
-      topBar && styles.hasTopBar,
-      sidebar && styles.hasSidebar,
-    );
-
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
@@ -279,28 +273,67 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
     return (
       <FrameContext.Provider value={context}>
-        <div
-          className={frameClassName}
-          {...layer.props}
-          {...navigationAttributes}
-        >
-          {skipMarkup}
-          {topBarMarkup}
-          {navigationMarkup}
-          {contextualSaveBarMarkup}
-          {loadingMarkup}
-          {navigationOverlayMarkup}
-          <main
-            className={styles.Main}
-            id={APP_FRAME_MAIN}
-            data-has-global-ribbon={Boolean(globalRibbon)}
-          >
-            <div className={styles.Content}>{children}</div>
-          </main>
-          <ToastManager toastMessages={toastMessages} />
-          {globalRibbonMarkup}
-          <EventListener event="resize" handler={this.handleResize} />
-        </div>
+        <UseFeatures>
+          {(features) => (
+            <div
+              className={classNames(
+                features?.dynamicTopBarAndReframe
+                  ? styles['Frame-TopBarAndReframe']
+                  : styles.Frame,
+                navigation && styles.hasNav,
+                topBar && styles.hasTopBar,
+                sidebar &&
+                  !features?.dynamicTopBarAndReframe &&
+                  styles.hasSidebar,
+                sidebar &&
+                  features?.dynamicTopBarAndReframe &&
+                  styles['hasSidebar-TopBarAndReframe'],
+              )}
+              {...layer.props}
+              {...navigationAttributes}
+            >
+              {skipMarkup}
+              {topBarMarkup}
+              {features?.dynamicTopBarAndReframe ? null : navigationMarkup}
+              {contextualSaveBarMarkup}
+              {loadingMarkup}
+              {navigationOverlayMarkup}
+              {features?.dynamicTopBarAndReframe ? (
+                <div className={styles.ShadowBevel}>
+                  {navigationMarkup}
+                  <main
+                    className={styles['Main-TopBarAndReframe']}
+                    id={APP_FRAME_MAIN}
+                    data-has-global-ribbon={Boolean(globalRibbon)}
+                  >
+                    <div className={styles['Content-TopBarAndReframe']}>
+                      {children}
+                    </div>
+                  </main>
+                </div>
+              ) : (
+                <main
+                  className={styles.Main}
+                  id={APP_FRAME_MAIN}
+                  data-has-global-ribbon={Boolean(globalRibbon)}
+                >
+                  <div
+                    className={
+                      features?.dynamicTopBarAndReframe
+                        ? styles['Content-TopBarAndReframe']
+                        : styles.Content
+                    }
+                  >
+                    {children}
+                  </div>
+                </main>
+              )}
+              <ToastManager toastMessages={toastMessages} />
+              {globalRibbonMarkup}
+              <EventListener event="resize" handler={this.handleResize} />
+            </div>
+          )}
+        </UseFeatures>
       </FrameContext.Provider>
     );
   }
