@@ -358,7 +358,8 @@
       "accessibilityLabel": "フルスクリーンモードを閉じる"
     },
     "FilterPill": {
-      "clear": "クリア"
+      "clear": "クリア",
+      "unsavedChanges": "未保存の変更 - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "検索と絞り込み",

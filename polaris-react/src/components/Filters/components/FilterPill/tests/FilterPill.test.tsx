@@ -7,6 +7,7 @@ import type {FilterPillProps} from '../FilterPill';
 import {Popover} from '../../../../Popover';
 import {Icon} from '../../../../Icon';
 import {Button} from '../../../../Button';
+import {Box} from '../../../../Box';
 import {UnstyledButton} from '../../../../UnstyledButton';
 
 jest.mock('../../../../../utilities/breakpoints', () => ({
@@ -102,6 +103,24 @@ describe('<Filters />', () => {
       );
       wrapper.find(UnstyledButton, {'aria-label': 'Clear'})!.trigger('onClick');
       expect(spy).toHaveBeenCalledWith(defaultProps.filterKey);
+    });
+
+    describe('unsaved changes', () => {
+      it('indicates unsaved changes with an emphasized pip when selected and unsavedChanges is true', () => {
+        const wrapper = mountWithApp(
+          <FilterPill {...defaultProps} selected unsavedChanges />,
+        );
+        expect(wrapper).toContainReactComponent(Box, {
+          background: 'bg-fill-emphasis',
+        });
+      });
+
+      it('does not render an emphasized pip when selected and has unsaved changes by default', () => {
+        const wrapper = mountWithApp(<FilterPill {...defaultProps} selected />);
+        expect(wrapper).not.toContainReactComponent(Box, {
+          background: 'bg-fill-emphasis',
+        });
+      });
     });
   });
 

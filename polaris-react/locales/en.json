@@ -173,7 +173,8 @@
       "searchInView": "in:{viewName}"
     },
     "FilterPill": {
-      "clear": "Clear"
+      "clear": "Clear",
+      "unsavedChanges": "Unsaved changes - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Search and filter",

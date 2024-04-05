@@ -80,11 +80,6 @@
     padding: 0 var(--p-space-100) 0 var(--p-space-200);
     height: 22px;
   }
-
-  .Label {
-    display: flex;
-    padding-left: var(--p-space-050);
-  }
 }
 
 .ActiveFilterButton .ToggleButton {

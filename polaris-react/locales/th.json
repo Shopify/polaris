@@ -358,7 +358,8 @@
       "accessibilityLabel": "ออกจากโหมดเต็มหน้าจอ"
     },
     "FilterPill": {
-      "clear": "ล้าง"
+      "clear": "ล้าง",
+      "unsavedChanges": "การเปลี่ยนแปลงที่ไม่ได้บันทึก - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "ค้นหาและกรอง",
