@@ -166,9 +166,8 @@ describe('<FiltersBar />', () => {
     HTMLElement.prototype.scroll = scrollSpy;
     const appliedFilters = [
       {
-        ...defaultProps.filters[2],
+        key: defaultProps.filters[2].key,
         label: 'Bux',
-        value: ['Bux'],
         onRemove: jest.fn(),
       },
     ];
@@ -186,9 +185,8 @@ describe('<FiltersBar />', () => {
   it('will not open the popover for an applied filter by default', () => {
     const appliedFilters = [
       {
-        ...defaultProps.filters[2],
+        key: defaultProps.filters[2].key,
         label: 'Bux',
-        value: ['Bux'],
         onRemove: jest.fn(),
       },
     ];
@@ -223,9 +221,8 @@ describe('<FiltersBar />', () => {
   it('will not remove a pinned filter when it is removed from the applied filters array', () => {
     const appliedFilters = [
       {
-        ...defaultProps.filters[2],
+        key: defaultProps.filters[2].key,
         label: 'Value is Baz',
-        value: ['Baz'],
         onRemove: jest.fn(),
       },
     ];
@@ -250,9 +247,8 @@ describe('<FiltersBar />', () => {
     HTMLElement.prototype.scroll = scrollSpy;
     const appliedFilters = [
       {
-        ...defaultProps.filters[2],
+        key: defaultProps.filters[2].key,
         label: 'Bux',
-        value: ['Bux'],
         onRemove: jest.fn(),
       },
     ];
@@ -390,9 +386,8 @@ describe('<FiltersBar />', () => {
   it('will keep a pinned filter from props pinned when clearing', () => {
     const appliedFilters = [
       {
-        ...defaultProps.filters[1],
+        key: defaultProps.filters[1].key,
         label: 'Bar 2',
-        value: ['Bar 2'],
         onRemove: jest.fn(),
       },
     ];
@@ -414,15 +409,13 @@ describe('<FiltersBar />', () => {
   it('will keep a pinned filter from props pinned when clearing all', () => {
     const appliedFilters = [
       {
-        ...defaultProps.filters[0],
+        key: defaultProps.filters[0].key,
         label: 'Bar 2',
-        value: ['Bar 2'],
         onRemove: jest.fn(),
       },
       {
-        ...defaultProps.filters[2],
+        key: defaultProps.filters[2].key,
         label: 'Bar 2',
-        value: ['Bar 2'],
         onRemove: jest.fn(),
       },
     ];

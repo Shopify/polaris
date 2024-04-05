@@ -358,7 +358,8 @@
       "accessibilityLabel": "Thoát chế độ toàn màn hình"
     },
     "FilterPill": {
-      "clear": "Xóa"
+      "clear": "Xóa",
+      "unsavedChanges": "Thay đổi chưa lưu - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Tìm kiếm và lọc",
