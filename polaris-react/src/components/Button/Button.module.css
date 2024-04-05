@@ -36,6 +36,7 @@
   color: var(--pc-button-color);
   cursor: pointer;
   user-select: none;
+  touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
 
