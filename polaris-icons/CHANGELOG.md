@@ -1,5 +1,21 @@
 # Changelog
 
+## 8.11.0
+
+### Minor Changes
+
+- [#11841](https://github.com/Shopify/polaris/pull/11841) [`7750bfa4c`](https://github.com/Shopify/polaris/commit/7750bfa4c2c45215935cedcc21746e8fc3dd400e) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Adds BulletIcon to repository
+
+## 8.10.0
+
+### Minor Changes
+
+- [#11816](https://github.com/Shopify/polaris/pull/11816) [`4b730c84d`](https://github.com/Shopify/polaris/commit/4b730c84dc3a636ea04570e36ad7b3bb39b24277) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Added some icons for image editing
+
+### Patch Changes
+
+- [#11825](https://github.com/Shopify/polaris/pull/11825) [`fd5b31d59`](https://github.com/Shopify/polaris/commit/fd5b31d59f8452e487a4696f907fbbb606749ae9) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Add missing peer dependency on React
+
 ## 8.9.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.28.6
+
+### Patch Changes
+
+- [#11813](https://github.com/Shopify/polaris/pull/11813) [`c49809998`](https://github.com/Shopify/polaris/commit/c498099988dbc37490a3ccde92fda48151b00993) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed `Text` `heading2xl` and associated tokens from v14 font migration
+
 ## 0.28.5
 
 ### Patch Changes

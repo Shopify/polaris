@@ -1,5 +1,25 @@
 # polaris.shopify.com
 
+## 0.67.3
+
+### Patch Changes
+
+- Updated dependencies [[`7750bfa4c`](https://github.com/Shopify/polaris/commit/7750bfa4c2c45215935cedcc21746e8fc3dd400e)]:
+  - @shopify/polaris-icons@8.11.0
+  - @shopify/polaris@12.26.1
+
+## 0.67.2
+
+### Patch Changes
+
+- [#11796](https://github.com/Shopify/polaris/pull/11796) [`c8dc01330`](https://github.com/Shopify/polaris/commit/c8dc013304640e3e300cad5348fe55d0ced1fd9d) Thanks [@sarahill](https://github.com/sarahill)! - Updated common action pattern guidance
+
+* [#11811](https://github.com/Shopify/polaris/pull/11811) [`9aea67322`](https://github.com/Shopify/polaris/commit/9aea6732290c83a4306795d14073f5a6dd62678f) Thanks [@lgriffee](https://github.com/lgriffee)! - Undeprecated `heading2xl` variant in `Text` component
+
+* Updated dependencies [[`fd5b31d59`](https://github.com/Shopify/polaris/commit/fd5b31d59f8452e487a4696f907fbbb606749ae9), [`810532c58`](https://github.com/Shopify/polaris/commit/810532c58d5538d5304f17c09b9d60a76dc6d5bb), [`66dc0392a`](https://github.com/Shopify/polaris/commit/66dc0392a24ec726eeae470320ab90484221ccaf), [`9aea67322`](https://github.com/Shopify/polaris/commit/9aea6732290c83a4306795d14073f5a6dd62678f), [`4b730c84d`](https://github.com/Shopify/polaris/commit/4b730c84dc3a636ea04570e36ad7b3bb39b24277), [`2a2f635ba`](https://github.com/Shopify/polaris/commit/2a2f635bab5ce511a5195d1e545f153fac6a6579), [`936765c92`](https://github.com/Shopify/polaris/commit/936765c92242de7be5956ffb872143a55b12ac00), [`35eb10c4f`](https://github.com/Shopify/polaris/commit/35eb10c4f049cf8edf62eeef0ba380d20887d54f)]:
+  - @shopify/polaris-icons@8.10.0
+  - @shopify/polaris@12.26.0
+
 ## 0.67.1
 
 ### Patch Changes

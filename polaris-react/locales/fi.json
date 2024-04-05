@@ -358,7 +358,8 @@
       "accessibilityLabel": "Poistu koko näytön tilasta"
     },
     "FilterPill": {
-      "clear": "Tyhjennä"
+      "clear": "Tyhjennä",
+      "unsavedChanges": "Tallentamattomat muutokset – {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Haku ja suodatus",
