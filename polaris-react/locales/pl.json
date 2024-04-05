@@ -360,7 +360,8 @@
       "accessibilityLabel": "Zakończ tryb pełnoekranowy"
     },
     "FilterPill": {
-      "clear": "Wyczyść"
+      "clear": "Wyczyść",
+      "unsavedChanges": "Niezapisane zmiany – {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Wyszukaj i przefiltruj",

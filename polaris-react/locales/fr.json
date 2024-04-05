@@ -359,7 +359,8 @@
       "accessibilityLabel": "Quitter le mode plein écran"
     },
     "FilterPill": {
-      "clear": "Effacer"
+      "clear": "Effacer",
+      "unsavedChanges": "Modifications non enregistrées - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Rechercher et filtrer",

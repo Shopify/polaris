@@ -358,7 +358,8 @@
       "accessibilityLabel": "退出全螢幕模式"
     },
     "FilterPill": {
-      "clear": "清除"
+      "clear": "清除",
+      "unsavedChanges": "尚未儲存的變更 - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "搜尋及篩選",
