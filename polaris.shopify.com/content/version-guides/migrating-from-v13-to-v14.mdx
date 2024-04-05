@@ -1,7 +1,7 @@
 ---
-title: Migrating from v12 to v13
-description: Polaris v13.0.0 prop replacement, removal of components, renamed components, and token changes.
-navTitle: v13
+title: Migrating from v13 to v14
+description: Polaris v14.0.0 prop replacement, removal of components, renamed components, and token changes.
+navTitle: v14
 icon: ColorsMajor
 collapsibleTOC: true
 order: 1
@@ -13,23 +13,23 @@ order: 1
 
 ## Getting started
 
-Upgrading to Polaris v13 from v12 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExp searches. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
+Upgrading to Polaris v14 from v13 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExp searches. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
 
-Not on v12 yet? You'll need to follow the [Migrating from v11 to v12 guide](/version-guides/migrating-from-v11-to-v12) and/or older [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) for previous major versions before upgrading to v13.
+Not on v13 yet? You'll need to follow the [Migrating from v12 to v13 guide](/version-guides/migrating-from-v12-to-v13).
 
 <Code
   code={{
-    title: 'Upgrade to v13',
+    title: 'Upgrade to v14',
     className: 'language-bash',
-    code: `npm install @shopify/polaris@13\n# or\nyarn add @shopify/polaris@13`,
+    code: `npm install @shopify/polaris@14\n# or\nyarn add @shopify/polaris@14`,
   }}
 />
 
-<CollapsibleDetails summary="Note: If you've installed other Polaris packages independently, you will also need to upgrade those to the major versions we released along with v13.">
+<CollapsibleDetails summary="Note: If you've installed other Polaris packages independently, you will also need to upgrade those to the major versions we released along with v14.">
 
 | Package                      | Version |
 | ---------------------------- | ------- |
-| `@shopify/polaris`           | `13`    |
+| `@shopify/polaris`           | `14`    |
 | `@shopify/polaris-tokens`    | TBD     |
 | `@shopify/stylelint-polaris` | TBD     |
 | `@shopify/polaris-icons`     | TBD     |
@@ -39,7 +39,7 @@ Not on v12 yet? You'll need to follow the [Migrating from v11 to v12 guide](/ver
 <br />
 
 - [What's new in this version]()
-- [v13.0.0 release notes]()
+- [v14.0.0 release notes]()
 
 ## Migration workflow
 
@@ -70,7 +70,7 @@ git diff --staged --name-only | xargs npx prettier --write
 # Stage formatted files
 git add .
 #  Commit automatic migration
-git commit -m "[Automated] Migrate X from Polaris v12 to v13"
+git commit -m "[Automated] Migrate X from Polaris v13 to v14"
 ```
 
 The `polaris-migrator` could insert comments or skip instances that are unsafe to automatically migrate. You will need to resolve those issues in the next manual migration step.
@@ -101,7 +101,7 @@ git diff --staged --name-only | xargs npx prettier --write
 # Optional: run stylelint if using stylelint-polaris and running migrations on stylesheets
 npx stylelint "**/*.{css,scss}"
 #  Commit manual migrations
-git commit -m "[Manual] Migrate X from Polaris v12 to v13"
+git commit -m "[Manual] Migrate X from Polaris v13 to v14"
 ```
 
 ### Glossary
@@ -120,6 +120,15 @@ git commit -m "[Manual] Migrate X from Polaris v12 to v13"
 </CollapsibleDetails>
 
 ## Component migrations
+
+### AppProvider
+
+The `AppProvider` `theme` prop no longer accepts the theme name `light-mobile`, please use the default `light` theme instead.
+
+```diff
+- <AppProvider theme="light-mobile" />
++ <AppProvider />
+```
 
 ### Text
 
@@ -158,7 +167,7 @@ git commit -m "[Manual] Migrate X from Polaris v12 to v13"
 
 ### Font
 
-To replace deprecated `font` custom properties, you can run the [v13-styles-replace-custom-property-font](/tools/polaris-migrator#v13-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
+To replace deprecated `font` custom properties, you can run the [v14-styles-replace-custom-property-font](/tools/polaris-migrator#v14-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
 <CollapsibleDetails summary="💡 Migration example">
 
@@ -183,7 +192,7 @@ To replace deprecated `font` custom properties, you can run the [v13-styles-repl
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v13-styles-replace-custom-property-font "**/*.{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v14-styles-replace-custom-property-font "**/*.{css,scss}"`,
 
 }}
 />
