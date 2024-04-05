@@ -120,6 +120,7 @@
     "last 3 safari versions",
     "last 3 chromeandroid versions",
     "last 1 firefoxandroid versions",
-    "ios >= 13.4"
+    "ios >= 13.4",
+    "node 20.10.0"
   ]
 }
