@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.11.0
+
+### Minor Changes
+
+- [#11841](https://github.com/Shopify/polaris/pull/11841) [`7750bfa4c`](https://github.com/Shopify/polaris/commit/7750bfa4c2c45215935cedcc21746e8fc3dd400e) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Adds BulletIcon to repository
+
 ## 8.10.0
 
 ### Minor Changes
