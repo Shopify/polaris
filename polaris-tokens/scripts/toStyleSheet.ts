@@ -8,7 +8,7 @@ import type {
 } from '../src/themes/types';
 import {metaThemePartials, metaThemeDefault} from '../src/themes';
 import {themeNameDefault} from '../src/themes/constants';
-import {createThemeSelector, isTokenName} from '../src/themes/utils';
+import {createThemeSelector} from '../src/themes/utils';
 import {createVarName} from '../src/utils';
 import type {Entries} from '../src/types';
 
