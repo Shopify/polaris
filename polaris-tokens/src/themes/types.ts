@@ -4,7 +4,7 @@ import type {themeNames} from './constants';
 export type MetaThemeBase = typeof metaThemeBase;
 export type MetaTheme = MetaThemeBase;
 
-export type ThemeName = (typeof themeNames)[number];
+export type ThemeName = typeof themeNames[number];
 export type ThemeBase = ExtractMetaThemeValues<MetaThemeBase>;
 export type Theme = ExtractMetaThemeValues<MetaTheme>;
 
