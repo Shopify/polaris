@@ -16,7 +16,7 @@ import styles from './ThemeProvider.module.css';
  */
 export const themeNamesLocal = ['light', 'dark-experimental'] as const;
 
-type ThemeNameLocal = (typeof themeNamesLocal)[number];
+type ThemeNameLocal = typeof themeNamesLocal[number];
 
 export const isThemeNameLocal = (name: string): name is ThemeNameLocal =>
   themeNamesLocal.includes(name as any);
