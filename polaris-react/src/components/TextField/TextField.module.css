@@ -46,6 +46,10 @@
       background-color: var(--p-color-input-bg-surface-hover);
     }
   }
+
+  @media (--p-breakpoints-md-up) {
+    /* Non-mobile styles here */
+  }
 }
 
 .multiline {
