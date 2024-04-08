@@ -359,7 +359,8 @@
       "accessibilityLabel": "Salir del modo de pantalla completa"
     },
     "FilterPill": {
-      "clear": "Borrar"
+      "clear": "Borrar",
+      "unsavedChanges": "Cambios no guardados: {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Buscar y filtrar",

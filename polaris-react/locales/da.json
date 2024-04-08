@@ -358,7 +358,8 @@
       "accessibilityLabel": "Afslut fuldskærmstilstand"
     },
     "FilterPill": {
-      "clear": "Ryd"
+      "clear": "Ryd",
+      "unsavedChanges": "Ikke gemte ændringer – {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Søg og filtrer",
