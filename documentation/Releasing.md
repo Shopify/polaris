@@ -14,7 +14,7 @@
 
 ### 👩‍💻 [polaris-for-vscode](/polaris-for-vscode)
 
-The `polaris-for-vscode` extension is published to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode). The extension is automatically released using the [`publish-polaris-for-vscode.yml`](/github/workflows/publish-polaris-for-vscode.yml) workflow.
+The `polaris-for-vscode` extension is published to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode). The extension is automatically released using the [`release-vscode.yml`](/github/workflows/release-vscode.yml) workflow.
 
 ## Version releases
 
