@@ -277,14 +277,12 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {(features) => (
             <div
               className={classNames(
-                features?.dynamicTopBarAndReframe
-                  ? styles['Frame-TopBarAndReframe']
-                  : styles.Frame,
+                styles.Frame,
+                features?.dynamicTopBarAndReframe &&
+                  styles['Frame-TopBarAndReframe'],
                 navigation && styles.hasNav,
                 topBar && styles.hasTopBar,
-                sidebar &&
-                  !features?.dynamicTopBarAndReframe &&
-                  styles.hasSidebar,
+                sidebar && styles.hasSidebar,
                 sidebar &&
                   features?.dynamicTopBarAndReframe &&
                   styles['hasSidebar-TopBarAndReframe'],
@@ -302,11 +300,20 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                 <div className={styles.ShadowBevel}>
                   {navigationMarkup}
                   <main
-                    className={styles['Main-TopBarAndReframe']}
+                    className={classNames(
+                      styles.Main,
+                      styles['Main-TopBarAndReframe'],
+                    )}
                     id={APP_FRAME_MAIN}
                     data-has-global-ribbon={Boolean(globalRibbon)}
                   >
-                    <div className={styles['Content-TopBarAndReframe']}>
+                    <div
+                      className={classNames(
+                        styles.Content,
+                        features?.dynamicTopBarAndReframe &&
+                          styles['Content-TopBarAndReframe'],
+                      )}
+                    >
                       {children}
                     </div>
                   </main>
@@ -317,15 +324,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                   id={APP_FRAME_MAIN}
                   data-has-global-ribbon={Boolean(globalRibbon)}
                 >
-                  <div
-                    className={
-                      features?.dynamicTopBarAndReframe
-                        ? styles['Content-TopBarAndReframe']
-                        : styles.Content
-                    }
-                  >
-                    {children}
-                  </div>
+                  <div className={styles.Content}>{children}</div>
                 </main>
               )}
               <ToastManager toastMessages={toastMessages} />
