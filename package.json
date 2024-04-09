@@ -20,7 +20,7 @@
     "gen-assets": "turbo run gen-assets --filter=polaris.shopify.com",
     "version-packages": "changeset version",
     "release-packages": "pnpm build:release && changeset publish",
-    "new-migration": "pnpm workspace @shopify/polaris-migrator generate"
+    "new-migration": "pnpm --filter=@shopify/polaris-migrator generate"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
