@@ -137,7 +137,7 @@ Each contributor is required to [sign a CLA](https://cla.shopify.com/). This pro
 
 ### Contribution prerequisites
 
-- You have Node installed at v18.12.0+ and Yarn at v1.22.18+
+- You have Node installed at v20.11.1+ and Yarn at v1.22.18+
 
 ### Best practices
 
