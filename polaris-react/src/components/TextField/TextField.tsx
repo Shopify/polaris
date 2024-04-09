@@ -309,6 +309,7 @@ export function TextField({
   const className = classNames(
     styles.TextField,
     Boolean(normalizedValue) && styles.hasValue,
+    labelHidden && styles.labelHidden,
     disabled && styles.disabled,
     readOnly && styles.readOnly,
     error && styles.error,
@@ -325,7 +326,11 @@ export function TextField({
 
   const prefixMarkup = prefix ? (
     <div
-      className={classNames(styles.Prefix, iconPrefix && styles.PrefixIcon)}
+      className={classNames(
+        styles.Prefix,
+        iconPrefix && styles.PrefixIcon,
+        styles.Padded,
+      )}
       id={`${id}-Prefix`}
       ref={prefixRef}
     >
@@ -574,7 +579,7 @@ export function TextField({
     role,
     autoFocus,
     value: normalizedValue,
-    placeholder,
+    placeholder: placeholder ?? label,
     style,
     autoComplete,
     className: inputClassName,
@@ -660,18 +665,18 @@ export function TextField({
   );
 
   return (
-    <Labelled
-      label={label}
-      id={id}
-      error={error}
-      action={labelAction}
-      labelHidden={labelHidden}
-      helpText={helpText}
-      requiredIndicator={requiredIndicator}
-      disabled={disabled}
-      readOnly={readOnly}
-    >
-      <Connected left={connectedLeft} right={connectedRight}>
+    <Connected left={connectedLeft} right={connectedRight}>
+      <Labelled
+        label={label}
+        id={id}
+        error={error}
+        action={labelAction}
+        labelHidden={labelHidden || value.length === 0}
+        helpText={helpText}
+        requiredIndicator={requiredIndicator}
+        disabled={disabled}
+        readOnly={readOnly}
+      >
         <div className={className} onClick={handleClick} ref={textFieldRef}>
           {prefixMarkup}
           {inputAndSuffixMarkup}
@@ -682,8 +687,8 @@ export function TextField({
           {backdropMarkup}
           {resizer}
         </div>
-      </Connected>
-    </Labelled>
+      </Labelled>
+    </Connected>
   );
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {

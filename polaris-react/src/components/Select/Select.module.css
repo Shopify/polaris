@@ -70,11 +70,19 @@
     var(--p-space-300);
 }
 
+.LabelHidden .SelectedOption,
+.InlineLabel .SelectedOption {
+  padding-block-start: 8px;
+  padding-block-end: 8px;
+}
+
 .SelectedOption {
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: var(--p-font-size-325);
+  padding-block-start: var(--p-space-400);
 }
 
 .Prefix {
@@ -108,10 +116,6 @@
   opacity: 0;
   appearance: none;
   border: none;
-
-  /* Google chrome on Windows requires padding to be added otherwise <option> has no space */
-  padding: var(--p-space-150) var(--p-space-200) var(--p-space-150)
-    var(--p-space-300);
 }
 
 .Backdrop {
@@ -151,12 +155,14 @@
 }
 
 .Input:focus-visible {
+  border-color: rgba(0, 91, 211, 1);
+
   ~ .Backdrop {
-    border-color: var(--p-color-input-border-active);
+    border-color: rgba(0, 91, 211, 1);
     border-width: var(--p-border-width-025);
     background-color: var(--p-color-input-bg-surface-active);
-    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
-    outline-offset: var(--p-space-025);
+    outline: var(--p-border-width-025) solid rgba(0, 91, 211, 1);
+    /* outline-offset: var(--p-space-025); */
   }
 }
 

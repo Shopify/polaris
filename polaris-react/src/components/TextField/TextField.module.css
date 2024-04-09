@@ -68,23 +68,42 @@
   color: var(--p-color-text);
 }
 
+.TextField.hasValue .Input,
+.TextField.hasValue .Padded {
+  padding-block-start: 22px;
+  padding-block-end: 6px;
+}
+
+.TextField .Input,
+.TextField .Padded,
+.TextField.labelHidden .Input {
+  padding-block-start: 14px;
+  padding-block-end: 14px;
+}
+
 .focus > .Input,
 .focus > .VerticalContent,
 .focus > .InputAndSuffixWrapper,
 .TextField:focus-within > .Input,
 .Input:focus-visible {
   outline: none;
-
+  border: none;
   /* stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- outline based on child focus requires complex specificity */
   ~ .Backdrop {
-    border-color: var(--p-color-input-border-active);
+    border-color: rgba(0, 91, 211, 1);
+    /* border-color: var(--p-color-input-border-active); */
+
     border-width: var(--p-border-width-025);
     background-color: var(--p-color-input-bg-surface-active);
 
     /* stylelint-disable-next-line -- remove focus ring mixin */
     @mixin no-focus-ring;
-    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
-    outline-offset: var(--p-space-025);
+    /* outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+    outline-offset: var(--p-space-025); */
+    outline: var(--p-border-width-025) solid rgba(0, 91, 211, 1);
+    /* transition-duration: 0.2s;
+    transition-property: all;
+    transition-timing-function: ease-in-out; */
   }
 }
 
@@ -226,7 +245,7 @@
     min-width: 1em;
     grid-area: 1 / 2;
     padding: 0 var(--p-space-300);
-    font-size: var(--p-font-size-325);
+    font-size: var(--p-font-size-400);
     font-weight: var(--p-font-weight-regular);
     line-height: var(--p-font-line-height-500);
   }
