@@ -35,7 +35,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm
+        run: pnpm install --frozen-lockfile
 
       - name: Build extension
         run: pnpm build --filter=polaris-for-vscode
