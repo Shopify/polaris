@@ -16,8 +16,6 @@ jobs:
         node-version: [
             # The minimum required node version for consumers
             '20.10.0',
-            # Make sure it's working on the v21 line (even though it's non-LTS)
-            '21.x',
             # Ensure it's working for the latest versions of node too
             'latest',
           ]
