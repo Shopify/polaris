@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.11.1
+
+### Patch Changes
+
+- [#11824](https://github.com/Shopify/polaris/pull/11824) [`79130eeea`](https://github.com/Shopify/polaris/commit/79130eeea0785c41bb06d5135421106d7ce9ff5b) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Added missing `svgo` dev dependency
+
 ## 8.11.0
 
 ### Minor Changes
