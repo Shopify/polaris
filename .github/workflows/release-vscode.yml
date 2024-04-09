@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  release:
+  release-vscode:
     runs-on: ubuntu-latest
 
     steps:
