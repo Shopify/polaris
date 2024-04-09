@@ -13,6 +13,9 @@ const nextConfig = {
     scrollRestoration: true,
     // this includes files from the monorepo base one directory up
     outputFileTracingRoot: path.join(__dirname, '../'),
+    // Force usage of SWC even though we have a babel file (it's used to
+    // configure Jest only)
+    //forceSwcTransforms: true,
   },
   async rewrites() {
     return [

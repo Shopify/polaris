@@ -8,6 +8,7 @@
   "scripts": {
     "build": "concurrently \"pnpm gen-colors\" \"pnpm gen-assets\" \"playroom build\" && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdir -p ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
+    "test": "jest",
     "dev": "pnpm gen-colors && pnpm get-props && run-p dev:*",
     "dev:server": "open http://localhost:${POLARIS_WEBSITE_PORT:=3000} && next dev -p 3000",
     "dev:playroom": "rm -rf ./public/playroom && playroom start",

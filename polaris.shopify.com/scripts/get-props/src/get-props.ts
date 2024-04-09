@@ -4,6 +4,7 @@ import * as ts from 'typescript';
 import * as fs from 'fs';
 import path from 'path';
 import globby from 'globby';
+import url from 'node:url';
 import {Type, FilteredTypes, AllTypes} from '../../../src/types';
 
 type NodeParser = (
@@ -19,13 +20,21 @@ const compilerOptions = {
   module: ts.ModuleKind.CommonJS,
 };
 
+const rootDir = `${path.resolve(__dirname, '../../../../')}/`;
+
 export function normalizePath(path: string): string {
   let normalizedPath = path;
   if (normalizedPath.startsWith('.')) {
+    // ../foo => foo
     normalizedPath = normalizedPath.replace(/^\.{1,2}\//, '');
+    // } else if (normalizedPath.startsWith(rootDir)) {
+    //   // /Users/jess/polaris/polaris/foo => foo
+    //   normalizedPath = normalizedPath.replace(rootDir, '');
   } else if (normalizedPath.includes('/polaris/')) {
-    normalizedPath = normalizedPath.split(/\/(polaris\/)+/).at(-1)!;
+    // /Users/jess/polaris/polaris/foo => foo
+    normalizedPath = normalizedPath.split(/\/(polaris/)+/).at(-1)!;
   } else if (normalizedPath.startsWith('/')) {
+    // /foo => foo
     normalizedPath = normalizedPath.replace('/', '');
   }
   return normalizedPath;

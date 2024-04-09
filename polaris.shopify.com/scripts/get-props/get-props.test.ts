@@ -1,12 +1,12 @@
 import {getRelevantTypes, getProps, normalizePath} from './src/get-props';
 import path from 'path';
 
+const rootDir = path.resolve(__dirname, '../../../');
+
 it('Normalizes paths', () => {
-  expect(
-    normalizePath(
-      '/Users/martenbjork/my-files/src/polaris/polaris-react/foo.tsx',
-    ),
-  ).toEqual('polaris-react/foo.tsx');
+  expect(normalizePath(`${rootDir}/polaris-react/foo.tsx`)).toEqual(
+    'polaris-react/foo.tsx',
+  );
 
   expect(normalizePath('/polaris-react/foo.tsx')).toEqual(
     'polaris-react/foo.tsx',
