@@ -3,6 +3,10 @@
   @mixin visually-hidden;
 }
 
+.hidden label {
+  display: none;
+}
+
 .disabled > .LabelWrapper {
   color: var(--p-color-text-disabled);
 }
@@ -24,6 +28,12 @@
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: var(--p-space-100);
+  position: absolute;
+  z-index: 100;
+  left: 12px;
+  right: 12px;
+  top: 5px;
+  color: var(--p-color-text-secondary);
 }
 
 .HelpText {
@@ -38,4 +48,5 @@
 
 .Action {
   flex: 0 0 auto;
+  margin-block-start: var(--p-space-100);
 }

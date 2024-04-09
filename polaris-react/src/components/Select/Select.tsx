@@ -109,6 +109,8 @@ export function Select({
 
   const className = classNames(
     styles.Select,
+    labelInline && styles.InlineLabel,
+    labelHiddenProp && styles.LabelHidden,
     error && styles.error,
     tone && styles[variationName('tone', tone)],
     disabled && styles.disabled,

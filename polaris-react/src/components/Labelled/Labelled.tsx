@@ -56,7 +56,7 @@ export function Labelled({
 
   const actionMarkup = action ? (
     <div className={styles.Action}>
-      {buttonFrom(action, {variant: 'plain'})}
+      {buttonFrom(action, {variant: 'secondary', fullWidth: true})}
     </div>
   ) : null;
 
@@ -88,15 +88,16 @@ export function Labelled({
       >
         {label}
       </Label>
-
-      {actionMarkup}
     </div>
   ) : null;
 
   return (
     <div className={className}>
-      {labelMarkup}
-      {children}
+      <div style={{position: 'relative'}}>
+        {labelMarkup}
+        {children}
+      </div>
+      {actionMarkup}
       {errorMarkup}
       {helpTextMarkup}
     </div>

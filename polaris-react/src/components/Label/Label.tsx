@@ -33,7 +33,7 @@ export function Label({children, id, hidden, requiredIndicator}: LabelProps) {
           requiredIndicator && styles.RequiredIndicator,
         )}
       >
-        <Text as="span" variant="bodyMd">
+        <Text as="span" variant="bodyXs">
           {children}
         </Text>
       </label>
