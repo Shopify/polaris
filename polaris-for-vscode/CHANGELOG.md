@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.0
+
+### Major Changes
+
+- [#11844](https://github.com/Shopify/polaris/pull/11844) [`a89e61478`](https://github.com/Shopify/polaris/commit/a89e61478fb7c5f588021e542101aba8a3898ec8) Thanks [@jesstelford](https://github.com/jesstelford)! - Miniumum required node version updated to v20.10.0
+
+* [#11799](https://github.com/Shopify/polaris/pull/11799) [`aa8e0f42b`](https://github.com/Shopify/polaris/commit/aa8e0f42b956622e826646c809c57eb79bb2b892) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - [Internal] Migrate repo from yarn to pnpm. No action required.
+
+### Patch Changes
+
+- Updated dependencies [[`a89e61478`](https://github.com/Shopify/polaris/commit/a89e61478fb7c5f588021e542101aba8a3898ec8)]:
+  - @shopify/polaris-tokens@9.0.0
+
 ## 0.9.8
 
 ### Patch Changes
