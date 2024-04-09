@@ -21,7 +21,7 @@
   ],
   "engines": {
     "vscode": "^1.64.0",
-    "node": "^16.17.0 || >=18.12.0"
+    "node": ">=20.10.0"
   },
   "categories": [
     "Other"
@@ -44,7 +44,7 @@
     "vscode-languageserver-textdocument": "^1.0.11"
   },
   "devDependencies": {
-    "@types/node": "16.x",
+    "@types/node": "^20.10.0",
     "@types/vscode": "^1.64.0",
     "globby": "^11.1.0",
     "vsce": "^2.15.0"

@@ -90,7 +90,7 @@ module.exports.styles = function styles({
     const entrypointBundles = Object.values(bundle).filter(
       (bundleInfo) => bundleInfo.isEntry,
     );
-    const bundleModuleIds = flatMap(entrypointBundles, (bundleInfo) =>
+    const bundleModuleIds = entrypointBundles.flatMap((bundleInfo) =>
       getRecursiveImportOrder(bundleInfo.facadeModuleId, rollup.getModuleInfo),
     );
 
@@ -167,11 +167,6 @@ module.exports.styles = function styles({
     },
   };
 };
-
-// We're still using node 10. Array.flat(fn)/Array.flatMap(fn) are added in v11
-function flatMap(array, fn) {
-  return array.reduce((memo, item) => memo.concat(fn(item)), []);
-}
 
 // An @charset declaration must be at the top of a css file rather than part
 // way through. Because we're combining multiple files we need to make sure
