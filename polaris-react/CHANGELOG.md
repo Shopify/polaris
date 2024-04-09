@@ -1,5 +1,20 @@
 # Changelog
 
+## 12.27.0
+
+### Minor Changes
+
+- [#11783](https://github.com/Shopify/polaris/pull/11783) [`0bf817afc`](https://github.com/Shopify/polaris/commit/0bf817afc18e1b19b4037ce1e74717ed71204aa6) Thanks [@chloerice](https://github.com/chloerice)! - Added support to `Filters` for indicating `appliedFilters` have unsaved changes
+
+### Patch Changes
+
+- [#11824](https://github.com/Shopify/polaris/pull/11824) [`79130eeea`](https://github.com/Shopify/polaris/commit/79130eeea0785c41bb06d5135421106d7ce9ff5b) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Lint fixes
+
+* [#11845](https://github.com/Shopify/polaris/pull/11845) [`8145d7326`](https://github.com/Shopify/polaris/commit/8145d732689bdf923fe73b287d4ca962b7ec1ccb) Thanks [@kyledurand](https://github.com/kyledurand)! - Added `touch-action: manipulation` to `Button` and `Link`
+
+* Updated dependencies [[`79130eeea`](https://github.com/Shopify/polaris/commit/79130eeea0785c41bb06d5135421106d7ce9ff5b)]:
+  - @shopify/polaris-icons@8.11.1
+
 ## 12.26.1
 
 ### Patch Changes

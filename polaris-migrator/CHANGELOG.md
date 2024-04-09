@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.29.0
+
+### Minor Changes
+
+- [#11831](https://github.com/Shopify/polaris/pull/11831) [`99972a50b`](https://github.com/Shopify/polaris/commit/99972a50b1e57b83374ea9fc71211ca0b2c11172) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `text` custom properties in polaris-react v14.0.0
+
 ## 0.28.6
 
 ### Patch Changes
