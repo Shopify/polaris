@@ -59,6 +59,7 @@ body {
   font-feature-settings: 'calt' 0;
   letter-spacing: initial;
   color: var(--p-color-text);
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
