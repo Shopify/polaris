@@ -134,6 +134,19 @@ describe('Tab', () => {
       expect(onAction).toHaveBeenCalledTimes(1);
     });
 
+    it('does not fire an onAction callback if readonly', () => {
+      const onAction = jest.fn();
+      const wrapper = mountWithApp(
+        <Tab {...defaultProps} onAction={onAction} readonly />,
+      );
+
+      wrapper.act(() => {
+        wrapper!.find(UnstyledButton)!.trigger('onClick');
+      });
+
+      expect(onAction).toHaveBeenCalledTimes(0);
+    });
+
     describe('ActionList', () => {
       it('renders an ActionList with default props', () => {
         const wrapper = mountWithApp(<Tab {...defaultProps} selected />);

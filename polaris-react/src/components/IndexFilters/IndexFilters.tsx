@@ -1,4 +1,5 @@
 import React, {useMemo, useCallback, useRef} from 'react';
+import type {ReactNode} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
@@ -9,6 +10,7 @@ import {useOnValueChange} from '../../utilities/use-on-value-change';
 import {InlineStack} from '../InlineStack';
 import {Spinner} from '../Spinner';
 import {Filters} from '../Filters';
+import {Box} from '../Box';
 import type {FiltersProps} from '../Filters';
 import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
@@ -107,6 +109,8 @@ export interface IndexFiltersProps
   showEditColumnsButton?: boolean;
   /** Whether or not to auto-focus the search field when it renders */
   autoFocusSearchField?: boolean;
+  /** A piece of UI to be displayed to the immediate left of the Tabs */
+  prefix?: ReactNode;
 }
 
 export function IndexFilters({
@@ -147,6 +151,7 @@ export function IndexFilters({
   disableKeyboardShortcuts,
   showEditColumnsButton,
   autoFocusSearchField = true,
+  prefix,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -368,15 +373,14 @@ export function IndexFilters({
             <div ref={defaultRef}>
               {mode !== IndexFiltersMode.Filtering ? (
                 <Container>
-                  <InlineStack
-                    align="start"
-                    blockAlign="center"
-                    gap={{
-                      xs: '0',
-                      md: '200',
-                    }}
-                    wrap={false}
-                  >
+                  <InlineStack align="start" blockAlign="center" wrap={false}>
+                    {prefix ? (
+                      <div className={styles.PrefixWrapper}>
+                        <Box padding="200" paddingInlineEnd="0">
+                          {prefix}
+                        </Box>
+                      </div>
+                    ) : null}
                     <div
                       className={classNames(
                         styles.TabsWrapper,

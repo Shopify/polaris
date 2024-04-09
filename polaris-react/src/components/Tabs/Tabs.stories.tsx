@@ -15,6 +15,7 @@ export function All() {
       <WithActions />
       <WithBadgeContent />
       <WithCustomDisclosure />
+      <WithReadOnly />
     </BlockStack>
   );
 }
@@ -285,6 +286,38 @@ export function WithCustomDisclosure() {
         onSelect={handleTabChange}
         disclosureText="Extra views"
       >
+        <LegacyCard.Section title={tabs[selected].content}>
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
+        </LegacyCard.Section>
+      </Tabs>
+    </LegacyCard>
+  );
+}
+
+export function WithReadOnly() {
+  const [selected, setSelected] = useState(0);
+
+  const handleTabChange = (selectedTabIndex: number) =>
+    setSelected(selectedTabIndex);
+
+  const tabs = [
+    'All',
+    'Unpaid',
+    'Open',
+    'Closed',
+    'Local delivery',
+    'Local pickup',
+  ].map((item, index) => ({
+    content: item,
+    index,
+    id: `${item.split(' ').join('-')}-${index}-with-readonly`,
+    readonly: index === 1,
+  }));
+  return (
+    <LegacyCard>
+      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
         <LegacyCard.Section title={tabs[selected].content}>
           <Text as="p" variant="bodyMd">
             Tab {selected} selected

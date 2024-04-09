@@ -12,6 +12,7 @@ import {
   UpdateButtons,
   EditColumnsButton,
 } from '../components';
+import styles from '../IndexFilters.module.css';
 
 describe('IndexFilters', () => {
   const defaultProps: IndexFiltersProps = {
@@ -533,6 +534,30 @@ describe('IndexFilters', () => {
       });
 
       expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.EditingColumns);
+    });
+  });
+
+  describe('prefix', () => {
+    it('renders the prefix markup if prop provided', () => {
+      const wrapper = mountWithApp(
+        <IndexFilters {...defaultProps} prefix={<div>Prefix</div>} />,
+      );
+
+      expect(wrapper).toContainReactComponent('div', {
+        className: styles.PrefixWrapper,
+      });
+
+      expect(wrapper).toContainReactComponent('div', {
+        children: 'Prefix',
+      });
+    });
+
+    it('does not render the prefix markup if prop not provided', () => {
+      const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
+
+      expect(wrapper).not.toContainReactComponent('div', {
+        className: styles.PrefixWrapper,
+      });
     });
   });
 });

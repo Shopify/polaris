@@ -63,6 +63,7 @@ export const Tab = forwardRef(
       viewNames,
       tabIndexOverride,
       onFocus,
+      readonly,
     }: TabPropsWithAddedMethods,
     ref: RefObject<HTMLElement>,
   ) => {
@@ -162,7 +163,7 @@ export const Tab = forwardRef(
     }, [actions]);
 
     const handleClick = useCallback(() => {
-      if (disabled) {
+      if (disabled || readonly) {
         return;
       }
       if (selected) {
@@ -170,7 +171,7 @@ export const Tab = forwardRef(
       } else {
         onAction?.();
       }
-    }, [selected, onAction, togglePopoverActive, disabled]);
+    }, [selected, onAction, togglePopoverActive, disabled, readonly]);
 
     const handleModalOpen = (type: TabAction) => {
       setActiveModalType(type);
@@ -261,7 +262,8 @@ export const Tab = forwardRef(
       selected && styles.Underline,
     );
 
-    const urlIfNotDisabledOrSelected = disabled || selected ? undefined : url;
+    const urlIfNotDisabledOrSelected =
+      disabled || selected || readonly ? undefined : url;
 
     const BaseComponent = urlIfNotDisabledOrSelected
       ? UnstyledLink
@@ -273,6 +275,7 @@ export const Tab = forwardRef(
       popoverActive && styles['Tab-popoverActive'],
       selected && styles['Tab-active'],
       selected && actions?.length && styles['Tab-hasActions'],
+      readonly && styles['Tab-readonly'],
     );
 
     const badgeMarkup = badge ? (
@@ -362,7 +365,7 @@ export const Tab = forwardRef(
     ) : null;
 
     const markup =
-      isPlainButton || disabled ? (
+      isPlainButton || disabled || readonly ? (
         activator
       ) : (
         <>

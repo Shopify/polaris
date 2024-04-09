@@ -56,6 +56,8 @@ export interface TabProps {
   tabIndexOverride?: 0 | -1;
   /** Optional callback invoked when the Tabs component is focused */
   onFocus?(): void;
+  /** If true will be non-interactive with different visual treatment */
+  readonly?: boolean;
 }
 
 export interface TabPropsWithAddedMethods extends TabProps {
