@@ -18,7 +18,7 @@
     "type-check": "tsc --build",
     "changeset": "changeset",
     "gen-assets": "turbo run gen-assets --filter=polaris.shopify.com",
-    "version-packages": "changeset version",
+    "version-packages": "changeset version && pnpm install --lockfile-only",
     "release-packages": "pnpm build:release && changeset publish",
     "new-migration": "pnpm --filter=@shopify/polaris-migrator generate"
   },
