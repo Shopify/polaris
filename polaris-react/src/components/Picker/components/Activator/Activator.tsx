@@ -24,6 +24,7 @@ export const Activator = forwardRef<HTMLButtonElement, ActivatorProps>(
         disabled={disabled}
         onClick={onClick}
         className={classNames(styles.Activator, disabled && styles.disabled)}
+        type="button"
       >
         <BlockStack as="span" gap="100">
           {label && (
