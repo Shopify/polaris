@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {ComplexAction} from '../../types';
@@ -49,22 +49,9 @@ export function EmptyState({
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const imageRef = useRef<HTMLImageElement>(null);
 
-  const handleLoad = useCallback((image: HTMLImageElement) => {
-    if (image.complete) {
-      setImageLoaded(true);
-      return;
-    }
-
-    requestAnimationFrame(() => handleLoad(image));
-  }, []);
-
   useEffect(() => {
-    const imageElement = imageRef.current;
-
-    if (imageElement) {
-      handleLoad(imageElement);
-    }
-  }, [handleLoad]);
+    if (imageRef.current?.complete) setImageLoaded(true);
+  }, []);
 
   const imageClassNames = classNames(
     styles.Image,
@@ -84,6 +71,7 @@ export function EmptyState({
         {source: largeImage, descriptor: '1136w'},
       ]}
       sizes="(max-width: 568px) 60vw"
+      onLoad={() => setImageLoaded(true)}
     />
   ) : (
     <Image
@@ -92,6 +80,7 @@ export function EmptyState({
       ref={imageRef}
       className={imageClassNames}
       source={image}
+      onLoad={() => setImageLoaded(true)}
     />
   );
 
