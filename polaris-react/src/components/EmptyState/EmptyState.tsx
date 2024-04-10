@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {ComplexAction} from '../../types';
@@ -47,9 +47,10 @@ export function EmptyState({
   footerContent,
 }: EmptyStateProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const imageRef = useRef<HTMLImageElement>(null);
 
-  const handleLoad = useCallback(() => {
-    setImageLoaded(true);
+  useEffect(() => {
+    if (imageRef.current?.complete) setImageLoaded(true);
   }, []);
 
   const imageClassNames = classNames(
@@ -62,6 +63,7 @@ export function EmptyState({
     <Image
       alt=""
       role="presentation"
+      ref={imageRef}
       source={largeImage}
       className={imageClassNames}
       sourceSet={[
@@ -69,15 +71,16 @@ export function EmptyState({
         {source: largeImage, descriptor: '1136w'},
       ]}
       sizes="(max-width: 568px) 60vw"
-      onLoad={handleLoad}
+      onLoad={() => setImageLoaded(true)}
     />
   ) : (
     <Image
       alt=""
       role="presentation"
+      ref={imageRef}
       className={imageClassNames}
       source={image}
-      onLoad={handleLoad}
+      onLoad={() => setImageLoaded(true)}
     />
   );
 
