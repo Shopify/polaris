@@ -32,7 +32,6 @@ import {
   CSSAnimation,
 } from './components';
 import styles from './Frame.module.css';
-import {UseFeatures} from '../../utilities/features';
 
 export interface FrameProps {
   /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */
