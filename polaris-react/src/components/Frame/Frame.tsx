@@ -23,6 +23,7 @@ import type {
 } from '../../utilities/frame';
 import {UseTheme} from '../../utilities/use-theme';
 import {UseFeatures} from '../../utilities/features';
+import type {FeaturesConfig} from '../../utilities/features';
 
 import {
   ToastManager,
@@ -239,6 +240,18 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         }
       : {};
 
+    const getFrameClassName = (features: FeaturesConfig) =>
+      classNames(
+        styles.Frame,
+        features?.dynamicTopBarAndReframe && styles['Frame-TopBarAndReframe'],
+        navigation && styles.hasNav,
+        topBar && styles.hasTopBar,
+        sidebar && styles.hasSidebar,
+        sidebar &&
+          features?.dynamicTopBarAndReframe &&
+          styles['hasSidebar-TopBarAndReframe'],
+      );
+
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
@@ -276,17 +289,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         <UseFeatures>
           {(features) => (
             <div
-              className={classNames(
-                styles.Frame,
-                features?.dynamicTopBarAndReframe &&
-                  styles['Frame-TopBarAndReframe'],
-                navigation && styles.hasNav,
-                topBar && styles.hasTopBar,
-                sidebar && styles.hasSidebar,
-                sidebar &&
-                  features?.dynamicTopBarAndReframe &&
-                  styles['hasSidebar-TopBarAndReframe'],
-              )}
+              className={getFrameClassName(features)}
               {...layer.props}
               {...navigationAttributes}
             >
