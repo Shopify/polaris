@@ -359,7 +359,8 @@
       "accessibilityLabel": "Sair do modo de tela cheia"
     },
     "FilterPill": {
-      "clear": "Limpar"
+      "clear": "Limpar",
+      "unsavedChanges": "Alterações não salvas – {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Pesquisar e filtrar",
