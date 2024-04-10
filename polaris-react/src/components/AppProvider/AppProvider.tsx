@@ -138,6 +138,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {i18n, linkComponent} = this.props;
 
     this.setRootAttributes();
+    /* Temporary for dynamicTopBarAndReframe feature. Remove when feature flag is removed. */
+    this.setBodyStyles();
 
     if (i18n === prevI18n && linkComponent === prevLinkComponent) {
       return;
@@ -150,8 +152,20 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   setBodyStyles = () => {
+    const {features} = this.props;
+
     document.body.style.backgroundColor = 'var(--p-color-bg)';
     document.body.style.color = 'var(--p-color-text)';
+
+    /* Temporary for dynamicTopBarAndReframe feature.
+     * Remove when feature flag is removed and apply
+     * styles directly to body in the global stylesheet.
+     */
+    if (features?.dynamicTopBarAndReframe) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   };
 
   setRootAttributes = () => {
@@ -168,7 +182,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
   getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
 
   render() {
-    const {children, features} = this.props;
+    const {children, features = {}} = this.props;
     const themeName = this.getThemeName();
 
     const {intl, link} = this.state;

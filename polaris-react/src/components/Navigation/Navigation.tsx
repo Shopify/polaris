@@ -7,6 +7,7 @@ import {UnstyledLink} from '../UnstyledLink';
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useFrame} from '../../utilities/frame';
+import {useFeatures} from '../../utilities/features';
 
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
@@ -71,12 +72,27 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
     [location, onDismiss],
   );
 
+  const features = useFeatures();
+
   return (
     <NavigationContext.Provider value={context}>
       <WithinContentContext.Provider value>
-        <nav className={styles.Navigation} aria-labelledby={ariaLabelledBy}>
+        <nav
+          className={classNames(
+            styles.Navigation,
+            features?.dynamicTopBarAndReframe &&
+              styles['NavigationFrame-TopBarAndReframe'],
+          )}
+          aria-labelledby={ariaLabelledBy}
+        >
           {mediaMarkup}
-          <Scrollable className={styles.PrimaryNavigation}>
+          <Scrollable
+            className={classNames(
+              styles.PrimaryNavigation,
+              features?.dynamicTopBarAndReframe &&
+                styles['NavigationFrame-TopBarAndReframe'],
+            )}
+          >
             {children}
           </Scrollable>
         </nav>

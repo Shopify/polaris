@@ -64,7 +64,7 @@ export function PolarisTestProvider({
   i18n,
   link,
   mediaQuery,
-  features,
+  features = {},
   frame,
   theme: themeName = themeNameDefault,
 }: PolarisTestProviderProps) {
