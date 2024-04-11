@@ -1,10 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 import {
   PlusCircleIcon,
-  CheckIcon,
   AlertTriangleIcon,
   InfoIcon,
   AlertDiamondIcon,
+  CheckCircleIcon,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
@@ -20,7 +20,6 @@ import {BannerContext} from '../../../utilities/banner-context';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {
   Banner,
-  DefaultBanner,
   InlineIconBanner,
   WithinContentContainerBanner,
 } from '../Banner';
@@ -320,11 +319,6 @@ describe('<Banner />', () => {
       expect(modal).toContainReactComponent(WithinContentContainerBanner);
     });
 
-    it('shows the DefaultBanner variant by default', () => {
-      const banner = mountWithApp(<Banner title="Banner title" />);
-      expect(banner).toContainReactComponent(DefaultBanner);
-    });
-
     it('shows the InlineIconBanner variant by default when there is no title and it is not in a content container', () => {
       const banner = mountWithApp(<Banner />);
       expect(banner).toContainReactComponent(InlineIconBanner);
@@ -356,7 +350,7 @@ describe('<Banner />', () => {
 
   describe('icon', () => {
     it.each([
-      ['success', CheckIcon],
+      ['success', CheckCircleIcon],
       ['info', InfoIcon],
       ['warning', AlertTriangleIcon],
       ['critical', AlertDiamondIcon],

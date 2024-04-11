@@ -1,18 +1,10 @@
-import React, {
-  forwardRef,
-  useContext,
-  useRef,
-  useState,
-  useEffect,
-  useCallback,
-} from 'react';
+import React, {forwardRef, useContext, useRef} from 'react';
 import type {PropsWithChildren} from 'react';
 import type {ColorTextAlias} from '@shopify/polaris-tokens';
 import {XIcon} from '@shopify/polaris-icons';
 
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Text} from '../Text';
-import type {InlineStackProps} from '../InlineStack';
 import {InlineStack} from '../InlineStack';
 import type {BoxProps} from '../Box';
 import {Box} from '../Box';
@@ -23,9 +15,7 @@ import type {IconProps} from '../Icon';
 import {BannerContext} from '../../utilities/banner-context';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {classNames} from '../../utilities/css';
-import {useBreakpoints} from '../../utilities/breakpoints';
 import {useI18n} from '../../utilities/i18n';
-import {useEventListener} from '../../utilities/use-event-listener';
 import {BlockStack} from '../BlockStack';
 
 import styles from './Banner.module.css';
@@ -81,6 +71,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         onMouseUp={handleMouseUp}
         onKeyUp={handleKeyUp}
         onBlur={handleBlur}
+        style={{overflow: 'hidden'}}
       >
         <BannerLayout {...props} />
       </div>
@@ -109,7 +100,7 @@ export function BannerLayout({
 }: BannerProps) {
   const i18n = useI18n();
   const withinContentContainer = useContext(WithinContentContext);
-  const isInlineIconBanner = !title && !withinContentContainer;
+  const isInlineIconBanner = !withinContentContainer;
   const bannerTone = Object.keys(bannerAttributes).includes(tone)
     ? tone
     : 'info';
@@ -122,7 +113,7 @@ export function BannerLayout({
     backgroundColor: bannerColors.background,
     textColor: bannerColors.text,
     bannerTitle: title ? (
-      <Text as="h2" variant="headingSm" breakWord>
+      <Text as="h2" variant="headingMd" breakWord>
         {title}
       </Text>
     ) : null,
@@ -178,100 +169,33 @@ export function BannerLayout({
     );
   }
 
-  if (isInlineIconBanner) {
-    return (
-      <InlineIconBanner {...sharedBannerProps}>
-        {childrenMarkup}
-      </InlineIconBanner>
-    );
-  }
-
-  return <DefaultBanner {...sharedBannerProps}>{childrenMarkup}</DefaultBanner>;
-}
-
-export function DefaultBanner({
-  backgroundColor,
-  textColor,
-  bannerTitle,
-  bannerIcon,
-  actionButtons,
-  dismissButton,
-  children,
-}: PropsWithChildren<BannerLayoutProps>) {
-  const {smUp} = useBreakpoints();
-  const hasContent = children || actionButtons;
-
   return (
-    <Box width="100%">
-      <BlockStack align="space-between">
-        <Box
-          background={backgroundColor}
-          color={textColor}
-          borderStartStartRadius={smUp ? '300' : undefined}
-          borderStartEndRadius={smUp ? '300' : undefined}
-          borderEndStartRadius={!hasContent && smUp ? '300' : undefined}
-          borderEndEndRadius={!hasContent && smUp ? '300' : undefined}
-          padding="300"
-        >
-          <InlineStack
-            align="space-between"
-            blockAlign="center"
-            gap="200"
-            wrap={false}
-          >
-            <InlineStack gap="100" wrap={false}>
-              {bannerIcon}
-              {bannerTitle}
-            </InlineStack>
-            {dismissButton}
-          </InlineStack>
-        </Box>
-        {hasContent && (
-          <Box padding={{xs: '300', md: '400'}} paddingBlockStart="300">
-            <BlockStack gap="200">
-              <div>{children}</div>
-              {actionButtons}
-            </BlockStack>
-          </Box>
-        )}
-      </BlockStack>
-    </Box>
+    <InlineIconBanner {...sharedBannerProps}>{childrenMarkup}</InlineIconBanner>
   );
 }
 
 export function InlineIconBanner({
   backgroundColor,
+  bannerTitle,
   bannerIcon,
   actionButtons,
   dismissButton,
   children,
-}: PropsWithChildren<Omit<BannerLayoutProps, 'textColor' | 'bannerTitle'>>) {
-  const [blockAlign, setBlockAlign] =
-    useState<InlineStackProps['blockAlign']>('center');
+}: PropsWithChildren<Omit<BannerLayoutProps, 'textColor'>>) {
   const contentNode = useRef<HTMLDivElement>(null);
   const iconNode = useRef<HTMLDivElement>(null);
   const dismissIconNode = useRef<HTMLDivElement>(null);
 
-  const handleResize = useCallback(() => {
-    const contentHeight = contentNode.current?.offsetHeight;
-    const iconBoxHeight =
-      iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
-
-    if (!contentHeight || !iconBoxHeight) return;
-
-    contentHeight > iconBoxHeight
-      ? setBlockAlign('start')
-      : setBlockAlign('center');
-  }, []);
-
-  useEffect(() => handleResize(), [handleResize]);
-  useEventListener('resize', handleResize);
-
   return (
     <Box width="100%" padding="300" borderRadius="300">
-      <InlineStack align="space-between" blockAlign={blockAlign} wrap={false}>
+      <InlineStack
+        align="space-between"
+        blockAlign="start"
+        wrap={false}
+        gap="200"
+      >
         <Box width="100%">
-          <InlineStack gap="200" wrap={false} blockAlign={blockAlign}>
+          <InlineStack gap="200" wrap={false} blockAlign="start">
             {bannerIcon ? (
               <div ref={iconNode}>
                 <Box
@@ -283,9 +207,12 @@ export function InlineIconBanner({
                 </Box>
               </div>
             ) : null}
-            <Box ref={contentNode} width="100%">
+            <Box ref={contentNode} width="100%" paddingBlockStart="100">
               <BlockStack gap="200">
-                <div>{children}</div>
+                <BlockStack gap="100">
+                  {bannerTitle}
+                  <div>{children}</div>
+                </BlockStack>
                 {actionButtons}
               </BlockStack>
             </Box>
