@@ -246,6 +246,10 @@
   height: 100vh;
   overflow: hidden;
 
+  @media (--p-breakpoints-sm-up) {
+    max-width: unset;
+  }
+
   .hasTopBar & {
     /* stylelint-disable-next-line -- polaris custom global property */
     margin-top: var(--pg-top-bar-height);
