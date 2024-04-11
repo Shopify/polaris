@@ -823,6 +823,7 @@
 
   &:last-child:not(.TableHeading-flush) {
     padding-right: var(--p-space-300);
+    overflow-x: hidden;
   }
 }
 

@@ -3094,6 +3094,197 @@ export function WithSortableHeadings() {
   );
 }
 
+export function WithSortableHeadingsLastElementAlignmentEnd() {
+  const [sortIndex, setSortIndex] = useState(0);
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableProps['sortDirection']>('descending');
+
+  const sortToggleLabels = {
+    0: {ascending: 'A-Z', descending: 'Z-A'},
+    1: {ascending: 'Ascending', descending: 'Descending'},
+    2: {ascending: 'Newest', descending: 'Oldest'},
+    3: {ascending: 'Ascending', descending: 'Ascending'},
+    4: {ascending: 'A-Z', descending: 'Z-A'},
+    5: {ascending: 'A-Z', descending: 'Z-A'},
+    6: {ascending: 'A-Z', descending: 'Z-A'},
+    7: {ascending: 'A-Z', descending: 'Z-A'},
+  };
+
+  const initialRows = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      date: '2022-02-04',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Paid',
+      notes: '',
+    },
+    {
+      id: '2561',
+      url: '#',
+      date: '2022-01-19',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer lives on the 3rd floor',
+    },
+    {
+      id: '1245',
+      url: '#',
+      date: '2021-12-12',
+      name: 'Anne-Marie Johnson',
+      location: 'Portland, USA',
+      orders: 10,
+      amountSpent: '$250',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: '',
+    },
+    {
+      id: '8741',
+      url: '#',
+      date: '2022-05-11',
+      name: 'Bradley Stevens',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
+    },
+  ];
+  const [sortedRows, setSortedRows] = useState(
+    sortRows(initialRows, sortIndex, sortDirection),
+  );
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const rows = sortedRows ?? initialRows;
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows);
+
+  function handleClickSortHeading(index, direction) {
+    setSortIndex(index);
+    setSortDirection(direction);
+    const newSortedRows = sortRows(rows, index, direction);
+    setSortedRows(newSortedRows);
+  }
+
+  function sortRows(localRows, index, direction) {
+    return [...localRows].sort((rowA, rowB) => {
+      const key = index === 0 ? 'name' : 'location';
+      if (rowA[key] < rowB[key]) {
+        return direction === 'descending' ? -1 : 1;
+      }
+      if (rowA[key] > rowB[key]) {
+        return direction === 'descending' ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  const rowMarkup = rows.map(
+    (
+      {
+        id,
+        name,
+        date,
+        location,
+        orders,
+        amountSpent,
+        fulfillmentStatus,
+        paymentStatus,
+        notes,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span" variant="bodyMd">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{notes}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        condensed={useBreakpoints().smDown}
+        resourceName={resourceName}
+        itemCount={rows.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Date', defaultSortDirection: 'ascending'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+
+          {title: 'Location'},
+          {title: 'Fulfillment status'},
+          {title: 'Payment status'},
+          {title: 'Notes', alignment: 'end'},
+        ]}
+        sortable={[true, true, false, true, true, false, false, true]}
+        sortDirection={sortDirection}
+        sortColumnIndex={sortIndex}
+        onSort={handleClickSortHeading}
+        sortToggleLabels={sortToggleLabels}
+        lastColumnSticky
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
 export function WithSortableCustomHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
   const [sortDirection, setSortDirection] =
