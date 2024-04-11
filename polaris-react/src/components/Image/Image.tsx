@@ -1,4 +1,5 @@
 import React, {useCallback, forwardRef} from 'react';
+import type {Ref} from 'react';
 
 interface SourceSet {
   source: string;
@@ -14,6 +15,7 @@ export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   sourceSet?: SourceSet[];
   onLoad?(): void;
   onError?(): void;
+  ref?: Ref<HTMLImageElement>;
 }
 
 export const Image = forwardRef<HTMLImageElement, ImageProps>(
