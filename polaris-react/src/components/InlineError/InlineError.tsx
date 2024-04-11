@@ -24,7 +24,7 @@ export function InlineError({message, fieldID}: InlineErrorProps) {
       <div className={styles.Icon}>
         <Icon source={AlertCircleIcon} />
       </div>
-      <Text as="span" variant="bodyMd">
+      <Text as="span" variant="bodySm">
         {message}
       </Text>
     </div>
