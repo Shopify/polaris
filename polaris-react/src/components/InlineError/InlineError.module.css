@@ -2,6 +2,10 @@
   display: flex;
   color: var(--p-color-text-critical);
   fill: var(--p-color-text-critical);
+
+  & > span {
+    margin-top: var(--p-space-050);
+  }
 }
 
 .Icon {
