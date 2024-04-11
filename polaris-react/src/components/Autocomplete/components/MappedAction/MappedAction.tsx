@@ -76,7 +76,7 @@ export function MappedAction({
         {contentText}
       </Text>
       {helpText ? (
-        <Text as="p" variant="bodyMd" tone="subdued">
+        <Text as="p" variant="bodySm" tone="subdued">
           {helpText}
         </Text>
       ) : null}
