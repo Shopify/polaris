@@ -20,8 +20,9 @@ export enum SortButtonDirection {
 export interface SortButtonProps {
   choices: SortButtonChoice[];
   selected: ChoiceListProps['selected'];
-  onChange: (selected: string[]) => void;
   disabled?: boolean;
+  disclosureZIndexOverride?: number;
+  onChange: (selected: string[]) => void;
   onChangeKey?: (key: string) => void;
   onChangeDirection?: (direction: string) => void;
 }
@@ -29,8 +30,9 @@ export interface SortButtonProps {
 export function SortButton({
   choices,
   selected,
-  onChange,
   disabled,
+  disclosureZIndexOverride,
+  onChange,
   onChangeKey,
   onChangeDirection,
 }: SortButtonProps) {
@@ -99,6 +101,7 @@ export function SortButton({
       content={i18n.translate('Polaris.IndexFilters.SortButton.tooltip')}
       preferredPosition="above"
       hoverDelay={400}
+      zIndexOverride={disclosureZIndexOverride}
     >
       <Button
         size="slim"
@@ -114,12 +117,13 @@ export function SortButton({
 
   return (
     <Popover
+      fluidContent
       active={active && !disabled}
       activator={sortButton}
       autofocusTarget="first-node"
       onClose={handleClose}
       preferredAlignment="right"
-      fluidContent
+      zIndexOverride={disclosureZIndexOverride}
     >
       <Box
         minWidth="148px"
