@@ -85,6 +85,16 @@ export function Avatar({
   const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
 
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log('Avatar mounting');
+
+    return () => {
+      // eslint-disable-next-line no-console
+      console.log('Avatar unmounting');
+    };
+  }, []);
+
   const [status, setStatus] = useState<Status>(Status.Pending);
 
   // If the source changes, set the status back to pending
@@ -99,6 +109,8 @@ export function Avatar({
     }
   }, [onError]);
   const handleLoad = useCallback(() => {
+    // eslint-disable-next-line no-console
+    console.log('image loaded');
     setStatus(Status.Loaded);
   }, []);
 
@@ -137,6 +149,9 @@ export function Avatar({
     styles.Image,
     status !== Status.Loaded && styles.hidden,
   );
+
+  // eslint-disable-next-line no-console
+  console.log({source, isAfterInitialMount, status});
 
   const imageMarkUp =
     source && isAfterInitialMount && status !== Status.Errored ? (
