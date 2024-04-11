@@ -7,7 +7,7 @@ import {
   AlertDiamondIcon,
   InfoIcon,
   AlertTriangleIcon,
-  CheckIcon,
+  CheckCircleIcon,
 } from '@shopify/polaris-icons';
 import {useImperativeHandle, useRef, useState} from 'react';
 
@@ -39,7 +39,7 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
       text: 'text-success',
       icon: 'text-success',
     },
-    icon: CheckIcon,
+    icon: CheckCircleIcon,
   },
   warning: {
     withinPage: {

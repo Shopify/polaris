@@ -3,6 +3,12 @@
   position: relative;
   display: flex;
 
+  margin-inline: var(--p-space-300);
+
+  @media (--p-breakpoints-sm-up) {
+    margin-inline: var(--p-space-0);
+  }
+
   &:focus {
     outline: none;
   }
@@ -21,10 +27,15 @@
 }
 
 .withinPage {
-  @mixin shadow-bevel var(--p-shadow-200), var(--p-border-radius-0);
-
   @media (--p-breakpoints-sm-up) {
     @mixin shadow-bevel var(--p-shadow-200), var(--p-border-radius-300);
+  }
+
+  @media (--p-breakpoints-xs-only) {
+    border-width: var(--p-border-width-025);
+    border-style: solid;
+    border-color: var(--p-color-border);
+    border-radius: var(--p-border-radius-300);
   }
 
   + .Banner {

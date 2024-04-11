@@ -23,7 +23,6 @@ import type {IconProps} from '../Icon';
 import {BannerContext} from '../../utilities/banner-context';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {classNames} from '../../utilities/css';
-import {useBreakpoints} from '../../utilities/breakpoints';
 import {useI18n} from '../../utilities/i18n';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {BlockStack} from '../BlockStack';
@@ -81,6 +80,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         onMouseUp={handleMouseUp}
         onKeyUp={handleKeyUp}
         onBlur={handleBlur}
+        style={{overflow: 'hidden'}}
       >
         <BannerLayout {...props} />
       </div>
@@ -198,21 +198,12 @@ export function DefaultBanner({
   dismissButton,
   children,
 }: PropsWithChildren<BannerLayoutProps>) {
-  const {smUp} = useBreakpoints();
   const hasContent = children || actionButtons;
 
   return (
     <Box width="100%">
       <BlockStack align="space-between">
-        <Box
-          background={backgroundColor}
-          color={textColor}
-          borderStartStartRadius={smUp ? '300' : undefined}
-          borderStartEndRadius={smUp ? '300' : undefined}
-          borderEndStartRadius={!hasContent && smUp ? '300' : undefined}
-          borderEndEndRadius={!hasContent && smUp ? '300' : undefined}
-          padding="300"
-        >
+        <Box background={backgroundColor} color={textColor} padding="300">
           <InlineStack
             align="space-between"
             blockAlign="center"

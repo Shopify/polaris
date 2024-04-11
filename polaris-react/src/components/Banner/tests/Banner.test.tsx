@@ -1,10 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 import {
   PlusCircleIcon,
-  CheckIcon,
   AlertTriangleIcon,
   InfoIcon,
   AlertDiamondIcon,
+  CheckCircleIcon,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
@@ -356,7 +356,7 @@ describe('<Banner />', () => {
 
   describe('icon', () => {
     it.each([
-      ['success', CheckIcon],
+      ['success', CheckCircleIcon],
       ['info', InfoIcon],
       ['warning', AlertTriangleIcon],
       ['critical', AlertDiamondIcon],
