@@ -118,6 +118,8 @@ function createFrameContext({
   toastMessages = [],
   setContextualSaveBar = noop,
   removeContextualSaveBar = noop,
+  contextualSaveBarVisible = false,
+  contextualSaveBarProps = {},
   startLoading = noop,
   stopLoading = noop,
 }: Partial<FrameContextType> = {}): FrameContextType {
@@ -128,6 +130,8 @@ function createFrameContext({
     toastMessages,
     setContextualSaveBar,
     removeContextualSaveBar,
+    contextualSaveBarVisible,
+    contextualSaveBarProps,
     startLoading,
     stopLoading,
   };

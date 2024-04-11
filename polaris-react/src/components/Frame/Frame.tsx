@@ -253,13 +253,21 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       );
 
     const contextualSaveBarMarkup = (
-      <CSSAnimation
-        in={showContextualSaveBar}
-        className={styles.ContextualSaveBar}
-        type="fade"
-      >
-        <ContextualSaveBar {...this.contextualSaveBar} />
-      </CSSAnimation>
+      <UseFeatures>
+        {({dynamicTopBarAndReframe}) =>
+          dynamicTopBarAndReframe ? (
+            <></>
+          ) : (
+            <CSSAnimation
+              in={showContextualSaveBar}
+              className={styles.ContextualSaveBar}
+              type="fade"
+            >
+              <ContextualSaveBar {...this.contextualSaveBar} />
+            </CSSAnimation>
+          )
+        }
+      </UseFeatures>
     );
 
     const navigationOverlayMarkup =
@@ -282,6 +290,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       stopLoading: this.stopLoading,
       setContextualSaveBar: this.setContextualSaveBar,
       removeContextualSaveBar: this.removeContextualSaveBar,
+      contextualSaveBarVisible: this.state.showContextualSaveBar,
+      contextualSaveBarProps: this.contextualSaveBar,
     };
 
     return (
