@@ -7,6 +7,8 @@ import {TextOption} from '../TextOption';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
 import {ActionContext} from '../../../../utilities/listbox/context';
+import {InlineStack} from '../../../InlineStack';
+import {Checkbox} from '../../../Checkbox';
 
 import styles from './Option.module.css';
 
@@ -71,7 +73,12 @@ export const Option = memo(function Option({
         {children}
       </TextOption>
     ) : (
-      children
+      <InlineStack blockAlign="center">
+        <div style={{pointerEvents: 'none'}}>
+          <Checkbox checked={selected} disabled={disabled} label="" />
+        </div>
+        {children}
+      </InlineStack>
     );
 
   const sectionAttributes = {

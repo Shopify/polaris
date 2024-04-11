@@ -468,7 +468,7 @@ export function WithMultiSelectAndManualSelection() {
               selected={selectedOptions.includes(value)}
               accessibilityLabel={label}
             >
-              {label}
+              <div>{label}</div>
             </Listbox.Option>
           );
         })
