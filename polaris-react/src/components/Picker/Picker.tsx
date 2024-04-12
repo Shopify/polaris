@@ -1,4 +1,10 @@
-import React, {useState, useMemo, useCallback, isValidElement} from 'react';
+import React, {
+  useState,
+  useMemo,
+  useCallback,
+  isValidElement,
+  useEffect,
+} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Popover} from '../Popover';
@@ -27,7 +33,7 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
   activator: ActivatorProps;
   /** Allows more than one option to be selected */
   allowMultiple?: boolean;
-  /** The options to be listed within the picker */
+  /** The options to be listed within the picker. Options should be memoized */
   options?: OptionProps[];
   /** Used to add a new picker option that isn't listed */
   addAction?: OptionProps & {icon?: IconProps['source']};
@@ -66,11 +72,11 @@ export function Picker({
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [query, setQuery] = useState<string>('');
-  const [filteredOptions, setFilteredOptions] = useState<OptionProps[] | null>(
-    options,
-  );
-
+  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>();
   const shouldOpen = !popoverActive;
+
+  useEffect(() => setFilteredOptions(options), [options]);
+
   const handleClose = useCallback(() => {
     setPopoverActive(false);
     onClose?.();

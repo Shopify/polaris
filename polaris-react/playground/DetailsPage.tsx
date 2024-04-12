@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useMemo, useCallback, useRef, useState} from 'react';
 import {
   ChartVerticalIcon,
   AppsIcon,
@@ -76,6 +76,44 @@ export function DetailsPage() {
   const [emailFieldValue, setEmailFieldValue] = useState(
     defaultState.current.emailFieldValue,
   );
+
+  const [addedTags, setAddedTags] = useState<
+    {value: string; children: string}[]
+  >([]);
+
+  const tags = useMemo(
+    () => [
+      {value: 'Outdoors', children: 'Outdoors'},
+      {value: 'Adventure', children: 'Adventure'},
+      {value: 'Hiking', children: 'Hiking'},
+      {value: 'Camping', children: 'Camping'},
+      {value: 'Backpacking', children: 'Backpacking'},
+      {value: 'Mountaineering', children: 'Mountaineering'},
+      {value: 'Skiing', children: 'Skiing'},
+      {value: 'Snowboarding', children: 'Snowboarding'},
+      ...addedTags,
+    ],
+    [addedTags],
+  );
+
+  const handleTagSelect = useCallback(
+    (newTag: string) => {
+      console.log('tag select');
+      if (
+        tags.some((tag) => tag.value === newTag) ||
+        addedTags.some((tag) => tag.value === newTag)
+      ) {
+        return;
+      }
+      setAddedTags((addedTags) => [
+        ...addedTags,
+        {value: newTag, children: newTag},
+      ]);
+      setQuery('');
+    },
+    [addedTags, tags],
+  );
+
   const [storeName, setStoreName] = useState(
     defaultState.current.nameFieldValue,
   );
@@ -651,16 +689,8 @@ export function DetailsPage() {
                     value: query,
                     onChange: (value) => setQuery(value),
                   }}
-                  options={[
-                    {value: 'Outdoors', children: 'Outdoors'},
-                    {value: 'Adventure', children: 'Adventure'},
-                    {value: 'Hiking', children: 'Hiking'},
-                    {value: 'Camping', children: 'Camping'},
-                    {value: 'Backpacking', children: 'Backpacking'},
-                    {value: 'Mountaineering', children: 'Mountaineering'},
-                    {value: 'Skiing', children: 'Skiing'},
-                    {value: 'Snowboarding', children: 'Snowboarding'},
-                  ]}
+                  options={tags}
+                  onSelect={handleTagSelect}
                   addAction={{
                     value: query,
                     children: `Add ${query}`,
@@ -691,6 +721,7 @@ export function DetailsPage() {
                     {value: 'Salomon', children: 'Salomon'},
                     {value: 'Burton', children: 'Burton'},
                   ]}
+                  onSelect={(value) => console.log(value)}
                   addAction={{
                     value: query,
                     children: `Add ${query}`,
