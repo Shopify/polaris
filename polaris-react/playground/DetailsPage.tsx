@@ -98,7 +98,6 @@ export function DetailsPage() {
 
   const handleTagSelect = useCallback(
     (newTag: string) => {
-      console.log('tag select');
       if (
         tags.some((tag) => tag.value === newTag) ||
         addedTags.some((tag) => tag.value === newTag)
