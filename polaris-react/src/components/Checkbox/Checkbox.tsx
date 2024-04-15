@@ -5,7 +5,7 @@ import React, {
   useContext,
   useId,
 } from 'react';
-import {MinusIcon} from '@shopify/polaris-icons';
+import {MinusIcon, CheckIcon} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
@@ -132,27 +132,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       ? {indeterminate: 'true', 'aria-checked': 'mixed' as const}
       : {'aria-checked': isChecked};
 
-    const iconSource = (
-      <svg
-        viewBox="0 0 16 16"
-        shapeRendering="geometricPrecision"
-        textRendering="geometricPrecision"
-      >
-        <path
-          className={classNames(checked && styles.checked)}
-          d="M1.5,5.5L3.44655,8.22517C3.72862,8.62007,4.30578,8.64717,4.62362,8.28044L10.5,1.5"
-          transform="translate(2 2.980376)"
-          opacity="0"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          pathLength="1"
-        />
-      </svg>
-    );
-
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
@@ -211,7 +190,11 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
               !isIndeterminate && styles.animated,
             )}
           >
-            {isIndeterminate ? <Icon source={MinusIcon} /> : iconSource}
+            {isIndeterminate ? (
+              <Icon source={MinusIcon} />
+            ) : (
+              <Icon source={CheckIcon} />
+            )}
           </span>
         </span>
       </Choice>
