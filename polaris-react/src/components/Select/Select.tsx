@@ -9,6 +9,7 @@ import {Icon} from '../Icon';
 import {Text} from '../Text';
 import type {Error} from '../../types';
 import {useToggle} from '../../utilities/use-toggle';
+import {useIsMobileFormsInline} from '../../utilities/use-is-mobile-forms-inline';
 
 import styles from './Select.module.css';
 
@@ -102,13 +103,17 @@ export function Select({
   tone,
 }: SelectProps) {
   const {value: focused, toggle: toggleFocused} = useToggle(false);
-
+  const isMobileFormsInline = useIsMobileFormsInline();
   const uniqId = useId();
   const id = idProp ?? uniqId;
   const labelHidden = labelInline ? true : labelHiddenProp;
 
   const className = classNames(
     styles.Select,
+    isMobileFormsInline && styles.labelInline,
+    labelAction && styles.labelAction,
+    labelInline && styles.labelOneLine,
+    labelHidden && styles.labelHidden,
     error && styles.error,
     tone && styles[variationName('tone', tone)],
     disabled && styles.disabled,
@@ -198,6 +203,7 @@ export function Select({
       error={error}
       action={labelAction}
       labelHidden={labelHidden}
+      labelInline={isMobileFormsInline && !labelAction}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
       disabled={disabled}

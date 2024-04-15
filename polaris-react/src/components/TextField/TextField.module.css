@@ -322,6 +322,18 @@
   }
 }
 
+.tallInput .Input {
+  padding-block-start: 18px;
+  padding-block-end: 18px;
+}
+.tallInput.labelInside.hasValue {
+  .Input,
+  .Prefix {
+    padding-block-start: 28px;
+    padding-block-end: 8px;
+  }
+}
+
 .borderless {
   .Input,
   .Backdrop {
@@ -393,6 +405,21 @@
   border-top-color: #898f94;
   border-radius: var(--p-border-radius-200);
   pointer-events: none;
+}
+
+@media (--p-breakpoints-md-down) {
+  .focus > .Input,
+  .focus > .VerticalContent,
+  .focus > .InputAndSuffixWrapper,
+  .TextField:focus-within > .Input,
+  .Input:focus-visible {
+    /* stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- outline based on child focus requires complex specificity */
+    ~ .Backdrop {
+      border-color: var(--p-color-border-focus);
+      outline-width: var(--p-border-width-025);
+      outline-offset: 0;
+    }
+  }
 }
 
 .Prefix,

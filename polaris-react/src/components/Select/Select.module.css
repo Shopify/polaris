@@ -77,8 +77,25 @@
   text-overflow: ellipsis;
 }
 
+.labelInline .SelectedOption {
+  padding-block-start: 22px;
+  padding-block-end: 2px;
+}
+
+.labelOneLine.labelInline .SelectedOption,
+.labelInline.labelHidden .SelectedOption,
+.labelInline.labelAction .SelectedOption {
+  padding-block-start: 12px;
+  padding-block-end: 12px;
+}
+
 .Prefix {
   padding-right: var(--p-space-100);
+}
+
+.labelInline .Prefix {
+  padding-block-start: 22px;
+  padding-block-end: 2px;
 }
 
 .Icon svg {
@@ -164,7 +181,17 @@
     outline-offset: var(--p-space-025);
   }
 }
-
+@media (--p-breakpoints-md-down) {
+  .Input:focus-visible {
+    ~ .Backdrop {
+      border-color: var(--p-color-border-focus);
+      border-width: var(--p-border-width-025);
+      background-color: var(--p-color-input-bg-surface-active);
+      outline: var(--p-border-width-025) solid var(--p-color-border-focus);
+      outline-offset: 0;
+    }
+  }
+}
 .toneMagic {
   .Content {
     color: var(--p-color-text-magic);
