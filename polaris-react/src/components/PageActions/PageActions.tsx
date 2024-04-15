@@ -37,9 +37,7 @@ export function PageActions({
   let secondaryActionsMarkup: MaybeJSX = null;
   if (isInterface(secondaryActions) && secondaryActions.length > 0) {
     secondaryActionsMarkup = (
-      <ButtonGroup>
-        {buttonsFrom(secondaryActions, {viewTransition: true})}
-      </ButtonGroup>
+      <ButtonGroup>{buttonsFrom(secondaryActions)}</ButtonGroup>
     );
   } else if (isReactElement(secondaryActions)) {
     secondaryActionsMarkup = <>{secondaryActions}</>;
