@@ -26,6 +26,22 @@
   margin-bottom: var(--p-space-100);
 }
 
+.labelInline {
+  position: relative;
+}
+
+.labelInline .LabelWrapper {
+  position: absolute;
+  top: 6px;
+  left: var(--p-space-300);
+  right: var(--p-space-300);
+  z-index: var(--p-z-index-2);
+}
+
+.labelInline:not(.disabled) .LabelWrapper {
+  color: var(--p-color-text-secondary);
+}
+
 .HelpText {
   margin-top: var(--p-space-100);
 }

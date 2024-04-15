@@ -33,6 +33,8 @@ export interface LabelledProps {
   disabled?: boolean;
   /** Labels signify a readOnly control */
   readOnly?: boolean;
+
+  labelInline?: boolean;
 }
 
 export function Labelled({
@@ -46,9 +48,11 @@ export function Labelled({
   requiredIndicator,
   disabled,
   readOnly,
+  labelInline,
   ...rest
 }: LabelledProps) {
   const className = classNames(
+    labelInline && styles.labelInline,
     labelHidden && styles.hidden,
     disabled && styles.disabled,
     readOnly && styles.readOnly,
@@ -85,6 +89,7 @@ export function Labelled({
         requiredIndicator={requiredIndicator}
         {...rest}
         hidden={false}
+        variant={labelInline ? 'bodyXs' : undefined}
       >
         {label}
       </Label>
