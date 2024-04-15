@@ -20,6 +20,7 @@ import {Icon} from '../Icon';
 import {Text} from '../Text';
 import {Spinner as LoadingSpinner} from '../Spinner';
 import {useEventListener} from '../../utilities/use-event-listener';
+import {useIsMobileFormsInline} from '../../utilities/use-is-mobile-forms-inline';
 
 import {Resizer, Spinner} from './components';
 import type {SpinnerProps} from './components';
@@ -211,7 +212,7 @@ export function TextField({
   helpText,
   label,
   labelAction,
-  labelHidden,
+  labelHidden: incomingLabelHidden,
   disabled,
   clearButton,
   readOnly,
@@ -262,6 +263,14 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
+  const isMobileFormsInline = useIsMobileFormsInline();
+  const isTallInput = isMobileFormsInline && !verticalContent;
+
+  const labelInside =
+    isTallInput && !incomingLabelHidden && !labelAction && !connectedLeft;
+
+  const labelHidden = labelInside ? value.length === 0 : incomingLabelHidden;
+
   const uniqId = useId();
   const id = idProp ?? uniqId;
 
@@ -308,6 +317,9 @@ export function TextField({
 
   const className = classNames(
     styles.TextField,
+    isTallInput && styles.tallInput,
+    labelInside && styles.labelInside,
+    Boolean(labelAction) && styles.labelAction,
     Boolean(normalizedValue) && styles.hasValue,
     disabled && styles.disabled,
     readOnly && styles.readOnly,
@@ -574,7 +586,7 @@ export function TextField({
     role,
     autoFocus,
     value: normalizedValue,
-    placeholder,
+    placeholder: labelInside ? placeholder || label : placeholder,
     style,
     autoComplete,
     className: inputClassName,
@@ -666,6 +678,7 @@ export function TextField({
       error={error}
       action={labelAction}
       labelHidden={labelHidden}
+      labelInline={labelInside}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
       disabled={disabled}
