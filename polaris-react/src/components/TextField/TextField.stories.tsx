@@ -18,6 +18,7 @@ import {
   Link,
 } from '@shopify/polaris';
 import {
+  CalendarIcon,
   DeleteIcon,
   QuestionCircleIcon,
   SearchIcon,
@@ -64,12 +65,14 @@ export const Magic = {
           tone="magic"
         />
         <TextField
-          label="Prefix icon"
+          label="Search"
           type="search"
+          labelHidden
           value={value1}
           onChange={handleChange1}
           prefix={<Icon source={SearchIcon} />}
           autoComplete="off"
+          connectedRight={<Button>Browse</Button>}
           tone="magic"
         />
         <TextField
@@ -798,12 +801,14 @@ export const All = {
             tone="magic"
           />
           <TextField
-            label="Prefix icon"
+            label="Search"
             type="search"
+            labelHidden
             value="Value"
             onChange={() => {}}
             prefix={<Icon source={SearchIcon} />}
             autoComplete="off"
+            connectedRight={<Button>Browse</Button>}
           />
           <TextField
             label="Prefix icon with magic"
@@ -1123,6 +1128,42 @@ export const WithLoading = {
         clearButton
         onClearButtonClick={handleClearButtonClick}
         loading
+      />
+    );
+  },
+};
+
+export const WithNumberStepperLikeProps = {
+  render() {
+    const [value, setValue] = useState('0');
+
+    return (
+      <TextField
+        label="Quantity"
+        value={value}
+        onChange={setValue}
+        type="number"
+        labelHidden
+        min={0}
+        max={10}
+        autoComplete="off"
+        suffix="/ 10"
+      />
+    );
+  },
+};
+
+export const WithDatePickerLikeProps = {
+  render() {
+    const [value, setValue] = useState('');
+
+    return (
+      <TextField
+        label="Date"
+        value={value}
+        onChange={setValue}
+        prefix={<Icon source={CalendarIcon} />}
+        autoComplete="off"
       />
     );
   },
