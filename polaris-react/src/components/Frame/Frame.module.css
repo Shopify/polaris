@@ -279,7 +279,7 @@
 }
 
 .Content-TopBarAndReframe {
-  overflow-y: scroll;
+  overflow-y: auto;
   /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- top bar global space */
   margin-bottom: var(--pg-top-bar-height);
   margin-right: var(--p-space-050);
