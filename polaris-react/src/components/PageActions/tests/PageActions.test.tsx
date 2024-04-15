@@ -60,9 +60,7 @@ describe('<PageActions />', () => {
 
     it('renders buttons for each secondaryAction', () => {
       mountWithApp(<PageActions secondaryActions={mockActions} />);
-      expect(buttonsFrom).toHaveBeenCalledWith(mockActions, {
-        viewTransition: true,
-      });
+      expect(buttonsFrom).toHaveBeenCalledWith(mockActions);
     });
 
     it('renders a button group when defined', () => {
