@@ -327,7 +327,17 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                           styles['Content-TopBarAndReframe'],
                       )}
                     >
-                      {children}
+                      {features?.dynamicTopBarAndReframe ? (
+                        <div
+                          className={
+                            styles['ScrollbarSafeArea-TopBarAndReframe']
+                          }
+                        >
+                          {children}
+                        </div>
+                      ) : (
+                        children
+                      )}
                     </div>
                   </main>
                 </div>
