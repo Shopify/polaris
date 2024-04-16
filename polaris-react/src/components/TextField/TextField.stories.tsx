@@ -751,12 +751,14 @@ export function All() {
           tone="magic"
         />
         <TextField
-          label="Prefix icon"
+          label="Search"
           type="search"
+          labelHidden
           value="Value"
           onChange={() => {}}
           prefix={<Icon source={SearchIcon} />}
           autoComplete="off"
+          connectedRight={<Button>Browse</Button>}
         />
         <TextField
           label="Prefix icon with magic"

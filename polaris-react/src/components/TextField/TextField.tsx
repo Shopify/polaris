@@ -264,8 +264,7 @@ export function TextField({
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
   const isMobileFormsInline = useIsMobileFormsInline();
-  const isTallInput =
-    isMobileFormsInline && !connectedLeft && !(incomingLabelHidden && prefix);
+  const isTallInput = isMobileFormsInline && !verticalContent && !connectedLeft;
 
   const labelInside = isTallInput && !incomingLabelHidden && !labelAction;
 
@@ -586,7 +585,7 @@ export function TextField({
     role,
     autoFocus,
     value: normalizedValue,
-    placeholder: labelInside ? label || placeholder : placeholder,
+    placeholder: labelInside ? placeholder || label : placeholder,
     style,
     autoComplete,
     className: inputClassName,

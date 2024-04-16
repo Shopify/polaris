@@ -323,14 +323,19 @@
 }
 
 .tallInput .Input {
-  padding-block-start: 18px;
-  padding-block-end: 18px;
+  padding-block-start: 12px;
+  padding-block-end: 12px;
+}
+
+.tallInput.labelInside .Input {
+  padding-block-start: 20px;
+  padding-block-end: 20px;
 }
 .tallInput.labelInside.hasValue {
   .Input,
   .Prefix {
-    padding-block-start: 28px;
-    padding-block-end: 8px;
+    padding-block-start: 30px;
+    padding-block-end: 10px;
   }
 }
 
@@ -408,6 +413,10 @@
 }
 
 @media (--p-breakpoints-md-down) {
+  .Backdrop {
+    border-width: var(--p-border-width-025);
+  }
+
   .focus > .Input,
   .focus > .VerticalContent,
   .focus > .InputAndSuffixWrapper,

@@ -106,13 +106,18 @@ export function Select({
   const isMobileFormsInline = useIsMobileFormsInline();
   const uniqId = useId();
   const id = idProp ?? uniqId;
+  const isTallSelect = isMobileFormsInline;
+  const labelInside =
+    isTallSelect && !labelHiddenProp && !labelAction && !labelInline;
   const labelHidden = labelInline ? true : labelHiddenProp;
 
   const className = classNames(
     styles.Select,
-    isMobileFormsInline && styles.labelInline,
-    labelAction && styles.labelAction,
-    labelInline && styles.labelOneLine,
+    isTallSelect && styles.tallSelect,
+    labelInside && styles.labelInside,
+    // isMobileFormsInline && styles.labelInline,
+    // labelAction && styles.labelAction,
+    // labelInline && styles.labelOneLine,
     labelHidden && styles.labelHidden,
     error && styles.error,
     tone && styles[variationName('tone', tone)],
@@ -203,7 +208,7 @@ export function Select({
       error={error}
       action={labelAction}
       labelHidden={labelHidden}
-      labelInline={isMobileFormsInline && !labelAction}
+      labelInline={labelInside}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
       disabled={disabled}
