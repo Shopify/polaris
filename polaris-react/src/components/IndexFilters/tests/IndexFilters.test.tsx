@@ -141,11 +141,39 @@ describe('IndexFilters', () => {
     });
   });
 
+  it('passes the disclosureZIndexOverride to the Tabs when provided', () => {
+    const disclosureZIndexOverride = 517;
+    const wrapper = mountWithApp(
+      <IndexFilters
+        {...defaultProps}
+        disclosureZIndexOverride={disclosureZIndexOverride}
+      />,
+    );
+
+    expect(wrapper).toContainReactComponent(Tabs, {
+      disclosureZIndexOverride,
+    });
+  });
+
   it('renders the SearchFilterButton tooltipContent with keyboard shortcut by default', () => {
     const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
 
     expect(wrapper).toContainReactComponent(SearchFilterButton, {
       tooltipContent: 'Search and filter (F)',
+    });
+  });
+
+  it('passes the disclosureZIndexOverride to the SearchFilterButton when provided', () => {
+    const disclosureZIndexOverride = 517;
+    const wrapper = mountWithApp(
+      <IndexFilters
+        {...defaultProps}
+        disclosureZIndexOverride={disclosureZIndexOverride}
+      />,
+    );
+
+    expect(wrapper).toContainReactComponent(SearchFilterButton, {
+      disclosureZIndexOverride,
     });
   });
 
@@ -161,13 +189,42 @@ describe('IndexFilters', () => {
     expect(defaultProps.onQueryChange).toHaveBeenCalledWith('bar');
   });
 
-  it('onSort gets called correctly', () => {
-    const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
-    wrapper.act(() => {
-      wrapper.find(SortButton)!.trigger('onChange', ['customer-name asc']);
+  describe('sortOptions', () => {
+    it('does not render the SortButton component when sortOptions is not provided', () => {
+      const wrapper = mountWithApp(
+        <IndexFilters {...defaultProps} sortOptions={undefined} />,
+      );
+
+      expect(wrapper).not.toContainReactComponent(SortButton);
     });
 
-    expect(defaultProps.onSort).toHaveBeenCalledWith(['customer-name asc']);
+    it('renders the SortButton component when sortOptions is provided', () => {
+      const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
+      expect(wrapper).toContainReactComponent(SortButton);
+    });
+
+    it('passes zIndexOverride to the SortButton component when provided', () => {
+      const disclosureZIndexOverride = 517;
+      const wrapper = mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          disclosureZIndexOverride={disclosureZIndexOverride}
+        />,
+      );
+
+      expect(wrapper).toContainReactComponent(SortButton, {
+        disclosureZIndexOverride,
+      });
+    });
+
+    it('onSort gets called correctly', () => {
+      const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
+      wrapper.act(() => {
+        wrapper.find(SortButton)!.trigger('onChange', ['customer-name asc']);
+      });
+
+      expect(defaultProps.onSort).toHaveBeenCalledWith(['customer-name asc']);
+    });
   });
 
   describe('filters', () => {

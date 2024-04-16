@@ -62,6 +62,7 @@ export const Tab = forwardRef(
       onTogglePopover,
       viewNames,
       tabIndexOverride,
+      disclosureZIndexOverride,
       onFocus,
     }: TabPropsWithAddedMethods,
     ref: RefObject<HTMLElement>,
@@ -371,6 +372,7 @@ export const Tab = forwardRef(
             activator={activator}
             autofocusTarget="first-node"
             onClose={togglePopoverActive}
+            zIndexOverride={disclosureZIndexOverride}
           >
             <div className={styles.ActionListWrap}>
               <ActionList actionRole="menuitem" items={formattedActions} />

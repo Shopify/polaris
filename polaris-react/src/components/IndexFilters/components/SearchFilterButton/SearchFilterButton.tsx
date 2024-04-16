@@ -13,6 +13,7 @@ export interface SearchFilterButtonProps {
   label: string;
   disabled?: boolean;
   tooltipContent: string;
+  disclosureZIndexOverride?: number;
   hideFilters?: boolean;
   hideQueryField?: boolean;
   style: CSSProperties;
@@ -23,6 +24,7 @@ export function SearchFilterButton({
   label,
   disabled,
   tooltipContent,
+  disclosureZIndexOverride,
   style,
   hideFilters,
   hideQueryField,
@@ -53,7 +55,12 @@ export function SearchFilterButton({
   );
 
   return (
-    <Tooltip content={content} preferredPosition="above" hoverDelay={400}>
+    <Tooltip
+      content={content}
+      preferredPosition="above"
+      hoverDelay={400}
+      zIndexOverride={disclosureZIndexOverride}
+    >
       {activator}
     </Tooltip>
   );
