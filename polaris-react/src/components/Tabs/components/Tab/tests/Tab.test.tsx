@@ -98,10 +98,25 @@ describe('Tab', () => {
     expect(wrapper.find(UnstyledButton)).toContainReactText(icon);
   });
 
-  it('renders a Popover if selected=true and we have actions', () => {
+  it('renders a Popover if selected=true and has actions', () => {
     const wrapper = mountWithApp(<Tab {...defaultProps} selected />);
 
     expect(wrapper).toContainReactComponent(Popover);
+  });
+
+  it('passes disclosureZIndexOverride to Popover when provided', () => {
+    const disclosureZIndexOverride = 517;
+    const wrapper = mountWithApp(
+      <Tab
+        {...defaultProps}
+        selected
+        disclosureZIndexOverride={disclosureZIndexOverride}
+      />,
+    );
+
+    expect(wrapper).toContainReactComponent(Popover, {
+      zIndexOverride: disclosureZIndexOverride,
+    });
   });
 
   describe('callbacks', () => {

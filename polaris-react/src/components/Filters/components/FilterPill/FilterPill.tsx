@@ -25,14 +25,16 @@ export interface FilterPillProps extends FilterInterface {
   selected?: boolean;
   /** Whether the Popover will be initially open or not */
   initialActive: boolean;
+  /** Whether filtering is disabled */
+  disabled?: boolean;
+  /** Override z-index of popovers and tooltips */
+  disclosureZIndexOverride?: number;
+  /** Whether the filter should close when clicking inside another Popover. */
+  closeOnChildOverlayClick?: boolean;
   /** Callback invoked when the filter is removed */
   onRemove?(key: string): void;
   /** Callback invoked when the filter is clicked */
   onClick?(key: string): void;
-  /** Whether filtering is disabled */
-  disabled?: boolean;
-  /** Whether the filter should close when clicking inside another Popover. */
-  closeOnChildOverlayClick?: boolean;
 }
 
 export function FilterPill({
@@ -44,6 +46,7 @@ export function FilterPill({
   hideClearButton,
   selected,
   initialActive,
+  disclosureZIndexOverride,
   closeOnChildOverlayClick,
   onRemove,
   onClick,
@@ -207,6 +210,7 @@ export function FilterPill({
         key={filterKey}
         onClose={handlePopoverClose}
         preferredAlignment="left"
+        zIndexOverride={disclosureZIndexOverride}
         preventCloseOnChildOverlayClick={!closeOnChildOverlayClick}
       >
         <div className={styles.PopoverWrapper}>
