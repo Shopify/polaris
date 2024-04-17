@@ -237,7 +237,7 @@ importers:
         specifier: ^13.3.0
         version: 13.3.0(rollup@2.79.1)
       '@shopify/polaris':
-        specifier: ^13.0.0
+        specifier: ^13.1.0
         version: link:../polaris-react
       '@types/is-git-clean':
         specifier: ^1.1.0
@@ -433,7 +433,7 @@ importers:
         specifier: ^0.0.14
         version: 0.0.14(react@18.2.0)
       '@shopify/polaris':
-        specifier: ^13.0.0
+        specifier: ^13.1.0
         version: link:../polaris-react
       '@shopify/polaris-icons':
         specifier: ^9.0.0
@@ -4630,12 +4630,12 @@ packages:
     dev: true
 
   /@shopify/async@3.1.5:
-    resolution: {integrity: sha512-kc/QSwQpcG2Enm6QqLUvCSbPuEabX34DTo/NKQh5eT6ud6gOCwTL3jdIiybK9RzRe3gbEUJ9cfCuggT87bXcZg==, tarball: https://registry.npmjs.org/@shopify/async/-/async-3.1.5.tgz}
+    resolution: {integrity: sha512-kc/QSwQpcG2Enm6QqLUvCSbPuEabX34DTo/NKQh5eT6ud6gOCwTL3jdIiybK9RzRe3gbEUJ9cfCuggT87bXcZg==}
     engines: {node: '>=12.14.0'}
     dev: true
 
   /@shopify/cli-kit@3.10.1:
-    resolution: {integrity: sha512-10Gbc57XofLHCeUpIFjyxiXCQwd+LTQAFyOVFSczYgM/CP2Dxq0BuP1rCcJIWOozBWMbXIPo3GLtqRr5Zs4Fzg==, tarball: https://registry.npmjs.org/@shopify/cli-kit/-/cli-kit-3.10.1.tgz}
+    resolution: {integrity: sha512-10Gbc57XofLHCeUpIFjyxiXCQwd+LTQAFyOVFSczYgM/CP2Dxq0BuP1rCcJIWOozBWMbXIPo3GLtqRr5Zs4Fzg==}
     engines: {node: '>=14.13.1'}
     os: [darwin, linux, win32]
     dependencies:
@@ -4699,7 +4699,7 @@ packages:
     dev: true
 
   /@shopify/cli@3.10.1:
-    resolution: {integrity: sha512-8KCU5XjSx/72ceCHYD3L2M7vCuRvdWxpvFtE7eINzqR1t8VEX3g5x9xpSQpU2jHSv/A1ijLvksZsTQzkawUBcQ==, tarball: https://registry.npmjs.org/@shopify/cli/-/cli-3.10.1.tgz}
+    resolution: {integrity: sha512-8KCU5XjSx/72ceCHYD3L2M7vCuRvdWxpvFtE7eINzqR1t8VEX3g5x9xpSQpU2jHSv/A1ijLvksZsTQzkawUBcQ==}
     engines: {node: '>=14.13.1'}
     os: [darwin, linux, win32]
     hasBin: true
@@ -4716,7 +4716,7 @@ packages:
     dev: true
 
   /@shopify/eslint-plugin@42.0.1(@babel/core@7.23.6)(eslint@8.10.0)(jest@27.5.1)(prettier@2.8.8)(typescript@4.9.3):
-    resolution: {integrity: sha512-rtWKd0hdXkyhYo8XkG7TYYVFCIQV8cJ2zCQHaYmsq5p7q1EZ9itXoOcNFzrNjSmiqXoDjCDpBj+33bcZYHKG3Q==, tarball: https://registry.npmjs.org/@shopify/eslint-plugin/-/eslint-plugin-42.0.1.tgz}
+    resolution: {integrity: sha512-rtWKd0hdXkyhYo8XkG7TYYVFCIQV8cJ2zCQHaYmsq5p7q1EZ9itXoOcNFzrNjSmiqXoDjCDpBj+33bcZYHKG3Q==}
     peerDependencies:
       eslint: ^8.3.0
     dependencies:
@@ -4756,7 +4756,7 @@ packages:
     dev: true
 
   /@shopify/jest-dom-mocks@3.0.16:
-    resolution: {integrity: sha512-v4B8yXHuseNxERMUzTYb+f2r2WAKQwCIcAFFpk7/4sIjVy24vmhvkVw5wTvt2QSZre/5p3aSJ7RGq/gRmBvlUQ==, tarball: https://registry.npmjs.org/@shopify/jest-dom-mocks/-/jest-dom-mocks-3.0.16.tgz}
+    resolution: {integrity: sha512-v4B8yXHuseNxERMUzTYb+f2r2WAKQwCIcAFFpk7/4sIjVy24vmhvkVw5wTvt2QSZre/5p3aSJ7RGq/gRmBvlUQ==}
     engines: {node: '>=12.14.0'}
     dependencies:
       '@shopify/async': 3.1.5
@@ -4771,7 +4771,7 @@ packages:
     dev: true
 
   /@shopify/ngrok@4.3.2:
-    resolution: {integrity: sha512-Kz+tg6PavJGTKVOVd1AExm1MH1zVyE3lHWwnRBWIR/+uMxPmob9kp4bRlo4/270qWfGLNiY96TJgByVEm4Q9/g==, tarball: https://registry.npmjs.org/@shopify/ngrok/-/ngrok-4.3.2.tgz}
+    resolution: {integrity: sha512-Kz+tg6PavJGTKVOVd1AExm1MH1zVyE3lHWwnRBWIR/+uMxPmob9kp4bRlo4/270qWfGLNiY96TJgByVEm4Q9/g==}
     engines: {node: '>=10.19.0 <14 || >=14.2'}
     hasBin: true
     requiresBuild: true
@@ -4789,7 +4789,7 @@ packages:
     dev: true
 
   /@shopify/plugin-ngrok@3.10.1:
-    resolution: {integrity: sha512-UHUzkCaIsbafGiJavPjzoJ8xvEnoeWTi125t5IDdfyrQKTpO0JYStx2ls9tjcQ/5hfarfEVpubFVEBp0BA/wXA==, tarball: https://registry.npmjs.org/@shopify/plugin-ngrok/-/plugin-ngrok-3.10.1.tgz}
+    resolution: {integrity: sha512-UHUzkCaIsbafGiJavPjzoJ8xvEnoeWTi125t5IDdfyrQKTpO0JYStx2ls9tjcQ/5hfarfEVpubFVEBp0BA/wXA==}
     engines: {node: '>=14.13.1'}
     os: [darwin, linux, win32]
     dependencies:
@@ -4803,7 +4803,7 @@ packages:
     dev: true
 
   /@shopify/postcss-plugin@5.0.1(postcss@8.4.32):
-    resolution: {integrity: sha512-/YBuS9i/wRUh5RyhdvEDONnUpdAdE2qLJ/xJrGk0fjvkqU9+Pqv4w0rCTIbEZ2OENh3EkeSrZHOwxhEOo2Scvg==, tarball: https://registry.npmjs.org/@shopify/postcss-plugin/-/postcss-plugin-5.0.1.tgz}
+    resolution: {integrity: sha512-/YBuS9i/wRUh5RyhdvEDONnUpdAdE2qLJ/xJrGk0fjvkqU9+Pqv4w0rCTIbEZ2OENh3EkeSrZHOwxhEOo2Scvg==}
     peerDependencies:
       postcss: ^8.2.8
     dependencies:
@@ -4815,7 +4815,7 @@ packages:
     dev: true
 
   /@shopify/react-testing@4.1.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-CfqhcjcDisvQ3tmeL81eMEv0Hqmy8z1etDdqg4J5pgt9JN+TR8w1Thp0hm8N/XvLaOeD4qm6IpzRE7Iyamj2ZQ==, tarball: https://registry.npmjs.org/@shopify/react-testing/-/react-testing-4.1.0.tgz}
+    resolution: {integrity: sha512-CfqhcjcDisvQ3tmeL81eMEv0Hqmy8z1etDdqg4J5pgt9JN+TR8w1Thp0hm8N/XvLaOeD4qm6IpzRE7Iyamj2ZQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       react: '>=16.8.0 <19.0.0'
@@ -4829,7 +4829,7 @@ packages:
     dev: true
 
   /@shopify/storybook-a11y-test@1.1.3(@storybook/addon-a11y@7.6.4)(@storybook/addons@7.6.17):
-    resolution: {integrity: sha512-nqkxdL7/oNY8zWm58Fk4oRBMzJw266+PAqEtfqPydrEFuabScP2G3tfJJ1X2wqWYgrgDm7PrfPi6BSm5DDgJlQ==, tarball: https://registry.npmjs.org/@shopify/storybook-a11y-test/-/storybook-a11y-test-1.1.3.tgz}
+    resolution: {integrity: sha512-nqkxdL7/oNY8zWm58Fk4oRBMzJw266+PAqEtfqPydrEFuabScP2G3tfJJ1X2wqWYgrgDm7PrfPi6BSm5DDgJlQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       '@storybook/addon-a11y': '>=6.4.0'
@@ -4851,7 +4851,7 @@ packages:
     dev: true
 
   /@shopify/stylelint-plugin@11.0.1(prettier@2.8.8)(stylelint@14.15.0):
-    resolution: {integrity: sha512-5QBUaI7uFtXiiRVmH42dUgbKYfoHLc0+9sIaXNvNu2nDLZLxMoXAdj3RNOWJknj4xXETToyBTRJKRasv4CK4iA==, tarball: https://registry.npmjs.org/@shopify/stylelint-plugin/-/stylelint-plugin-11.0.1.tgz}
+    resolution: {integrity: sha512-5QBUaI7uFtXiiRVmH42dUgbKYfoHLc0+9sIaXNvNu2nDLZLxMoXAdj3RNOWJknj4xXETToyBTRJKRasv4CK4iA==}
     peerDependencies:
       stylelint: '>=14.1.0'
     dependencies:
@@ -4867,11 +4867,11 @@ packages:
     dev: true
 
   /@shopify/typescript-configs@5.1.0:
-    resolution: {integrity: sha512-RywGBTR+nQyJLxcrUcihPkHPIG3pIQI6i0YwMrM5rs9nWJ0+9A5HKEcboyGPLH+8V08EXGfFQ6H820O9ajyk4A==, tarball: https://registry.npmjs.org/@shopify/typescript-configs/-/typescript-configs-5.1.0.tgz}
+    resolution: {integrity: sha512-RywGBTR+nQyJLxcrUcihPkHPIG3pIQI6i0YwMrM5rs9nWJ0+9A5HKEcboyGPLH+8V08EXGfFQ6H820O9ajyk4A==}
     dev: true
 
   /@shopify/useful-types@5.0.0:
-    resolution: {integrity: sha512-3T9AZNKK3Tjxz++Z10DFtNnAXfdoE9kPkJTiCfsRcxZ3IVfFORzAUKTv4mgKT5P8IyRbIRtmxfzZzRCxn4fIgQ==, tarball: https://registry.npmjs.org/@shopify/useful-types/-/useful-types-5.0.0.tgz}
+    resolution: {integrity: sha512-3T9AZNKK3Tjxz++Z10DFtNnAXfdoE9kPkJTiCfsRcxZ3IVfFORzAUKTv4mgKT5P8IyRbIRtmxfzZzRCxn4fIgQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     dev: true
 

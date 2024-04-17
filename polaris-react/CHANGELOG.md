@@ -1,5 +1,35 @@
 # Changelog
 
+## 13.1.0
+
+### Minor Changes
+
+- [#11883](https://github.com/Shopify/polaris/pull/11883) [`a60d8aa4f`](https://github.com/Shopify/polaris/commit/a60d8aa4fc6d5e02c7449a0770db54e174545000) Thanks [@chloerice](https://github.com/chloerice)! - Added a `disclosureZIndexOverride` prop to `Filters`, `IndexFilters`, and `Tabs` that is passed to `Popover` and `Tooltip` when provided
+
+* [#11826](https://github.com/Shopify/polaris/pull/11826) [`a7fd7ab5d`](https://github.com/Shopify/polaris/commit/a7fd7ab5dc3adb34c5a7b35257ce202529ca867d) Thanks [@sophschneider](https://github.com/sophschneider)! - Added `contextualSaveBarVisible` and `contextualSaveBarProps` to `Frame` context
+
+### Patch Changes
+
+- [#11842](https://github.com/Shopify/polaris/pull/11842) [`2a93578af`](https://github.com/Shopify/polaris/commit/2a93578af8921fd1adf2dd36f8da941e35b2ceb2) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed layout shift for option lists within popovers
+
+* [#11846](https://github.com/Shopify/polaris/pull/11846) [`ce6353b97`](https://github.com/Shopify/polaris/commit/ce6353b97a768bfbb4f56ec0cba03c8bc6d0c0cc) Thanks [@sophschneider](https://github.com/sophschneider)! - Restyled Frame content behind dynamicTopBarAndReframe feature flag
+
+- [#11872](https://github.com/Shopify/polaris/pull/11872) [`696bcb725`](https://github.com/Shopify/polaris/commit/696bcb725e3149c1b58c012fad01ed62cd1d881a) Thanks [@mattkubej](https://github.com/mattkubej)! - globally remove link tap highlighting
+
+* [#11874](https://github.com/Shopify/polaris/pull/11874) [`744036706`](https://github.com/Shopify/polaris/commit/7440367065f524f8803bf9025fbcbab983389eb3) Thanks [@laurkim](https://github.com/laurkim)! - Added support for ref to `Image` to handle image load with `EmptyState`
+
+- [#11881](https://github.com/Shopify/polaris/pull/11881) [`c96ff56a0`](https://github.com/Shopify/polaris/commit/c96ff56a00f251e104cd255b095b2a463590f3fe) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed Frame feature override class to get proper max-width for main content.
+
+* [#11885](https://github.com/Shopify/polaris/pull/11885) [`af80d3a82`](https://github.com/Shopify/polaris/commit/af80d3a829dbb0b7161bbd18c6fc977e9bb51c29) Thanks [@craigcolesshopify](https://github.com/craigcolesshopify)! - [indexTable] Fixed over scroll gap on `IndexTable` for sortable last headings with `alignment="end"`
+
+- [#11889](https://github.com/Shopify/polaris/pull/11889) [`374030428`](https://github.com/Shopify/polaris/commit/374030428f6f60a94b536b3bbcef2078cbfe9d89) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `TextField` zoom on focus due to font-size below 16px
+
+* [#11900](https://github.com/Shopify/polaris/pull/11900) [`215b79271`](https://github.com/Shopify/polaris/commit/215b792713829548e09a5cffac0cd059204f6c4d) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed `Frame` scrollbar safe area to accommodate sidebar
+
+- [#11842](https://github.com/Shopify/polaris/pull/11842) [`2a93578af`](https://github.com/Shopify/polaris/commit/2a93578af8921fd1adf2dd36f8da941e35b2ceb2) Thanks [@kyledurand](https://github.com/kyledurand)! - Changed selected icon position in Listbox and OptionList
+
+* [#11891](https://github.com/Shopify/polaris/pull/11891) [`c84d4e875`](https://github.com/Shopify/polaris/commit/c84d4e875dbad6587dc092d2610ca75241fa2a20) Thanks [@sophschneider](https://github.com/sophschneider)! - Moved `Frame` scrollbar from main to content and set overflow-y from scroll to auto behind a feature flag
+
 ## 13.0.0
 
 ### Major Changes
