@@ -279,7 +279,7 @@
 }
 
 .Content-TopBarAndReframe {
-  overflow-y: scroll;
+  overflow-y: auto;
   /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- top bar global space */
   margin-bottom: var(--pg-top-bar-height);
   margin-right: var(--p-space-050);
@@ -290,6 +290,17 @@
     @media screen and (min-width: 1200px) {
       margin-right: unset;
     }
+  }
+}
+
+.ScrollbarSafeArea-TopBarAndReframe {
+  @media (--p-breakpoints-md-up) {
+    /* stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties */
+    width: calc(
+      100vw - var(--pg-navigation-width) -
+        var(--pc-app-provider-scrollbar-width) - var(--p-space-150)
+    );
+    /* stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list */
   }
 }
 
