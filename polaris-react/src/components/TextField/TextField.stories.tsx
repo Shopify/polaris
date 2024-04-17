@@ -23,6 +23,8 @@ import {
   SearchIcon,
 } from '@shopify/polaris-icons';
 
+import {Stepper} from './components';
+
 export default {
   component: TextField,
 } as ComponentMeta<typeof TextField>;
@@ -281,6 +283,36 @@ export function WithHelpText() {
       onChange={handleTextFieldChange}
       helpText="We’ll use this address if we need to contact you about your account."
       autoComplete="email"
+    />
+  );
+}
+
+export function DefaultStepper() {
+  const [numberValue, setNumberValue] = useState(3);
+
+  const handleValueChange = useCallback((value) => setNumberValue(value), []);
+
+  return (
+    <Stepper
+      label="Stepper"
+      value={numberValue}
+      valueChanged={handleValueChange}
+    />
+  );
+}
+
+export function StepperWithMinMaxValues() {
+  const [numberValue, setNumberValue] = useState(3);
+
+  const handleValueChange = useCallback((value) => setNumberValue(value), []);
+
+  return (
+    <Stepper
+      label="Stepper with min and max values"
+      value={numberValue}
+      minValue={0}
+      maxValue={10}
+      valueChanged={handleValueChange}
     />
   );
 }
@@ -929,6 +961,10 @@ export function All() {
           variant="borderless"
           size="slim"
         />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        {DefaultStepper()}
+        {StepperWithMinMaxValues()}
       </FormLayout.Group>
     </FormLayout>
   );

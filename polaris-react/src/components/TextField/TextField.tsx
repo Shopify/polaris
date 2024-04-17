@@ -21,8 +21,7 @@ import {Text} from '../Text';
 import {Spinner as LoadingSpinner} from '../Spinner';
 import {useEventListener} from '../../utilities/use-event-listener';
 
-import {Resizer, Spinner} from './components';
-import type {SpinnerProps} from './components';
+import {Resizer} from './components';
 import styles from './TextField.module.css';
 
 type Type =
@@ -272,7 +271,7 @@ export function TextField({
   const suffixRef = useRef<HTMLDivElement>(null);
   const loadingRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
-  const buttonPressTimer = useRef<number>();
+  // const buttonPressTimer = useRef<number>();
   const spinnerRef = useRef<HTMLDivElement>(null);
 
   const getInputRef = useCallback(() => {
@@ -444,45 +443,45 @@ export function TextField({
     ],
   );
 
-  const handleSpinnerButtonRelease = useCallback(() => {
-    clearTimeout(buttonPressTimer.current);
-  }, []);
+  // const handleSpinnerButtonRelease = useCallback(() => {
+  //   clearTimeout(buttonPressTimer.current);
+  // }, []);
 
-  const handleSpinnerButtonPress: SpinnerProps['onMouseDown'] = useCallback(
-    (onChange) => {
-      const minInterval = 50;
-      const decrementBy = 10;
-      let interval = 200;
+  // const handleSpinnerButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+  //   (onChange) => {
+  //     const minInterval = 50;
+  //     const decrementBy = 10;
+  //     let interval = 200;
 
-      const onChangeInterval = () => {
-        if (interval > minInterval) interval -= decrementBy;
-        onChange(0);
-        buttonPressTimer.current = window.setTimeout(
-          onChangeInterval,
-          interval,
-        );
-      };
+  //     const onChangeInterval = () => {
+  //       if (interval > minInterval) interval -= decrementBy;
+  //       onChange(0);
+  //       buttonPressTimer.current = window.setTimeout(
+  //         onChangeInterval,
+  //         interval,
+  //       );
+  //     };
 
-      buttonPressTimer.current = window.setTimeout(onChangeInterval, interval);
+  //     buttonPressTimer.current = window.setTimeout(onChangeInterval, interval);
 
-      document.addEventListener('mouseup', handleSpinnerButtonRelease, {
-        once: true,
-      });
-    },
-    [handleSpinnerButtonRelease],
-  );
+  //     document.addEventListener('mouseup', handleSpinnerButtonRelease, {
+  //       once: true,
+  //     });
+  //   },
+  //   [handleSpinnerButtonRelease],
+  // );
 
-  const spinnerMarkup =
-    isNumericType && step !== 0 && !disabled && !readOnly ? (
-      <Spinner
-        onClick={handleClickChild}
-        onChange={handleNumberChange}
-        onMouseDown={handleSpinnerButtonPress}
-        onMouseUp={handleSpinnerButtonRelease}
-        ref={spinnerRef}
-        onBlur={handleOnBlur}
-      />
-    ) : null;
+  // const spinnerMarkup =
+  //   isNumericType && step !== 0 && !disabled && !readOnly ? (
+  //     <Spinner
+  //       onClick={handleClickChild}
+  //       onChange={handleNumberChange}
+  //       onMouseDown={handleSpinnerButtonPress}
+  //       onMouseUp={handleSpinnerButtonRelease}
+  //       ref={spinnerRef}
+  //       onBlur={handleOnBlur}
+  //     />
+  //   ) : null;
 
   const style =
     multiline && height
@@ -678,7 +677,7 @@ export function TextField({
           {characterCountMarkup}
           {loadingMarkup}
           {clearButtonMarkup}
-          {spinnerMarkup}
+          {/* {spinnerMarkup} */}
           {backdropMarkup}
           {resizer}
         </div>
