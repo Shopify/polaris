@@ -1,9 +1,10 @@
 import React, {
-  useState,
-  useMemo,
-  useCallback,
+  createRef,
   isValidElement,
-  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
@@ -24,6 +25,7 @@ import {Listbox} from '../Listbox';
 import type {IconProps} from '../Icon';
 import {Icon} from '../Icon';
 import {escapeRegex} from '../../utilities/string';
+import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 
 import {Activator, SearchField} from './components';
 import type {SearchFieldProps, ActivatorProps} from './components';
@@ -33,7 +35,7 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
   activator: ActivatorProps;
   /** Allows more than one option to be selected */
   allowMultiple?: boolean;
-  /** The options to be listed within the picker. Options should be memoized */
+  /** The options to be listed within the picker */
   options?: OptionProps[];
   /** Used to add a new picker option that isn't listed */
   addAction?: OptionProps & {icon?: IconProps['source']};
@@ -65,17 +67,22 @@ export function Picker({
   onClose,
   ...listboxProps
 }: PickerProps) {
-  const activatorRef = React.createRef<HTMLButtonElement>();
+  const optionsRef = useRef<OptionProps[]>();
+  const activatorRef = createRef<HTMLButtonElement>();
   const [activeItems, setActiveItems] = useState<string[]>([]);
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [query, setQuery] = useState<string>('');
-  const [filteredOptions, setFilteredOptions] = useState(options);
+  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>();
   const shouldOpen = !popoverActive;
 
-  useEffect(() => setFilteredOptions(options), [options]);
+  useIsomorphicLayoutEffect(() => {
+    if (optionsRef.current?.length === options.length) return;
+    optionsRef.current = options;
+    setFilteredOptions(options);
+  }, [options]);
 
   const handleClose = useCallback(() => {
     setPopoverActive(false);
