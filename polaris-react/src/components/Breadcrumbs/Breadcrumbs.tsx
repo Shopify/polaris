@@ -21,9 +21,6 @@ export function Breadcrumbs({backAction}: BreadcrumbsProps) {
       onPointerDown={handleMouseUpByBlurring}
       icon={ArrowLeftIcon}
       accessibilityLabel={backAction.accessibilityLabel ?? content}
-      viewTransition={
-        'viewTransition' in backAction ? backAction.viewTransition : undefined
-      }
     />
   );
 }

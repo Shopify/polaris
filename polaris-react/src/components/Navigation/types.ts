@@ -37,7 +37,6 @@ export interface ItemProps extends ItemURLDetails {
   expanded?: boolean;
   shouldResizeIcon?: boolean;
   truncateText?: boolean;
-  viewTransition?: boolean;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {

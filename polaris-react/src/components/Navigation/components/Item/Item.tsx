@@ -50,7 +50,6 @@ export function Item({
   showVerticalLine,
   showVerticalHoverPointer,
   level = 0,
-  viewTransition,
   onMouseEnter,
   onMouseLeave,
 }: ItemProps) {
@@ -230,7 +229,6 @@ export function Item({
           {...action}
           tabIndex={tabIndex}
           disabled={disabled}
-          viewTransition={viewTransition}
         />
       ))}
     </span>
@@ -296,7 +294,6 @@ export function Item({
         aria-disabled={disabled}
         aria-label={accessibilityLabel}
         onClick={getClickHandler(onClick)}
-        viewTransition={viewTransition}
         {...normalizeAriaAttributes(
           secondaryNavigationId,
           subNavigationItems.length > 0,
@@ -394,7 +391,6 @@ export function Item({
 interface ItemSecondaryActionProps extends SecondaryAction {
   tabIndex: number;
   disabled?: boolean;
-  viewTransition?: boolean;
 }
 
 export function ItemSecondaryAction({
@@ -405,7 +401,6 @@ export function ItemSecondaryAction({
   onClick,
   disabled,
   tabIndex,
-  viewTransition,
 }: ItemSecondaryActionProps) {
   const markup = url ? (
     <UnstyledLink
@@ -416,7 +411,6 @@ export function ItemSecondaryAction({
       aria-disabled={disabled}
       aria-label={accessibilityLabel}
       onClick={onClick}
-      viewTransition={viewTransition}
     >
       <Icon source={icon} />
     </UnstyledLink>

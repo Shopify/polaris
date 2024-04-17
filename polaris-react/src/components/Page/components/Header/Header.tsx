@@ -44,8 +44,6 @@ interface PrimaryAction
     TooltipAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
-  /** Enables view transitions */
-  viewTransition?: boolean;
 }
 
 export interface HeaderProps extends TitleProps {
@@ -282,13 +280,12 @@ function PrimaryActionMarkup({
 
   let actionMarkup: React.ReactNode;
   if (isInterface(primaryAction)) {
-    const {primary: isPrimary, helpText, viewTransition} = primaryAction;
+    const {primary: isPrimary, helpText} = primaryAction;
     const primary = isPrimary === undefined ? true : isPrimary;
     const content = buttonFrom(
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
         variant: primary ? 'primary' : undefined,
-        viewTransition,
       },
     );
 
