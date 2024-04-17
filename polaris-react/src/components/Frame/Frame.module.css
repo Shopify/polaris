@@ -295,12 +295,28 @@
 
 .ScrollbarSafeArea-TopBarAndReframe {
   @media (--p-breakpoints-md-up) {
+    transition: width var(--p-motion-duration-250) var(--p-motion-ease);
     /* stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties */
     width: calc(
       100vw - var(--pg-navigation-width) -
         var(--pc-app-provider-scrollbar-width) - var(--p-space-150)
     );
     /* stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list */
+  }
+
+  .hasSidebar & {
+    transition: width var(--p-motion-duration-250) var(--p-motion-ease);
+
+    /* Sidebar breakpoint is 1200px */
+    /* stylelint-disable-next-line polaris/media-queries/polaris/media-query-allowed-list -- custom breakpoint */
+    @media screen and (min-width: 1200px) {
+      /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
+      width: calc(
+        100vw - var(--pg-navigation-width) -
+          var(--pc-app-provider-scrollbar-width) - var(--p-space-150) -
+          var(--pc-sidebar-width)
+      );
+    }
   }
 }
 
