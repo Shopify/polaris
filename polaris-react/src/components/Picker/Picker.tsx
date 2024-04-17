@@ -72,7 +72,7 @@ export function Picker({
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [query, setQuery] = useState<string>('');
-  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>();
+  const [filteredOptions, setFilteredOptions] = useState(options);
   const shouldOpen = !popoverActive;
 
   useEffect(() => setFilteredOptions(options), [options]);

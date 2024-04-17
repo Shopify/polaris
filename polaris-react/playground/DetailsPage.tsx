@@ -76,8 +76,10 @@ export function DetailsPage() {
   const [emailFieldValue, setEmailFieldValue] = useState(
     defaultState.current.emailFieldValue,
   );
-
   const [addedTags, setAddedTags] = useState<
+    {value: string; children: string}[]
+  >([]);
+  const [addedVendors, setAddedVendors] = useState<
     {value: string; children: string}[]
   >([]);
 
@@ -96,6 +98,24 @@ export function DetailsPage() {
     [addedTags],
   );
 
+  const vendors = useMemo(
+    () => [
+      {value: 'The North Face', children: 'The North Face'},
+      {value: 'Patagonia', children: 'Patagonia'},
+      {value: 'Arc’teryx', children: 'Arc’teryx'},
+      {value: 'Marmot', children: 'Marmot'},
+      {value: 'Black Diamond', children: 'Black Diamond'},
+      {value: 'Mountain Hardwear', children: 'Mountain Hardwear'},
+      {value: 'Columbia', children: 'Columbia'},
+      {value: 'Canada Goose', children: 'Canada Goose'},
+      {value: 'Merrell', children: 'Merrell'},
+      {value: 'Salomon', children: 'Salomon'},
+      {value: 'Burton', children: 'Burton'},
+      ...addedVendors,
+    ],
+    [addedVendors],
+  );
+
   const handleTagSelect = useCallback(
     (newTag: string) => {
       if (
@@ -111,6 +131,23 @@ export function DetailsPage() {
       setQuery('');
     },
     [addedTags, tags],
+  );
+
+  const handleVendorSelect = useCallback(
+    (newVendor: string) => {
+      if (
+        vendors.some((vendor) => vendor.value === newVendor) ||
+        addedVendors.some((vendor) => vendor.value === newVendor)
+      ) {
+        return;
+      }
+      setAddedVendors((addedVendors) => [
+        ...addedVendors,
+        {value: newVendor, children: newVendor},
+      ]);
+      setQuery('');
+    },
+    [addedVendors, vendors],
   );
 
   const [storeName, setStoreName] = useState(
@@ -707,20 +744,8 @@ export function DetailsPage() {
                     value: query,
                     onChange: (value) => setQuery(value),
                   }}
-                  options={[
-                    {value: 'The North Face', children: 'The North Face'},
-                    {value: 'Patagonia', children: 'Patagonia'},
-                    {value: 'Arc’teryx', children: 'Arc’teryx'},
-                    {value: 'Marmot', children: 'Marmot'},
-                    {value: 'Black Diamond', children: 'Black Diamond'},
-                    {value: 'Mountain Hardwear', children: 'Mountain Hardwear'},
-                    {value: 'Columbia', children: 'Columbia'},
-                    {value: 'Canada Goose', children: 'Canada Goose'},
-                    {value: 'Merrell', children: 'Merrell'},
-                    {value: 'Salomon', children: 'Salomon'},
-                    {value: 'Burton', children: 'Burton'},
-                  ]}
-                  onSelect={(value) => console.log(value)}
+                  options={vendors}
+                  onSelect={handleVendorSelect}
                   addAction={{
                     value: query,
                     children: `Add ${query}`,
