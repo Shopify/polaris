@@ -26,6 +26,8 @@ export interface ActionListProps {
   actionRole?: 'menuitem' | string;
   /** Allow users to filter items in the list. Will only show if more than 8 items in the list. The item content of every items must be a string for this to work */
   allowFiltering?: boolean;
+  /** Filter label used as a placeholder in the search field */
+  filterLabel?: string;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
@@ -40,6 +42,7 @@ export function ActionList({
   actionRole,
   allowFiltering,
   onActionAnyItem,
+  filterLabel,
 }: ActionListProps) {
   const i18n = useI18n();
   const filterActions = useContext(FilterActionsContext);
@@ -153,10 +156,16 @@ export function ActionList({
           <TextField
             clearButton
             labelHidden
-            label={i18n.translate('Polaris.ActionList.SearchField.placeholder')}
-            placeholder={i18n.translate(
-              'Polaris.ActionList.SearchField.placeholder',
-            )}
+            label={
+              filterLabel
+                ? filterLabel
+                : i18n.translate('Polaris.ActionList.SearchField.placeholder')
+            }
+            placeholder={
+              filterLabel
+                ? filterLabel
+                : i18n.translate('Polaris.ActionList.SearchField.placeholder')
+            }
             autoComplete="off"
             value={searchText}
             onChange={(value) => setSearchText(value)}
