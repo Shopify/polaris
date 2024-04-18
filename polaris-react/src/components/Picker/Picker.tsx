@@ -1,4 +1,11 @@
-import React, {useState, useMemo, useCallback, isValidElement} from 'react';
+import React, {
+  createRef,
+  isValidElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Popover} from '../Popover';
@@ -59,18 +66,16 @@ export function Picker({
   onClose,
   ...listboxProps
 }: PickerProps) {
-  const activatorRef = React.createRef<HTMLButtonElement>();
+  const activatorRef = createRef<HTMLButtonElement>();
   const [activeItems, setActiveItems] = useState<string[]>([]);
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [query, setQuery] = useState<string>('');
-  const [filteredOptions, setFilteredOptions] = useState<OptionProps[] | null>(
-    options,
-  );
-
+  const filteredOptions = useRef(options);
   const shouldOpen = !popoverActive;
+
   const handleClose = useCallback(() => {
     setPopoverActive(false);
     onClose?.();
@@ -79,7 +84,8 @@ export function Picker({
 
   const handleOpen = useCallback(() => {
     setPopoverActive(true);
-  }, []);
+    filteredOptions.current = options;
+  }, [options]);
 
   const handleFocus = useCallback(() => {
     if (shouldOpen) handleOpen();
@@ -93,9 +99,8 @@ export function Picker({
     if (popoverActive) {
       handleClose();
       setQuery('');
-      setFilteredOptions(options);
     }
-  }, [popoverActive, handleClose, options]);
+  }, [popoverActive, handleClose]);
 
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
     () => ({
@@ -151,14 +156,14 @@ export function Picker({
       setQuery(value);
 
       if (value === '') {
-        setFilteredOptions(options);
+        filteredOptions.current = options;
         return;
       }
 
       const resultOptions = options?.filter((option) =>
         FILTER_REGEX(value).exec(reactChildrenText(option.children)),
       );
-      setFilteredOptions(resultOptions ?? []);
+      filteredOptions.current = resultOptions ?? [];
     },
     [options],
   );
@@ -168,6 +173,15 @@ export function Picker({
       setQuery('');
       updateText('');
       listboxProps.onSelect?.(selected);
+
+      if (
+        !filteredOptions.current.some((option) => option.value === selected)
+      ) {
+        filteredOptions.current = [
+          ...filteredOptions.current,
+          {value: selected, children: selected},
+        ];
+      }
 
       if (!allowMultiple) {
         handleClose();
@@ -181,7 +195,7 @@ export function Picker({
           : [...selectedOptions, selected];
       });
     },
-    [updateText, listboxProps, allowMultiple, activeItems, handleClose],
+    [updateText, listboxProps, allowMultiple, handleClose, activeItems],
   );
 
   const firstSelectedOption = reactChildrenText(
@@ -241,7 +255,7 @@ export function Picker({
           >
             <Box paddingBlock="200">
               <Listbox {...listboxProps} onSelect={handleSelect}>
-                {filteredOptions?.map((option) => (
+                {filteredOptions.current?.map((option) => (
                   <Listbox.Option
                     key={option.value}
                     selected={activeItems.some((item) => item === option.value)}
