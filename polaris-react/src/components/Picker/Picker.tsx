@@ -25,7 +25,6 @@ import {Listbox} from '../Listbox';
 import type {IconProps} from '../Icon';
 import {Icon} from '../Icon';
 import {escapeRegex} from '../../utilities/string';
-import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 
 import {Activator, SearchField} from './components';
 import type {SearchFieldProps, ActivatorProps} from './components';
@@ -67,7 +66,6 @@ export function Picker({
   onClose,
   ...listboxProps
 }: PickerProps) {
-  const optionsRef = useRef<OptionProps[]>();
   const activatorRef = createRef<HTMLButtonElement>();
   const [activeItems, setActiveItems] = useState<string[]>([]);
   const [popoverActive, setPopoverActive] = useState(false);
@@ -75,14 +73,8 @@ export function Picker({
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [query, setQuery] = useState<string>('');
-  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>();
+  const filteredOptions = useRef(options);
   const shouldOpen = !popoverActive;
-
-  useIsomorphicLayoutEffect(() => {
-    if (optionsRef.current?.length === options.length) return;
-    optionsRef.current = options;
-    setFilteredOptions(options);
-  }, [options]);
 
   const handleClose = useCallback(() => {
     setPopoverActive(false);
@@ -92,7 +84,8 @@ export function Picker({
 
   const handleOpen = useCallback(() => {
     setPopoverActive(true);
-  }, []);
+    filteredOptions.current = options;
+  }, [options]);
 
   const handleFocus = useCallback(() => {
     if (shouldOpen) handleOpen();
@@ -106,9 +99,8 @@ export function Picker({
     if (popoverActive) {
       handleClose();
       setQuery('');
-      setFilteredOptions(options);
     }
-  }, [popoverActive, handleClose, options]);
+  }, [popoverActive, handleClose]);
 
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
     () => ({
@@ -164,14 +156,14 @@ export function Picker({
       setQuery(value);
 
       if (value === '') {
-        setFilteredOptions(options);
+        filteredOptions.current = options;
         return;
       }
 
       const resultOptions = options?.filter((option) =>
         FILTER_REGEX(value).exec(reactChildrenText(option.children)),
       );
-      setFilteredOptions(resultOptions ?? []);
+      filteredOptions.current = resultOptions ?? [];
     },
     [options],
   );
@@ -181,6 +173,15 @@ export function Picker({
       setQuery('');
       updateText('');
       listboxProps.onSelect?.(selected);
+
+      if (
+        !filteredOptions.current.some((option) => option.value === selected)
+      ) {
+        filteredOptions.current = [
+          ...filteredOptions.current,
+          {value: selected, children: selected},
+        ];
+      }
 
       if (!allowMultiple) {
         handleClose();
@@ -194,7 +195,7 @@ export function Picker({
           : [...selectedOptions, selected];
       });
     },
-    [updateText, listboxProps, allowMultiple, activeItems, handleClose],
+    [updateText, listboxProps, allowMultiple, handleClose, activeItems],
   );
 
   const firstSelectedOption = reactChildrenText(
@@ -254,7 +255,7 @@ export function Picker({
           >
             <Box paddingBlock="200">
               <Listbox {...listboxProps} onSelect={handleSelect}>
-                {filteredOptions?.map((option) => (
+                {filteredOptions.current?.map((option) => (
                   <Listbox.Option
                     key={option.value}
                     selected={activeItems.some((item) => item === option.value)}
