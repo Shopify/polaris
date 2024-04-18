@@ -61,6 +61,23 @@ describe('<Picker />', () => {
     expect(picker).toContainReactComponent(Listbox.Action);
   });
 
+  it('renders another Listbox.Option on add', () => {
+    const picker = mountWithApp(
+      <Picker
+        allowMultiple
+        activator={{}}
+        addAction={{value: 'add', children: 'Add'}}
+        options={[{value: 'one', children: 'One'}]}
+        searchField={{label: ''}}
+      />,
+    );
+
+    picker.find('button')!.trigger('onClick');
+    picker.find(Listbox)!.trigger('onSelect', 'Two');
+
+    expect(picker).toContainReactComponentTimes(Listbox.Option, 2);
+  });
+
   it('filters the options when the search field changes', () => {
     const options = [
       {value: 'one', children: 'One'},

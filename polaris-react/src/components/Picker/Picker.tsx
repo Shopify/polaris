@@ -69,12 +69,10 @@ export function Picker({
   const activatorRef = createRef<HTMLButtonElement>();
   const [activeItems, setActiveItems] = useState<string[]>([]);
   const [popoverActive, setPopoverActive] = useState(false);
-  const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [query, setQuery] = useState<string>('');
   const filteredOptions = useRef(options);
-  const shouldOpen = !popoverActive;
 
   const handleClose = useCallback(() => {
     setPopoverActive(false);
@@ -87,69 +85,12 @@ export function Picker({
     filteredOptions.current = options;
   }, [options]);
 
-  const handleFocus = useCallback(() => {
-    if (shouldOpen) handleOpen();
-  }, [shouldOpen, handleOpen]);
-
-  const handleChange = useCallback(() => {
-    if (shouldOpen) handleOpen();
-  }, [shouldOpen, handleOpen]);
-
   const handleBlur = useCallback(() => {
     if (popoverActive) {
       handleClose();
       setQuery('');
     }
   }, [popoverActive, handleClose]);
-
-  const textFieldContextValue: ComboboxTextFieldType = useMemo(
-    () => ({
-      activeOptionId,
-      expanded: popoverActive,
-      listboxId,
-      setTextFieldLabelId,
-      onTextFieldFocus: handleFocus,
-      onTextFieldChange: handleChange,
-      onTextFieldBlur: handleBlur,
-    }),
-    [
-      activeOptionId,
-      popoverActive,
-      listboxId,
-      setTextFieldLabelId,
-      handleFocus,
-      handleChange,
-      handleBlur,
-    ],
-  );
-
-  const listboxOptionContextValue: ComboboxListboxOptionType = useMemo(
-    () => ({
-      allowMultiple,
-    }),
-    [allowMultiple],
-  );
-
-  const listboxContextValue: ComboboxListboxType = useMemo(
-    () => ({
-      listboxId,
-      textFieldLabelId,
-      textFieldFocused: popoverActive,
-      willLoadMoreOptions,
-      setActiveOptionId,
-      setListboxId,
-      onKeyToBottom: onScrolledToBottom,
-    }),
-    [
-      listboxId,
-      textFieldLabelId,
-      popoverActive,
-      willLoadMoreOptions,
-      setActiveOptionId,
-      setListboxId,
-      onScrolledToBottom,
-    ],
-  );
 
   const updateText = useCallback(
     (value: string) => {
@@ -198,6 +139,42 @@ export function Picker({
     [updateText, listboxProps, allowMultiple, handleClose, activeItems],
   );
 
+  const textFieldContextValue: ComboboxTextFieldType = useMemo(
+    () => ({
+      expanded: popoverActive,
+      listboxId,
+      setTextFieldLabelId,
+      onTextFieldBlur: handleBlur,
+    }),
+    [popoverActive, listboxId, setTextFieldLabelId, handleBlur],
+  );
+
+  const listboxContextValue: ComboboxListboxType = useMemo(
+    () => ({
+      listboxId,
+      textFieldLabelId,
+      textFieldFocused: popoverActive,
+      willLoadMoreOptions,
+      setListboxId,
+      onKeyToBottom: onScrolledToBottom,
+    }),
+    [
+      listboxId,
+      textFieldLabelId,
+      popoverActive,
+      willLoadMoreOptions,
+      setListboxId,
+      onScrolledToBottom,
+    ],
+  );
+
+  const listboxOptionContextValue: ComboboxListboxOptionType = useMemo(
+    () => ({
+      allowMultiple,
+    }),
+    [allowMultiple],
+  );
+
   const showList = options.length > 0 || query !== '';
   const firstSelectedOption = reactChildrenText(
     options.find((option) => option.value === activeItems?.[0])?.children,
@@ -214,7 +191,7 @@ export function Picker({
         <Activator
           {...activator}
           onClick={handleOpen}
-          selected={firstSelectedOption || ''}
+          selected={firstSelectedOption ?? ''}
           placeholder={activator.placeholder}
           ref={activatorRef}
         />
