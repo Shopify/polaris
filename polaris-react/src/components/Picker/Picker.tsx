@@ -13,7 +13,6 @@ import type {
   ComboboxListboxOptionType,
 } from '../../utilities/combobox';
 import {Box} from '../Box';
-import type {TextFieldProps} from '../TextField';
 import type {ListboxProps, OptionProps} from '../Listbox';
 import {Listbox} from '../Listbox';
 import type {IconProps} from '../Icon';
@@ -21,7 +20,7 @@ import {Icon} from '../Icon';
 import {escapeRegex} from '../../utilities/string';
 
 import {Activator, SearchField} from './components';
-import type {ActivatorProps} from './components';
+import type {SearchFieldProps, ActivatorProps} from './components';
 
 export interface PickerProps extends Omit<ListboxProps, 'children'> {
   /** Configure the button that activates the Picker */
@@ -33,7 +32,7 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
   /** Used to add a new picker option that isn't listed */
   addAction?: OptionProps & {icon?: IconProps['source']};
   /** TextField that allows filtering of options */
-  searchField?: TextFieldProps;
+  searchField?: SearchFieldProps;
   /** Whether or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
   willLoadMoreOptions?: boolean;
   /** Height to set on the Popover Pane. */
