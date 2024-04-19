@@ -1,4 +1,4 @@
-import type {ReplacementMaps} from '../react-update-component-prop/transform';
+import type {ReplacementMaps} from './transform';
 
 type ComponentFromProp = string;
 

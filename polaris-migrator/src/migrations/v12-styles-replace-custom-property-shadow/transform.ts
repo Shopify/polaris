@@ -6,7 +6,7 @@ export default function transformer(fileInfo: FileInfo, _: API) {
   return stylesReplaceCustomProperty(fileInfo, _, {replacementMaps});
 }
 
-const replacementMaps = {
+export const replacementMaps = {
   '/.+/': {
     '--p-shadow-inset-lg': '--p-shadow-inset-200',
     '--p-shadow-inset-md': '--p-shadow-inset-200',
