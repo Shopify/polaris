@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.1.1
+
+### Patch Changes
+
+- [#11915](https://github.com/Shopify/polaris/pull/11915) [`828995cc4`](https://github.com/Shopify/polaris/commit/828995cc422e9a5b4fd0d781656912b3efb71df4) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed Picker empty state
+
+* [#11918](https://github.com/Shopify/polaris/pull/11918) [`fd37c1896`](https://github.com/Shopify/polaris/commit/fd37c18968011142d6b5db480e720513ae5172c6) Thanks [@kyledurand](https://github.com/kyledurand)! - Reverted selected icon placement on Option and TextOption
+
 ## 13.1.0
 
 ### Minor Changes

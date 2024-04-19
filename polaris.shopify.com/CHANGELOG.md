@@ -1,5 +1,16 @@
 # polaris.shopify.com
 
+## 1.0.2
+
+### Patch Changes
+
+- [#11906](https://github.com/Shopify/polaris/pull/11906) [`5b9f4b898`](https://github.com/Shopify/polaris/commit/5b9f4b89818d2e8614dcd56a65b7ffb2034e7d12) Thanks [@sarahill](https://github.com/sarahill)! - Updated common action pattern add guiance
+
+* [#11909](https://github.com/Shopify/polaris/pull/11909) [`c4f766f1d`](https://github.com/Shopify/polaris/commit/c4f766f1daa2674d6fffbd6a6602f713eadb5cd1) Thanks [@sarahill](https://github.com/sarahill)! - Fixed missing image for card layout pattern documentation
+
+* Updated dependencies [[`828995cc4`](https://github.com/Shopify/polaris/commit/828995cc422e9a5b4fd0d781656912b3efb71df4), [`fd37c1896`](https://github.com/Shopify/polaris/commit/fd37c18968011142d6b5db480e720513ae5172c6)]:
+  - @shopify/polaris@13.1.1
+
 ## 1.0.1
 
 ### Patch Changes
