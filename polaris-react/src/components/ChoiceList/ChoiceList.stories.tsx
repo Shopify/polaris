@@ -152,7 +152,7 @@ export const WithChildrenContent = {
     const renderChildren = useCallback(
       () => (
         <TextField
-          label="Minimum Quantity"
+          label="Minimum Purchase"
           labelHidden
           onChange={handleTextFieldChange}
           value={textFieldValue}

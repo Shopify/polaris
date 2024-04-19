@@ -22,11 +22,11 @@
   cursor: pointer;
   padding-block-start: calc(
     var(--pc-choice-bleed-block-start, var(--pc-choice-space-0)) +
-      var(--p-space-100)
+      var(--p-space-300)
   );
   padding-block-end: calc(
     var(--pc-choice-bleed-block-end, var(--pc-choice-space-0)) +
-      var(--p-space-100)
+      var(--p-space-300)
   );
   padding-inline-start: var(
     --pc-choice-bleed-inline-start,
@@ -60,6 +60,17 @@
       var(--pc-choice-bleed-block-start, var(--pc-choice-space-0)) +
       var(--pc-choice-bleed-block-end, var(--pc-choice-space-0))
   );
+
+  @media (--p-breakpoints-md-up) {
+    padding-block-start: calc(
+      var(--pc-choice-bleed-block-start, var(--pc-choice-space-0)) +
+        var(--p-space-100)
+    );
+    padding-block-end: calc(
+      var(--pc-choice-bleed-block-end, var(--pc-choice-space-0)) +
+        var(--p-space-100)
+    );
+  }
 }
 
 .labelHidden {
