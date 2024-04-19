@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.1.2
+
+### Patch Changes
+
+- [#11917](https://github.com/Shopify/polaris/pull/11917) [`273029218`](https://github.com/Shopify/polaris/commit/2730292188361640a1a7c76e5dffe4698d559e6b) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed broken css build error
+
 ## 13.1.1
 
 ### Patch Changes
