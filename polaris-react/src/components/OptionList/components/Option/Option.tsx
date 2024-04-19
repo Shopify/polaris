@@ -76,6 +76,8 @@ export function Option({
     onFocus(section, index);
   }, [toggleFocused, onFocus, section, index]);
 
+  const labelIsString = typeof label === 'string';
+
   const mediaMarkup = media ? (
     <div className={styles.Media}>{media}</div>
   ) : null;
@@ -98,6 +100,8 @@ export function Option({
     allowMultiple && styles.CheckboxLabel,
     allowMultiple && styles.MultiSelectOption,
   );
+
+  const placeholderMarkup = labelIsString ? <Box width="20px" /> : null;
 
   const optionMarkup = allowMultiple ? (
     <label htmlFor={id} className={multiSelectClassName}>
@@ -131,7 +135,7 @@ export function Option({
           <Icon source={CheckIcon} tone="base" />
         </span>
       ) : (
-        <Box width="20px" />
+        placeholderMarkup
       )}
       <InlineStack
         wrap={false}
@@ -140,8 +144,7 @@ export function Option({
         {mediaMarkup}
         <span
           style={{
-            minWidth:
-              typeof label === 'string' ? `${label.length}ch` : 'initial',
+            minWidth: labelIsString ? `${label.length}ch` : 'initial',
           }}
         >
           {label}

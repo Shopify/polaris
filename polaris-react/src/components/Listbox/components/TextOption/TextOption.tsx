@@ -35,7 +35,8 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
-  const placeholder = isAction ? null : <Box width="20px" />;
+  const childIsString = typeof children === 'string';
+  const placeholder = isAction || !childIsString ? null : <Box width="20px" />;
 
   const optionMarkup = (
     <Box width="100%">
