@@ -40,7 +40,6 @@
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-virtual": "^3.0.1",
     "@rollup/pluginutils": "^5.0.2",
-    "@shopify/cli": "^3.10.1",
     "@shopify/eslint-plugin": "^42.0.1",
     "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.1.0",
