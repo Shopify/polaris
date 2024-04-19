@@ -30,6 +30,7 @@ import {
   useIndexSelectionChange,
   SELECT_ALL_ITEMS,
   SelectionType,
+  useIndexClearSelection,
 } from '../../utilities/index-provider';
 import type {IndexProviderProps} from '../../utilities/index-provider';
 import {AfterInitialMount} from '../AfterInitialMount';
@@ -172,6 +173,10 @@ function IndexTableBase({
     condensed,
   } = useIndexValue();
   const handleSelectionChange = useIndexSelectionChange();
+  const handleClearSelection = useIndexClearSelection();
+
+  console.log('handleClearSelection', handleClearSelection);
+
   const i18n = useI18n();
 
   const {value: hasMoreLeftColumns, toggle: toggleHasMoreLeftColumns} =
@@ -1133,7 +1138,7 @@ function IndexTableBase({
 
     const actionText =
       selectedItemsCount === SELECT_ALL_ITEMS
-        ? i18n.translate('Polaris.IndexTable.undo')
+        ? i18n.translate('Polaris.IndexTable.clearAll')
         : customActionText;
 
     return {
@@ -1178,6 +1183,7 @@ export function IndexTable({
   hasMoreItems,
   condensed,
   onSelectionChange,
+  onClearSelection,
   ...indexTableBaseProps
 }: IndexTableProps) {
   return (
@@ -1191,6 +1197,7 @@ export function IndexTable({
         hasMoreItems={hasMoreItems}
         condensed={condensed}
         onSelectionChange={onSelectionChange}
+        onClearSelection={onClearSelection}
       >
         <IndexTableBase {...indexTableBaseProps}>{children}</IndexTableBase>
       </IndexProvider>
