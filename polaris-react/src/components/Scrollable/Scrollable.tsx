@@ -85,13 +85,13 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       (scrollY: number, options: ScrollToOptions = {}) => {
         const optionsBehavior = options.behavior || 'smooth';
         const behavior = prefersReducedMotion() ? 'auto' : optionsBehavior;
-        // @ts-expect-error TS removed "instant" option but browsers support it.
+        // @ts-expect-error TS removed "instant" option but browsers support it
         scrollArea.current?.scrollTo({top: scrollY, behavior});
       },
       [],
     );
 
-    const defaultRef = useRef();
+    const defaultRef = useRef(null);
     useImperativeHandle(forwardedRef || defaultRef, () => ({scrollTo}));
 
     const handleScroll = useCallback(() => {
@@ -109,6 +109,9 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
           scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
         );
 
+        console.log(
+          `CAN SCROLL: ${canScroll}; scrollTop ${scrollTop}, scrollHeight ${scrollHeight}, clientHeight ${clientHeight}`,
+        );
         setTopShadow(isBelowTopOfScroll);
         setBottomShadow(!isAtBottomOfScroll);
 
@@ -158,6 +161,8 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
           variationName('scrollbarGutter', scrollbarGutter.replace(' ', ''))
         ],
     );
+
+    console.log(finalClassName);
 
     return (
       <ScrollableContext.Provider value={scrollTo}>
