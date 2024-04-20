@@ -33,7 +33,13 @@ export function Title({
     subtitle && styles.TitleWithSubtitle,
   );
 
-  const titleMarkup = title ? <h1 className={className}>{title}</h1> : null;
+  const titleMarkup = title ? (
+    <h1 className={className}>
+      <Text as="span" variant="headingLg" fontWeight="bold">
+        {title}
+      </Text>
+    </h1>
+  ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
     <Bleed marginBlock="100">{titleMetadata}</Bleed>
@@ -54,7 +60,7 @@ export function Title({
         hasSubtitleMaxWidth && styles.SubtitleMaxWidth,
       )}
     >
-      <Text as="p" variant="bodySm">
+      <Text as="p" variant="bodySm" tone="subdued">
         {subtitle}
       </Text>
     </div>

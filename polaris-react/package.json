@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "12.21.0",
+  "version": "13.1.2",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -11,7 +11,7 @@
     "url": "https://github.com/Shopify/polaris/issues"
   },
   "engines": {
-    "node": "^16.17.0 || >=18.12.0"
+    "node": ">=20.10.0"
   },
   "publishConfig": {
     "access": "public",
@@ -44,7 +44,7 @@
     "build:types": "tsc -b",
     "build:js": "rollup -c",
     "build:validate": "node scripts/build-validate.js",
-    "dev": "yarn run storybook",
+    "dev": "pnpm run storybook",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}' --quiet",
@@ -55,8 +55,8 @@
     "storybook:build": "storybook build -o build-internal/storybook/static"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^8.8.0",
-    "@shopify/polaris-tokens": "^8.8.0",
+    "@shopify/polaris-icons": "^9.0.0",
+    "@shopify/polaris-tokens": "^9.0.0",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
@@ -74,6 +74,7 @@
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/react-testing": "^4.1.0",
     "@shopify/storybook-a11y-test": "1.1.3",
+    "@shopify/useful-types": "^5.0.0",
     "@storybook/addon-a11y": "^7.6.4",
     "@storybook/addon-toolbars": "^7.6.4",
     "@storybook/addon-viewport": "^7.6.4",
@@ -84,7 +85,9 @@
     "@storybook/preview-api": "^7.6.4",
     "@storybook/react": "^7.6.4",
     "@storybook/react-vite": "^7.6.4",
-    "@types/node": "^16.11.11",
+    "@storybook/theming": "^7.6.4",
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^20.10.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@types/react-transition-group": "^4.4.2",
@@ -103,7 +106,6 @@
     "postcss-modules": "^4.2.2",
     "postcss-nesting": "^12.0.2",
     "postcss-pxtorem": "^6.0.0",
-    "postcss-scss": "^4.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.0",
@@ -121,6 +123,7 @@
     "last 3 safari versions",
     "last 3 chromeandroid versions",
     "last 1 firefoxandroid versions",
-    "ios >= 13.4"
+    "ios >= 13.4",
+    "node 20.10.0"
   ]
 }

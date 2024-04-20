@@ -1,5 +1,43 @@
 # Changelog
 
+## 9.0.0
+
+### Major Changes
+
+- [#11844](https://github.com/Shopify/polaris/pull/11844) [`a89e61478`](https://github.com/Shopify/polaris/commit/a89e61478fb7c5f588021e542101aba8a3898ec8) Thanks [@jesstelford](https://github.com/jesstelford)! - Miniumum required node version updated to v20.10.0
+
+* [#11799](https://github.com/Shopify/polaris/pull/11799) [`aa8e0f42b`](https://github.com/Shopify/polaris/commit/aa8e0f42b956622e826646c809c57eb79bb2b892) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - [Internal] Migrate repo from yarn to pnpm. No action required.
+
+- [#11799](https://github.com/Shopify/polaris/pull/11799) [`aa8e0f42b`](https://github.com/Shopify/polaris/commit/aa8e0f42b956622e826646c809c57eb79bb2b892) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - `react` is now a required peerDependency (even when importing non-React SVG assets). [More info](https://github.com/Shopify/polaris/pull/11825#pullrequestreview-1974881032)
+
+## 8.11.1
+
+### Patch Changes
+
+- [#11824](https://github.com/Shopify/polaris/pull/11824) [`79130eeea`](https://github.com/Shopify/polaris/commit/79130eeea0785c41bb06d5135421106d7ce9ff5b) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Added missing `svgo` dev dependency
+
+## 8.11.0
+
+### Minor Changes
+
+- [#11841](https://github.com/Shopify/polaris/pull/11841) [`7750bfa4c`](https://github.com/Shopify/polaris/commit/7750bfa4c2c45215935cedcc21746e8fc3dd400e) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Adds BulletIcon to repository
+
+## 8.10.0
+
+### Minor Changes
+
+- [#11816](https://github.com/Shopify/polaris/pull/11816) [`4b730c84d`](https://github.com/Shopify/polaris/commit/4b730c84dc3a636ea04570e36ad7b3bb39b24277) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Added some icons for image editing
+
+### Patch Changes
+
+- [#11825](https://github.com/Shopify/polaris/pull/11825) [`fd5b31d59`](https://github.com/Shopify/polaris/commit/fd5b31d59f8452e487a4696f907fbbb606749ae9) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Add missing peer dependency on React
+
+## 8.9.0
+
+### Minor Changes
+
+- [#11778](https://github.com/Shopify/polaris/pull/11778) [`d689bd8f4`](https://github.com/Shopify/polaris/commit/d689bd8f485ba36247bddf9da705f014cb701f4c) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added `PersonSegment` icon
+
 ## 8.8.0
 
 ### Minor Changes

@@ -406,7 +406,7 @@ describe('<IndexTable>', () => {
       );
     });
 
-    it('renders a custom select all string if present', () => {
+    it('renders a custom select all action string if present', () => {
       const onSelectionChangeSpy = jest.fn();
       const customString = 'Foo bar baz';
       const index = mountWithApp(
@@ -419,6 +419,26 @@ describe('<IndexTable>', () => {
           promotedBulkActions={[{content: 'promoted action'}]}
           onSelectionChange={onSelectionChangeSpy}
           paginatedSelectAllActionText={customString}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+      expect(index.find(BulkActions)).toContainReactText(customString);
+    });
+
+    it('renders a custom default select all string if present', () => {
+      const onSelectionChangeSpy = jest.fn();
+      const customString = 'Foo bar baz';
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          hasMoreItems
+          selectedItemsCount="All"
+          itemCount={2}
+          promotedBulkActions={[{content: 'promoted action'}]}
+          onSelectionChange={onSelectionChangeSpy}
+          paginatedSelectAllText={customString}
         >
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,
@@ -750,7 +770,7 @@ describe('<IndexTable>', () => {
           </IndexTable>,
         );
 
-        expect(index.findAll(Tooltip)[2].prop('content')).toBe(
+        expect(index.findAll(Tooltip)[1].prop('content')).toBe(
           defaultSortingProps!.sortToggleLabels![2].descending,
         );
       });

@@ -42,18 +42,20 @@ export interface TabsProps {
   selected: number;
   /** Whether the Tabs are disabled or not. */
   disabled?: boolean;
-  /** Optional callback invoked when a Tab becomes selected. */
-  onSelect?: (selectedTabIndex: number) => void;
   /** Whether to show the add new view Tab. */
   canCreateNewView?: boolean;
   /** Label for the new view Tab. Will override the default of "Create new view" */
   newViewAccessibilityLabel?: string;
-  /** Optional callback invoked when a merchant saves a new view from the Modal */
-  onCreateNewView?: (value: string) => Promise<boolean>;
   /** Fit tabs to container */
   fitted?: boolean;
   /** Text to replace disclosures horizontal dots */
   disclosureText?: string;
+  /** Override z-index of popovers and tooltips */
+  disclosureZIndexOverride?: number;
+  /** Optional callback invoked when a Tab becomes selected. */
+  onSelect?: (selectedTabIndex: number) => void;
+  /** Optional callback invoked when a merchant saves a new view from the Modal */
+  onCreateNewView?: (value: string) => Promise<boolean>;
 }
 const CREATE_NEW_VIEW_ID = 'create-new-view';
 
@@ -68,6 +70,7 @@ export const Tabs = ({
   onSelect,
   fitted,
   disclosureText,
+  disclosureZIndexOverride,
 }: TabsProps) => {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -205,17 +208,19 @@ export const Tabs = ({
           onToggleModal={handleToggleModal}
           onTogglePopover={handleTogglePopover}
           viewNames={viewNames}
+          disclosureZIndexOverride={disclosureZIndexOverride}
           ref={index === selected ? selectedTabRef : null}
         />
       );
     },
     [
       disabled,
-      handleTabClick,
       tabs,
       children,
       selected,
       tabToFocus,
+      disclosureZIndexOverride,
+      handleTabClick,
       handleToggleModal,
       handleTogglePopover,
     ],
@@ -578,6 +583,7 @@ export const Tabs = ({
                     active={disclosureActivatorVisible && showDisclosure}
                     onClose={handleClose}
                     autofocusTarget="first-node"
+                    zIndexOverride={disclosureZIndexOverride}
                   >
                     <List
                       focusIndex={hiddenTabs.indexOf(tabToFocus)}
@@ -608,6 +614,7 @@ export const Tabs = ({
                           )}
                           preferredPosition="above"
                           hoverDelay={400}
+                          zIndexOverride={disclosureZIndexOverride}
                         >
                           {newTab}
                         </Tooltip>

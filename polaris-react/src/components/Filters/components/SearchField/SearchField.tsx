@@ -49,8 +49,8 @@ export function SearchField({
       </Text>
     ) : null;
 
-  function handleChange(value: string) {
-    onChange(value);
+  function handleChange(eventValue: string) {
+    onChange(eventValue ?? value);
   }
 
   function handleClear() {
@@ -65,7 +65,7 @@ export function SearchField({
     <TextField
       id={id}
       value={value}
-      onChange={(eventValue) => handleChange(eventValue ?? value)}
+      onChange={handleChange}
       onFocus={onFocus}
       onBlur={onBlur}
       onClearButtonClick={handleClear}

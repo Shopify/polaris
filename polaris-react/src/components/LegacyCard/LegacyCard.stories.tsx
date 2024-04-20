@@ -26,7 +26,9 @@ export default {
 export function Default() {
   return (
     <LegacyCard title="Online store dashboard" sectioned>
-      <p>View a summary of your online store’s performance.</p>
+      <Text as="p" variant="bodyMd">
+        View a summary of your online store’s performance.
+      </Text>
     </LegacyCard>
   );
 }
@@ -34,10 +36,10 @@ export function Default() {
 export function WithHeaderActions() {
   return (
     <LegacyCard sectioned title="Variants" actions={[{content: 'Add variant'}]}>
-      <p>
+      <Text as="p" variant="bodyMd">
         Add variants if this product comes in multiple versions, like different
         sizes or colors.
-      </p>
+      </Text>
     </LegacyCard>
   );
 }
@@ -84,11 +86,11 @@ export function WithCustomFooterActions() {
     <LegacyCard title="Secure your account with 2-step authentication">
       <LegacyCard.Section>
         <LegacyStack spacing="loose" vertical>
-          <p>
+          <Text as="p" variant="bodyMd">
             Two-step authentication adds an extra layer of security when logging
             in to your account. A special code will be required each time you
             log in, ensuring only you can access your account.
-          </p>
+          </Text>
           <LegacyStack distribution="trailing">
             <ButtonGroup>
               <Button>Enable two-step authentication</Button>
@@ -124,14 +126,16 @@ export function WithMultipleSections() {
   return (
     <LegacyCard title="Online store dashboard">
       <LegacyCard.Section>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </LegacyCard.Section>
 
       <LegacyCard.Section>
-        <p>
+        <Text as="p" variant="bodyMd">
           View a summary of your online store’s performance, including sales,
           visitors, top products, and referrals.
-        </p>
+        </Text>
       </LegacyCard.Section>
     </LegacyCard>
   );
@@ -141,14 +145,16 @@ export function WithMultipleTitledSections() {
   return (
     <LegacyCard title="Online store dashboard">
       <LegacyCard.Section title="Reports">
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </LegacyCard.Section>
 
       <LegacyCard.Section title="Summary">
-        <p>
+        <Text as="p" variant="bodyMd">
           View a summary of your online store’s performance, including sales,
           visitors, top products, and referrals.
-        </p>
+        </Text>
       </LegacyCard.Section>
     </LegacyCard>
   );
@@ -158,13 +164,17 @@ export function WithSectionsAndActions() {
   return (
     <LegacyCard title="Customer">
       <LegacyCard.Section>
-        <p>John Smith</p>
+        <Text as="p" variant="bodyMd">
+          John Smith
+        </Text>
       </LegacyCard.Section>
       <LegacyCard.Section
         title="Contact Information"
         actions={[{content: 'Edit'}]}
       >
-        <p>john.smith@example.com</p>
+        <Text as="p" variant="bodyMd">
+          john.smith@example.com
+        </Text>
       </LegacyCard.Section>
     </LegacyCard>
   );
@@ -174,7 +184,9 @@ export function WithSubsection() {
   return (
     <LegacyCard title="Customer">
       <LegacyCard.Section>
-        <p>John Smith</p>
+        <Text as="p" variant="bodyMd">
+          John Smith
+        </Text>
       </LegacyCard.Section>
       <LegacyCard.Section title="Addresses">
         <LegacyCard.Subsection>
@@ -205,13 +217,17 @@ export function WithDestructiveAction() {
   return (
     <LegacyCard title="Customer">
       <LegacyCard.Section>
-        <p>John Smith</p>
+        <Text as="p" variant="bodyMd">
+          John Smith
+        </Text>
       </LegacyCard.Section>
       <LegacyCard.Section
         title="Contact Information"
         actions={[{content: 'Delete', tone: 'critical'}, {content: 'Edit'}]}
       >
-        <p>john.smith@example.com</p>
+        <Text as="p" variant="bodyMd">
+          john.smith@example.com
+        </Text>
       </LegacyCard.Section>
     </LegacyCard>
   );
@@ -458,7 +474,9 @@ export function All() {
         <LegacyCard.Section>Section 1 content</LegacyCard.Section>
         <LegacyCard.Section>Section 2 content</LegacyCard.Section>
         <div>
-          <p>Custom footer in a p</p>
+          <Text as="p" variant="bodyMd">
+            Custom footer in a p
+          </Text>
         </div>
       </LegacyCard>
       <LegacyCard title="Sections are not siblings">

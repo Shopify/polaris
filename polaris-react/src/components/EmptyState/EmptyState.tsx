@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {ComplexAction} from '../../types';
@@ -46,29 +46,59 @@ export function EmptyState({
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
-  const imageContainedClass = classNames(
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imageRef.current?.complete) setImageLoaded(true);
+  }, []);
+
+  const imageClassNames = classNames(
+    styles.Image,
+    imageLoaded && styles.loaded,
     imageContained && styles.imageContained,
   );
 
-  const imageMarkup = largeImage ? (
+  const loadedImageMarkup = largeImage ? (
     <Image
       alt=""
       role="presentation"
+      ref={imageRef}
       source={largeImage}
-      className={imageContainedClass}
+      className={imageClassNames}
       sourceSet={[
         {source: image, descriptor: '568w'},
         {source: largeImage, descriptor: '1136w'},
       ]}
       sizes="(max-width: 568px) 60vw"
+      onLoad={() => setImageLoaded(true)}
     />
   ) : (
     <Image
-      className={imageContainedClass}
-      role="presentation"
       alt=""
+      role="presentation"
+      ref={imageRef}
+      className={imageClassNames}
       source={image}
+      onLoad={() => setImageLoaded(true)}
     />
+  );
+
+  const skeletonImageClassNames = classNames(
+    styles.SkeletonImage,
+    imageLoaded && styles.loaded,
+  );
+
+  const imageContainerClassNames = classNames(
+    styles.ImageContainer,
+    !imageLoaded && styles.SkeletonImageContainer,
+  );
+
+  const imageMarkup = (
+    <div className={imageContainerClassNames}>
+      {loadedImageMarkup}
+      <div className={skeletonImageClassNames} />
+    </div>
   );
 
   const secondaryActionMarkup = secondaryAction

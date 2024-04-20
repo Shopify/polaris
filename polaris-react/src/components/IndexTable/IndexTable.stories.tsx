@@ -100,18 +100,22 @@ export function Default() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" variant="bodyMd" numeric>
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" variant="bodyMd" numeric>
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -209,18 +213,22 @@ export function Condensed() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -319,18 +327,22 @@ export function Flush() {
         position={index}
       >
         <IndexTable.Cell flush>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell flush>{location}</IndexTable.Cell>
         <IndexTable.Cell flush>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell flush>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -434,7 +446,11 @@ export function SmallScreen() {
           <Text fontWeight="bold" as="p">
             {name}
           </Text>
-          <p>{location}</p>
+          <Text as="p" variant="bodyMd">
+            <Text variant="bodyMd" as="span">
+              {location}
+            </Text>
+          </Text>
           <Text as="p" alignment="end" numeric>
             {orders}
           </Text>
@@ -542,7 +558,11 @@ export function SmallScreenLoading() {
           <Text fontWeight="bold" as="p">
             {name}
           </Text>
-          <p>{location}</p>
+          <Text as="p" variant="bodyMd">
+            <Text variant="bodyMd" as="span">
+              {location}
+            </Text>
+          </Text>
           <Text as="p" alignment="end" numeric>
             {orders}
           </Text>
@@ -631,18 +651,22 @@ export function WithDisabledRows() {
         disabled={disabled}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -726,18 +750,22 @@ export function WithSubduedRows() {
         tone={index === 1 || index === 2 ? 'subdued' : undefined}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -803,18 +831,22 @@ export function WithEmptyState() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -910,6 +942,12 @@ export function WithBulkActions() {
       content: 'Edit customers',
       onAction: () => console.log('Todo: implement bulk edit'),
     },
+    {
+      icon: DeleteIcon,
+      destructive: true,
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
   ];
   const bulkActions = [
     {
@@ -919,12 +957,6 @@ export function WithBulkActions() {
     {
       content: 'Remove tags',
       onAction: () => console.log('Todo: implement bulk remove tags'),
-    },
-    {
-      icon: DeleteIcon,
-      destructive: true,
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
     },
   ];
 
@@ -937,18 +969,22 @@ export function WithBulkActions() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1049,18 +1085,22 @@ export function WithSelectionAndNoBulkActions() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1229,18 +1269,22 @@ export function WithMultiplePromotedBulkActions() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1389,18 +1433,22 @@ export function WithBulkActionsAndSelectionAcrossPages() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1435,6 +1483,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
             title: 'Amount spent',
           },
         ]}
+        paginatedSelectAllText="Select everything in this store"
       >
         {rowMarkup}
       </IndexTable>
@@ -1502,18 +1551,22 @@ export function WithLoadingState() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1660,18 +1713,22 @@ export function WithFiltering() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1884,21 +1941,25 @@ export function WithRowStatus() {
         tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
           <code>{status}</code>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -1917,21 +1978,25 @@ export function WithRowStatus() {
         rowType={index > 0 ? 'child' : 'subheader'}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
           <code>{status}</code>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2069,18 +2134,22 @@ export function WithStickyLastColumn() {
         tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2191,19 +2260,23 @@ export function WithRowNavigationLink() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <Text fontWeight="bold" as="span">
+            <Text fontWeight="bold" as="span" variant="bodyMd">
               {name}
             </Text>
           </Link>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2307,19 +2380,23 @@ export function WithClickableButtonColumn() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <Text fontWeight="bold" as="span">
+            <Text fontWeight="bold" as="span" variant="bodyMd">
               {name}
             </Text>
           </Link>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2410,18 +2487,22 @@ export function WithoutCheckboxes() {
     ({id, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row id={id} key={id} position={index}>
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2519,18 +2600,22 @@ export function WithTonesWithoutCheckboxes() {
         tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2697,18 +2782,22 @@ export function WithAllOfItsElements() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -2936,22 +3025,26 @@ export function WithSortableHeadings() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{notes}</IndexTable.Cell>
@@ -2989,6 +3082,197 @@ export function WithSortableHeadings() {
           {title: 'Notes'},
         ]}
         sortable={[true, true, false, true, true, false, false]}
+        sortDirection={sortDirection}
+        sortColumnIndex={sortIndex}
+        onSort={handleClickSortHeading}
+        sortToggleLabels={sortToggleLabels}
+        lastColumnSticky
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithSortableHeadingsLastElementAlignmentEnd() {
+  const [sortIndex, setSortIndex] = useState(0);
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableProps['sortDirection']>('descending');
+
+  const sortToggleLabels = {
+    0: {ascending: 'A-Z', descending: 'Z-A'},
+    1: {ascending: 'Ascending', descending: 'Descending'},
+    2: {ascending: 'Newest', descending: 'Oldest'},
+    3: {ascending: 'Ascending', descending: 'Ascending'},
+    4: {ascending: 'A-Z', descending: 'Z-A'},
+    5: {ascending: 'A-Z', descending: 'Z-A'},
+    6: {ascending: 'A-Z', descending: 'Z-A'},
+    7: {ascending: 'A-Z', descending: 'Z-A'},
+  };
+
+  const initialRows = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      date: '2022-02-04',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Paid',
+      notes: '',
+    },
+    {
+      id: '2561',
+      url: '#',
+      date: '2022-01-19',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer lives on the 3rd floor',
+    },
+    {
+      id: '1245',
+      url: '#',
+      date: '2021-12-12',
+      name: 'Anne-Marie Johnson',
+      location: 'Portland, USA',
+      orders: 10,
+      amountSpent: '$250',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: '',
+    },
+    {
+      id: '8741',
+      url: '#',
+      date: '2022-05-11',
+      name: 'Bradley Stevens',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
+    },
+  ];
+  const [sortedRows, setSortedRows] = useState(
+    sortRows(initialRows, sortIndex, sortDirection),
+  );
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const rows = sortedRows ?? initialRows;
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows);
+
+  function handleClickSortHeading(index, direction) {
+    setSortIndex(index);
+    setSortDirection(direction);
+    const newSortedRows = sortRows(rows, index, direction);
+    setSortedRows(newSortedRows);
+  }
+
+  function sortRows(localRows, index, direction) {
+    return [...localRows].sort((rowA, rowB) => {
+      const key = index === 0 ? 'name' : 'location';
+      if (rowA[key] < rowB[key]) {
+        return direction === 'descending' ? -1 : 1;
+      }
+      if (rowA[key] > rowB[key]) {
+        return direction === 'descending' ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  const rowMarkup = rows.map(
+    (
+      {
+        id,
+        name,
+        date,
+        location,
+        orders,
+        amountSpent,
+        fulfillmentStatus,
+        paymentStatus,
+        notes,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span" variant="bodyMd">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{notes}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        condensed={useBreakpoints().smDown}
+        resourceName={resourceName}
+        itemCount={rows.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Date', defaultSortDirection: 'ascending'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+
+          {title: 'Location'},
+          {title: 'Fulfillment status'},
+          {title: 'Payment status'},
+          {title: 'Notes', alignment: 'end'},
+        ]}
+        sortable={[true, true, false, true, true, false, false, true]}
         sortDirection={sortDirection}
         sortColumnIndex={sortIndex}
         onSort={handleClickSortHeading}
@@ -3123,22 +3407,26 @@ export function WithSortableCustomHeadings() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{notes}</IndexTable.Cell>
@@ -3315,24 +3603,28 @@ export function WithHeadingWithPaddingBlockEnd() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
           <Box paddingInlineEnd="600">
-            <Text as="span" alignment="end" numeric>
+            <Text as="span" alignment="end" numeric variant="bodyMd">
               {amountSpent}
             </Text>
           </Box>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{notes}</IndexTable.Cell>
@@ -3448,18 +3740,22 @@ export function WithCustomTooltips() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -3566,18 +3862,22 @@ export function WithHeadingTooltips() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -3720,18 +4020,22 @@ export function WithZebraStriping() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -3748,18 +4052,22 @@ export function WithZebraStriping() {
         rowType={index > 0 ? 'child' : 'subheader'}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -3860,18 +4168,22 @@ export function WithZebraStripingCondensed() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -3950,18 +4262,22 @@ export function WithZebraStripingAndRowStatus() {
         tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -4092,18 +4408,22 @@ export function WithZebraStripingAndStickyLastColumn() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -4178,18 +4498,22 @@ export function WithZebraStripingAndWithoutCheckboxes() {
     ({id, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row id={id} key={id} position={index}>
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -4360,7 +4684,11 @@ export function SmallScreenWithAllOfItsElements() {
           <Text fontWeight="bold" as="p">
             {name}
           </Text>
-          <p>{location}</p>
+          <Text as="p" variant="bodyMd">
+            <Text variant="bodyMd" as="span">
+              {location}
+            </Text>
+          </Text>
           <Text as="p" alignment="end" numeric>
             {orders}
           </Text>
@@ -4643,14 +4971,18 @@ export function WithSubHeaders() {
                     {name}
                   </Text>
                 </IndexTable.Cell>
-                <IndexTable.Cell>{location}</IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text variant="bodyMd" as="span">
+                    {location}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {orders}
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {amountSpent}
                   </Text>
                 </IndexTable.Cell>
@@ -4709,18 +5041,22 @@ export function WithPagination() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -4809,18 +5145,22 @@ export function WithStickyScrollBar() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -4967,18 +5307,22 @@ export function WithPaginationAndBulkActions() {
         position={index}
       >
         <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
+          <Text fontWeight="bold" as="span" variant="bodyMd">
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text variant="bodyMd" as="span">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {orders}
           </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {amountSpent}
           </Text>
         </IndexTable.Cell>
@@ -5206,14 +5550,18 @@ export function WithSubHeadersNonSelectable() {
                     {name}
                   </Text>
                 </IndexTable.Cell>
-                <IndexTable.Cell>{location}</IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text variant="bodyMd" as="span">
+                    {location}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {orders}
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {amountSpent}
                   </Text>
                 </IndexTable.Cell>
@@ -5405,7 +5753,7 @@ export function WithNestedRows() {
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {quantity}
                   </Text>
                 </IndexTable.Cell>
@@ -5654,27 +6002,27 @@ export function WithNestedRowsStickyLastColumn() {
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {quantity}
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {vendor}
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {channel}
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {paymentStatus}
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {fulfillmentStatus}
                   </Text>
                 </IndexTable.Cell>
@@ -5868,7 +6216,7 @@ export function WithNestedRowsNonSelectable() {
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {quantity}
                   </Text>
                 </IndexTable.Cell>
@@ -6075,7 +6423,7 @@ export function WithNestedRowsWithThumbnails() {
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {quantity}
                   </Text>
                 </IndexTable.Cell>
@@ -6282,7 +6630,7 @@ export function WithNestedRowsWithThumbnailsNonSelectable() {
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {quantity}
                   </Text>
                 </IndexTable.Cell>
@@ -6491,7 +6839,7 @@ export function WithNestedRowsWithThumbnailsOneCellSelectable() {
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {quantity}
                   </Text>
                 </IndexTable.Cell>
@@ -6698,7 +7046,7 @@ export function WithNestedRowsWithThumbnailsOneCellNonSelectable() {
                   </Text>
                 </IndexTable.Cell>
                 <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
+                  <Text as="span" alignment="end" numeric variant="bodyMd">
                     {quantity}
                   </Text>
                 </IndexTable.Cell>
@@ -7053,7 +7401,7 @@ export function WithUnmountingTable() {
         <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>{customer}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
+          <Text as="span" alignment="end" numeric variant="bodyMd">
             {total}
           </Text>
         </IndexTable.Cell>

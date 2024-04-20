@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Button, ButtonGroup, Icon, BlockStack} from '@shopify/polaris';
+import {Button, ButtonGroup, Icon, BlockStack, Text} from '@shopify/polaris';
 import {DeleteIcon} from '@shopify/polaris-icons';
 
 export default {
@@ -152,7 +152,9 @@ export function WithAllGaps() {
 export function NoWrapButtons() {
   return (
     <>
-      <p>Default</p>
+      <Text as="p" variant="bodyMd">
+        Default
+      </Text>
       <div
         style={{
           width: '300px',
@@ -170,7 +172,9 @@ export function NoWrapButtons() {
         </ButtonGroup>
       </div>
       <br />
-      <p>With noWrap</p>
+      <Text as="p" variant="bodyMd">
+        With noWrap
+      </Text>
       <div
         style={{
           width: '300px',

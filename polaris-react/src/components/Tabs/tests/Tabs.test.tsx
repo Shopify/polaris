@@ -4,6 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 import {Icon} from '../../Icon';
 import {Text} from '../../Text';
 import {Popover} from '../../Popover';
+import {Tooltip} from '../../Tooltip';
 import {Tabs} from '..';
 import type {TabProps, TabsProps} from '..';
 import {Tab, Panel, CreateViewModal, TabMeasurer} from '../components';
@@ -453,6 +454,42 @@ describe('Tabs', () => {
       expect(wrapper).toContainReactText(disclosureText);
     });
 
+    it('passes the zIndexOverride through to Popover when provided', () => {
+      const disclosureZIndexOverride = 517;
+      const wrapper = mountWithApp(
+        <Tabs
+          {...mockProps}
+          tabs={mockTabs}
+          disclosureZIndexOverride={disclosureZIndexOverride}
+        />,
+      );
+
+      wrapper.find(TabMeasurer)!.trigger('handleMeasurement', {
+        hiddenTabWidths: [82, 160, 150, 100, 80, 120],
+        containerWidth: 300,
+        disclosureWidth: 0,
+      });
+
+      expect(wrapper.find(Popover)).toHaveReactProps({
+        zIndexOverride: disclosureZIndexOverride,
+      });
+    });
+
+    it('passes the zIndexOverride through to Tab when provided', () => {
+      const disclosureZIndexOverride = 517;
+      const wrapper = mountWithApp(
+        <Tabs
+          {...mockProps}
+          tabs={mockTabs}
+          disclosureZIndexOverride={disclosureZIndexOverride}
+        />,
+      );
+
+      expect(wrapper).toContainReactComponent(Tab, {
+        disclosureZIndexOverride,
+      });
+    });
+
     it('passes preferredPosition below to the Popover', () => {
       const tabs = mountWithApp(<Tabs {...mockProps} tabs={mockTabs} />);
       tabs.find(TabMeasurer)!.trigger('handleMeasurement', {
@@ -586,6 +623,21 @@ describe('Tabs', () => {
       });
       expect(wrapper).toContainReactComponent(Icon, {
         accessibilityLabel: mockProps.newViewAccessibilityLabel,
+      });
+    });
+
+    it('passes the disclosureZIndexOverride to Tooltip when provided', () => {
+      const disclosureZIndexOverride = 517;
+      const wrapper = mountWithApp(
+        <Tabs
+          {...mockProps}
+          canCreateNewView
+          disclosureZIndexOverride={disclosureZIndexOverride}
+        />,
+      );
+
+      expect(wrapper).toContainReactComponent(Tooltip, {
+        zIndexOverride: disclosureZIndexOverride,
       });
     });
 

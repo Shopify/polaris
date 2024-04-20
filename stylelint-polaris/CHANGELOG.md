@@ -1,5 +1,44 @@
 # Changelog
 
+## 16.0.0
+
+### Major Changes
+
+- [#11844](https://github.com/Shopify/polaris/pull/11844) [`a89e61478`](https://github.com/Shopify/polaris/commit/a89e61478fb7c5f588021e542101aba8a3898ec8) Thanks [@jesstelford](https://github.com/jesstelford)! - Miniumum required node version updated to v20.10.0
+
+* [#11799](https://github.com/Shopify/polaris/pull/11799) [`aa8e0f42b`](https://github.com/Shopify/polaris/commit/aa8e0f42b956622e826646c809c57eb79bb2b892) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - [Internal] Migrate repo from yarn to pnpm. No action required.
+
+### Patch Changes
+
+- Updated dependencies [[`a89e61478`](https://github.com/Shopify/polaris/commit/a89e61478fb7c5f588021e542101aba8a3898ec8)]:
+  - @shopify/polaris-tokens@9.0.0
+
+## 15.5.1
+
+### Patch Changes
+
+- Updated dependencies [[`f6308995e`](https://github.com/Shopify/polaris/commit/f6308995e3ef8b5f8f017471d23a08577243b323)]:
+  - @shopify/polaris-tokens@8.10.0
+
+## 15.5.0
+
+### Minor Changes
+
+- [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added warning for `font-size`, `line-height`, and `font-weight` properties. Use the `Text` component as a preferred option.
+
+## 15.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`1e613de8b`](https://github.com/Shopify/polaris/commit/1e613de8b3938bc30c722382a8e78e75e50be9cd)]:
+  - @shopify/polaris-tokens@8.9.0
+
+## 15.4.0
+
+### Minor Changes
+
+- [#11677](https://github.com/Shopify/polaris/pull/11677) [`f6ba2b2a8`](https://github.com/Shopify/polaris/commit/f6ba2b2a8a8beae9ab235437caf5bfbacc50741f) Thanks [@jesstelford](https://github.com/jesstelford)! - Add `--pg-` as a disallowed CSS Custom Property prefix (these are "global" Custom Properties used within @shopify/polaris-react).
+
 ## 15.3.0
 
 ### Minor Changes

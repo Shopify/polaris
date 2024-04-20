@@ -26,24 +26,27 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Setup Node from .nvmrc
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
-          cache: 'yarn'
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: yarn build:release
+        run: pnpm build:release
 
       - name: Create release Pull Request or publish to NPM
         id: changesets
         uses: changesets/action@v1
         with:
-          version: yarn version-packages
-          publish: yarn release-packages
+          version: pnpm version-packages
+          publish: pnpm release-packages
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}

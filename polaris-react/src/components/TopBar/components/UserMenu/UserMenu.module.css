@@ -1,21 +1,10 @@
 .Details {
   max-width: 160px;
   margin-right: 0;
-  // stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- set padding
+  /* stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- set padding */
   padding: 0 var(--p-space-200) 0 10px;
-
-  > p {
-    font-size: var(--p-font-size-300);
-    line-height: var(--p-font-line-height-400);
-  }
 
   @media (--p-breakpoints-md-down) {
     display: none;
   }
-}
-
-.Message > p {
-  color: var(--p-color-text-inverse-secondary);
-  font-size: var(--p-font-size-275);
-  line-height: var(--p-font-line-height-300);
 }

@@ -57,7 +57,7 @@ export function createThemeClassName(themeName: ThemeName) {
 }
 
 export function createThemeSelector(themeName: ThemeName) {
-  return `html.${createThemeClassName(themeName)}`;
+  return `.${createThemeClassName(themeName)}`;
 }
 
 export function extractMetaTokenGroupValues<T extends MetaTokenGroupShape>(

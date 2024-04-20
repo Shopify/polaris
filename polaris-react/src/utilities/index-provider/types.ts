@@ -30,6 +30,7 @@ export interface IndexProviderProps {
     selection?: string | Range,
     position?: number,
   ): void;
+  paginatedSelectAllText?: string;
 }
 
 export type HandleSelectionChange = (
@@ -47,6 +48,7 @@ export interface BulkSelectionDataOptions {
     singular: string;
     plural: string;
   };
+  defaultPaginatedSelectAllText?: string;
 }
 
 export interface HandleBulkSelectionOptions {

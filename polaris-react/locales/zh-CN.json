@@ -358,7 +358,8 @@
       "accessibilityLabel": "退出全屏模式"
     },
     "FilterPill": {
-      "clear": "清除"
+      "clear": "清除",
+      "unsavedChanges": "未保存的更改 - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "搜索和筛选",

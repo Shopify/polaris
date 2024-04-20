@@ -11,7 +11,11 @@ import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
-import {ThemeContext, getTheme} from '../../utilities/use-theme';
+import {
+  ThemeNameContext,
+  ThemeContext,
+  getTheme,
+} from '../../utilities/use-theme';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -134,6 +138,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {i18n, linkComponent} = this.props;
 
     this.setRootAttributes();
+    /* Temporary for dynamicTopBarAndReframe feature. Remove when feature flag is removed. */
+    this.setBodyStyles();
 
     if (i18n === prevI18n && linkComponent === prevLinkComponent) {
       return;
@@ -146,8 +152,20 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   setBodyStyles = () => {
+    const {features} = this.props;
+
     document.body.style.backgroundColor = 'var(--p-color-bg)';
     document.body.style.color = 'var(--p-color-text)';
+
+    /* Temporary for dynamicTopBarAndReframe feature.
+     * Remove when feature flag is removed and apply
+     * styles directly to body in the global stylesheet.
+     */
+    if (features?.dynamicTopBarAndReframe) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   };
 
   setRootAttributes = () => {
@@ -164,33 +182,35 @@ export class AppProvider extends Component<AppProviderProps, State> {
   getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
 
   render() {
-    const {children, features} = this.props;
+    const {children, features = {}} = this.props;
     const themeName = this.getThemeName();
 
     const {intl, link} = this.state;
 
     return (
-      <ThemeContext.Provider value={getTheme(themeName)}>
-        <FeaturesContext.Provider value={features}>
-          <I18nContext.Provider value={intl}>
-            <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-              <StickyManagerContext.Provider value={this.stickyManager}>
-                <LinkContext.Provider value={link}>
-                  <MediaQueryProvider>
-                    <PortalsManager>
-                      <FocusManager>
-                        <EphemeralPresenceManager>
-                          {children}
-                        </EphemeralPresenceManager>
-                      </FocusManager>
-                    </PortalsManager>
-                  </MediaQueryProvider>
-                </LinkContext.Provider>
-              </StickyManagerContext.Provider>
-            </ScrollLockManagerContext.Provider>
-          </I18nContext.Provider>
-        </FeaturesContext.Provider>
-      </ThemeContext.Provider>
+      <ThemeNameContext.Provider value={themeName}>
+        <ThemeContext.Provider value={getTheme(themeName)}>
+          <FeaturesContext.Provider value={features}>
+            <I18nContext.Provider value={intl}>
+              <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+                <StickyManagerContext.Provider value={this.stickyManager}>
+                  <LinkContext.Provider value={link}>
+                    <MediaQueryProvider>
+                      <PortalsManager>
+                        <FocusManager>
+                          <EphemeralPresenceManager>
+                            {children}
+                          </EphemeralPresenceManager>
+                        </FocusManager>
+                      </PortalsManager>
+                    </MediaQueryProvider>
+                  </LinkContext.Provider>
+                </StickyManagerContext.Provider>
+              </ScrollLockManagerContext.Provider>
+            </I18nContext.Provider>
+          </FeaturesContext.Provider>
+        </ThemeContext.Provider>
+      </ThemeNameContext.Provider>
     );
   }
 }

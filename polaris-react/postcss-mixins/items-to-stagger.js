@@ -1,16 +1,11 @@
-const postcss = require('postcss');
+const staggerInterval = 50;
 
-module.exports = (mixin) => {
-  const rules = [];
+module.exports = () => {
+  const rules = {};
   for (let i = 1; i <= 12; i++) {
-    const rule = postcss.rule({
-      selector: `&:nth-child(${i})`,
-    });
-    rule.append({
-      prop: 'animation-delay',
-      value: `calc((${i} - 1) * 50ms)`,
-    });
-    rules.push(rule);
+    rules[`&:nth-child(${i})`] = {
+      animationDelay: `${(i - 1) * staggerInterval}ms`,
+    };
   }
-  mixin.replaceWith(rules);
+  return rules;
 };

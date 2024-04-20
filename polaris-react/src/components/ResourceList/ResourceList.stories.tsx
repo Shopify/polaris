@@ -90,10 +90,10 @@ export function WithEmptyState() {
         action={{content: 'Upload files'}}
         image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
       >
-        <p>
+        <Text as="p" variant="bodyMd">
           You can use the Files section to upload images, videos, and other
           documents
-        </p>
+        </Text>
       </EmptyState>
     ) : undefined;
 

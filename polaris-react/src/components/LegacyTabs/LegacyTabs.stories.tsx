@@ -88,7 +88,9 @@ export function Default() {
   return (
     <LegacyTabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
       <LegacyCard.Section title={tabs[selected].content}>
-        <p>Tab {selected} selected</p>
+        <Text as="p" variant="bodyMd">
+          Tab {selected} selected
+        </Text>
       </LegacyCard.Section>
     </LegacyTabs>
   );
@@ -133,7 +135,9 @@ export function WithUrlTabs() {
   return (
     <LegacyTabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
       <LegacyCard.Section title={tabs[selected].content}>
-        <p>Tab {selected} selected</p>
+        <Text as="p" variant="bodyMd">
+          Tab {selected} selected
+        </Text>
       </LegacyCard.Section>
     </LegacyTabs>
   );
@@ -170,7 +174,9 @@ export function Fitted() {
         fitted
       >
         <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
         </LegacyCard.Section>
       </LegacyTabs>
     </LegacyCard>
@@ -216,7 +222,9 @@ export function WithBadgeContent() {
         fitted
       >
         <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
         </LegacyCard.Section>
       </LegacyTabs>
     </LegacyCard>
@@ -264,7 +272,9 @@ export function WithCustomDisclosure() {
         disclosureText="More views"
       >
         <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
         </LegacyCard.Section>
       </LegacyTabs>
     </LegacyCard>

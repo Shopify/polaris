@@ -10,8 +10,8 @@ The development workflow for a VS Code Extension is built right into the VS Code
 1. Install all dependencies and build packages
 
    ```sh
-   yarn install
-   yarn build
+   pnpm install
+   pnpm build
    ```
 
 1. Open the [VS Code debugger](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension) (<kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>D</kbd>)

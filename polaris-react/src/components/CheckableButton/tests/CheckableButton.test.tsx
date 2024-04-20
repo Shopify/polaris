@@ -32,10 +32,7 @@ describe('<CheckableButton />', () => {
       const element = mountWithApp(
         <CheckableButton {...CheckableButtonProps} />,
       );
-      expect(element).toContainReactComponent('span', {
-        className: 'Label',
-        children: label,
-      });
+      expect(element).toContainReactText(label);
     });
   });
 

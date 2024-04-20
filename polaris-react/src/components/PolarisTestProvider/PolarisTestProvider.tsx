@@ -21,7 +21,11 @@ import type {LinkLikeComponent} from '../../utilities/link';
 import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
-import {ThemeContext, getTheme} from '../../utilities/use-theme';
+import {
+  ThemeNameContext,
+  ThemeContext,
+  getTheme,
+} from '../../utilities/use-theme';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 type MediaQueryContextType = NonNullable<
@@ -60,9 +64,9 @@ export function PolarisTestProvider({
   i18n,
   link,
   mediaQuery,
-  features,
+  features = {},
   frame,
-  theme = themeNameDefault,
+  theme: themeName = themeNameDefault,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
   const intl = useMemo(() => new I18n(i18n || {}), [i18n]);
@@ -76,29 +80,31 @@ export function PolarisTestProvider({
 
   return (
     <Wrapper>
-      <ThemeContext.Provider value={getTheme(theme)}>
-        <FeaturesContext.Provider value={features}>
-          <I18nContext.Provider value={intl}>
-            <ScrollLockManagerContext.Provider value={scrollLockManager}>
-              <StickyManagerContext.Provider value={stickyManager}>
-                <LinkContext.Provider value={link}>
-                  <MediaQueryContext.Provider value={mergedMediaQuery}>
-                    <PortalsManager>
-                      <FocusManager>
-                        <EphemeralPresenceManager>
-                          <FrameContext.Provider value={mergedFrame}>
-                            {children}
-                          </FrameContext.Provider>
-                        </EphemeralPresenceManager>
-                      </FocusManager>
-                    </PortalsManager>
-                  </MediaQueryContext.Provider>
-                </LinkContext.Provider>
-              </StickyManagerContext.Provider>
-            </ScrollLockManagerContext.Provider>
-          </I18nContext.Provider>
-        </FeaturesContext.Provider>
-      </ThemeContext.Provider>
+      <ThemeNameContext.Provider value={themeName}>
+        <ThemeContext.Provider value={getTheme(themeName)}>
+          <FeaturesContext.Provider value={features}>
+            <I18nContext.Provider value={intl}>
+              <ScrollLockManagerContext.Provider value={scrollLockManager}>
+                <StickyManagerContext.Provider value={stickyManager}>
+                  <LinkContext.Provider value={link}>
+                    <MediaQueryContext.Provider value={mergedMediaQuery}>
+                      <PortalsManager>
+                        <FocusManager>
+                          <EphemeralPresenceManager>
+                            <FrameContext.Provider value={mergedFrame}>
+                              {children}
+                            </FrameContext.Provider>
+                          </EphemeralPresenceManager>
+                        </FocusManager>
+                      </PortalsManager>
+                    </MediaQueryContext.Provider>
+                  </LinkContext.Provider>
+                </StickyManagerContext.Provider>
+              </ScrollLockManagerContext.Provider>
+            </I18nContext.Provider>
+          </FeaturesContext.Provider>
+        </ThemeContext.Provider>
+      </ThemeNameContext.Provider>
     </Wrapper>
   );
 }
@@ -112,6 +118,8 @@ function createFrameContext({
   toastMessages = [],
   setContextualSaveBar = noop,
   removeContextualSaveBar = noop,
+  contextualSaveBarVisible = false,
+  contextualSaveBarProps = {},
   startLoading = noop,
   stopLoading = noop,
 }: Partial<FrameContextType> = {}): FrameContextType {
@@ -122,6 +130,8 @@ function createFrameContext({
     toastMessages,
     setContextualSaveBar,
     removeContextualSaveBar,
+    contextualSaveBarVisible,
+    contextualSaveBarProps,
     startLoading,
     stopLoading,
   };

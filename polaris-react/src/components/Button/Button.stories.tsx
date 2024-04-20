@@ -1,7 +1,13 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TextProps} from '@shopify/polaris';
 import {
+  useCopyToClipboard,
+  useFocusIn,
+  useHover,
+  useMediaQuery,
+  Link,
+  Tooltip,
   Button,
   ButtonGroup,
   Card,
@@ -14,10 +20,13 @@ import {
 } from '@shopify/polaris';
 import {
   PlusIcon,
+  PlusCircleIcon,
   XSmallIcon,
   ChevronDownIcon,
   EditIcon,
   MagicIcon,
+  CheckIcon,
+  ClipboardIcon,
   DeleteIcon,
 } from '@shopify/polaris-icons';
 
@@ -206,10 +215,10 @@ export function Plain() {
         <Button variant="plain" disabled>
           Label
         </Button>
-        <Button variant="plain" icon={PlusIcon}>
+        <Button variant="plain" icon={PlusCircleIcon}>
           Label
         </Button>
-        <Button variant="plain" disabled icon={PlusIcon}>
+        <Button variant="plain" disabled icon={PlusCircleIcon}>
           Label
         </Button>
         <Button variant="plain" disclosure>
@@ -241,10 +250,10 @@ export function MonochromePlain() {
     <Box padding="400">
       <InlineStack gap="400" blockAlign="center">
         <Button variant="monochromePlain">Default</Button>
-        <Button variant="monochromePlain" icon={PlusIcon}>
+        <Button variant="monochromePlain" icon={PlusCircleIcon}>
           With icon
         </Button>
-        <Button variant="monochromePlain" disabled icon={PlusIcon}>
+        <Button variant="monochromePlain" disabled icon={PlusCircleIcon}>
           Disabled with icon
         </Button>
         <Button variant="monochromePlain" disclosure>
@@ -276,10 +285,10 @@ export function Tertiary() {
           <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button variant="tertiary" icon={PlusIcon}>
+          <Button variant="tertiary" icon={PlusCircleIcon}>
             Label
           </Button>
-          <Button variant="tertiary" disabled icon={PlusIcon}>
+          <Button variant="tertiary" disabled icon={PlusCircleIcon}>
             Label
           </Button>
           <Button variant="tertiary" disclosure>
@@ -306,10 +315,10 @@ export function Tertiary() {
           <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button variant="tertiary" icon={PlusIcon}>
+          <Button variant="tertiary" icon={PlusCircleIcon}>
             Label
           </Button>
-          <Button variant="tertiary" disabled icon={PlusIcon}>
+          <Button variant="tertiary" disabled icon={PlusCircleIcon}>
             Label
           </Button>
           <Button variant="tertiary" disclosure>
@@ -830,5 +839,55 @@ export function LoadingState() {
         Save product
       </Button>
     </InlineStack>
+  );
+}
+
+export function CopyToClipboard() {
+  const [copy, status] = useCopyToClipboard({
+    defaultValue: 'hello@example.com',
+  });
+
+  const ref = useRef(null);
+  const isFocusedIn = useFocusIn(ref);
+  const isHovered = useHover(ref);
+  const isMouseDevice = useMediaQuery('mouse');
+  const isMouseHovered = isMouseDevice ? isHovered : true;
+
+  return (
+    <div style={{maxWidth: 300, paddingTop: 100}}>
+      <Card>
+        <div ref={ref}>
+          <InlineStack align="space-between" gap="200" blockAlign="center">
+            <Link removeUnderline>hello@example.com</Link>
+            <div
+              style={{
+                opacity:
+                  isMouseHovered || isFocusedIn || status === 'copied' ? 1 : 0,
+                transition:
+                  isMouseHovered || isFocusedIn
+                    ? 'var(--p-motion-duration-100) var(--p-motion-ease) opacity'
+                    : 'none',
+              }}
+            >
+              <Tooltip
+                dismissOnMouseOut
+                hoverDelay={500}
+                preferredPosition="above"
+                content="Copy"
+                active={status === 'copied' ? false : undefined}
+                activatorWrapper="div"
+              >
+                <Button
+                  variant="tertiary"
+                  accessibilityLabel="Copy email address"
+                  onClick={copy}
+                  icon={status === 'copied' ? CheckIcon : ClipboardIcon}
+                />
+              </Tooltip>
+            </div>
+          </InlineStack>
+        </div>
+      </Card>
+    </div>
   );
 }

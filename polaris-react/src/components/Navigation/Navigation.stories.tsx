@@ -1065,8 +1065,8 @@ export function WithAriaLabelledby() {
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
-        <Text as="span" visuallyHidden>
-          <p id="label-id">Hidden label</p>
+        <Text id="label-id" as="span" visuallyHidden>
+          Hidden label
         </Text>
         <Navigation.Section
           items={[

@@ -80,6 +80,8 @@ export interface IndexFiltersProps
   onEditStart?: (mode: ActionableIndexFiltersMode) => void;
   /** The current mode of the IndexFilters component. Used to determine which view to show */
   mode: IndexFiltersMode;
+  /** Override z-index of popovers and tooltips */
+  disclosureZIndexOverride?: number;
   /** Callback to set the mode of the IndexFilters component */
   setMode: (mode: IndexFiltersMode) => void;
   /** Will disable all the elements within the IndexFilters component */
@@ -136,6 +138,7 @@ export function IndexFilters({
   loading,
   mode,
   setMode,
+  disclosureZIndexOverride,
   disableStickyMode,
   isFlushWhenSticky = false,
   canCreateNewView = true,
@@ -152,6 +155,7 @@ export function IndexFilters({
   const {mdDown} = useBreakpoints();
   const defaultRef = useRef(null);
   const filteringRef = useRef(null);
+
   const {
     value: filtersFocused,
     setFalse: setFiltersUnFocused,
@@ -279,6 +283,7 @@ export function IndexFilters({
         onChangeKey={onSortKeyChange}
         onChangeDirection={onSortDirectionChange}
         disabled={disabled}
+        disclosureZIndexOverride={disclosureZIndexOverride}
       />
     );
   }, [
@@ -288,15 +293,16 @@ export function IndexFilters({
     sortOptions,
     sortSelected,
     disabled,
+    disclosureZIndexOverride,
   ]);
 
-  function handleClickEditColumnsButon() {
+  function handleClickEditColumnsButton() {
     beginEdit(IndexFiltersMode.EditingColumns);
   }
 
   const editColumnsMarkup = showEditColumnsButton ? (
     <EditColumnsButton
-      onClick={handleClickEditColumnsButon}
+      onClick={handleClickEditColumnsButton}
       disabled={disabled}
     />
   ) : null;
@@ -397,6 +403,7 @@ export function IndexFilters({
                           disabled={Boolean(
                             mode !== IndexFiltersMode.Default || disabled,
                           )}
+                          disclosureZIndexOverride={disclosureZIndexOverride}
                           canCreateNewView={canCreateNewView}
                           onCreateNewView={onCreateNewView}
                         />
@@ -427,6 +434,9 @@ export function IndexFilters({
                                 ...defaultStyle,
                                 ...transitionStyles[state],
                               }}
+                              disclosureZIndexOverride={
+                                disclosureZIndexOverride
+                              }
                             />
                           )}
                           {editColumnsMarkup}

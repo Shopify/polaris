@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-icons",
-  "version": "8.8.0",
+  "version": "9.0.0",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
     }
   },
   "engines": {
-    "node": "^16.17.0 || >=18.12.0"
+    "node": ">=20.10.0"
   },
   "scripts": {
     "build": "rollup -c",
@@ -62,6 +62,10 @@
     "hast-util-select": "^3.0.0",
     "js-yaml": "^4.0.0",
     "rehype-parse": "^7.0.1",
+    "svgo": "^2.8.0",
     "unified": "^9.2.1"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }

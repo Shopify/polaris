@@ -34,24 +34,15 @@
   border-radius: var(--p-border-radius-200);
   box-shadow: var(--pc-button-box-shadow);
   color: var(--pc-button-color);
-
-  font-size: var(--p-font-size-325);
-  font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-500);
-
   cursor: pointer;
   user-select: none;
+  touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-
-  @media (--p-breakpoints-md-up) {
-    font-size: var(--p-font-size-300);
-    line-height: var(--p-font-line-height-400);
-  }
 }
 
-// stylelint-disable selector-max-specificity -- Duplicate selectors to bump specificity to be greater than Icon's svg fill (0, 1, 1)
-// https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
-// Remove the duplicate selectors once `Icon` supports no fill so there won't be competing specificity
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
+   Remove the duplicate selectors once `Icon` supports no fill so there won't be competing specificity */
+/* stylelint-disable selector-max-specificity -- Duplicate selectors to bump specificity to be greater than Icon's svg fill (0, 1, 1) */
 .Button.Button svg {
   fill: var(--pc-button-icon-fill);
 }
@@ -77,7 +68,7 @@
 .pressed.pressed:focus-visible svg {
   fill: var(--pc-button-icon-fill_pressed);
 }
-// stylelint-enable selector-max-specificity
+/* stylelint-enable selector-max-specificity */
 
 .Button:hover {
   background: var(--pc-button-bg_hover);
@@ -98,7 +89,7 @@
   outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   outline-offset: var(--p-space-025);
 
-  // Disable focus-ring mixin to prevent overlap of focus-ring and outline
+  /* Disable focus-ring mixin to prevent overlap of focus-ring and outline */
   &::after {
     content: none;
   }
@@ -123,7 +114,7 @@
   box-shadow: var(--pc-button-box-shadow_pressed);
 }
 
-// VARIANTS
+/* VARIANTS */
 .variantPrimary {
   --pc-button-bg-gradient: var(--p-color-button-gradient-bg-fill);
   --pc-button-box-shadow: var(--p-shadow-button-primary);
@@ -166,7 +157,7 @@
   --pc-button-color_active: var(--p-color-text-link-active);
 }
 
-.variantPlain:is(:hover, :active, :focus-visible) {
+.variantPlain:is(:hover, :active, :focus-visible):not(.removeUnderline) {
   text-decoration: underline;
 }
 
@@ -179,9 +170,6 @@
   --pc-button-bg_disabled: transparent;
   margin: calc(-1 * var(--pc-button-padding-block))
     calc(-1 * var(--pc-button-padding-inline));
-  font-size: var(--p-font-size-325);
-  font-weight: var(--p-font-weight-regular);
-  line-height: var(--p-font-line-height-400);
 }
 
 .variantPlain:focus-visible,
@@ -190,7 +178,7 @@
   outline-offset: calc(-1 * var(--pc-button-padding-block));
 }
 
-// TONES
+/* TONES */
 .toneSuccess:is(.variantSecondary, .variantTertiary, .variantPlain) {
   --pc-button-color: var(--p-color-text-success);
   --pc-button-color_hover: var(--p-color-text-success-hover);
@@ -223,7 +211,7 @@
   --pc-button-bg_pressed: var(--p-color-bg-fill-critical-selected);
 }
 
-// SIZES
+/* SIZES */
 .sizeMicro {
   --pc-button-padding-block: var(--p-space-100);
   --pc-button-padding-inline: var(--p-space-200);
@@ -252,8 +240,6 @@
 .sizeLarge {
   --pc-button-padding-block: var(--p-space-150);
   --pc-button-padding-inline: var(--p-space-300);
-  font-size: var(--p-font-size-325);
-  line-height: var(--p-font-line-height-500);
   min-height: var(--p-height-900);
   min-width: var(--p-height-900);
 
@@ -263,7 +249,7 @@
   }
 }
 
-// TEXT ALIGNMENT
+/* TEXT ALIGNMENT */
 .textAlignCenter {
   justify-content: center;
   text-align: center;
@@ -281,12 +267,12 @@
   text-align: end;
 }
 
-// WIDTH
+/* WIDTH */
 .fullWidth {
   width: 100%;
 }
 
-// ICON
+/* ICON */
 .iconOnly {
   --pc-button-padding-block: var(--p-space-100);
   --pc-button-padding-inline: var(--p-space-100);
@@ -333,7 +319,7 @@
   padding-left: calc(var(--pc-button-padding-inline) * 0.5);
 }
 
-// DISCLOSURE
+/* DISCLOSURE */
 .disclosure:not(.variantPlain, .variantMonochromePlain) {
   padding-right: calc(var(--pc-button-padding-inline) * 0.5);
 }
@@ -342,28 +328,28 @@
   justify-content: space-between;
 }
 
-// LOADING
+/* LOADING */
 .loading {
   color: transparent;
 }
 
-// INTERACTION
+/* INTERACTION */
 .pressable:active:not(.variantTertiary, .variantPlain, .variantMonochromePlain)
   > * {
   transform: translate3d(0, 1px, 0);
 }
 
-// UTILITIES
+/* UTILITIES */
 .hidden {
   visibility: hidden;
 }
 
-// ICON
+/* ICON */
 .Icon {
   margin: calc(-1 * var(--p-space-050)) 0;
 }
 
-// SPINNER
+/* SPINNER */
 .Spinner {
   position: absolute;
   top: 50%;
@@ -376,7 +362,7 @@
   }
 }
 
-// BUTTON GROUP
+/* BUTTON GROUP */
 /* stylelint-disable -- selector-max-combinators */
 [data-buttongroup-variant='segmented']
   > *:not(:first-child)

@@ -4,7 +4,7 @@
   justify-content: flex-end;
 
   @media print {
-    // stylelint-disable-next-line declaration-no-important -- Enforce print styles
+    /* stylelint-disable-next-line declaration-no-important -- Enforce print styles */
     display: none !important;
   }
 }

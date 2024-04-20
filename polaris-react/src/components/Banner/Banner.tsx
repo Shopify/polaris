@@ -164,21 +164,29 @@ export function BannerLayout({
     ) : null,
   };
 
+  const childrenMarkup = children ? (
+    <Text as="span" variant="bodyMd">
+      {children}
+    </Text>
+  ) : null;
+
   if (withinContentContainer) {
     return (
       <WithinContentContainerBanner {...sharedBannerProps}>
-        {children}
+        {childrenMarkup}
       </WithinContentContainerBanner>
     );
   }
 
   if (isInlineIconBanner) {
     return (
-      <InlineIconBanner {...sharedBannerProps}>{children}</InlineIconBanner>
+      <InlineIconBanner {...sharedBannerProps}>
+        {childrenMarkup}
+      </InlineIconBanner>
     );
   }
 
-  return <DefaultBanner {...sharedBannerProps}>{children}</DefaultBanner>;
+  return <DefaultBanner {...sharedBannerProps}>{childrenMarkup}</DefaultBanner>;
 }
 
 export function DefaultBanner({

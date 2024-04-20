@@ -358,7 +358,8 @@
       "accessibilityLabel": "Volledig scherm-modus afsluiten"
     },
     "FilterPill": {
-      "clear": "Wissen"
+      "clear": "Wissen",
+      "unsavedChanges": "Niet-opgeslagen wijzigingen - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Zoeken en filteren",

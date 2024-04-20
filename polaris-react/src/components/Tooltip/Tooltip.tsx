@@ -5,6 +5,7 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
+import {Text} from '../Text';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useToggle} from '../../utilities/use-toggle';
@@ -23,14 +24,7 @@ export interface TooltipProps {
   children?: React.ReactNode;
   /** The content to display within the tooltip */
   content: React.ReactNode;
-  /** Toggle whether the tooltip is visible. */
-  open?: boolean;
-  /** Toggle whether the tooltip is visible initially */
-  defaultOpen?: boolean;
-  /**
-   * Toggle whether the tooltip is visible initially
-   * @deprecated Use `defaultOpen` instead
-   */
+  /** Toggle whether the tooltip is visible */
   active?: boolean;
   /** Delay in milliseconds while hovering over an element before the tooltip is visible */
   hoverDelay?: number;
@@ -81,8 +75,6 @@ export function Tooltip({
   children,
   content,
   dismissOnMouseOut,
-  open,
-  defaultOpen: defaultOpenProp,
   active: originalActive,
   hoverDelay,
   preferredPosition = 'above',
@@ -100,15 +92,14 @@ export function Tooltip({
   const borderRadius = borderRadiusProp || '200';
 
   const WrapperComponent: any = activatorWrapper;
-  const defaultOpen = defaultOpenProp ?? originalActive;
   const {
     value: active,
     setTrue: setActiveTrue,
     setFalse: handleBlur,
-  } = useToggle(Boolean(defaultOpen));
+  } = useToggle(Boolean(originalActive));
 
   const {value: persist, toggle: togglePersisting} = useToggle(
-    Boolean(defaultOpen) && Boolean(persistOnClick),
+    Boolean(originalActive) && Boolean(persistOnClick),
   );
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
@@ -118,14 +109,14 @@ export function Tooltip({
   const id = useId();
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
-  const [shouldAnimate, setShouldAnimate] = useState(Boolean(!defaultOpen));
+  const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleFocus = useCallback(() => {
-    if (originalActive === false) return;
-
-    setActiveTrue();
+    if (originalActive !== false) {
+      setActiveTrue();
+    }
   }, [originalActive, setActiveTrue]);
 
   useEffect(() => {
@@ -197,7 +188,7 @@ export function Tooltip({
         id={id}
         preferredPosition={preferredPosition}
         activator={activatorNode}
-        active={open ?? active}
+        active={active}
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
         preventInteraction={dismissOnMouseOut}
@@ -207,7 +198,9 @@ export function Tooltip({
         zIndexOverride={zIndexOverride}
         instant={!shouldAnimate}
       >
-        {content}
+        <Text as="span" variant="bodyMd">
+          {content}
+        </Text>
       </TooltipOverlay>
     </Portal>
   ) : null;

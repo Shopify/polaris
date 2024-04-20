@@ -324,7 +324,7 @@
       "label": "Pasek ładowania strony"
     },
     "TooltipOverlay": {
-      "accessibilityLabel": "Etykietka narzędzia: {label}"
+      "accessibilityLabel": "Podpowiedź: {label}"
     },
     "IndexProvider": {
       "defaultItemSingular": "Pozycja",
@@ -360,7 +360,8 @@
       "accessibilityLabel": "Zakończ tryb pełnoekranowy"
     },
     "FilterPill": {
-      "clear": "Wyczyść"
+      "clear": "Wyczyść",
+      "unsavedChanges": "Niezapisane zmiany – {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Wyszukaj i przefiltruj",

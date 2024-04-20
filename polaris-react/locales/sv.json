@@ -358,7 +358,8 @@
       "accessibilityLabel": "Lämna helskärmsläget"
     },
     "FilterPill": {
-      "clear": "Rensa"
+      "clear": "Rensa",
+      "unsavedChanges": "Ej sparade ändringar – {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Sök och filtrera",

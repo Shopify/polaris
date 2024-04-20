@@ -131,6 +131,7 @@ export function Toast({
         <InlineStack gap="400" blockAlign="center">
           <Text
             as="span"
+            variant="bodyMd"
             fontWeight="medium"
             {...(tone === 'magic' && {tone: 'magic'})}
           >
@@ -148,6 +149,7 @@ export function Toast({
       <InlineStack gap="400" blockAlign="center">
         <Text
           as="span"
+          variant="bodyMd"
           fontWeight="medium"
           {...(tone === 'magic' && {tone: 'magic'})}
         >

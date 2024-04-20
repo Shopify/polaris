@@ -358,7 +358,8 @@
       "accessibilityLabel": "전체 화면 모드 종료"
     },
     "FilterPill": {
-      "clear": "지우기"
+      "clear": "지우기",
+      "unsavedChanges": "저장되지 않은 변경 사항 - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "검색 및 필터링",

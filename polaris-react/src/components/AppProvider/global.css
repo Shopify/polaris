@@ -1,14 +1,15 @@
 @charset "UTF-8";
-// Looking for media queries? They're imported in the postcss config in
-// polaris-react/config/postcss-plugins.js
-@import '../../../../node_modules/@shopify/polaris-tokens/dist/css/styles.css';
+
+/* Looking for media queries? They're imported in the postcss config in
+   polaris-react/config/postcss-plugins.js */
+@import '../../../node_modules/@shopify/polaris-tokens/dist/css/styles.css';
 
 :root {
-  // stylelint-disable -- Polaris component custom properties
+  /* stylelint-disable -- Polaris component custom properties */
   --polaris-version-number: '{{POLARIS_VERSION}}';
 
   --pg-navigation-width: 240px;
-  // @TODO simplify media queries so this isn't needed
+  /* @TODO simplify media queries so this isn't needed */
   --pg-dangerous-magic-space-4: 16px;
   --pg-dangerous-magic-space-5: 20px;
   --pg-dangerous-magic-space-8: 32px;
@@ -47,7 +48,7 @@
   --pg-control-vertical-padding: calc(
     (36px - var(--p-font-line-height-600) - var(--p-space-050)) / 2
   );
-  // eslint-enable
+  /* eslint-enable */
 }
 
 html,
@@ -58,6 +59,7 @@ body {
   font-feature-settings: 'calt' 0;
   letter-spacing: initial;
   color: var(--p-color-text);
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -71,14 +73,14 @@ html {
   font-size: 100%;
   -webkit-font-smoothing: antialiased;
 
-  // This needs to come after -webkit-font-smoothing
+  /* This needs to come after -webkit-font-smoothing */
   -moz-osx-font-smoothing: grayscale;
 
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  // Safari scrollbar styles until it adopts scrollbar-color, scrollbar-width
+  /* Safari scrollbar styles until it adopts scrollbar-color, scrollbar-width */
   &::-webkit-scrollbar {
-    // Matches scrollbar-width: thin
+    /* Matches scrollbar-width: thin */
     width: 11px;
     background-color: var(--p-color-bg);
   }
@@ -121,17 +123,17 @@ body {
   margin: 0;
   padding: 0;
 
-  // hardcoding background color because app provider does not have access to
-  // the --p-color-bg custom property. Will revisit best way to address in
-  // follow-up. PR convo for reference
-  // https://github.com/Shopify/polaris-react/pull/4636/files#r748646268
+  /* hardcoding background color because app provider does not have access to */
+  /* the --p-color-bg custom property. Will revisit best way to address in */
+  /* follow-up. PR convo for reference */
+  /* https://github.com/Shopify/polaris-react/pull/4636/files#r748646268 */
   background-color: rgba(241, 242, 244, 1);
-  // Set all nested scroll container scrolltrack backgrounds to transparent
+  /* Set all nested scroll container scrolltrack backgrounds to transparent */
   scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
 
   @media print {
-    // AppProvider sets styles on the body. These needs to
-    // be overridden using !important.
+    /* AppProvider sets styles on the body. These needs to */
+    /* be overridden using !important. */
     background-color: transparent !important;
   }
 }
@@ -162,6 +164,6 @@ button::-moz-focus-inner,
 }
 
 html[class~='Polaris-Safari-16-Font-Optical-Sizing-Patch'] {
-  // Inter's "opsz" axis ranges from 14 to 32. This patch optimizes for smaller and less legible text by setting "opsz" 14 for all font sizes.
+  /* Inter's "opsz" axis ranges from 14 to 32. This patch optimizes for smaller and less legible text by setting "opsz" 14 for all font sizes. */
   font-variation-settings: 'opsz' 14;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, Grid, Page} from '@shopify/polaris';
+import {LegacyCard, Grid, Page, Text} from '@shopify/polaris';
 
 export default {
   component: Grid,
@@ -12,12 +12,16 @@ export function TwoColumn() {
       <Grid>
         <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
           <LegacyCard title="Sales" sectioned>
-            <p>View a summary of your online store’s sales.</p>
+            <Text as="p" variant="bodyMd">
+              View a summary of your online store’s sales.
+            </Text>
           </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
           <LegacyCard title="Orders" sectioned>
-            <p>View a summary of your online store’s orders.</p>
+            <Text as="p" variant="bodyMd">
+              View a summary of your online store’s orders.
+            </Text>
           </LegacyCard>
         </Grid.Cell>
       </Grid>
@@ -31,12 +35,16 @@ export function TwoThirdsAndOneThirdColumn() {
       <Grid columns={{sm: 3}}>
         <Grid.Cell columnSpan={{xs: 6, sm: 4, md: 4, lg: 8, xl: 8}}>
           <LegacyCard title="Sales" sectioned>
-            <p>View a summary of your online store’s sales.</p>
+            <Text as="p" variant="bodyMd">
+              View a summary of your online store’s sales.
+            </Text>
           </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
           <LegacyCard title="Orders" sectioned>
-            <p>View a summary of your online store’s orders.</p>
+            <Text as="p" variant="bodyMd">
+              View a summary of your online store’s orders.
+            </Text>
           </LegacyCard>
         </Grid.Cell>
       </Grid>
@@ -50,17 +58,23 @@ export function ThreeOneThirdColumn() {
       <Grid>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
           <LegacyCard title="Sales" sectioned>
-            <p>View a summary of your online store’s sales.</p>
+            <Text as="p" variant="bodyMd">
+              View a summary of your online store’s sales.
+            </Text>
           </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
           <LegacyCard title="Orders" sectioned>
-            <p>View a summary of your online store’s orders.</p>
+            <Text as="p" variant="bodyMd">
+              View a summary of your online store’s orders.
+            </Text>
           </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
           <LegacyCard title="Orders" sectioned>
-            <p>View a summary of your online store’s orders.</p>
+            <Text as="p" variant="bodyMd">
+              View a summary of your online store’s orders.
+            </Text>
           </LegacyCard>
         </Grid.Cell>
       </Grid>

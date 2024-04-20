@@ -358,7 +358,8 @@
       "accessibilityLabel": "Tam ekran modundan çık"
     },
     "FilterPill": {
-      "clear": "Temizle"
+      "clear": "Temizle",
+      "unsavedChanges": "Kaydedilmemiş değişiklikler - {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Arama ve filtreleme",

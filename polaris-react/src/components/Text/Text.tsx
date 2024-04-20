@@ -37,19 +37,22 @@ type Alignment = 'start' | 'center' | 'end' | 'justify';
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Tone =
+  | 'base'
+  | 'disabled'
+  | 'inherit'
   | 'success'
   | 'critical'
   | 'caution'
   | 'subdued'
   | 'text-inverse'
+  | 'text-inverse-secondary'
   | 'magic'
   | 'magic-subdued';
 
 type TextDecorationLine = 'line-through';
 
 const deprecatedVariants: {[V in Variant]?: Variant} = {
-  heading2xl: 'headingXl',
-  heading3xl: 'headingXl',
+  heading3xl: 'heading2xl',
 };
 export interface TextProps {
   /** Adjust horizontal alignment of text */

@@ -1,14 +1,14 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.65.0",
+  "version": "1.0.3",
   "private": true,
   "engines": {
-    "node": "^16.17.0 || >=18.12.0"
+    "node": ">=20.10.0"
   },
   "scripts": {
-    "build": "yarn concurrently \"yarn gen-colors\" \"yarn gen-assets\" \"playroom build\" && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
+    "build": "concurrently \"pnpm gen-colors\" \"pnpm gen-assets\" \"playroom build\" && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdir -p ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
-    "dev": "yarn gen-colors && yarn get-props && run-p dev:*",
+    "dev": "pnpm gen-colors && pnpm get-props && run-p dev:*",
     "dev:server": "open http://localhost:${POLARIS_WEBSITE_PORT:=3000} && next dev -p 3000",
     "dev:playroom": "rm -rf ./public/playroom && playroom start",
     "dev:watch-md": "ts-node scripts/watch-md.ts",
@@ -18,19 +18,21 @@
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "next-build": "next build",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
-    "gen-sitemap": "yarn next-sitemap",
+    "gen-sitemap": "pnpm next-sitemap",
     "get-props": "./scripts/get-props/src/get-props.ts",
-    "gen-assets": "yarn get-props && ts-node ./scripts/gen-assets.ts",
-    "gen-colors": "ts-node ./scripts/gen-colors.ts"
+    "gen-assets": "pnpm get-props && ts-node ./scripts/gen-assets.ts",
+    "gen-colors": "ts-node ./scripts/gen-colors.ts",
+    "test": "jest",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
     "@juggle/resize-observer": "^3.4.0",
     "@radix-ui/react-polymorphic": "^0.0.14",
-    "@shopify/polaris": "^12.21.0",
-    "@shopify/polaris-icons": "^8.8.0",
-    "@shopify/polaris-tokens": "^8.8.0",
+    "@shopify/polaris": "^13.1.2",
+    "@shopify/polaris-icons": "^9.0.0",
+    "@shopify/polaris-tokens": "^9.0.0",
     "@types/react-syntax-highlighter": "^15.5.6",
     "base-64": "^1.0.0",
     "codesandbox": "^2.2.3",
@@ -72,13 +74,16 @@
     "@types/lodash.mapvalues": "^4.6.9",
     "@types/lodash.throttle": "^4.1.7",
     "@types/marked": "^4.0.3",
+    "@types/mdast": "^3.0.10",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.2.0",
+    "@types/unist": "^2.0.6",
     "@types/uuid": "^9.0.1",
     "babel-plugin-preval": "^5.1.0",
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.2",
+    "css-loader": "^5.2.7",
     "eslint": "8.10.0",
     "eslint-config-next": "^13.0.0",
     "execa": "^6.1.0",
@@ -92,12 +97,15 @@
     "lodash.set": "^4.3.2",
     "marked": "^4.0.16",
     "ora": "^5.4.1",
+    "patch-package": "^6.4.7",
     "p-map": "^5.5.0",
     "playroom": "^0.28.0",
     "sass": "^1.49.9",
     "satori": "^0.10.11",
     "style-loader": "^3.3.1",
     "ts-node": "^10.7.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.0"
   }
 }

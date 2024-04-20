@@ -1,5 +1,27 @@
 # Changelog
 
+## 9.0.0
+
+### Major Changes
+
+- [#11844](https://github.com/Shopify/polaris/pull/11844) [`a89e61478`](https://github.com/Shopify/polaris/commit/a89e61478fb7c5f588021e542101aba8a3898ec8) Thanks [@jesstelford](https://github.com/jesstelford)! - Miniumum required node version updated to v20.10.0
+
+## 8.10.0
+
+### Minor Changes
+
+- [#11801](https://github.com/Shopify/polaris/pull/11801) [`f6308995e`](https://github.com/Shopify/polaris/commit/f6308995e3ef8b5f8f017471d23a08577243b323) Thanks [@sophschneider](https://github.com/sophschneider)! - Added white alpha ramp and more dark experimental tokens
+
+## 8.9.0
+
+### Minor Changes
+
+- [#11691](https://github.com/Shopify/polaris/pull/11691) [`1e613de8b`](https://github.com/Shopify/polaris/commit/1e613de8b3938bc30c722382a8e78e75e50be9cd) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Added `ThemeProvider` component
+  - Removed `html` from theme classes to remove global theme constraint
+  - Updated `useTheme` to be context aware of parent themes
+  - Updated `Portal` component to be context aware of parent themes
+  - Initialized a `dark-experimental` theme
+
 ## 8.8.0
 
 ### Minor Changes

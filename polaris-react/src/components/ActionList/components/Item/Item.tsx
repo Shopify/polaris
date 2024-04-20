@@ -88,7 +88,13 @@ export function Item({
       </Text>
     </>
   ) : (
-    contentText
+    <Text
+      as="span"
+      variant="bodyMd"
+      fontWeight={active ? 'semibold' : 'regular'}
+    >
+      {contentText}
+    </Text>
   );
 
   const badgeMarkup = badge && (
@@ -103,7 +109,17 @@ export function Item({
     </Box>
   );
 
-  const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
+  const textMarkup = (
+    <span className={styles.Text}>
+      <Text
+        as="span"
+        variant="bodyMd"
+        fontWeight={active ? 'semibold' : 'regular'}
+      >
+        {contentMarkup}
+      </Text>
+    </span>
+  );
 
   const contentElement = (
     <InlineStack blockAlign="center" gap="150" wrap={false}>

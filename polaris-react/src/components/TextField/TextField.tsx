@@ -329,13 +329,17 @@ export function TextField({
       id={`${id}-Prefix`}
       ref={prefixRef}
     >
-      {prefix}
+      <Text as="span" variant="bodyMd">
+        {prefix}
+      </Text>
     </div>
   ) : null;
 
   const suffixMarkup = suffix ? (
     <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
-      {suffix}
+      <Text as="span" variant="bodyMd">
+        {suffix}
+      </Text>
     </div>
   ) : null;
 
@@ -375,7 +379,9 @@ export function TextField({
         aria-atomic="true"
         onClick={handleClickChild}
       >
-        {characterCountText}
+        <Text as="span" variant="bodyMd">
+          {characterCountText}
+        </Text>
       </div>
     );
   }

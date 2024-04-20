@@ -20,6 +20,7 @@ import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
 import {InlineStack} from '../InlineStack';
 import {CheckableButton} from '../CheckableButton';
+import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import type {ButtonProps} from '../Button';
 
@@ -164,24 +165,20 @@ export const BulkActions = forwardRef(function BulkActions(
           'Polaris.ResourceList.BulkActions.moreActionsActivatorLabel',
         );
 
-  const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
+  const paginatedSelectAllMarkup = paginatedSelectAllAction ? (
     <UnstyledButton
       className={styles.AllAction}
       onClick={paginatedSelectAllAction.onAction}
       size="slim"
       disabled={disabled}
     >
-      {paginatedSelectAllAction.content}
+      <Text as="span" variant="bodySm" fontWeight="medium">
+        {paginatedSelectAllAction.content}
+      </Text>
     </UnstyledButton>
   ) : null;
 
   const hasTextAndAction = paginatedSelectAllText && paginatedSelectAllAction;
-
-  const paginatedSelectAllMarkup = paginatedSelectAllActionMarkup ? (
-    <div className={styles.PaginatedSelectAll}>
-      {paginatedSelectAllActionMarkup}
-    </div>
-  ) : null;
 
   const ariaLive: AriaLive = hasTextAndAction ? 'polite' : undefined;
 

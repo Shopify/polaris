@@ -360,7 +360,8 @@
       "accessibilityLabel": "Ukončit režim celé obrazovky"
     },
     "FilterPill": {
-      "clear": "Vymazat"
+      "clear": "Vymazat",
+      "unsavedChanges": "Neuložené změny: {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Hledat a filtrovat",

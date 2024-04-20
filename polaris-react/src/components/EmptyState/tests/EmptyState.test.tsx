@@ -13,6 +13,23 @@ describe('<EmptyState />', () => {
   let imgSrc =
     'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
 
+  it('renders EmptyState with a skeleton image and hidden <Image> when the image is not loaded', () => {
+    const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
+
+    expect(emptyState).toContainReactComponent('div', {
+      className: 'SkeletonImage',
+    });
+    expect(emptyState).toContainReactComponent('div', {
+      className: expect.not.stringContaining('SkeletonImage loaded'),
+    });
+    expect(emptyState).toContainReactComponent(Image, {
+      className: 'Image',
+    });
+    expect(emptyState).toContainReactComponent(Image, {
+      className: expect.not.stringContaining('Image loaded'),
+    });
+  });
+
   describe('action', () => {
     it('renders a button with the action content if action is set', () => {
       const emptyState = mountWithApp(

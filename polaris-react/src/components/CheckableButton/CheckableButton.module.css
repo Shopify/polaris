@@ -1,9 +1,5 @@
 .CheckableButton {
   color: var(--p-color-text);
-  font-size: var(--p-font-size-300);
-  font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-400);
-  letter-spacing: initial;
   display: flex;
   align-items: center;
   gap: calc(var(--p-space-300) + var(--p-space-025));
@@ -15,8 +11,9 @@
   border-radius: var(--p-border-radius-100);
   width: auto;
 
-  // Checkable Button has no opinion on its own height, it simply fills its
-  // container
+  /* Checkable Button has no opinion on its own height, it simply fills its */
+
+  /* container */
   min-height: auto;
   min-width: auto;
   height: 100%;
@@ -49,13 +46,14 @@
 }
 
 .Label {
+  display: flex;
+  align-items: center;
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
   max-width: 100%;
   text-overflow: ellipsis;
-  // padding to fix the bottom of letters being cutoff by overflow: hidden
+
+  /* padding to fix the bottom of letters being cutoff by overflow: hidden */
   padding: var(--p-space-025) 0;
-  // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- custom label line height
-  line-height: 18px;
 }

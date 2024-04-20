@@ -1,0 +1,13 @@
+name: Bullet
+description:
+  Used for bulleted lists
+keywords:
+  - Bullet 
+  - List
+authors:
+  - Vihar Kothamasu
+  - Joe Thoams
+date_added: 2024-04-04
+date_modified: 2024-04-04
+# Optional: fill exclusive_use if the icon should *only* be used
+# in specific areas of the admin (such as “Orders”):

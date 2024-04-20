@@ -358,7 +358,8 @@
       "accessibilityLabel": "Vollbildmodus beenden"
     },
     "FilterPill": {
-      "clear": "Löschen"
+      "clear": "Löschen",
+      "unsavedChanges": "Nicht gespeicherte Änderungen – {label}"
     },
     "IndexFilters": {
       "searchFilterTooltip": "Suchen und filtern",

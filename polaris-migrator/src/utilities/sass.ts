@@ -489,7 +489,8 @@ export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
       const {walker, serialiseSuggestion} = args;
 
       return (node: T) => {
-        let oldNode: T;
+        let oldNode: ReturnType<typeof node.clone>;
+
         if (context.fix) {
           oldNode = node.clone();
         }

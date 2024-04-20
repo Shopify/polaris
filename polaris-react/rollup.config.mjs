@@ -69,7 +69,7 @@ function entryFileNames(ext) {
 /** @type {import('rollup').RollupOptions} */
 export default [
   generateConfig({
-    targets: [...pkg.browserslist, 'node 16.17.0'],
+    targets: pkg.browserslist,
     stylesConfig: {
       mode: 'standalone',
       output: 'styles.css',

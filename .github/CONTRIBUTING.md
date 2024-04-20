@@ -85,14 +85,14 @@ We’ll review your pull request and either merge it, request changes to it, or 
 **Before submitting a pull request**, please:
 
 1. Fork the repository and create your branch from `main`
-1. Run `yarn` in the repository root
+1. Run `pnpm` in the repository root
 1. If you’ve fixed a bug or added code, make sure to add tests
-1. Ensure the test suite passes with `yarn test` (protip: `yarn test:watch TestName` is helpful in development)
-1. Format your code with `yarn format`
-1. Make sure your code lints with `yarn lint`
-1. Run the TypeScript compiler with `yarn type-check`
-1. [Tophat 🎩](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md) your changes locally in Storybook with `yarn dev`
-1. Create a changeset by running `yarn changeset`. [More info](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset).
+1. Ensure the test suite passes with `pnpm test` (protip: `pnpm test:watch TestName` is helpful in development)
+1. Format your code with `pnpm format`
+1. Make sure your code lints with `pnpm lint`
+1. Run the TypeScript compiler with `pnpm type-check`
+1. [Tophat 🎩](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md) your changes locally in Storybook with `pnpm dev`
+1. Create a changeset by running `pnpm changeset`. [More info](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset).
 1. If you haven’t already, [sign a CLA](https://cla.shopify.com/)
 
 ### Changelog
@@ -109,14 +109,14 @@ A changeset describes changes made in a branch or commit. It holds three bits of
 
 Add a changeset if you have made any changes that will require a package version bump and release:
 
-1. Run `yarn changeset`.
+1. Run `pnpm changeset`.
 2. Select the packages you want to include using ↑ and ↓ to navigate to packages, and space to select a package. Hit enter when all desired packages are selected.
 3. Select a [bump type](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#semantic-versioning) for each selected package.
 4. Provide a message to be written into the changelog on the next release.
 
 #### Writing a changelog message
 
-Keep the following in mind when authoring your changelog entry (final prompt after running `yarn changeset`):
+Keep the following in mind when authoring your changelog entry (final prompt after running `pnpm changeset`):
 
 - Use a positive, conversational tone (for example, use “support” over “allow” and other authoritative verbs)
 - Avoid redundancy when possible (try to phrase a bug fix entry without the word “bug”)
@@ -137,7 +137,7 @@ Each contributor is required to [sign a CLA](https://cla.shopify.com/). This pro
 
 ### Contribution prerequisites
 
-- You have Node installed at v18.12.0+ and Yarn at v1.22.18+
+- You have Node installed at v20.11.1+ and Pnpm at v8+
 
 ### Best practices
 
@@ -153,8 +153,8 @@ See the [README.md file](https://github.com/Shopify/polaris/blob/main/README.md#
 
 We recommend running tests as well as trying your build of a package in a real project, to make sure you don’t introduce any regressions as you work on your change.
 
-- `yarn test` will run tests for all packages
-- `yarn turbo run test --filter="[HEAD^1]"` will test any package that has changed in the last commit
+- `pnpm test` will run tests for all packages
+- `pnpm turbo run test --filter="[HEAD^1]"` will test any package that has changed in the last commit
 
 You can test your changes in another project locally by creating a [snapshot release](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md#snapshot-release).
 
@@ -163,16 +163,16 @@ On your feature branch PR, ensure you have a [changeset](https://github.com/Shop
 Once the snapshot is ready, there will be a new comment in your feature PR with the newly released versions. In your external project, add the snapshot package or packages. An example snapshot package should have the following format:
 
 ```sh
-yarn add @shopify/polaris@0.0.0-snapshot-release-20220525184558
+pnpm add @shopify/polaris@0.0.0-snapshot-release-20220525184558
 ```
 
 Run the project as usual to tophat local changes. If you need to make updates, push new package changes to your feature PR and create a new snapshot release.
 
 ### Code style
 
-We use an automatic code formatter called [Prettier](https://prettier.io/). Run `yarn format` after making any changes to the code.
+We use an automatic code formatter called [Prettier](https://prettier.io/). Run `pnpm format` after making any changes to the code.
 
-Linting will catch common issues that may exist in your code. You can check the status of your code styling by running `yarn lint`.
+Linting will catch common issues that may exist in your code. You can check the status of your code styling by running `pnpm lint`.
 
 Our code editor of choice is [VS Code](https://code.visualstudio.com/) which has [integrations with Prettier](https://github.com/prettier/prettier-vscode) and our linting tools which make this automatic. If you choose to use VS Code, these integrations will be listed as recommended extensions (or search for `@recommended`) in the extensions panel.
 

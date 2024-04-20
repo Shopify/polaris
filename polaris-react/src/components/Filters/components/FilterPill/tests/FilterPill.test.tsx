@@ -5,9 +5,9 @@ import {ChevronDownIcon} from '@shopify/polaris-icons';
 import {FilterPill} from '../FilterPill';
 import type {FilterPillProps} from '../FilterPill';
 import {Popover} from '../../../../Popover';
-import {Text} from '../../../../Text';
 import {Icon} from '../../../../Icon';
 import {Button} from '../../../../Button';
+import {Box} from '../../../../Box';
 import {UnstyledButton} from '../../../../UnstyledButton';
 
 jest.mock('../../../../../utilities/breakpoints', () => ({
@@ -46,23 +46,6 @@ describe('<Filters />', () => {
     it('renders the label inside the Popover activator', () => {
       const wrapper = mountWithApp(<FilterPill {...defaultProps} />);
       expect(wrapper).toContainReactText(defaultProps.label);
-    });
-
-    it('renders with bodyLg variant when on a small screen', () => {
-      mockUseBreakpoints(true);
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {});
-      expect(wrapper).toContainReactComponent(Text, {
-        variant: 'bodyLg',
-        children: defaultProps.label,
-      });
-    });
-
-    it('renders with bodySm variant when on a larger screen', () => {
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />);
-      expect(wrapper).toContainReactComponent(Text, {
-        variant: 'bodySm',
-        children: defaultProps.label,
-      });
     });
 
     it('will return null if disabled', () => {
@@ -121,6 +104,24 @@ describe('<Filters />', () => {
       wrapper.find(UnstyledButton, {'aria-label': 'Clear'})!.trigger('onClick');
       expect(spy).toHaveBeenCalledWith(defaultProps.filterKey);
     });
+
+    describe('unsaved changes', () => {
+      it('indicates unsaved changes with an emphasized pip when selected and unsavedChanges is true', () => {
+        const wrapper = mountWithApp(
+          <FilterPill {...defaultProps} selected unsavedChanges />,
+        );
+        expect(wrapper).toContainReactComponent(Box, {
+          background: 'bg-fill-emphasis',
+        });
+      });
+
+      it('does not render an emphasized pip when selected and has unsaved changes by default', () => {
+        const wrapper = mountWithApp(<FilterPill {...defaultProps} selected />);
+        expect(wrapper).not.toContainReactComponent(Box, {
+          background: 'bg-fill-emphasis',
+        });
+      });
+    });
   });
 
   describe('popover', () => {
@@ -153,6 +154,21 @@ describe('<Filters />', () => {
       activator?.trigger('onClick');
       expect(wrapper.find(Popover)).not.toContainReactComponent(Button, {
         children: 'Clear',
+      });
+    });
+
+    it('passes the disclosureZIndexOverride to Popover when provided', () => {
+      const disclosureZIndexOverride = 517;
+      const wrapper = mountWithApp(
+        <FilterPill
+          {...defaultProps}
+          disclosureZIndexOverride={disclosureZIndexOverride}
+        />,
+      );
+      const activator = wrapper.find(UnstyledButton);
+      activator?.trigger('onClick');
+      expect(wrapper).toContainReactComponent(Popover, {
+        zIndexOverride: disclosureZIndexOverride,
       });
     });
 

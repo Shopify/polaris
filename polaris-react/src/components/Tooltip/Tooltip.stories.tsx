@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {QuestionCircleIcon} from '@shopify/polaris-icons';
 import type {ComponentMeta} from '@storybook/react';
 import {
@@ -43,7 +43,7 @@ export function All() {
 export function Default() {
   return (
     <Box paddingBlockStart="2400">
-      <Tooltip defaultOpen content="This order has shipping labels.">
+      <Tooltip active content="This order has shipping labels.">
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
         </Text>
@@ -57,7 +57,7 @@ export function PreferredPosition() {
     <Box paddingBlockStart="2400">
       <InlineStack gap="800">
         <Tooltip
-          defaultOpen
+          active
           content="This content is positioned above the activator"
           preferredPosition="above"
         >
@@ -75,7 +75,7 @@ export function PreferredPosition() {
           </InlineStack>
         </Tooltip>
         <Tooltip
-          defaultOpen
+          active
           content="This content is positioned above the activator"
           preferredPosition="below"
         >
@@ -102,7 +102,7 @@ export function Width() {
     <Box paddingBlockStart="2400">
       <InlineStack gap="800">
         <Tooltip
-          defaultOpen
+          active
           content="This content has the default width and will break into a new line at 200px width"
         >
           <InlineStack gap="100">
@@ -119,7 +119,7 @@ export function Width() {
           </InlineStack>
         </Tooltip>
         <Tooltip
-          defaultOpen
+          active
           content="This content has the wide width and will break into a new line at 275px width"
           width="wide"
         >
@@ -145,7 +145,7 @@ export function Padding() {
   return (
     <Box paddingBlockStart="2400">
       <InlineStack gap="800">
-        <Tooltip defaultOpen content="This content has default padding">
+        <Tooltip active content="This content has default padding">
           <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
@@ -160,7 +160,7 @@ export function Padding() {
           </InlineStack>
         </Tooltip>
         <Tooltip
-          defaultOpen
+          active
           content="This content has padding of 4 (space-400 / 16px)"
           padding="400"
         >
@@ -187,7 +187,7 @@ export function BorderRadius() {
     <Box paddingBlockStart="2400">
       <InlineStack gap="800">
         <Tooltip
-          defaultOpen
+          active
           content="This content has the default (radius-100) border radius"
         >
           <InlineStack gap="100">
@@ -204,7 +204,7 @@ export function BorderRadius() {
           </InlineStack>
         </Tooltip>
         <Tooltip
-          defaultOpen
+          active
           content="This content has a border radius of 200 (radius-200)"
           borderRadius="200"
         >
@@ -307,7 +307,7 @@ export function ActivatorAsDiv() {
   return (
     <Box paddingBlockStart="2400">
       <Tooltip
-        defaultOpen
+        active
         content="This tooltip is rendered as a div"
         activatorWrapper="div"
       >
@@ -462,7 +462,7 @@ export function Alignment() {
 export function HasUnderline() {
   return (
     <Card padding="400">
-      <Tooltip defaultOpen content="This tooltip has an underline" hasUnderline>
+      <Tooltip active content="This tooltip has an underline" hasUnderline>
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
         </Text>
@@ -482,66 +482,6 @@ export function PersistOnClick() {
           Order #1001
         </Text>
       </Tooltip>
-    </Box>
-  );
-}
-
-export function WithControlledState() {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setOpen(false);
-  }, []);
-
-  return (
-    <Box paddingBlockStart="2400">
-      <Tooltip
-        open={open}
-        onOpen={handleOpen}
-        onClose={handleClose}
-        content="Tooltip content"
-      >
-        <Text as="span" variant="bodyLg">
-          The tooltip is {String(open)}
-        </Text>
-      </Tooltip>
-    </Box>
-  );
-}
-
-export function WithUncontrolledState() {
-  return (
-    <Box paddingBlockStart="2400">
-      <InlineStack gap="2400">
-        <Tooltip
-          content="This tooltip should render on load and hover"
-          defaultOpen
-        >
-          <Text variant="bodyLg" fontWeight="bold" as="span">
-            Default open true
-          </Text>
-        </Tooltip>
-        <Tooltip
-          content="This tooltip should render on hover"
-          defaultOpen={false}
-        >
-          <Text variant="bodyLg" fontWeight="bold" as="span">
-            Default open false
-          </Text>
-        </Tooltip>
-        <Tooltip
-          content="This tooltip should render on hover"
-          defaultOpen={undefined}
-        >
-          <Text variant="bodyLg" fontWeight="bold" as="span">
-            Default open undefined
-          </Text>
-        </Tooltip>
-      </InlineStack>
     </Box>
   );
 }
@@ -618,7 +558,7 @@ export function ActiveStates() {
 export function OneCharacter() {
   return (
     <Box paddingBlockStart="2400">
-      <Tooltip defaultOpen content="j">
+      <Tooltip active content="j">
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
         </Text>
