@@ -131,8 +131,13 @@
 }
 
 .ButtonWrap,
-.ActionWrap {
+.ActionWrap,
+.PrefixWrapper {
   button {
     display: flex;
   }
+}
+
+.PrefixWrapper {
+  margin: var(--p-space-025) 0 calc(var(--p-space-025) * -1);
 }

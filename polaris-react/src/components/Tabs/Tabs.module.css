@@ -154,6 +154,18 @@
   width: var(--p-space-800);
 }
 
+.Tab-readonly {
+  background: var(--p-color-bg-surface-secondary);
+  border: var(--p-border-width-025) dashed var(--p-color-border);
+  cursor: default;
+
+  &:not([aria-disabled='true']):hover,
+  &:not([aria-disabled='true']):focus,
+  &:not([aria-disabled='true']):active {
+    background: var(--p-color-bg-surface-secondary);
+  }
+}
+
 .fillSpace {
   .TabContainer {
     flex: 1 1 auto;

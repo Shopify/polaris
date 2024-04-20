@@ -58,6 +58,8 @@ export interface TabProps {
   disclosureZIndexOverride?: number;
   /** Optional callback invoked when the Tabs component is focused */
   onFocus?(): void;
+  /** If true will be non-interactive with different visual treatment */
+  readonly?: boolean;
 }
 
 export interface TabPropsWithAddedMethods extends TabProps {
