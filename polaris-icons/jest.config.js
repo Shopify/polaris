@@ -5,4 +5,8 @@ module.exports = {
       {targets: 'current node', envName: 'test', rootMode: 'upward'},
     ],
   },
+  snapshotFormat: {
+    escapeString: true,
+    printBasicPrototype: true,
+  },
 };
