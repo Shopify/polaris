@@ -1,0 +1,18 @@
+name: LocationAlert
+description: |
+  Action: Used to denote the invalid status of an address
+  Wayfinding: Used to help merchants understand that the address is invalid and take action to fix it
+  Concept: Used to represent the invalidity of an address
+  Education: Used to give merchants information about the invalidity of the address
+keywords:
+  - location
+  - address
+  - shipping address
+  - validation
+  - issue
+  - verification
+  - alert
+authors:
+  - Vihar Kothamasu
+date_added: 2024-04-23
+date_modified: 2024-04-23

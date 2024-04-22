@@ -1,0 +1,17 @@
+name: LocationValid
+description: |
+  Action: Used to denote the validity status of an address
+  Wayfinding: Used to help merchants understand that the address is valid
+  Concept: Used to represent the validity of an address
+  Education: Used to give merchants information about the validity of the address
+keywords:
+  - location
+  - address
+  - shipping address
+  - validation
+  - issue
+  - verification
+authors:
+  - Vihar Kothamasu
+date_added: 2024-04-22
+date_modified: 2024-04-22
