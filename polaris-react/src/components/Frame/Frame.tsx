@@ -376,7 +376,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   };
 
   private setBodyStyles = () => {
-    if (document == null) {
+    if (!document) {
       return;
     }
     if (this.props.dynamicTopBarAndReframe && Boolean(this.props.topBar)) {
