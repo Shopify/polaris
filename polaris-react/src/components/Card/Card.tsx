@@ -1,7 +1,6 @@
 import type {
   BreakpointsAlias,
   ColorBackgroundAlias,
-  BorderRadiusAliasOrScale,
   SpaceScale,
 } from '@shopify/polaris-tokens';
 import React from 'react';
@@ -40,15 +39,15 @@ export const Card = ({
   roundedAbove = 'sm',
 }: CardProps) => {
   const breakpoints = useBreakpoints();
-  const defaultBorderRadius: BorderRadiusAliasOrScale = '300';
-  const hasBorderRadius = Boolean(breakpoints[`${roundedAbove}Up`]);
+  const hasBevel = Boolean(breakpoints[`${roundedAbove}Up`]);
 
   return (
     <WithinContentContext.Provider value>
       <ShadowBevel
         boxShadow="100"
-        borderRadius={hasBorderRadius ? defaultBorderRadius : '0'}
+        borderRadius="300"
         zIndex="32"
+        bevel={hasBevel}
       >
         <Box
           background={background}
