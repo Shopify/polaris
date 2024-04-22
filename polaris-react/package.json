@@ -100,7 +100,7 @@
     "postcss": "^8.3.1",
     "postcss-custom-media": "^10.0.1",
     "postcss-discard-comments": "^6.0.1",
-    "postcss-import": "^15.1.0 ",
+    "postcss-import": "^16.1.0 ",
     "postcss-loader": "^4.2.0",
     "postcss-mixins": "^9.0.4",
     "postcss-modules": "^4.2.2",

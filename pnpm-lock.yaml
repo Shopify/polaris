@@ -370,8 +370,8 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1(postcss@8.4.32)
       postcss-import:
-        specifier: '^15.1.0 '
-        version: 15.1.0(postcss@8.4.32)
+        specifier: '^16.1.0 '
+        version: 16.1.0(postcss@8.4.32)
       postcss-loader:
         specifier: ^4.2.0
         version: 4.3.0(postcss@8.4.32)(webpack@5.76.0)
@@ -18595,9 +18595,9 @@ packages:
       postcss: 8.4.32
     dev: true
 
-  /postcss-import@15.1.0(postcss@8.4.32):
-    resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
-    engines: {node: '>=14.0.0'}
+  /postcss-import@16.1.0(postcss@8.4.32):
+    resolution: {integrity: sha512-7hsAZ4xGXl4MW+OKEWCnF6T5jqBw80/EE9aXg1r2yyn1RsVEU8EtKXbijEODa+rg7iih4bKf7vlvTGYR4CnPNg==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
