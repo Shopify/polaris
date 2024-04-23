@@ -110,11 +110,9 @@ html {
   system font and then define font-families and rem-based
   font-sizes on descendant elements:
 */
-@supports (font: -apple-system-body) {
-  @media (--p-breakpoints-sm-down) {
-    html {
-      font: -apple-system-body;
-    }
+@supports (font: -apple-system-body) and (-webkit-touch-callout: none) {
+  html {
+    font: -apple-system-body;
   }
 }
 
