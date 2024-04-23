@@ -426,6 +426,7 @@ export const WithFiltering = {
           items={Array.from({length: 8}).map((_, index) => ({
             content: `Item #${index + 1}`,
           }))}
+          filterLabel="Search items"
         />
       </div>
     );
