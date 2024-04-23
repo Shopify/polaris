@@ -32,6 +32,10 @@ export interface ComboboxProps {
   /** Height to set on the Popover Pane. */
   height?: string;
   /** Callback fired when the bottom of the listbox is reached. Use to lazy load when listbox option data is paginated. */
+  maxHeight?: string;
+  /** Min Height to set on the Popover Pane. */
+  minHeight?: string;
+  /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
   onScrolledToBottom?(): void;
   /** Callback fired when the popover closes */
   onClose?(): void;
@@ -44,6 +48,8 @@ export function Combobox({
   preferredPosition = 'below',
   willLoadMoreOptions,
   height,
+  maxHeight,
+  minHeight,
   onScrolledToBottom,
   onClose,
 }: ComboboxProps) {
@@ -167,7 +173,12 @@ export function Combobox({
       onClose={handleClose}
     >
       {Children.count(children) > 0 ? (
-        <Popover.Pane onScrolledToBottom={onScrolledToBottom} height={height}>
+        <Popover.Pane
+          onScrolledToBottom={onScrolledToBottom}
+          height={height}
+          maxHeight={maxHeight}
+          minHeight={minHeight}
+        >
           <ComboboxListboxContext.Provider value={listboxContextValue}>
             <ComboboxListboxOptionContext.Provider
               value={listboxOptionContextValue}
