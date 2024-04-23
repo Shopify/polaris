@@ -38,6 +38,17 @@
   z-index: var(--p-z-index-2);
 }
 
+.labelWithStepper .LabelWrapper {
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: middle;
+  word-wrap: break-word;
+  width: 50%;
+  top: 8px;
+  bottom: 8px;
+}
+
 .labelInline:not(.disabled) .LabelWrapper {
   color: var(--p-color-text-secondary);
 }

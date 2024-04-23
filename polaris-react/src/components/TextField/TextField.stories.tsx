@@ -669,6 +669,8 @@ export function WithInlineSuggestion() {
 }
 
 export function All() {
+  const [number, setNumber] = useState(2);
+
   return (
     <FormLayout>
       <FormLayout.Group>
@@ -931,6 +933,15 @@ export function All() {
           autoComplete="off"
           variant="borderless"
           size="slim"
+        />
+        <TextField
+          label="Working Stepper with min value of 0 and max value of 10"
+          type="number"
+          value={number}
+          onChange={setNumber}
+          min={0}
+          max={10}
+          autoComplete="off"
         />
       </FormLayout.Group>
     </FormLayout>

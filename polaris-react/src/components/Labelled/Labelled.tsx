@@ -35,6 +35,8 @@ export interface LabelledProps {
   readOnly?: boolean;
 
   labelInline?: boolean;
+
+  labelWithStepper?: boolean;
 }
 
 export function Labelled({
@@ -49,10 +51,12 @@ export function Labelled({
   disabled,
   readOnly,
   labelInline,
+  labelWithStepper,
   ...rest
 }: LabelledProps) {
   const className = classNames(
     labelInline && styles.labelInline,
+    labelWithStepper && styles.labelWithStepper,
     labelHidden && styles.hidden,
     disabled && styles.disabled,
     readOnly && styles.readOnly,
@@ -82,6 +86,9 @@ export function Labelled({
     </div>
   );
 
+  const inlineLabelVariant = labelInline ? 'bodyXs' : undefined;
+  const labelVariant = labelWithStepper ? 'bodyLg' : inlineLabelVariant;
+
   const labelMarkup = label ? (
     <div className={styles.LabelWrapper}>
       <Label
@@ -89,7 +96,7 @@ export function Labelled({
         requiredIndicator={requiredIndicator}
         {...rest}
         hidden={false}
-        variant={labelInline ? 'bodyXs' : undefined}
+        variant={labelVariant}
       >
         {label}
       </Label>

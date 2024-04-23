@@ -217,6 +217,45 @@
   width: 100%;
 }
 
+.InputWithStepperWrapper,
+.InputWithLargeStepperWrapper {
+  display: flex;
+  flex-direction: row;
+  z-index: var(--pc-text-field-contents);
+  padding: var(--p-space-200);
+}
+
+.MobileStepperInputWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  z-index: var(--pc-text-field-contents);
+  padding-inline: var(--p-space-300);
+  gap: var(--p-space-300);
+}
+
+.MobileStepperLabelWrapper {
+  padding-block: var(--p-space-400);
+}
+
+.MobileStepperWrapper {
+  display: flex;
+  flex-direction: row;
+  padding-block: var(--p-space-400);
+  /* width: 100%; */
+}
+
+.InputWithStepperWrapper {
+  margin-right: 8px;
+  margin-left: auto;
+}
+
+.InputWithLargeStepperWrapper {
+  width: 100%;
+}
+
 .AutoSizeWrapper {
   position: relative;
   display: inline-grid;
@@ -326,6 +365,22 @@
       margin: 0;
     }
   }
+
+  &.stepperWithLabel,
+  &.stepperWithoutLabel {
+    flex: initial;
+    text-align: center;
+    height: var(--p-height-800);
+    border-radius: var(--p-border-radius-750);
+    background-color: var(--p-color-bg-surface-secondary-active);
+    padding: 0;
+    padding-block: 0 !important;
+    min-width: 78px;
+  }
+  /* 
+  &.stepperWithoutLabel {
+    min-width: 100%;
+  } */
 
   &:-webkit-autofill {
     border-radius: var(--p-border-radius-100);

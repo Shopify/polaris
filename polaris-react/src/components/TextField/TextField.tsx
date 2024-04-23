@@ -5,8 +5,9 @@ import React, {
   useRef,
   useCallback,
   useId,
+  useLayoutEffect,
 } from 'react';
-import {XCircleIcon} from '@shopify/polaris-icons';
+import {MinusIcon, PlusIcon, XCircleIcon} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -25,6 +26,8 @@ import {useIsMobileFormsInline} from '../../utilities/use-is-mobile-forms-inline
 import {Resizer, Spinner} from './components';
 import type {SpinnerProps} from './components';
 import styles from './TextField.module.css';
+import {StepperButton} from './components/Stepper/StepperButton';
+import {useStepper} from './components/Stepper/useStepper';
 
 type Type =
   | 'text'
@@ -335,25 +338,34 @@ export function TextField({
   const isNumericType = type === 'number' || type === 'integer';
   const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
 
-  const prefixMarkup = prefix ? (
-    <div
-      className={classNames(styles.Prefix, iconPrefix && styles.PrefixIcon)}
-      id={`${id}-Prefix`}
-      ref={prefixRef}
-    >
-      <Text as="span" variant="bodyMd">
-        {prefix}
-      </Text>
-    </div>
-  ) : null;
+  const showStepper =
+    isMobileFormsInline &&
+    isNumericType &&
+    step !== 0 &&
+    !disabled &&
+    !readOnly;
 
-  const suffixMarkup = suffix ? (
-    <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
-      <Text as="span" variant="bodyMd">
-        {suffix}
-      </Text>
-    </div>
-  ) : null;
+  const prefixMarkup =
+    prefix && !showStepper ? (
+      <div
+        className={classNames(styles.Prefix, iconPrefix && styles.PrefixIcon)}
+        id={`${id}-Prefix`}
+        ref={prefixRef}
+      >
+        <Text as="span" variant="bodyMd">
+          {prefix}
+        </Text>
+      </div>
+    ) : null;
+
+  const suffixMarkup =
+    suffix && !showStepper ? (
+      <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
+        <Text as="span" variant="bodyMd">
+          {suffix}
+        </Text>
+      </div>
+    ) : null;
 
   const loadingMarkup = loading ? (
     <div className={styles.Loading} id={`${id}-Loading`} ref={loadingRef}>
@@ -485,7 +497,11 @@ export function TextField({
   );
 
   const spinnerMarkup =
-    isNumericType && step !== 0 && !disabled && !readOnly ? (
+    isNumericType &&
+    step !== 0 &&
+    !disabled &&
+    !readOnly &&
+    !isMobileFormsInline ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
@@ -495,6 +511,13 @@ export function TextField({
         onBlur={handleOnBlur}
       />
     ) : null;
+
+  const {canDecrement, canIncrement} = useStepper({
+    value: isNumericType ? Number(value) : null,
+    minValue: min ? Number(min) : undefined,
+    maxValue: max ? Number(max) : undefined,
+    disabled: disabled,
+  });
 
   const style =
     multiline && height
@@ -553,6 +576,8 @@ export function TextField({
     monospaced && styles.monospaced,
     suggestion && styles.suggestion,
     autoSize && styles['Input-autoSize'],
+    showStepper && (labelHidden || connectedLeft) && styles.stepperWithoutLabel,
+    showStepper && !labelHidden && styles.stepperWithLabel,
   );
 
   const handleOnFocus = (
@@ -637,9 +662,43 @@ export function TextField({
       {verticalContent}
       {input}
     </div>
-  ) : null;
+  ) : (
+    input
+  );
 
-  const inputMarkup = verticalContent ? inputWithVerticalContentMarkup : input;
+  useLayoutEffect(() => {
+    if (inputRef.current && showStepper) {
+      inputRef.current.style.width = `${(value.length * 2) / 3}rem`;
+    }
+  }, [value]);
+
+  const inputMarkup = showStepper ? (
+    <div className={styles.MobileStepperInputWrapper}>
+      {labelHidden || connectedLeft ? undefined : (
+        <div className={styles.MobileStepperLabelWrapper}>
+          <Text variant="bodyMd" as={'span'}>
+            {label}
+          </Text>{' '}
+        </div>
+      )}
+
+      <div className={styles.MobileStepperWrapper}>
+        <StepperButton
+          source={MinusIcon}
+          disabled={!canDecrement}
+          onPress={handleNumberChange}
+        />
+        {inputWithVerticalContentMarkup}
+        <StepperButton
+          source={PlusIcon}
+          disabled={!canIncrement}
+          onPress={handleNumberChange}
+        />
+      </div>
+    </div>
+  ) : (
+    inputWithVerticalContentMarkup
+  );
 
   const backdropMarkup = (
     <div
@@ -677,8 +736,9 @@ export function TextField({
       id={id}
       error={error}
       action={labelAction}
-      labelHidden={labelHidden}
+      labelHidden={showStepper || labelHidden}
       labelInline={labelInside}
+      labelWithStepper={showStepper}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
       disabled={disabled}
