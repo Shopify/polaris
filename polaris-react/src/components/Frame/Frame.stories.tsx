@@ -1,5 +1,5 @@
 import React, {useCallback, useRef, useState} from 'react';
-import type {Args, ComponentMeta} from '@storybook/react';
+import type {Args, Meta} from '@storybook/react';
 import {
   ActionList,
   AppProvider,
@@ -32,7 +32,7 @@ export default {
   component: Frame,
   args: {omitAppProvider: true},
   parameters: {layout: 'fullscreen'},
-} as ComponentMeta<typeof Frame>;
+} as Meta<typeof Frame>;
 
 export const InAnApplication = {
   render: (_args: Args) => <InAnApplicationComponent />,

@@ -1,5 +1,5 @@
 import React from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Meta} from '@storybook/react';
 import type {BadgeProps} from '@shopify/polaris';
 import {
   Badge,
@@ -14,71 +14,95 @@ import type {Entries} from '../../types';
 
 export default {
   component: Badge,
-} as ComponentMeta<typeof Badge>;
+} as Meta<typeof Badge>;
 
-export function Default() {
-  return <Badge>Fulfilled</Badge>;
-}
+export const Default = {
+  render() {
+    return <Badge>Fulfilled</Badge>;
+  },
+};
 
-export function Informational() {
-  return <Badge tone="info">Draft</Badge>;
-}
+export const Informational = {
+  render() {
+    return <Badge tone="info">Draft</Badge>;
+  },
+};
 
-export function Success() {
-  return <Badge tone="success">Active</Badge>;
-}
+export const Success = {
+  render() {
+    return <Badge tone="success">Active</Badge>;
+  },
+};
 
-export function Attention() {
-  return <Badge tone="attention">Open</Badge>;
-}
+export const Attention = {
+  render() {
+    return <Badge tone="attention">Open</Badge>;
+  },
+};
 
-export function Warning() {
-  return <Badge tone="warning">On hold</Badge>;
-}
+export const Warning = {
+  render() {
+    return <Badge tone="warning">On hold</Badge>;
+  },
+};
 
-export function Critical() {
-  return <Badge tone="critical">Action required</Badge>;
-}
+export const Critical = {
+  render() {
+    return <Badge tone="critical">Action required</Badge>;
+  },
+};
 
-export function New() {
-  return <Badge tone="new">Fulfilled</Badge>;
-}
+export const New = {
+  render() {
+    return <Badge tone="new">Fulfilled</Badge>;
+  },
+};
 
-export function Magic() {
-  return <Badge tone="magic">Magic</Badge>;
-}
+export const Magic = {
+  render() {
+    return <Badge tone="magic">Magic</Badge>;
+  },
+};
 
-export function Incomplete() {
-  return (
-    <Badge progress="incomplete" tone="attention">
-      Unfulfilled
-    </Badge>
-  );
-}
+export const Incomplete = {
+  render() {
+    return (
+      <Badge progress="incomplete" tone="attention">
+        Unfulfilled
+      </Badge>
+    );
+  },
+};
 
-export function PartiallyComplete() {
-  return (
-    <Badge progress="partiallyComplete" tone="warning">
-      Partially fulfilled
-    </Badge>
-  );
-}
+export const PartiallyComplete = {
+  render() {
+    return (
+      <Badge progress="partiallyComplete" tone="warning">
+        Partially fulfilled
+      </Badge>
+    );
+  },
+};
 
-export function Complete() {
-  return <Badge progress="complete">Fulfilled</Badge>;
-}
+export const Complete = {
+  render() {
+    return <Badge progress="complete">Fulfilled</Badge>;
+  },
+};
 
-export function WithToneAndProgressLabelOverride() {
-  return (
-    <Badge
-      tone="success"
-      progress="complete"
-      toneAndProgressLabelOverride="Tone: Published. Your online store is visible."
-    >
-      Published
-    </Badge>
-  );
-}
+export const WithToneAndProgressLabelOverride = {
+  render() {
+    return (
+      <Badge
+        tone="success"
+        progress="complete"
+        toneAndProgressLabelOverride="Tone: Published. Your online store is visible."
+      >
+        Published
+      </Badge>
+    );
+  },
+};
 
 const TempIcon = () => (
   <svg viewBox="0 0 20 20">
@@ -134,62 +158,25 @@ const sizes: {
 
 const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
 
-export function All() {
-  return (
-    <LegacyCard sectioned>
-      {sizeEntries.map(([size, sizeLabel]) => (
-        <Box key={size} paddingBlockEnd="200">
-          <BlockStack gap="300">
-            <Text as="h2" variant="headingXl">
-              Size: {sizeLabel}
-            </Text>
-            <BlockStack gap="200">
-              <Text as="h2" variant="headingSm">
-                Tone only
+export const All = {
+  render() {
+    return (
+      <LegacyCard sectioned>
+        {sizeEntries.map(([size, sizeLabel]) => (
+          <Box key={size} paddingBlockEnd="200">
+            <BlockStack gap="300">
+              <Text as="h2" variant="headingXl">
+                Size: {sizeLabel}
               </Text>
-              <InlineStack gap="200">
-                {toneEntries.map(([tone, toneLabel]) => (
-                  <Badge
-                    key={tone}
-                    size={size}
-                    tone={tone === 'default' ? undefined : tone}
-                  >
-                    {toneLabel}
-                  </Badge>
-                ))}
-              </InlineStack>
-            </BlockStack>
-            <BlockStack gap="200">
-              <Text as="h2" variant="headingSm">
-                Tone with progress
-              </Text>
-              {progressEntries.map(([progress]) => (
-                <InlineStack key={progress} gap="200">
-                  {toneEntries.map(([tone, toneLabel]) => (
-                    <Badge
-                      key={tone}
-                      size={size}
-                      progress={progress}
-                      tone={tone === 'default' ? undefined : tone}
-                    >
-                      {toneLabel}
-                    </Badge>
-                  ))}
-                </InlineStack>
-              ))}
-            </BlockStack>
-            {/* Remove `size` condition when micro icons are available */}
-            {size === 'large' && (
               <BlockStack gap="200">
                 <Text as="h2" variant="headingSm">
-                  Tone with icon
+                  Tone only
                 </Text>
                 <InlineStack gap="200">
                   {toneEntries.map(([tone, toneLabel]) => (
                     <Badge
                       key={tone}
                       size={size}
-                      icon={TempIcon}
                       tone={tone === 'default' ? undefined : tone}
                     >
                       {toneLabel}
@@ -197,26 +184,65 @@ export function All() {
                   ))}
                 </InlineStack>
               </BlockStack>
-            )}
-            {/* TODO: Re-enable the following examples when designs are available (see https://github.com/Shopify/polaris-internal/issues/1411) */}
-            {/* <BlockStack gap="200">
-              <Text as="h2" variant="headingSm">
-                Tone with icon only
-              </Text>
-              <InlineStack gap="200">
-                {toneEntries.map(([tone]) => (
-                  <Badge
-                    key={tone}
-                    size={size}
-                    icon={TempIcon}
-                    tone={tone === 'default' ? undefined : tone}
-                  />
+              <BlockStack gap="200">
+                <Text as="h2" variant="headingSm">
+                  Tone with progress
+                </Text>
+                {progressEntries.map(([progress]) => (
+                  <InlineStack key={progress} gap="200">
+                    {toneEntries.map(([tone, toneLabel]) => (
+                      <Badge
+                        key={tone}
+                        size={size}
+                        progress={progress}
+                        tone={tone === 'default' ? undefined : tone}
+                      >
+                        {toneLabel}
+                      </Badge>
+                    ))}
+                  </InlineStack>
                 ))}
-              </InlineStack>
-            </BlockStack> */}
-          </BlockStack>
-        </Box>
-      ))}
-    </LegacyCard>
-  );
-}
+              </BlockStack>
+              {/* Remove `size` condition when micro icons are available */}
+              {size === 'large' && (
+                <BlockStack gap="200">
+                  <Text as="h2" variant="headingSm">
+                    Tone with icon
+                  </Text>
+                  <InlineStack gap="200">
+                    {toneEntries.map(([tone, toneLabel]) => (
+                      <Badge
+                        key={tone}
+                        size={size}
+                        icon={TempIcon}
+                        tone={tone === 'default' ? undefined : tone}
+                      >
+                        {toneLabel}
+                      </Badge>
+                    ))}
+                  </InlineStack>
+                </BlockStack>
+              )}
+              {/* TODO: Re-enable the following examples when designs are available (see https://github.com/Shopify/polaris-internal/issues/1411) */}
+              {/* <BlockStack gap="200">
+                <Text as="h2" variant="headingSm">
+                  Tone with icon only
+                </Text>
+                <InlineStack gap="200">
+                  {toneEntries.map(([tone]) => (
+                    <Badge
+                      key={tone}
+                      size={size}
+                      icon={TempIcon}
+                      tone={tone === 'default' ? undefined : tone}
+                    />
+                  ))}
+                </InlineStack>
+              </BlockStack> */}
+            </BlockStack>
+          </Box>
+        ))}
+      </LegacyCard>
+    );
+  },
+};

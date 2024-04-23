@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Meta} from '@storybook/react';
 import type {FiltersProps} from '@shopify/polaris';
 import {
   Avatar,
@@ -27,2019 +27,2048 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Filters>;
+} as Meta<typeof Filters>;
 
-export function WithAResourceList() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
+export const WithAResourceList = {
+  render() {
+    const [accountStatus, setAccountStatus] = useState(null);
+    const [moneySpent, setMoneySpent] = useState(null);
+    const [taggedWith, setTaggedWith] = useState('');
+    const [queryValue, setQueryValue] = useState('');
 
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
-    [],
-  );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [
-    handleAccountStatusRemove,
-    handleMoneySpentRemove,
-    handleQueryValueRemove,
-    handleTaggedWithRemove,
-  ]);
-
-  const filters = [
-    {
-      key: 'accountStatus',
-      label: 'Account status',
-      filter: (
-        <ChoiceList
-          title="Account status"
-          titleHidden
-          choices={[
-            {label: 'Enabled', value: 'enabled'},
-            {label: 'Not invited', value: 'not invited'},
-            {label: 'Invited', value: 'invited'},
-            {label: 'Declined', value: 'declined'},
-          ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
-          allowMultiple
-        />
-      ),
-      shortcut: true,
-      pinned: true,
-    },
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-      pinned: true,
-    },
-    {
-      key: 'moneySpent',
-      label: 'Money spent',
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent || [0, 500]}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleMoneySpentChange}
-        />
-      ),
-    },
-  ];
-
-  const appliedFilters: FiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleFiltersQueryChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleFiltersClearAll}
-            />
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
-
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
-      default:
-        return value;
-    }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
-    }
-  }
-}
-
-export function WithADataTable() {
-  const [availability, setAvailability] = useState(null);
-  const [productType, setProductType] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
-
-  const handleAvailabilityChange = useCallback(
-    (value) => setAvailability(value),
-    [],
-  );
-  const handleProductTypeChange = useCallback(
-    (value) => setProductType(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAvailabilityRemove = useCallback(() => setAvailability(null), []);
-  const handleProductTypeRemove = useCallback(() => setProductType(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAvailabilityRemove();
-    handleProductTypeRemove();
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [
-    handleAvailabilityRemove,
-    handleQueryValueRemove,
-    handleProductTypeRemove,
-    handleTaggedWithRemove,
-  ]);
-
-  const filters = [
-    {
-      key: 'availability',
-      label: 'Availability',
-      filter: (
-        <ChoiceList
-          title="Availability"
-          titleHidden
-          choices={[
-            {label: 'Online Store', value: 'Online Store'},
-            {label: 'Point of Sale', value: 'Point of Sale'},
-            {label: 'Buy Button', value: 'Buy Button'},
-          ]}
-          selected={availability || []}
-          onChange={handleAvailabilityChange}
-          allowMultiple
-        />
-      ),
-      shortcut: true,
-    },
-    {
-      key: 'productType',
-      label: 'Product type',
-      filter: (
-        <ChoiceList
-          title="Product type"
-          titleHidden
-          choices={[
-            {label: 'T-Shirt', value: 'T-Shirt'},
-            {label: 'Accessory', value: 'Accessory'},
-            {label: 'Gift card', value: 'Gift card'},
-          ]}
-          selected={productType || []}
-          onChange={handleProductTypeChange}
-          allowMultiple
-        />
-      ),
-    },
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-    },
-  ];
-
-  const appliedFilters: FiltersProps['appliedFilters'] = [];
-  if (!isEmpty(availability)) {
-    const key = 'availability';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, availability),
-      onRemove: handleAvailabilityRemove,
-    });
-  }
-  if (!isEmpty(productType)) {
-    const key = 'productType';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, productType),
-      onRemove: handleProductTypeRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <Filters
-          queryValue={queryValue}
-          queryPlaceholder="Searching in all"
-          filters={filters}
-          appliedFilters={appliedFilters}
-          onQueryChange={handleFiltersQueryChange}
-          onQueryClear={handleQueryValueRemove}
-          onClearAll={handleFiltersClearAll}
-        />
-        <DataTable
-          columnContentTypes={[
-            'text',
-            'numeric',
-            'numeric',
-            'numeric',
-            'numeric',
-          ]}
-          headings={[
-            'Product',
-            'Price',
-            'SKU Number',
-            'Net quantity',
-            'Net sales',
-          ]}
-          rows={[
-            ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
-            ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
-            [
-              'Navy Merino Wool Blazer with khaki chinos and yellow belt',
-              '$445.00',
-              124518,
-              32,
-              '$14,240.00',
-            ],
-          ]}
-          totals={['', '', '', 255, '$155,830.00']}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'availability':
-        return value.map((val) => `Available on ${val}`).join(', ');
-      case 'productType':
-        return value.join(', ');
-      default:
-        return value;
-    }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
-    }
-  }
-}
-
-export function WithChildrenContent() {
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
-
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-
-  const handleClearAll = useCallback(() => {
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove]);
-
-  const filters = [
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-    },
-  ];
-
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleQueryValueChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-            >
-              <div style={{paddingLeft: '8px'}}>
-                <Button
-                  onClick={() => console.log('New filter saved')}
-                  size="micro"
-                  variant="tertiary"
-                >
-                  Save
-                </Button>
-              </div>
-            </Filters>
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
-
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      default:
-        return value;
-    }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
-    }
-  }
-}
-
-export function WithChildrenContentAndUnsavedChanges() {
-  const emptyFilterState: {
-    query: {
-      label: string;
-      value: '';
-    };
-    accountStatus: {
-      label: string;
-      value: string[];
-    };
-    moneySpent: {
-      label: string;
-      value: [number, number];
-    };
-    taggedWith: {
-      label: string;
-      value: '';
-    };
-  } = {
-    query: {
-      label: 'Search',
-      value: '',
-    },
-    accountStatus: {
-      label: 'Account status',
-      value: [],
-    },
-    moneySpent: {
-      label: 'Money spent',
-      value: [0, 0],
-    },
-    taggedWith: {
-      label: 'Tagged with',
-      value: '',
-    },
-  };
-
-  const [queryValue, setQueryValue] = useState('');
-  const [taggedWith, setTaggedWith] = useState('');
-  const [moneySpent, setMoneySpent] = useState<[number, number]>([0, 0]);
-  const [accountStatus, setAccountStatus] = useState<string[]>(['enabled']);
-  const [savedFilterState, setSavedFilterState] = useState<
-    Map<
-      string,
-      {
-        label: string;
-        value: string | string[] | number | [number, number];
-      }
-    >
-  >(new Map(Object.entries(emptyFilterState)));
-
-  const handleFilterChange =
-    (key: string) => (value: string | string[] | number | [number, number]) => {
-      if (key === 'taggedWith') setTaggedWith(value as string);
-      if (key === 'moneySpent') setMoneySpent(value as [number, number]);
-      if (key === 'accountStatus') setAccountStatus(value as string[]);
-    };
-
-  const handleFilterRemove = (key: string) => {
-    if (key === 'taggedWith') {
-      setTaggedWith(emptyFilterState.taggedWith.value);
-    } else if (key === 'moneySpent') {
-      setMoneySpent(emptyFilterState.moneySpent.value);
-    } else if (key === 'accountStatus') {
-      setAccountStatus(emptyFilterState.accountStatus.value);
-    }
-  };
-
-  const handleFiltersQueryChange = (value: string) => setQueryValue(value);
-
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-
-  const handleFiltersClearAll = () => {
-    Object.entries(emptyFilterState).forEach(([key]) =>
-      handleFilterRemove(key),
+    const handleAccountStatusChange = useCallback(
+      (value) => setAccountStatus(value),
+      [],
     );
+    const handleMoneySpentChange = useCallback(
+      (value) => setMoneySpent(value),
+      [],
+    );
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleFiltersQueryChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleAccountStatusRemove = useCallback(
+      () => setAccountStatus(null),
+      [],
+    );
+    const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleFiltersClearAll = useCallback(() => {
+      handleAccountStatusRemove();
+      handleMoneySpentRemove();
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+    }, [
+      handleAccountStatusRemove,
+      handleMoneySpentRemove,
+      handleQueryValueRemove,
+      handleTaggedWithRemove,
+    ]);
 
-    handleQueryValueRemove();
-  };
+    const filters = [
+      {
+        key: 'accountStatus',
+        label: 'Account status',
+        filter: (
+          <ChoiceList
+            title="Account status"
+            titleHidden
+            choices={[
+              {label: 'Enabled', value: 'enabled'},
+              {label: 'Not invited', value: 'not invited'},
+              {label: 'Invited', value: 'invited'},
+              {label: 'Declined', value: 'declined'},
+            ]}
+            selected={accountStatus || []}
+            onChange={handleAccountStatusChange}
+            allowMultiple
+          />
+        ),
+        shortcut: true,
+        pinned: true,
+      },
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+        pinned: true,
+      },
+      {
+        key: 'moneySpent',
+        label: 'Money spent',
+        filter: (
+          <RangeSlider
+            label="Money spent is between"
+            labelHidden
+            value={moneySpent || [0, 500]}
+            prefix="$"
+            output
+            min={0}
+            max={2000}
+            step={1}
+            onChange={handleMoneySpentChange}
+          />
+        ),
+      },
+    ];
 
-  const filters = [
-    {
-      key: 'accountStatus',
-      label: 'Account status',
-      value: accountStatus,
-      filter: (
-        <ChoiceList
-          title="Account status"
-          titleHidden
-          choices={[
-            {label: 'Enabled', value: 'enabled'},
-            {label: 'Not invited', value: 'not invited'},
-            {label: 'Invited', value: 'invited'},
-            {label: 'Declined', value: 'declined'},
-          ]}
-          selected={accountStatus}
-          onChange={handleFilterChange('accountStatus')}
-          allowMultiple
-        />
-      ),
-      shortcut: true,
-      pinned: true,
-    },
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      value: taggedWith,
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleFilterChange('taggedWith')}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-      pinned: true,
-    },
-    {
-      key: 'moneySpent',
-      label: 'Money spent',
-      value: moneySpent,
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleFilterChange('moneySpent')}
-        />
-      ),
-    },
-  ];
-
-  const appliedFilters: FiltersProps['appliedFilters'] = [];
-
-  filters.forEach(({key, label, value}) => {
-    if (!isEmpty(value)) {
+    const appliedFilters: FiltersProps['appliedFilters'] = [];
+    if (!isEmpty(accountStatus)) {
+      const key = 'accountStatus';
       appliedFilters.push({
         key,
-        label: `${label}: ${humanReadableValue(key, value)}`,
-        unsavedChanges: !isUnchanged(key, value),
-        onRemove: () => handleFilterRemove(key),
+        label: disambiguateLabel(key, accountStatus),
+        onRemove: handleAccountStatusRemove,
       });
     }
-  });
+    if (!isEmpty(moneySpent)) {
+      const key = 'moneySpent';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, moneySpent),
+        onRemove: handleMoneySpentRemove,
+      });
+    }
+    if (!isEmpty(taggedWith)) {
+      const key = 'taggedWith';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, taggedWith),
+        onRemove: handleTaggedWithRemove,
+      });
+    }
 
-  const handleSaveFilters = () => {
-    const nextSavedFilterState = new Map(savedFilterState);
-    appliedFilters.forEach(({key, unsavedChanges}) => {
-      const savedFilter = nextSavedFilterState.get(key);
-      const value = filters.find((filter) => filter.key === key)?.value;
-      console.log(`Saving filter: ${key}, ${value}`, savedFilter);
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleFiltersQueryChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleFiltersClearAll}
+              />
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
 
-      if (value && unsavedChanges && savedFilter) {
-        savedFilter.value = value;
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
+
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'moneySpent':
+          return `Money spent is between $${value[0]} and $${value[1]}`;
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        case 'accountStatus':
+          return value.map((val) => `Customer ${val}`).join(', ');
+        default:
+          return value;
+      }
+    }
+
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
+    }
+  },
+};
+
+export const WithADataTable = {
+  render() {
+    const [availability, setAvailability] = useState(null);
+    const [productType, setProductType] = useState(null);
+    const [taggedWith, setTaggedWith] = useState('');
+    const [queryValue, setQueryValue] = useState('');
+
+    const handleAvailabilityChange = useCallback(
+      (value) => setAvailability(value),
+      [],
+    );
+    const handleProductTypeChange = useCallback(
+      (value) => setProductType(value),
+      [],
+    );
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleFiltersQueryChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleAvailabilityRemove = useCallback(
+      () => setAvailability(null),
+      [],
+    );
+    const handleProductTypeRemove = useCallback(() => setProductType(null), []);
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleFiltersClearAll = useCallback(() => {
+      handleAvailabilityRemove();
+      handleProductTypeRemove();
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+    }, [
+      handleAvailabilityRemove,
+      handleQueryValueRemove,
+      handleProductTypeRemove,
+      handleTaggedWithRemove,
+    ]);
+
+    const filters = [
+      {
+        key: 'availability',
+        label: 'Availability',
+        filter: (
+          <ChoiceList
+            title="Availability"
+            titleHidden
+            choices={[
+              {label: 'Online Store', value: 'Online Store'},
+              {label: 'Point of Sale', value: 'Point of Sale'},
+              {label: 'Buy Button', value: 'Buy Button'},
+            ]}
+            selected={availability || []}
+            onChange={handleAvailabilityChange}
+            allowMultiple
+          />
+        ),
+        shortcut: true,
+      },
+      {
+        key: 'productType',
+        label: 'Product type',
+        filter: (
+          <ChoiceList
+            title="Product type"
+            titleHidden
+            choices={[
+              {label: 'T-Shirt', value: 'T-Shirt'},
+              {label: 'Accessory', value: 'Accessory'},
+              {label: 'Gift card', value: 'Gift card'},
+            ]}
+            selected={productType || []}
+            onChange={handleProductTypeChange}
+            allowMultiple
+          />
+        ),
+      },
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+      },
+    ];
+
+    const appliedFilters: FiltersProps['appliedFilters'] = [];
+    if (!isEmpty(availability)) {
+      const key = 'availability';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, availability),
+        onRemove: handleAvailabilityRemove,
+      });
+    }
+    if (!isEmpty(productType)) {
+      const key = 'productType';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, productType),
+        onRemove: handleProductTypeRemove,
+      });
+    }
+    if (!isEmpty(taggedWith)) {
+      const key = 'taggedWith';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, taggedWith),
+        onRemove: handleTaggedWithRemove,
+      });
+    }
+
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <Filters
+            queryValue={queryValue}
+            queryPlaceholder="Searching in all"
+            filters={filters}
+            appliedFilters={appliedFilters}
+            onQueryChange={handleFiltersQueryChange}
+            onQueryClear={handleQueryValueRemove}
+            onClearAll={handleFiltersClearAll}
+          />
+          <DataTable
+            columnContentTypes={[
+              'text',
+              'numeric',
+              'numeric',
+              'numeric',
+              'numeric',
+            ]}
+            headings={[
+              'Product',
+              'Price',
+              'SKU Number',
+              'Net quantity',
+              'Net sales',
+            ]}
+            rows={[
+              ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
+              ['Mauve Cashmere Scarf', '$230.00', 124533, 83, '$19,090.00'],
+              [
+                'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+                '$445.00',
+                124518,
+                32,
+                '$14,240.00',
+              ],
+            ]}
+            totals={['', '', '', 255, '$155,830.00']}
+          />
+        </LegacyCard>
+      </div>
+    );
+
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        case 'availability':
+          return value.map((val) => `Available on ${val}`).join(', ');
+        case 'productType':
+          return value.join(', ');
+        default:
+          return value;
+      }
+    }
+
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
+    }
+  },
+};
+
+export const WithChildrenContent = {
+  render() {
+    const [taggedWith, setTaggedWith] = useState('');
+    const [queryValue, setQueryValue] = useState('');
+
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleQueryValueChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+
+    const handleClearAll = useCallback(() => {
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+    }, [handleQueryValueRemove, handleTaggedWithRemove]);
+
+    const filters = [
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+      },
+    ];
+
+    const appliedFilters = !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith',
+            label: disambiguateLabel('taggedWith', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
+
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleQueryValueChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleClearAll}
+              >
+                <div style={{paddingLeft: '8px'}}>
+                  <Button
+                    onClick={() => console.log('New filter saved')}
+                    size="micro"
+                    variant="tertiary"
+                  >
+                    Save
+                  </Button>
+                </div>
+              </Filters>
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
+
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
+
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        default:
+          return value;
+      }
+    }
+
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
+    }
+  },
+};
+
+export const WithChildrenContentAndUnsavedChanges = {
+  render() {
+    const emptyFilterState: {
+      query: {
+        label: string;
+        value: '';
+      };
+      accountStatus: {
+        label: string;
+        value: string[];
+      };
+      moneySpent: {
+        label: string;
+        value: [number, number];
+      };
+      taggedWith: {
+        label: string;
+        value: '';
+      };
+    } = {
+      query: {
+        label: 'Search',
+        value: '',
+      },
+      accountStatus: {
+        label: 'Account status',
+        value: [],
+      },
+      moneySpent: {
+        label: 'Money spent',
+        value: [0, 0],
+      },
+      taggedWith: {
+        label: 'Tagged with',
+        value: '',
+      },
+    };
+
+    const [queryValue, setQueryValue] = useState('');
+    const [taggedWith, setTaggedWith] = useState('');
+    const [moneySpent, setMoneySpent] = useState<[number, number]>([0, 0]);
+    const [accountStatus, setAccountStatus] = useState<string[]>(['enabled']);
+    const [savedFilterState, setSavedFilterState] = useState<
+      Map<
+        string,
+        {
+          label: string;
+          value: string | string[] | number | [number, number];
+        }
+      >
+    >(new Map(Object.entries(emptyFilterState)));
+
+    const handleFilterChange =
+      (key: string) =>
+      (value: string | string[] | number | [number, number]) => {
+        if (key === 'taggedWith') setTaggedWith(value as string);
+        if (key === 'moneySpent') setMoneySpent(value as [number, number]);
+        if (key === 'accountStatus') setAccountStatus(value as string[]);
+      };
+
+    const handleFilterRemove = (key: string) => {
+      if (key === 'taggedWith') {
+        setTaggedWith(emptyFilterState.taggedWith.value);
+      } else if (key === 'moneySpent') {
+        setMoneySpent(emptyFilterState.moneySpent.value);
+      } else if (key === 'accountStatus') {
+        setAccountStatus(emptyFilterState.accountStatus.value);
+      }
+    };
+
+    const handleFiltersQueryChange = (value: string) => setQueryValue(value);
+
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+
+    const handleFiltersClearAll = () => {
+      Object.entries(emptyFilterState).forEach(([key]) =>
+        handleFilterRemove(key),
+      );
+
+      handleQueryValueRemove();
+    };
+
+    const filters = [
+      {
+        key: 'accountStatus',
+        label: 'Account status',
+        value: accountStatus,
+        filter: (
+          <ChoiceList
+            title="Account status"
+            titleHidden
+            choices={[
+              {label: 'Enabled', value: 'enabled'},
+              {label: 'Not invited', value: 'not invited'},
+              {label: 'Invited', value: 'invited'},
+              {label: 'Declined', value: 'declined'},
+            ]}
+            selected={accountStatus}
+            onChange={handleFilterChange('accountStatus')}
+            allowMultiple
+          />
+        ),
+        shortcut: true,
+        pinned: true,
+      },
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        value: taggedWith,
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleFilterChange('taggedWith')}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+        pinned: true,
+      },
+      {
+        key: 'moneySpent',
+        label: 'Money spent',
+        value: moneySpent,
+        filter: (
+          <RangeSlider
+            label="Money spent is between"
+            labelHidden
+            value={moneySpent}
+            prefix="$"
+            output
+            min={0}
+            max={2000}
+            step={1}
+            onChange={handleFilterChange('moneySpent')}
+          />
+        ),
+      },
+    ];
+
+    const appliedFilters: FiltersProps['appliedFilters'] = [];
+
+    filters.forEach(({key, label, value}) => {
+      if (!isEmpty(value)) {
+        appliedFilters.push({
+          key,
+          label: `${label}: ${humanReadableValue(key, value)}`,
+          unsavedChanges: !isUnchanged(key, value),
+          onRemove: () => handleFilterRemove(key),
+        });
       }
     });
 
-    setSavedFilterState(nextSavedFilterState);
-  };
+    const handleSaveFilters = () => {
+      const nextSavedFilterState = new Map(savedFilterState);
+      appliedFilters.forEach(({key, unsavedChanges}) => {
+        const savedFilter = nextSavedFilterState.get(key);
+        const value = filters.find((filter) => filter.key === key)?.value;
+        console.log(`Saving filter: ${key}, ${value}`, savedFilter);
 
-  const disableAction = appliedFilters.every(
-    ({unsavedChanges}) => !unsavedChanges,
-  );
+        if (value && unsavedChanges && savedFilter) {
+          savedFilter.value = value;
+        }
+      });
 
-  return (
-    <div style={{height: '568px'}}>
-      <Card roundedAbove="sm" padding="0">
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleFiltersQueryChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleFiltersClearAll}
-            >
-              <Box paddingInlineStart="200">
-                <Button
-                  disabled={disableAction}
-                  onClick={handleSaveFilters}
-                  size="micro"
-                  variant="tertiary"
-                >
-                  Save
-                </Button>
-              </Box>
-            </Filters>
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = (
-              <Avatar
-                initials={name
-                  .split(' ')
-                  .map((nm) => nm.substring(0, 1))
-                  .join('')}
-                size="md"
-                name={name}
-              />
-            );
+      setSavedFilterState(nextSavedFilterState);
+    };
 
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
+    const disableAction = appliedFilters.every(
+      ({unsavedChanges}) => !unsavedChanges,
+    );
+
+    return (
+      <div style={{height: '568px'}}>
+        <Card roundedAbove="sm" padding="0">
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleFiltersQueryChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleFiltersClearAll}
               >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </Card>
-    </div>
-  );
+                <Box paddingInlineStart="200">
+                  <Button
+                    disabled={disableAction}
+                    onClick={handleSaveFilters}
+                    size="micro"
+                    variant="tertiary"
+                  >
+                    Save
+                  </Button>
+                </Box>
+              </Filters>
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = (
+                <Avatar
+                  initials={name
+                    .split(' ')
+                    .map((nm) => nm.substring(0, 1))
+                    .join('')}
+                  size="md"
+                  name={name}
+                />
+              );
 
-  function humanReadableValue(
-    key: string,
-    value: string | string[] | number | [number, number],
-  ): string {
-    if (isEmpty(value)) return '';
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </Card>
+      </div>
+    );
 
-    switch (key) {
-      case 'moneySpent': {
-        const [min, max] = value as [number, number];
-        if (min === 0 && max === 0) return '';
-        if (min === 0) return `up to $${max}`;
-        if (max === 0) return `more than $${min}`;
-        return `between $${min} and $${max}`;
-      }
-      case 'taggedWith': {
-        const tags = (value as string).trim().split(',');
-        if (tags.length === 1) return ` ${tags[0]}`;
-        else if (tags.length === 2) return `${tags[0]} and ${tags[1]}`;
-        return tags
-          .map((tag, index) => {
-            return index !== tags.length - 1 ? tag : `and ${tag}`;
-          })
-          .join(', ');
-      }
-      case 'accountStatus': {
-        const statuses = value as string[];
-        if (statuses.length === 1) {
-          return statuses[0];
-        } else if (statuses.length === 2) {
-          return `${statuses[0]} or ${statuses[1]}`;
-        } else {
-          return statuses
-            .map((status, index) => {
-              return index !== statuses.length - 1 ? status : `or ${status}`;
+    function humanReadableValue(
+      key: string,
+      value: string | string[] | number | [number, number],
+    ): string {
+      if (isEmpty(value)) return '';
+
+      switch (key) {
+        case 'moneySpent': {
+          const [min, max] = value as [number, number];
+          if (min === 0 && max === 0) return '';
+          if (min === 0) return `up to $${max}`;
+          if (max === 0) return `more than $${min}`;
+          return `between $${min} and $${max}`;
+        }
+        case 'taggedWith': {
+          const tags = (value as string).trim().split(',');
+          if (tags.length === 1) return ` ${tags[0]}`;
+          else if (tags.length === 2) return `${tags[0]} and ${tags[1]}`;
+          return tags
+            .map((tag, index) => {
+              return index !== tags.length - 1 ? tag : `and ${tag}`;
             })
             .join(', ');
         }
+        case 'accountStatus': {
+          const statuses = value as string[];
+          if (statuses.length === 1) {
+            return statuses[0];
+          } else if (statuses.length === 2) {
+            return `${statuses[0]} or ${statuses[1]}`;
+          } else {
+            return statuses
+              .map((status, index) => {
+                return index !== statuses.length - 1 ? status : `or ${status}`;
+              })
+              .join(', ');
+          }
+        }
+        default:
+          return '';
       }
-      default:
-        return '';
     }
-  }
 
-  function isEmpty(value: string | string[] | number | [number, number]) {
-    if (Array.isArray(value)) {
-      return value.length === 0 || value[1] === 0;
-    } else {
-      return value === '' || value === 0 || value == null;
+    function isEmpty(value: string | string[] | number | [number, number]) {
+      if (Array.isArray(value)) {
+        return value.length === 0 || value[1] === 0;
+      } else {
+        return value === '' || value === 0 || value == null;
+      }
     }
-  }
 
-  function isUnchanged(
-    key: string,
-    value: string | string[] | number | [number, number],
-  ) {
-    if (key === 'taggedWith') {
-      return value === savedFilterState.get(key)?.value;
-    } else if (key === 'moneySpent') {
-      const [min, max] = value as [number, number];
-      const savedMoneySpent = savedFilterState.get(key)?.value as [
-        number,
-        number,
-      ];
+    function isUnchanged(
+      key: string,
+      value: string | string[] | number | [number, number],
+    ) {
+      if (key === 'taggedWith') {
+        return value === savedFilterState.get(key)?.value;
+      } else if (key === 'moneySpent') {
+        const [min, max] = value as [number, number];
+        const savedMoneySpent = savedFilterState.get(key)?.value as [
+          number,
+          number,
+        ];
 
-      return min === savedMoneySpent?.[0] && max === savedMoneySpent?.[1];
-    } else if (key === 'accountStatus') {
-      const savedAccountStatus =
-        (savedFilterState.get(key)?.value as string[]) || [];
-      return (
-        Array.isArray(value) &&
-        value.every(
-          (val) =>
-            typeof val === 'string' &&
-            savedAccountStatus?.includes(val as string),
-        )
-      );
+        return min === savedMoneySpent?.[0] && max === savedMoneySpent?.[1];
+      } else if (key === 'accountStatus') {
+        const savedAccountStatus =
+          (savedFilterState.get(key)?.value as string[]) || [];
+        return (
+          Array.isArray(value) &&
+          value.every(
+            (val) =>
+              typeof val === 'string' &&
+              savedAccountStatus?.includes(val as string),
+          )
+        );
+      }
     }
-  }
-}
+  },
+};
 
-export function Disabled() {
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
+export const Disabled = {
+  render() {
+    const [taggedWith, setTaggedWith] = useState('');
+    const [queryValue, setQueryValue] = useState('');
 
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleQueryValueChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
 
-  const handleClearAll = useCallback(() => {
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove]);
+    const handleClearAll = useCallback(() => {
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+    }, [handleQueryValueRemove, handleTaggedWithRemove]);
 
-  const filters = [
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-    },
-  ];
+    const filters = [
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+      },
+    ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+    const appliedFilters = !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith',
+            label: disambiguateLabel('taggedWith', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleQueryValueChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-              disabled
-            >
-              <div style={{paddingLeft: '8px'}}>
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleQueryValueChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleClearAll}
+                disabled
+              >
+                <div style={{paddingLeft: '8px'}}>
+                  <Button
+                    disabled
+                    size="micro"
+                    variant="tertiary"
+                    onClick={() => console.log('New filter saved')}
+                  >
+                    Save
+                  </Button>
+                </div>
+              </Filters>
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
+
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
+
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        default:
+          return value;
+      }
+    }
+
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
+    }
+  },
+};
+
+export const SomeDisabled = {
+  render() {
+    const [taggedWith, setTaggedWith] = useState('');
+    const [vendor, setVendor] = useState('');
+    const [queryValue, setQueryValue] = useState('');
+
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleQueryValueChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleVendorChange = useCallback((value) => setVendor(value), []);
+
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleVendorRemove = useCallback(() => setVendor(''), []);
+
+    const handleClearAll = useCallback(() => {
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+      handleVendorRemove();
+    }, [handleQueryValueRemove, handleTaggedWithRemove, handleVendorRemove]);
+
+    const filters = [
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+      },
+      {
+        key: 'vendor',
+        label: 'Vendor',
+        filter: (
+          <TextField
+            label="Vendor"
+            value={vendor}
+            onChange={handleVendorChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+        disabled: true,
+      },
+    ];
+
+    const appliedFilters = !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith',
+            label: disambiguateLabel('taggedWith', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
+
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleQueryValueChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleClearAll}
+              >
+                <div style={{paddingLeft: '8px'}}>
+                  <Button
+                    disabled
+                    size="micro"
+                    variant="tertiary"
+                    onClick={() => console.log('New filter saved')}
+                  >
+                    Save
+                  </Button>
+                </div>
+              </Filters>
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
+
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
+
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        default:
+          return value;
+      }
+    }
+
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
+    }
+  },
+};
+
+export const WithQueryFieldHidden = {
+  render() {
+    const [accountStatus, setAccountStatus] = useState(null);
+    const [moneySpent, setMoneySpent] = useState(null);
+    const [taggedWith, setTaggedWith] = useState('');
+    const [queryValue, setQueryValue] = useState('');
+
+    const handleAccountStatusChange = useCallback(
+      (value) => setAccountStatus(value),
+      [],
+    );
+    const handleMoneySpentChange = useCallback(
+      (value) => setMoneySpent(value),
+      [],
+    );
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleFiltersQueryChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleAccountStatusRemove = useCallback(
+      () => setAccountStatus(null),
+      [],
+    );
+    const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleFiltersClearAll = useCallback(() => {
+      handleAccountStatusRemove();
+      handleMoneySpentRemove();
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+    }, [
+      handleAccountStatusRemove,
+      handleMoneySpentRemove,
+      handleQueryValueRemove,
+      handleTaggedWithRemove,
+    ]);
+
+    const filters = [
+      {
+        key: 'accountStatus',
+        label: 'Account status',
+        filter: (
+          <ChoiceList
+            title="Account status"
+            titleHidden
+            choices={[
+              {label: 'Enabled', value: 'enabled'},
+              {label: 'Not invited', value: 'not invited'},
+              {label: 'Invited', value: 'invited'},
+              {label: 'Declined', value: 'declined'},
+            ]}
+            selected={accountStatus || []}
+            onChange={handleAccountStatusChange}
+            allowMultiple
+          />
+        ),
+        shortcut: true,
+      },
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+      },
+      {
+        key: 'moneySpent',
+        label: 'Money spent',
+        filter: (
+          <RangeSlider
+            label="Money spent is between"
+            labelHidden
+            value={moneySpent || [0, 500]}
+            prefix="$"
+            output
+            min={0}
+            max={2000}
+            step={1}
+            onChange={handleMoneySpentChange}
+          />
+        ),
+      },
+    ];
+
+    const appliedFilters: FiltersProps['appliedFilters'] = [];
+    if (!isEmpty(accountStatus)) {
+      const key = 'accountStatus';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, accountStatus),
+        onRemove: handleAccountStatusRemove,
+      });
+    }
+    if (!isEmpty(moneySpent)) {
+      const key = 'moneySpent';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, moneySpent),
+        onRemove: handleMoneySpentRemove,
+      });
+    }
+    if (!isEmpty(taggedWith)) {
+      const key = 'taggedWith';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, taggedWith),
+        onRemove: handleTaggedWithRemove,
+      });
+    }
+
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleFiltersQueryChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleFiltersClearAll}
+                hideQueryField
+              >
                 <Button
-                  disabled
+                  onClick={() => console.log('New filter saved')}
                   size="micro"
                   variant="tertiary"
-                  onClick={() => console.log('New filter saved')}
                 >
                   Save
                 </Button>
-              </div>
-            </Filters>
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
+              </Filters>
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
 
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      default:
-        return value;
-    }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
-    }
-  }
-}
-
-export function SomeDisabled() {
-  const [taggedWith, setTaggedWith] = useState('');
-  const [vendor, setVendor] = useState('');
-  const [queryValue, setQueryValue] = useState('');
-
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleVendorChange = useCallback((value) => setVendor(value), []);
-
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleVendorRemove = useCallback(() => setVendor(''), []);
-
-  const handleClearAll = useCallback(() => {
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-    handleVendorRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove, handleVendorRemove]);
-
-  const filters = [
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-    },
-    {
-      key: 'vendor',
-      label: 'Vendor',
-      filter: (
-        <TextField
-          label="Vendor"
-          value={vendor}
-          onChange={handleVendorChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-      disabled: true,
-    },
-  ];
-
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleQueryValueChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleClearAll}
-            >
-              <div style={{paddingLeft: '8px'}}>
-                <Button
-                  disabled
-                  size="micro"
-                  variant="tertiary"
-                  onClick={() => console.log('New filter saved')}
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
                 >
-                  Save
-                </Button>
-              </div>
-            </Filters>
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
 
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      default:
-        return value;
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'moneySpent':
+          return `Money spent is between $${value[0]} and $${value[1]}`;
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        case 'accountStatus':
+          return value.map((val) => `Customer ${val}`).join(', ');
+        default:
+          return value;
+      }
     }
-  }
 
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
     }
-  }
-}
+  },
+};
 
-export function WithQueryFieldHidden() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
+export const WithQueryFieldDisabled = {
+  render() {
+    const [accountStatus, setAccountStatus] = useState(null);
+    const [moneySpent, setMoneySpent] = useState(null);
+    const [taggedWith, setTaggedWith] = useState('');
+    const [queryValue, setQueryValue] = useState('');
 
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
-    [],
-  );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [
-    handleAccountStatusRemove,
-    handleMoneySpentRemove,
-    handleQueryValueRemove,
-    handleTaggedWithRemove,
-  ]);
+    const handleAccountStatusChange = useCallback(
+      (value) => setAccountStatus(value),
+      [],
+    );
+    const handleMoneySpentChange = useCallback(
+      (value) => setMoneySpent(value),
+      [],
+    );
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleFiltersQueryChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleAccountStatusRemove = useCallback(
+      () => setAccountStatus(null),
+      [],
+    );
+    const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleFiltersClearAll = useCallback(() => {
+      handleAccountStatusRemove();
+      handleMoneySpentRemove();
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+    }, [
+      handleAccountStatusRemove,
+      handleMoneySpentRemove,
+      handleQueryValueRemove,
+      handleTaggedWithRemove,
+    ]);
 
-  const filters = [
-    {
-      key: 'accountStatus',
-      label: 'Account status',
-      filter: (
-        <ChoiceList
-          title="Account status"
-          titleHidden
-          choices={[
-            {label: 'Enabled', value: 'enabled'},
-            {label: 'Not invited', value: 'not invited'},
-            {label: 'Invited', value: 'invited'},
-            {label: 'Declined', value: 'declined'},
-          ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
-          allowMultiple
-        />
-      ),
-      shortcut: true,
-    },
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-    },
-    {
-      key: 'moneySpent',
-      label: 'Money spent',
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent || [0, 500]}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleMoneySpentChange}
-        />
-      ),
-    },
-  ];
+    const filters = [
+      {
+        key: 'accountStatus',
+        label: 'Account status',
+        filter: (
+          <ChoiceList
+            title="Account status"
+            titleHidden
+            choices={[
+              {label: 'Enabled', value: 'enabled'},
+              {label: 'Not invited', value: 'not invited'},
+              {label: 'Invited', value: 'invited'},
+              {label: 'Declined', value: 'declined'},
+            ]}
+            selected={accountStatus || []}
+            onChange={handleAccountStatusChange}
+            allowMultiple
+          />
+        ),
+        shortcut: true,
+      },
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+      },
+      {
+        key: 'moneySpent',
+        label: 'Money spent',
+        filter: (
+          <RangeSlider
+            label="Money spent is between"
+            labelHidden
+            value={moneySpent || [0, 500]}
+            prefix="$"
+            output
+            min={0}
+            max={2000}
+            step={1}
+            onChange={handleMoneySpentChange}
+          />
+        ),
+      },
+    ];
 
-  const appliedFilters: FiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleFiltersQueryChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleFiltersClearAll}
-              hideQueryField
-            >
-              <Button
-                onClick={() => console.log('New filter saved')}
-                size="micro"
-                variant="tertiary"
-              >
-                Save
-              </Button>
-            </Filters>
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
-
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
-      default:
-        return value;
+    const appliedFilters: FiltersProps['appliedFilters'] = [];
+    if (!isEmpty(accountStatus)) {
+      const key = 'accountStatus';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, accountStatus),
+        onRemove: handleAccountStatusRemove,
+      });
     }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
+    if (!isEmpty(moneySpent)) {
+      const key = 'moneySpent';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, moneySpent),
+        onRemove: handleMoneySpentRemove,
+      });
     }
-  }
-}
-
-export function WithQueryFieldDisabled() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
-
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
-    [],
-  );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [
-    handleAccountStatusRemove,
-    handleMoneySpentRemove,
-    handleQueryValueRemove,
-    handleTaggedWithRemove,
-  ]);
-
-  const filters = [
-    {
-      key: 'accountStatus',
-      label: 'Account status',
-      filter: (
-        <ChoiceList
-          title="Account status"
-          titleHidden
-          choices={[
-            {label: 'Enabled', value: 'enabled'},
-            {label: 'Not invited', value: 'not invited'},
-            {label: 'Invited', value: 'invited'},
-            {label: 'Declined', value: 'declined'},
-          ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
-          allowMultiple
-        />
-      ),
-      shortcut: true,
-    },
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-    },
-    {
-      key: 'moneySpent',
-      label: 'Money spent',
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent || [0, 500]}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleMoneySpentChange}
-        />
-      ),
-    },
-  ];
-
-  const appliedFilters: FiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleFiltersQueryChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleFiltersClearAll}
-              disableQueryField
-            />
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
-
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
-      default:
-        return value;
+    if (!isEmpty(taggedWith)) {
+      const key = 'taggedWith';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, taggedWith),
+        onRemove: handleTaggedWithRemove,
+      });
     }
-  }
 
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleFiltersQueryChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleFiltersClearAll}
+                disableQueryField
+              />
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
+
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
+
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'moneySpent':
+          return `Money spent is between $${value[0]} and $${value[1]}`;
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        case 'accountStatus':
+          return value.map((val) => `Customer ${val}`).join(', ');
+        default:
+          return value;
+      }
     }
-  }
-}
 
-export function WithAdditionalFilterSections() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [accountId, setAccountId] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
-
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleAccountIdChange = useCallback((value) => setAccountId(value), []);
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
-    [],
-  );
-  const handleAccountIdRemove = useCallback(() => setAccountId(null), []);
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleAccountIdRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [
-    handleAccountStatusRemove,
-    handleAccountIdRemove,
-    handleMoneySpentRemove,
-    handleQueryValueRemove,
-    handleTaggedWithRemove,
-  ]);
-
-  const filters = [
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith || ''}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-    },
-    {
-      key: 'accountStatus',
-      label: 'Account status',
-      section: 'Account filters',
-      filter: (
-        <ChoiceList
-          title="Account status"
-          titleHidden
-          choices={[
-            {label: 'Enabled', value: 'enabled'},
-            {label: 'Not invited', value: 'not invited'},
-            {label: 'Invited', value: 'invited'},
-            {label: 'Declined', value: 'declined'},
-          ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
-          allowMultiple
-        />
-      ),
-    },
-    {
-      key: 'accountId',
-      label: 'Account ID',
-      section: 'Account filters',
-      filter: (
-        <TextField
-          label="Account ID"
-          value={accountId || ''}
-          onChange={handleAccountIdChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-    },
-    {
-      key: 'moneySpent',
-      label: 'Money spent',
-      section: 'Money filters',
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent || [0, 500]}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleMoneySpentChange}
-        />
-      ),
-    },
-  ];
-
-  const appliedFilters: FiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (!isEmpty(accountId)) {
-    const key = 'accountId';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountId),
-      onRemove: handleAccountIdRemove,
-    });
-  }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue || ''}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleFiltersQueryChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleFiltersClearAll}
-            />
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
-
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
-      case 'accountId':
-        return `Account id: ${value}`;
-      default:
-        return value;
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
     }
-  }
+  },
+};
 
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
+export const WithAdditionalFilterSections = {
+  render() {
+    const [accountStatus, setAccountStatus] = useState(null);
+    const [accountId, setAccountId] = useState(null);
+    const [moneySpent, setMoneySpent] = useState(null);
+    const [taggedWith, setTaggedWith] = useState('');
+    const [queryValue, setQueryValue] = useState('');
+
+    const handleAccountStatusChange = useCallback(
+      (value) => setAccountStatus(value),
+      [],
+    );
+    const handleAccountIdChange = useCallback(
+      (value) => setAccountId(value),
+      [],
+    );
+    const handleMoneySpentChange = useCallback(
+      (value) => setMoneySpent(value),
+      [],
+    );
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleFiltersQueryChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleAccountStatusRemove = useCallback(
+      () => setAccountStatus(null),
+      [],
+    );
+    const handleAccountIdRemove = useCallback(() => setAccountId(null), []);
+    const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleFiltersClearAll = useCallback(() => {
+      handleAccountStatusRemove();
+      handleAccountIdRemove();
+      handleMoneySpentRemove();
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+    }, [
+      handleAccountStatusRemove,
+      handleAccountIdRemove,
+      handleMoneySpentRemove,
+      handleQueryValueRemove,
+      handleTaggedWithRemove,
+    ]);
+
+    const filters = [
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith || ''}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+      },
+      {
+        key: 'accountStatus',
+        label: 'Account status',
+        section: 'Account filters',
+        filter: (
+          <ChoiceList
+            title="Account status"
+            titleHidden
+            choices={[
+              {label: 'Enabled', value: 'enabled'},
+              {label: 'Not invited', value: 'not invited'},
+              {label: 'Invited', value: 'invited'},
+              {label: 'Declined', value: 'declined'},
+            ]}
+            selected={accountStatus || []}
+            onChange={handleAccountStatusChange}
+            allowMultiple
+          />
+        ),
+      },
+      {
+        key: 'accountId',
+        label: 'Account ID',
+        section: 'Account filters',
+        filter: (
+          <TextField
+            label="Account ID"
+            value={accountId || ''}
+            onChange={handleAccountIdChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+      },
+      {
+        key: 'moneySpent',
+        label: 'Money spent',
+        section: 'Money filters',
+        filter: (
+          <RangeSlider
+            label="Money spent is between"
+            labelHidden
+            value={moneySpent || [0, 500]}
+            prefix="$"
+            output
+            min={0}
+            max={2000}
+            step={1}
+            onChange={handleMoneySpentChange}
+          />
+        ),
+      },
+    ];
+
+    const appliedFilters: FiltersProps['appliedFilters'] = [];
+    if (!isEmpty(accountStatus)) {
+      const key = 'accountStatus';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, accountStatus),
+        onRemove: handleAccountStatusRemove,
+      });
     }
-  }
-}
-
-export function WithFilterBarHidden() {
-  const [queryValue, setQueryValue] = useState('');
-
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleQueryValueRemove();
-  }, [handleQueryValueRemove]);
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={[]}
-              onQueryChange={handleFiltersQueryChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleFiltersClearAll}
-              hideFilters
-            />
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
-
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-}
-
-export function WithAllFiltersPinned() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
-
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
-    [],
-  );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [
-    handleAccountStatusRemove,
-    handleMoneySpentRemove,
-    handleQueryValueRemove,
-    handleTaggedWithRemove,
-  ]);
-
-  const filters = [
-    {
-      key: 'accountStatus',
-      label: 'Account status',
-      filter: (
-        <ChoiceList
-          title="Account status"
-          titleHidden
-          choices={[
-            {label: 'Enabled', value: 'enabled'},
-            {label: 'Not invited', value: 'not invited'},
-            {label: 'Invited', value: 'invited'},
-            {label: 'Declined', value: 'declined'},
-          ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
-          allowMultiple
-        />
-      ),
-      shortcut: true,
-      pinned: true,
-    },
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-      pinned: true,
-    },
-    {
-      key: 'moneySpent',
-      label: 'Money spent',
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent || [0, 500]}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleMoneySpentChange}
-        />
-      ),
-      shortcut: true,
-      pinned: true,
-    },
-  ];
-
-  const appliedFilters: FiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
-
-  return (
-    <div style={{height: '568px'}}>
-      <LegacyCard>
-        <ResourceList
-          resourceName={{singular: 'customer', plural: 'customers'}}
-          filterControl={
-            <Filters
-              queryValue={queryValue}
-              queryPlaceholder="Searching in all"
-              filters={filters}
-              appliedFilters={appliedFilters}
-              onQueryChange={handleFiltersQueryChange}
-              onQueryClear={handleQueryValueRemove}
-              onClearAll={handleFiltersClearAll}
-            />
-          }
-          flushFilters
-          items={[
-            {
-              id: '341',
-              url: '#',
-              name: 'Mae Jemison',
-              location: 'Decatur, USA',
-            },
-            {
-              id: '256',
-              url: '#',
-              name: 'Ellen Ochoa',
-              location: 'Los Angeles, USA',
-            },
-          ]}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
-
-            return (
-              <ResourceList.Item
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <Text as="h3" fontWeight="bold">
-                  {name}
-                </Text>
-                <div>{location}</div>
-              </ResourceList.Item>
-            );
-          }}
-        />
-      </LegacyCard>
-    </div>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
-      default:
-        return value;
+    if (!isEmpty(accountId)) {
+      const key = 'accountId';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, accountId),
+        onRemove: handleAccountIdRemove,
+      });
     }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
+    if (!isEmpty(moneySpent)) {
+      const key = 'moneySpent';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, moneySpent),
+        onRemove: handleMoneySpentRemove,
+      });
     }
-  }
-}
+    if (!isEmpty(taggedWith)) {
+      const key = 'taggedWith';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, taggedWith),
+        onRemove: handleTaggedWithRemove,
+      });
+    }
+
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue || ''}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleFiltersQueryChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleFiltersClearAll}
+              />
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
+
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
+
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'moneySpent':
+          return `Money spent is between $${value[0]} and $${value[1]}`;
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        case 'accountStatus':
+          return value.map((val) => `Customer ${val}`).join(', ');
+        case 'accountId':
+          return `Account id: ${value}`;
+        default:
+          return value;
+      }
+    }
+
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
+    }
+  },
+};
+
+export const WithFilterBarHidden = {
+  render() {
+    const [queryValue, setQueryValue] = useState('');
+
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleFiltersClearAll = useCallback(() => {
+      handleQueryValueRemove();
+    }, [handleQueryValueRemove]);
+    const handleFiltersQueryChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={[]}
+                onQueryChange={handleFiltersQueryChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleFiltersClearAll}
+                hideFilters
+              />
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
+
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
+  },
+};
+
+export const WithAllFiltersPinned = {
+  render() {
+    const [accountStatus, setAccountStatus] = useState(null);
+    const [moneySpent, setMoneySpent] = useState(null);
+    const [taggedWith, setTaggedWith] = useState('');
+    const [queryValue, setQueryValue] = useState('');
+
+    const handleAccountStatusChange = useCallback(
+      (value) => setAccountStatus(value),
+      [],
+    );
+    const handleMoneySpentChange = useCallback(
+      (value) => setMoneySpent(value),
+      [],
+    );
+    const handleTaggedWithChange = useCallback(
+      (value) => setTaggedWith(value),
+      [],
+    );
+    const handleFiltersQueryChange = useCallback(
+      (value) => setQueryValue(value),
+      [],
+    );
+    const handleAccountStatusRemove = useCallback(
+      () => setAccountStatus(null),
+      [],
+    );
+    const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+    const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+    const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+    const handleFiltersClearAll = useCallback(() => {
+      handleAccountStatusRemove();
+      handleMoneySpentRemove();
+      handleTaggedWithRemove();
+      handleQueryValueRemove();
+    }, [
+      handleAccountStatusRemove,
+      handleMoneySpentRemove,
+      handleQueryValueRemove,
+      handleTaggedWithRemove,
+    ]);
+
+    const filters = [
+      {
+        key: 'accountStatus',
+        label: 'Account status',
+        filter: (
+          <ChoiceList
+            title="Account status"
+            titleHidden
+            choices={[
+              {label: 'Enabled', value: 'enabled'},
+              {label: 'Not invited', value: 'not invited'},
+              {label: 'Invited', value: 'invited'},
+              {label: 'Declined', value: 'declined'},
+            ]}
+            selected={accountStatus || []}
+            onChange={handleAccountStatusChange}
+            allowMultiple
+          />
+        ),
+        shortcut: true,
+        pinned: true,
+      },
+      {
+        key: 'taggedWith',
+        label: 'Tagged with',
+        filter: (
+          <TextField
+            label="Tagged with"
+            value={taggedWith}
+            onChange={handleTaggedWithChange}
+            autoComplete="off"
+            labelHidden
+          />
+        ),
+        shortcut: true,
+        pinned: true,
+      },
+      {
+        key: 'moneySpent',
+        label: 'Money spent',
+        filter: (
+          <RangeSlider
+            label="Money spent is between"
+            labelHidden
+            value={moneySpent || [0, 500]}
+            prefix="$"
+            output
+            min={0}
+            max={2000}
+            step={1}
+            onChange={handleMoneySpentChange}
+          />
+        ),
+        shortcut: true,
+        pinned: true,
+      },
+    ];
+
+    const appliedFilters: FiltersProps['appliedFilters'] = [];
+    if (!isEmpty(accountStatus)) {
+      const key = 'accountStatus';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, accountStatus),
+        onRemove: handleAccountStatusRemove,
+      });
+    }
+    if (!isEmpty(moneySpent)) {
+      const key = 'moneySpent';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, moneySpent),
+        onRemove: handleMoneySpentRemove,
+      });
+    }
+    if (!isEmpty(taggedWith)) {
+      const key = 'taggedWith';
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, taggedWith),
+        onRemove: handleTaggedWithRemove,
+      });
+    }
+
+    return (
+      <div style={{height: '568px'}}>
+        <LegacyCard>
+          <ResourceList
+            resourceName={{singular: 'customer', plural: 'customers'}}
+            filterControl={
+              <Filters
+                queryValue={queryValue}
+                queryPlaceholder="Searching in all"
+                filters={filters}
+                appliedFilters={appliedFilters}
+                onQueryChange={handleFiltersQueryChange}
+                onQueryClear={handleQueryValueRemove}
+                onClearAll={handleFiltersClearAll}
+              />
+            }
+            flushFilters
+            items={[
+              {
+                id: '341',
+                url: '#',
+                name: 'Mae Jemison',
+                location: 'Decatur, USA',
+              },
+              {
+                id: '256',
+                url: '#',
+                name: 'Ellen Ochoa',
+                location: 'Los Angeles, USA',
+              },
+            ]}
+            renderItem={(item) => {
+              const {id, url, name, location} = item;
+              const media = <Avatar customer size="md" name={name} />;
+
+              return (
+                <ResourceList.Item
+                  id={id}
+                  url={url}
+                  media={media}
+                  accessibilityLabel={`View details for ${name}`}
+                >
+                  <Text as="h3" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <div>{location}</div>
+                </ResourceList.Item>
+              );
+            }}
+          />
+        </LegacyCard>
+      </div>
+    );
+
+    function disambiguateLabel(key, value) {
+      switch (key) {
+        case 'moneySpent':
+          return `Money spent is between $${value[0]} and $${value[1]}`;
+        case 'taggedWith':
+          return `Tagged with ${value}`;
+        case 'accountStatus':
+          return value.map((val) => `Customer ${val}`).join(', ');
+        default:
+          return value;
+      }
+    }
+
+    function isEmpty(value) {
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      } else {
+        return value === '' || value == null;
+      }
+    }
+  },
+};
