@@ -8,6 +8,7 @@ import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useFrame} from '../../utilities/frame';
 import {useFeatures} from '../../utilities/features';
+import {useBreakpoints} from '../../utilities/breakpoints';
 
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
@@ -37,6 +38,8 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
 }: NavigationProps) {
   const {logo} = useFrame();
   const width = getWidth(logo, 104);
+  const features = useFeatures();
+  const {mdUp} = useBreakpoints();
 
   const logoMarkup = logo ? (
     <div
@@ -72,8 +75,6 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
     [location, onDismiss],
   );
 
-  const features = useFeatures();
-
   return (
     <NavigationContext.Provider value={context}>
       <WithinContentContext.Provider value>
@@ -85,12 +86,12 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
           )}
           aria-labelledby={ariaLabelledBy}
         >
-          {mediaMarkup}
+          {mdUp || !features?.dynamicTopBarAndReframe ? mediaMarkup : null}
           <Scrollable
             className={classNames(
               styles.PrimaryNavigation,
               features?.dynamicTopBarAndReframe &&
-                styles['NavigationFrame-TopBarAndReframe'],
+                styles['PrimaryNavigation-TopBarAndReframe'],
             )}
           >
             {children}
