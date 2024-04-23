@@ -2,8 +2,8 @@ import {Playground} from './Playground';
 import {KitchenSink} from './KitchenSink';
 import {DetailsPage} from './DetailsPage';
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  // eslint-disable-next-line storybook/no-title-property-in-meta
   title: 'Playground',
   parameters: {
     layout: 'fullscreen',
