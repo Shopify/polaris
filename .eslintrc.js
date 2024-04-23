@@ -148,6 +148,11 @@ module.exports = {
         'polaris-react/playground/*.tsx',
         'polaris-react/src/components/**/*.stories.tsx',
       ],
+      extends: [
+        'plugin:storybook/recommended',
+        'plugin:storybook/csf',
+        'plugin:storybook/csf-strict',
+      ],
       rules: {
         'react/prefer-stateless-function': 'off',
         '@shopify/jsx-no-hardcoded-content': 'off',
