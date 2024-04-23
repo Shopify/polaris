@@ -5090,7 +5090,7 @@ packages:
     dev: true
 
   /@shopify/useful-types@5.1.2:
-    resolution: {integrity: sha512-EjwIljAYHT1pfIxdMFp6ytJvCUmKXa5NWsvG7zXFX5EnLs7wYp66M/QCuoyJjI0Lq+5ZVyrJXJqqeBiXQVVs0w==, tarball: https://registry.npmjs.org/@shopify/useful-types/-/useful-types-5.1.2.tgz}
+    resolution: {integrity: sha512-EjwIljAYHT1pfIxdMFp6ytJvCUmKXa5NWsvG7zXFX5EnLs7wYp66M/QCuoyJjI0Lq+5ZVyrJXJqqeBiXQVVs0w==}
     engines: {node: ^14.17.0 || >=16.0.0}
     dev: true
 
