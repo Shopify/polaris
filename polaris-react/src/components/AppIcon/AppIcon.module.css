@@ -1,0 +1,33 @@
+.Image {
+  outline: none;
+  border-radius: var(--p-width-300);
+  display: block;
+  background-color: var(--p-color-bg-fill-tertiary);
+  border-width: var(--p-width-050);
+  /* stylelint-disable-next-line -- custom border styling */
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.small {
+  width: 32px;
+  height: 32px;
+}
+
+.medium {
+  width: 40px;
+  height: 40px;
+}
+
+.large {
+  width: 56px;
+  height: 56px;
+}
+
+.xlarge {
+  width: 68px;
+  height: 68px;
+}
+
+.IconLink:not(.LinkDisabled) {
+  cursor: pointer;
+}
