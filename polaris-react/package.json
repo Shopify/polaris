@@ -112,7 +112,7 @@
     "sass-loader": "^12.4.0",
     "serve": "^14.2.0",
     "storybook": "^7.6.4",
-    "vite": "^4.4.9",
+    "vite": "^4.5.3",
     "vite-plugin-replace": "^0.1.1"
   },
   "browserslist": [
