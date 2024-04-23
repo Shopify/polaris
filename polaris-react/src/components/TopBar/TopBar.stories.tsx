@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Meta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
 import {ArrowLeftIcon, QuestionCircleIcon} from '@shopify/polaris-icons';
 
@@ -7,7 +7,7 @@ import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar
 
 export default {
   component: TopBar,
-} as ComponentMeta<typeof TopBar>;
+} as Meta<typeof TopBar>;
 
 function TopBarWrapper({
   userActions,
@@ -142,80 +142,86 @@ function TopBarWrapper({
   );
 }
 
-export function Default() {
-  const userActions: UserMenuProps['actions'] = [
-    {
-      items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
-    },
-    {
-      items: [{content: 'Community forums'}],
-    },
-  ];
-  return (
-    <TopBarWrapper
-      userActions={userActions}
-      name="Xquenda Andreev"
-      initials="XA"
-    />
-  );
-}
+export const Default = {
+  render() {
+    const userActions: UserMenuProps['actions'] = [
+      {
+        items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
+      },
+      {
+        items: [{content: 'Community forums'}],
+      },
+    ];
+    return (
+      <TopBarWrapper
+        userActions={userActions}
+        name="Xquenda Andreev"
+        initials="XA"
+      />
+    );
+  },
+};
 
-export function WithCustomActivator() {
-  const userActions: UserMenuProps['actions'] = [
-    {
-      items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
-    },
-    {
-      items: [{content: 'Community forums'}],
-    },
-  ];
+export const WithCustomActivator = {
+  render() {
+    const userActions: UserMenuProps['actions'] = [
+      {
+        items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
+      },
+      {
+        items: [{content: 'Community forums'}],
+      },
+    ];
 
-  const customActivator = (
-    <>
-      <Avatar size="sm" initials="XA" name="Xquenda Andreev" />
-      <span style={{marginLeft: '0.5rem'}}>
-        <Text as="p" alignment="start" fontWeight="medium" truncate>
-          Xquenda Andreev
-        </Text>
-        <Text as="p" variant="bodySm" alignment="start" truncate>
-          Hem Canada
-        </Text>
-      </span>
-    </>
-  );
+    const customActivator = (
+      <>
+        <Avatar size="sm" initials="XA" name="Xquenda Andreev" />
+        <span style={{marginLeft: '0.5rem'}}>
+          <Text as="p" alignment="start" fontWeight="medium" truncate>
+            Xquenda Andreev
+          </Text>
+          <Text as="p" variant="bodySm" alignment="start" truncate>
+            Hem Canada
+          </Text>
+        </span>
+      </>
+    );
 
-  return (
-    <TopBarWrapper
-      userActions={userActions}
-      name="Xquenda Andreev"
-      detail="Hem Canada"
-      customActivator={customActivator}
-    />
-  );
-}
+    return (
+      <TopBarWrapper
+        userActions={userActions}
+        name="Xquenda Andreev"
+        detail="Hem Canada"
+        customActivator={customActivator}
+      />
+    );
+  },
+};
 
-export function WithMessage() {
-  const userActions: UserMenuProps['actions'] = [
-    {
-      items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
-    },
-    {
-      items: [{content: 'Community forums'}],
-    },
-  ];
+export const WithMessage = {
+  render() {
+    const userActions: UserMenuProps['actions'] = [
+      {
+        items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
+      },
+      {
+        items: [{content: 'Community forums'}],
+      },
+    ];
 
-  return (
-    <TopBarWrapper
-      userActions={userActions}
-      name="Xquenda Andreev"
-      detail="Hem Canada"
-      initials="XA"
-      message={{
-        title: 'Message title',
-        description: 'Message description',
-        link: {to: 'https://www.shopify.com', content: 'Link content'},
-        action: {content: 'Action content', onClick: () => {}},
-      }}
-    />
-  );
-}
+    return (
+      <TopBarWrapper
+        userActions={userActions}
+        name="Xquenda Andreev"
+        detail="Hem Canada"
+        initials="XA"
+        message={{
+          title: 'Message title',
+          description: 'Message description',
+          link: {to: 'https://www.shopify.com', content: 'Link content'},
+          action: {content: 'Action content', onClick: () => {}},
+        }}
+      />
+    );
+  },
+};

@@ -23,37 +23,39 @@ Object.entries(modules).forEach(
   },
 );
 
-export function KitchenSink() {
-  return Object.entries(stories)
-    .filter(
-      ([id]) =>
-        ![
-          'Modal',
-          'ContextualSaveBar',
-          'TopBar',
-          'Sheet',
-          'Frame',
-          'Loading',
-          'AppProvider',
-        ].includes(id.split(':')[0]),
-    )
-    .map(([id, Story]) => {
-      return (
-        <div key={id}>
-          <RenderPerformanceProfiler
-            id={id.replace('All Components/', '')}
-            kind={id}
-            printToDOM
-          >
-            <Story />
-          </RenderPerformanceProfiler>
-          <hr
-            style={{
-              border: 'none',
-              margin: 10,
-            }}
-          />
-        </div>
-      );
-    });
-}
+export const KitchenSink = {
+  render() {
+    return Object.entries(stories)
+      .filter(
+        ([id]) =>
+          ![
+            'Modal',
+            'ContextualSaveBar',
+            'TopBar',
+            'Sheet',
+            'Frame',
+            'Loading',
+            'AppProvider',
+          ].includes(id.split(':')[0]),
+      )
+      .map(([id, Story]) => {
+        return (
+          <div key={id}>
+            <RenderPerformanceProfiler
+              id={id.replace('All Components/', '')}
+              kind={id}
+              printToDOM
+            >
+              <Story />
+            </RenderPerformanceProfiler>
+            <hr
+              style={{
+                border: 'none',
+                margin: 10,
+              }}
+            />
+          </div>
+        );
+      });
+  },
+};

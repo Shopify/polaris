@@ -1,23 +1,31 @@
 import React from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Meta} from '@storybook/react';
 import {SkeletonDisplayText} from '@shopify/polaris';
 
 export default {
   component: SkeletonDisplayText,
-} as ComponentMeta<typeof SkeletonDisplayText>;
+} as Meta<typeof SkeletonDisplayText>;
 
-export function MediumAndLarge() {
-  return <SkeletonDisplayText size="medium" />;
-}
+export const MediumAndLarge = {
+  render() {
+    return <SkeletonDisplayText size="medium" />;
+  },
+};
 
-export function ExtraLarge() {
-  return <SkeletonDisplayText size="extraLarge" />;
-}
+export const ExtraLarge = {
+  render() {
+    return <SkeletonDisplayText size="extraLarge" />;
+  },
+};
 
-export function Small() {
-  return <SkeletonDisplayText size="small" />;
-}
+export const Small = {
+  render() {
+    return <SkeletonDisplayText size="small" />;
+  },
+};
 
-export function MaxWidth() {
-  return <SkeletonDisplayText maxWidth="80%" />;
-}
+export const MaxWidth = {
+  render() {
+    return <SkeletonDisplayText maxWidth="80%" />;
+  },
+};
