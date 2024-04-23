@@ -30,6 +30,10 @@
     /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
     width: calc(100% - var(--pc-sidebar-width));
   }
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
 }
 
 .Frame-TopBarAndReframe {
@@ -38,6 +42,10 @@
   /* stylelint-enable */
   background-color: var(--p-color-bg-inverse);
   transition: width var(--p-motion-duration-250) var(--p-motion-ease);
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
 }
 
 .Navigation {
@@ -305,6 +313,10 @@
         var(--pc-app-provider-scrollbar-width) - var(--p-space-150)
     );
     /* stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list */
+
+    @media (prefers-reduced-motion) {
+      transition: none;
+    }
   }
 
   .hasSidebar & {
@@ -319,6 +331,10 @@
           var(--pc-app-provider-scrollbar-width) - var(--p-space-150) -
           var(--pc-sidebar-width)
       );
+    }
+
+    @media (prefers-reduced-motion) {
+      transition: none;
     }
   }
 }
