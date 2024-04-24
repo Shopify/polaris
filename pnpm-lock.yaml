@@ -138,7 +138,7 @@ importers:
   polaris-for-vscode:
     dependencies:
       '@shopify/polaris-tokens':
-        specifier: ^9.0.0
+        specifier: ^9.0.1
         version: link:../polaris-tokens
       vscode-languageclient:
         specifier: ^9.0.1
@@ -194,10 +194,10 @@ importers:
   polaris-migrator:
     dependencies:
       '@shopify/polaris-tokens':
-        specifier: ^9.0.0
+        specifier: ^9.0.1
         version: link:../polaris-tokens
       '@shopify/stylelint-polaris':
-        specifier: ^16.0.0
+        specifier: ^16.0.1
         version: link:../stylelint-polaris
       chalk:
         specifier: ^4.1.0
@@ -240,7 +240,7 @@ importers:
         specifier: ^13.3.0
         version: 13.3.0(rollup@2.79.1)
       '@shopify/polaris':
-        specifier: ^13.1.2
+        specifier: ^13.2.0
         version: link:../polaris-react
       '@types/is-git-clean':
         specifier: ^1.1.0
@@ -264,10 +264,10 @@ importers:
   polaris-react:
     dependencies:
       '@shopify/polaris-icons':
-        specifier: ^9.0.0
+        specifier: ^9.0.1
         version: link:../polaris-icons
       '@shopify/polaris-tokens':
-        specifier: ^9.0.0
+        specifier: ^9.0.1
         version: link:../polaris-tokens
       '@types/react':
         specifier: '*'
@@ -451,13 +451,13 @@ importers:
         specifier: ^0.0.14
         version: 0.0.14(react@18.2.0)
       '@shopify/polaris':
-        specifier: ^13.1.2
+        specifier: ^13.2.0
         version: link:../polaris-react
       '@shopify/polaris-icons':
-        specifier: ^9.0.0
+        specifier: ^9.0.1
         version: link:../polaris-icons
       '@shopify/polaris-tokens':
-        specifier: ^9.0.0
+        specifier: ^9.0.1
         version: link:../polaris-tokens
       '@types/react-syntax-highlighter':
         specifier: ^15.5.6
@@ -692,7 +692,7 @@ importers:
   stylelint-polaris:
     dependencies:
       '@shopify/polaris-tokens':
-        specifier: ^9.0.0
+        specifier: ^9.0.1
         version: link:../polaris-tokens
       postcss-media-query-parser:
         specifier: ^0.2.3
@@ -5090,7 +5090,7 @@ packages:
     dev: true
 
   /@shopify/useful-types@5.1.2:
-    resolution: {integrity: sha512-EjwIljAYHT1pfIxdMFp6ytJvCUmKXa5NWsvG7zXFX5EnLs7wYp66M/QCuoyJjI0Lq+5ZVyrJXJqqeBiXQVVs0w==, tarball: https://registry.npmjs.org/@shopify/useful-types/-/useful-types-5.1.2.tgz}
+    resolution: {integrity: sha512-EjwIljAYHT1pfIxdMFp6ytJvCUmKXa5NWsvG7zXFX5EnLs7wYp66M/QCuoyJjI0Lq+5ZVyrJXJqqeBiXQVVs0w==}
     engines: {node: ^14.17.0 || >=16.0.0}
     dev: true
 
