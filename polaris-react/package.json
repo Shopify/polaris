@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "13.1.2",
+  "version": "13.2.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -56,8 +56,8 @@
     "storybook:test": "concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'http-server build-internal/storybook/static --port 6006 --silent' 'wait-on tcp:6006 && test-storybook --maxWorkers=2 polaris-react/src/components/Modal/Modal.stories.tsx'"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^9.0.0",
-    "@shopify/polaris-tokens": "^9.0.0",
+    "@shopify/polaris-icons": "^9.0.1",
+    "@shopify/polaris-tokens": "^9.0.1",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",

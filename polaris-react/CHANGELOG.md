@@ -1,5 +1,39 @@
 # Changelog
 
+## 13.2.0
+
+### Minor Changes
+
+- [#11535](https://github.com/Shopify/polaris/pull/11535) [`bcd16df24`](https://github.com/Shopify/polaris/commit/bcd16df2464a2d1d2cc93bf31680f514a8f22096) Thanks [@ShabanaRumane](https://github.com/ShabanaRumane)! - Added support for setting `maxHeight` and `minHeight` on `Popover.Pane` and `Combobox`
+
+* [#11907](https://github.com/Shopify/polaris/pull/11907) [`45308c97a`](https://github.com/Shopify/polaris/commit/45308c97addc7072b1c300c94d7d5f95123b188f) Thanks [@zakwarsame](https://github.com/zakwarsame)! - Added an optional `fiterLabel` prop to `ActionList` to allow for a custom placeholder
+
+### Patch Changes
+
+- [#11897](https://github.com/Shopify/polaris/pull/11897) [`a83084b3b`](https://github.com/Shopify/polaris/commit/a83084b3b021abd48bb813b712e7d474425a0c52) Thanks [@jesstelford](https://github.com/jesstelford)! - Fixed edges of disabled `IndexTable.Row` `Checkbox` triggering selection
+
+* [#11924](https://github.com/Shopify/polaris/pull/11924) [`5ec70e688`](https://github.com/Shopify/polaris/commit/5ec70e688306c0b0dc17f4fb46912588d9fed3bd) Thanks [@jesstelford](https://github.com/jesstelford)! - Upgrade to jest 29
+
+- [#11929](https://github.com/Shopify/polaris/pull/11929) [`9ee700be6`](https://github.com/Shopify/polaris/commit/9ee700be6cc9bc4c8ae62b98571dde8d90dc0c83) Thanks [@sophschneider](https://github.com/sophschneider)! - Rounded `Navigation` at `mdDown` behind a feature flag
+
+* [#11923](https://github.com/Shopify/polaris/pull/11923) [`ce13c4366`](https://github.com/Shopify/polaris/commit/ce13c4366d7c982b702408a03942b580261c3cda) Thanks [@jesstelford](https://github.com/jesstelford)! - Update dev dependency: `postcss-import@^15.1.0` -> `postcss-import@^16.1.0`
+
+- [#11925](https://github.com/Shopify/polaris/pull/11925) [`364ada59e`](https://github.com/Shopify/polaris/commit/364ada59e92078f4b8572dec2d48b0131a1ca6e2) Thanks [@sophschneider](https://github.com/sophschneider)! - Updated Frame to only apply rounded Frame when passed a `topBar`
+
+* [#11734](https://github.com/Shopify/polaris/pull/11734) [`1fef06256`](https://github.com/Shopify/polaris/commit/1fef0625652adddc5ee25674327ef98383e8a748) Thanks [@jesstelford](https://github.com/jesstelford)! - Upgrade to Storybook v8
+
+- [#11898](https://github.com/Shopify/polaris/pull/11898) [`1539f0e7c`](https://github.com/Shopify/polaris/commit/1539f0e7cb32fff212880adbe261c449fa0dd891) Thanks [@jesstelford](https://github.com/jesstelford)! - Removed extra padding around `IndexTable.Row` `Checkbox`
+
+* [#11927](https://github.com/Shopify/polaris/pull/11927) [`5a32a3ff6`](https://github.com/Shopify/polaris/commit/5a32a3ff64a906b48efa356e8d5c6128947c0de0) Thanks [@sophschneider](https://github.com/sophschneider)! - Added `prefers-reduced-motion` media queries to `Frame` width transitions
+
+- [#11930](https://github.com/Shopify/polaris/pull/11930) [`b111629d7`](https://github.com/Shopify/polaris/commit/b111629d75359711d8c9a2b12979c181bea66e63) Thanks [@jesstelford](https://github.com/jesstelford)! - Migrate Storybook stories to CSF v3
+
+* [#11805](https://github.com/Shopify/polaris/pull/11805) [`0a9b72721`](https://github.com/Shopify/polaris/commit/0a9b72721416283571264e844b49489adb7f1227) Thanks [@LA1CH3](https://github.com/LA1CH3)! - Fixed `IndexTable` `loading` prop to correctly show/hide loading UI when prop value changes
+
+* Updated dependencies [[`5ec70e688`](https://github.com/Shopify/polaris/commit/5ec70e688306c0b0dc17f4fb46912588d9fed3bd)]:
+  - @shopify/polaris-icons@9.0.1
+  - @shopify/polaris-tokens@9.0.1
+
 ## 13.1.2
 
 ### Patch Changes
