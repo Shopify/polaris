@@ -122,7 +122,7 @@ export function Item({
   );
 
   const contentElement = (
-    <InlineStack blockAlign="center" gap="150" wrap={false}>
+    <InlineStack blockAlign="center" gap="200" wrap={false}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}

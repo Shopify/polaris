@@ -8,6 +8,7 @@ import {
   wrapFocusPreviousFocusableMenuItem,
 } from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
+import {classNames} from '../../utilities/css';
 import {Box} from '../Box';
 import {KeypressListener} from '../KeypressListener';
 import {FilterActionsContext} from '../FilterActionsProvider';
@@ -16,6 +17,7 @@ import {Icon} from '../Icon';
 
 import {Item, Section} from './components';
 import type {ItemProps} from './components';
+import styles from './ActionList.module.css';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -146,34 +148,42 @@ export function ActionList({
 
   const hasManyActions = totalActions >= FILTER_ACTIONS_THRESHOLD;
 
+  const searchMarkup =
+    (allowFiltering || filterActions) && hasManyActions && isFilterable ? (
+      <Box
+        padding="200"
+        paddingBlockEnd={totalFilteredActions > 0 ? '0' : '200'}
+      >
+        <TextField
+          clearButton
+          labelHidden
+          label={
+            filterLabel
+              ? filterLabel
+              : i18n.translate('Polaris.ActionList.SearchField.placeholder')
+          }
+          placeholder={
+            filterLabel
+              ? filterLabel
+              : i18n.translate('Polaris.ActionList.SearchField.placeholder')
+          }
+          autoComplete="off"
+          value={searchText}
+          onChange={(value) => setSearchText(value)}
+          prefix={<Icon source={SearchIcon} />}
+          onClearButtonClick={() => setSearchText('')}
+        />
+      </Box>
+    ) : null;
+
+  const actionListClassName = classNames(
+    styles.ActionList,
+    searchMarkup && styles.hasSearch,
+  );
+
   return (
-    <>
-      {(allowFiltering || filterActions) && hasManyActions && isFilterable && (
-        <Box
-          padding="200"
-          paddingBlockEnd={totalFilteredActions > 0 ? '0' : '200'}
-        >
-          <TextField
-            clearButton
-            labelHidden
-            label={
-              filterLabel
-                ? filterLabel
-                : i18n.translate('Polaris.ActionList.SearchField.placeholder')
-            }
-            placeholder={
-              filterLabel
-                ? filterLabel
-                : i18n.translate('Polaris.ActionList.SearchField.placeholder')
-            }
-            autoComplete="off"
-            value={searchText}
-            onChange={(value) => setSearchText(value)}
-            prefix={<Icon source={SearchIcon} />}
-            onClearButtonClick={() => setSearchText('')}
-          />
-        </Box>
-      )}
+    <div className={actionListClassName}>
+      {searchMarkup}
       <Box
         as={hasMultipleSections ? 'ul' : 'div'}
         ref={actionListRef}
@@ -183,7 +193,7 @@ export function ActionList({
         {listeners}
         {sectionMarkup}
       </Box>
-    </>
+    </div>
   );
 }
 

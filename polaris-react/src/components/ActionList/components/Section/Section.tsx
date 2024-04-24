@@ -7,8 +7,11 @@ import type {
   ActionListItemDescriptor,
   ActionListSection,
 } from '../../../../types';
+import {classNames} from '../../../../utilities/css';
 import {InlineStack} from '../../../InlineStack';
 import {BlockStack} from '../../../BlockStack';
+
+import styles from '../../ActionList.module.css';
 
 export interface SectionProps {
   /** Section of action items */
@@ -53,13 +56,15 @@ export function Section({
       );
 
       return (
-        <Box
-          as="li"
-          key={`${content}-${index}`}
-          role={actionRole === 'menuitem' ? 'presentation' : undefined}
-        >
-          <InlineStack wrap={false}>{itemMarkup}</InlineStack>
-        </Box>
+        <div className={styles.ItemWrapper}>
+          <Box
+            as="li"
+            key={`${content}-${index}`}
+            role={actionRole === 'menuitem' ? 'presentation' : undefined}
+          >
+            <InlineStack wrap={false}>{itemMarkup}</InlineStack>
+          </Box>
+        </div>
       );
     },
   );
@@ -100,33 +105,39 @@ export function Section({
   }
 
   const sectionMarkup = (
-    <>
+    <div className={classNames(styles.Section, titleMarkup && styles.hasTitle)}>
       {titleMarkup}
       <Box
         as="div"
-        padding="150"
+        padding={{xs: '0', md: '150'}}
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        <BlockStack gap="050" as="ul" {...(sectionRole && {role: sectionRole})}>
+        <BlockStack
+          gap={{xs: '0', md: '050'}}
+          as="ul"
+          {...(sectionRole && {role: sectionRole})}
+        >
           {actionMarkup}
         </BlockStack>
       </Box>
-    </>
+    </div>
   );
 
   return hasMultipleSections ? (
-    <Box
-      as="li"
-      role="presentation"
-      borderColor="border-secondary"
-      {...(!isFirst && {borderBlockStartWidth: '025'})}
-      {...(!section.title && {
-        paddingBlockStart: '150',
-      })}
-    >
-      {sectionMarkup}
-    </Box>
+    <div className={styles.SectionWrapper}>
+      <Box
+        as="li"
+        role="presentation"
+        borderColor="border-secondary"
+        {...(!isFirst && {borderBlockStartWidth: '025'})}
+        {...(!section.title && {
+          paddingBlockStart: {xs: '0', md: '150'},
+        })}
+      >
+        {sectionMarkup}
+      </Box>
+    </div>
   ) : (
     sectionMarkup
   );
