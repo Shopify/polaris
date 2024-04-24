@@ -13,7 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16.17.0', '18.12.0', '20.11.1']
+        node-version: [
+            # The minimum required node version for consumers
+            '20.10.0',
+            # Ensure it's working for the latest versions of node too
+            'latest',
+          ]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -29,11 +34,15 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Setup Node with v${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        id: setup_node
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
+          cache: pnpm
 
       - name: Restore cache
         uses: actions/cache@v3
@@ -43,15 +52,15 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris.shopify.com/.next/cache
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v3-${{ github.sha }}
+          key: ${{ runner.os }}-node${{ steps.setup_node.outputs.node-version }}-test-v4-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node-version }}-test-v3-
+            ${{ runner.os }}-node${{ steps.setup_node.outputs.node-version }}-test-v4-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build packages
-        run: yarn build
+        run: pnpm build
 
       - name: Test
-        run: yarn test
+        run: pnpm test

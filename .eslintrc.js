@@ -1,6 +1,9 @@
+const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
 
-const packages = require('./package.json').workspaces.packages;
+const pnpmWorkspace = path.join(__dirname, './pnpm-workspace.yaml');
+const {packages} = yaml.load(fs.readFileSync(pnpmWorkspace, 'utf8'));
 
 module.exports = {
   root: true,
@@ -144,6 +147,11 @@ module.exports = {
       files: [
         'polaris-react/playground/*.tsx',
         'polaris-react/src/components/**/*.stories.tsx',
+      ],
+      extends: [
+        'plugin:storybook/recommended',
+        'plugin:storybook/csf',
+        'plugin:storybook/csf-strict',
       ],
       rules: {
         'react/prefer-stateless-function': 'off',

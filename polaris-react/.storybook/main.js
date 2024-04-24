@@ -1,8 +1,10 @@
+import {dirname, join} from 'path';
 import path from 'node:path';
 import {mergeConfig} from 'vite';
 
 module.exports = {
-  framework: '@storybook/react-vite',
+  framework: getAbsolutePath('@storybook/react-vite'),
+
   core: {
     disableTelemetry: true,
   },
@@ -18,9 +20,9 @@ module.exports = {
     },
   ],
   addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-toolbars',
-    '@storybook/addon-viewport',
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-toolbars'),
+    getAbsolutePath('@storybook/addon-viewport'),
     './addons/global-controls-panel/preset.js',
   ],
   // This Vite config is only used by Storybook for building the preview iframe
@@ -65,3 +67,7 @@ module.exports = {
     });
   },
 };
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, 'package.json')));
+}

@@ -71,7 +71,13 @@ export const Row = memo(function Row({
       event.stopPropagation();
       let selectionType = SelectionType.Single;
 
-      if (('key' in event && event.key !== ' ') || !onSelectionChange) return;
+      if (
+        disabled ||
+        !selectable ||
+        ('key' in event && event.key !== ' ') ||
+        !onSelectionChange
+      )
+        return;
 
       if (event.nativeEvent.shiftKey) {
         selectionType = SelectionType.Multi;
@@ -82,7 +88,15 @@ export const Row = memo(function Row({
       const selection: string | Range = selectionRange ?? id;
       onSelectionChange(selectionType, !selected, selection, position);
     },
-    [id, onSelectionChange, selected, selectionRange, position],
+    [
+      id,
+      onSelectionChange,
+      selected,
+      selectionRange,
+      position,
+      disabled,
+      selectable,
+    ],
   );
 
   const contextValue = useMemo(

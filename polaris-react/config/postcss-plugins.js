@@ -9,9 +9,8 @@ const postcssNesting = require('postcss-nesting');
 const postcssMixins = require('postcss-mixins');
 const postcssDiscardComments = require('postcss-discard-comments');
 
-const mediaQueriesCssPath = path.resolve(
-  __dirname,
-  '../../node_modules/@shopify/polaris-tokens/dist/css/media-queries.css',
+const mediaQueriesCssPath = require.resolve(
+  '@shopify/polaris-tokens/css/media-queries.css',
 );
 
 module.exports = [

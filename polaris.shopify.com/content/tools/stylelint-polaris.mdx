@@ -223,13 +223,13 @@ Example failure message:
 1. Install and symlink dependencies
 
 ```sh
-yarn install
+pnpm install
 ```
 
 2. Build `@shopify/polaris` dependencies, but not `@shopify/polaris` itself
 
 ```sh
-yarn build -- --filter=@shopify/polaris^...
+pnpm build -- --filter=@shopify/polaris^...
 ```
 
 > Note: Remove the `^` character if you do want to build `@shopify/polaris`
@@ -239,13 +239,13 @@ yarn build -- --filter=@shopify/polaris^...
 All files
 
 ```sh
-yarn turbo run lint:styles --filter=@shopify/polaris
+pnpm turbo run lint:styles --filter=@shopify/polaris
 ```
 
 Specific file
 
 ```sh
-yarn run stylelint path/to/component.scss
+pnpm run stylelint path/to/component.scss
 
-// yarn run stylelint polaris-react/src/components/TopBar/TopBar.scss
+// pnpm run stylelint polaris-react/src/components/TopBar/TopBar.scss
 ```

@@ -1,4 +1,6 @@
 {
+  "name": "polaris.shopify.com-get-props",
+  "private": "true",
   "scripts": {
     "test": "jest"
   },

@@ -50,6 +50,18 @@
   }
 }
 
+.NavigationFrame-TopBarAndReframe {
+  border-top-left-radius: var(--p-border-radius-300);
+  border-top-right-radius: var(--p-border-radius-300);
+  /* stylelint-disable-next-line -- polaris custom global property */
+  margin-top: var(--pg-top-bar-height);
+
+  @media (--p-breakpoints-md-up) {
+    border-top-right-radius: 0;
+    margin-top: 0;
+  }
+}
+
 .PrimaryNavigation {
   display: flex;
   overflow: auto;
@@ -93,6 +105,16 @@
     &::-webkit-scrollbar {
       opacity: 1;
     }
+  }
+}
+
+.PrimaryNavigation-TopBarAndReframe {
+  padding-top: var(--p-space-500);
+  border-top-left-radius: var(--p-border-radius-300);
+  border-top-right-radius: var(--p-border-radius-300);
+
+  @media (--p-breakpoints-md-up) {
+    border-top-right-radius: 0;
   }
 }
 

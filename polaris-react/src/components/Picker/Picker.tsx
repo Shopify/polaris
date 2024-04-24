@@ -1,4 +1,11 @@
-import React, {useState, useMemo, useCallback, isValidElement} from 'react';
+import React, {
+  createRef,
+  isValidElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Popover} from '../Popover';
@@ -13,7 +20,6 @@ import type {
   ComboboxListboxOptionType,
 } from '../../utilities/combobox';
 import {Box} from '../Box';
-import type {TextFieldProps} from '../TextField';
 import type {ListboxProps, OptionProps} from '../Listbox';
 import {Listbox} from '../Listbox';
 import type {IconProps} from '../Icon';
@@ -21,7 +27,7 @@ import {Icon} from '../Icon';
 import {escapeRegex} from '../../utilities/string';
 
 import {Activator, SearchField} from './components';
-import type {ActivatorProps} from './components';
+import type {SearchFieldProps, ActivatorProps} from './components';
 
 export interface PickerProps extends Omit<ListboxProps, 'children'> {
   /** Configure the button that activates the Picker */
@@ -33,7 +39,7 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
   /** Used to add a new picker option that isn't listed */
   addAction?: OptionProps & {icon?: IconProps['source']};
   /** TextField that allows filtering of options */
-  searchField?: TextFieldProps;
+  searchField?: SearchFieldProps;
   /** Whether or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
   willLoadMoreOptions?: boolean;
   /** Height to set on the Popover Pane. */
@@ -60,18 +66,16 @@ export function Picker({
   onClose,
   ...listboxProps
 }: PickerProps) {
-  const activatorRef = React.createRef<HTMLButtonElement>();
+  const activatorRef = createRef<HTMLButtonElement>();
   const [activeItems, setActiveItems] = useState<string[]>([]);
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [query, setQuery] = useState<string>('');
-  const [filteredOptions, setFilteredOptions] = useState<OptionProps[] | null>(
-    options,
-  );
-
+  const filteredOptions = useRef(options);
   const shouldOpen = !popoverActive;
+
   const handleClose = useCallback(() => {
     setPopoverActive(false);
     onClose?.();
@@ -80,7 +84,8 @@ export function Picker({
 
   const handleOpen = useCallback(() => {
     setPopoverActive(true);
-  }, []);
+    filteredOptions.current = options;
+  }, [options]);
 
   const handleFocus = useCallback(() => {
     if (shouldOpen) handleOpen();
@@ -94,9 +99,8 @@ export function Picker({
     if (popoverActive) {
       handleClose();
       setQuery('');
-      setFilteredOptions(options);
     }
-  }, [popoverActive, handleClose, options]);
+  }, [popoverActive, handleClose]);
 
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
     () => ({
@@ -152,14 +156,14 @@ export function Picker({
       setQuery(value);
 
       if (value === '') {
-        setFilteredOptions(options);
+        filteredOptions.current = options;
         return;
       }
 
       const resultOptions = options?.filter((option) =>
         FILTER_REGEX(value).exec(reactChildrenText(option.children)),
       );
-      setFilteredOptions(resultOptions ?? []);
+      filteredOptions.current = resultOptions ?? [];
     },
     [options],
   );
@@ -169,6 +173,15 @@ export function Picker({
       setQuery('');
       updateText('');
       listboxProps.onSelect?.(selected);
+
+      if (
+        !filteredOptions.current.some((option) => option.value === selected)
+      ) {
+        filteredOptions.current = [
+          ...filteredOptions.current,
+          {value: selected, children: selected},
+        ];
+      }
 
       if (!allowMultiple) {
         handleClose();
@@ -182,9 +195,10 @@ export function Picker({
           : [...selectedOptions, selected];
       });
     },
-    [updateText, listboxProps, allowMultiple, activeItems, handleClose],
+    [updateText, listboxProps, allowMultiple, handleClose, activeItems],
   );
 
+  const showList = options.length > 0 || query !== '';
   const firstSelectedOption = reactChildrenText(
     options.find((option) => option.value === activeItems?.[0])?.children,
   );
@@ -219,6 +233,7 @@ export function Picker({
             paddingInline="200"
             borderBlockEndWidth="025"
             borderColor="border"
+            minHeight={showList ? undefined : '58px'}
           >
             <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
               <SearchField
@@ -235,27 +250,30 @@ export function Picker({
             </ComboboxTextFieldContext.Provider>
           </Box>
         ) : null}
-
-        <ComboboxListboxContext.Provider value={listboxContextValue}>
-          <ComboboxListboxOptionContext.Provider
-            value={listboxOptionContextValue}
-          >
-            <Box paddingBlock="200">
-              <Listbox {...listboxProps} onSelect={handleSelect}>
-                {filteredOptions?.map((option) => (
-                  <Listbox.Option
-                    key={option.value}
-                    selected={activeItems.some((item) => item === option.value)}
-                    {...option}
-                  />
-                ))}
-                {addAction && query !== '' && !queryMatchesExistingOption ? (
-                  <Listbox.Action {...addAction} value={query} />
-                ) : null}
-              </Listbox>
-            </Box>
-          </ComboboxListboxOptionContext.Provider>
-        </ComboboxListboxContext.Provider>
+        {showList && (
+          <ComboboxListboxContext.Provider value={listboxContextValue}>
+            <ComboboxListboxOptionContext.Provider
+              value={listboxOptionContextValue}
+            >
+              <Box paddingBlock="200">
+                <Listbox {...listboxProps} onSelect={handleSelect}>
+                  {filteredOptions.current?.map((option) => (
+                    <Listbox.Option
+                      key={option.value}
+                      selected={activeItems.some(
+                        (item) => item === option.value,
+                      )}
+                      {...option}
+                    />
+                  ))}
+                  {addAction && query !== '' && !queryMatchesExistingOption ? (
+                    <Listbox.Action {...addAction} value={query} />
+                  ) : null}
+                </Listbox>
+              </Box>
+            </ComboboxListboxOptionContext.Provider>
+          </ComboboxListboxContext.Provider>
+        )}
       </Popover.Pane>
     </Popover>
   );

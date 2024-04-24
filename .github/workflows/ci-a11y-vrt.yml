@@ -34,36 +34,87 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Setup Node from .nvmrc
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: yarn
+          cache: pnpm
 
-      - name: Restore cache
+      - name: Restore node_module cache
+        id: node-cache
         uses: actions/cache@v3
         with:
           path: |
             **/.turbo
             node_modules/.cache/turbo
             polaris-react/build-internal/cache
-          key: ${{ runner.os }}-accessibility-test-v2-${{ github.sha }}
+          key: ${{ runner.os }}-accessibility-test-v3-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-accessibility-test-v2-
+            ${{ runner.os }}-accessibility-test-v3-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
+
+      # Figures out the version of playwright that's installed.
+      # 1. Because we don't know what version pnpm will resolve it to, we have
+      #    to use `pnpm why` to get the actual installed version.
+      # 2. Because we're in a workspace, we need to make sure we get the version
+      #    for the workspace, not the root, hence the `--filter`.
+      # 3. jq comes pre-installed in the Ubuntu runner, so we use that to get
+      #    the correct version string.
+      # 4. Finally, we use sed to extract just the version number (eg; '1.22.0')
+      # The result is stored in steps.playwright-version.outputs.version
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "::set-output name=version::$(pnpm --filter='@shopify/polaris' why playwright --depth 1 --json | jq --raw-output '[.[].dependencies[].dependencies.playwright.version][0]')"
+
+      # Attempt to restore the correct Playwright browser binaries based on the
+      # currently installed version of Playwright (The browser binary versions
+      # may change with Playwright versions).
+      # Note: Playwright's cache directory is hard coded because that's what it
+      # says to do in the docs. There doesn't appear to be a command that prints
+      # it out for us.
+      - name: Restore Playwright cache
+        id: playwright-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: '${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.version }}'
+          # As a fallback, if the Playwright version has changed, try use the
+          # most recently cached version. There's a good chance that at least one
+          # of the browser binary versions haven't been updated, so Playwright can
+          # skip installing that in the next step.
+          # Note: When falling back to an old cache, `cache-hit` (used below)
+          # will be `false`. This allows us to restore the potentially out of
+          # date cache, but still let Playwright decide if it needs to download
+          # new binaries or not.
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      # If the Playwright browser binaries weren't able to be restored, we tell
+      # paywright to install everything for us.
+      - name: Install Playwright with dependencies
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm dlx playwright@"${{ steps.playwright-version.outputs.version }}" install --with-deps
+
+      # Even if the Playwright browser binaries were correctly restored from
+      # cache, we still need to ensure the OS dependencies are reinstalled (they
+      # can't be cached).
+      - name: Install Playwright's dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: pnpm dlx playwright@"${{ steps.playwright-version.outputs.version }}" install-deps
 
       - name: Build packages
-        run: yarn build --filter=@shopify/polaris
+        run: pnpm run build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
 
       - name: Run accessibility test
-        run: node ./polaris-react/scripts/accessibility-check.js
-        env:
-          STORYBOOK_DISABLE_DOCS: 1
+        run: pnpm --filter=@shopify/polaris run storybook:test
 
   visual_regression_test:
     name: 'Visual regression test'
@@ -74,11 +125,14 @@ jobs:
         with:
           fetch-depth: 0 # Chromatic git history to track changes
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Setup Node from .nvmrc
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: yarn
+          cache: pnpm
 
       - name: Restore cache
         uses: actions/cache@v3
@@ -92,13 +146,13 @@ jobs:
             ${{ runner.os }}-visual-regression-test-v2-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build packages
-        run: yarn build --filter=@shopify/polaris
+        run: pnpm build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
         env:
           STORYBOOK_GITHUB_SHA: ${{ github.sha }}
           STORYBOOK_GITHUB_REPO_URL: ${{ github.server_url }}/${{ github.repository }}

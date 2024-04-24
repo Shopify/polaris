@@ -157,6 +157,21 @@ describe('<Filters />', () => {
       });
     });
 
+    it('passes the disclosureZIndexOverride to Popover when provided', () => {
+      const disclosureZIndexOverride = 517;
+      const wrapper = mountWithApp(
+        <FilterPill
+          {...defaultProps}
+          disclosureZIndexOverride={disclosureZIndexOverride}
+        />,
+      );
+      const activator = wrapper.find(UnstyledButton);
+      activator?.trigger('onClick');
+      expect(wrapper).toContainReactComponent(Popover, {
+        zIndexOverride: disclosureZIndexOverride,
+      });
+    });
+
     it('invokes the onRemove callback when clicking the clear button inside the Popover', () => {
       const spy = jest.fn();
       const wrapper = mountWithApp(

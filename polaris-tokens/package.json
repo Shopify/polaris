@@ -1,13 +1,13 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "8.10.0",
+  "version": "9.0.1",
   "description": "",
   "main": "dist/cjs/build/index.js",
   "module": "dist/esm/build/index.mjs",
   "types": "dist/types/build/index.d.ts",
   "sideEffects": false,
   "engines": {
-    "node": "^16.17.0 || >=18.12.0"
+    "node": ">=20.10.0"
   },
   "exports": {
     ".": {
@@ -50,7 +50,7 @@
     "last 3 chromeandroid versions",
     "last 1 firefoxandroid versions",
     "ios >= 13.4",
-    "node 16.17.0"
+    "node 20.10.0"
   ],
   "files": [
     "dist"

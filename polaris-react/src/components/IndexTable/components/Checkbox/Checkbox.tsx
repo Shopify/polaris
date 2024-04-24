@@ -31,16 +31,14 @@ export const Checkbox = memo(function Checkbox({
 
   return (
     <CheckboxWrapper>
-      <div className={styles.TableCellContentContainer}>
-        <div className={styles.Wrapper} onClick={onInteraction} onKeyUp={noop}>
-          <PolarisCheckbox
-            id={`Select-${itemId}`}
-            label={label}
-            labelHidden
-            checked={selected}
-            disabled={disabled}
-          />
-        </div>
+      <div className={styles.Wrapper} onClick={onInteraction} onKeyUp={noop}>
+        <PolarisCheckbox
+          id={`Select-${itemId}`}
+          label={label}
+          labelHidden
+          checked={selected}
+          disabled={disabled}
+        />
       </div>
     </CheckboxWrapper>
   );

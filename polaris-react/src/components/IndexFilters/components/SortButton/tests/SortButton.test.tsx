@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {ChoiceList} from '../../../../ChoiceList';
 import {Popover} from '../../../../Popover';
+import {Tooltip} from '../../../../Tooltip';
 import {UnstyledButton} from '../../../../UnstyledButton';
 import type {SortButtonChoice} from '../../../types';
 import {SortButton} from '..';
@@ -76,6 +77,36 @@ describe('SortButton', () => {
 
     expect(wrapper).toContainReactComponent(Popover, {
       active: false,
+    });
+  });
+
+  it('passes the disclosureZIndexOverride to the popover when provided', () => {
+    const disclosureZIndexOverride = 517;
+    const props: SortButtonProps = {
+      onChange: jest.fn(),
+      choices,
+      selected: ['order-number asc'],
+      disclosureZIndexOverride,
+    };
+    const wrapper = mountWithApp(<SortButton {...props} />);
+
+    expect(wrapper).toContainReactComponent(Popover, {
+      zIndexOverride: disclosureZIndexOverride,
+    });
+  });
+
+  it('passes the disclosureZIndexOverride to the tooltip when provided', () => {
+    const disclosureZIndexOverride = 517;
+    const props: SortButtonProps = {
+      onChange: jest.fn(),
+      choices,
+      selected: ['order-number asc'],
+      disclosureZIndexOverride,
+    };
+    const wrapper = mountWithApp(<SortButton {...props} />);
+
+    expect(wrapper).toContainReactComponent(Tooltip, {
+      zIndexOverride: disclosureZIndexOverride,
     });
   });
 

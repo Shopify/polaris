@@ -8,6 +8,8 @@ import {Text} from '../../../Text';
 
 import styles from './SearchField.module.css';
 
+export type SearchFieldProps = Omit<TextFieldProps, 'autoComplete'>;
+
 export function SearchField({
   value,
   id: idProp,
@@ -19,7 +21,7 @@ export function SearchField({
   prefix,
   placeholder,
   focused,
-}: TextFieldProps) {
+}: SearchFieldProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const comboboxTextFieldContext = useComboboxTextField();
 
@@ -89,12 +91,13 @@ export function SearchField({
         className={styles.SearchField}
         value={value}
         type={type}
-        aria-activedescendant={activeOptionId}
         role="combobox"
+        placeholder={placeholder}
+        autoComplete="off"
+        aria-activedescendant={activeOptionId}
         aria-haspopup="listbox"
         aria-autocomplete="list"
         aria-expanded="true"
-        placeholder={placeholder}
         aria-controls={listboxId}
         onFocus={handleFocus}
         onBlur={handleBlur}

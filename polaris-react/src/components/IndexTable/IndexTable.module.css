@@ -6,6 +6,8 @@
   --pc-index-table-sticky-cell: 29;
   --pc-index-table-bulk-actions: 31;
   --pc-index-table-loading-panel: 31;
+  --pc-index-table-checkbox-offset-left: var(--p-space-300);
+  --pc-index-table-checkbox-offset-right: var(--p-space-200);
   /* stylelint-enable */
   position: relative;
   border-radius: 0;
@@ -34,30 +36,6 @@
   border-radius: 0;
 }
 
-.LoadingContainer-enter {
-  opacity: 0;
-  transform: translateY(-100%);
-}
-
-.LoadingContainer-enter-active {
-  opacity: 1;
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
-    transform var(--p-motion-duration-100) var(--p-motion-ease-out);
-  transform: translateY(0);
-}
-
-.LoadingContainer-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.LoadingContainer-exit-active {
-  opacity: 0;
-  transform: translateY(-100%);
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in),
-    transform var(--p-motion-duration-100) var(--p-motion-ease-in);
-}
-
 .LoadingPanel {
   position: absolute;
   z-index: var(--p-z-index-2);
@@ -70,6 +48,20 @@
   background: var(--p-color-bg-surface);
   padding: var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-300);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in),
+    transform var(--p-motion-duration-100) var(--p-motion-ease-in),
+    visibility var(--p-motion-duration-0) linear var(--p-motion-duration-100);
+  visibility: hidden;
+
+  &.LoadingPanelEntered {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
+      transform var(--p-motion-duration-100) var(--p-motion-ease-out);
+  }
 
   .LoadingPanelRow {
     display: flex;
@@ -804,8 +796,6 @@
   /* stylelint-disable -- Polaris component custom properties */
   --pc-index-table-heading-padding-x: var(--p-space-150);
   --pc-index-table-heading-padding-y: var(--p-space-200);
-  --pc-index-table-checkbox-offset-left: var(--p-space-300);
-  --pc-index-table-checkbox-offset-right: var(--p-space-200);
   background: var(--p-color-bg-surface-secondary);
   padding: var(--pc-index-table-heading-padding-y)
     var(--pc-index-table-heading-padding-x);
@@ -823,6 +813,7 @@
 
   &:last-child:not(.TableHeading-flush) {
     padding-right: var(--p-space-300);
+    overflow-x: hidden;
   }
 }
 
@@ -1026,6 +1017,12 @@
 
     &:first-child {
       padding-left: var(--p-space-300);
+
+      /* stylelint-disable-next-line selector-max-specificity -- This is a valid selector */
+      .Table:not(.Table-unselectable) & {
+        /* stylelint-disable-next-line -- specificity overrides */
+        padding-right: var(--pc-index-table-checkbox-offset-right);
+      }
     }
 
     &:last-child {

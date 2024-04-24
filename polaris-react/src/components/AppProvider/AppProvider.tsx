@@ -168,7 +168,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
   getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
 
   render() {
-    const {children, features} = this.props;
+    const {children, features = {}} = this.props;
     const themeName = this.getThemeName();
 
     const {intl, link} = this.state;

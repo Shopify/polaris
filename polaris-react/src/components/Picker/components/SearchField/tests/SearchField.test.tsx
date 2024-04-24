@@ -17,12 +17,7 @@ function mountWithProvider(
     <ComboboxTextFieldContext.Provider
       value={{...props.textFieldProviderValue}}
     >
-      <SearchField
-        label="label"
-        onChange={noop}
-        autoComplete="off"
-        {...props.textFieldProps}
-      />
+      <SearchField label="label" onChange={noop} {...props.textFieldProps} />
     </ComboboxTextFieldContext.Provider>,
   );
 

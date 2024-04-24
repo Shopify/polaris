@@ -22,6 +22,7 @@ import type {
   ToastPropsWithID,
 } from '../../utilities/frame';
 import {UseTheme} from '../../utilities/use-theme';
+import {UseFeatures} from '../../utilities/features';
 
 import {
   ToastManager,
@@ -61,6 +62,7 @@ export interface FrameProps {
 type CombinedProps = FrameProps & {
   i18n: ReturnType<typeof useI18n>;
   mediaQuery: ReturnType<typeof useMediaQuery>;
+  dynamicTopBarAndReframe?: boolean;
 };
 
 interface State {
@@ -96,6 +98,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     }
     this.setGlobalRibbonRootProperty();
     this.setOffset();
+    this.setBodyStyles();
   }
 
   componentDidUpdate(prevProps: FrameProps) {
@@ -103,6 +106,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       this.setGlobalRibbonHeight();
     }
     this.setOffset();
+    this.setBodyStyles();
   }
 
   render() {
@@ -238,14 +242,19 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         }
       : {};
 
-    const frameClassName = classNames(
-      styles.Frame,
-      navigation && styles.hasNav,
-      topBar && styles.hasTopBar,
-      sidebar && styles.hasSidebar,
-    );
+    const getFrameClassName = (hasDynamicTopBar?: boolean) =>
+      classNames(
+        styles.Frame,
+        hasDynamicTopBar && styles['Frame-TopBarAndReframe'],
+        navigation && styles.hasNav,
+        topBar && styles.hasTopBar,
+        sidebar && styles.hasSidebar,
+        sidebar && hasDynamicTopBar && styles['hasSidebar-TopBarAndReframe'],
+      );
 
-    const contextualSaveBarMarkup = (
+    const contextualSaveBarMarkup = this.props.dynamicTopBarAndReframe ? (
+      <></>
+    ) : (
       <CSSAnimation
         in={showContextualSaveBar}
         className={styles.ContextualSaveBar}
@@ -275,28 +284,64 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       stopLoading: this.stopLoading,
       setContextualSaveBar: this.setContextualSaveBar,
       removeContextualSaveBar: this.removeContextualSaveBar,
+      contextualSaveBarVisible: this.state.showContextualSaveBar,
+      contextualSaveBarProps: this.contextualSaveBar,
     };
+
+    const hasDynamicTopBar =
+      this.props.dynamicTopBarAndReframe && Boolean(topBar);
 
     return (
       <FrameContext.Provider value={context}>
         <div
-          className={frameClassName}
+          className={getFrameClassName(hasDynamicTopBar)}
           {...layer.props}
           {...navigationAttributes}
         >
           {skipMarkup}
           {topBarMarkup}
-          {navigationMarkup}
+          {hasDynamicTopBar ? null : navigationMarkup}
           {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
-          <main
-            className={styles.Main}
-            id={APP_FRAME_MAIN}
-            data-has-global-ribbon={Boolean(globalRibbon)}
-          >
-            <div className={styles.Content}>{children}</div>
-          </main>
+          {hasDynamicTopBar ? (
+            <div className={styles.ShadowBevel}>
+              {navigationMarkup}
+              <main
+                className={classNames(
+                  styles.Main,
+                  styles['Main-TopBarAndReframe'],
+                )}
+                id={APP_FRAME_MAIN}
+                data-has-global-ribbon={Boolean(globalRibbon)}
+              >
+                <div
+                  className={classNames(
+                    styles.Content,
+                    hasDynamicTopBar && styles['Content-TopBarAndReframe'],
+                  )}
+                >
+                  {hasDynamicTopBar ? (
+                    <div
+                      className={styles['ScrollbarSafeArea-TopBarAndReframe']}
+                    >
+                      {children}
+                    </div>
+                  ) : (
+                    children
+                  )}
+                </div>
+              </main>
+            </div>
+          ) : (
+            <main
+              className={styles.Main}
+              id={APP_FRAME_MAIN}
+              data-has-global-ribbon={Boolean(globalRibbon)}
+            >
+              <div className={styles.Content}>{children}</div>
+            </main>
+          )}
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}
           <EventListener event="resize" handler={this.handleResize} />
@@ -328,6 +373,17 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       '--pc-frame-global-ribbon-height',
       `${globalRibbonHeight}px`,
     );
+  };
+
+  private setBodyStyles = () => {
+    if (!document) {
+      return;
+    }
+    if (this.props.dynamicTopBarAndReframe && Boolean(this.props.topBar)) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   };
 
   private showToast = (toast: ToastPropsWithID) => {
@@ -434,5 +490,16 @@ export function Frame(props: FrameProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
 
-  return <FrameInner {...props} i18n={i18n} mediaQuery={mediaQuery} />;
+  return (
+    <UseFeatures>
+      {({dynamicTopBarAndReframe}) => (
+        <FrameInner
+          {...props}
+          i18n={i18n}
+          mediaQuery={mediaQuery}
+          dynamicTopBarAndReframe={dynamicTopBarAndReframe}
+        />
+      )}
+    </UseFeatures>
+  );
 }
