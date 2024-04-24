@@ -126,9 +126,3 @@ export function createIsTokenName(theme: Theme | MetaTheme) {
   return (tokenName: unknown): tokenName is TokenName =>
     tokenNames.has(tokenName as TokenName);
 }
-
-/**
- * Important: Do not export from Polaris tokens. This utility is exposed
- * in the `toValues` build step to ensure the `metaTheme` isn't in client bundles.
- */
-export const isTokenName = createIsTokenName(metaThemeBase);
