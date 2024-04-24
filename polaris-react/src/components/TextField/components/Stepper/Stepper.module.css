@@ -1,0 +1,27 @@
+.Wrapper {
+  z-index: var(--pc-text-field-contents);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+  align-content: center;
+  width: 100%;
+  padding-block: var(--p-space-200);
+}
+
+.LabelWrapper {
+  vertical-align: middle;
+  align-content: center;
+  padding-inline: var(--p-space-200);
+}
+
+.StepperWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-inline: var(--p-space-200);
+}
+
+.FullWidth .StepperWrapper {
+  width: inherit;
+}

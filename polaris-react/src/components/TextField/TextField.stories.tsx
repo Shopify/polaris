@@ -105,6 +105,7 @@ export const Number = {
           value={value}
           onChange={handleChange}
           autoComplete="off"
+          suffix="/10"
         />
         <TextField
           label="Second Quantity"
@@ -210,6 +211,13 @@ export const WithHiddenLabel = {
               options={['months after purchase']}
             />
           }
+        />
+        <TextField
+          label="Gift cards expire after"
+          type="number"
+          labelHidden
+          value={value}
+          autoComplete="off"
         />
       </FormLayout>
     );
@@ -716,8 +724,30 @@ export const WithInlineSuggestion = {
 
 export const All = {
   render() {
+    const [stepperValue, setStepperValue] = useState(3);
+    const [stepperValue2, setStepperValue2] = useState(3);
+
     return (
       <FormLayout>
+        <FormLayout.Group>
+          <TextField
+            label="Working Stepper with a min value of 0 and max value of 10"
+            value={stepperValue}
+            onChange={setStepperValue}
+            min={0}
+            max={10}
+            autoComplete="off"
+            type="number"
+          />
+          <TextField
+            label="Stepper with suffix"
+            value={stepperValue2}
+            onChange={setStepperValue2}
+            suffix={'/10'}
+            autoComplete="off"
+            type="number"
+          />
+        </FormLayout.Group>
         <FormLayout.Group>
           <TextField
             label="Default"
@@ -908,9 +938,19 @@ export const All = {
           <TextField
             label="Connected"
             type="number"
-            value="Value"
+            value="1"
             onChange={() => {}}
             autoComplete="off"
+            connectedLeft={<Button>Left</Button>}
+            connectedRight={<Button>Right</Button>}
+          />
+          <TextField
+            label="Connected with suffix"
+            type="number"
+            value="1"
+            onChange={() => {}}
+            autoComplete="off"
+            suffix="/100"
             connectedLeft={<Button>Left</Button>}
             connectedRight={<Button>Right</Button>}
           />
