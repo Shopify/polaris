@@ -35,6 +35,7 @@ export type ColorBackgroundAlias =
   | 'bg-fill-magic'
   | 'bg-fill-secondary-active'
   | 'bg-fill-secondary-hover'
+  | 'bg-fill-secondary-selected-experimental'
   | 'bg-fill-secondary'
   | 'bg-fill-selected'
   | 'bg-fill-success-active'
@@ -481,6 +482,11 @@ export const color: {
     value: colors.gray[8],
     description:
       'The active state (on press) color of elements with a smaller surface area and a secondary level of prominence.',
+  },
+  'color-bg-fill-secondary-selected-experimental': {
+    value: colors.gray[8],
+    description:
+      'The selected state color of elements with a smaller surface area and a secondary level of prominence.',
   },
   'color-bg-fill-tertiary': {
     value: colors.gray[8],
