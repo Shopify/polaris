@@ -1,9 +1,5 @@
-name: LocationAlert
-description: |
-  Action: Used to denote the invalid status of an address
-  Wayfinding: Used to help merchants understand that the address is invalid and take action to fix it
-  Concept: Used to represent the invalidity of an address
-  Education: Used to give merchants information about the invalidity of the address
+name: Location alert
+description: Used to represent the invalidity of an address.
 keywords:
   - location
   - address

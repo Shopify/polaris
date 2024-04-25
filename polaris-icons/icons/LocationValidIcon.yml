@@ -1,9 +1,5 @@
-name: LocationValid
-description: |
-  Action: Used to denote the validity status of an address
-  Wayfinding: Used to help merchants understand that the address is valid
-  Concept: Used to represent the validity of an address
-  Education: Used to give merchants information about the validity of the address
+name: Location valid
+description: Used to represent the validity of an address.
 keywords:
   - location
   - address
