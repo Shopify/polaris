@@ -1,53 +1,138 @@
-/* stylelint-disable selector-max-class, selector-max-specificity, selector-max-combinators, selector-max-compound-selectors */
+/* stylelint-disable selector-max-class, selector-max-specificity, selector-max-combinators, selector-max-compound-selectors, max-nesting-depth */
 
 @media (--p-breakpoints-md-down) {
-  .SectionWrapper {
+  .ActionList {
+    .SectionWrapper {
+      .Section {
+        .ItemWrapper:first-child .Item,
+        .ItemWrapper:last-child .Item,
+        &.hasTitle .ItemWrapper:first-child .Item,
+        &.hasTitle .ItemWrapper:last-child .Item {
+          border-radius: 0;
+        }
+      }
+
+      &:first-child {
+        .Section .ItemWrapper:first-child .Item {
+          border-radius: var(--p-border-radius-300) var(--p-border-radius-300) 0
+            0;
+        }
+
+        .Section.hasTitle .ItemWrapper:first-child .Item {
+          border-radius: 0;
+        }
+      }
+
+      &:last-child .Section .ItemWrapper:last-child .Item {
+        border-radius: 0 0 var(--p-border-radius-300) var(--p-border-radius-300);
+      }
+    }
+
     .Section {
-      .ItemWrapper:first-child .Item,
-      .ItemWrapper:last-child .Item,
-      &.hasTitle .ItemWrapper:first-child .Item,
-      &.hasTitle .ItemWrapper:last-child .Item {
+      .Item {
+        border-radius: 0;
+      }
+
+      .ItemWrapper:first-child .Item {
+        border-radius: var(--p-border-radius-300) var(--p-border-radius-300) 0 0;
+      }
+
+      .ItemWrapper:last-child .Item {
+        border-radius: 0 0 var(--p-border-radius-300) var(--p-border-radius-300);
+      }
+
+      &.hasTitle .ItemWrapper:first-child .Item {
+        border-radius: 0;
+      }
+    }
+
+    .hasSearch {
+      .SectionWrapper .Section .ItemWrapper:first-child .Item,
+      .Section .ItemWrapper:first-child .Item {
         border-radius: 0;
       }
     }
 
     &:first-child {
-      .Section .ItemWrapper:first-child .Item {
-        border-radius: var(--p-border-radius-300) var(--p-border-radius-300) 0 0;
+      .SectionWrapper {
+        &:last-child .Section .ItemWrapper:last-child .Item {
+          border-radius: 0;
+        }
       }
 
-      .Section.hasTitle .ItemWrapper:first-child .Item {
-        border-radius: 0;
+      .Section {
+        .ItemWrapper:last-child .Item {
+          border-radius: 0;
+        }
       }
     }
 
-    &:last-child .Section .ItemWrapper:last-child .Item {
-      border-radius: 0 0 var(--p-border-radius-300) var(--p-border-radius-300);
-    }
-  }
+    &:last-child {
+      .SectionWrapper {
+        &:first-child {
+          .Section .ItemWrapper:first-child .Item {
+            border-radius: 0;
+          }
+        }
+      }
 
-  .Section {
-    .Item {
-      border-radius: 0;
-    }
-
-    .ItemWrapper:first-child .Item {
-      border-radius: var(--p-border-radius-300) var(--p-border-radius-300) 0 0;
-    }
-
-    .ItemWrapper:last-child .Item {
-      border-radius: 0 0 var(--p-border-radius-300) var(--p-border-radius-300);
+      .Section {
+        .ItemWrapper:first-child .Item {
+          border-radius: 0;
+        }
+      }
     }
 
-    &.hasTitle .ItemWrapper:first-child .Item {
-      border-radius: 0;
-    }
-  }
+    &:not(:first-child):not(:last-child) {
+      .SectionWrapper {
+        &:first-child {
+          .Section .ItemWrapper:first-child .Item {
+            border-radius: 0;
+          }
+        }
 
-  .hasSearch {
-    .SectionWrapper .Section .ItemWrapper:first-child .Item,
-    .Section .ItemWrapper:first-child .Item {
-      border-radius: 0;
+        &:last-child .Section .ItemWrapper:last-child .Item {
+          border-radius: 0;
+        }
+      }
+
+      .Section {
+        .ItemWrapper:first-child .Item {
+          border-radius: 0;
+        }
+
+        .ItemWrapper:last-child .Item {
+          border-radius: 0;
+        }
+      }
+    }
+
+    &:only-child {
+      .SectionWrapper {
+        &:first-child {
+          .Section .ItemWrapper:first-child .Item {
+            border-radius: var(--p-border-radius-300) var(--p-border-radius-300)
+              0 0;
+          }
+        }
+
+        &:last-child .Section .ItemWrapper:last-child .Item {
+          border-radius: 0 0 var(--p-border-radius-300)
+            var(--p-border-radius-300);
+        }
+      }
+
+      .Section {
+        .ItemWrapper:first-child .Item {
+          border-radius: var(--p-border-radius-300) var(--p-border-radius-300) 0
+            0;
+        }
+
+        .ItemWrapper:last-child .Item {
+          border-radius: 0 0 var(--p-border-radius-300)
+            var(--p-border-radius-300);
+        }
+      }
     }
   }
 }
