@@ -1,17 +1,10 @@
-import React, {
-  useRef,
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  // eslint-disable-next-line no-restricted-imports -- useIsomorphicLayoutEffect is not required for this specific usecase, because we're using useLayoutEffect only for dom manipulation. It has no purpose in server side rendered code.
-  useLayoutEffect,
-} from 'react';
+import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
 import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
+import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
@@ -427,7 +420,7 @@ function IndexTableBase({
     scrollingContainer.current = false;
   }, []);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     tableHeadings.current = getTableHeadingsBySelector(
       tableElement.current,
       '[data-index-table-heading]',
