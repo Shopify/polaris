@@ -6,6 +6,7 @@ import {
   SelectionType,
   useIndexSelectionChange,
 } from '../../../../utilities/index-provider';
+import {Cell} from '../Cell';
 import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
@@ -21,6 +22,8 @@ export interface RowProps {
   children: React.ReactNode;
   /** A unique identifier for the row */
   id: string;
+  /** Whether the row should hide the selectable checkbox while the parent IndexTable is selectable */
+  hideSelectable?: boolean;
   /** Whether the row is selected */
   selected?: boolean | 'indeterminate';
   /** The zero-indexed position of the row. Used for Shift key multi-selection */
@@ -47,6 +50,7 @@ export interface RowProps {
 
 export const Row = memo(function Row({
   children,
+  hideSelectable,
   selected,
   id,
   position,
@@ -58,7 +62,8 @@ export const Row = memo(function Row({
   onNavigation,
   onClick,
 }: RowProps) {
-  const {selectable, selectMode, condensed} = useIndexRow();
+  const {selectable: tableIsSelectable, selectMode, condensed} = useIndexRow();
+  const rowIsSelectable = tableIsSelectable && !hideSelectable;
   const onSelectionChange = useIndexSelectionChange();
   const {
     value: hovered,
@@ -73,7 +78,7 @@ export const Row = memo(function Row({
 
       if (
         disabled ||
-        !selectable ||
+        !rowIsSelectable ||
         ('key' in event && event.key !== ' ') ||
         !onSelectionChange
       )
@@ -95,7 +100,7 @@ export const Row = memo(function Row({
       selectionRange,
       position,
       disabled,
-      selectable,
+      rowIsSelectable,
     ],
   );
 
@@ -128,12 +133,12 @@ export const Row = memo(function Row({
     styles.TableRow,
     rowType === 'subheader' && styles['TableRow-subheader'],
     rowType === 'child' && styles['TableRow-child'],
-    selectable && condensed && styles.condensedRow,
+    rowIsSelectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     hovered && !condensed && styles['TableRow-hovered'],
     disabled && styles['TableRow-disabled'],
     tone && styles[variationName('tone', tone)],
-    !selectable &&
+    !rowIsSelectable &&
       !onClick &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],
@@ -141,7 +146,7 @@ export const Row = memo(function Row({
 
   let handleRowClick;
 
-  if ((!disabled && selectable) || onClick || primaryLinkElement.current) {
+  if ((!disabled && rowIsSelectable) || onClick || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
       if (rowType === 'subheader') return;
 
@@ -184,9 +189,11 @@ export const Row = memo(function Row({
   }
 
   const RowWrapper = condensed ? 'li' : 'tr';
-  const checkboxMarkup = selectable ? (
+  const checkboxMarkup = hideSelectable ? (
+    <Cell />
+  ) : (
     <Checkbox accessibilityLabel={accessibilityLabel} />
-  ) : null;
+  );
 
   return (
     <RowContext.Provider value={contextValue}>
@@ -200,7 +207,7 @@ export const Row = memo(function Row({
           onClick={handleRowClick}
           ref={tableRowCallbackRef}
         >
-          {checkboxMarkup}
+          {tableIsSelectable ? checkboxMarkup : null}
           {children}
         </RowWrapper>
       </RowHoveredContext.Provider>
