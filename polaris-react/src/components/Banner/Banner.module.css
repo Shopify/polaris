@@ -21,8 +21,6 @@
 }
 
 .withinPage {
-  @mixin shadow-bevel var(--p-shadow-200), var(--p-border-radius-0);
-
   @media (--p-breakpoints-sm-up) {
     @mixin shadow-bevel var(--p-shadow-200), var(--p-border-radius-300);
   }
