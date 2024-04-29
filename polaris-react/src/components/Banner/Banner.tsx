@@ -108,6 +108,7 @@ export function BannerLayout({
   children,
 }: BannerProps) {
   const i18n = useI18n();
+  const {smUp} = useBreakpoints();
   const withinContentContainer = useContext(WithinContentContext);
   const isInlineIconBanner = !title && !withinContentContainer;
   const bannerTone = Object.keys(bannerAttributes).includes(tone)
@@ -133,7 +134,7 @@ export function BannerLayout({
     ),
     actionButtons:
       action || secondaryAction ? (
-        <ButtonGroup>
+        <ButtonGroup fullWidth={!smUp} gap={smUp ? 'tight' : 'extraTight'}>
           {action && (
             <Button onClick={action.onAction} {...action}>
               {action.content}
@@ -152,7 +153,13 @@ export function BannerLayout({
         icon={
           <span
             className={
-              styles[isInlineIconBanner ? 'icon-secondary' : bannerColors.icon]
+              styles[
+                isInlineIconBanner
+                  ? 'icon-secondary'
+                  : smUp
+                  ? bannerColors.icon
+                  : 'icon-secondary'
+              ]
             }
           >
             <Icon source={XIcon} />
@@ -201,7 +208,19 @@ export function DefaultBanner({
   const {smUp} = useBreakpoints();
   const hasContent = children || actionButtons;
 
-  return (
+  const xsOnlyBannerMarkup = (
+    <InlineIconBanner
+      backgroundColor={backgroundColor}
+      bannerTitle={bannerTitle}
+      bannerIcon={bannerIcon}
+      actionButtons={actionButtons}
+      dismissButton={dismissButton}
+    >
+      {children}
+    </InlineIconBanner>
+  );
+
+  const smUpBannerMarkup = (
     <Box width="100%">
       <BlockStack align="space-between">
         <Box
@@ -237,15 +256,20 @@ export function DefaultBanner({
       </BlockStack>
     </Box>
   );
+
+  const bannerMarkup = smUp ? smUpBannerMarkup : xsOnlyBannerMarkup;
+
+  return bannerMarkup;
 }
 
 export function InlineIconBanner({
   backgroundColor,
+  bannerTitle,
   bannerIcon,
   actionButtons,
   dismissButton,
   children,
-}: PropsWithChildren<Omit<BannerLayoutProps, 'textColor' | 'bannerTitle'>>) {
+}: PropsWithChildren<Omit<BannerLayoutProps, 'textColor'>>) {
   const [blockAlign, setBlockAlign] =
     useState<InlineStackProps['blockAlign']>('center');
   const contentNode = useRef<HTMLDivElement>(null);
@@ -285,7 +309,16 @@ export function InlineIconBanner({
             ) : null}
             <Box ref={contentNode} width="100%">
               <BlockStack gap="200">
-                <div>{children}</div>
+                {bannerTitle ? (
+                  <BlockStack gap="100">
+                    <Text as="h2" variant="headingMd" breakWord>
+                      {bannerTitle}
+                    </Text>
+                    {children}
+                  </BlockStack>
+                ) : (
+                  <div>{children}</div>
+                )}
                 {actionButtons}
               </BlockStack>
             </Box>
