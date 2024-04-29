@@ -40,6 +40,8 @@
 
   --pg-top-bar-height: 56px;
 
+  --pg-top-bar-height-mobile: 86px;
+
   --pg-mobile-nav-width: calc(
     100vw - (var(--pg-dismiss-icon-size) + var(--pg-dangerous-magic-space-8))
   );
