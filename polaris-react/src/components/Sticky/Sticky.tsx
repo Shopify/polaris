@@ -55,6 +55,36 @@ class StickyInner extends Component<CombinedProps, State> {
     });
   }
 
+  componentDidUpdate() {
+    const {
+      boundingElement,
+      offset = false,
+      disableWhenStacked = false,
+      stickyManager,
+    } = this.props;
+
+    if (!this.stickyNode || !this.placeHolderNode) return;
+
+    const stickyManagerItem = stickyManager.getStickyItem(this.stickyNode);
+    const didPropsChange =
+      !stickyManagerItem ||
+      boundingElement !== stickyManagerItem.boundingElement ||
+      offset !== stickyManagerItem.offset ||
+      disableWhenStacked !== stickyManagerItem.disableWhenStacked;
+
+    if (!didPropsChange) return;
+
+    stickyManager.unregisterStickyItem(this.stickyNode);
+    stickyManager.registerStickyItem({
+      stickyNode: this.stickyNode,
+      placeHolderNode: this.placeHolderNode,
+      handlePositioning: this.handlePositioning,
+      offset,
+      boundingElement,
+      disableWhenStacked,
+    });
+  }
+
   componentWillUnmount() {
     const {stickyManager} = this.props;
     if (!this.stickyNode) return;

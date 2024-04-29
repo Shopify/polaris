@@ -67,6 +67,10 @@ export class StickyManager {
     this.stickyItems.splice(nodeIndex, 1);
   }
 
+  getStickyItem(node: HTMLElement) {
+    return this.stickyItems.find(({stickyNode}) => node === stickyNode);
+  }
+
   setContainer(el: Document | HTMLElement) {
     this.container = el;
     if (isDocument(el)) {
