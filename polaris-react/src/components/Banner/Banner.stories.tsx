@@ -299,8 +299,8 @@ export const All = {
         </Text>
         <AllBanners
           onDismiss={() => {}}
-          action={{content: 'Primary action'}}
-          secondaryAction={{content: 'Secondary action'}}
+          action={{content: 'Primary'}}
+          secondaryAction={{content: 'Secondary'}}
         />
         <Text as="h2" variant="headingMd">
           Default by status
