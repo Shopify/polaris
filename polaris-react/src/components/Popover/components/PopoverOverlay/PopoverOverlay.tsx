@@ -74,6 +74,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
   private overlayRef: React.RefObject<PositionedOverlay>;
+  private lastContentStyles?: {height: number};
 
   constructor(props: PopoverOverlayProps) {
     super(props);
@@ -225,7 +226,10 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       positioning && styles[variationName('positioned', positioning)],
     );
 
-    const contentStyles = measuring ? undefined : {height: desiredHeight};
+    const contentStyles = measuring
+      ? this.lastContentStyles
+      : {height: desiredHeight};
+    this.lastContentStyles = contentStyles;
     const contentClassNames = classNames(
       styles.Content,
       fullHeight && styles['Content-fullHeight'],
