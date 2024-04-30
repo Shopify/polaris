@@ -115,6 +115,7 @@
 
   @media (--p-breakpoints-md-up) {
     border-top-right-radius: 0;
+    padding-top: var(--p-space-400);
   }
 }
 
