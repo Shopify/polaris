@@ -322,6 +322,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                 {hasDynamicTopBar ? (
                   <Scrollable
                     scrollbarWidth="thin"
+                    horizontal={false}
                     className={styles.Scrollable}
                     id={APP_FRAME_SCROLLABLE}
                   >
@@ -332,7 +333,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                       )}
                       id={APP_FRAME_CONTENT}
                     >
-                      {children}
+                      <div
+                        className={styles['ScrollbarSafeArea-TopBarAndReframe']}
+                      >
+                        {children}
+                      </div>
                     </div>
                   </Scrollable>
                 ) : (
