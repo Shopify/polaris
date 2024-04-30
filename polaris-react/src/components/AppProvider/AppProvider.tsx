@@ -35,6 +35,7 @@ const MAX_SCROLLBAR_WIDTH = 20;
 const SCROLLBAR_TEST_ELEMENT_PARENT_SIZE = 30;
 const SCROLLBAR_TEST_ELEMENT_CHILD_SIZE =
   SCROLLBAR_TEST_ELEMENT_PARENT_SIZE + 10;
+const APP_FRAME_SCROLLABLE = 'AppFrameScollable';
 
 function measureScrollbars() {
   const parentEl = document.createElement('div');
@@ -105,7 +106,15 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
   componentDidMount() {
     if (document != null) {
-      this.stickyManager.setContainer(document);
+      if (!this.props.features?.dynamicTopBarAndReframe) {
+        this.stickyManager.setContainer(document);
+      } else {
+        const scrollContainerElement =
+          document.getElementById(APP_FRAME_SCROLLABLE);
+
+        this.stickyManager.setContainer(scrollContainerElement ?? document);
+      }
+
       this.setBodyStyles();
       this.setRootAttributes();
 
