@@ -1,7 +1,7 @@
 import React, {isValidElement, useEffect} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
-import {BlockStack, Page, Button, Icon} from '../src';
+import {BlockStack, Page, Button, Icon, Box, Text} from '../src';
 
 import classes from './DetailsPage.module.css';
 
@@ -18,10 +18,23 @@ export const Playground = {
         display: 'flex',
         alignItems: 'center',
         gap: 4,
-        color: 'white',
         backgroundColor: 'black',
+        minHeight: 56,
+      },
+      ContextControl: {
+        width: 200,
+        display: 'flex',
+        alignItems: 'center',
+        color: 'white',
+      },
+      Dynamic: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 4,
+        color: 'white',
         padding: '8px 16px',
         boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+        flex: 1,
       },
       Slot: {
         display: 'flex',
@@ -32,62 +45,89 @@ export const Playground = {
       Center: {
         display: 'flex',
         alignItems: 'center',
-        flex: '0 1 250px',
+        flex: '0 1 480px',
       },
     };
 
     return (
-      <Page title="Playground">
+      <div>
         <div style={styles.TopBar}>
-          <div style={{...styles.Slot, justifyContent: 'end'}}>
-            {leftContent.map((content) => (
-              <div
-                className={classes.LeftContent}
-                key={reactChildrenText(content)}
-                data-key={reactChildrenText(content)}
-              >
-                {content}
-              </div>
-            ))}
+          <div style={styles.ContextControl}>
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M26.8956 8.39159C26.876 8.25021 26.751 8.17175 26.6473 8.16321C26.5443 8.15466 24.5277 8.12436 24.5277 8.12436C24.5277 8.12436 22.8411 6.50548 22.6745 6.3408C22.5079 6.17611 22.1825 6.22583 22.056 6.26312C22.0544 6.26389 21.7392 6.36022 21.2087 6.52257C21.1199 6.23826 20.9895 5.88869 20.8032 5.53757C20.2028 4.40498 19.3233 3.80605 18.2608 3.8045C18.2592 3.8045 18.2584 3.8045 18.2568 3.8045C18.183 3.8045 18.1099 3.81149 18.036 3.8177C18.0046 3.78042 17.9731 3.74391 17.9401 3.70817C17.4772 3.21878 16.8838 2.9803 16.1726 3.00127C14.8004 3.04011 13.4337 4.01968 12.3255 5.75974C11.5459 6.984 10.9525 8.52209 10.7843 9.71295C9.20858 10.1954 8.10673 10.5325 8.08237 10.5403C7.28702 10.7873 7.26187 10.8114 7.15813 11.5524C7.08111 12.1125 5 28.0186 5 28.0186L22.4403 31L29.9992 29.1426C29.9992 29.1426 26.9153 8.53297 26.8956 8.39159ZM20.3356 6.7898C19.934 6.91253 19.4774 7.05236 18.9822 7.20384C18.972 6.51714 18.8895 5.56165 18.5657 4.7359C19.607 4.93088 20.1195 6.09532 20.3356 6.7898ZM18.0698 7.48349C17.1558 7.76315 16.1584 8.06843 15.158 8.3745C15.4393 7.30949 15.973 6.24913 16.6284 5.55388C16.8721 5.29521 17.2131 5.00701 17.6171 4.84232C17.9967 5.62535 18.0792 6.73387 18.0698 7.48349ZM16.2001 3.90393C16.5223 3.89694 16.7935 3.96685 17.0253 4.11755C16.6544 4.30787 16.296 4.58131 15.9596 4.93787C15.088 5.86228 14.42 7.29706 14.1536 8.68134C13.3229 8.93536 12.5102 9.18472 11.762 9.4131C12.2344 7.23414 14.0821 3.96452 16.2001 3.90393Z"
+                fill="#95BF47"
+              />
+              <path
+                d="M26.6482 8.16418C26.5452 8.15564 24.5286 8.12534 24.5286 8.12534C24.5286 8.12534 22.842 6.50646 22.6754 6.34178C22.6133 6.28041 22.5292 6.24856 22.4412 6.23535L22.4419 30.9994L30.0001 29.1428C30.0001 29.1428 26.9162 8.53395 26.8965 8.39257C26.8769 8.25119 26.7511 8.17273 26.6482 8.16418Z"
+                fill="#5E8E3E"
+              />
+              <path
+                d="M18.2512 12.0055L17.3734 15.2518C17.3734 15.2518 16.3941 14.8113 15.2333 14.8836C13.531 14.99 13.5129 16.0511 13.5302 16.3176C13.623 17.7695 17.4873 18.0864 17.7042 21.4873C17.8748 24.1626 16.2684 25.9928 13.9538 26.1373C11.1756 26.3105 9.64624 24.6909 9.64624 24.6909L10.2349 22.2159C10.2349 22.2159 11.7745 23.3641 13.0068 23.2872C13.8116 23.2367 14.0992 22.5896 14.0702 22.132C13.9491 20.2382 10.8023 20.35 10.6035 17.2381C10.4361 14.6195 12.1761 11.9659 16.0153 11.7266C17.4944 11.6326 18.2512 12.0055 18.2512 12.0055Z"
+                fill="white"
+              />
+            </svg>
+            <p style={{fontWeight: 600}}>Spectrally yours</p>
           </div>
-          <div style={styles.Center}>{inputMarkup()}</div>
-          <div style={styles.Slot}>
-            {rightContent.map((content) => (
-              <div
-                className={classes.RightContent}
-                key={reactChildrenText(content)}
-              >
-                {content}
-              </div>
-            ))}
+          <div style={styles.Dynamic}>
+            <div style={{...styles.Slot, justifyContent: 'end'}}>
+              {leftContent.map((content) => (
+                <div
+                  className={classes.LeftContent}
+                  key={reactChildrenText(content)}
+                  data-key={reactChildrenText(content)}
+                >
+                  {content}
+                </div>
+              ))}
+            </div>
+            <div style={styles.Center}>{inputMarkup()}</div>
+            <div style={styles.Slot}>
+              {rightContent.map((content) => (
+                <div
+                  className={classes.RightContent}
+                  key={reactChildrenText(content)}
+                >
+                  {content}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-        <button
-          onClick={() => {
-            setCount(count + 1);
-            setLeftContent((content) => [
-              <Button key={count} icon={SearchIcon}>
-                {count.toString()}
-              </Button>,
-              ...content,
-            ]);
-          }}
-        >
-          add left content
-        </button>
-        <button
-          onClick={() => {
-            setCount(count + 1);
-            setRightContent((content) => [
-              ...content,
-              <Button key={count} icon={SearchIcon}>
-                {count.toString()}
-              </Button>,
-            ]);
-          }}
-        >
-          add right content
-        </button>
+        <Box paddingBlock="600">
+          <button
+            onClick={() => {
+              setCount(count + 1);
+              setLeftContent((content) => [
+                <Button key={count} icon={SearchIcon} variant="primary">
+                  {count.toString()}
+                </Button>,
+                ...content,
+              ]);
+            }}
+          >
+            add left content
+          </button>
+          <button
+            onClick={() => {
+              setCount(count + 1);
+              setRightContent((content) => [
+                ...content,
+                <Button key={count} icon={SearchIcon} variant="primary">
+                  {count.toString()}
+                </Button>,
+              ]);
+            }}
+          >
+            add right content
+          </button>
+        </Box>
+        <p className="">Previous examples</p>
         --------------------------
         <BlockStack gap="200">
           <FlexBasis />
@@ -95,7 +135,7 @@ export const Playground = {
           <ShitExample />
           <AnimatedGrid />
         </BlockStack>
-      </Page>
+      </div>
     );
   },
 };
@@ -416,15 +456,36 @@ function KnownWidths() {
 
 function inputMarkup() {
   return (
-    <div style={{display: 'flex', gap: 8, width: '100%'}}>
-      <span>
-        <Icon source={SearchIcon} />
-      </span>
+    <div
+      style={{
+        display: 'flex',
+        gap: 8,
+        width: '100%',
+        borderRadius: 4,
+        padding: 2,
+        border: '1px solid lightgray',
+      }}
+    >
+      <label htmlFor="search">
+        <Text as="span" visuallyHidden>
+          Search
+        </Text>
+        <span>
+          <Icon source={SearchIcon} />
+        </span>
+      </label>
       <input
+        id="search"
         type="text"
         placeholder="Search"
         autoComplete="off"
-        style={{width: '100%'}}
+        style={{
+          width: '100%',
+          background: 'transparent',
+          border: 'none',
+          outline: 'none',
+          color: 'white',
+        }}
       />
     </div>
   );

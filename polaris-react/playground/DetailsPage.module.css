@@ -23,12 +23,12 @@
 
 .LeftContent {
   /* stylelint-disable-next-line polaris/motion/declaration-property-unit-disallowed-list -- shush */
-  animation: slideLeft 0.5s;
+  animation: slideLeft 150ms;
 }
 
 .RightContent {
   /* stylelint-disable-next-line polaris/motion/declaration-property-unit-disallowed-list -- shush frig */
-  animation: slideRight 0.5s;
+  animation: slideRight 150ms;
 }
 
 /* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- shutup */
