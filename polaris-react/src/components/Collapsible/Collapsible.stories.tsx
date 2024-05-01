@@ -55,3 +55,33 @@ export const Default = {
     );
   },
 };
+export const Horizontal = {
+  render() {
+    const [open, setOpen] = useState(true);
+
+    const handleToggle = useCallback(() => setOpen((open) => !open), []);
+
+    return (
+      <div style={{height: '200px'}}>
+        <LegacyCard sectioned>
+          <LegacyStack alignment="center">
+            <Button
+              onClick={handleToggle}
+              ariaExpanded={open}
+              ariaControls="basic-collapsible"
+            >
+              Toggle
+            </Button>
+            <Collapsible
+              open={open}
+              id="horizontal-collapsible"
+              variant="horizontal"
+            >
+              <p style={{whiteSpace: 'nowrap'}}>Non breaking text</p>
+            </Collapsible>
+          </LegacyStack>
+        </LegacyCard>
+      </div>
+    );
+  },
+};
