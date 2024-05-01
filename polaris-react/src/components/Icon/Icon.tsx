@@ -38,6 +38,7 @@ export interface IconProps {
 }
 
 export function Icon({source, tone, accessibilityLabel}: IconProps) {
+  const {mdDown} = useBreakpoints();
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {
     sourceType = 'function';
@@ -63,7 +64,18 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
     tone && styles[variationName('tone', tone)],
   );
 
-  const {mdDown} = useBreakpoints();
+  // Polaris icons have a viewBox of 0 0 20 20
+  const isPolarisIconViewBox =
+    typeof source === 'function' &&
+    (source({}) as React.ReactElement)?.props?.viewBox === '0 0 20 20';
+
+  // Polaris icons are suffixed with `Icon` in their displayName
+  const isPolarisIconDisplayName =
+    typeof source === 'function' && source.displayName?.endsWith('Icon');
+
+  // Only scale the viewBox for Polaris icons on mobile
+  const shouldScaleViewBox =
+    mdDown && isPolarisIconViewBox && isPolarisIconDisplayName;
 
   const SourceComponent = source;
   const contentMarkup = {
@@ -75,7 +87,7 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
         // On Mobile we're scaling the viewBox to 18x18 to make the icons bigger
         // Also, we're setting the viewport origin to 1x1 to center the icon
         // We use this syntax so we don't override the existing viewBox value if we don't need to.
-        {...(mdDown ? {viewBox: '1 1 18 18'} : {})}
+        {...(shouldScaleViewBox ? {viewBox: '1 1 18 18'} : {})}
       />
     ),
     placeholder: <div className={styles.Placeholder} />,
