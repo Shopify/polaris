@@ -18,3 +18,41 @@
     color: var(--p-color-text-inverse);
   }
 }
+
+/* Playground */
+
+.LeftContent {
+  /* stylelint-disable-next-line polaris/motion/declaration-property-unit-disallowed-list -- shush */
+  animation: slideLeft 0.5s;
+}
+
+.RightContent {
+  /* stylelint-disable-next-line polaris/motion/declaration-property-unit-disallowed-list -- shush frig */
+  animation: slideRight 0.5s;
+}
+
+/* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- shutup */
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(60%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- shutup */
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-60%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
