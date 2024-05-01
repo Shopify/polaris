@@ -309,7 +309,10 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {loadingMarkup}
           {navigationOverlayMarkup}
           {hasDynamicTopBar ? (
-            <div className={styles.ShadowBevel} id={APP_FRAME}>
+            <div
+              className={styles.ShadowBevel}
+              id={hasDynamicTopBar ? APP_FRAME : undefined}
+            >
               {navigationMarkup}
               <main
                 className={classNames(
