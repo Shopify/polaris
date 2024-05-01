@@ -74,10 +74,9 @@ interface State {
   showContextualSaveBar: boolean;
 }
 
-const APP_FRAME = 'AppFrame';
 const APP_FRAME_MAIN = 'AppFrameMain';
-const APP_FRAME_CONTENT = 'AppFrameContent';
 const APP_FRAME_SCROLLABLE = 'AppFrameScrollable';
+const APP_FRAME_BEVEL = 'AppFrameBevel';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
@@ -309,10 +308,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {loadingMarkup}
           {navigationOverlayMarkup}
           {hasDynamicTopBar ? (
-            <div
-              className={styles.ShadowBevel}
-              id={hasDynamicTopBar ? APP_FRAME : undefined}
-            >
+            <div className={styles.ShadowBevel} id={APP_FRAME_BEVEL}>
               {navigationMarkup}
               <main
                 className={classNames(
@@ -334,7 +330,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                         styles.Content,
                         styles['Content-TopBarAndReframe'],
                       )}
-                      id={APP_FRAME_CONTENT}
                     >
                       <div
                         className={styles['ScrollbarSafeArea-TopBarAndReframe']}
