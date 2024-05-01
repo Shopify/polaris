@@ -28,7 +28,7 @@
   /* stylelint-disable-next-line polaris/media-queries/polaris/media-query-allowed-list -- custom breakpoint */
   @media screen and (min-width: 1200px) {
     /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
-    width: calc(100% - var(--pc-sidebar-width));
+    width: calc(100% - var(--pc-frame-offset, 0px));
   }
 
   @media (prefers-reduced-motion) {
@@ -290,10 +290,7 @@
 }
 
 .Content-TopBarAndReframe {
-  overflow-y: auto;
-  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- top bar global space */
-  margin-bottom: var(--pg-top-bar-height);
-  margin-right: var(--p-space-050);
+  height: 100%;
 
   .hasSidebar & {
     /* Sidebar breakpoint is 1200px */
@@ -310,7 +307,7 @@
     /* stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties */
     width: calc(
       100vw - var(--pg-navigation-width) -
-        var(--pc-app-provider-scrollbar-width) - var(--p-space-150)
+        var(--pc-app-provider-scrollbar-width) - var(--pc-frame-offset, 0px)
     );
     /* stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list */
 
@@ -328,9 +325,10 @@
       /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
       width: calc(
         100vw - var(--pg-navigation-width) -
-          var(--pc-app-provider-scrollbar-width) - var(--p-space-150) -
-          var(--pc-sidebar-width)
+          var(--pc-app-provider-scrollbar-width) - var(--pc-sidebar-width) -
+          var(--pc-frame-offset, 0px)
       );
+      margin-right: unset;
     }
 
     @media (prefers-reduced-motion) {
@@ -425,8 +423,6 @@
 }
 
 .ShadowBevel {
-  width: 100%;
-
   @mixin shadow-bevel var(--p-shadow-100), var(--p-border-radius-300),
     var(--p-z-index-1);
 
@@ -435,4 +431,37 @@
     top: var(--pg-top-bar-height);
     background-color: var(--p-color-bg);
   }
+  position: fixed;
+  width: 100%;
+  transition: width var(--p-motion-duration-250) var(--p-motion-ease);
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
+
+  @media (--p-breakpoints-md-up) {
+    /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
+    width: calc(100% - var(--pc-frame-offset, 0px));
+  }
+
+  .hasSidebar & {
+    transition: width var(--p-motion-duration-250) var(--p-motion-ease);
+
+    /* Sidebar breakpoint is 1200px */
+    /* stylelint-disable-next-line polaris/media-queries/polaris/media-query-allowed-list -- custom breakpoint */
+    @media screen and (min-width: 1200px) {
+      /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
+      width: calc(100% - var(--pc-sidebar-width) - var(--pc-frame-offset, 0px));
+    }
+
+    @media (prefers-reduced-motion) {
+      transition: none;
+    }
+  }
+}
+
+.Scrollable {
+  width: 100%;
+  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- top bar global space */
+  height: calc(100% - var(--pg-top-bar-height));
 }

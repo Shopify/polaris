@@ -13,6 +13,7 @@ import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
 import {Text} from '../Text';
 import {TrapFocus} from '../TrapFocus';
+import {Scrollable} from '../Scrollable';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
 import {FrameContext} from '../../utilities/frame';
@@ -74,6 +75,8 @@ interface State {
 }
 
 const APP_FRAME_MAIN = 'AppFrameMain';
+const APP_FRAME_SCROLLABLE = 'AppFrameScrollable';
+const APP_FRAME_BEVEL = 'AppFrameBevel';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
@@ -305,7 +308,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {loadingMarkup}
           {navigationOverlayMarkup}
           {hasDynamicTopBar ? (
-            <div className={styles.ShadowBevel}>
+            <div className={styles.ShadowBevel} id={APP_FRAME_BEVEL}>
               {navigationMarkup}
               <main
                 className={classNames(
@@ -315,22 +318,29 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                 id={APP_FRAME_MAIN}
                 data-has-global-ribbon={Boolean(globalRibbon)}
               >
-                <div
-                  className={classNames(
-                    styles.Content,
-                    hasDynamicTopBar && styles['Content-TopBarAndReframe'],
-                  )}
-                >
-                  {hasDynamicTopBar ? (
+                {hasDynamicTopBar ? (
+                  <Scrollable
+                    scrollbarWidth="thin"
+                    horizontal={false}
+                    className={styles.Scrollable}
+                    id={APP_FRAME_SCROLLABLE}
+                  >
                     <div
-                      className={styles['ScrollbarSafeArea-TopBarAndReframe']}
+                      className={classNames(
+                        styles.Content,
+                        styles['Content-TopBarAndReframe'],
+                      )}
                     >
-                      {children}
+                      <div
+                        className={styles['ScrollbarSafeArea-TopBarAndReframe']}
+                      >
+                        {children}
+                      </div>
                     </div>
-                  ) : (
-                    children
-                  )}
-                </div>
+                  </Scrollable>
+                ) : (
+                  <div className={styles.Content}>{children}</div>
+                )}
               </main>
             </div>
           ) : (
