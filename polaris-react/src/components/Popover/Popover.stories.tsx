@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Meta} from '@storybook/react';
 import {
   ActionList,
   Avatar,
@@ -24,874 +24,901 @@ import {SearchIcon, SelectIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Popover,
-} as ComponentMeta<typeof Popover>;
+} as Meta<typeof Popover>;
 
-export function All() {
-  return (
-    <BlockStack gap="800">
-      <BlockStack gap="400">
-        <Text as="h2" variant="headingXl">
-          With action list
-        </Text>
-        <WithActionList />
-      </BlockStack>
-
-      <BlockStack gap="200">
-        <Text as="h2" variant="headingXl">
-          With content and actions
-        </Text>
-        <WithContentAndActions />
-      </BlockStack>
-
-      <BlockStack gap="400">
-        <Text as="h2" variant="headingXl">
-          With form components
-        </Text>
-        <WithFormComponents />
-      </BlockStack>
-
-      <BlockStack gap="200">
-        <Text as="h2" variant="headingXl">
-          With lazy loaded list
-        </Text>
-        <WithLazyLoadedList />
-      </BlockStack>
-
-      <BlockStack gap="200">
-        <Text as="h2" variant="headingXl">
-          With scrollable lazy loaded list
-        </Text>
-        <WithScrollableLazyLoadedList />
-      </BlockStack>
-
-      <BlockStack gap="200">
-        <Text as="h2" variant="headingXl">
-          With searchable listbox
-        </Text>
-        <WithSearchableListbox />
-      </BlockStack>
-
-      <BlockStack gap="200">
-        <Text as="h2" variant="headingXl">
-          With loading smaller content
-        </Text>
-        <WithLoadingSmallerContent />
-      </BlockStack>
-
-      <BlockStack gap="200">
-        <Text as="h2" variant="headingXl">
-          With preferredPosition cover
-        </Text>
-        <WithCoverPositioning />
-      </BlockStack>
-    </BlockStack>
-  );
-}
-
-export function WithActionList() {
-  const [activePopover, setActivePopover] = useState(null);
-
-  const togglePopoverActive = useCallback((popover, isClosing) => {
-    const currentPopover = isClosing ? null : popover;
-    setActivePopover(currentPopover);
-  }, []);
-
-  const activator = (
-    <Button
-      id="button-1"
-      onClick={() => togglePopoverActive('popover1', false)}
-      disclosure
-    >
-      More actions
-    </Button>
-  );
-  const activator2 = (
-    <Button
-      id="button-2"
-      onClick={() => togglePopoverActive('popover2', false)}
-      disclosure
-    >
-      More actions
-    </Button>
-  );
-
-  return (
-    <div style={{height: '250px'}}>
-      <BlockStack gap="400">
-        <Popover
-          active={activePopover === 'popover1'}
-          activator={activator}
-          autofocusTarget="first-node"
-          onClose={() => togglePopoverActive('popover1', true)}
-        >
-          <ActionList
-            actionRole="menuitem"
-            items={[{content: 'Import file'}, {content: 'Export file'}]}
-          />
-        </Popover>
-        <Popover
-          active={activePopover === 'popover2'}
-          activator={activator2}
-          autofocusTarget="first-node"
-          onClose={() => togglePopoverActive('popover2', true)}
-        >
-          <ActionList
-            actionRole="menuitem"
-            items={[{content: 'Import file'}, {content: 'Export file'}]}
-          />
-        </Popover>
-      </BlockStack>
-    </div>
-  );
-}
-
-export function WithContentAndActions() {
-  const [popoverActive, setPopoverActive] = useState(true);
-
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
-
-  const textMarkup = (
-    <Text as="h2" variant="headingSm">
-      Available sales channels
-    </Text>
-  );
-
-  const activator = (
-    <Button onClick={togglePopoverActive} disclosure>
-      Sales channels
-    </Button>
-  );
-
-  return (
-    <div style={{height: '250px'}}>
-      <Popover
-        active={popoverActive}
-        activator={activator}
-        autofocusTarget="first-node"
-        onClose={togglePopoverActive}
-      >
-        <Popover.Pane fixed>
-          <Popover.Section>{textMarkup}</Popover.Section>
-        </Popover.Pane>
-        <Popover.Pane>
-          <ActionList
-            actionRole="menuitem"
-            items={[
-              {content: 'Online store'},
-              {content: 'Facebook'},
-              {content: 'Shopify POS'},
-            ]}
-          />
-        </Popover.Pane>
-      </Popover>
-    </div>
-  );
-}
-
-export function WithFormComponents() {
-  const [popoverActive, setPopoverActive] = useState(true);
-  const [tagValue, setTagValue] = useState('');
-
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
-
-  const handleTagValueChange = useCallback((value) => setTagValue(value), []);
-
-  const activator = (
-    <Button onClick={togglePopoverActive} disclosure>
-      Filter
-    </Button>
-  );
-
-  return (
-    <div style={{height: '280px'}}>
-      <Popover
-        active={popoverActive}
-        activator={activator}
-        onClose={togglePopoverActive}
-        ariaHaspopup={false}
-        sectioned
-      >
-        <FormLayout>
-          <Select label="Show all customers where:" options={['Tagged with']} />
-          <TextField
-            label="Tags"
-            value={tagValue}
-            onChange={handleTagValueChange}
-            autoComplete="off"
-          />
-          <Button size="slim">Add filter</Button>
-        </FormLayout>
-      </Popover>
-    </div>
-  );
-}
-
-export function WithLazyLoadedList() {
-  const [popoverActive, setPopoverActive] = useState(true);
-  const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
-  const staff = [
-    'Abbey Mayert',
-    'Abbi Senger',
-    'Abdul Goodwin',
-    'Abdullah Borer',
-    'Abe Nader',
-    'Abigayle Smith',
-    'Abner Torphy',
-    'Abraham Towne',
-    'Abraham Vik',
-    'Ada Fisher',
-    'Adah Pouros',
-    'Adam Waelchi',
-    'Adan Zemlak',
-    'Addie Wehner',
-    'Addison Wexler',
-    'Alex Hernandez',
-  ];
-
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
-
-  const handleScrolledToBottom = useCallback(() => {
-    const totalIndexes = staff.length;
-    const interval =
-      visibleStaffIndex + 3 < totalIndexes
-        ? 3
-        : totalIndexes - visibleStaffIndex;
-
-    if (interval > 0) {
-      setVisibleStaffIndex(visibleStaffIndex + interval);
-    }
-  }, [staff.length, visibleStaffIndex]);
-
-  const handleResourceListItemClick = useCallback(() => {}, []);
-
-  const activator = (
-    <Button onClick={togglePopoverActive} disclosure>
-      View staff
-    </Button>
-  );
-
-  const staffList = staff.slice(0, visibleStaffIndex).map((name) => ({
-    name,
-    initials: getInitials(name),
-  }));
-
-  return (
-    <LegacyCard sectioned>
-      <div style={{height: '280px'}}>
-        <Popover
-          sectioned
-          active={popoverActive}
-          activator={activator}
-          onClose={togglePopoverActive}
-          ariaHaspopup={false}
-        >
-          <Popover.Pane onScrolledToBottom={handleScrolledToBottom}>
-            <ResourceList items={staffList} renderItem={renderItem} />
-          </Popover.Pane>
-        </Popover>
-      </div>
-    </LegacyCard>
-  );
-
-  function renderItem({name, initials}) {
+export const All = {
+  render() {
     return (
-      <ResourceList.Item
-        id={name}
-        media={<Avatar size="xs" name={name} initials={initials} />}
-        verticalAlignment="center"
-        onClick={handleResourceListItemClick}
-      >
-        {name}
-      </ResourceList.Item>
+      /* eslint-disable react/jsx-pascal-case */
+      <BlockStack gap="800">
+        <BlockStack gap="400">
+          <Text as="h2" variant="headingXl">
+            With action list
+          </Text>
+          <WithActionList.render />
+        </BlockStack>
+
+        <BlockStack gap="200">
+          <Text as="h2" variant="headingXl">
+            With content and actions
+          </Text>
+          <WithContentAndActions.render />
+        </BlockStack>
+
+        <BlockStack gap="400">
+          <Text as="h2" variant="headingXl">
+            With form components
+          </Text>
+          <WithFormComponents.render />
+        </BlockStack>
+
+        <BlockStack gap="200">
+          <Text as="h2" variant="headingXl">
+            With lazy loaded list
+          </Text>
+          <WithLazyLoadedList.render />
+        </BlockStack>
+
+        <BlockStack gap="200">
+          <Text as="h2" variant="headingXl">
+            With scrollable lazy loaded list
+          </Text>
+          <WithScrollableLazyLoadedList.render />
+        </BlockStack>
+
+        <BlockStack gap="200">
+          <Text as="h2" variant="headingXl">
+            With searchable listbox
+          </Text>
+          <WithSearchableListbox.render />
+        </BlockStack>
+
+        <BlockStack gap="200">
+          <Text as="h2" variant="headingXl">
+            With loading smaller content
+          </Text>
+          <WithLoadingSmallerContent.render />
+        </BlockStack>
+
+        <BlockStack gap="200">
+          <Text as="h2" variant="headingXl">
+            With preferredPosition cover
+          </Text>
+          <WithCoverPositioning.render />
+        </BlockStack>
+      </BlockStack>
+      /* eslint-enable react/jsx-pascal-case */
     );
-  }
+  },
+};
 
-  function getInitials(name) {
-    return name
-      .split(' ')
-      .map((surnameOrFamilyName) => {
-        return surnameOrFamilyName.slice(0, 1);
-      })
-      .join('');
-  }
-}
+export const WithActionList = {
+  render() {
+    const [activePopover, setActivePopover] = useState(null);
 
-export function WithScrollableLazyLoadedList() {
-  const [popoverActive, setPopoverActive] = useState(true);
-  const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
-  const staff = [
-    'Abbey Mayert',
-    'Abbi Senger',
-    'Abdul Goodwin',
-    'Abdullah Borer',
-    'Abe Nader',
-    'Abigayle Smith',
-    'Abner Torphy',
-    'Abraham Towne',
-    'Abraham Vik',
-    'Ada Fisher',
-    'Adah Pouros',
-    'Adam Waelchi',
-    'Adan Zemlak',
-    'Addie Wehner',
-    'Addison Wexler',
-    'Alex Hernandez',
-  ];
+    const togglePopoverActive = useCallback((popover, isClosing) => {
+      const currentPopover = isClosing ? null : popover;
+      setActivePopover(currentPopover);
+    }, []);
 
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
+    const activator = (
+      <Button
+        id="button-1"
+        onClick={() => togglePopoverActive('popover1', false)}
+        disclosure
+      >
+        More actions
+      </Button>
+    );
+    const activator2 = (
+      <Button
+        id="button-2"
+        onClick={() => togglePopoverActive('popover2', false)}
+        disclosure
+      >
+        More actions
+      </Button>
+    );
 
-  const handleScrolledToBottom = useCallback(() => {
-    const totalIndexes = staff.length;
-    const interval =
-      visibleStaffIndex + 3 < totalIndexes
-        ? 3
-        : totalIndexes - visibleStaffIndex;
+    return (
+      <div style={{height: '250px'}}>
+        <BlockStack gap="400">
+          <Popover
+            active={activePopover === 'popover1'}
+            activator={activator}
+            autofocusTarget="first-node"
+            onClose={() => togglePopoverActive('popover1', true)}
+          >
+            <ActionList
+              actionRole="menuitem"
+              items={[{content: 'Import file'}, {content: 'Export file'}]}
+            />
+          </Popover>
+          <Popover
+            active={activePopover === 'popover2'}
+            activator={activator2}
+            autofocusTarget="first-node"
+            onClose={() => togglePopoverActive('popover2', true)}
+          >
+            <ActionList
+              actionRole="menuitem"
+              items={[{content: 'Import file'}, {content: 'Export file'}]}
+            />
+          </Popover>
+        </BlockStack>
+      </div>
+    );
+  },
+};
 
-    console.log({interval});
+export const WithContentAndActions = {
+  render() {
+    const [popoverActive, setPopoverActive] = useState(true);
 
-    if (interval > 0) {
-      setVisibleStaffIndex(visibleStaffIndex + interval);
-    }
-  }, [staff.length, visibleStaffIndex]);
+    const togglePopoverActive = useCallback(
+      () => setPopoverActive((popoverActive) => !popoverActive),
+      [],
+    );
 
-  const handleResourceListItemClick = useCallback(() => {}, []);
+    const textMarkup = (
+      <Text as="h2" variant="headingSm">
+        Available sales channels
+      </Text>
+    );
 
-  const activator = (
-    <Button onClick={togglePopoverActive} disclosure>
-      View staff
-    </Button>
-  );
+    const activator = (
+      <Button onClick={togglePopoverActive} disclosure>
+        Sales channels
+      </Button>
+    );
 
-  const staffList = staff.slice(0, visibleStaffIndex).map((name) => ({
-    name,
-    initials: getInitials(name),
-  }));
-
-  return (
-    <LegacyCard sectioned>
-      <div style={{height: '280px'}}>
+    return (
+      <div style={{height: '250px'}}>
         <Popover
-          sectioned
           active={popoverActive}
           activator={activator}
+          autofocusTarget="first-node"
           onClose={togglePopoverActive}
-          ariaHaspopup={false}
         >
+          <Popover.Pane fixed>
+            <Popover.Section>{textMarkup}</Popover.Section>
+          </Popover.Pane>
           <Popover.Pane>
-            <Scrollable
-              shadow
-              style={{
-                position: 'relative',
-                width: '231px',
-                height: '262px',
-                padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-200)',
-                borderBottomRightRadius: 'var(--p-border-radius-200)',
-              }}
-              onScrolledToBottom={handleScrolledToBottom}
-            >
-              <ResourceList items={staffList} renderItem={renderItem} />
-            </Scrollable>
+            <ActionList
+              actionRole="menuitem"
+              items={[
+                {content: 'Online store'},
+                {content: 'Facebook'},
+                {content: 'Shopify POS'},
+              ]}
+            />
           </Popover.Pane>
         </Popover>
       </div>
-    </LegacyCard>
-  );
-
-  function renderItem({name, initials}) {
-    return (
-      <ResourceList.Item
-        id={name}
-        media={<Avatar size="xs" name={name} initials={initials} />}
-        verticalAlignment="center"
-        onClick={handleResourceListItemClick}
-      >
-        {name}
-      </ResourceList.Item>
     );
-  }
+  },
+};
 
-  function getInitials(name) {
-    return name
-      .split(' ')
-      .map((surnameOrFamilyName) => {
-        return surnameOrFamilyName.slice(0, 1);
-      })
-      .join('');
-  }
-}
+export const WithFormComponents = {
+  render() {
+    const [popoverActive, setPopoverActive] = useState(true);
+    const [tagValue, setTagValue] = useState('');
 
-export function WithSearchableListbox() {
-  interface CustomerSegment {
-    id: string;
-    label: string;
-    value: string;
-  }
+    const togglePopoverActive = useCallback(
+      () => setPopoverActive((popoverActive) => !popoverActive),
+      [],
+    );
 
-  const actionValue = '__ACTION__';
+    const handleTagValueChange = useCallback((value) => setTagValue(value), []);
 
-  const segments: CustomerSegment[] = [
-    {
-      label: 'All customers',
-      id: 'gid://shopify/CustomerSegment/1',
-      value: '0',
-    },
-    {
-      label: 'VIP customers',
-      id: 'gid://shopify/CustomerSegment/2',
-      value: '1',
-    },
-    {
-      label: 'New customers',
-      id: 'gid://shopify/CustomerSegment/3',
-      value: '2',
-    },
-    {
-      label: 'Abandoned carts - last 30 days',
-      id: 'gid://shopify/CustomerSegment/4',
-      value: '3',
-    },
-    {
-      label: 'Wholesale customers',
-      id: 'gid://shopify/CustomerSegment/5',
-      value: '4',
-    },
-    {
-      label: 'Email subscribers',
-      id: 'gid://shopify/CustomerSegment/6',
-      value: '5',
-    },
-    {
-      label: 'From New York',
-      id: 'gid://shopify/CustomerSegment/7',
-      value: '6',
-    },
-    {
-      label: 'Repeat buyers',
-      id: 'gid://shopify/CustomerSegment/8',
-      value: '7',
-    },
-    {
-      label: 'First time buyers',
-      id: 'gid://shopify/CustomerSegment/9',
-      value: '8',
-    },
-    {
-      label: 'From Canada',
-      id: 'gid://shopify/CustomerSegment/10',
-      value: '9',
-    },
-    {
-      label: 'Bought in last 60 days',
-      id: 'gid://shopify/CustomerSegment/11',
-      value: '10',
-    },
-    {
-      label: 'Bought last BFCM',
-      id: 'gid://shopify/CustomerSegment/12',
-      value: '11',
-    },
-  ];
+    const activator = (
+      <Button onClick={togglePopoverActive} disclosure>
+        Filter
+      </Button>
+    );
 
-  const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
-    (_, index) => ({
-      label: `Other customers ${index + 13}`,
-      id: `gid://shopify/CustomerSegment/${index + 13}`,
-      value: `${index + 12}`,
-    }),
-  );
+    return (
+      <div style={{height: '280px'}}>
+        <Popover
+          active={popoverActive}
+          activator={activator}
+          onClose={togglePopoverActive}
+          ariaHaspopup={false}
+          sectioned
+        >
+          <FormLayout>
+            <Select
+              label="Show all customers where:"
+              options={['Tagged with']}
+            />
+            <TextField
+              label="Tags"
+              value={tagValue}
+              onChange={handleTagValueChange}
+              autoComplete="off"
+            />
+            <Button size="slim">Add filter</Button>
+          </FormLayout>
+        </Popover>
+      </div>
+    );
+  },
+};
 
-  segments.push(...lazyLoadSegments);
+export const WithLazyLoadedList = {
+  render() {
+    const [popoverActive, setPopoverActive] = useState(true);
+    const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
+    const staff = [
+      'Abbey Mayert',
+      'Abbi Senger',
+      'Abdul Goodwin',
+      'Abdullah Borer',
+      'Abe Nader',
+      'Abigayle Smith',
+      'Abner Torphy',
+      'Abraham Towne',
+      'Abraham Vik',
+      'Ada Fisher',
+      'Adah Pouros',
+      'Adam Waelchi',
+      'Adan Zemlak',
+      'Addie Wehner',
+      'Addison Wexler',
+      'Alex Hernandez',
+    ];
 
-  const interval = 25;
+    const togglePopoverActive = useCallback(
+      () => setPopoverActive((popoverActive) => !popoverActive),
+      [],
+    );
 
-  const [pickerOpen, setPickerOpen] = useState(false);
-  const [showFooterAction, setShowFooterAction] = useState(true);
-  const [query, setQuery] = useState('');
-  const [lazyLoading, setLazyLoading] = useState(false);
-  const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
-  const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
-  const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
-  const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
-  const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
-    [],
-  );
+    const handleScrolledToBottom = useCallback(() => {
+      const totalIndexes = staff.length;
+      const interval =
+        visibleStaffIndex + 3 < totalIndexes
+          ? 3
+          : totalIndexes - visibleStaffIndex;
 
-  const handleClickShowAll = () => {
-    setShowFooterAction(false);
-    setVisibleOptionIndex(interval);
-  };
+      if (interval > 0) {
+        setVisibleStaffIndex(visibleStaffIndex + interval);
+      }
+    }, [staff.length, visibleStaffIndex]);
 
-  const handleFilterSegments = (query: string) => {
-    const nextFilteredSegments = segments.filter((segment: CustomerSegment) => {
-      return segment.label
-        .toLocaleLowerCase()
-        .includes(query.toLocaleLowerCase().trim());
-    });
+    const handleResourceListItemClick = useCallback(() => {}, []);
 
-    setFilteredSegments(nextFilteredSegments);
-  };
+    const activator = (
+      <Button onClick={togglePopoverActive} disclosure>
+        View staff
+      </Button>
+    );
 
-  const handleQueryChange = (query: string) => {
-    setQuery(query);
+    const staffList = staff.slice(0, visibleStaffIndex).map((name) => ({
+      name,
+      initials: getInitials(name),
+    }));
 
-    if (query.length >= 2) handleFilterSegments(query);
-  };
+    return (
+      <LegacyCard sectioned>
+        <div style={{height: '280px'}}>
+          <Popover
+            sectioned
+            active={popoverActive}
+            activator={activator}
+            onClose={togglePopoverActive}
+            ariaHaspopup={false}
+          >
+            <Popover.Pane onScrolledToBottom={handleScrolledToBottom}>
+              <ResourceList items={staffList} renderItem={renderItem} />
+            </Popover.Pane>
+          </Popover>
+        </div>
+      </LegacyCard>
+    );
 
-  const handleQueryClear = () => {
-    handleQueryChange('');
-  };
-
-  const handleOpenPicker = () => {
-    setPickerOpen(true);
-  };
-
-  const handleClosePicker = () => {
-    setPickerOpen(false);
-    handleQueryChange('');
-  };
-
-  const handleSegmentSelect = (segmentIndex: string) => {
-    if (segmentIndex === actionValue) {
-      return handleClickShowAll();
+    function renderItem({name, initials}) {
+      return (
+        <ResourceList.Item
+          id={name}
+          media={<Avatar size="xs" name={name} initials={initials} />}
+          verticalAlignment="center"
+          onClick={handleResourceListItemClick}
+        >
+          {name}
+        </ResourceList.Item>
+      );
     }
 
-    setSelectedSegmentIndex(Number(segmentIndex));
-    handleClosePicker();
-  };
-
-  const handleActiveOptionChange = (_: string, domId: string) => {
-    setActiveOptionId(domId);
-  };
-
-  /* This is just to illustrate lazy loading state vs loading state. This is an example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage` from your GraphQL query data instead of this fake "willLoadMoreResults" state along with setting `first` your GraphQL query's variables to your app's default max edges limit (e.g., 250). */
-
-  const handleLazyLoadSegments = () => {
-    if (willLoadMoreResults && !showFooterAction) {
-      setLazyLoading(true);
-
-      const options = query ? filteredSegments : segments;
-
-      setTimeout(() => {
-        const remainingOptionCount = options.length - visibleOptionIndex;
-        const nextVisibleOptionIndex =
-          remainingOptionCount >= interval
-            ? visibleOptionIndex + interval
-            : visibleOptionIndex + remainingOptionCount;
-
-        setLazyLoading(false);
-        setVisibleOptionIndex(nextVisibleOptionIndex);
-
-        if (remainingOptionCount <= interval) {
-          setWillLoadMoreResults(false);
-        }
-      }, 1000);
+    function getInitials(name) {
+      return name
+        .split(' ')
+        .map((surnameOrFamilyName) => {
+          return surnameOrFamilyName.slice(0, 1);
+        })
+        .join('');
     }
-  };
+  },
+};
 
-  const listboxId = 'SearchableListboxInPopover';
+export const WithScrollableLazyLoadedList = {
+  render() {
+    const [popoverActive, setPopoverActive] = useState(true);
+    const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
+    const staff = [
+      'Abbey Mayert',
+      'Abbi Senger',
+      'Abdul Goodwin',
+      'Abdullah Borer',
+      'Abe Nader',
+      'Abigayle Smith',
+      'Abner Torphy',
+      'Abraham Towne',
+      'Abraham Vik',
+      'Ada Fisher',
+      'Adah Pouros',
+      'Adam Waelchi',
+      'Adan Zemlak',
+      'Addie Wehner',
+      'Addison Wexler',
+      'Alex Hernandez',
+    ];
 
-  /* Your app's feature/context specific activator here */
-  const activator = (
-    <div
-      style={{
-        fontSize: 'var(--p-font-size-500)',
-        color: 'var(--p-color-text)',
-        borderBottom: '1px dashed var(--p-color-border)',
-      }}
-    >
-      <Link monochrome removeUnderline onClick={handleOpenPicker}>
-        <Text as="h1" variant="headingXl">
-          {segments[selectedSegmentIndex].label}
-        </Text>
-      </Link>
-    </div>
-  );
+    const togglePopoverActive = useCallback(
+      () => setPopoverActive((popoverActive) => !popoverActive),
+      [],
+    );
 
-  const textFieldMarkup = (
-    <div style={{padding: '12px'}}>
-      <StopPropagation>
-        <TextField
-          focused={showFooterAction}
-          clearButton
-          labelHidden
-          label="Customer segments"
-          placeholder="Search segments"
-          autoComplete="off"
-          value={query}
-          prefix={<Icon source={SearchIcon} />}
-          ariaActiveDescendant={activeOptionId}
-          ariaControls={listboxId}
-          onChange={handleQueryChange}
-          onClearButtonClick={handleQueryClear}
-        />
-      </StopPropagation>
-    </div>
-  );
+    const handleScrolledToBottom = useCallback(() => {
+      const totalIndexes = staff.length;
+      const interval =
+        visibleStaffIndex + 3 < totalIndexes
+          ? 3
+          : totalIndexes - visibleStaffIndex;
 
-  const segmentOptions = query ? filteredSegments : segments;
+      console.log({interval});
 
-  const segmentList =
-    segmentOptions.length > 0
-      ? segmentOptions
-          .slice(0, visibleOptionIndex)
-          .map(({label, id, value}) => {
-            const selected = segments[selectedSegmentIndex].id === id;
+      if (interval > 0) {
+        setVisibleStaffIndex(visibleStaffIndex + interval);
+      }
+    }, [staff.length, visibleStaffIndex]);
 
-            return (
-              <Listbox.Option key={id} value={value} selected={selected}>
-                <Listbox.TextOption selected={selected}>
-                  {label}
-                </Listbox.TextOption>
-              </Listbox.Option>
-            );
-          })
-      : null;
+    const handleResourceListItemClick = useCallback(() => {}, []);
 
-  const showAllMarkup = showFooterAction ? (
-    <Listbox.Action value={actionValue}>
-      <span
+    const activator = (
+      <Button onClick={togglePopoverActive} disclosure>
+        View staff
+      </Button>
+    );
+
+    const staffList = staff.slice(0, visibleStaffIndex).map((name) => ({
+      name,
+      initials: getInitials(name),
+    }));
+
+    return (
+      <LegacyCard sectioned>
+        <div style={{height: '280px'}}>
+          <Popover
+            sectioned
+            active={popoverActive}
+            activator={activator}
+            onClose={togglePopoverActive}
+            ariaHaspopup={false}
+          >
+            <Popover.Pane>
+              <Scrollable
+                shadow
+                style={{
+                  position: 'relative',
+                  width: '231px',
+                  height: '262px',
+                  padding: 'var(--p-space-200) 0',
+                  borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                  borderBottomRightRadius: 'var(--p-border-radius-200)',
+                }}
+                onScrolledToBottom={handleScrolledToBottom}
+              >
+                <ResourceList items={staffList} renderItem={renderItem} />
+              </Scrollable>
+            </Popover.Pane>
+          </Popover>
+        </div>
+      </LegacyCard>
+    );
+
+    function renderItem({name, initials}) {
+      return (
+        <ResourceList.Item
+          id={name}
+          media={<Avatar size="xs" name={name} initials={initials} />}
+          verticalAlignment="center"
+          onClick={handleResourceListItemClick}
+        >
+          {name}
+        </ResourceList.Item>
+      );
+    }
+
+    function getInitials(name) {
+      return name
+        .split(' ')
+        .map((surnameOrFamilyName) => {
+          return surnameOrFamilyName.slice(0, 1);
+        })
+        .join('');
+    }
+  },
+};
+
+export const WithSearchableListbox = {
+  render() {
+    interface CustomerSegment {
+      id: string;
+      label: string;
+      value: string;
+    }
+
+    const actionValue = '__ACTION__';
+
+    const segments: CustomerSegment[] = [
+      {
+        label: 'All customers',
+        id: 'gid://shopify/CustomerSegment/1',
+        value: '0',
+      },
+      {
+        label: 'VIP customers',
+        id: 'gid://shopify/CustomerSegment/2',
+        value: '1',
+      },
+      {
+        label: 'New customers',
+        id: 'gid://shopify/CustomerSegment/3',
+        value: '2',
+      },
+      {
+        label: 'Abandoned carts - last 30 days',
+        id: 'gid://shopify/CustomerSegment/4',
+        value: '3',
+      },
+      {
+        label: 'Wholesale customers',
+        id: 'gid://shopify/CustomerSegment/5',
+        value: '4',
+      },
+      {
+        label: 'Email subscribers',
+        id: 'gid://shopify/CustomerSegment/6',
+        value: '5',
+      },
+      {
+        label: 'From New York',
+        id: 'gid://shopify/CustomerSegment/7',
+        value: '6',
+      },
+      {
+        label: 'Repeat buyers',
+        id: 'gid://shopify/CustomerSegment/8',
+        value: '7',
+      },
+      {
+        label: 'First time buyers',
+        id: 'gid://shopify/CustomerSegment/9',
+        value: '8',
+      },
+      {
+        label: 'From Canada',
+        id: 'gid://shopify/CustomerSegment/10',
+        value: '9',
+      },
+      {
+        label: 'Bought in last 60 days',
+        id: 'gid://shopify/CustomerSegment/11',
+        value: '10',
+      },
+      {
+        label: 'Bought last BFCM',
+        id: 'gid://shopify/CustomerSegment/12',
+        value: '11',
+      },
+    ];
+
+    const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
+      (_, index) => ({
+        label: `Other customers ${index + 13}`,
+        id: `gid://shopify/CustomerSegment/${index + 13}`,
+        value: `${index + 12}`,
+      }),
+    );
+
+    segments.push(...lazyLoadSegments);
+
+    const interval = 25;
+
+    const [pickerOpen, setPickerOpen] = useState(false);
+    const [showFooterAction, setShowFooterAction] = useState(true);
+    const [query, setQuery] = useState('');
+    const [lazyLoading, setLazyLoading] = useState(false);
+    const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
+    const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
+    const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
+    const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
+    const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
+      [],
+    );
+
+    const handleClickShowAll = () => {
+      setShowFooterAction(false);
+      setVisibleOptionIndex(interval);
+    };
+
+    const handleFilterSegments = (query: string) => {
+      const nextFilteredSegments = segments.filter(
+        (segment: CustomerSegment) => {
+          return segment.label
+            .toLocaleLowerCase()
+            .includes(query.toLocaleLowerCase().trim());
+        },
+      );
+
+      setFilteredSegments(nextFilteredSegments);
+    };
+
+    const handleQueryChange = (query: string) => {
+      setQuery(query);
+
+      if (query.length >= 2) handleFilterSegments(query);
+    };
+
+    const handleQueryClear = () => {
+      handleQueryChange('');
+    };
+
+    const handleOpenPicker = () => {
+      setPickerOpen(true);
+    };
+
+    const handleClosePicker = () => {
+      setPickerOpen(false);
+      handleQueryChange('');
+    };
+
+    const handleSegmentSelect = (segmentIndex: string) => {
+      if (segmentIndex === actionValue) {
+        return handleClickShowAll();
+      }
+
+      setSelectedSegmentIndex(Number(segmentIndex));
+      handleClosePicker();
+    };
+
+    const handleActiveOptionChange = (_: string, domId: string) => {
+      setActiveOptionId(domId);
+    };
+
+    /* This is just to illustrate lazy loading state vs loading state. This is an example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage` from your GraphQL query data instead of this fake "willLoadMoreResults" state along with setting `first` your GraphQL query's variables to your app's default max edges limit (e.g., 250). */
+
+    const handleLazyLoadSegments = () => {
+      if (willLoadMoreResults && !showFooterAction) {
+        setLazyLoading(true);
+
+        const options = query ? filteredSegments : segments;
+
+        setTimeout(() => {
+          const remainingOptionCount = options.length - visibleOptionIndex;
+          const nextVisibleOptionIndex =
+            remainingOptionCount >= interval
+              ? visibleOptionIndex + interval
+              : visibleOptionIndex + remainingOptionCount;
+
+          setLazyLoading(false);
+          setVisibleOptionIndex(nextVisibleOptionIndex);
+
+          if (remainingOptionCount <= interval) {
+            setWillLoadMoreResults(false);
+          }
+        }, 1000);
+      }
+    };
+
+    const listboxId = 'SearchableListboxInPopover';
+
+    /* Your app's feature/context specific activator here */
+    const activator = (
+      <div
         style={{
-          color: 'var(--p-color-text-secondary)',
+          fontSize: 'var(--p-font-size-500)',
+          color: 'var(--p-color-text)',
+          borderBottom: '1px dashed var(--p-color-border)',
         }}
       >
-        Show all 111 segments
-      </span>
-    </Listbox.Action>
-  ) : null;
+        <Link monochrome removeUnderline onClick={handleOpenPicker}>
+          <Text as="h1" variant="headingXl">
+            {segments[selectedSegmentIndex].label}
+          </Text>
+        </Link>
+      </div>
+    );
 
-  const lazyLoadingMarkup = lazyLoading ? (
-    <Listbox.Loading
-      accessibilityLabel={`${
-        query ? 'Filtering' : 'Loading'
-      } customer segments`}
-    />
-  ) : null;
+    const textFieldMarkup = (
+      <div style={{padding: '12px'}}>
+        <StopPropagation>
+          <TextField
+            focused={showFooterAction}
+            clearButton
+            labelHidden
+            label="Customer segments"
+            placeholder="Search segments"
+            autoComplete="off"
+            value={query}
+            prefix={<Icon source={SearchIcon} />}
+            ariaActiveDescendant={activeOptionId}
+            ariaControls={listboxId}
+            onChange={handleQueryChange}
+            onClearButtonClick={handleQueryClear}
+          />
+        </StopPropagation>
+      </div>
+    );
 
-  const noResultsMarkup =
-    segmentOptions.length === 0 ? (
-      <EmptySearchResult
-        title=""
-        description={`No segments found matching "${query}"`}
+    const segmentOptions = query ? filteredSegments : segments;
+
+    const segmentList =
+      segmentOptions.length > 0
+        ? segmentOptions
+            .slice(0, visibleOptionIndex)
+            .map(({label, id, value}) => {
+              const selected = segments[selectedSegmentIndex].id === id;
+
+              return (
+                <Listbox.Option key={id} value={value} selected={selected}>
+                  <Listbox.TextOption selected={selected}>
+                    {label}
+                  </Listbox.TextOption>
+                </Listbox.Option>
+              );
+            })
+        : null;
+
+    const showAllMarkup = showFooterAction ? (
+      <Listbox.Action value={actionValue}>
+        <span
+          style={{
+            color: 'var(--p-color-text-secondary)',
+          }}
+        >
+          Show all 111 segments
+        </span>
+      </Listbox.Action>
+    ) : null;
+
+    const lazyLoadingMarkup = lazyLoading ? (
+      <Listbox.Loading
+        accessibilityLabel={`${
+          query ? 'Filtering' : 'Loading'
+        } customer segments`}
       />
     ) : null;
 
-  const listboxMarkup = (
-    <Listbox
-      enableKeyboardControl
-      autoSelection={AutoSelection.FirstSelected}
-      accessibilityLabel="Search for and select a customer segment"
-      customListId={listboxId}
-      onSelect={handleSegmentSelect}
-      onActiveOptionChange={handleActiveOptionChange}
-    >
-      {segmentList}
-      {showAllMarkup}
-      {noResultsMarkup}
-      {lazyLoadingMarkup}
-    </Listbox>
-  );
+    const noResultsMarkup =
+      segmentOptions.length === 0 ? (
+        <EmptySearchResult
+          title=""
+          description={`No segments found matching "${query}"`}
+        />
+      ) : null;
 
-  return (
-    <div style={{height: '400px'}}>
-      <Popover
-        active={pickerOpen}
-        activator={activator}
-        ariaHaspopup="listbox"
-        preferredAlignment="left"
-        autofocusTarget="first-node"
-        onClose={handleClosePicker}
+    const listboxMarkup = (
+      <Listbox
+        enableKeyboardControl
+        autoSelection={AutoSelection.FirstSelected}
+        accessibilityLabel="Search for and select a customer segment"
+        customListId={listboxId}
+        onSelect={handleSegmentSelect}
+        onActiveOptionChange={handleActiveOptionChange}
       >
-        <Popover.Pane fixed>
-          <div
-            style={{
-              alignItems: 'stretch',
-              borderTop: '1px solid #DFE3E8',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'stretch',
-              position: 'relative',
-              width: '100%',
-              height: '100%',
-              overflow: 'hidden',
-            }}
-          >
-            {textFieldMarkup}
+        {segmentList}
+        {showAllMarkup}
+        {noResultsMarkup}
+        {lazyLoadingMarkup}
+      </Listbox>
+    );
 
-            <Scrollable
-              shadow
+    return (
+      <div style={{height: '400px'}}>
+        <Popover
+          active={pickerOpen}
+          activator={activator}
+          ariaHaspopup="listbox"
+          preferredAlignment="left"
+          autofocusTarget="first-node"
+          onClose={handleClosePicker}
+        >
+          <Popover.Pane fixed>
+            <div
               style={{
+                alignItems: 'stretch',
+                borderTop: '1px solid #DFE3E8',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'stretch',
                 position: 'relative',
-                width: '310px',
-                height: '262px',
-                padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-200)',
-                borderBottomRightRadius: 'var(--p-border-radius-200)',
+                width: '100%',
+                height: '100%',
+                overflow: 'hidden',
               }}
-              onScrolledToBottom={handleLazyLoadSegments}
             >
-              {listboxMarkup}
-            </Scrollable>
-          </div>
-        </Popover.Pane>
-      </Popover>
-    </div>
-  );
-}
+              {textFieldMarkup}
 
-export function WithLoadingSmallerContent() {
-  const [popoverActive, setPopoverActive] = useState(true);
-  const [loading, setLoading] = useState(false);
+              <Scrollable
+                shadow
+                style={{
+                  position: 'relative',
+                  width: '310px',
+                  height: '262px',
+                  padding: 'var(--p-space-200) 0',
+                  borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                  borderBottomRightRadius: 'var(--p-border-radius-200)',
+                }}
+                onScrolledToBottom={handleLazyLoadSegments}
+              >
+                {listboxMarkup}
+              </Scrollable>
+            </div>
+          </Popover.Pane>
+        </Popover>
+      </div>
+    );
+  },
+};
 
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
+export const WithLoadingSmallerContent = {
+  render() {
+    const [popoverActive, setPopoverActive] = useState(true);
+    const [loading, setLoading] = useState(false);
 
-  const activator = (
-    <Button
-      onClick={() => {
-        setLoading(true);
-        togglePopoverActive();
-        window.setTimeout(() => {
-          setLoading(false);
-        }, 500);
-      }}
-      disclosure
-    >
-      Show server data
-    </Button>
-  );
+    const togglePopoverActive = useCallback(
+      () => setPopoverActive((popoverActive) => !popoverActive),
+      [],
+    );
 
-  return (
-    <div style={{height: '280px'}}>
-      <Popover
-        active={popoverActive}
-        activator={activator}
-        onClose={togglePopoverActive}
-        ariaHaspopup={false}
-        sectioned
+    const activator = (
+      <Button
+        onClick={() => {
+          setLoading(true);
+          togglePopoverActive();
+          window.setTimeout(() => {
+            setLoading(false);
+          }, 500);
+        }}
+        disclosure
       >
-        {loading ? (
-          <div style={{height: '200px'}}>
-            <Text as="p" variant="bodyMd">
-              Loading...
-            </Text>
-          </div>
-        ) : (
-          <div>
-            <Text as="p" variant="bodyMd">
-              Small content from the server
-            </Text>
-          </div>
-        )}
-      </Popover>
-    </div>
-  );
-}
+        Show server data
+      </Button>
+    );
 
-export function WithSubduedPane() {
-  const [popoverActive, setPopoverActive] = useState(true);
+    return (
+      <div style={{height: '280px'}}>
+        <Popover
+          active={popoverActive}
+          activator={activator}
+          onClose={togglePopoverActive}
+          ariaHaspopup={false}
+          sectioned
+        >
+          {loading ? (
+            <div style={{height: '200px'}}>
+              <Text as="p" variant="bodyMd">
+                Loading...
+              </Text>
+            </div>
+          ) : (
+            <div>
+              <Text as="p" variant="bodyMd">
+                Small content from the server
+              </Text>
+            </div>
+          )}
+        </Popover>
+      </div>
+    );
+  },
+};
 
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
+export const WithSubduedPane = {
+  render() {
+    const [popoverActive, setPopoverActive] = useState(true);
 
-  const activator = (
-    <Button
-      onClick={() => {
-        togglePopoverActive();
-      }}
-      disclosure
-    >
-      Show popover
-    </Button>
-  );
+    const togglePopoverActive = useCallback(
+      () => setPopoverActive((popoverActive) => !popoverActive),
+      [],
+    );
 
-  return (
-    <div style={{height: '280px'}}>
-      <Popover
-        active={popoverActive}
-        activator={activator}
-        onClose={togglePopoverActive}
+    const activator = (
+      <Button
+        onClick={() => {
+          togglePopoverActive();
+        }}
+        disclosure
       >
-        <Popover.Pane>
-          <Box padding="400">
-            <Text as="p">Popover content</Text>
-          </Box>
-        </Popover.Pane>
-        <Popover.Pane subdued>
-          <Box padding="400">
-            <Text as="p">Subdued popover pane</Text>
-          </Box>
-        </Popover.Pane>
-      </Popover>
-    </div>
-  );
-}
+        Show popover
+      </Button>
+    );
 
-export function WithCoverPositioning() {
-  const [popoverActive, setPopoverActive] = useState(true);
+    return (
+      <div style={{height: '280px'}}>
+        <Popover
+          active={popoverActive}
+          activator={activator}
+          onClose={togglePopoverActive}
+        >
+          <Popover.Pane>
+            <Box padding="400">
+              <Text as="p">Popover content</Text>
+            </Box>
+          </Popover.Pane>
+          <Popover.Pane subdued>
+            <Box padding="400">
+              <Text as="p">Subdued popover pane</Text>
+            </Box>
+          </Popover.Pane>
+        </Popover>
+      </div>
+    );
+  },
+};
 
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
+export const WithCoverPositioning = {
+  render() {
+    const [popoverActive, setPopoverActive] = useState(true);
 
-  const activator = (
-    <button
-      onClick={() => {
-        togglePopoverActive();
-      }}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 'var(--p-space-200)',
-        padding: 'var(--p-space-200) var(--p-space-300)',
-        borderRadius: 'var(--p-border-radius-300)',
-        border: 'var(--p-border-width-025) solid var(--p-color-border)',
-        background: 'var(--p-color-bg-surface)',
-      }}
-    >
-      Show popover
-      <Icon source={SelectIcon} tone="base" />
-    </button>
-  );
+    const togglePopoverActive = useCallback(
+      () => setPopoverActive((popoverActive) => !popoverActive),
+      [],
+    );
 
-  return (
-    <div style={{height: '280px'}}>
-      <Popover
-        active={popoverActive}
-        activator={activator}
-        onClose={togglePopoverActive}
-        preferredPosition="cover"
+    const activator = (
+      <button
+        onClick={() => {
+          togglePopoverActive();
+        }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--p-space-200)',
+          padding: 'var(--p-space-200) var(--p-space-300)',
+          borderRadius: 'var(--p-border-radius-300)',
+          border: 'var(--p-border-width-025) solid var(--p-color-border)',
+          background: 'var(--p-color-bg-surface)',
+        }}
       >
-        <Popover.Pane>
-          <Box padding="200" paddingInline="300">
-            <Text as="p">Popover content</Text>
-          </Box>
+        Show popover
+        <Icon source={SelectIcon} tone="base" />
+      </button>
+    );
 
-          <Box padding="200" paddingInline="300">
-            <Text as="p">Popover content</Text>
-          </Box>
-        </Popover.Pane>
-      </Popover>
-    </div>
-  );
-}
+    return (
+      <div style={{height: '280px'}}>
+        <Popover
+          active={popoverActive}
+          activator={activator}
+          onClose={togglePopoverActive}
+          preferredPosition="cover"
+        >
+          <Popover.Pane>
+            <Box padding="200" paddingInline="300">
+              <Text as="p">Popover content</Text>
+            </Box>
+
+            <Box padding="200" paddingInline="300">
+              <Text as="p">Popover content</Text>
+            </Box>
+          </Popover.Pane>
+        </Popover>
+      </div>
+    );
+  },
+};
 
 const StopPropagation = ({children}: React.PropsWithChildren<any>) => {
   const stopEventPropagation = (event: React.MouseEvent | React.TouchEvent) => {

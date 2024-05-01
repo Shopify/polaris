@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.0.1
+
+### Patch Changes
+
+- [#11924](https://github.com/Shopify/polaris/pull/11924) [`5ec70e688`](https://github.com/Shopify/polaris/commit/5ec70e688306c0b0dc17f4fb46912588d9fed3bd) Thanks [@jesstelford](https://github.com/jesstelford)! - Upgrade to jest 29
+
 ## 9.0.0
 
 ### Major Changes

@@ -14,4 +14,8 @@ module.exports = {
     '\\.svg$': '<rootDir>/config/jest-transform-image.js',
   },
   watchPathIgnorePatterns: ['<rootDir>/build', '<rootDir>/node_modules'],
+  snapshotFormat: {
+    escapeString: true,
+    printBasicPrototype: true,
+  },
 };

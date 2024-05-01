@@ -1,15 +1,19 @@
 import React from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Meta} from '@storybook/react';
 import {SkeletonBodyText} from '@shopify/polaris';
 
 export default {
   component: SkeletonBodyText,
-} as ComponentMeta<typeof SkeletonBodyText>;
+} as Meta<typeof SkeletonBodyText>;
 
-export function Default() {
-  return <SkeletonBodyText />;
-}
+export const Default = {
+  render() {
+    return <SkeletonBodyText />;
+  },
+};
 
-export function SingleLineContent() {
-  return <SkeletonBodyText lines={1} />;
-}
+export const SingleLineContent = {
+  render() {
+    return <SkeletonBodyText lines={1} />;
+  },
+};

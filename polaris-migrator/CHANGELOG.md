@@ -1,5 +1,17 @@
 # @shopify/polaris-migrator
 
+## 1.0.1
+
+### Patch Changes
+
+- [#11924](https://github.com/Shopify/polaris/pull/11924) [`5ec70e688`](https://github.com/Shopify/polaris/commit/5ec70e688306c0b0dc17f4fb46912588d9fed3bd) Thanks [@jesstelford](https://github.com/jesstelford)! - Upgrade to jest 29
+
+* [#11930](https://github.com/Shopify/polaris/pull/11930) [`b111629d7`](https://github.com/Shopify/polaris/commit/b111629d75359711d8c9a2b12979c181bea66e63) Thanks [@jesstelford](https://github.com/jesstelford)! - Migrate Storybook stories to CSF v3
+
+* Updated dependencies [[`5ec70e688`](https://github.com/Shopify/polaris/commit/5ec70e688306c0b0dc17f4fb46912588d9fed3bd)]:
+  - @shopify/polaris-tokens@9.0.1
+  - @shopify/stylelint-polaris@16.0.1
+
 ## 1.0.0
 
 ### Major Changes

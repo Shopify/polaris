@@ -13,8 +13,12 @@ export interface PaneProps {
   sectioned?: boolean;
   /** The pane content */
   children?: React.ReactNode;
-  /** Sets a fixed height and max-height on the Scrollable */
+  /** Sets a fixed height on the Scrollable */
   height?: string;
+  /** Sets maxHeight on the Scrollable */
+  maxHeight?: string;
+  /** Sets minHeight on the Scrollable */
+  minHeight?: string;
   /** Callback when the bottom of the popover is reached by mouse or keyboard  */
   onScrolledToBottom?(): void;
   /**
@@ -35,6 +39,8 @@ export function Pane({
   sectioned,
   children,
   height,
+  maxHeight,
+  minHeight,
   subdued,
   onScrolledToBottom,
 }: PaneProps) {
@@ -47,9 +53,8 @@ export function Pane({
   const content = sectioned
     ? wrapWithComponent(children, Section, {})
     : children;
-  const style = height
-    ? {height, maxHeight: height, minHeight: height}
-    : undefined;
+
+  const style = {height, maxHeight, minHeight};
 
   return fixed ? (
     <div style={style} className={className}>

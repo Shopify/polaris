@@ -35,6 +35,7 @@ const MAX_SCROLLBAR_WIDTH = 20;
 const SCROLLBAR_TEST_ELEMENT_PARENT_SIZE = 30;
 const SCROLLBAR_TEST_ELEMENT_CHILD_SIZE =
   SCROLLBAR_TEST_ELEMENT_PARENT_SIZE + 10;
+const APP_FRAME_SCROLLABLE = 'AppFrameScollable';
 
 function measureScrollbars() {
   const parentEl = document.createElement('div');
@@ -105,7 +106,15 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
   componentDidMount() {
     if (document != null) {
-      this.stickyManager.setContainer(document);
+      if (!this.props.features?.dynamicTopBarAndReframe) {
+        this.stickyManager.setContainer(document);
+      } else {
+        const scrollContainerElement =
+          document.getElementById(APP_FRAME_SCROLLABLE);
+
+        this.stickyManager.setContainer(scrollContainerElement ?? document);
+      }
+
       this.setBodyStyles();
       this.setRootAttributes();
 
@@ -138,8 +147,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {i18n, linkComponent} = this.props;
 
     this.setRootAttributes();
-    /* Temporary for dynamicTopBarAndReframe feature. Remove when feature flag is removed. */
-    this.setBodyStyles();
 
     if (i18n === prevI18n && linkComponent === prevLinkComponent) {
       return;
@@ -152,20 +159,8 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   setBodyStyles = () => {
-    const {features} = this.props;
-
     document.body.style.backgroundColor = 'var(--p-color-bg)';
     document.body.style.color = 'var(--p-color-text)';
-
-    /* Temporary for dynamicTopBarAndReframe feature.
-     * Remove when feature flag is removed and apply
-     * styles directly to body in the global stylesheet.
-     */
-    if (features?.dynamicTopBarAndReframe) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
   };
 
   setRootAttributes = () => {

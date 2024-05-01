@@ -16,8 +16,6 @@ jobs:
     if: |
       !contains(github.event.pull_request.labels.*.name, '🤖Skip Major Check')
     runs-on: ubuntu-latest
-    env:
-      HEAD_REF: ${{ github.head_ref }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,11 +24,11 @@ jobs:
         run: git fetch --all
 
       - name: Checkout the feature branch
-        run: git checkout "$HEAD_REF" --
+        run: git checkout "$GITHUB_HEAD_REF" --
 
       - name: Check major versions in changeset entries
         run: |
-          commits="origin/$("$HEAD_REF")...origin/$("$HEAD_REF")"
+          commits="origin/$GITHUB_BASE_REF...origin/$GITHUB_HEAD_REF"
           changeset_files=$(git diff --name-only --diff-filter=d "$commits" -- ".changeset/*.md")
 
           if [[ -z "$changeset_files" ]]; then

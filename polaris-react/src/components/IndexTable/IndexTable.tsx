@@ -8,7 +8,6 @@ import React, {
   useLayoutEffect,
 } from 'react';
 import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
-import {CSSTransition} from 'react-transition-group';
 import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
@@ -47,7 +46,6 @@ import type {
   Width,
   TooltipOverlayProps,
 } from '../Tooltip';
-import {useTheme} from '../../utilities/use-theme';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -163,8 +161,6 @@ function IndexTableBase({
   pagination,
   ...restProps
 }: IndexTableBaseProps) {
-  const theme = useTheme();
-
   const {
     loading,
     bulkSelectState,
@@ -192,7 +188,6 @@ function IndexTableBase({
   const tableElement = useRef<HTMLTableElement>(null);
   const tableBodyElement = useRef<Element | null>(null);
   const condensedListElement = useRef<HTMLUListElement>(null);
-  const loadingElement = useRef<HTMLDivElement>(null);
 
   const [tableInitialized, setTableInitialized] = useState(false);
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
@@ -501,36 +496,25 @@ function IndexTableBase({
 
   const paginatedSelectAllAction = getPaginatedSelectAllAction();
 
-  const loadingTransitionClassNames = {
-    enter: styles['LoadingContainer-enter'],
-    enterActive: styles['LoadingContainer-enter-active'],
-    exit: styles['LoadingContainer-exit'],
-    exitActive: styles['LoadingContainer-exit-active'],
-  };
-
   const loadingMarkup = (
-    <CSSTransition
-      in={loading}
-      classNames={loadingTransitionClassNames}
-      timeout={parseInt(theme.motion['motion-duration-100'], 10)}
-      nodeRef={loadingElement}
-      appear
-      unmountOnExit
+    <div
+      className={classNames(
+        styles.LoadingPanel,
+        loading && styles.LoadingPanelEntered,
+      )}
     >
-      <div className={styles.LoadingPanel} ref={loadingElement}>
-        <div className={styles.LoadingPanelRow}>
-          <Spinner size="small" />
-          <span className={styles.LoadingPanelText}>
-            {i18n.translate(
-              'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
-              {
-                resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-              },
-            )}
-          </span>
-        </div>
+      <div className={styles.LoadingPanelRow}>
+        <Spinner size="small" />
+        <span className={styles.LoadingPanelText}>
+          {i18n.translate(
+            'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
+            {
+              resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
+            },
+          )}
+        </span>
       </div>
-    </CSSTransition>
+    </div>
   );
 
   const stickyTableClassNames = classNames(

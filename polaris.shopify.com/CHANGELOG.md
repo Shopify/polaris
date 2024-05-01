@@ -1,5 +1,34 @@
 # polaris.shopify.com
 
+## 1.0.4
+
+### Patch Changes
+
+- [#11924](https://github.com/Shopify/polaris/pull/11924) [`5ec70e688`](https://github.com/Shopify/polaris/commit/5ec70e688306c0b0dc17f4fb46912588d9fed3bd) Thanks [@jesstelford](https://github.com/jesstelford)! - Upgrade to jest 29
+
+- Updated dependencies [[`a83084b3b`](https://github.com/Shopify/polaris/commit/a83084b3b021abd48bb813b712e7d474425a0c52), [`5ec70e688`](https://github.com/Shopify/polaris/commit/5ec70e688306c0b0dc17f4fb46912588d9fed3bd), [`9ee700be6`](https://github.com/Shopify/polaris/commit/9ee700be6cc9bc4c8ae62b98571dde8d90dc0c83), [`bcd16df24`](https://github.com/Shopify/polaris/commit/bcd16df2464a2d1d2cc93bf31680f514a8f22096), [`ce13c4366`](https://github.com/Shopify/polaris/commit/ce13c4366d7c982b702408a03942b580261c3cda), [`364ada59e`](https://github.com/Shopify/polaris/commit/364ada59e92078f4b8572dec2d48b0131a1ca6e2), [`1fef06256`](https://github.com/Shopify/polaris/commit/1fef0625652adddc5ee25674327ef98383e8a748), [`45308c97a`](https://github.com/Shopify/polaris/commit/45308c97addc7072b1c300c94d7d5f95123b188f), [`1539f0e7c`](https://github.com/Shopify/polaris/commit/1539f0e7cb32fff212880adbe261c449fa0dd891), [`5a32a3ff6`](https://github.com/Shopify/polaris/commit/5a32a3ff64a906b48efa356e8d5c6128947c0de0), [`b111629d7`](https://github.com/Shopify/polaris/commit/b111629d75359711d8c9a2b12979c181bea66e63), [`0a9b72721`](https://github.com/Shopify/polaris/commit/0a9b72721416283571264e844b49489adb7f1227)]:
+  - @shopify/polaris@13.2.0
+  - @shopify/polaris-icons@9.0.1
+  - @shopify/polaris-tokens@9.0.1
+
+## 1.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`273029218`](https://github.com/Shopify/polaris/commit/2730292188361640a1a7c76e5dffe4698d559e6b)]:
+  - @shopify/polaris@13.1.2
+
+## 1.0.2
+
+### Patch Changes
+
+- [#11906](https://github.com/Shopify/polaris/pull/11906) [`5b9f4b898`](https://github.com/Shopify/polaris/commit/5b9f4b89818d2e8614dcd56a65b7ffb2034e7d12) Thanks [@sarahill](https://github.com/sarahill)! - Updated common action pattern add guiance
+
+* [#11909](https://github.com/Shopify/polaris/pull/11909) [`c4f766f1d`](https://github.com/Shopify/polaris/commit/c4f766f1daa2674d6fffbd6a6602f713eadb5cd1) Thanks [@sarahill](https://github.com/sarahill)! - Fixed missing image for card layout pattern documentation
+
+* Updated dependencies [[`828995cc4`](https://github.com/Shopify/polaris/commit/828995cc422e9a5b4fd0d781656912b3efb71df4), [`fd37c1896`](https://github.com/Shopify/polaris/commit/fd37c18968011142d6b5db480e720513ae5172c6)]:
+  - @shopify/polaris@13.1.1
+
 ## 1.0.1
 
 ### Patch Changes
