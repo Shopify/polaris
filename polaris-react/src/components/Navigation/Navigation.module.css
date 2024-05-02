@@ -684,6 +684,11 @@
   }
 }
 
+.SecondaryAction[type='button'] {
+  cursor: pointer;
+  background: none;
+}
+
 .SecondaryAction {
   display: flex;
   align-items: center;
