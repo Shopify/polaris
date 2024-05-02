@@ -4,7 +4,6 @@ import React, {
   useRef,
   useState,
   useEffect,
-  useCallback,
 } from 'react';
 import type {PropsWithChildren} from 'react';
 import type {ColorTextAlias} from '@shopify/polaris-tokens';
@@ -25,7 +24,6 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {classNames} from '../../utilities/css';
 import {useBreakpoints} from '../../utilities/breakpoints';
 import {useI18n} from '../../utilities/i18n';
-import {useEventListener} from '../../utilities/use-event-listener';
 import {BlockStack} from '../BlockStack';
 
 import styles from './Banner.module.css';
@@ -252,20 +250,29 @@ export function InlineIconBanner({
   const iconNode = useRef<HTMLDivElement>(null);
   const dismissIconNode = useRef<HTMLDivElement>(null);
 
-  const handleResize = useCallback(() => {
-    const contentHeight = contentNode.current?.offsetHeight;
-    const iconBoxHeight =
-      iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
+  useEffect(() => {
+    if (!contentNode.current) return;
 
-    if (!contentHeight || !iconBoxHeight) return;
+    const observer = new ResizeObserver((entries) => {
+      const target = entries[0].target as HTMLDivElement;
+      const contentHeight = target.offsetHeight;
 
-    contentHeight > iconBoxHeight
-      ? setBlockAlign('start')
-      : setBlockAlign('center');
+      const iconBoxHeight =
+        iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
+
+      if (!contentHeight || !iconBoxHeight) return;
+
+      contentHeight > iconBoxHeight
+        ? setBlockAlign('start')
+        : setBlockAlign('center');
+    });
+
+    observer.observe(contentNode.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
-
-  useEffect(() => handleResize(), [handleResize]);
-  useEventListener('resize', handleResize);
 
   return (
     <Box width="100%" padding="300" borderRadius="300">

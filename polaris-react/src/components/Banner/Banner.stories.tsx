@@ -290,6 +290,37 @@ export const CustomIcon = {
   },
 };
 
+export const WithDynamicContent = {
+  render() {
+    const [contentExpanded, setContentExpanded] = useState(false);
+
+    const toggleContent = () => setContentExpanded(!contentExpanded);
+
+    return (
+      <Banner tone="info">
+        <Text as="p" variant="bodyMd">
+          Here is the first line of content.{' '}
+          <Button variant="plain" onClick={toggleContent}>
+            {!contentExpanded
+              ? 'Expand for more content.'
+              : 'Collapse content.'}
+          </Button>
+        </Text>
+        {contentExpanded ? (
+          <>
+            <Text as="p" variant="bodyMd">
+              Here is more content.
+            </Text>
+            <Text as="p" variant="bodyMd">
+              And here is even more.
+            </Text>
+          </>
+        ) : null}
+      </Banner>
+    );
+  },
+};
+
 export const All = {
   render() {
     return (
