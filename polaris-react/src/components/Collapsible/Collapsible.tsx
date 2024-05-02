@@ -18,8 +18,10 @@ export interface CollapsibleProps {
   expandOnPrint?: boolean;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
-  /**  */
-  variant?: 'vertical' | 'horizontal';
+  /** The direction the collapsible collapses in.
+   * @default 'block'
+   */
+  variant?: 'block' | 'inline';
   /** Override transition properties. When set to false, disables transition completely.
    * @default transition={{duration: 'var(--p-motion-duration-150)', timingFunction: 'var(--p-motion-ease-in-out)'}}
    */
@@ -36,7 +38,7 @@ export function Collapsible({
   id,
   expandOnPrint,
   open,
-  variant = 'vertical',
+  variant = 'block',
   transition = true,
   children,
   onAnimationEnd,
@@ -49,13 +51,13 @@ export function Collapsible({
   const isFullyOpen = animationState === 'idle' && open && isOpen;
   const isFullyClosed = animationState === 'idle' && !open && !isOpen;
   const content = expandOnPrint || !isFullyClosed ? children : null;
-  const vertical = variant === 'vertical';
+  const vertical = variant === 'block';
 
   const wrapperClassName = classNames(
     styles.Collapsible,
     isFullyClosed && styles.isFullyClosed,
     expandOnPrint && styles.expandOnPrint,
-    variant === 'horizontal' && styles.horizontal,
+    variant === 'inline' && styles.inline,
   );
 
   const transitionDisabled = isTransitionDisabled(transition);

@@ -55,7 +55,7 @@ export const Default = {
     );
   },
 };
-export const Horizontal = {
+export const Inline = {
   render() {
     const [open, setOpen] = useState(true);
 
@@ -72,12 +72,10 @@ export const Horizontal = {
             >
               Toggle
             </Button>
-            <Collapsible
-              open={open}
-              id="horizontal-collapsible"
-              variant="horizontal"
-            >
-              <p style={{whiteSpace: 'nowrap'}}>Non breaking text</p>
+            <Collapsible open={open} id="inline-collapsible" variant="inline">
+              <p style={{whiteSpace: 'nowrap', backgroundColor: 'red'}}>
+                Non breaking text
+              </p>
             </Collapsible>
           </LegacyStack>
         </LegacyCard>

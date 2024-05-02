@@ -24,7 +24,7 @@
   }
 }
 
-.horizontal {
+.inline {
   max-height: none;
   transition-property: max-width;
 }
