@@ -55,3 +55,31 @@ export const Default = {
     );
   },
 };
+export const Inline = {
+  render() {
+    const [open, setOpen] = useState(true);
+
+    const handleToggle = useCallback(() => setOpen((open) => !open), []);
+
+    return (
+      <div style={{height: '200px'}}>
+        <LegacyCard sectioned>
+          <LegacyStack alignment="center">
+            <Button
+              onClick={handleToggle}
+              ariaExpanded={open}
+              ariaControls="basic-collapsible"
+            >
+              Toggle
+            </Button>
+            <Collapsible open={open} id="inline-collapsible" variant="inline">
+              <p style={{whiteSpace: 'nowrap', backgroundColor: 'red'}}>
+                Non breaking text
+              </p>
+            </Collapsible>
+          </LegacyStack>
+        </LegacyCard>
+      </div>
+    );
+  },
+};
