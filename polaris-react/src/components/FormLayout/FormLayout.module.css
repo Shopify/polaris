@@ -1,7 +1,7 @@
 .Item {
   /* stylelint-disable-next-line -- Polaris component custom properties */
   --pc-form-layout-item-min-size: 220px;
-  flex: 1 1 auto;
+  flex: 1 1 0;
 
   &.grouped {
     /* stylelint-disable-next-line -- Polaris component custom properties */
