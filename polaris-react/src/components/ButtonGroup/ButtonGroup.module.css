@@ -8,9 +8,18 @@
   align-items: center;
   margin-top: calc(-1 * var(--p-space-200));
   margin-left: calc(-1 * var(--p-space-200));
+
+  &:has(:global(.Polaris-Button--fullWidth)) {
+    width: 100%;
+    margin-left: 0;
+    .Item {
+      margin-left: 0;
+    }
+  }
 }
 
 .Item {
+  width: inherit;
   margin-top: var(--p-space-200);
   margin-left: var(--p-space-200);
 }
