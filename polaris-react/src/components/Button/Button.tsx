@@ -126,6 +126,16 @@ export function Button({
   const isDisabled = disabled || loading;
   const {mdUp} = useBreakpoints();
 
+  if (
+    !mdUp &&
+    ['primary', 'secondary'].includes(variant) &&
+    ['large', 'medium'].includes(size) &&
+    !(icon && children == null) &&
+    fullWidth !== false
+  ) {
+    fullWidth = true;
+  }
+
   const className = classNames(
     styles.Button,
     styles.pressable,
@@ -177,7 +187,13 @@ export function Button({
   }
 
   let textVariant: TextProps['variant'] = 'bodySm';
-  if (size === 'large' || (hasPlainText && size !== 'micro')) {
+
+  if (!mdUp && ['primary', 'secondary'].includes(variant)) {
+    textVariant = 'bodySm';
+    textFontWeight = 'medium';
+  }
+
+  if (size === 'large' || (mdUp && hasPlainText && size !== 'micro')) {
     textVariant = 'bodyMd';
   }
 
