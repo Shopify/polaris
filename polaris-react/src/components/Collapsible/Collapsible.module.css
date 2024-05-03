@@ -27,4 +27,8 @@
 .inline {
   max-height: none;
   transition-property: max-width;
+
+  &.animateIn {
+    max-width: 0;
+  }
 }

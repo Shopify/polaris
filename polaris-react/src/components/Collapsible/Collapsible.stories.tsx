@@ -8,6 +8,8 @@ import {
   LegacyStack,
   TextContainer,
   Text,
+  InlineStack,
+  Box,
 } from '@shopify/polaris';
 
 export default {
@@ -35,7 +37,7 @@ export const Default = {
               open={open}
               id="basic-collapsible"
               transition={{
-                duration: 'var(--p-motion-duration-150)',
+                duration: 'var(--p-motion-duration-250)',
                 timingFunction: 'var(--p-motion-ease-in-out)',
               }}
               expandOnPrint
@@ -78,6 +80,72 @@ export const Inline = {
               </p>
             </Collapsible>
           </LegacyStack>
+        </LegacyCard>
+      </div>
+    );
+  },
+};
+
+export const AnimateIn = {
+  render() {
+    const [open, setOpen] = useState(true);
+    const [openInline, setOpenInline] = useState(true);
+
+    const handleToggle = useCallback(() => setOpen((open) => !open), []);
+    const handleToggleInline = useCallback(
+      () => setOpenInline((openInline) => !openInline),
+      [],
+    );
+
+    return (
+      <div style={{height: '200px'}}>
+        <LegacyCard sectioned>
+          <InlineStack gap="200">
+            <Button
+              onClick={handleToggleInline}
+              ariaExpanded={openInline}
+              ariaControls="inline-collapsible"
+            >
+              Toggle Inline
+            </Button>
+            <Collapsible
+              open={openInline}
+              id="inline-collapsible"
+              variant="inline"
+              transition={{
+                animateIn: true,
+                duration: 'var(--p-motion-duration-250)',
+              }}
+            >
+              <p style={{whiteSpace: 'nowrap', backgroundColor: 'red'}}>
+                Non breaking text
+              </p>
+            </Collapsible>
+
+            <Button
+              onClick={handleToggle}
+              ariaExpanded={open}
+              ariaControls="basic-collapsible"
+            >
+              Toggle
+            </Button>
+            <Box maxWidth="20%">
+              <Collapsible
+                open={open}
+                id="inline-collapsible"
+                transition={{
+                  animateIn: true,
+                  duration: 'var(--p-motion-duration-250)',
+                }}
+              >
+                <Text as="p" variant="bodyMd">
+                  Your mailing list lets you contact customers or visitors who
+                  have shown an interest in your store. Reach out to them with
+                  exclusive offers or updates about your products.
+                </Text>
+              </Collapsible>
+            </Box>
+          </InlineStack>
         </LegacyCard>
       </div>
     );
