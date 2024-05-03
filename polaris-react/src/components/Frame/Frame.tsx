@@ -386,6 +386,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       document.documentElement.style.getPropertyValue(
         '--pc-app-provider-scrollbar-width',
       ),
+      10,
     );
 
     this.setState({scrollbarAlwaysVisible: scrollbarWidth > 0});
