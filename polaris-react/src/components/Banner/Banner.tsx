@@ -1,10 +1,4 @@
-import React, {
-  forwardRef,
-  useContext,
-  useRef,
-  useState,
-  useEffect,
-} from 'react';
+import React, {forwardRef, useContext, useRef, useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import type {ColorTextAlias} from '@shopify/polaris-tokens';
 import {XIcon} from '@shopify/polaris-icons';
@@ -246,33 +240,22 @@ export function InlineIconBanner({
 }: PropsWithChildren<Omit<BannerLayoutProps, 'textColor' | 'bannerTitle'>>) {
   const [blockAlign, setBlockAlign] =
     useState<InlineStackProps['blockAlign']>('center');
-  const contentNode = useRef<HTMLDivElement>(null);
   const iconNode = useRef<HTMLDivElement>(null);
   const dismissIconNode = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!contentNode.current) return;
+  const contentNodeCallback = (node: HTMLDivElement) => {
+    if (!node) return;
 
-    const observer = new ResizeObserver((entries) => {
-      const target = entries[0].target as HTMLDivElement;
-      const contentHeight = target.offsetHeight;
+    const contentHeight = node.offsetHeight;
+    const iconBoxHeight =
+      iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
 
-      const iconBoxHeight =
-        iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
+    if (!contentHeight || !iconBoxHeight) return;
 
-      if (!contentHeight || !iconBoxHeight) return;
-
-      contentHeight > iconBoxHeight
-        ? setBlockAlign('start')
-        : setBlockAlign('center');
-    });
-
-    observer.observe(contentNode.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+    contentHeight > iconBoxHeight
+      ? setBlockAlign('start')
+      : setBlockAlign('center');
+  };
 
   return (
     <Box width="100%" padding="300" borderRadius="300">
@@ -290,7 +273,7 @@ export function InlineIconBanner({
                 </Box>
               </div>
             ) : null}
-            <Box ref={contentNode} width="100%">
+            <Box ref={contentNodeCallback} width="100%">
               <BlockStack gap="200">
                 <div>{children}</div>
                 {actionButtons}

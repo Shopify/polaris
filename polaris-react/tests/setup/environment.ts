@@ -1,62 +1,5 @@
 export {};
 
-interface ResizeObserverMockType {
-  callback: ResizeObserverCallback;
-  observations: Element[];
-  observe: (target: Element) => void;
-  unobserve: (target: Element) => void;
-  disconnect: () => void;
-}
-
-class ResizeObserverMock implements ResizeObserverMockType {
-  callback: ResizeObserverCallback;
-  observations: Element[];
-
-  constructor(callback: ResizeObserverCallback) {
-    this.callback = callback;
-    this.observations = [];
-  }
-
-  observe(target: Element): void {
-    this.observations.push(target);
-    this.callback(
-      [
-        {
-          target,
-          contentRect: target.getBoundingClientRect(),
-          borderBoxSize: [
-            {
-              blockSize: target.clientHeight,
-              inlineSize: target.clientWidth,
-            },
-          ],
-          contentBoxSize: [
-            {
-              blockSize: target.clientHeight,
-              inlineSize: target.clientWidth,
-            },
-          ],
-          devicePixelContentBoxSize: [
-            {
-              blockSize: target.clientHeight,
-              inlineSize: target.clientWidth,
-            },
-          ],
-        },
-      ],
-      this,
-    );
-  }
-
-  unobserve(target: Element): void {
-    this.observations = this.observations.filter((obs) => obs !== target);
-  }
-
-  disconnect(): void {
-    this.observations = [];
-  }
-}
-
 if (typeof window !== 'undefined') {
   // Mocks for scrolling
   window.scroll = () => {};
@@ -67,8 +10,6 @@ if (typeof window !== 'undefined') {
     _features?: string,
     _replace?: boolean,
   ) => null;
-
-  window.ResizeObserver = ResizeObserverMock;
 }
 
 const IGNORE_ERROR_REGEXES = [
