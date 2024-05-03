@@ -472,7 +472,7 @@
 
 .Scrollable {
   width: 100%;
-  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- spacer for scrollbar to not get cut off by rounded corner frame */
+
   /* Not using the spaacer custom property so the space is applied always */
   margin-right: var(--p-space-050);
   /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- top bar global space */
