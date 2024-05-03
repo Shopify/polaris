@@ -38,7 +38,11 @@
 
   --pg-dismiss-icon-size: 32px;
 
-  --pg-top-bar-height: 56px;
+  --pg-top-bar-height: 64px;
+
+  @media (--p-breakpoints-md-up) {
+    --pg-top-bar-height: 56px;
+  }
 
   --pg-mobile-nav-width: calc(
     100vw - (var(--pg-dismiss-icon-size) + var(--pg-dangerous-magic-space-8))
