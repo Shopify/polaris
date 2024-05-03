@@ -144,7 +144,12 @@ export function Button({
   );
 
   const disclosureMarkup = disclosure ? (
-    <span className={loading ? styles.hidden : styles.Icon}>
+    <span
+      className={classNames(
+        styles.DisclosureIcon,
+        loading ? styles.hidden : styles.Icon,
+      )}
+    >
       <Icon
         source={
           loading
