@@ -1,8 +1,8 @@
 name: polaris
 up:
   - node:
-      package_manager: pnpm@9.0.1
-      pnpm: 9.0.1
+      package_manager: pnpm@8.15.5
+      pnpm: 8.15.5
       version: v20.11.1 # to be kept in sync with .nvmrc
   - custom:
       name: Build monorepo
