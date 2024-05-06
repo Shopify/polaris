@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Updated LegacyCard title size to text `headingMg` to match `bodyMd` text size
+Updated LegacyCard title size to text `headingMd` to match `bodyMd` text size
