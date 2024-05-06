@@ -326,7 +326,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                   <Scrollable
                     scrollbarWidth="thin"
                     horizontal={false}
-                    className={styles.Scrollable}
+                    className={classNames(
+                      styles.Scrollable,
+                      this.state.scrollbarAlwaysVisible &&
+                        styles['Scrollable-ScrollbarAlwaysVisible'],
+                    )}
                     id={APP_FRAME_SCROLLABLE}
                   >
                     <div
