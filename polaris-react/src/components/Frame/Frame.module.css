@@ -477,4 +477,13 @@
   margin-right: var(--p-space-050);
   /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- top bar global space */
   height: calc(100% - var(--pg-top-bar-height));
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--p-color-scrollbar-thumb-bg) transparent;
+  transition: scrollbar-color var(--p-motion-duration-100)
+    var(--p-motion-ease-in);
+
+  &:hover {
+    scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
+  }
 }

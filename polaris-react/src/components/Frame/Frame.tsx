@@ -324,7 +324,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
               >
                 {hasDynamicTopBar ? (
                   <Scrollable
-                    scrollbarWidth="auto"
+                    scrollbarWidth="thin"
                     horizontal={false}
                     className={styles.Scrollable}
                     id={APP_FRAME_SCROLLABLE}
