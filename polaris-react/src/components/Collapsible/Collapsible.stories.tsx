@@ -89,9 +89,11 @@ export const Inline = {
 export const AnimateIn = {
   render() {
     const [open, setOpen] = useState(true);
+    const [open2, setOpen2] = useState(true);
     const [openInline, setOpenInline] = useState(true);
 
     const handleToggle = useCallback(() => setOpen((open) => !open), []);
+    const handleToggle2 = useCallback(() => setOpen2((open2) => !open2), []);
     const handleToggleInline = useCallback(
       () => setOpenInline((openInline) => !openInline),
       [],
@@ -100,7 +102,7 @@ export const AnimateIn = {
     return (
       <div style={{height: '200px'}}>
         <LegacyCard sectioned>
-          <InlineStack gap="200">
+          <InlineStack>
             <Button
               onClick={handleToggleInline}
               ariaExpanded={openInline}
@@ -129,6 +131,13 @@ export const AnimateIn = {
             >
               Toggle
             </Button>
+            <Button
+              onClick={handleToggle2}
+              ariaExpanded={open2}
+              ariaControls="basic-collapsible-2"
+            >
+              Toggle 2
+            </Button>
             <Box maxWidth="20%">
               <Collapsible
                 open={open}
@@ -138,11 +147,29 @@ export const AnimateIn = {
                   duration: 'var(--p-motion-duration-250)',
                 }}
               >
-                <Text as="p" variant="bodyMd">
-                  Your mailing list lets you contact customers or visitors who
-                  have shown an interest in your store. Reach out to them with
-                  exclusive offers or updates about your products.
-                </Text>
+                <Box background="avatar-bg-fill">
+                  <Text as="p" variant="bodyMd">
+                    Your mailing list lets you contact customers or visitors who
+                    have shown an interest in your store. Reach out to them with
+                    exclusive offers or updates about your products.
+                  </Text>
+                </Box>
+              </Collapsible>
+              <Collapsible
+                open={open2}
+                id="basic-collapsible-2"
+                transition={{
+                  animateIn: true,
+                  duration: 'var(--p-motion-duration-250)',
+                }}
+              >
+                <Box background="avatar-bg-fill">
+                  <Text as="p" variant="bodyMd">
+                    Your mailing list lets you contact customers or visitors who
+                    have shown an interest in your store. Reach out to them with
+                    exclusive offers or updates about your products.
+                  </Text>
+                </Box>
               </Collapsible>
             </Box>
           </InlineStack>
