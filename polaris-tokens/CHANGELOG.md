@@ -1,5 +1,17 @@
 # Changelog
 
+## 9.1.0
+
+### Minor Changes
+
+- [#11965](https://github.com/Shopify/polaris/pull/11965) [`7a702388d`](https://github.com/Shopify/polaris/commit/7a702388d24ec1c9de4daa40ae77dd10c0735aaa) Thanks [@sophschneider](https://github.com/sophschneider)! - Added `color-scrollbar-thumb-bg` token
+
+### Patch Changes
+
+- [#11981](https://github.com/Shopify/polaris/pull/11981) [`12dbc2cd8`](https://github.com/Shopify/polaris/commit/12dbc2cd848dafe8d90fda66c9067151687d25fe) Thanks [@sophschneider](https://github.com/sophschneider)! - Updated internal only whiteAlpha scale and dark experimental theme with new values
+
+* [#11853](https://github.com/Shopify/polaris/pull/11853) [`8ce6211c9`](https://github.com/Shopify/polaris/commit/8ce6211c95268305e02e7eac4d017378fa45e955) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `"sideEffect": "false"` to the `package.json` to enable treeshaking
+
 ## 9.0.1
 
 ### Patch Changes
