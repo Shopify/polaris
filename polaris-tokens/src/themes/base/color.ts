@@ -120,7 +120,8 @@ export type ColorBackgroundAlias =
   | 'radio-button-bg-surface-disabled'
   | 'video-thumbnail-play-button-bg-fill-hover'
   | 'video-thumbnail-play-button-bg-fill'
-  | 'scrollbar-thumb-bg-hover';
+  | 'scrollbar-thumb-bg-hover'
+  | 'scrollbar-thumb-bg';
 
 export type ColorBorderAlias =
   | 'border-brand'
@@ -1222,5 +1223,8 @@ export const color: {
   },
   'color-scrollbar-thumb-bg-hover': {
     value: colors.gray[12],
+  },
+  'color-scrollbar-thumb-bg': {
+    value: colors.gray[11],
   },
 };
