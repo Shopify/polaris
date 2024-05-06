@@ -108,6 +108,8 @@ export type ColorBackgroundAlias =
   | 'avatar-two-bg-fill'
   | 'backdrop-bg'
   | 'button-gradient-bg-fill'
+  | 'button-gradient-bg-fill-selected-experimental'
+  | 'button-gradient-bg-fill-active-experimental'
   | 'checkbox-bg-surface-disabled'
   | 'input-bg-surface-active'
   | 'input-bg-surface-hover'
@@ -1164,6 +1166,14 @@ export const color: {
     value: colors.blackAlpha[14],
   },
   'color-button-gradient-bg-fill': {
+    value:
+      'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
+  },
+  'color-button-gradient-bg-fill-selected-experimental': {
+    value:
+      'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
+  },
+  'color-button-gradient-bg-fill-active-experimental': {
     value:
       'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
   },
