@@ -5,6 +5,8 @@ import {classNames} from '../../utilities/css';
 import styles from './Collapsible.module.css';
 
 interface Transition {
+  /** Expand the collpsible on render. */
+  animateIn?: boolean;
   /** Assign a transition duration to the collapsible animation. */
   duration?: string;
   /** Assign a transition timing function to the collapsible animation */
@@ -45,8 +47,11 @@ export function Collapsible({
 }: CollapsibleProps) {
   const [size, setSize] = useState(0);
   const [isOpen, setIsOpen] = useState(open);
-  const [animationState, setAnimationState] = useState<AnimationState>('idle');
   const collapsibleContainer = useRef<HTMLDivElement>(null);
+  const animateIn = typeof transition === 'object' && transition.animateIn;
+  const [animationState, setAnimationState] = useState<AnimationState>(
+    animateIn ? 'measuring' : 'idle',
+  );
 
   const isFullyOpen = animationState === 'idle' && open && isOpen;
   const isFullyClosed = animationState === 'idle' && !open && !isOpen;
@@ -58,6 +63,7 @@ export function Collapsible({
     isFullyClosed && styles.isFullyClosed,
     expandOnPrint && styles.expandOnPrint,
     variant === 'inline' && styles.inline,
+    animateIn && styles.animateIn,
   );
 
   const transitionDisabled = isTransitionDisabled(transition);
