@@ -1,6 +1,11 @@
 .root {
   margin: 0;
   text-align: inherit;
+  user-select: none;
+
+  @media (--p-breakpoints-md-up) {
+    user-select: initial;
+  }
 }
 
 .block {
