@@ -50,10 +50,10 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-border-gradient-active-experimental': {
       value: `linear-gradient(to bottom, ${colors.blackAlpha[16]}, ${colors.blackAlpha[11]} 10%, ${colors.whiteAlpha[11]})`,
     },
-    'color-bg-fill-gradient-selected-experimental': {
+    'color-button-gradient-bg-fill-selected-experimental': {
       value: `linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(19, 19, 19, 1) 50%, rgba(10, 10, 10, 1))`,
     },
-    'color-bg-fill-gradient-active-experimental': {
+    'color-button-gradient-bg-fill-active-experimental': {
       value: `linear-gradient(to bottom, rgba(33, 33, 33, 1), rgba(30, 30, 30, 1) 50%, rgba(18, 18, 18, 1))`,
     },
   },

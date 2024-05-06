@@ -56,8 +56,6 @@ export type ColorBackgroundAlias =
   | 'bg-fill-warning-secondary'
   | 'bg-fill-warning'
   | 'bg-fill'
-  | 'bg-fill-gradient-selected-experimental'
-  | 'bg-fill-gradient-active-experimental'
   | 'bg-inverse'
   | 'bg-surface-active'
   | 'bg-surface-brand-active'
@@ -110,6 +108,8 @@ export type ColorBackgroundAlias =
   | 'avatar-two-bg-fill'
   | 'backdrop-bg'
   | 'button-gradient-bg-fill'
+  | 'button-gradient-bg-fill-selected-experimental'
+  | 'button-gradient-bg-fill-active-experimental'
   | 'checkbox-bg-surface-disabled'
   | 'input-bg-surface-active'
   | 'input-bg-surface-hover'
@@ -711,12 +711,6 @@ export const color: {
     description:
       'The active state (on press) color of elements that need to sit on different background colors, with a secondary level of prominence.',
   },
-  'color-bg-fill-gradient-selected-experimental': {
-    value: `linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(19, 19, 19, 1) 50%, rgba(10, 10, 10, 1))`,
-  },
-  'color-bg-fill-gradient-active-experimental': {
-    value: `linear-gradient(to bottom, rgba(33, 33, 33, 1), rgba(30, 30, 30, 1) 50%, rgba(18, 18, 18, 1))`,
-  },
   'color-text': {
     value: colors.gray[15],
     description: 'The default text color.',
@@ -1171,6 +1165,14 @@ export const color: {
     value: colors.blackAlpha[14],
   },
   'color-button-gradient-bg-fill': {
+    value:
+      'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
+  },
+  'color-button-gradient-bg-fill-selected-experimental': {
+    value:
+      'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
+  },
+  'color-button-gradient-bg-fill-active-experimental': {
     value:
       'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
   },
