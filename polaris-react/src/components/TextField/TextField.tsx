@@ -25,6 +25,7 @@ import {useIsMobileFormsInline} from '../../utilities/use-is-mobile-forms-inline
 import {Resizer, Spinner} from './components';
 import type {SpinnerProps} from './components';
 import styles from './TextField.module.css';
+import {useSpinner} from './components/Spinner/useSpinner';
 
 type Type =
   | 'text'
@@ -314,9 +315,20 @@ export function TextField({
   const normalizedStep = step != null ? step : 1;
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
+  const inputType = type === 'currency' ? 'text' : type;
+  const isNumericType = type === 'number' || type === 'integer';
+  const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
+
+  const showStepper =
+    isMobileFormsInline &&
+    isNumericType &&
+    step !== 0 &&
+    !disabled &&
+    !readOnly;
 
   const className = classNames(
     styles.TextField,
+    showStepper && styles.hasStepper,
     isTallInput && styles.tallInput,
     labelInside && styles.labelInside,
     Boolean(labelAction) && styles.labelAction,
@@ -331,9 +343,12 @@ export function TextField({
     size === 'slim' && styles.slim,
   );
 
-  const inputType = type === 'currency' ? 'text' : type;
-  const isNumericType = type === 'number' || type === 'integer';
-  const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
+  const {canDecrement, canIncrement} = useSpinner({
+    value: isNumericType ? Number(value) : null,
+    minValue: min ? Number(min) : undefined,
+    maxValue: max ? Number(max) : undefined,
+    disabled,
+  });
 
   const prefixMarkup = prefix ? (
     <div
@@ -348,7 +363,11 @@ export function TextField({
   ) : null;
 
   const suffixMarkup = suffix ? (
-    <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
+    <div
+      className={classNames(styles.Suffix)}
+      id={`${id}-Suffix`}
+      ref={suffixRef}
+    >
       <Text as="span" variant="bodyMd">
         {suffix}
       </Text>
@@ -487,6 +506,8 @@ export function TextField({
   const spinnerMarkup =
     isNumericType && step !== 0 && !disabled && !readOnly ? (
       <Spinner
+        canIncrement={canIncrement}
+        canDecrement={canDecrement}
         onClick={handleClickChild}
         onChange={handleNumberChange}
         onMouseDown={handleSpinnerButtonPress}
