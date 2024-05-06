@@ -56,6 +56,8 @@ export type ColorBackgroundAlias =
   | 'bg-fill-warning-secondary'
   | 'bg-fill-warning'
   | 'bg-fill'
+  | 'bg-fill-gradient-selected-experimental'
+  | 'bg-fill-gradient-active-experimental'
   | 'bg-inverse'
   | 'bg-surface-active'
   | 'bg-surface-brand-active'
@@ -708,6 +710,12 @@ export const color: {
     value: colors.blackAlpha[8],
     description:
       'The active state (on press) color of elements that need to sit on different background colors, with a secondary level of prominence.',
+  },
+  'color-bg-fill-gradient-selected-experimental': {
+    value: `linear-gradient(to bottom, rgba(25, 25, 25, 1), rgba(19, 19, 19, 1) 50%, rgba(10, 10, 10, 1))`,
+  },
+  'color-bg-fill-gradient-active-experimental': {
+    value: `linear-gradient(to bottom, rgba(33, 33, 33, 1), rgba(30, 30, 30, 1) 50%, rgba(18, 18, 18, 1))`,
   },
   'color-text': {
     value: colors.gray[15],
