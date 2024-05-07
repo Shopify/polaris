@@ -31,6 +31,13 @@
     .Loading:has(+ .ClearButton) {
       margin-right: 0;
     }
+
+    /* Ensure the Backdrop also has no border */
+    .Backdrop {
+      @media (--p-breakpoints-sm-down) {
+        border: none;
+      }
+    }
   }
 
   &:not(:focus-within) {
@@ -93,6 +100,12 @@
     @media (--p-breakpoints-md-down) {
       border-color: var(--p-color-border-focus);
       outline-width: var(--p-border-width-025);
+      outline-offset: 0;
+    }
+
+    @media (--p-breakpoints-sm-down) {
+      border-color: var(--p-color-border-focus);
+      outline-width: var(--p-border-width-050);
       outline-offset: 0;
     }
   }
@@ -223,6 +236,11 @@
   align-items: center;
   flex: 1 1 0%;
   width: 100%;
+}
+.StepperwithSuffixWrapper {
+  justify-content: center;
+  min-width: 70px;
+  height: 36px;
 }
 
 .AutoSizeWrapper {
@@ -364,6 +382,14 @@
   }
 }
 
+.tallInput.labelInside.hasValue.showStepper {
+  .Input,
+  .Prefix {
+    padding-block-start: 0;
+    padding-block-end: 0;
+  }
+}
+
 .borderless {
   .Input,
   .Backdrop {
@@ -449,6 +475,11 @@
   color: var(--p-color-text-secondary);
   user-select: none;
 }
+.StepperSuffix {
+  vertical-align: middle;
+  align-content: center;
+  color: var(--p-color-text);
+}
 
 .Prefix {
   margin-left: var(--p-space-300);
@@ -494,6 +525,18 @@
   svg {
     display: block;
   }
+}
+
+.stepperInput {
+  text-align: center;
+}
+
+.stepperInputWrapper {
+  display: flex;
+  flex-direction: row;
+  border-radius: var(--p-border-radius-750);
+  background-color: var(--p-color-bg-surface-secondary-active);
+  width: 100%;
 }
 
 .CharacterCount {
