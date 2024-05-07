@@ -31,6 +31,13 @@
     .Loading:has(+ .ClearButton) {
       margin-right: 0;
     }
+
+    /* Ensure backdrop has no border when focused */
+    .Backdrop {
+      @media (--p-breakpoints-sm-down) {
+        border: none;
+      }
+    }
   }
 
   &:not(:focus-within) {
@@ -93,6 +100,12 @@
     @media (--p-breakpoints-md-down) {
       border-color: var(--p-color-border-focus);
       outline-width: var(--p-border-width-025);
+      outline-offset: 0;
+    }
+
+    @media (--p-breakpoints-sm-down) {
+      border-color: var(--p-color-border-focus);
+      outline-width: var(--p-border-width-050);
       outline-offset: 0;
     }
   }
@@ -294,7 +307,7 @@
   border: none;
   font-family: var(--p-font-family-sans);
   appearance: none;
-  caret-color: var(--p-color-text);
+  caret-color: var(--p-color-border-focus);
   color: var(--p-color-text);
   align-items: center;
 
