@@ -119,6 +119,20 @@ export function BannerLayout({
       withinContentContainer ? 'withinContentContainer' : 'withinPage'
     ];
 
+  let iconClassName = '';
+
+  if (smUp) {
+    if (isInlineIconBanner) {
+      iconClassName = 'icon-secondary';
+    } else {
+      iconClassName = bannerColors.icon;
+    }
+  } else if (withinContentContainer) {
+    iconClassName = bannerColors.icon;
+  } else {
+    iconClassName = 'icon-secondary';
+  }
+
   const sharedBannerProps: BannerLayoutProps = {
     backgroundColor: bannerColors.background,
     textColor: bannerColors.text,
@@ -151,17 +165,7 @@ export function BannerLayout({
       <Button
         variant="tertiary"
         icon={
-          <span
-            className={
-              styles[
-                isInlineIconBanner
-                  ? 'icon-secondary'
-                  : smUp
-                  ? bannerColors.icon
-                  : 'icon-secondary'
-              ]
-            }
-          >
+          <span className={styles[iconClassName]}>
             <Icon source={XIcon} />
           </span>
         }
