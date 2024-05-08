@@ -53,7 +53,7 @@
     "start": "serve ./build-internal/storybook/static -l ${POLARIS_STORYBOOK_PORT:=6006}",
     "storybook": "storybook dev -p ${POLARIS_STORYBOOK_PORT:=6006} --quiet",
     "storybook:build": "storybook build -o build-internal/storybook/static",
-    "storybook:test": "concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'http-server build-internal/storybook/static --port 6006 --silent' 'wait-on tcp:6006 && test-storybook --maxWorkers=2 polaris-react/src/components/Modal/Modal.stories.tsx'"
+    "storybook:test": "concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'http-server build-internal/storybook/static --port 6006 --silent' 'wait-on tcp:6006 && test-storybook --maxWorkers=2'"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^9.0.1",
