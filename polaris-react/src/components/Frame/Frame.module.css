@@ -39,6 +39,8 @@
 .Frame-TopBarAndReframe {
   /* stylelint-disable -- Polaris component custom properties */
   --pc-sidebar-width: calc(356px + var(--p-space-100));
+  --pc-scrollbar-spacer: 0;
+
   /* stylelint-enable */
   background-color: var(--p-color-bg-inverse);
   transition: width var(--p-motion-duration-250) var(--p-motion-ease);
@@ -46,6 +48,13 @@
   @media (prefers-reduced-motion) {
     transition: none;
   }
+}
+
+.ScrollbarAlwaysVisible {
+  /* Only apply spacing when scrollbar is set to always visible to create a gutter and prevent layout shifts */
+  /* stylelint-disable -- Polaris component custom properties */
+  --pc-scrollbar-spacer: var(--p-space-050);
+  /* stylelint-enable */
 }
 
 .Navigation {
@@ -307,7 +316,8 @@
     /* stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties */
     width: calc(
       100vw - var(--pg-navigation-width) -
-        var(--pc-app-provider-scrollbar-width) - var(--pc-frame-offset, 0px)
+        var(--pc-app-provider-scrollbar-width) - var(--pc-frame-offset, 0px) -
+        var(--pc-scrollbar-spacer)
     );
     /* stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list */
 
@@ -326,7 +336,7 @@
       width: calc(
         100vw - var(--pg-navigation-width) -
           var(--pc-app-provider-scrollbar-width) - var(--pc-sidebar-width) -
-          var(--pc-frame-offset, 0px)
+          var(--pc-frame-offset, 0px) - var(--pc-scrollbar-spacer)
       );
       margin-right: unset;
     }
@@ -462,6 +472,38 @@
 
 .Scrollable {
   width: 100%;
+
+  /* Not using the spacer custom property so the space is applied always */
+  margin-right: var(--p-space-050);
   /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- top bar global space */
   height: calc(100% - var(--pg-top-bar-height));
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--p-color-scrollbar-thumb-bg) transparent;
+  transition: scrollbar-color var(--p-motion-duration-100)
+    var(--p-motion-ease-in);
+
+  &:hover {
+    scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
+  }
+}
+
+.Scrollable-ScrollbarAlwaysVisible {
+  /* Safari scrollbar styles until it adopts scrollbar-color, scrollbar-width */
+  &::-webkit-scrollbar {
+    /* Matches scrollbar-width: thin */
+    width: 11px;
+    background-color: var(--p-color-bg);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--p-color-scrollbar-thumb-bg);
+    border: var(--p-border-width-050) solid transparent;
+    border-radius: var(--p-border-radius-300);
+    background-clip: content-box;
+
+    &:hover {
+      background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    }
+  }
 }

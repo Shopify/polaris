@@ -108,6 +108,8 @@ export type ColorBackgroundAlias =
   | 'avatar-two-bg-fill'
   | 'backdrop-bg'
   | 'button-gradient-bg-fill'
+  | 'button-gradient-bg-fill-selected-experimental'
+  | 'button-gradient-bg-fill-active-experimental'
   | 'checkbox-bg-surface-disabled'
   | 'input-bg-surface-active'
   | 'input-bg-surface-hover'
@@ -120,7 +122,8 @@ export type ColorBackgroundAlias =
   | 'radio-button-bg-surface-disabled'
   | 'video-thumbnail-play-button-bg-fill-hover'
   | 'video-thumbnail-play-button-bg-fill'
-  | 'scrollbar-thumb-bg-hover';
+  | 'scrollbar-thumb-bg-hover'
+  | 'scrollbar-thumb-bg';
 
 export type ColorBorderAlias =
   | 'border-brand'
@@ -1166,6 +1169,14 @@ export const color: {
     value:
       'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
   },
+  'color-button-gradient-bg-fill-selected-experimental': {
+    value:
+      'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
+  },
+  'color-button-gradient-bg-fill-active-experimental': {
+    value:
+      'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
+  },
   'color-checkbox-bg-surface-disabled': {
     value: colors.blackAlpha[7],
   },
@@ -1222,5 +1233,8 @@ export const color: {
   },
   'color-scrollbar-thumb-bg-hover': {
     value: colors.gray[12],
+  },
+  'color-scrollbar-thumb-bg': {
+    value: colors.gray[11],
   },
 };

@@ -72,6 +72,7 @@ interface State {
   loadingStack: number;
   toastMessages: ToastPropsWithID[];
   showContextualSaveBar: boolean;
+  scrollbarAlwaysVisible: boolean;
 }
 
 const APP_FRAME_MAIN = 'AppFrameMain';
@@ -88,6 +89,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     loadingStack: 0,
     toastMessages: [],
     showContextualSaveBar: false,
+    scrollbarAlwaysVisible: false,
   };
 
   private contextualSaveBar: ContextualSaveBarProps | null = null;
@@ -102,6 +104,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     this.setGlobalRibbonRootProperty();
     this.setOffset();
     this.setBodyStyles();
+    this.setScrollbarAlwaysVisible();
   }
 
   componentDidUpdate(prevProps: FrameProps) {
@@ -253,6 +256,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         topBar && styles.hasTopBar,
         sidebar && styles.hasSidebar,
         sidebar && hasDynamicTopBar && styles['hasSidebar-TopBarAndReframe'],
+        this.state.scrollbarAlwaysVisible && styles.ScrollbarAlwaysVisible,
       );
 
     const contextualSaveBarMarkup = this.props.dynamicTopBarAndReframe ? (
@@ -322,7 +326,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                   <Scrollable
                     scrollbarWidth="thin"
                     horizontal={false}
-                    className={styles.Scrollable}
+                    className={classNames(
+                      styles.Scrollable,
+                      this.state.scrollbarAlwaysVisible &&
+                        styles['Scrollable-ScrollbarAlwaysVisible'],
+                    )}
                     id={APP_FRAME_SCROLLABLE}
                   >
                     <div
@@ -375,6 +383,17 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   private setOffset = () => {
     const {offset = '0px'} = this.props;
     setRootProperty('--pc-frame-offset', offset);
+  };
+
+  private setScrollbarAlwaysVisible = () => {
+    const scrollbarWidth = parseInt(
+      document.documentElement.style.getPropertyValue(
+        '--pc-app-provider-scrollbar-width',
+      ),
+      10,
+    );
+
+    this.setState({scrollbarAlwaysVisible: scrollbarWidth > 0});
   };
 
   private setGlobalRibbonRootProperty = () => {

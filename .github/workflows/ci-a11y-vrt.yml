@@ -63,13 +63,13 @@ jobs:
       #    to use `pnpm why` to get the actual installed version.
       # 2. Because we're in a workspace, we need to make sure we get the version
       #    for the workspace, not the root, hence the `--filter`.
-      # 3. jq comes pre-installed in the Ubuntu runner, so we use that to get
-      #    the correct version string.
+      # 3. grep & head come pre-installed in the Ubuntu runner, so we use them
+      #    to get the correct version string.
       # 4. Finally, we use sed to extract just the version number (eg; '1.22.0')
       # The result is stored in steps.playwright-version.outputs.version
       - name: Get installed Playwright version
         id: playwright-version
-        run: echo "::set-output name=version::$(pnpm --filter='@shopify/polaris' why playwright --depth 1 --json | jq --raw-output '[.[].dependencies[].dependencies.playwright.version][0]')"
+        run: echo "version=$(pnpm --filter='@shopify/polaris' why playwright --parseable | grep -E -o '/playwright@[^/]*?/' | head -1 | sed 's,/playwright@\([^/]*\)/,\1,')" >> $GITHUB_OUTPUT
 
       # Attempt to restore the correct Playwright browser binaries based on the
       # currently installed version of Playwright (The browser binary versions

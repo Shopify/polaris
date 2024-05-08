@@ -14,6 +14,7 @@ import {Link} from '../../../../Link';
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
 import styles from '../../../IndexTable.module.css';
 import type {Range} from '../../../../../utilities/index-provider';
+import {Cell} from '../../Cell';
 
 const defaultEvent = {
   preventDefault: noop,
@@ -76,6 +77,29 @@ describe('<Row />', () => {
     );
 
     expect(row).not.toContainReactComponent(Checkbox);
+  });
+
+  it('renders checkboxes when hideSelectable is false and selectable set to true in IndexTable', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} hideSelectable={false}>
+        <th>Child</th>
+      </Row>,
+      {indexTableProps: {selectable: true}},
+    );
+
+    expect(row).toContainReactComponent(Checkbox);
+  });
+
+  it('does not render checkboxes when hideSelectable is true and selectable set to true in IndexTable', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} hideSelectable>
+        <th>Child</th>
+      </Row>,
+      {indexTableProps: {selectable: true}},
+    );
+
+    expect(row).not.toContainReactComponent(Checkbox);
+    expect(row).toContainReactComponent(Cell, {});
   });
 
   it('renders a RowHoveredContext provider', () => {

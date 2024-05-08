@@ -407,7 +407,8 @@ export interface FilterInterface {
   hidden?: boolean;
 }
 
-/* Useful for defining mutually exclusive props such as:
+/**
+ * Useful for defining mutually exclusive props such as:
  *
  * interface MessageBasics {
  *   timestamp?: number;

@@ -1,5 +1,28 @@
 # Changelog
 
+## 13.3.0
+
+### Minor Changes
+
+- [#11979](https://github.com/Shopify/polaris/pull/11979) [`982491f0f`](https://github.com/Shopify/polaris/commit/982491f0faa037641d51977d5015bc1b55c6eaf2) Thanks [@kyledurand](https://github.com/kyledurand)! - Added `animateIn` transition option to Collapsible
+
+* [#11967](https://github.com/Shopify/polaris/pull/11967) [`e50472f85`](https://github.com/Shopify/polaris/commit/e50472f8518558c84216ca6d2466b644d45eed62) Thanks [@kyledurand](https://github.com/kyledurand)! - Added `variant` prop to Collapsible
+
+### Patch Changes
+
+- [#11976](https://github.com/Shopify/polaris/pull/11976) [`4f3bf9948`](https://github.com/Shopify/polaris/commit/4f3bf9948063809841af52bc74f898b045bb8dfa) Thanks [@chloerice](https://github.com/chloerice)! - Fixed sibling `FormLayout.Item` widths not remaining equal when wrapped in `FormLayout.Group`
+
+* [#11945](https://github.com/Shopify/polaris/pull/11945) [`b59743a76`](https://github.com/Shopify/polaris/commit/b59743a766ed0d796a40a72c559dda808e701eaf) Thanks [@sophschneider](https://github.com/sophschneider)! - Added offset width to reframe `Frame` and passed reframe scroll container to sticky manager in `AppProvider`
+
+- [#11965](https://github.com/Shopify/polaris/pull/11965) [`7a702388d`](https://github.com/Shopify/polaris/commit/7a702388d24ec1c9de4daa40ae77dd10c0735aaa) Thanks [@sophschneider](https://github.com/sophschneider)! - Added scrollbar styles for reframe
+
+* [#11944](https://github.com/Shopify/polaris/pull/11944) [`d1d69e919`](https://github.com/Shopify/polaris/commit/d1d69e919c8244bd96ec155e4333f869762a06b6) Thanks [@stefanlegg](https://github.com/stefanlegg)! - Add support for hiding selectable checkbox on a per `IndexTable.Row` basis via `hideSelectable` prop`
+
+- [#11947](https://github.com/Shopify/polaris/pull/11947) [`995079cc7`](https://github.com/Shopify/polaris/commit/995079cc7c5c5087d662609c75c11eea58920f6d) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed `Sticky` to update sticky items when props change
+
+- Updated dependencies [[`12dbc2cd8`](https://github.com/Shopify/polaris/commit/12dbc2cd848dafe8d90fda66c9067151687d25fe), [`8ce6211c9`](https://github.com/Shopify/polaris/commit/8ce6211c95268305e02e7eac4d017378fa45e955), [`7a702388d`](https://github.com/Shopify/polaris/commit/7a702388d24ec1c9de4daa40ae77dd10c0735aaa)]:
+  - @shopify/polaris-tokens@9.1.0
+
 ## 13.2.0
 
 ### Minor Changes

@@ -5,6 +5,8 @@ import {classNames} from '../../utilities/css';
 import styles from './Collapsible.module.css';
 
 interface Transition {
+  /** Expand the collpsible on render. */
+  animateIn?: boolean;
   /** Assign a transition duration to the collapsible animation. */
   duration?: string;
   /** Assign a transition timing function to the collapsible animation */
@@ -18,6 +20,10 @@ export interface CollapsibleProps {
   expandOnPrint?: boolean;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
+  /** The direction the collapsible collapses in.
+   * @default 'block'
+   */
+  variant?: 'block' | 'inline';
   /** Override transition properties. When set to false, disables transition completely.
    * @default transition={{duration: 'var(--p-motion-duration-150)', timingFunction: 'var(--p-motion-ease-in-out)'}}
    */
@@ -34,23 +40,30 @@ export function Collapsible({
   id,
   expandOnPrint,
   open,
+  variant = 'block',
   transition = true,
   children,
   onAnimationEnd,
 }: CollapsibleProps) {
-  const [height, setHeight] = useState(0);
+  const [size, setSize] = useState(0);
   const [isOpen, setIsOpen] = useState(open);
-  const [animationState, setAnimationState] = useState<AnimationState>('idle');
   const collapsibleContainer = useRef<HTMLDivElement>(null);
+  const animateIn = typeof transition === 'object' && transition.animateIn;
+  const [animationState, setAnimationState] = useState<AnimationState>(
+    animateIn ? 'measuring' : 'idle',
+  );
 
   const isFullyOpen = animationState === 'idle' && open && isOpen;
   const isFullyClosed = animationState === 'idle' && !open && !isOpen;
   const content = expandOnPrint || !isFullyClosed ? children : null;
+  const vertical = variant === 'block';
 
   const wrapperClassName = classNames(
     styles.Collapsible,
     isFullyClosed && styles.isFullyClosed,
     expandOnPrint && styles.expandOnPrint,
+    variant === 'inline' && styles.inline,
+    animateIn && styles.animateIn,
   );
 
   const transitionDisabled = isTransitionDisabled(transition);
@@ -62,10 +75,15 @@ export function Collapsible({
 
   const collapsibleStyles = {
     ...transitionStyles,
-    ...{
-      maxHeight: isFullyOpen ? 'none' : `${height}px`,
-      overflow: isFullyOpen ? 'visible' : 'hidden',
-    },
+    ...(vertical
+      ? {
+          maxHeight: isFullyOpen ? 'none' : `${size}px`,
+          overflow: isFullyOpen ? 'visible' : 'hidden',
+        }
+      : {
+          maxWidth: isFullyOpen ? 'auto' : `${size}px`,
+          overflow: isFullyOpen ? 'visible' : 'hidden',
+        }),
   };
 
   const handleCompleteAnimation = useCallback(
@@ -85,14 +103,18 @@ export function Collapsible({
       setAnimationState('idle');
 
       if (open && collapsibleContainer.current) {
-        setHeight(collapsibleContainer.current.scrollHeight);
+        setSize(
+          vertical
+            ? collapsibleContainer.current.scrollHeight
+            : collapsibleContainer.current.scrollWidth,
+        );
       } else {
-        setHeight(0);
+        setSize(0);
       }
     } else {
       setAnimationState('measuring');
     }
-  }, [open, transitionDisabled]);
+  }, [open, vertical, transitionDisabled]);
 
   useEffect(() => {
     if (open !== isOpen) {
@@ -105,7 +127,11 @@ export function Collapsible({
   useEffect(() => {
     if (!open || !collapsibleContainer.current) return;
     // If collapsible defaults to open, set an initial height
-    setHeight(collapsibleContainer.current.scrollHeight);
+    setSize(
+      vertical
+        ? collapsibleContainer.current.scrollHeight
+        : collapsibleContainer.current.scrollWidth,
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -116,13 +142,24 @@ export function Collapsible({
       case 'idle':
         break;
       case 'measuring':
-        setHeight(collapsibleContainer.current.scrollHeight);
+        setSize(
+          vertical
+            ? collapsibleContainer.current.scrollHeight
+            : collapsibleContainer.current.scrollWidth,
+        );
         setAnimationState('animating');
         break;
       case 'animating':
-        setHeight(open ? collapsibleContainer.current.scrollHeight : 0);
+        setSize(
+          // eslint-disable-next-line no-nested-ternary
+          open
+            ? vertical
+              ? collapsibleContainer.current.scrollHeight
+              : collapsibleContainer.current.scrollWidth
+            : 0,
+        );
     }
-  }, [animationState, open, isOpen]);
+  }, [animationState, vertical, open, isOpen]);
 
   return (
     <div
