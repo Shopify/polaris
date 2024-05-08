@@ -1,4 +1,10 @@
-import React, {forwardRef, useContext, useRef, useState} from 'react';
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import type {PropsWithChildren} from 'react';
 import type {ColorTextAlias} from '@shopify/polaris-tokens';
 import {XIcon} from '@shopify/polaris-icons';
@@ -242,20 +248,27 @@ export function InlineIconBanner({
     useState<InlineStackProps['blockAlign']>('center');
   const iconNode = useRef<HTMLDivElement>(null);
   const dismissIconNode = useRef<HTMLDivElement>(null);
+  const contentNode = useRef<HTMLDivElement>(null);
 
-  const contentNodeCallback = (node: HTMLDivElement) => {
-    if (!node) return;
+  useEffect(() => {
+    const updateLayout = () => {
+      const contentHeight = contentNode.current?.offsetHeight ?? 0;
+      const iconBoxHeight =
+        iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
 
-    const contentHeight = node.offsetHeight;
-    const iconBoxHeight =
-      iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
+      if (contentHeight && iconBoxHeight) {
+        setBlockAlign(contentHeight > iconBoxHeight ? 'start' : 'center');
+      }
+    };
 
-    if (!contentHeight || !iconBoxHeight) return;
+    const observer = new ResizeObserver(updateLayout);
 
-    contentHeight > iconBoxHeight
-      ? setBlockAlign('start')
-      : setBlockAlign('center');
-  };
+    if (iconNode.current) observer.observe(iconNode.current);
+    if (dismissIconNode.current) observer.observe(dismissIconNode.current);
+    if (contentNode.current) observer.observe(contentNode.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Box width="100%" padding="300" borderRadius="300">
@@ -273,7 +286,7 @@ export function InlineIconBanner({
                 </Box>
               </div>
             ) : null}
-            <Box ref={contentNodeCallback} width="100%">
+            <Box ref={contentNode} width="100%">
               <BlockStack gap="200">
                 <div>{children}</div>
                 {actionButtons}
