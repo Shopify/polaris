@@ -113,9 +113,13 @@ export const Number = {
         <TextField
           label="First Quantity"
           type="number"
+          prefix="$"
+          suffix="/5"
           value={value}
           onChange={handleChange}
           autoComplete="off"
+          min={1}
+          max={5}
         />
         <TextField
           label="Second Quantity"
@@ -123,6 +127,16 @@ export const Number = {
           value={value1}
           onChange={handleChange1}
           autoComplete="off"
+        />
+        <TextField
+          label="Third Quantity"
+          labelHidden
+          type="number"
+          value={value}
+          onChange={handleChange}
+          autoComplete="off"
+          min={1}
+          max={5}
         />
       </LegacyStack>
     );
