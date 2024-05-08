@@ -30,9 +30,7 @@
 
     /* Ensure backdrop has no border when focused */
     .Backdrop {
-      @media (--p-breakpoints-sm-down) {
-        border: none;
-      }
+      border: none;
     }
   }
 
@@ -80,8 +78,6 @@
 
   /* stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- outline based on child focus requires complex specificity */
   ~ .Backdrop {
-    border-color: var(--p-color-input-border-active);
-    border-width: var(--p-border-width-025);
     background-color: var(--p-color-input-bg-surface-active);
 
     /* stylelint-disable-next-line -- remove focus ring mixin */
@@ -89,11 +85,9 @@
     outline: var(--p-border-width-050) solid var(--p-color-border-focus);
     outline-offset: var(--p-space-025);
 
-    @media (--p-breakpoints-sm-down) {
-      border-color: var(--p-color-border-focus);
-      outline-width: var(--p-border-width-050);
-      outline-offset: 0;
-    }
+    border-color: var(--p-color-border-focus);
+    outline-width: var(--p-border-width-050);
+    outline-offset: 0;
   }
 }
 
