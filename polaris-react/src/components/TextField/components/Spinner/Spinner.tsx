@@ -1,12 +1,22 @@
 import React from 'react';
-import {ChevronDownIcon, ChevronUpIcon} from '@shopify/polaris-icons';
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  MinusIcon,
+  PlusIcon,
+} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
 import styles from '../../TextField.module.css';
+import {useBreakpoints} from '../../../../utilities/breakpoints';
+import {classNames} from '../../../../utilities/css';
 
 type HandleStepFn = (step: number) => void;
 
 export interface SpinnerProps {
+  labelInside: boolean;
+  canIncrement: boolean;
+  canDecrement: boolean;
   onChange: HandleStepFn;
   onClick?(event: React.MouseEvent): void;
   onMouseDown(onChange: HandleStepFn): void;
@@ -15,7 +25,19 @@ export interface SpinnerProps {
 }
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
+  function Spinner(
+    {
+      labelInside,
+      canDecrement,
+      canIncrement,
+      onChange,
+      onClick,
+      onMouseDown,
+      onMouseUp,
+      onBlur,
+    },
+    ref,
+  ) {
     function handleStep(step: number) {
       return () => onChange(step);
     }
@@ -27,11 +49,33 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
       };
     }
 
+    const {mdDown} = useBreakpoints();
+    const increaseIconSource = mdDown ? PlusIcon : ChevronUpIcon;
+    const decreaseIconSource = mdDown ? MinusIcon : ChevronDownIcon;
+    const isIncrementDisabled = mdDown && !canIncrement;
+    const isDecrementDisabled = mdDown && !canDecrement;
+
     return (
-      <div className={styles.Spinner} onClick={onClick} aria-hidden ref={ref}>
+      <div
+        className={
+          mdDown
+            ? classNames(
+                styles.Stepper,
+                labelInside && styles.StepperWithLabelInside,
+              )
+            : styles.Spinner
+        }
+        onClick={onClick}
+        aria-hidden
+        ref={ref}
+      >
         <div
           role="button"
-          className={styles.Segment}
+          className={classNames(
+            styles.Segment,
+            labelInside && styles.segmentWithLabelInside,
+            isIncrementDisabled && styles.disabledSpinnerButton,
+          )}
           tabIndex={-1}
           onClick={handleStep(1)}
           onMouseDown={handleMouseDown(handleStep(1))}
@@ -39,12 +83,16 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={ChevronUpIcon} />
+            <Icon source={increaseIconSource} />
           </div>
         </div>
         <div
           role="button"
-          className={styles.Segment}
+          className={classNames(
+            styles.Segment,
+            labelInside && styles.segmentWithLabelInside,
+            isDecrementDisabled && styles.disabledSpinnerButton,
+          )}
           tabIndex={-1}
           onClick={handleStep(-1)}
           onMouseDown={handleMouseDown(handleStep(-1))}
@@ -52,7 +100,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={ChevronDownIcon} />
+            <Icon source={decreaseIconSource} />
           </div>
         </div>
       </div>

@@ -25,6 +25,7 @@ import {useIsMobileFormsInline} from '../../utilities/use-is-mobile-forms-inline
 import {Resizer, Spinner} from './components';
 import type {SpinnerProps} from './components';
 import styles from './TextField.module.css';
+import {useSpinner} from './components/Spinner/useSpinner';
 
 type Type =
   | 'text'
@@ -271,6 +272,14 @@ export function TextField({
 
   const labelHidden = labelInside ? value.length === 0 : incomingLabelHidden;
 
+  const inputType = type === 'currency' ? 'text' : type;
+  const isNumericType = type === 'number' || type === 'integer';
+  const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
+
+  const showSpinner = isNumericType && step !== 0 && !disabled && !readOnly;
+  const showStepper = isMobileFormsInline && showSpinner;
+  const isAutoSize = autoSize || showStepper;
+
   const uniqId = useId();
   const id = idProp ?? uniqId;
 
@@ -315,6 +324,13 @@ export function TextField({
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
 
+  const {canDecrement, canIncrement} = useSpinner({
+    value: isNumericType ? Number(value) : null,
+    minValue: min ? Number(min) : undefined,
+    maxValue: max ? Number(max) : undefined,
+    disabled,
+  });
+
   const className = classNames(
     styles.TextField,
     isTallInput && styles.tallInput,
@@ -331,10 +347,6 @@ export function TextField({
     size === 'slim' && styles.slim,
   );
 
-  const inputType = type === 'currency' ? 'text' : type;
-  const isNumericType = type === 'number' || type === 'integer';
-  const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
-
   const prefixMarkup = prefix ? (
     <div
       className={classNames(styles.Prefix, iconPrefix && styles.PrefixIcon)}
@@ -347,11 +359,21 @@ export function TextField({
     </div>
   ) : null;
 
+  const suffixContent = showStepper ? (
+    <span>{suffix}</span>
+  ) : (
+    <Text as="span" variant={'bodyMd'}>
+      {suffix}
+    </Text>
+  );
+
   const suffixMarkup = suffix ? (
-    <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
-      <Text as="span" variant="bodyMd">
-        {suffix}
-      </Text>
+    <div
+      className={classNames(styles.Suffix, showStepper && styles.StepperSuffix)}
+      id={`${id}-Suffix`}
+      ref={suffixRef}
+    >
+      {suffixContent}
     </div>
   ) : null;
 
@@ -484,17 +506,19 @@ export function TextField({
     [handleSpinnerButtonRelease],
   );
 
-  const spinnerMarkup =
-    isNumericType && step !== 0 && !disabled && !readOnly ? (
-      <Spinner
-        onClick={handleClickChild}
-        onChange={handleNumberChange}
-        onMouseDown={handleSpinnerButtonPress}
-        onMouseUp={handleSpinnerButtonRelease}
-        ref={spinnerRef}
-        onBlur={handleOnBlur}
-      />
-    ) : null;
+  const spinnerMarkup = showSpinner ? (
+    <Spinner
+      labelInside={labelInside}
+      canIncrement={canIncrement}
+      canDecrement={canDecrement}
+      onClick={handleClickChild}
+      onChange={handleNumberChange}
+      onMouseDown={handleSpinnerButtonPress}
+      onMouseUp={handleSpinnerButtonRelease}
+      ref={spinnerRef}
+      onBlur={handleOnBlur}
+    />
+  ) : null;
 
   const style =
     multiline && height
@@ -552,7 +576,7 @@ export function TextField({
     clearButton && styles['Input-hasClearButton'],
     monospaced && styles.monospaced,
     suggestion && styles.suggestion,
-    autoSize && styles['Input-autoSize'],
+    isAutoSize && styles['Input-autoSize'],
   );
 
   const handleOnFocus = (
@@ -601,7 +625,7 @@ export function TextField({
     inputMode,
     type: inputType,
     rows: getRows(multiline),
-    size: autoSize ? 1 : undefined,
+    size: isAutoSize ? 1 : undefined,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
     'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),
@@ -651,8 +675,13 @@ export function TextField({
     />
   );
 
-  const inputAndSuffixMarkup = autoSize ? (
-    <div className={styles.InputAndSuffixWrapper}>
+  const inputAndSuffixMarkup = isAutoSize ? (
+    <div
+      className={classNames(
+        styles.InputAndSuffixWrapper,
+        showStepper && styles.ShowStepper,
+      )}
+    >
       <div
         className={classNames(
           styles.AutoSizeWrapper,
