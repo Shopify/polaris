@@ -279,6 +279,7 @@ export function InlineIconBanner({
   const contentNode = useRef<HTMLDivElement>(null);
   const iconNode = useRef<HTMLDivElement>(null);
   const dismissIconNode = useRef<HTMLDivElement>(null);
+  const {smUp} = useBreakpoints();
 
   const handleResize = useCallback(() => {
     const contentHeight = contentNode.current?.offsetHeight;
@@ -315,9 +316,9 @@ export function InlineIconBanner({
               <BlockStack gap="200">
                 {bannerTitle ? (
                   <BlockStack gap="100">
-                    <Text as="h2" variant="headingMd" breakWord>
+                    <Box paddingBlockStart={smUp ? '0' : '100'}>
                       {bannerTitle}
-                    </Text>
+                    </Box>
                     {children}
                   </BlockStack>
                 ) : (
