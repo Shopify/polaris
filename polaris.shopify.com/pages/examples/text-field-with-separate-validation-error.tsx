@@ -34,9 +34,7 @@ function SeparateValidationErrorExample() {
 
   const textFieldID = 'ruleContent';
   const isInvalid = isValueInvalid(textFieldValue);
-  const errorMessage = isInvalid
-    ? 'Enter 3 or more characters for product type is equal to'
-    : '';
+  const errorMessage = isInvalid ? ' ' : '';
 
   const formGroupMarkup = (
     <LegacyStack wrap={false} alignment="leading" spacing="loose">
