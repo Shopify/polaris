@@ -1,8 +1,16 @@
-import React, {useCallback, useState} from 'react';
-import type {Meta} from '@storybook/react';
-import {Button, ButtonGroup, Icon, BlockStack, Text} from '@shopify/polaris';
+import type {InlineStackProps} from '@shopify/polaris';
+import {
+  BlockStack,
+  Button,
+  ButtonGroup,
+  Icon,
+  InlineStack,
+  Text,
+} from '@shopify/polaris';
 import {DeleteIcon} from '@shopify/polaris-icons';
-
+import type {Meta} from '@storybook/react';
+import React, {useCallback, useState} from 'react';
+s;
 export default {
   component: ButtonGroup,
 } as Meta<typeof ButtonGroup>;
@@ -157,6 +165,38 @@ export const WithAllGaps = {
   },
 };
 
+export const WithStack = {
+  render() {
+    return (
+      <BlockStack gap="400">
+        <ResponsiveStack align="space-between">
+          <Text>Some start text</Text>
+          <ResponsiveButtonStack>
+            <Button>Bold</Button>
+            <Button>Italic</Button>
+            <Button>Underline</Button>
+          </ResponsiveButtonStack>
+        </ResponsiveStack>
+        <ResponsiveStack gap={{xs: 800, md: 100}}>
+          <Button>Bold</Button>
+          <Button>Italic</Button>
+          <Button>Underline</Button>
+        </ResponsiveStack>
+        <ResponsiveStack align="start">
+          <Button>Bold</Button>
+          <Button>Italic</Button>
+          <Button>Underline</Button>
+        </ResponsiveStack>
+        <ResponsiveStack gap="800">
+          <Button>Bold</Button>
+          <Button>Italic</Button>
+          <Button>Underline</Button>
+        </ResponsiveStack>
+      </BlockStack>
+    );
+  },
+};
+
 export const NoWrapButtons = {
   render() {
     return (
@@ -204,3 +244,32 @@ export const NoWrapButtons = {
     );
   },
 };
+
+function ResponsiveStack({
+  children,
+  align = 'end',
+  blockAlign = 'center',
+  gap = {xs: '200', md: '100'},
+  ...rest
+}: InlineStackProps) {
+  return (
+    <InlineStack
+      direction={{xs: 'column', sm: 'row'}}
+      align={align}
+      gap={gap}
+      blockAlign={{md: blockAlign}}
+      {...rest}
+    >
+      {children}
+    </InlineStack>
+  );
+}
+
+function ResponsiveButtonStack({...rest}: InlineStackProps) {
+  return (
+    <ResponsiveButtonStack
+      {...rest}
+      direction={{xs: 'column-reverse', sm: 'row'}}
+    />
+  );
+}

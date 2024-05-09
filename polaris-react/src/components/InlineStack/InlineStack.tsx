@@ -16,7 +16,9 @@ type Align =
 type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpaceScale>;
-type Direction = ResponsiveProp<'row' | 'row-reverse'>;
+type Direction = ResponsiveProp<
+  'row' | 'row-reverse' | 'column' | 'column-reverse'
+>;
 type Element = 'div' | 'span' | 'li' | 'ol' | 'ul';
 export interface InlineStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
