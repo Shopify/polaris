@@ -172,12 +172,15 @@ export function Button({
   let textFontWeight: TextProps['fontWeight'] = 'medium';
   if (hasPlainText) {
     textFontWeight = 'regular';
-  } else if (variant === 'primary') {
-    textFontWeight = mdUp ? 'medium' : 'semibold';
+  } else if (!mdUp) {
+    textFontWeight = 'semibold';
   }
 
   let textVariant: TextProps['variant'] = 'bodySm';
-  if (size === 'large' || (hasPlainText && size !== 'micro')) {
+  if (!mdUp && !hasPlainText) {
+    textVariant = 'headingSm';
+  }
+  if (size === 'large' || (mdUp && hasPlainText && size !== 'micro')) {
     textVariant = 'bodyMd';
   }
 
