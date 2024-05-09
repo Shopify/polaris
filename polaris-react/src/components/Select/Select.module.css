@@ -93,6 +93,18 @@
   text-overflow: ellipsis;
 }
 
+.tallSelect {
+  .SelectedOption {
+    padding-block: var(--p-space-100);
+  }
+  &.labelInside {
+    .SelectedOption,
+    .Prefix {
+      padding-block-start: calc(var(--p-space-150) + var(--p-space-400));
+    }
+  }
+}
+
 .Prefix {
   padding-right: var(--p-space-100);
 }

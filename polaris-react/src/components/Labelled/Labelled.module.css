@@ -26,6 +26,26 @@
   margin-bottom: var(--p-space-100);
 }
 
+.LabelInside,
+.LabelInsidePlaceholder {
+  position: relative;
+  .LabelWrapper {
+    position: absolute;
+    left: var(--p-space-300);
+    margin-bottom: 0;
+    z-index: var(--p-z-index-2);
+  }
+}
+
+.LabelInside .LabelWrapper {
+  top: var(--p-space-150);
+}
+
+.LabelInsidePlaceholder .LabelWrapper {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .HelpText {
   margin-top: var(--p-space-100);
 }

@@ -33,6 +33,10 @@ export interface LabelledProps {
   disabled?: boolean;
   /** Labels signify a readOnly control */
   readOnly?: boolean;
+
+  labelPosition?: 'Outside' | 'InsidePlaceholder' | 'Inside';
+
+  labelInline?: boolean;
 }
 
 export function Labelled({
@@ -46,9 +50,11 @@ export function Labelled({
   requiredIndicator,
   disabled,
   readOnly,
+  labelPosition,
   ...rest
 }: LabelledProps) {
   const className = classNames(
+    labelPosition && styles[`Label${labelPosition}`],
     labelHidden && styles.hidden,
     disabled && styles.disabled,
     readOnly && styles.readOnly,
@@ -85,6 +91,8 @@ export function Labelled({
         requiredIndicator={requiredIndicator}
         {...rest}
         hidden={false}
+        variant={labelPosition === 'Inside' ? 'bodyXs' : undefined}
+        tone={labelPosition?.startsWith('Inside') ? 'subdued' : undefined}
       >
         {label}
       </Label>
