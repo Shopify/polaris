@@ -295,60 +295,67 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       contextualSaveBarProps: this.contextualSaveBar,
     };
 
-    const hasDynamicTopBar =
-      this.props.dynamicTopBarAndReframe && Boolean(topBar);
+    const {dynamicTopBarAndReframe} = this.props;
 
     return (
       <FrameContext.Provider value={context}>
         <div
-          className={getFrameClassName(hasDynamicTopBar)}
+          className={getFrameClassName(
+            dynamicTopBarAndReframe && Boolean(topBar),
+          )}
           {...layer.props}
           {...navigationAttributes}
         >
           {skipMarkup}
           {topBarMarkup}
-          {hasDynamicTopBar ? null : navigationMarkup}
+          {dynamicTopBarAndReframe ? null : navigationMarkup}
           {contextualSaveBarMarkup}
           {loadingMarkup}
-          {navigationOverlayMarkup}
-          {hasDynamicTopBar ? (
-            <div className={styles.ShadowBevel} id={APP_FRAME_BEVEL}>
+          {dynamicTopBarAndReframe ? null : navigationOverlayMarkup}
+          {dynamicTopBarAndReframe ? (
+            <div
+              className={classNames(
+                topBar ? styles.ShadowBevel : styles.NoShadowBevel,
+              )}
+              id={APP_FRAME_BEVEL}
+            >
               {navigationMarkup}
+              {navigationOverlayMarkup}
               <main
                 className={classNames(
                   styles.Main,
-                  styles['Main-TopBarAndReframe'],
+                  topBar && styles['Main-TopBarAndReframe'],
+                  dynamicTopBarAndReframe &&
+                    styles['NoScrollbarGutterLine-TopBarAndReframe'],
                 )}
                 id={APP_FRAME_MAIN}
                 data-has-global-ribbon={Boolean(globalRibbon)}
               >
-                {hasDynamicTopBar ? (
-                  <Scrollable
-                    scrollbarWidth="thin"
-                    horizontal={false}
+                <Scrollable
+                  scrollbarWidth="thin"
+                  horizontal={false}
+                  className={classNames(
+                    styles.Scrollable,
+                    this.state.scrollbarAlwaysVisible &&
+                      styles['Scrollable-ScrollbarAlwaysVisible'],
+                  )}
+                  id={APP_FRAME_SCROLLABLE}
+                >
+                  <div
                     className={classNames(
-                      styles.Scrollable,
-                      this.state.scrollbarAlwaysVisible &&
-                        styles['Scrollable-ScrollbarAlwaysVisible'],
+                      styles.Content,
+                      styles['Content-TopBarAndReframe'],
                     )}
-                    id={APP_FRAME_SCROLLABLE}
                   >
                     <div
                       className={classNames(
-                        styles.Content,
-                        styles['Content-TopBarAndReframe'],
+                        topBar && styles['ScrollbarSafeArea-TopBarAndReframe'],
                       )}
                     >
-                      <div
-                        className={styles['ScrollbarSafeArea-TopBarAndReframe']}
-                      >
-                        {children}
-                      </div>
+                      {children}
                     </div>
-                  </Scrollable>
-                ) : (
-                  <div className={styles.Content}>{children}</div>
-                )}
+                  </div>
+                </Scrollable>
               </main>
             </div>
           ) : (
