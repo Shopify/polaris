@@ -29,7 +29,13 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-bg-fill-active': {value: colors.gray[13]},
     'color-bg-fill-transparent-active': {value: colors.whiteAlpha[10]},
     'color-bg-fill-brand-active': {value: colors.gray[4]},
+    'color-bg-fill-brand-disabled': {value: colors.gray[9]},
+    'color-bg-fill-secondary': {value: colors.whiteAlpha[7]},
     'color-bg-fill-secondary-hover': {value: colors.whiteAlpha[8]},
+    'color-bg-fill-secondary-selected-experimental': {
+      value: colors.whiteAlpha[10],
+    },
+    'color-bg-fill-secondary-active': {value: colors.whiteAlpha[10]},
     'color-bg-surface-brand-selected': {value: colors.gray[14]},
     'color-border-secondary': {value: colors.gray[14]},
     'color-tooltip-tail-down-border-experimental': {
