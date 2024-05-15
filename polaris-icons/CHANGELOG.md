@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.1.0
+
+### Minor Changes
+
+- [#11993](https://github.com/Shopify/polaris/pull/11993) [`365e5c80a`](https://github.com/Shopify/polaris/commit/365e5c80a02a88e74f8a46ea95778b18d38d1844) Thanks [@jaychashop](https://github.com/jaychashop)! - Added OrganizationFilledIcon
+
 ## 9.0.1
 
 ### Patch Changes

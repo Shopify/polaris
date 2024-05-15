@@ -1,5 +1,20 @@
 # Changelog
 
+## 13.4.0
+
+### Minor Changes
+
+- [#11972](https://github.com/Shopify/polaris/pull/11972) [`25517299c`](https://github.com/Shopify/polaris/commit/25517299c4dfd9c570ca44ec380e536a1511841a) Thanks [@zakwarsame](https://github.com/zakwarsame)! - Updated `Navigation.Item` button to have pointer cursor and no background
+
+### Patch Changes
+
+- [#11950](https://github.com/Shopify/polaris/pull/11950) [`2806dacc8`](https://github.com/Shopify/polaris/commit/2806dacc8f1e5da4517993ebcd7d81228b4b6449) Thanks [@jesstelford](https://github.com/jesstelford)! - Remove useLayoutEffect warning in SSR for IndexTable.
+
+* [#12003](https://github.com/Shopify/polaris/pull/12003) [`2ff31e79f`](https://github.com/Shopify/polaris/commit/2ff31e79f2e6fb73f4d63b6cca6a04d6763389ef) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed max width bug in Collapsible
+
+* Updated dependencies [[`365e5c80a`](https://github.com/Shopify/polaris/commit/365e5c80a02a88e74f8a46ea95778b18d38d1844)]:
+  - @shopify/polaris-icons@9.1.0
+
 ## 13.3.0
 
 ### Minor Changes
