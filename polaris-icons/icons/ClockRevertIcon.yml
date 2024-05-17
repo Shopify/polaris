@@ -1,0 +1,16 @@
+name: ClockRevert
+description: Used to indicate going back in time.
+keywords:
+  - time
+  - clock
+  - watch
+  - minute
+  - second
+  - hour
+  - stopwatch
+  - circle
+  - revert
+authors:
+  - Arda Karaçizmeli
+date_added: 2024-05-17
+date_modified: 2024-05-17
