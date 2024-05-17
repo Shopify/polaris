@@ -47,6 +47,22 @@ describe('<Button />', () => {
     });
   });
 
+  describe('name', () => {
+    it('passes prop', () => {
+      const name = 'intent';
+      const button = mountWithApp(<Button name={name} />);
+      expect(button).toContainReactComponent(UnstyledButton, {name});
+    });
+  });
+
+  describe('value', () => {
+    it('passes prop', () => {
+      const value = 'create';
+      const button = mountWithApp(<Button value={value} />);
+      expect(button).toContainReactComponent(UnstyledButton, {value});
+    });
+  });
+
   describe('url', () => {
     it('passes prop', () => {
       const mockUrl = 'https://google.com';

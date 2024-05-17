@@ -60,6 +60,8 @@ interface CommonButtonProps
     | 'onBlur'
     | 'onMouseEnter'
     | 'onTouchStart'
+    | 'name'
+    | 'value'
   > {
   className: UnstyledButtonProps['className'];
   onMouseUp: MouseUpBlurHandler;
@@ -88,6 +90,8 @@ type ActionButtonProps = Pick<
 
 export function Button({
   id,
+  name,
+  value,
   children,
   url,
   disabled,
@@ -207,6 +211,8 @@ export function Button({
   const commonProps: CommonButtonProps = {
     id,
     className,
+    name,
+    value,
     accessibilityLabel,
     ariaDescribedBy,
     role,

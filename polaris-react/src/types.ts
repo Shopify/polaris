@@ -53,6 +53,10 @@ export interface BaseButton {
   id?: string;
   /** A destination to link to, rendered in the href attribute of a link */
   url?: string;
+  /** Name of the button */
+  name?: string;
+  /** The value associated with the button's name when it's submitted with the form data */
+  value?: string;
   /** Forces url to open in a new tab */
   external?: boolean;
   /** Where to display the url */
