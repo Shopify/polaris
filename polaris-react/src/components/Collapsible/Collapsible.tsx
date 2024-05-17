@@ -81,7 +81,7 @@ export function Collapsible({
           overflow: isFullyOpen ? 'visible' : 'hidden',
         }
       : {
-          maxWidth: isFullyOpen ? 'auto' : `${size}px`,
+          maxWidth: isFullyOpen ? 'none' : `${size}px`,
           overflow: isFullyOpen ? 'visible' : 'hidden',
         }),
   };
