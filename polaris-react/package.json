@@ -115,7 +115,7 @@
     "rimraf": "^3.0.0",
     "sass-loader": "^12.4.0",
     "serve": "^14.2.0",
-    "storybook": "^8.0.8",
+    "storybook": "^8.1.1",
     "transitions-all-settled": "^0.3.0",
     "vite": "^4.5.3",
     "vite-plugin-replace": "^0.1.1",
