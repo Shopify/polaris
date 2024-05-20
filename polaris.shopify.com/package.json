@@ -90,7 +90,7 @@
     "frontmatter": "^0.0.3",
     "generact": "^0.4.0",
     "get-site-urls": "3.0.0-alpha.1",
-    "globby": "^11.1.0",
+    "globby": "^14.0.1",
     "inter-ui": "3.19.3",
     "is-ci": "^3.0.1",
     "js-yaml": "^4.1.0",
