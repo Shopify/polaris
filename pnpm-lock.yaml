@@ -340,8 +340,8 @@ importers:
         specifier: ^8.0.8
         version: 8.0.9(react-dom@18.2.0)(react@18.2.0)
       '@types/js-yaml':
-        specifier: ^4.0.5
-        version: 4.0.5
+        specifier: ^4.0.9
+        version: 4.0.9
       '@types/node':
         specifier: ^20.10.0
         version: 20.12.5
@@ -563,8 +563,8 @@ importers:
         specifier: ^0.0.10
         version: 0.0.10
       '@types/js-yaml':
-        specifier: ^4.0.5
-        version: 4.0.5
+        specifier: ^4.0.9
+        version: 4.0.9
       '@types/lodash.get':
         specifier: ^4.4.7
         version: 4.4.7
@@ -6481,8 +6481,8 @@ packages:
     resolution: {integrity: sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==}
     dev: true
 
-  /@types/js-yaml@4.0.5:
-    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
+  /@types/js-yaml@4.0.9:
+    resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
 
   /@types/jscodeshift@0.11.5:
     resolution: {integrity: sha512-7JV0qdblTeWFigevmwFUgROXX395F+MQx6v0YqPn8Bx0B4Sng6alEejz9PENzgLYpG+zL0O4tGdBzc4gKZH8XA==}
@@ -22921,7 +22921,7 @@ packages:
   /vfile-matter@3.0.1:
     resolution: {integrity: sha512-CAAIDwnh6ZdtrqAuxdElUqQRQDQgbbIrYtDYI8gCjXS1qQ+1XdLoK8FIZWxJwn0/I+BkSSZpar3SOgjemQz4fg==}
     dependencies:
-      '@types/js-yaml': 4.0.5
+      '@types/js-yaml': 4.0.9
       is-buffer: 2.0.5
       js-yaml: 4.1.0
     dev: false
