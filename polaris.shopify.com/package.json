@@ -74,7 +74,7 @@
     "@types/lodash.mapvalues": "^4.6.9",
     "@types/lodash.throttle": "^4.1.7",
     "@types/marked": "^4.0.3",
-    "@types/mdast": "^3.0.10",
+    "@types/mdast": "^4.0.4",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.2.0",
     "@types/unist": "^2.0.6",
