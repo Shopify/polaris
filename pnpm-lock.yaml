@@ -662,8 +662,8 @@ importers:
         specifier: ^0.10.11
         version: 0.10.11
       style-loader:
-        specifier: ^3.3.1
-        version: 3.3.1(webpack@5.76.0)
+        specifier: ^4.0.0
+        version: 4.0.0(webpack@5.76.0)
       ts-node:
         specifier: ^10.7.0
         version: 10.7.0(@types/node@20.12.5)(typescript@4.9.3)
@@ -21467,11 +21467,11 @@ packages:
       webpack: 4.46.0
     dev: true
 
-  /style-loader@3.3.1(webpack@5.76.0):
-    resolution: {integrity: sha512-GPcQ+LDJbrcxHORTRes6Jy2sfvK2kS6hpSfI/fXhPt+spVzxF6LJ1dHLN9zIGmVaaP044YKaIatFaufENRiDoQ==}
-    engines: {node: '>= 12.13.0'}
+  /style-loader@4.0.0(webpack@5.76.0):
+    resolution: {integrity: sha512-1V4WqhhZZgjVAVJyt7TdDPZoPBPNHbekX4fWnCJL1yQukhCeZhJySUL+gL9y6sNdN95uEOS83Y55SqHcP7MzLA==}
+    engines: {node: '>= 18.12.0'}
     peerDependencies:
-      webpack: ^5.0.0
+      webpack: ^5.27.0
     dependencies:
       webpack: 5.76.0
     dev: true
