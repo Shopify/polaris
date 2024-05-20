@@ -72,7 +72,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.mapvalues": "^4.6.9",
-    "@types/lodash.throttle": "^4.1.7",
+    "@types/lodash.throttle": "^4.1.9",
     "@types/marked": "^4.0.3",
     "@types/mdast": "^3.0.10",
     "@types/prismjs": "^1.26.0",
