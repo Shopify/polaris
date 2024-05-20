@@ -379,8 +379,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(postcss@8.4.32)
       postcss-discard-comments:
-        specifier: ^6.0.1
-        version: 6.0.1(postcss@8.4.32)
+        specifier: ^7.0.0
+        version: 7.0.0(postcss@8.4.32)
       postcss-import:
         specifier: '^16.1.0 '
         version: 16.1.0(postcss@8.4.32)
@@ -18646,9 +18646,9 @@ packages:
       postcss: 8.4.32
     dev: true
 
-  /postcss-discard-comments@6.0.1(postcss@8.4.32):
-    resolution: {integrity: sha512-f1KYNPtqYLUeZGCHQPKzzFtsHaRuECe6jLakf/RjSRqvF5XHLZnM2+fXLhb8Qh/HBFHs3M4cSLb1k3B899RYIg==}
-    engines: {node: ^14 || ^16 || >=18.0}
+  /postcss-discard-comments@7.0.0(postcss@8.4.32):
+    resolution: {integrity: sha512-xpSdzRqYmy4YIVmjfGyYXKaI1SRnK6CTr+4Zmvyof8ANwvgfZgGdVtmgAvzh59gJm808mJCWQC9tFN0KF5dEXA==}
+    engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.31
     dependencies:
