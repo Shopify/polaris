@@ -295,8 +295,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       '@shopify/postcss-plugin':
-        specifier: ^5.0.1
-        version: 5.0.1(postcss@8.4.32)
+        specifier: ^5.0.2
+        version: 5.0.2(postcss@8.4.32)
       '@shopify/react-testing':
         specifier: ^4.1.0
         version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -5043,8 +5043,8 @@ packages:
       - supports-color
     dev: true
 
-  /@shopify/postcss-plugin@5.0.1(postcss@8.4.32):
-    resolution: {integrity: sha512-/YBuS9i/wRUh5RyhdvEDONnUpdAdE2qLJ/xJrGk0fjvkqU9+Pqv4w0rCTIbEZ2OENh3EkeSrZHOwxhEOo2Scvg==}
+  /@shopify/postcss-plugin@5.0.2(postcss@8.4.32):
+    resolution: {integrity: sha512-+qkXwbUyzerNMACmYDyA/erpPkOSbf1II2JKlqElkuQd4MlxKZJEPwWKfxIQT+Fez7bvYcUwTw1DhyR/sk2YMw==}
     peerDependencies:
       postcss: ^8.2.8
     dependencies:
