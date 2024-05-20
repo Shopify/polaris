@@ -73,7 +73,7 @@
     "@csstools/postcss-global-data": "2.1.0",
     "@shopify/jest-dom-mocks": "^5.0.0",
     "@shopify/postcss-plugin": "^5.0.1",
-    "@shopify/react-testing": "^4.1.0",
+    "@shopify/react-testing": "^5.2.0",
     "@shopify/useful-types": "^5.1.2",
     "@storybook/addon-a11y": "^8.0.8",
     "@storybook/addon-toolbars": "^8.0.8",
