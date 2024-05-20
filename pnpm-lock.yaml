@@ -54,8 +54,8 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2(rollup@3.29.4)
       '@rollup/plugin-virtual':
-        specifier: ^3.0.1
-        version: 3.0.1(rollup@3.29.4)
+        specifier: ^3.0.2
+        version: 3.0.2(rollup@3.29.4)
       '@rollup/pluginutils':
         specifier: ^5.0.2
         version: 5.0.2(rollup@3.29.4)
@@ -4942,11 +4942,11 @@ packages:
       rollup: 3.29.4
     dev: true
 
-  /@rollup/plugin-virtual@3.0.1(rollup@3.29.4):
-    resolution: {integrity: sha512-fK8O0IL5+q+GrsMLuACVNk2x21g3yaw+sG2qn16SnUd3IlBsQyvWxLMGHmCmXRMecPjGRSZ/1LmZB4rjQm68og==}
+  /@rollup/plugin-virtual@3.0.2(rollup@3.29.4):
+    resolution: {integrity: sha512-10monEYsBp3scM4/ND4LNH5Rxvh3e/cVeL3jWTgZ2SrQ+BmUoQcopVQvnaMcOnykb1VkxUFuDAN+0FnpTFRy2A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
