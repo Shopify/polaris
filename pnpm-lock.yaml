@@ -212,8 +212,8 @@ importers:
         specifier: ^0.13.1
         version: 0.13.1(@babel/preset-env@7.23.6)
       meow:
-        specifier: ^9.0.0
-        version: 9.0.0
+        specifier: ^13.2.0
+        version: 13.2.0
       postcss:
         specifier: ^8.4.14
         version: 8.4.32
@@ -16421,6 +16421,11 @@ packages:
       type-fest: 1.4.0
       yargs-parser: 20.2.9
     dev: true
+
+  /meow@13.2.0:
+    resolution: {integrity: sha512-pxQJQzB6djGPXh08dacEloMFopsOqGVRKFPYvPOt9XDZ1HasbgDZA74CJGreSU4G3Ak7EFJGoiH2auq+yXISgA==}
+    engines: {node: '>=18'}
+    dev: false
 
   /meow@3.7.0:
     resolution: {integrity: sha512-TNdwZs0skRlpPpCUK25StC4VH+tP5GgeY1HQOOGP+lQ2xtdkN2VtT/5tiX9k3IWpkBPV9b3LsAWXn4GGi/PrSA==}
