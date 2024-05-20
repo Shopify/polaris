@@ -310,8 +310,8 @@ importers:
         specifier: ^8.0.8
         version: 8.0.9
       '@storybook/addon-viewport':
-        specifier: ^8.0.8
-        version: 8.0.9
+        specifier: ^8.1.1
+        version: 8.1.1
       '@storybook/blocks':
         specifier: ^8.0.8
         version: 8.0.9(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
@@ -5237,8 +5237,8 @@ packages:
     resolution: {integrity: sha512-nNSBnnBOhQ+EJwkrIkK4ZBYPcozNmEH770CZ/6NK85SUJ6WEBZapE6ru33jIUokFGEvlOlNCeai0GUc++cQP8w==}
     dev: true
 
-  /@storybook/addon-viewport@8.0.9:
-    resolution: {integrity: sha512-Ao4+D56cO7biaw+iTlMU1FBec1idX0cmdosDeCFZin06MSawcPkeBlRBeruaSQYdLes8TBMdZPFgfuqI5yIk6g==}
+  /@storybook/addon-viewport@8.1.1:
+    resolution: {integrity: sha512-AqUYM7mozrIDa/MNHEd2h7jbfKncofx/OUVI8hrbj7VX46OQ5XbvBqgKpPK15c1ejPfx1hiVz9ZYGxA6HXXrjw==}
     dependencies:
       memoizerific: 1.11.3
     dev: true
