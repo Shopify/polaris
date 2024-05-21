@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react';
 import type {ReactNode, TransitionEvent} from 'react';
+import {createVar} from '@shopify/polaris-tokens';
 import type {MotionDurationScale} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
@@ -72,7 +73,7 @@ export function Collapsible({
   const transitionDisabled = isTransitionDisabled(transition);
 
   const transitionStyles = typeof transition === 'object' && {
-    transitionDelay: `var(--p-motion-duration-${transition.delay})`,
+    transitionDelay: createVar(`motion-duration-${transition.delay ?? '0'}`),
     transitionDuration: transition.duration,
     transitionTimingFunction: transition.timingFunction,
   };

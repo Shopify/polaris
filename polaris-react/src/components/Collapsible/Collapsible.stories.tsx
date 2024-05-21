@@ -106,7 +106,7 @@ export const WithDelay = {
               open={open}
               id="inline-collapsible"
               variant="inline"
-              transition={{delay: '5000'}}
+              transition={{delay: '500'}}
             >
               <p style={{whiteSpace: 'nowrap'}}>Non breaking text</p>
             </Collapsible>
