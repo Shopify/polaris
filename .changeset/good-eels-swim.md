@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added style prop and transition delay to Collapsible
+Added transition delay to Collapsible

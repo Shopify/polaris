@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react';
-import type {ReactNode, CSSProperties, TransitionEvent} from 'react';
+import type {ReactNode, TransitionEvent} from 'react';
 import type {MotionDurationScale} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
@@ -34,8 +34,6 @@ export interface CollapsibleProps {
   transition?: boolean | Transition;
   /** Callback when the animation completes. */
   onAnimationEnd?(): void;
-  /** Overriding styles on the collapsible element */
-  style?: CSSProperties;
   /** The content to display inside the collapsible. */
   children?: ReactNode;
 }
@@ -49,7 +47,6 @@ export function Collapsible({
   variant = 'block',
   transition = true,
   children,
-  style,
   onAnimationEnd,
 }: CollapsibleProps) {
   const [size, setSize] = useState(0);
@@ -81,7 +78,6 @@ export function Collapsible({
   };
 
   const collapsibleStyles = {
-    ...style,
     ...transitionStyles,
     ...(vertical
       ? {
