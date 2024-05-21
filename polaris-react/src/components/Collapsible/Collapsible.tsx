@@ -1,4 +1,7 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react';
+import type {ReactNode, TransitionEvent} from 'react';
+import {createVar} from '@shopify/polaris-tokens';
+import type {MotionDurationScale} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
@@ -7,6 +10,8 @@ import styles from './Collapsible.module.css';
 interface Transition {
   /** Expand the collpsible on render. */
   animateIn?: boolean;
+  /** Assign a transition delay to the collapsible animation */
+  delay?: MotionDurationScale;
   /** Assign a transition duration to the collapsible animation. */
   duration?: string;
   /** Assign a transition timing function to the collapsible animation */
@@ -31,7 +36,7 @@ export interface CollapsibleProps {
   /** Callback when the animation completes. */
   onAnimationEnd?(): void;
   /** The content to display inside the collapsible. */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 type AnimationState = 'idle' | 'measuring' | 'animating';
@@ -52,7 +57,6 @@ export function Collapsible({
   const [animationState, setAnimationState] = useState<AnimationState>(
     animateIn ? 'measuring' : 'idle',
   );
-
   const isFullyOpen = animationState === 'idle' && open && isOpen;
   const isFullyClosed = animationState === 'idle' && !open && !isOpen;
   const content = expandOnPrint || !isFullyClosed ? children : null;
@@ -69,6 +73,7 @@ export function Collapsible({
   const transitionDisabled = isTransitionDisabled(transition);
 
   const transitionStyles = typeof transition === 'object' && {
+    transitionDelay: createVar(`motion-duration-${transition.delay ?? '0'}`),
     transitionDuration: transition.duration,
     transitionTimingFunction: transition.timingFunction,
   };
@@ -87,7 +92,7 @@ export function Collapsible({
   };
 
   const handleCompleteAnimation = useCallback(
-    ({target}: React.TransitionEvent<HTMLDivElement>) => {
+    ({target}: TransitionEvent<HTMLDivElement>) => {
       if (target === collapsibleContainer.current) {
         setAnimationState('idle');
         setIsOpen(open);

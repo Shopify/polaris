@@ -152,7 +152,11 @@ describe('<Collapsible />', () => {
         <Collapsible id="test-collapsible" open transition={{duration}} />,
       );
 
-      expect(collapsible).toHaveReactProps({transition: {duration}});
+      expect(collapsible).toContainReactComponent('div', {
+        style: expect.objectContaining({
+          transitionDuration: duration,
+        }),
+      });
     });
 
     it('passes a timingFunction property', () => {
@@ -165,7 +169,24 @@ describe('<Collapsible />', () => {
         />,
       );
 
-      expect(collapsible).toHaveReactProps({transition: {timingFunction}});
+      expect(collapsible).toContainReactComponent('div', {
+        style: expect.objectContaining({
+          transitionTimingFunction: timingFunction,
+        }),
+      });
+    });
+
+    it('passes a delay property', () => {
+      const delay = '100';
+      const collapsible = mountWithApp(
+        <Collapsible id="test-collapsible" open transition={{delay}} />,
+      );
+
+      expect(collapsible).toContainReactComponent('div', {
+        style: expect.objectContaining({
+          transitionDelay: `var(--p-motion-duration-${delay})`,
+        }),
+      });
     });
 
     const transitionDisabledOptions = [
