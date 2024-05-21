@@ -57,6 +57,7 @@ export const Default = {
     );
   },
 };
+
 export const Inline = {
   render() {
     const [open, setOpen] = useState(true);
@@ -70,14 +71,44 @@ export const Inline = {
             <Button
               onClick={handleToggle}
               ariaExpanded={open}
-              ariaControls="basic-collapsible"
+              ariaControls="inline-collapsible"
             >
               Toggle
             </Button>
             <Collapsible open={open} id="inline-collapsible" variant="inline">
-              <p style={{whiteSpace: 'nowrap', backgroundColor: 'red'}}>
-                Non breaking text
-              </p>
+              <p style={{whiteSpace: 'nowrap'}}>Non breaking text</p>
+            </Collapsible>
+          </LegacyStack>
+        </LegacyCard>
+      </div>
+    );
+  },
+};
+
+export const WithDelay = {
+  render() {
+    const [open, setOpen] = useState(true);
+
+    const handleToggle = useCallback(() => setOpen((open) => !open), []);
+
+    return (
+      <div style={{height: '200px'}}>
+        <LegacyCard sectioned>
+          <LegacyStack alignment="center">
+            <Button
+              onClick={handleToggle}
+              ariaExpanded={open}
+              ariaControls="inline-collapsible"
+            >
+              Toggle
+            </Button>
+            <Collapsible
+              open={open}
+              id="inline-collapsible"
+              variant="inline"
+              transition={{delay: '5002'}}
+            >
+              <p style={{whiteSpace: 'nowrap'}}>Non breaking text</p>
             </Collapsible>
           </LegacyStack>
         </LegacyCard>
@@ -119,9 +150,7 @@ export const AnimateIn = {
                 duration: 'var(--p-motion-duration-250)',
               }}
             >
-              <p style={{whiteSpace: 'nowrap', backgroundColor: 'red'}}>
-                Non breaking text
-              </p>
+              <p style={{whiteSpace: 'nowrap'}}>Non breaking text</p>
             </Collapsible>
 
             <Button
@@ -141,7 +170,7 @@ export const AnimateIn = {
             <Box maxWidth="20%">
               <Collapsible
                 open={open}
-                id="inline-collapsible"
+                id="basic-collapsible"
                 transition={{
                   animateIn: true,
                   duration: 'var(--p-motion-duration-250)',

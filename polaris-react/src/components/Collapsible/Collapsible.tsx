@@ -1,4 +1,6 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react';
+import type {ReactNode, CSSProperties, TransitionEvent} from 'react';
+import type {MotionDurationScale} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
@@ -7,6 +9,8 @@ import styles from './Collapsible.module.css';
 interface Transition {
   /** Expand the collpsible on render. */
   animateIn?: boolean;
+  /** Assign a transition delay to the collapsible animation */
+  delay?: MotionDurationScale;
   /** Assign a transition duration to the collapsible animation. */
   duration?: string;
   /** Assign a transition timing function to the collapsible animation */
@@ -30,8 +34,10 @@ export interface CollapsibleProps {
   transition?: boolean | Transition;
   /** Callback when the animation completes. */
   onAnimationEnd?(): void;
+  /** Overriding styles on the collapsible element */
+  style?: CSSProperties;
   /** The content to display inside the collapsible. */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 type AnimationState = 'idle' | 'measuring' | 'animating';
@@ -43,6 +49,7 @@ export function Collapsible({
   variant = 'block',
   transition = true,
   children,
+  style,
   onAnimationEnd,
 }: CollapsibleProps) {
   const [size, setSize] = useState(0);
@@ -52,7 +59,6 @@ export function Collapsible({
   const [animationState, setAnimationState] = useState<AnimationState>(
     animateIn ? 'measuring' : 'idle',
   );
-
   const isFullyOpen = animationState === 'idle' && open && isOpen;
   const isFullyClosed = animationState === 'idle' && !open && !isOpen;
   const content = expandOnPrint || !isFullyClosed ? children : null;
@@ -69,11 +75,13 @@ export function Collapsible({
   const transitionDisabled = isTransitionDisabled(transition);
 
   const transitionStyles = typeof transition === 'object' && {
+    transitionDelay: `var(--p-motion-duration-${transition.delay})`,
     transitionDuration: transition.duration,
     transitionTimingFunction: transition.timingFunction,
   };
 
   const collapsibleStyles = {
+    ...style,
     ...transitionStyles,
     ...(vertical
       ? {
@@ -87,7 +95,7 @@ export function Collapsible({
   };
 
   const handleCompleteAnimation = useCallback(
-    ({target}: React.TransitionEvent<HTMLDivElement>) => {
+    ({target}: TransitionEvent<HTMLDivElement>) => {
       if (target === collapsibleContainer.current) {
         setAnimationState('idle');
         setIsOpen(open);
