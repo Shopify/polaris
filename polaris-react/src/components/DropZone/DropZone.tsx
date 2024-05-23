@@ -45,7 +45,14 @@ export interface DropZoneProps {
   labelHidden?: boolean;
   /** ID for file input */
   id?: string;
-  /** Allowed file types */
+  /** Allowed file MIME types. Note that model subtypes such as model/gltf-binary
+   * are not recognized by most browsers. In this case, and for other unsupported
+   * MIME types, you can use file extensions in the accept string instead, for
+   * example '.glb', but note that this will disable file validation on drag events,
+   * since the file name is not known until the file is dropped. It is valid to mix
+   * MIME types and extensions in the accept string.
+   * @example 'image/jpeg,video/*'
+   */
   accept?: string;
   /**
    * Whether is a file or an image
@@ -188,16 +195,25 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const i18n = useI18n();
 
   const getValidatedFiles = useCallback(
-    (files: File[] | DataTransferItem[]) => {
+    (event: DropZoneEvent) => {
+      const files = getDataTransferFiles(event);
       const acceptedFiles: File[] = [];
       const rejectedFiles: File[] = [];
 
-      Array.from(files as File[]).forEach((file: File) => {
-        !fileAccepted(file, accept) ||
-        (customValidator && !customValidator(file))
-          ? rejectedFiles.push(file)
-          : acceptedFiles.push(file);
-      });
+      // File names and extensions are only known on drop events, so if the
+      // 'accept' prop includes any file extensions, we skip validation on
+      // non-drop events (such as dragenter and dragover) and validate
+      // once the user drops the file and the file name is known.
+      if (event.type !== 'drop' && accept?.includes('.')) {
+        acceptedFiles.push(...(files as File[]));
+      } else {
+        Array.from(files as File[]).forEach((file: File) => {
+          !fileAccepted(file, accept) ||
+          (customValidator && !customValidator(file))
+            ? rejectedFiles.push(file)
+            : acceptedFiles.push(file);
+        });
+      }
 
       if (!allowMultiple) {
         acceptedFiles.splice(1, acceptedFiles.length);
@@ -214,9 +230,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       stopEvent(event);
       if (disabled) return;
 
-      const fileList = getDataTransferFiles(event);
-
-      const {files, acceptedFiles, rejectedFiles} = getValidatedFiles(fileList);
+      const {files, acceptedFiles, rejectedFiles} = getValidatedFiles(event);
 
       dragTargets.current = [];
 
@@ -239,15 +253,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
       stopEvent(event);
       if (disabled) return;
 
-      const fileList = getDataTransferFiles(event);
-
       if (event.target && !dragTargets.current.includes(event.target)) {
         dragTargets.current.push(event.target);
       }
 
       if (dragging) return;
 
-      const {rejectedFiles} = getValidatedFiles(fileList);
+      const {rejectedFiles} = getValidatedFiles(event);
 
       setDragging(true);
       setInternalError(rejectedFiles.length > 0);

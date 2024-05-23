@@ -90,6 +90,37 @@ describe('<DropZone />', () => {
     expect(spy).toHaveBeenCalledWith(files, acceptedFiles, rejectedFiles);
   });
 
+  it('calls the onDrop callback with files, acceptedFiles, and rejectedFiles when the accept prop is an extension', () => {
+    const dropZone = mountWithApp(<DropZone onDrop={spy} accept=".jpg" />);
+    const testFiles = [{type: 'image/jpeg', name: 'cat.jpg'}];
+    fireEvent({wrapper: dropZone, testFiles});
+    expect(spy).toHaveBeenCalledWith(testFiles, testFiles, []);
+  });
+
+  it('calls the onDrop callback with files, acceptedFiles, and rejectedFiles when the mime type is empty', () => {
+    const dropZone = mountWithApp(<DropZone onDrop={spy} accept=".glb" />);
+    const testFiles = [{type: '', name: 'cat.glb'}];
+    fireEvent({wrapper: dropZone, testFiles});
+    expect(spy).toHaveBeenCalledWith(testFiles, testFiles, []);
+  });
+
+  it('calls the onDrop callback with files, acceptedFiles, and rejectedFiles when the accept prop is a combination of mime types and extensions', () => {
+    const dropZone = mountWithApp(
+      <DropZone onDrop={spy} accept="image/jpeg,.glb" />,
+    );
+    const testFiles = [
+      {type: 'image/jpeg', name: 'cat.jpg'},
+      {type: '', name: 'cat.glb'},
+      {type: 'image/png', name: 'cat.png'},
+    ];
+    fireEvent({wrapper: dropZone, testFiles});
+    expect(spy).toHaveBeenCalledWith(
+      testFiles,
+      [testFiles[0], testFiles[1]],
+      [testFiles[2]],
+    );
+  });
+
   it('calls the onDropAccepted callback with acceptedFiles when it accepts only jpeg', () => {
     const dropZone = mountWithApp(
       <DropZone onDropAccepted={spy} accept="image/jpeg" />,
@@ -410,6 +441,20 @@ describe('<DropZone />', () => {
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       expect(dropZone).toContainReactComponent(Text, {
+        children: errorOverlayText,
+      });
+    });
+
+    it('does not render an error on dragenter event when file extensions are accepted', () => {
+      const dropZone = mountWithApp(
+        <DropZone
+          errorOverlayText={errorOverlayText}
+          accept=".glb"
+          variableHeight
+        />,
+      );
+      fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      expect(dropZone).not.toContainReactComponent(Text, {
         children: errorOverlayText,
       });
     });
