@@ -13,4 +13,10 @@
   @mixin shadow-bevel var(--pc-shadow-bevel-box-shadow),
     var(--pc-shadow-bevel-border-radius), null, var(--pc-shadow-bevel-content),
     var(--pc-shadow-bevel-z-index);
+
+  @media print {
+    box-shadow: none;
+
+    @mixin shadow-bevel none, var(--p-border-radius-0), none, none;
+  }
 }
