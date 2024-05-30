@@ -1,11 +1,13 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect, useCallback} from 'react';
 
 import {classNames} from '../../utilities/css';
-import type {ComplexAction} from '../../types';
+import type {ComplexAction, ActionListItemDescriptor} from '../../types';
 import {Box} from '../Box';
 import {buttonFrom} from '../Button';
 import {Image} from '../Image';
 import {Text} from '../Text';
+import {Popover} from '../Popover';
+import {ActionList} from '../ActionList';
 import {BlockStack} from '../BlockStack';
 import {InlineStack} from '../InlineStack';
 
@@ -29,11 +31,56 @@ export interface EmptyStateProps {
   children?: React.ReactNode;
   /** Primary action for empty state */
   action?: ComplexAction;
+  /** List of actions for primary button */
+  actionList?: ActionListItemDescriptor[];
   /** Secondary action for empty state */
   secondaryAction?: ComplexAction;
+  /** List of actions for secondary button */
+  secondaryActionList?: ActionListItemDescriptor[];
   /** Secondary elements to display below empty state actions */
   footerContent?: React.ReactNode;
 }
+
+interface MarkupBuilder {
+  (
+    action: ComplexAction | undefined,
+    actionList: ActionListItemDescriptor[] | undefined,
+    onClick: () => void,
+    variant: 'primary' | 'secondary',
+    isActive: boolean,
+  ): React.ReactNode;
+}
+
+export const buildMarkupSection: MarkupBuilder = (
+  action,
+  actionList,
+  onClick,
+  variant,
+  isActive,
+) => {
+  const actionMarkup = action
+    ? buttonFrom(action, {
+        variant,
+        size: 'medium',
+        url: actionList ? undefined : action?.url,
+        disclosure: Boolean(actionList),
+        onClick,
+      })
+    : null;
+
+  const actionPopover = actionMarkup ? (
+    <Popover
+      active={isActive}
+      activator={actionMarkup}
+      autofocusTarget="first-node"
+      onClose={onClick}
+    >
+      <ActionList actionRole="menuitem" items={actionList || []} />
+    </Popover>
+  ) : null;
+
+  return actionList ? actionPopover : actionMarkup;
+};
 
 export function EmptyState({
   children,
@@ -43,7 +90,9 @@ export function EmptyState({
   imageContained,
   fullWidth = false,
   action,
+  actionList,
   secondaryAction,
+  secondaryActionList,
   footerContent,
 }: EmptyStateProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -101,10 +150,6 @@ export function EmptyState({
     </div>
   );
 
-  const secondaryActionMarkup = secondaryAction
-    ? buttonFrom(secondaryAction, {})
-    : null;
-
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="400">
       <Text as="span" alignment="center" variant="bodySm">
@@ -113,9 +158,17 @@ export function EmptyState({
     </Box>
   ) : null;
 
-  const primaryActionMarkup = action
-    ? buttonFrom(action, {variant: 'primary', size: 'medium'})
-    : null;
+  const [primaryPopoverActive, setPrimaryPopoverActive] = useState(false);
+  const togglePrimaryPopoverActive = useCallback(
+    () => setPrimaryPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const [secondaryPopoverActive, setSecondaryPopoverActive] = useState(false);
+  const toggleSecondaryPopoverActive = useCallback(
+    () => setSecondaryPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
 
   const headingMarkup = heading ? (
     <Box paddingBlockEnd="150">
@@ -138,6 +191,22 @@ export function EmptyState({
         {childrenMarkup}
       </Box>
     ) : null;
+
+  const primaryActionMarkup = buildMarkupSection(
+    action,
+    actionList,
+    togglePrimaryPopoverActive,
+    'primary',
+    primaryPopoverActive,
+  );
+
+  const secondaryActionMarkup = buildMarkupSection(
+    secondaryAction,
+    secondaryActionList,
+    toggleSecondaryPopoverActive,
+    'secondary',
+    secondaryPopoverActive,
+  );
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (

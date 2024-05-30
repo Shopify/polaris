@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
+import {Popover} from '../../Popover';
 import {Image} from '../../Image';
 import {Text} from '../../Text';
 import {UnstyledLink} from '../../UnstyledLink';
@@ -92,6 +93,47 @@ describe('<EmptyState />', () => {
       expect(emptyState).toContainReactComponent(UnstyledLink, {
         plain: undefined,
       });
+    });
+  });
+
+  describe('actionList', () => {
+    it('renders a button with a Popover if an action and an action list are both set', () => {
+      const actionListExpected = [{content: 'Option 1'}, {content: 'Option 2'}];
+      const emptyState = mountWithApp(
+        <EmptyState
+          action={{content: 'Add transfer'}}
+          actionList={actionListExpected}
+          image={imgSrc}
+        />,
+      );
+      expect(emptyState.find('button')).toContainReactText('Add transfer');
+      expect(emptyState).toContainReactComponent(Popover);
+    });
+
+    it('does not render a Popover if an action list is not set', () => {
+      const emptyState = mountWithApp(
+        <EmptyState action={{content: 'Add transfer'}} image={imgSrc} />,
+      );
+      expect(emptyState).not.toContainReactComponent(Popover);
+    });
+
+    it('does not render anything if an action and an action list are not set', () => {
+      const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
+      expect(emptyState.find('button')).toBeNull();
+      expect(emptyState).not.toContainReactComponent(Popover);
+    });
+
+    it('sets the Button url to undefined when an action list is set (so it works as a popover instead)', () => {
+      const actionListExpected = [{content: 'Option 1'}, {content: 'Option 2'}];
+      const emptyState = mountWithApp(
+        <EmptyState
+          action={{content: 'Add transfer', url: 'https://help.shopify.com'}}
+          actionList={actionListExpected}
+          image={imgSrc}
+        />,
+      );
+      expect(emptyState.find(Button)).toHaveReactProps({url: undefined});
+      expect(emptyState).toContainReactComponent(Popover);
     });
   });
 
@@ -199,6 +241,34 @@ describe('<EmptyState />', () => {
       );
 
       expect(emptyState.find(UnstyledLink)).toContainReactText('Learn more');
+    });
+  });
+
+  describe('secondaryActionList', () => {
+    it('renders a button with a Popover if a secondaryAction and a secondary action list are both set', () => {
+      const actionListExpected = [{content: 'Option 1'}, {content: 'Option 2'}];
+      const emptyState = mountWithApp(
+        <EmptyState
+          secondaryAction={{content: 'Add transfer'}}
+          secondaryActionList={actionListExpected}
+          image={imgSrc}
+        />,
+      );
+      expect(emptyState.find('button')).toContainReactText('Add transfer');
+      expect(emptyState).toContainReactComponent(Popover);
+    });
+
+    it('does not render a Popover if a secondary action list is not set', () => {
+      const emptyState = mountWithApp(
+        <EmptyState action={{content: 'Add transfer'}} image={imgSrc} />,
+      );
+      expect(emptyState).not.toContainReactComponent(Popover);
+    });
+
+    it('does not render anything if an action and an action list are not set', () => {
+      const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
+      expect(emptyState.find('button')).toBeNull();
+      expect(emptyState).not.toContainReactComponent(Popover);
     });
   });
 
