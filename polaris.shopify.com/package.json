@@ -33,7 +33,7 @@
     "@shopify/polaris": "^13.5.0",
     "@shopify/polaris-icons": "^9.1.1",
     "@shopify/polaris-tokens": "^9.1.0",
-    "@types/react-syntax-highlighter": "^15.5.6",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "base-64": "^1.0.0",
     "codesandbox": "^2.2.3",
     "endent": "^2.1.0",
