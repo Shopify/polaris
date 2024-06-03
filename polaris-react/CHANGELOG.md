@@ -1,5 +1,16 @@
 # Changelog
 
+## 13.5.0
+
+### Minor Changes
+
+- [#12118](https://github.com/Shopify/polaris/pull/12118) [`5fcca651f`](https://github.com/Shopify/polaris/commit/5fcca651f5b2f16c83569e6934b0884df681b7ed) Thanks [@kyledurand](https://github.com/kyledurand)! - Added transition delay to Collapsible
+
+### Patch Changes
+
+- Updated dependencies [[`fe2891792`](https://github.com/Shopify/polaris/commit/fe289179270c99e99eb97115f40c459ec744e8c7)]:
+  - @shopify/polaris-icons@9.1.1
+
 ## 13.4.0
 
 ### Minor Changes

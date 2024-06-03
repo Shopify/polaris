@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.1.1
+
+### Patch Changes
+
+- [#12169](https://github.com/Shopify/polaris/pull/12169) [`fe2891792`](https://github.com/Shopify/polaris/commit/fe289179270c99e99eb97115f40c459ec744e8c7) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated XIcon SVG path to correct size
+
 ## 9.1.0
 
 ### Minor Changes
