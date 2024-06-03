@@ -252,8 +252,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       plop-dir:
-        specifier: ^0.0.5
-        version: 0.0.5(plop@3.1.1)
+        specifier: ^0.2.0
+        version: 0.2.0(plop@3.1.1)
       prettier:
         specifier: ^2.7.1
         version: 2.8.8
@@ -18518,8 +18518,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /plop-dir@0.0.5(plop@3.1.1):
-    resolution: {integrity: sha512-F1ZOmkM/0DNSPGLTFlt7WJSqjDX0WEh5gmYXMjKG2bgQWCUbuy6soW21H67ZlnWHB4Noj/YeBP1MBeFmmyKhSQ==}
+  /plop-dir@0.2.0(plop@3.1.1):
+    resolution: {integrity: sha512-5bI4TTx7ibRWXm+QCJys3ajHDwV63sqF0V2IMD9E2ZmOyR8Mtm1bjWpdeLfE0OiJHwVWx/Oo/u0OdKtiFlYV+A==}
     peerDependencies:
       plop: ^3.0.0
     dependencies:
