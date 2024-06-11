@@ -298,8 +298,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(postcss@8.4.32)
       '@shopify/react-testing':
-        specifier: ^4.1.0
-        version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^5.3.0
+        version: 5.3.0(react-dom@18.2.0)(react@18.2.0)
       '@shopify/useful-types':
         specifier: ^5.1.2
         version: 5.1.2
@@ -5055,17 +5055,18 @@ packages:
       postcss-will-change: 4.0.1(postcss@8.4.32)
     dev: true
 
-  /@shopify/react-testing@4.1.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-CfqhcjcDisvQ3tmeL81eMEv0Hqmy8z1etDdqg4J5pgt9JN+TR8w1Thp0hm8N/XvLaOeD4qm6IpzRE7Iyamj2ZQ==}
-    engines: {node: ^14.17.0 || >=16.0.0}
+  /@shopify/react-testing@5.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-7qdK1icQ5lZNQvfiJrLm6c7hI6411DBVONVjV8jk74BnjVWyw4O3xfsXOlX6foJzG7zL+cyYP4mObEM5Vtk67w==}
+    engines: {node: '>=18.12.0'}
     peerDependencies:
-      react: '>=16.8.0 <19.0.0'
+      react: '>=18.0.0 <19.0.0'
       react-dom: '>=16.8.0 <19.0.0'
     dependencies:
-      '@shopify/useful-types': 5.1.2
+      '@shopify/useful-types': 5.2.0
       jest-matcher-utils: 26.6.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+      react-is: 18.1.0
       react-reconciler: 0.28.0(react@18.2.0)
     dev: true
 
@@ -5092,6 +5093,11 @@ packages:
   /@shopify/useful-types@5.1.2:
     resolution: {integrity: sha512-EjwIljAYHT1pfIxdMFp6ytJvCUmKXa5NWsvG7zXFX5EnLs7wYp66M/QCuoyJjI0Lq+5ZVyrJXJqqeBiXQVVs0w==}
     engines: {node: ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@shopify/useful-types@5.2.0:
+    resolution: {integrity: sha512-qyYXdb2eEb1oLxhEZoLoakf72wEJJvwn8io122uZn+ZUjz8t3bfxmhCKXCfgL6S5Fxw/yqEUBlcW8tYgVNlCgw==}
+    engines: {node: '>=18.12.0'}
     dev: true
 
   /@shuding/opentype.js@1.4.0-beta.0:
