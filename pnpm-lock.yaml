@@ -494,7 +494,7 @@ importers:
         version: 4.0.2
       next:
         specifier: ^13.5.1
-        version: 13.5.1(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)(sass@1.51.0)
+        version: 13.5.1(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)(sass@1.77.5)
       next-mdx-remote:
         specifier: ^4.4.1
         version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -656,8 +656,8 @@ importers:
         specifier: ^0.28.0
         version: 0.28.0(react-dom@18.2.0)(react@18.2.0)
       sass:
-        specifier: ^1.49.9
-        version: 1.51.0
+        specifier: ^1.77.5
+        version: 1.77.5
       satori:
         specifier: ^0.10.11
         version: 0.10.11
@@ -17244,7 +17244,7 @@ packages:
       - supports-color
     dev: false
 
-  /next@13.5.1(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)(sass@1.51.0):
+  /next@13.5.1(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)(sass@1.77.5):
     resolution: {integrity: sha512-GIudNR7ggGUZoIL79mSZcxbXK9f5pwAIPZxEM8+j2yLqv5RODg4TkmUlaKSYVqE1bPQueamXSqdC3j7axiTSEg==}
     engines: {node: '>=16.14.0'}
     hasBin: true
@@ -17266,7 +17266,7 @@ packages:
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      sass: 1.51.0
+      sass: 1.77.5
       styled-jsx: 5.1.1(@babel/core@7.23.6)(react@18.2.0)
       watchpack: 2.4.0
       zod: 3.21.4
@@ -20401,9 +20401,9 @@ packages:
       webpack: 5.76.0(@swc/core@1.4.17)(esbuild@0.18.20)
     dev: true
 
-  /sass@1.51.0:
-    resolution: {integrity: sha512-haGdpTgywJTvHC2b91GSq+clTKGbtkkZmVAb82jZQN/wTy6qs8DdFm2lhEQbEwrY0QDRgSQ3xDurqM977C3noA==}
-    engines: {node: '>=12.0.0'}
+  /sass@1.77.5:
+    resolution: {integrity: sha512-oDfX1mukIlxacPdQqNb6mV2tVCrnE+P3nVYioy72V5tlk56CPNcO4TCuFcaCRKKfJ1M3lH95CleRS+dVKL2qMg==}
+    engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
       chokidar: 3.5.3
