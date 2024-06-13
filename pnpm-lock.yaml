@@ -307,8 +307,8 @@ importers:
         specifier: ^8.0.8
         version: 8.0.9
       '@storybook/addon-toolbars':
-        specifier: ^8.0.8
-        version: 8.0.9
+        specifier: ^8.1.8
+        version: 8.1.8
       '@storybook/addon-viewport':
         specifier: ^8.0.8
         version: 8.0.9
@@ -5233,8 +5233,8 @@ packages:
       '@storybook/global': 5.0.0
     dev: true
 
-  /@storybook/addon-toolbars@8.0.9:
-    resolution: {integrity: sha512-nNSBnnBOhQ+EJwkrIkK4ZBYPcozNmEH770CZ/6NK85SUJ6WEBZapE6ru33jIUokFGEvlOlNCeai0GUc++cQP8w==}
+  /@storybook/addon-toolbars@8.1.8:
+    resolution: {integrity: sha512-E3h7h/fbis+9PfIJLKRA8ZRwD/o21PRwuvkOWjX0H+7bgVZKkj0ndT0wBvyMRDY9bDoiUIUrc5biA0g3vMbdSw==}
     dev: true
 
   /@storybook/addon-viewport@8.0.9:
