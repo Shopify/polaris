@@ -328,6 +328,10 @@
   justify-content: space-between;
 }
 
+.disclosure:is(.iconOnly) {
+  --pc-button-gap: 0;
+}
+
 /* LOADING */
 .loading {
   color: transparent;
@@ -347,6 +351,10 @@
 /* ICON */
 .Icon {
   margin: calc(-1 * var(--p-space-050)) 0;
+}
+
+.iconOnly > .DisclosureIcon {
+  margin-left: calc(-1 * var(--p-space-100));
 }
 
 /* SPINNER */

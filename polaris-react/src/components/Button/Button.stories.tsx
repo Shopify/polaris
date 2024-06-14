@@ -19,6 +19,8 @@ import {
   ActionList,
 } from '@shopify/polaris';
 import {
+  TextColorIcon,
+  TextFontIcon,
   PlusIcon,
   PlusCircleIcon,
   XSmallIcon,
@@ -28,6 +30,9 @@ import {
   CheckIcon,
   ClipboardIcon,
   DeleteIcon,
+  TextAlignCenterIcon,
+  TextAlignLeftIcon,
+  TextAlignRightIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -42,7 +47,7 @@ export const All = {
     };
     return (
       /* eslint-disable react/jsx-pascal-case */
-      <BlockStack gap="400">
+      <BlockStack gap="400" inlineAlign="start">
         <Text {...textProps}>Default</Text>
         <Default.render />
         <Text {...textProps}>Critical</Text>
@@ -81,6 +86,10 @@ export const All = {
         <RightAlignedDisclosure.render />
         <Text {...textProps}>Select disclosure</Text>
         <SelectDisclosure.render />
+        <Text {...textProps}>Icon only disclosure</Text>
+        <IconOnlyDisclosure.render />
+        <Text {...textProps}>Plain only disclosure</Text>
+        <PlainIconOnlyDisclosure.render />
         <Text {...textProps}>Split</Text>
         <Split.render />
         <Text {...textProps}>Disabled state</Text>
@@ -853,6 +862,225 @@ export const Split = {
           </ButtonGroup>
         </InlineStack>
       </div>
+    );
+  },
+};
+
+export const IconOnlyDisclosure = {
+  render() {
+    const [alignment, setAlignment] = React.useState('left');
+    const [active, setActive] = React.useState(false);
+
+    const toggleActive = () => () => {
+      setActive((active) => !active);
+    };
+
+    const updateAlignment = (alignment: string) => () => {
+      setAlignment(alignment);
+      setActive(false);
+    };
+
+    const options = {
+      left: {
+        content: 'Align text left',
+        icon: TextAlignLeftIcon,
+        active: alignment === 'left',
+        onAction: updateAlignment('left'),
+      },
+      center: {
+        content: 'Align text center',
+        icon: TextAlignCenterIcon,
+        active: alignment === 'center',
+        onAction: updateAlignment('center'),
+      },
+      right: {
+        content: 'Align text right',
+        icon: TextAlignRightIcon,
+        active: alignment === 'right',
+        onAction: updateAlignment('right'),
+      },
+    };
+
+    return (
+      <Popover
+        active={active}
+        preferredAlignment="right"
+        activator={
+          <Button
+            icon={options[alignment].icon}
+            accessibilityLabel={options[alignment].content}
+            disclosure={active ? 'up' : 'down'}
+            onClick={toggleActive()}
+          />
+        }
+        autofocusTarget="first-node"
+        onClose={toggleActive()}
+      >
+        <ActionList
+          actionRole="menuitem"
+          items={Object.values(options)}
+          onActionAnyItem={toggleActive}
+        />
+      </Popover>
+    );
+  },
+};
+
+export const PlainIconOnlyDisclosure = {
+  render() {
+    const [fontVariant, setFontVariant] = React.useState('paragraph');
+    const [alignment, setAlignment] = React.useState('left');
+    const [activeDisclosure, setActiveDisclosure] = React.useState('');
+
+    const toggleActive = (id: string) => () => {
+      setActiveDisclosure((activeDisclosure) =>
+        activeDisclosure === id ? '' : id,
+      );
+    };
+
+    const updateAlignment = (alignment: string) => () => {
+      setAlignment(alignment);
+      setActiveDisclosure('');
+    };
+
+    const updateFontVariant = (fontVariant: string) => () => {
+      setFontVariant(fontVariant);
+      setActiveDisclosure('');
+    };
+
+    const options = {
+      magic: {
+        content: 'Generate description content',
+        icon: MagicIcon,
+        disclosure: activeDisclosure === 'magic' ? 'up' : 'down',
+        onAction: toggleActive('magic'),
+        items: [],
+      },
+      fontVariant: {
+        disclosure: activeDisclosure === 'fontVariant' ? 'up' : 'down',
+        items: [
+          {
+            content: 'Paragraph',
+            active: fontVariant === 'paragraph',
+            onAction: updateFontVariant('paragraph'),
+          },
+          {
+            content: 'Heading 1',
+            active: fontVariant === 'heading1',
+            onAction: updateFontVariant('heading1'),
+          },
+          {
+            content: 'Heading 2',
+            active: fontVariant === 'heading2',
+            onAction: updateFontVariant('heading2'),
+          },
+          {
+            content: 'Heading 3',
+            active: fontVariant === 'heading3',
+            onAction: updateFontVariant('heading3'),
+          },
+          {
+            content: 'Heading 4',
+            active: fontVariant === 'heading4',
+            onAction: updateFontVariant('heading4'),
+          },
+          {
+            content: 'Heading 5',
+            active: fontVariant === 'heading5',
+            onAction: updateFontVariant('heading5'),
+          },
+          {
+            content: 'Heading 6',
+            active: fontVariant === 'heading6',
+            onAction: updateFontVariant('heading6'),
+          },
+          {
+            content: 'Blockquote',
+            active: fontVariant === 'blockquote',
+            onAction: updateFontVariant('blockquote'),
+          },
+        ],
+      },
+      textAlignment: {
+        items: [
+          {
+            content: 'Align text left',
+            icon: TextAlignLeftIcon,
+            active: alignment === 'left',
+            onAction: updateAlignment('left'),
+          },
+          {
+            content: 'Align text center',
+            icon: TextAlignCenterIcon,
+            active: alignment === 'center',
+            onAction: updateAlignment('center'),
+          },
+          {
+            content: 'Align text right',
+            icon: TextAlignRightIcon,
+            active: alignment === 'right',
+            onAction: updateAlignment('right'),
+          },
+        ],
+      },
+      color: {
+        content: 'Change color',
+        icon: TextColorIcon,
+        disclosure: activeDisclosure === 'color' ? 'up' : 'down',
+        onAction: toggleActive('color'),
+        items: [],
+      },
+    };
+
+    return (
+      <InlineStack gap="100">
+        {Object.keys(options).map((key) => {
+          const {children, content, icon, items, onAction} = options[key];
+          const actionList = items ? (
+            <ActionList
+              actionRole="menuitem"
+              items={items}
+              onActionAnyItem={onAction}
+            />
+          ) : null;
+
+          const activeItem = items
+            ? items.find((item) => item.active)
+            : undefined;
+
+          const popoverChildren = children ?? actionList;
+          const iconSource = icon ? icon : activeItem?.icon;
+          const buttonContent = !iconSource ? activeItem.content : null;
+
+          return popoverChildren ? (
+            <Popover
+              active={activeDisclosure === key}
+              preferredAlignment="right"
+              onClose={toggleActive(key)}
+              activator={
+                <Button
+                  variant="monochromePlain"
+                  icon={iconSource ? iconSource : undefined}
+                  accessibilityLabel={iconSource ? content : undefined}
+                  disclosure={activeDisclosure === key ? 'up' : 'down'}
+                  onClick={toggleActive(key)}
+                >
+                  {buttonContent}
+                </Button>
+              }
+            >
+              {popoverChildren}
+            </Popover>
+          ) : (
+            <Button
+              variant="monochromePlain"
+              icon={options[key].icon}
+              accessibilityLabel={options[key].content}
+              onClick={onAction}
+            />
+          );
+        })}
+      </InlineStack>
     );
   },
 };
