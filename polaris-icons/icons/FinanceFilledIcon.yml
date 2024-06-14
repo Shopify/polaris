@@ -1,5 +1,5 @@
-name: Finance selected
-description: Selected state of Shopify Finance
+name: Finance filled
+description: Used to direct merchants to Shopify Finance
 keywords:
   - finances
   - financial accounts
