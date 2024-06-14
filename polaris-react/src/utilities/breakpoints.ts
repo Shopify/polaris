@@ -144,31 +144,44 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
 
     referenceCounter += 1;
 
-    const handler = () => setBreakpoints(getMatches());
+    const handlers = mediaQueryLists.map((_, index) => {
+      const directionAlias = breakpointsQueryEntries[index][0];
+
+      function handler(event: {matches: boolean}) {
+        setBreakpoints((prevBreakpoints) => ({
+          ...prevBreakpoints,
+          [directionAlias]: event.matches,
+        }));
+      }
+
+      return handler;
+    });
 
     if (referenceCounter === 1) {
-      mediaQueryLists.forEach((mql) => {
+      mediaQueryLists.forEach((mql, index) => {
         if (mql.addListener) {
-          mql.addListener(handler);
+          mql.addListener(handlers[index]);
         } else {
-          mql.addEventListener('change', handler);
+          mql.addEventListener('change', handlers[index]);
         }
       });
     }
 
     // Trigger the breakpoint recalculation at least once client-side to ensure
     // we don't have stale default values from SSR.
-    handler();
+    mediaQueryLists.forEach((mql, index) => {
+      handlers[index]({matches: mql.matches});
+    });
 
     return () => {
       referenceCounter -= 1;
 
       if (referenceCounter === 0) {
-        mediaQueryLists.forEach((mql) => {
+        mediaQueryLists.forEach((mql, index) => {
           if (mql.removeListener) {
-            mql.removeListener(handler);
+            mql.removeListener(handlers[index]);
           } else {
-            mql.removeEventListener('change', handler);
+            mql.removeEventListener('change', handlers[index]);
           }
         });
       }
