@@ -108,6 +108,9 @@ export interface UseBreakpointsOptions {
       };
 }
 
+let mediaQueryLists: MediaQueryList[] = [];
+let referenceCounter = 0;
+
 /**
  * Retrieves media query matches for each directional Polaris `breakpoints` alias.
  *
@@ -133,32 +136,42 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
   );
 
   useIsomorphicLayoutEffect(() => {
-    const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
-      window.matchMedia(query),
-    );
+    if (referenceCounter === 0) {
+      mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
+        window.matchMedia(query),
+      );
+    }
+
+    referenceCounter += 1;
 
     const handler = () => setBreakpoints(getMatches());
 
-    mediaQueryLists.forEach((mql) => {
-      if (mql.addListener) {
-        mql.addListener(handler);
-      } else {
-        mql.addEventListener('change', handler);
-      }
-    });
+    if (referenceCounter === 1) {
+      mediaQueryLists.forEach((mql) => {
+        if (mql.addListener) {
+          mql.addListener(handler);
+        } else {
+          mql.addEventListener('change', handler);
+        }
+      });
+    }
 
     // Trigger the breakpoint recalculation at least once client-side to ensure
     // we don't have stale default values from SSR.
     handler();
 
     return () => {
-      mediaQueryLists.forEach((mql) => {
-        if (mql.removeListener) {
-          mql.removeListener(handler);
-        } else {
-          mql.removeEventListener('change', handler);
-        }
-      });
+      referenceCounter -= 1;
+
+      if (referenceCounter === 0) {
+        mediaQueryLists.forEach((mql) => {
+          if (mql.removeListener) {
+            mql.removeListener(handler);
+          } else {
+            mql.removeEventListener('change', handler);
+          }
+        });
+      }
     };
   }, []);
 
