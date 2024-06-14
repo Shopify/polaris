@@ -4,7 +4,7 @@ import styles from './CodesandboxButton.module.scss';
 const getAppCode = (code: string) => {
   const lineWithFunctionName = code
     .split('\n')
-    .filter((name) => name.match(/function .*Example/g))?.[0];
+    .filter((name) => name.match(/function\s+(\w+)\s*\(/))?.[0];
   const functionName = lineWithFunctionName
     ? lineWithFunctionName.replace('function ', '').replace('() {', '')
     : 'Example';
