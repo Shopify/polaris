@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 import {getMediaConditions, themeDefault} from '@shopify/polaris-tokens';
 import type {
   BreakpointsAlias,
@@ -6,7 +6,6 @@ import type {
   BreakpointsTokenGroup,
 } from '@shopify/polaris-tokens';
 
-import {isServer} from './target';
 import {useIsomorphicLayoutEffect} from './use-isomorphic-layout-effect';
 
 const Breakpoints = {
@@ -60,23 +59,69 @@ const breakpointsQueryEntries = getBreakpointsQueryEntries(
   themeDefault.breakpoints,
 );
 
-function getMatches(
-  defaults?: UseBreakpointsOptions['defaults'],
-  /**
-   * Used to force defaults on initial client side render so they match SSR
-   * values and hence avoid a Hydration error.
-   */
-  forceDefaults?: boolean,
-) {
-  if (!isServer && !forceDefaults) {
-    return Object.fromEntries(
-      breakpointsQueryEntries.map(([directionAlias, query]) => [
-        directionAlias,
-        window.matchMedia(query).matches,
-      ]),
-    ) as BreakpointsMatches;
-  }
+const defaultBreakpoints = getMatches();
 
+const BreakpointsContext =
+  createContext<BreakpointsMatches>(defaultBreakpoints);
+
+interface BreakpointsProviderProps {
+  children?: React.ReactNode;
+}
+
+export function BreakpointsProvider(props: BreakpointsProviderProps) {
+  const [breakpoints, setBreakpoints] = useState(defaultBreakpoints);
+
+  useIsomorphicLayoutEffect(() => {
+    const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
+      window.matchMedia(query),
+    );
+
+    const handlers = mediaQueryLists.map((_, index) => {
+      const directionAlias = breakpointsQueryEntries[index][0];
+
+      function handler(event: {matches: boolean}) {
+        setBreakpoints((prevBreakpoints) => ({
+          ...prevBreakpoints,
+          [directionAlias]: event.matches,
+        }));
+      }
+
+      return handler;
+    });
+
+    mediaQueryLists.forEach((mql, index) => {
+      if (mql.addListener) {
+        mql.addListener(handlers[index]);
+      } else {
+        mql.addEventListener('change', handlers[index]);
+      }
+    });
+
+    // Trigger the breakpoint recalculation at least once client-side to ensure
+    // we don't have stale default values from SSR.
+    mediaQueryLists.forEach((mql, index) => {
+      handlers[index]({matches: mql.matches});
+    });
+
+    return () => {
+      mediaQueryLists.forEach((mql, index) => {
+        if (mql.removeListener) {
+          mql.removeListener(handlers[index]);
+        } else {
+          mql.removeEventListener('change', handlers[index]);
+        }
+      });
+    };
+  }, []);
+
+  return (
+    <BreakpointsContext.Provider value={breakpoints}>
+      {props.children}
+    </BreakpointsContext.Provider>
+  );
+}
+
+function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
   if (typeof defaults === 'object' && defaults !== null) {
     return Object.fromEntries(
       breakpointsQueryEntries.map(([directionAlias]) => [
@@ -124,45 +169,20 @@ export interface UseBreakpointsOptions {
  * breakpoints //=> All values will be `true` during SSR
  */
 export function useBreakpoints(options?: UseBreakpointsOptions) {
-  // On SSR, and initial CSR, we force usage of the defaults to avoid a
-  // hydration mismatch error.
-  // Later, in the effect, we will call this again on the client side without
-  // any defaults to trigger a more accurate client side evaluation.
-  const [breakpoints, setBreakpoints] = useState(
-    getMatches(options?.defaults, true),
-  );
+  const breakpoints = useContext(BreakpointsContext);
+  const [isMounted, setIsMounted] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
-    const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
-      window.matchMedia(query),
-    );
-
-    const handler = () => setBreakpoints(getMatches());
-
-    mediaQueryLists.forEach((mql) => {
-      if (mql.addListener) {
-        mql.addListener(handler);
-      } else {
-        mql.addEventListener('change', handler);
-      }
-    });
-
-    // Trigger the breakpoint recalculation at least once client-side to ensure
-    // we don't have stale default values from SSR.
-    handler();
-
-    return () => {
-      mediaQueryLists.forEach((mql) => {
-        if (mql.removeListener) {
-          mql.removeListener(handler);
-        } else {
-          mql.removeEventListener('change', handler);
-        }
-      });
-    };
+    setIsMounted(true);
   }, []);
 
-  return breakpoints;
+  if (!breakpoints) {
+    throw new Error(
+      'No breakpoints were provided. Your application must be wrapped in an <AppProvider> or <ThemeProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
+    );
+  }
+
+  return isMounted ? breakpoints : getMatches(options?.defaults);
 }
 
 /**

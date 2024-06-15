@@ -7,6 +7,7 @@ import {
 } from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
+import {BreakpointsProvider} from '../../utilities/breakpoints';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -190,15 +191,17 @@ export class AppProvider extends Component<AppProviderProps, State> {
               <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
                 <StickyManagerContext.Provider value={this.stickyManager}>
                   <LinkContext.Provider value={link}>
-                    <MediaQueryProvider>
-                      <PortalsManager>
-                        <FocusManager>
-                          <EphemeralPresenceManager>
-                            {children}
-                          </EphemeralPresenceManager>
-                        </FocusManager>
-                      </PortalsManager>
-                    </MediaQueryProvider>
+                    <BreakpointsProvider>
+                      <MediaQueryProvider>
+                        <PortalsManager>
+                          <FocusManager>
+                            <EphemeralPresenceManager>
+                              {children}
+                            </EphemeralPresenceManager>
+                          </FocusManager>
+                        </PortalsManager>
+                      </MediaQueryProvider>
+                    </BreakpointsProvider>
                   </LinkContext.Provider>
                 </StickyManagerContext.Provider>
               </ScrollLockManagerContext.Provider>
