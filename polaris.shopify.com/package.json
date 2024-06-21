@@ -69,7 +69,7 @@
     "@napi-rs/image": "^1.7.0",
     "@types/base-64": "^1.0.0",
     "@types/gtag.js": "^0.0.10",
-    "@types/js-yaml": "^4.0.5",
+    "@types/js-yaml": "^4.0.9",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.mapvalues": "^4.6.9",
     "@types/lodash.throttle": "^4.1.7",
