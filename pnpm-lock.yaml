@@ -557,8 +557,8 @@ importers:
         specifier: ^1.7.0
         version: 1.7.0
       '@types/base-64':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.2
+        version: 1.0.2
       '@types/gtag.js':
         specifier: ^0.0.10
         version: 0.0.10
@@ -6241,8 +6241,8 @@ packages:
       '@babel/types': 7.23.6
     dev: true
 
-  /@types/base-64@1.0.0:
-    resolution: {integrity: sha512-AvCJx/HrfYHmOQRFdVvgKMplXfzTUizmh0tz9GFTpDePWgCY4uoKll84zKlaRoeiYiCr7c9ZnqSTzkl0BUVD6g==}
+  /@types/base-64@1.0.2:
+    resolution: {integrity: sha512-uPgKMmM9fmn7I+Zi6YBqctOye4SlJsHKcisjHIMWpb2YKZRc36GpKyNuQ03JcT+oNXg1m7Uv4wU94EVltn8/cw==}
     dev: true
 
   /@types/base64-url@2.2.0:

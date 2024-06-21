@@ -67,7 +67,7 @@
   "devDependencies": {
     "@esm2cjs/p-map": "^5.5.0",
     "@napi-rs/image": "^1.7.0",
-    "@types/base-64": "^1.0.0",
+    "@types/base-64": "^1.0.2",
     "@types/gtag.js": "^0.0.10",
     "@types/js-yaml": "^4.0.5",
     "@types/lodash.get": "^4.4.7",
