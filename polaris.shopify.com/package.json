@@ -83,7 +83,7 @@
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.2",
-    "css-loader": "^5.2.7",
+    "css-loader": "^7.1.2",
     "eslint": "8.10.0",
     "eslint-config-next": "^13.0.0",
     "execa": "^6.1.0",
