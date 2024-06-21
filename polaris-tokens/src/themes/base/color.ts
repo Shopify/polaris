@@ -36,6 +36,7 @@ export type ColorBackgroundAlias =
   | 'bg-fill-secondary-active'
   | 'bg-fill-secondary-hover'
   | 'bg-fill-secondary'
+  | 'bg-fill-secondary-selected-experimental'
   | 'bg-fill-selected'
   | 'bg-fill-success-active'
   | 'bg-fill-success-hover'
@@ -484,6 +485,11 @@ export const color: {
     value: colors.gray[8],
     description:
       'The active state (on press) color of elements with a smaller surface area and a secondary level of prominence.',
+  },
+  'color-bg-fill-secondary-selected-experimental': {
+    value: colors.gray[8],
+    description:
+      'The selected state color of elements with a smaller surface area and a secondary level of prominence.',
   },
   'color-bg-fill-tertiary': {
     value: colors.gray[8],
@@ -1028,16 +1034,16 @@ export const color: {
     description: 'The border color for tooltip tails pointing up.',
   },
   'color-border-gradient-experimental': {
-    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+    value: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 78%, rgba(0, 0, 0, 0.4) 100%)`,
   },
   'color-border-gradient-hover-experimental': {
-    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+    value: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 78%, rgba(0, 0, 0, 0.4) 100%)`,
   },
   'color-border-gradient-selected-experimental': {
-    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+    value: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(212, 212, 212, 0.5) 100%)`,
   },
   'color-border-gradient-active-experimental': {
-    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+    value: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 22%, rgba(0, 0, 0, 0.1) 100%)`,
   },
   'color-icon': {
     value: colors.gray[14],
