@@ -379,8 +379,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(postcss@8.4.32)
       postcss-discard-comments:
-        specifier: ^6.0.1
-        version: 6.0.1(postcss@8.4.32)
+        specifier: ^7.0.1
+        version: 7.0.1(postcss@8.4.32)
       postcss-import:
         specifier: '^16.1.0 '
         version: 16.1.0(postcss@8.4.32)
@@ -18597,7 +18597,7 @@ packages:
       postcss: ^8.2.2
     dependencies:
       postcss: 8.4.32
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -18646,13 +18646,14 @@ packages:
       postcss: 8.4.32
     dev: true
 
-  /postcss-discard-comments@6.0.1(postcss@8.4.32):
-    resolution: {integrity: sha512-f1KYNPtqYLUeZGCHQPKzzFtsHaRuECe6jLakf/RjSRqvF5XHLZnM2+fXLhb8Qh/HBFHs3M4cSLb1k3B899RYIg==}
-    engines: {node: ^14 || ^16 || >=18.0}
+  /postcss-discard-comments@7.0.1(postcss@8.4.32):
+    resolution: {integrity: sha512-GVrQxUOhmle1W6jX2SvNLt4kmN+JYhV7mzI6BMnkAWR9DtVvg8e67rrV0NfdWhn7x1zxvzdWkMBPdBDCls+uwQ==}
+    engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.31
     dependencies:
       postcss: 8.4.32
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /postcss-discard-duplicates@5.1.0(postcss@8.4.32):
@@ -18752,7 +18753,7 @@ packages:
       caniuse-api: 3.0.0
       cssnano-utils: 3.1.0(postcss@8.4.32)
       postcss: 8.4.32
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /postcss-minify-font-values@5.1.0(postcss@8.4.32):
@@ -18796,7 +18797,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: 8.4.32
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /postcss-mixins@9.0.4(postcss@8.4.32):
@@ -18829,7 +18830,7 @@ packages:
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.32)
       postcss: 8.4.32
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -18840,7 +18841,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       postcss: 8.4.32
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /postcss-modules-values@4.0.0(postcss@8.4.32):
@@ -19037,6 +19038,14 @@ packages:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
+  /postcss-selector-parser@6.1.0:
+    resolution: {integrity: sha512-UMz42UD0UY0EApS0ZL9o1XnLhSTtvvvLe5Dc2H2O56fvRZi+KulDyf5ctDhhtYJBGKStV2FL1fy6253cmLgqVQ==}
+    engines: {node: '>=4'}
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
+    dev: true
+
   /postcss-simple-vars@7.0.1(postcss@8.4.32):
     resolution: {integrity: sha512-5GLLXaS8qmzHMOjVxqkk1TZPf1jMqesiI7qLhnlyERalG0sMbHIbJqrcnrpmZdKCLglHnRHoEBB61RtGTsj++A==}
     engines: {node: '>=14.0'}
@@ -19072,7 +19081,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: 8.4.32
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /postcss-value-parser@4.2.0:
@@ -21524,7 +21533,7 @@ packages:
     dependencies:
       browserslist: 4.22.2
       postcss: 8.4.32
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /stylelint-config-prettier@9.0.3(stylelint@14.15.0):
