@@ -1,0 +1,13 @@
+name: Catalog
+description: Represents catalogs within the Admin
+keywords:
+  - catalog
+  - products
+  - markets
+authors:
+  - Joe Thomas
+  - James Findlater
+date_added: 2024-06-21
+date_modified: 2024-06-21
+# Optional: fill exclusive_use if the icon should *only* be used
+# in specific areas of the admin (such as “Orders”):
