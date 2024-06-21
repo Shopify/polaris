@@ -572,8 +572,8 @@ importers:
         specifier: ^4.6.9
         version: 4.6.9
       '@types/lodash.throttle':
-        specifier: ^4.1.7
-        version: 4.1.7
+        specifier: ^4.1.9
+        version: 4.1.9
       '@types/marked':
         specifier: ^4.0.3
         version: 4.0.3
@@ -6539,8 +6539,8 @@ packages:
       '@types/lodash': 4.14.186
     dev: true
 
-  /@types/lodash.throttle@4.1.7:
-    resolution: {integrity: sha512-znwGDpjCHQ4FpLLx19w4OXDqq8+OvREa05H89obtSyXyOFKL3dDjCslsmfBz0T2FU8dmf5Wx1QvogbINiGIu9g==}
+  /@types/lodash.throttle@4.1.9:
+    resolution: {integrity: sha512-PCPVfpfueguWZQB7pJQK890F2scYKoDUL3iM522AptHWn7d5NQmeS/LTEHIcLr5PaTzl3dK2Z0xSUHHTHwaL5g==}
     dependencies:
       '@types/lodash': 4.14.186
     dev: true
