@@ -1,27 +1,13 @@
-name: Name of the icon
-description:
-  # Icon type   | Example description
-  # ----------- | --------------------------
-  # Action      | Used to denote <x action>.
-  # Wayfinding  | Used to help direct merchants to <x>.
-  # Concept     | Used to represent <x>.
-  # Education   | Used to give merchants more information about <context x>.
-  #
-  # Full guidelines: https://bit.ly/2GdMpmg
-  # (delete this comment block)
-  N/A
+name: Catalog
+description: Represents catalogs within the Admin
 keywords:
-  # - synonym
-  # - another synonym
-  # - related shape or symbol
-  # (delete this comment block)
-  - N/A
+  - catalog
+  - products
+  - markets
 authors:
-  # - Sasha Oliveira
-  # - Co-author’s name (optional)
-  # (delete this comment block)
-  - N/A
-date_added: YYYY-MM-DD
-date_modified: YYYY-MM-DD
+  - Joe Thomas
+  - James Findlater
+date_added: 2024-06-21
+date_modified: 2024-06-21
 # Optional: fill exclusive_use if the icon should *only* be used
 # in specific areas of the admin (such as “Orders”):
