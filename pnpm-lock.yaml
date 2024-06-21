@@ -279,8 +279,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       react-fast-compare:
-        specifier: ^3.2.0
-        version: 3.2.0
+        specifier: ^3.2.2
+        version: 3.2.2
       react-transition-group:
         specifier: ^4.4.2
         version: 4.4.2(react-dom@18.2.0)(react@18.2.0)
@@ -19554,8 +19554,8 @@ packages:
       react-is: 18.1.0
     dev: true
 
-  /react-fast-compare@3.2.0:
-    resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
+  /react-fast-compare@3.2.2:
+    resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
     dev: false
 
   /react-is@16.13.1:
