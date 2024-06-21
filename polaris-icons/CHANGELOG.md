@@ -1,5 +1,13 @@
 # Changelog
 
+## 9.2.0
+
+### Minor Changes
+
+- [#12295](https://github.com/Shopify/polaris/pull/12295) [`2b512c3da`](https://github.com/Shopify/polaris/commit/2b512c3da335de7b6ff28ba96b93dbcacdd00a97) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Add catalog icon
+
+* [#12297](https://github.com/Shopify/polaris/pull/12297) [`d445b83f1`](https://github.com/Shopify/polaris/commit/d445b83f1f83f4b2d5f6b4a08036f75e7ee10a8d) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Adds ProdcutUnavailable icon
+
 ## 9.1.1
 
 ### Patch Changes
