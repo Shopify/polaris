@@ -42,8 +42,8 @@ importers:
         specifier: ^24.0.1
         version: 24.0.1(rollup@3.29.4)
       '@rollup/plugin-image':
-        specifier: ^3.0.2
-        version: 3.0.2(rollup@3.29.4)
+        specifier: ^3.0.3
+        version: 3.0.3(rollup@3.29.4)
       '@rollup/plugin-json':
         specifier: ^6.0.0
         version: 6.0.0(rollup@3.29.4)
@@ -4859,11 +4859,11 @@ packages:
       rollup: 3.29.4
     dev: true
 
-  /@rollup/plugin-image@3.0.2(rollup@3.29.4):
-    resolution: {integrity: sha512-eGVrD6lummWH5ENo9LWX3JY62uBb9okUNQ2htXkugrG6WjACrMUVhWvss+0wW3fwJWmFYpoEny3yL4spEdh15g==}
+  /@rollup/plugin-image@3.0.3(rollup@3.29.4):
+    resolution: {integrity: sha512-qXWQwsXpvD4trSb8PeFPFajp8JLpRtqqOeNYRUKnEQNHm7e5UP7fuSRcbjQAJ7wDZBbnJvSdY5ujNBQd9B1iFg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
