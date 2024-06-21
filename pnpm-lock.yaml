@@ -276,14 +276,14 @@ importers:
         specifier: '*'
         version: 18.2.4
       '@types/react-transition-group':
-        specifier: ^4.4.2
-        version: 4.4.2
+        specifier: ^4.4.10
+        version: 4.4.10
       react-fast-compare:
         specifier: ^3.2.0
         version: 3.2.0
       react-transition-group:
-        specifier: ^4.4.2
-        version: 4.4.2(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.4.5
+        version: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@changesets/get-release-plan':
         specifier: ^3.0.13
@@ -6651,8 +6651,8 @@ packages:
       '@types/react': 18.2.9
     dev: false
 
-  /@types/react-transition-group@4.4.2:
-    resolution: {integrity: sha512-KibDWL6nshuOJ0fu8ll7QnV/LVTo3PzQ9aCPnRUYPfX7eZohHwLIdNHj7pftanREzHNP4/nJa8oeM73uSiavMQ==}
+  /@types/react-transition-group@4.4.10:
+    resolution: {integrity: sha512-hT/+s0VQs2ojCX823m60m5f0sL5idt9SO6Tj6Dg+rdphGPIeJbJ6CxvBYkgkGKrYeDjvIpKTR38UzmtHJOGW3Q==}
     dependencies:
       '@types/react': 18.2.9
     dev: false
@@ -19623,8 +19623,8 @@ packages:
       refractor: 3.6.0
     dev: false
 
-  /react-transition-group@4.4.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==}
+  /react-transition-group@4.4.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
       react: '>=16.6.0'
       react-dom: '>=16.6.0'
