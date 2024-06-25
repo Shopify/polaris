@@ -19,7 +19,7 @@
         "success": "Réussite",
         "warning": "Avertissement",
         "attention": "Attention",
-        "new": "Nouveau",
+        "new": "Nouveau(-elle)",
         "critical": "Critique",
         "readOnly": "Lecture seule",
         "enabled": "Activé"
@@ -338,7 +338,7 @@
     "IndexTable": {
       "emptySearchTitle": "{resourceNamePlural} introuvables",
       "emptySearchDescription": "Essayez de changer les filtres ou le terme de recherche",
-      "onboardingBadgeText": "Nouveau",
+      "onboardingBadgeText": "Nouveau(-elle)",
       "resourceLoadingAccessibilityLabel": "Chargement de {resourceNamePlural} en cours…",
       "selectAllLabel": "Sélectionner la totalité des {resourceNamePlural}",
       "selected": "{selectedItemsCount} sélectionné(s)",
