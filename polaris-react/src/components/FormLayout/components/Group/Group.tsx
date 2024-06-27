@@ -25,8 +25,10 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
   if (helpText) {
     helpTextId = `${id}HelpText`;
     helpTextElement = (
-      <Box id={helpTextId} color="text-secondary">
-        {helpText}
+      <Box id={helpTextId}>
+        <Text as="p" variant="bodySm" tone="subdued">
+          {helpText}
+        </Text>
       </Box>
     );
   }

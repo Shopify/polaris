@@ -20,9 +20,12 @@ export function Footer({
   children,
 }: FooterProps) {
   const primaryActionButton =
-    (primaryAction && buttonsFrom(primaryAction, {variant: 'primary'})) || null;
+    (primaryAction &&
+      buttonsFrom(primaryAction, {variant: 'primary', fullWidth: false})) ||
+    null;
   const secondaryActionButtons =
-    (secondaryActions && buttonsFrom(secondaryActions)) || null;
+    (secondaryActions && buttonsFrom(secondaryActions, {fullWidth: false})) ||
+    null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
       <InlineStack gap="200">

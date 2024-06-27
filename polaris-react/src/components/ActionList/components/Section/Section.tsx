@@ -104,11 +104,15 @@ export function Section({
       {titleMarkup}
       <Box
         as="div"
-        padding="150"
+        padding={{xs: '0', md: '150'}}
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        <BlockStack gap="050" as="ul" {...(sectionRole && {role: sectionRole})}>
+        <BlockStack
+          gap={{xs: '0', md: '050'}}
+          as="ul"
+          {...(sectionRole && {role: sectionRole})}
+        >
           {actionMarkup}
         </BlockStack>
       </Box>
@@ -122,7 +126,7 @@ export function Section({
       borderColor="border-secondary"
       {...(!isFirst && {borderBlockStartWidth: '025'})}
       {...(!section.title && {
-        paddingBlockStart: '150',
+        paddingBlockStart: {xs: '0', md: '150'},
       })}
     >
       {sectionMarkup}
