@@ -7,7 +7,6 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-scheme': {value: 'dark'},
     'color-bg': {value: colors.gray[16]},
     'color-bg-surface': {value: colors.gray[15]},
-    'color-bg-fill': {value: colors.gray[15]},
     'color-icon': {value: colors.gray[8]},
     'color-icon-secondary': {value: colors.gray[12]},
     'color-text': {value: colors.gray[8]},
@@ -18,7 +17,7 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-bg-fill-brand': {value: colors.gray[1]},
     'color-text-brand-on-bg-fill': {value: colors.gray[15]},
     'color-bg-surface-hover': {value: colors.gray[14]},
-    'color-bg-fill-hover': {value: 'rgba(37, 37, 37, 1)'},
+    'color-bg-fill-tertiary-hover': {value: 'rgba(37, 37, 37, 1)'},
     'color-bg-fill-transparent-hover': {value: colors.whiteAlpha[9]},
     'color-bg-fill-brand-hover': {value: colors.gray[5]},
     'color-bg-surface-selected': {value: colors.gray[13]},
@@ -56,12 +55,47 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-button-gradient-bg-fill-active-experimental': {
       value: `linear-gradient(to bottom, rgba(33, 33, 33, 1), rgba(30, 30, 30, 1) 50%, rgba(18, 18, 18, 1))`,
     },
+    'color-border-focus': {value: colors.blue[12]},
+    'color-text-critical': {value: colors.red[10]},
+    'color-bg-surface-magic': {value: colors.purple[16]},
+    'color-bg-surface-magic-hover': {value: colors.purple[15]},
+    'color-input-bg-surface': {value: colors.gray[16]},
+    'color-input-bg-surface-hover': {value: colors.gray[15]},
+    'color-input-bg-surface-active': {value: colors.gray[15]},
+    'color-input-border': {value: colors.gray[14]},
+    'color-input-border-active': {value: colors.gray[12]},
+    'color-border-magic-secondary': {value: colors.purple[12]},
+    'color-border-magic-secondary-hover': {value: colors.purple[11]},
+    'color-text-magic': {value: colors.purple[9]},
+    'color-icon-magic': {value: colors.purple[10]},
+    'color-icon-emphasis': {value: colors.blue[12]},
+    'color-bg-surface-tertiary': {value: colors.gray[15]},
+    'color-icon-secondary-active': {value: colors.gray[1]},
+    'color-icon-secondary-hover': {value: colors.gray[1]},
+    'color-bg-fill-disabled': {value: colors.gray[16]},
+    'color-text-disabled': {value: colors.gray[13]},
+    'color-text-brand-on-bg-fill-disabled': {value: colors.gray[13]},
+    'color-icon-disabled': {value: colors.gray[13]},
+    'color-bg-fill-transparent-secondary': {value: colors.whiteAlpha[13]},
+    'color-bg-fill-transparent-secondary-active': {
+      value: colors.whiteAlpha[9],
+    },
+    'color-backdrop-bg': {value: colors.blackAlpha[16]},
+    'color-bg-fill': {value: colors.gray[16]},
+    'color-bg-fill-hover': {value: colors.gray[14]},
   },
   shadow: {
     'shadow-bevel-100': {
       value:
         '1px 0px 0px 0px rgba(204, 204, 204, 0.08) inset, -1px 0px 0px 0px rgba(204, 204, 204, 0.08) inset, 0px -1px 0px 0px rgba(204, 204, 204, 0.08) inset, 0px 1px 0px 0px rgba(204, 204, 204, 0.16) inset',
     },
+    'shadow-button': {
+      value: '0px',
+    },
+    'shadow-button-primary-inset': {
+      value: '0px -1px 0px 1px rgba(26, 26, 26, 1) inset, 0px 0px 0px 1px rgba(26, 26, 26, 1) inset, 0px 0.5px 0px 1.5px rgba(0, 0, 0, 0.25) inset',
+    },
+    }
   },
 });
 
