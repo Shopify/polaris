@@ -322,6 +322,24 @@
   }
 }
 
+.tallInput {
+  .Input {
+    padding-block: 10px;
+  }
+
+  &.labelInside .Input {
+    padding-block: 19px;
+  }
+
+  &.labelInside.hasValue {
+    .Input,
+    .Prefix {
+      padding-block-start: 28px;
+      padding-block-end: 10px;
+    }
+  }
+}
+
 .borderless {
   .Input,
   .Backdrop {

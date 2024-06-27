@@ -9,6 +9,7 @@ import {Icon} from '../Icon';
 import {Text} from '../Text';
 import type {Error} from '../../types';
 import {useToggle} from '../../utilities/use-toggle';
+import {useBreakpoints} from '../../utilities/breakpoints';
 
 import styles from './Select.module.css';
 
@@ -102,13 +103,18 @@ export function Select({
   tone,
 }: SelectProps) {
   const {value: focused, toggle: toggleFocused} = useToggle(false);
-
+  const {mdDown: tallerInlineSelect} = useBreakpoints();
   const uniqId = useId();
   const id = idProp ?? uniqId;
+  const isTallSelect = tallerInlineSelect;
   const labelHidden = labelInline ? true : labelHiddenProp;
+  const labelInsideOptOut = labelHidden || labelAction || labelInline;
+  const labelInside = isTallSelect && !labelInsideOptOut;
 
   const className = classNames(
     styles.Select,
+    isTallSelect && styles.tallSelect,
+    labelInside && styles.labelInside,
     error && styles.error,
     tone && styles[variationName('tone', tone)],
     disabled && styles.disabled,
@@ -198,6 +204,7 @@ export function Select({
       error={error}
       action={labelAction}
       labelHidden={labelHidden}
+      labelPosition={labelInside ? 'Inside' : undefined}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
       disabled={disabled}
