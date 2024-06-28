@@ -8,19 +8,30 @@ const COPY_TO_CLIPBOARD_TIMEOUT = 2000;
 
 export const useThrottle = (cb: Function, delay: number) => {
   const cbRef = useRef(cb);
+  const throttledFn = useRef(throttle((...args) => cbRef.current(...args), delay, {
+    leading: true,
+    trailing: true,
+  }));
 
+  // Update the current callback whenever it changes
   useEffect(() => {
     cbRef.current = cb;
-  });
+  }, [cb]);
 
-  return useCallback(
-    () =>
-      throttle((...args) => cbRef.current(...args), delay, {
-        leading: true,
-        trailing: true,
-      }),
-    [delay],
-  );
+  // Update the throttled function whenever the delay changes
+  useEffect(() => {
+    const throttled = throttle((...args) => cbRef.current(...args), delay, {
+      leading: true,
+      trailing: true,
+    });
+    throttledFn.current = throttled;
+
+    return () => {
+      throttled.cancel();
+    };
+  }, [delay]);
+
+  return throttledFn.current;
 };
 
 export const useCopyToClipboard = (stringToCopy: string) => {
