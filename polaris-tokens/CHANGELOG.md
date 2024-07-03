@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.2.0
+
+### Minor Changes
+
+- [#12331](https://github.com/Shopify/polaris/pull/12331) [`6ca51eb02`](https://github.com/Shopify/polaris/commit/6ca51eb02b976cf894d7bb7165c7831b16c3bb6b) Thanks [@ssetem](https://github.com/ssetem)! - Added new media queries that target touch/non-touch devices
+
 ## 9.1.0
 
 ### Minor Changes
