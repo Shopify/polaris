@@ -28,11 +28,18 @@ async function generateCssMediaCondition() {
       throw error;
     }
   });
-  const cssStyles = generateMediaConditionStyles(
+  const breakpointMediaQueries = generateMediaConditionStyles(
     (token, direction, mediaCondition) =>
       `@custom-media --p-${token}-${direction} ${mediaCondition};`,
   );
-  await fs.promises.writeFile(cssOutputPath, cssStyles);
+  const interactionMediaQueries = generateInteractionStyles(
+    (interaction, mediaCondition) =>
+      `@custom-media --p-interaction-${interaction} ${mediaCondition};`,
+  );
+  await fs.promises.writeFile(
+    cssOutputPath,
+    [breakpointMediaQueries, interactionMediaQueries].join('\n\n'),
+  );
 }
 
 // Remove this function once we no longer need to support SCSS
@@ -42,11 +49,18 @@ async function generateScssMediaCondition() {
       throw error;
     }
   });
-  const scssStyles = generateMediaConditionStyles(
+  const breakpointMediaQueries = generateMediaConditionStyles(
     (token, direction, mediaCondition) =>
       `$p-${token}-${direction}: '${mediaCondition}';`,
   );
-  await fs.promises.writeFile(scssOutputPath, scssStyles);
+  const interactionMediaQueries = generateInteractionStyles(
+    (interaction, mediaCondition) =>
+      `$p-interaction-${interaction}: '${mediaCondition}';`,
+  );
+  await fs.promises.writeFile(
+    scssOutputPath,
+    [breakpointMediaQueries, interactionMediaQueries].join('\n\n'),
+  );
 }
 
 function generateMediaConditionStyles(
@@ -65,4 +79,21 @@ function generateMediaConditionStyles(
         .join('\n'),
     )
     .join('\n\n');
+}
+
+const interactionMediaQueries = {
+  touch: '(hover: none) and (pointer: coarse)',
+  stylus: '(hover: none) and (pointer: fine)',
+  pointer: '(hover) and (pointer: coarse)',
+  mouse: '(hover) and (pointer: fine)',
+};
+
+function generateInteractionStyles(
+  styleGenerator: (interaction: string, mediaCondition: string) => string,
+): string {
+  return Object.entries(interactionMediaQueries)
+    .map(([interaction, mediaCondition]) =>
+      styleGenerator(interaction, mediaCondition),
+    )
+    .join('\n');
 }
