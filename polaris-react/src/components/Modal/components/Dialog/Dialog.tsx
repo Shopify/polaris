@@ -28,6 +28,7 @@ export interface DialogProps {
   in?: boolean;
   setClosing?: Dispatch<SetStateAction<boolean>>;
   hasToasts?: boolean;
+  closing: boolean;
 }
 
 export function Dialog({
@@ -41,10 +42,12 @@ export function Dialog({
   onEntered,
   setClosing,
   hasToasts,
+  closing,
   ...props
 }: DialogProps) {
   const theme = useTheme();
   const containerNode = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const frameContext = useContext(FrameContext);
   let toastMessages;
 
@@ -71,7 +74,22 @@ export function Dialog({
     }
   };
 
+  const handleDialogKeydown = (event: KeyboardEvent) => {
+    if (event.target !== dialogRef.current || event.repeat) {
+      return;
+    }
+
+    handleKeyDown();
+  };
+
+  const handleDialogKeyUp = (event: KeyboardEvent) => {
+    if (event.target !== dialogRef.current || !closing) return;
+    handleKeyUp();
+  };
+
   const handleKeyUp = () => {
+    if (!closing) return;
+
     if (setClosing) {
       setClosing(false);
     }
@@ -114,8 +132,18 @@ export function Dialog({
             aria-labelledby={labelledBy}
             tabIndex={-1}
             className={styles.Dialog}
+            ref={dialogRef}
           >
             <div className={classes}>
+              <KeypressListener
+                keyCode={Key.Enter}
+                keyEvent="keydown"
+                handler={handleDialogKeydown}
+              />
+              <KeypressListener
+                keyCode={Key.Enter}
+                handler={handleDialogKeyUp}
+              />
               <KeypressListener
                 keyCode={Key.Escape}
                 keyEvent="keydown"

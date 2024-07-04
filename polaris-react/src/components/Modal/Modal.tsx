@@ -207,6 +207,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         size={size}
         limitHeight={limitHeight}
         setClosing={setClosing}
+        closing={closing}
       >
         <Header
           titleHidden={titleHidden}
