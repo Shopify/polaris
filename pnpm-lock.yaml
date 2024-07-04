@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  stylelint-scss: ^6.3.2
-
 patchedDependencies:
   stylelint@16.6.1:
     hash: wls6x7gbpq4g6z7ydobqcmwpgu
