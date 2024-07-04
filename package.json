@@ -69,6 +69,9 @@
   "pnpm": {
     "overrides": {
       "stylelint-scss": "^6.3.2"
+    },
+    "patchedDependencies": {
+      "stylelint@16.6.1": "patches/stylelint@16.6.1.patch"
     }
   },
   "size-limit": [

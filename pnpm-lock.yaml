@@ -7,6 +7,11 @@ settings:
 overrides:
   stylelint-scss: ^6.3.2
 
+patchedDependencies:
+  stylelint@16.6.1:
+    hash: wls6x7gbpq4g6z7ydobqcmwpgu
+    path: patches/stylelint@16.6.1.patch
+
 importers:
 
   .:
@@ -127,7 +132,7 @@ importers:
         version: 5.0.5
       stylelint:
         specifier: ^16.6.1
-        version: 16.6.1(typescript@4.9.3)
+        version: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
       ts-node:
         specifier: ^10.7.0
         version: 10.7.0(@types/node@20.12.5)(typescript@4.9.3)
@@ -228,7 +233,7 @@ importers:
         version: 4.2.0
       stylelint:
         specifier: ^16.6.1
-        version: 16.6.1(typescript@4.9.3)
+        version: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
     devDependencies:
       '@rollup/plugin-babel':
         specifier: ^5.3.1
@@ -708,7 +713,7 @@ importers:
         version: 4.2.0
       stylelint:
         specifier: ^16.0.0
-        version: 16.6.1(typescript@4.9.3)
+        version: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
       stylelint-scss:
         specifier: ^6.3.2
         version: 6.3.2(stylelint@16.6.1)
@@ -5162,7 +5167,7 @@ packages:
     dependencies:
       postcss: 8.4.32
       postcss-scss: 4.0.9(postcss@8.4.32)
-      stylelint: 16.6.1(typescript@4.9.3)
+      stylelint: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
       stylelint-order: 6.0.4(stylelint@16.6.1)
       stylelint-prettier: 4.1.0(prettier@3.3.2)(stylelint@16.6.1)
       stylelint-scss: 6.3.2(stylelint@16.6.1)
@@ -22554,7 +22559,7 @@ packages:
     dependencies:
       postcss: 8.4.32
       postcss-sorting: 8.0.2(postcss@8.4.32)
-      stylelint: 16.6.1(typescript@4.9.3)
+      stylelint: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
     dev: true
 
   /stylelint-prettier@4.1.0(prettier@3.3.2)(stylelint@16.6.1):
@@ -22566,7 +22571,7 @@ packages:
     dependencies:
       prettier: 3.3.2
       prettier-linter-helpers: 1.0.0
-      stylelint: 16.6.1(typescript@4.9.3)
+      stylelint: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
     dev: true
 
   /stylelint-scss@6.3.2(stylelint@16.6.1):
@@ -22580,9 +22585,9 @@ packages:
       postcss-resolve-nested-selector: 0.1.1
       postcss-selector-parser: 6.1.0
       postcss-value-parser: 4.2.0
-      stylelint: 16.6.1(typescript@4.9.3)
+      stylelint: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
 
-  /stylelint@16.6.1(typescript@4.9.3):
+  /stylelint@16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3):
     resolution: {integrity: sha512-yNgz2PqWLkhH2hw6X9AweV9YvoafbAD5ZsFdKN9BvSDVwGvPh+AUIrn7lYwy1S7IHmtFin75LLfX1m0D2tHu8Q==}
     engines: {node: '>=18.12.0'}
     hasBin: true
@@ -22629,6 +22634,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
+    patched: true
 
   /stylis@4.1.2:
     resolution: {integrity: sha512-Nn2CCrG2ZaFziDxaZPN43CXqn+j7tcdjPFCkRBkFue8QYXC2HdEwnw5TCBo4yQZ2WxKYeSi0fdoOrtEqgDrXbA==}
