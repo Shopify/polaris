@@ -41,7 +41,7 @@
     "@rollup/plugin-virtual": "^3.0.1",
     "@rollup/pluginutils": "^5.0.2",
     "@shopify/eslint-plugin": "^45.0.0",
-    "@shopify/stylelint-plugin": "^13.0.0",
+    "@shopify/stylelint-plugin": "^14.0.0",
     "@shopify/typescript-configs": "^5.1.0",
     "@size-limit/preset-small-lib": "^5.0.3",
     "@types/jest": "^29.5.12",
@@ -67,9 +67,6 @@
     "typescript": "^4.9.3"
   },
   "pnpm": {
-    "overrides": {
-      "stylelint-scss": "^6.3.2"
-    },
     "patchedDependencies": {
       "stylelint@16.6.1": "patches/stylelint@16.6.1.patch"
     }
