@@ -1,5 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {act} from 'react-dom/test-utils';
 
 import {Portal} from '../../Portal';
 import {PositionedOverlay} from '../../PositionedOverlay';
@@ -396,11 +397,72 @@ describe('<Popover />', () => {
 
       mountWithApp(<Test />);
 
-      expect(popoverRef).toStrictEqual({
+      expect(popoverRef).toMatchObject({
         current: {
           forceUpdatePosition: expect.anything(),
         },
       });
+    });
+  });
+
+  describe('close', () => {
+    it('exposes a function that closes the popover & focuses the activator by default', () => {
+      const activatorId = 'focus-target';
+      let popoverRef: React.RefObject<PopoverPublicAPI> | null = null;
+
+      function Test() {
+        popoverRef = useRef(null);
+
+        return (
+          <Popover
+            ref={popoverRef}
+            active
+            activator={<button id={activatorId} />}
+            onClose={noop}
+          />
+        );
+      }
+
+      const popover = mountWithApp(<Test />);
+
+      act(() => {
+        popoverRef?.current?.close();
+      });
+
+      const focusTarget = popover.find('button', {id: activatorId})!.domNode;
+
+      expect(document.activeElement).toBe(focusTarget);
+    });
+
+    it('exposes a function that closes the popover & focuses the next node when the next-node option is used', () => {
+      const nextFocusedId = 'focus-target2';
+      let popoverRef: React.RefObject<PopoverPublicAPI> | null = null;
+
+      function Test() {
+        popoverRef = useRef(null);
+
+        return (
+          <>
+            <Popover
+              ref={popoverRef}
+              active
+              activator={<button />}
+              onClose={noop}
+            />
+            <button id={nextFocusedId} />
+          </>
+        );
+      }
+
+      const popover = mountWithApp(<Test />);
+
+      act(() => {
+        popoverRef?.current?.close('next-node');
+      });
+
+      const focusTarget = popover.find('button', {id: nextFocusedId})!.domNode;
+
+      expect(document.activeElement).toBe(focusTarget);
     });
   });
 
