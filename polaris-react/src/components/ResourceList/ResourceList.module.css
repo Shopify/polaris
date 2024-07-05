@@ -189,7 +189,8 @@
 
   visibility: hidden;
   opacity: 0;
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
+  transition:
+    opacity var(--p-motion-duration-100) var(--p-motion-ease),
     visibility var(--p-motion-duration-100) var(--p-motion-ease);
 
   &.BulkActionsWrapperVisible {
