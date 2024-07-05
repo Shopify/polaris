@@ -1,7 +1,6 @@
 .FiltersWrapper {
   padding: var(--p-space-300);
 
-  /* stylelint-disable-next-line selector-max-specificity -- needed to add the dividing line only when the first child is the list */
   + .ResourceListWrapper > :first-child:is(.ResourceList) {
     /* stylelint-disable-next-line -- polaris component custom properties */
     border-top: var(--pc-resource-list-separator-border);
