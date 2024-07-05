@@ -276,7 +276,7 @@
   &.ItemInnerWrapper-display-actions-on-hover {
     @media (--p-breakpoints-md-up) {
       &:is(:hover, :focus-visible) {
-        /* stylelint-disable max-nesting-depth, selector-max-class, selector-max-specificity -- set background */
+        /* stylelint-disable max-nesting-depth, selector-max-specificity -- set background */
         .SecondaryActions {
           background: var(--secondary-actions-on-hover-background-color);
 
@@ -332,7 +332,7 @@
 
     &.ItemInnerWrapper-display-actions-on-hover {
       @media (--p-breakpoints-md-up) {
-        /* stylelint-disable max-nesting-depth, selector-max-class, selector-max-specificity -- set background */
+        /* stylelint-disable max-nesting-depth, selector-max-specificity -- set background */
         .SecondaryActions {
           background: var(--p-color-nav-bg-surface-selected);
 
@@ -379,7 +379,7 @@
 
   &.ItemInnerWrapper-display-actions-on-hover {
     @media (--p-breakpoints-md-up) {
-      /* stylelint-disable max-nesting-depth, selector-max-class, selector-max-specificity -- set background */
+      /* stylelint-disable max-nesting-depth, selector-max-specificity -- set background */
       .SecondaryActions {
         background: var(--secondary-actions-on-hover-background-color);
 

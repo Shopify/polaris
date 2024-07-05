@@ -160,7 +160,7 @@
 .linkable.removable:hover {
   background: var(--p-color-bg-fill-tertiary-hover);
 
-  /* stylelint-disable-next-line selector-max-class, selector-max-specificity -- override Button background color */
+  /* stylelint-disable-next-line selector-max-specificity -- override Button background color */
   .Button {
     background: var(--p-color-bg-fill-tertiary-active);
   }
@@ -176,7 +176,7 @@
   }
 }
 
-/* stylelint-disable-next-line selector-max-class, selector-max-specificity -- override code above */
+/* stylelint-disable-next-line selector-max-specificity -- override code above */
 .sizeLarge .Link.segmented::after {
   margin-right: 0;
 }
@@ -224,9 +224,8 @@
     transparent 100%
   );
 }
-/* stylelint-disable-next-line selector-max-class -- match tag hover color */
 .sizeLarge.removable.linkable {
-  /* stylelint-disable-next-line selector-max-class, selector-max-specificity  -- match tag hover color */
+  /* stylelint-disable-next-line selector-max-specificity  -- match tag hover color */
   .Button {
     background-color: var(--p-color-bg-fill-tertiary-hover);
     /* stylelint-disable-next-line -- reveal on touch devices */
@@ -234,7 +233,7 @@
       background-color: var(--p-color-bg-fill-tertiary);
     }
   }
-  /* stylelint-disable-next-line selector-max-class, selector-max-specificity  -- match tag hover color */
+  /* stylelint-disable-next-line selector-max-specificity  -- match tag hover color */
   &:hover .overlay {
     background: linear-gradient(
       to left,
