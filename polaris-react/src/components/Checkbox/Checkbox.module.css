@@ -6,7 +6,8 @@
 .ChoiceLabel .Backdrop {
   border-width: 0;
   box-shadow: inset 0 0 0 var(--p-border-width-0165) var(--p-color-input-border);
-  transition: border-color var(--p-motion-duration-100) var(--p-motion-ease-out),
+  transition:
+    border-color var(--p-motion-duration-100) var(--p-motion-ease-out),
     border-width var(--p-motion-duration-100) var(--p-motion-ease-out),
     box-shadow var(--p-motion-duration-100) var(--p-motion-ease-out);
 
@@ -60,7 +61,8 @@
     }
 
     ~ .Icon {
-      transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-out),
+      transition:
+        opacity var(--p-motion-duration-150) var(--p-motion-ease-out),
         transform var(--p-motion-duration-150) var(--p-motion-ease-out);
       opacity: 1;
 
@@ -158,7 +160,8 @@
   transform-origin: 50% 50%;
   pointer-events: none;
   opacity: 0;
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
+  transition:
+    opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
     transform var(--p-motion-duration-100) var(--p-motion-ease-out);
 
   top: calc(-1 * var(--p-space-050));

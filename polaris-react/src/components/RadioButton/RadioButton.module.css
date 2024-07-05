@@ -28,8 +28,8 @@
 
       &::before {
         background-color: var(--p-color-text-brand-on-bg-fill);
-        transition: opacity var(--p-motion-duration-150)
-            var(--p-motion-ease-out),
+        transition:
+          opacity var(--p-motion-duration-150) var(--p-motion-ease-out),
           transform var(--p-motion-duration-150) var(--p-motion-ease-out);
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -130,7 +130,8 @@
     width: var(--pc-icon-size-small);
     background-color: var(--p-color-bg-fill-brand);
     border-radius: var(--p-border-radius-full);
-    transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
+    transition:
+      opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
       transform var(--p-motion-duration-100) var(--p-motion-ease-out);
 
     @media (forced-colors: active) {
