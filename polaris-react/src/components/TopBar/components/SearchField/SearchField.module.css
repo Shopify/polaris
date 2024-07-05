@@ -54,7 +54,7 @@
     outline-offset: var(--p-space-050);
   }
 
-  /* stylelint-disable-next-line selector-max-combinators, selector-max-specificity -- set Icon fill */
+  /* stylelint-disable-next-line selector-max-specificity -- set Icon fill */
   ~ .Icon svg {
     fill: var(--p-color-icon-secondary);
   }

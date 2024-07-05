@@ -17,7 +17,6 @@
     background-color: var(--p-color-bg-surface-secondary-hover);
 
     .Actions {
-      /* stylelint-disable-next-line selector-max-combinators -- show actions on hover */
       > * {
         /* stylelint-disable-next-line -- Polaris component custom properties */
         clip: var(--pc-resource-item-action-unhide-clip);
@@ -98,7 +97,6 @@
   }
 
   .focused & {
-    /* stylelint-disable-next-line selector-max-combinators  -- show actions on focus */
     > * {
       /* stylelint-disable-next-line -- Polaris component custom properties */
       clip: var(--pc-resource-item-action-unhide-clip);
