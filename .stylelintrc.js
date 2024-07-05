@@ -11,6 +11,7 @@ module.exports = {
     'scss/at-rule-no-unknown': true,
     'selector-max-class': 5,
     'selector-max-combinators': 5,
+    'selector-max-specificity': '0,5,0',
   },
   overrides: [
     {

@@ -48,13 +48,11 @@
 }
 
 .Input:focus-visible:not(:active) {
-  /* stylelint-disable-next-line selector-max-specificity -- set Backdrop outline styles */
   ~ .Backdrop {
     outline: var(--p-border-width-050) solid var(--p-color-border-focus);
     outline-offset: var(--p-space-050);
   }
 
-  /* stylelint-disable-next-line selector-max-specificity -- set Icon fill */
   ~ .Icon svg {
     fill: var(--p-color-icon-secondary);
   }

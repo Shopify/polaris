@@ -55,12 +55,10 @@
         fill: var(--p-color-text-critical);
       }
 
-      /* stylelint-disable-next-line selector-max-specificity -- apply hover styles */
       &:is(:hover, :focus) {
         background-color: var(--p-color-bg-fill-tertiary-hover) !important;
       }
 
-      /* stylelint-disable-next-line selector-max-specificity -- apply focus/active styles */
       &:active {
         background-color: var(--p-color-bg-fill-tertiary-active) !important;
       }
