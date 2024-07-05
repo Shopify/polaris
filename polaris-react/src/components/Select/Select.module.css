@@ -197,7 +197,7 @@
     fill: var(--p-color-icon-magic);
   }
 
-  /* stylelint-disable selector-max-specificity, selector-max-compound-selectors, max-nesting-depth -- apply hover and active styles */
+  /* stylelint-disable selector-max-specificity, max-nesting-depth -- apply hover and active styles */
   &:not(.disabled):not(.error) {
     &:not(:focus-within) {
       &:hover .Backdrop {
