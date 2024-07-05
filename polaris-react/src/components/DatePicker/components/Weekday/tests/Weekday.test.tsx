@@ -15,7 +15,7 @@ describe('<Weekday />', () => {
       </table>,
     );
     expect(weekday).toContainReactText('Su');
-    expect(weekday.find('th'))!.toHaveReactProps({
+    expect(weekday.find('th')).toHaveReactProps({
       'aria-label': 'Sunday',
     });
   });
