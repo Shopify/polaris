@@ -12,6 +12,9 @@ module.exports = {
     'selector-max-class': 5,
     'selector-max-combinators': 5,
     'selector-max-specificity': '0,5,0',
+    // Disabling this rule as it's not forward-compatible with new CSS rules
+    // that get added. See: https://github.com/stylelint/stylelint/issues/7630
+    'declaration-block-no-redundant-longhand-properties': null,
   },
   overrides: [
     {
