@@ -9,6 +9,7 @@ module.exports = {
     'value-keyword-case': ['lower', {camelCaseSvgKeywords: true}],
     'at-rule-no-unknown': null,
     'scss/at-rule-no-unknown': true,
+    'selector-max-class': 5,
   },
   overrides: [
     {
