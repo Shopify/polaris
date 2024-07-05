@@ -50,7 +50,7 @@
     button {
       color: var(--p-color-text-critical) !important;
 
-      /* stylelint-disable-next-line selector-max-combinators, selector-max-type -- override svg fill */
+      /* stylelint-disable-next-line selector-max-type -- override svg fill */
       svg {
         fill: var(--p-color-text-critical);
       }
