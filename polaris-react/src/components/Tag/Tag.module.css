@@ -221,6 +221,7 @@
     transparent 100%
   );
 }
+
 .sizeLarge.removable.linkable {
   .Button {
     background-color: var(--p-color-bg-fill-tertiary-hover);
@@ -229,6 +230,7 @@
       background-color: var(--p-color-bg-fill-tertiary);
     }
   }
+
   &:hover .overlay {
     background: linear-gradient(
       to left,

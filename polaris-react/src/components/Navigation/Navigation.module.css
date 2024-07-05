@@ -208,6 +208,7 @@
       height: var(--p-space-400);
       width: var(--p-space-400);
     }
+
     img {
       border-radius: var(--p-border-radius-100);
     }

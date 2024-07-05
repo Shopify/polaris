@@ -94,6 +94,7 @@
 
   &:focus .Title {
     outline: var(--p-border-width-050) solid transparent;
+
     &::before {
       background: var(--p-color-bg-fill-brand);
     }
