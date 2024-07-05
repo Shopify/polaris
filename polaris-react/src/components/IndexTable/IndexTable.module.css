@@ -605,7 +605,7 @@
       .TableCell-first,
       .TableCell-first + .TableCell,
       .TableCell:last-child {
-        /* stylelint-enable selector-max-class, selector-max-specificity*/
+        /* stylelint-enable selector-max-class, selector-max-specificity */
         background-color: var(--p-color-bg-surface-critical-hover);
       }
     }
