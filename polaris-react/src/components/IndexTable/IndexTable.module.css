@@ -224,6 +224,7 @@
 
   &.TableRow-subheader {
     cursor: default;
+
     &,
     .TableCell:first-child,
     .TableCell-first,
@@ -305,6 +306,7 @@
 
   &.TableRow-selected {
     border-color: var(--p-color-border);
+
     &,
     .TableHeading-first,
     .TableHeading-second,
@@ -1029,6 +1031,7 @@
         z-index: var(--pc-index-table-sticky-cell);
       }
     }
+
     &.TableHeading-unselectable {
       position: sticky;
       left: 0;
