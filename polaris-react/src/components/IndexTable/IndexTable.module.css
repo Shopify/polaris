@@ -855,7 +855,8 @@
 
   &:hover,
   &:focus {
-    transition-delay: none;
+    /* stylelint-disable-next-line polaris/motion/declaration-property-unit-disallowed-list -- Shhhh */
+    transition-delay: 0s;
     transform: translateX(var(--p-space-100));
   }
 }

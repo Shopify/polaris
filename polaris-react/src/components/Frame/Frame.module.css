@@ -429,7 +429,7 @@
     color: var(--p-color-text);
 
     &:focus {
-      border-color: none;
+      border-color: transparent;
       box-shadow: none;
     }
   }
