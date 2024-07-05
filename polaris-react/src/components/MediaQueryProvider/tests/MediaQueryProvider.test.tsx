@@ -20,7 +20,6 @@ describe('MediaQueryProvider', () => {
   it('passes isNavigationCollapsed to MediaQueryContext.Provider', () => {
     function Component() {
       const mediaQuery = useMediaQuery();
-      // eslint-disable-next-line jest/no-if
       return mediaQuery !== undefined ? <div /> : null;
     }
 
@@ -35,7 +34,6 @@ describe('MediaQueryProvider', () => {
   it('sets isNavigationCollapsed when resize occurs', () => {
     function Component() {
       const {isNavigationCollapsed} = useMediaQuery();
-      // eslint-disable-next-line jest/no-if
       return isNavigationCollapsed ? <div>content</div> : null;
     }
     const mediaQueryProvider = mountWithApp(

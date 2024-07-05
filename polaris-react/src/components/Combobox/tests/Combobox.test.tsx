@@ -119,14 +119,11 @@ describe('<Combobox />', () => {
             />
           }
         >
-          {
-            // eslint-disable-next-line jest/no-if
-            inputValue.length > 0 ? (
-              <Listbox>
-                <Listbox.Option accessibilityLabel="Option 1" value="option1" />
-              </Listbox>
-            ) : null
-          }
+          {inputValue.length > 0 ? (
+            <Listbox>
+              <Listbox.Option accessibilityLabel="Option 1" value="option1" />
+            </Listbox>
+          ) : null}
         </Combobox>
       );
     }
