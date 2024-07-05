@@ -362,7 +362,6 @@
 }
 
 /* BUTTON GROUP */
-/* stylelint-disable -- selector-max-combinators */
 [data-buttongroup-variant='segmented']
   > *:not(:first-child)
   .Button:is(.variantPrimary) {
@@ -394,5 +393,3 @@
 [data-buttongroup-connected-top='true'] > *:last-child .Button {
   border-top-right-radius: var(--p-border-radius-0);
 }
-
-/* stylelint-enable -- selector-max-combinators */

@@ -157,7 +157,6 @@
   &.TableRow-child.toneSuccess {
     &,
     .TableCell-first {
-      /* stylelint-disable-next-line -- adds success tone for nested rows */
       &::before {
         background-color: var(--p-color-bg-surface-success);
       }
@@ -176,7 +175,6 @@
   &.TableRow-child.toneWarning {
     &,
     .TableCell-first {
-      /* stylelint-disable-next-line -- adds warning tone for nested rows */
       &::before {
         background-color: var(--p-color-bg-surface-warning);
       }
@@ -195,7 +193,6 @@
   &.TableRow-child.toneCritical {
     &,
     .TableCell-first {
-      /* stylelint-disable-next-line -- adds critical tone for nested rows */
       &::before {
         background-color: var(--p-color-bg-surface-critical);
       }
@@ -215,7 +212,6 @@
   &.TableRow-child.toneSubdued {
     &,
     .TableCell-first {
-      /* stylelint-disable-next-line -- adds secondary tone for nested rows */
       &::before {
         background-color: var(--p-color-bg-surface-secondary);
       }
@@ -482,7 +478,6 @@
       }
     }
 
-    /* stylelint-disable-next-line -- tone table override */
     &.toneWarning {
       /* stylelint-disable selector-max-specificity -- tone table override */
       &,
@@ -669,10 +664,8 @@
   }
 
   .TableRow-child:nth-child(2n) {
-    /* stylelint-disable-next-line  -- adds secondary tone for nested rows */
     &,
     .TableCell-first {
-      /* stylelint-disable-next-line -- adds secondary tone for nested rows */
       &::before {
         background-color: var(--p-color-bg-surface-secondary);
       }
@@ -707,7 +700,6 @@
 
   .TableRow-child.TableRow-selected:nth-child(2n),
   .TableRow-child.TableRow-selected:nth-child(2n + 1) {
-    /* stylelint-disable-next-line  -- adds selected tone for nested rows */
     &,
     .TableCell-first {
       /* stylelint-disable-next-line -- adds selected tone for nested rows */
@@ -734,7 +726,6 @@
 
   .TableRow-hovered.TableRow-selected:nth-child(2n),
   .TableRow-hovered.TableRow-selected:nth-child(2n + 1) {
-    /* stylelint-disable-next-line  -- adds hover tone for nested rows */
     &,
     .TableCell-first {
       /* stylelint-disable-next-line -- adds hover tone for nested rows */

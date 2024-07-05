@@ -23,7 +23,7 @@
       opacity: 1;
     }
 
-    /* stylelint-disable-next-line -- needed to remove extra margin between loading indicator and clear button when visible */
+    /* needed to remove extra margin between loading indicator and clear button when visible */
     .Loading:has(+ .ClearButton) {
       margin-right: 0;
     }
@@ -84,14 +84,12 @@
 }
 
 .error {
-  /* stylelint-disable-next-line -- set Backdrop styles */
   .Input:hover ~ .Backdrop,
   .Input:focus-visible ~ .Backdrop {
     border-color: var(--p-color-border-critical-secondary);
     background-color: var(--p-color-bg-surface-critical);
   }
 
-  /* stylelint-disable-next-line -- set Backdrop styles */
   .Input:active ~ .Backdrop,
   .Input:focus-visible ~ .Backdrop {
     border-width: var(--p-border-width-025);
@@ -108,7 +106,6 @@
   }
 }
 
-/* stylelint-disable -- specificity bump for readOnly styles to override */
 .readOnly.readOnly {
   > .Input {
     color: var(--p-color-text-secondary);
@@ -126,7 +123,6 @@
     }
   }
 }
-/* stylelint-enable */
 
 /* stylelint-disable selector-max-specificity -- specificity bump for magic styles to override */
 .toneMagic {
@@ -334,14 +330,12 @@
   }
 }
 
-/* stylelint-disable -- override focus ring offset by increasing specificity */
 .slim.borderless.slim.borderless {
   .Input,
   .Backdrop {
     outline-offset: 0;
   }
 }
-/* stylelint-enable */
 
 .Input-hasClearButton {
   /* Hide webkit search input clear button */
