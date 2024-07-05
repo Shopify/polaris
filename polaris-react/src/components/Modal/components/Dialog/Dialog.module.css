@@ -82,6 +82,7 @@
 
   &.sizeFullScreen {
     height: 100%;
+
     @media (--p-breakpoints-md-up) {
       height: unset;
     }

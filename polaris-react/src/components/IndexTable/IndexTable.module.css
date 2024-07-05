@@ -1409,6 +1409,7 @@
   --pc-pagination-index: 30;
   /* stylelint-disable-next-line -- sets the z-index created above */
   z-index: var(--pc-pagination-index);
+
   @media (--p-breakpoints-md-up) {
     position: sticky;
     bottom: 0;
