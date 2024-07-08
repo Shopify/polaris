@@ -1,5 +1,16 @@
 # @shopify/polaris-migrator
 
+## 2.0.0
+
+### Major Changes
+
+- [#12337](https://github.com/Shopify/polaris/pull/12337) [`b2d2da488`](https://github.com/Shopify/polaris/commit/b2d2da488b5639cb43cc210ce64db5419460f1dc) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed `styles-insert-stylelint-disable` migration
+
+### Patch Changes
+
+- Updated dependencies [[`b2d2da488`](https://github.com/Shopify/polaris/commit/b2d2da488b5639cb43cc210ce64db5419460f1dc)]:
+  - @shopify/stylelint-polaris@17.0.0
+
 ## 1.0.3
 
 ### Patch Changes
