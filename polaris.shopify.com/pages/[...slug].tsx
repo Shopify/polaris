@@ -5,7 +5,7 @@ import type {
 } from 'next';
 import Link from 'next/link';
 import fs from 'fs';
-import globby from 'globby';
+import {globbySync} from 'globby';
 import {metaThemeDefault as tokenGroups} from '@shopify/polaris-tokens';
 import mapValues from 'lodash.mapvalues';
 
@@ -143,7 +143,7 @@ function makeSerializable<T extends Record<string, any> = Record<string, any>>(
 const getRichCards = async (
   pathGlob: string,
 ): Promise<SortedRichCardGridProps[]> => {
-  const markdownFiles = globby.sync(pathGlob, {onlyFiles: true});
+  const markdownFiles = globbySync(pathGlob, {onlyFiles: true});
 
   return (
     (
@@ -380,10 +380,9 @@ function fileShouldNotBeRenderedWithCatchAllTemplate(
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = globby
-    // Recursive search for all markdown files (globby requires posix paths)
-    // Note: files prefixed with an underscore are ignored
-    .sync(`${contentDir}/**/!(_)*.mdx`)
+  // Recursive search for all markdown files (globby requires posix paths)
+  // Note: files prefixed with an underscore are ignored
+  const paths = globbySync(`${contentDir}/**/!(_)*.mdx`)
     .map(extractSlugFromPath)
     .filter(fileShouldNotBeRenderedWithCatchAllTemplate);
 

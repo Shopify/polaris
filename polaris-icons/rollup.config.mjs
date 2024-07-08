@@ -5,13 +5,13 @@ import * as path from 'path';
 import {createFilter} from '@rollup/pluginutils';
 import {babel} from '@rollup/plugin-babel';
 import virtual from '@rollup/plugin-virtual';
-import globby from 'globby';
+import {globbySync} from 'globby';
 import jsYaml from 'js-yaml';
 import svgr from '@svgr/core';
 
 const convert = svgr.default;
 const iconBasePath = new URL('./icons', import.meta.url).pathname;
-const iconPaths = globby.sync(path.join(iconBasePath, '*.yml'));
+const iconPaths = globbySync(path.join(iconBasePath, '*.yml'));
 
 const iconExports = [];
 const iconTypes = [];
