@@ -8,7 +8,6 @@ describe('useIsAfterInitialMount', () => {
     let isAfterInitialMountValue: boolean | undefined;
     function Component() {
       const isAfterInitialMount = useIsAfterInitialMount();
-      // eslint-disable-next-line jest/no-if
       if (isAfterInitialMountValue === undefined)
         isAfterInitialMountValue = !isAfterInitialMount;
       return null;

@@ -1,6 +1,7 @@
 import {Fragment, useRef, useEffect, useState, useCallback} from 'react';
 import {format} from 'prettier/standalone';
-import babel from 'prettier/parser-babel';
+import babel from 'prettier/plugins/babel';
+import estree from 'prettier/plugins/estree';
 import endent from 'endent';
 import {createUrl} from 'playroom';
 import {Stack} from '../Stack';
@@ -13,6 +14,62 @@ import {className as classNames} from '../../utils/various';
 import {viewTransition} from '../../utils/various';
 import {MaximizeIcon, MinimizeIcon} from '@shopify/polaris-icons';
 import Icon from '../Icon';
+
+function usePromise<T>(
+  getPromise: () => Promise<T>,
+  deps?: Array<any>,
+): [boolean, T | undefined] {
+  const [{loading, value}, setValue] = useState<{loading: boolean; value?: T}>({
+    loading: true,
+  });
+  useEffect(() => {
+    let cancelled = false;
+    getPromise().then((value) => {
+      // Don't try to call setValue after the component has unmounted
+      if (!cancelled) {
+        setValue({loading: false, value});
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [getPromise, ...(deps ?? [])]);
+  return [loading, value];
+}
+
+const formatCodeSnippet = async (code: string) => {
+  let prettifiedCode;
+
+  try {
+    // Casting because the typescript function(str: string) overload is missing
+    prettifiedCode = await format(
+      endent(code as unknown as TemplateStringsArray),
+      {
+        parser: 'babel',
+        plugins: [estree, babel],
+      },
+    );
+  } catch (error) {
+    if (process.env.NODE_ENV === 'production') {
+      console.error(error);
+      // proceed gracefully
+      prettifiedCode = code;
+    } else {
+      throw error;
+    }
+  }
+
+  // We trim and call a custom replace here
+  // Because prettier appends a semi-colon at the end of the detected JSX phrase for some reason.
+  // TODO: Validate whether or not we can solve this at a config level. (i.e. disable the rule)
+
+  return prettifiedCode.trim().replace(/[;$]/g, (match, offset, string) => {
+    if (offset === string.length - 1 || string.lastIndexOf(match) === offset) {
+      return '';
+    }
+    return match;
+  });
+};
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
 
@@ -160,57 +217,36 @@ const PatternsExample = ({
     }
   }, [dialogActive, handleMinimize]);
 
-  const formatCodeSnippet = (code: string) => {
-    let prettifiedCode;
+  const getFormattedCode = useCallback(async () => {
+    const formattedCode = await formatCodeSnippet(example.code);
+    const [sandboxCode, previewCode] = await Promise.all([
+      example.sandboxContext
+        ? formatCodeSnippet(
+            example.sandboxContext
+              .replace(/\\\#/g, '')
+              .replace(/____CODE____;?/, formattedCode),
+          )
+        : formattedCode,
 
-    try {
-      // Casting because the typescript function(str: string) overload is missing
-      prettifiedCode = format(endent(code as unknown as TemplateStringsArray), {
-        parser: 'babel',
-        plugins: [babel],
-      });
-    } catch (error) {
-      if (process.env.NODE_ENV === 'production') {
-        console.error(error);
-        // proceed gracefully
-        prettifiedCode = code;
-      } else {
-        throw error;
-      }
-    }
+      example.previewContext
+        ? formatCodeSnippet(
+            example.previewContext
+              .replace(/\\\#/g, '')
+              .replace(/____CODE____;?/, formattedCode),
+          )
+        : formattedCode,
+    ]);
+    return [formattedCode, sandboxCode, previewCode];
+  }, [example.code, example.sandboxContext, example.previewContext]);
 
-    // We trim and call a custom replace here
-    // Because prettier appends a semi-colon at the end of the detected JSX phrase for some reason.
-    // TODO: Validate whether or not we can solve this at a config level. (i.e. disable the rule)
+  const [
+    formattingCode,
+    [formattedCode = '', sandboxCode = '', previewCode = ''] = [],
+  ] = usePromise(getFormattedCode);
 
-    return prettifiedCode.trim().replace(/[;$]/g, (match, offset, string) => {
-      if (
-        offset === string.length - 1 ||
-        string.lastIndexOf(match) === offset
-      ) {
-        return '';
-      }
-      return match;
-    });
-  };
-
-  const formattedCode = formatCodeSnippet(example.code);
-
-  const sandboxCode = example.sandboxContext
-    ? formatCodeSnippet(
-        example.sandboxContext
-          .replace(/\\\#/g, '')
-          .replace(/____CODE____;?/, formattedCode),
-      )
-    : formattedCode;
-
-  const previewCode = example.previewContext
-    ? formatCodeSnippet(
-        example.previewContext
-          .replace(/\\\#/g, '')
-          .replace(/____CODE____;?/, formattedCode),
-      )
-    : formattedCode;
+  if (formattingCode) {
+    return null;
+  }
 
   const previewUrl = `/playroom/preview/index.html${createUrl({
     code: previewCode,

@@ -49,7 +49,6 @@
     }
 
     /* TailDown */
-    /* stylelint-disable-next-line -- TailDown styles */
     .Tail {
       top: unset;
       bottom: calc(-1 * var(--p-space-200));

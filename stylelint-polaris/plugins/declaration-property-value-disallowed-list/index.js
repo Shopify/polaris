@@ -22,7 +22,7 @@ const {rule} = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primary */
   (primary) => {
-    return (root, result) => {
+    return async (root, result) => {
       const validOptions = stylelint.utils.validateOptions(result, ruleName, {
         actual: primary,
         possible: [validateObjectWithArrayProps(isString, isRegExp)],
@@ -30,7 +30,7 @@ const {rule} = stylelint.createPlugin(
 
       if (!validOptions) return;
 
-      stylelint.utils.checkAgainstRule(
+      await stylelint.utils.checkAgainstRule(
         {
           ruleName: 'declaration-property-value-disallowed-list',
           ruleSettings: primary,

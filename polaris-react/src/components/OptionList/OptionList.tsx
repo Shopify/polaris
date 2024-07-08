@@ -175,8 +175,8 @@ export function OptionList({
             ? '100'
             : '0'
           : title
-          ? '050'
-          : '0';
+            ? '050'
+            : '0';
 
         return (
           <Box

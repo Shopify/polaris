@@ -31,18 +31,18 @@
   "exports": "./index.js",
   "scripts": {
     "lint": "TIMING=1 eslint --cache .",
-    "test": "jest",
+    "test": "NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" jest",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
-    "stylelint-scss": "^4.4.0",
+    "stylelint-scss": "^6.3.2",
     "postcss-scss": "^4.0.9",
     "postcss-value-parser": "^4.2.0",
     "postcss-media-query-parser": "^0.2.3",
     "@shopify/polaris-tokens": "^9.2.0"
   },
   "peerDependencies": {
-    "stylelint": "^14.15.0 || ^15.0.0"
+    "stylelint": "^16.0.0"
   },
   "jest": {
     "preset": "jest-preset-stylelint"
