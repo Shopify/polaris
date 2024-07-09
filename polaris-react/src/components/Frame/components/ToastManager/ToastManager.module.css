@@ -29,8 +29,7 @@
   position: absolute;
   display: inline-flex;
   opacity: 0;
-  transition:
-    transform var(--p-motion-duration-400) var(--p-motion-ease-out),
+  transition: transform var(--p-motion-duration-400) var(--p-motion-ease-out),
     opacity var(--p-motion-duration-400) var(--p-motion-ease-out);
   /* stylelint-disable-next-line -- required for stacking animation */
   transform: translateY(var(--pc-toast-manager-translate-y-out));

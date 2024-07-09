@@ -41,8 +41,8 @@
 }
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
-   Remove the duplicate selectors once `Icon` supports no fill so there won't be competing specificity.
-   Duplicate selectors to bump specificity to be greater than Icon's svg fill (0, 1, 1) */
+   Remove the duplicate selectors once `Icon` supports no fill so there won't be competing specificity */
+/* stylelint-disable selector-max-specificity -- Duplicate selectors to bump specificity to be greater than Icon's svg fill (0, 1, 1) */
 .Button.Button svg {
   fill: var(--pc-button-icon-fill);
 }
@@ -68,6 +68,7 @@
 .pressed.pressed:focus-visible svg {
   fill: var(--pc-button-icon-fill_pressed);
 }
+/* stylelint-enable selector-max-specificity */
 
 .Button:hover {
   background: var(--pc-button-bg_hover);
@@ -362,6 +363,7 @@
 }
 
 /* BUTTON GROUP */
+/* stylelint-disable -- selector-max-combinators */
 [data-buttongroup-variant='segmented']
   > *:not(:first-child)
   .Button:is(.variantPrimary) {
@@ -393,3 +395,5 @@
 [data-buttongroup-connected-top='true'] > *:last-child .Button {
   border-top-right-radius: var(--p-border-radius-0);
 }
+
+/* stylelint-enable -- selector-max-combinators */

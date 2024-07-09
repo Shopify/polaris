@@ -104,14 +104,11 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       this.focusContent();
       this.changeTransitionStatus(TransitionStatus.Entering, () => {
         this.clearTransitionTimeout();
-        this.enteringTimer = window.setTimeout(
-          () => {
-            this.setState({transitionStatus: TransitionStatus.Entered});
-            // Important: This will not update when the active theme changes.
-            // Update this to `useTheme` once converted to a function component.
-          },
-          parseInt(themeDefault.motion['motion-duration-100'], 10),
-        );
+        this.enteringTimer = window.setTimeout(() => {
+          this.setState({transitionStatus: TransitionStatus.Entered});
+          // Important: This will not update when the active theme changes.
+          // Update this to `useTheme` once converted to a function component.
+        }, parseInt(themeDefault.motion['motion-duration-100'], 10));
       });
     }
 

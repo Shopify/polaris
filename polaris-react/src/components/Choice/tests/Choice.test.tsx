@@ -21,7 +21,7 @@ describe('<Choice />', () => {
     expect(element).toContainReactComponent('label', {
       htmlFor: 'MyChoice',
     });
-    expect(element.find('label')).toContainReactText('Label');
+    expect(element.find('label'))!.toContainReactText('Label');
   });
 
   it('renders error markup when provided with a value', () => {

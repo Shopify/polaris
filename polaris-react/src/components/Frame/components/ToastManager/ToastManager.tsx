@@ -99,12 +99,9 @@ export const ToastManager = memo(function ToastManager({
       setShouldExpand(false);
     }
     if (shouldExpand) {
-      fullyExpandedTimeout.current = setTimeout(
-        () => {
-          isFullyExpanded.current = true;
-        },
-        toastMessages.length * TOAST_TRANSITION_DELAY + 400,
-      );
+      fullyExpandedTimeout.current = setTimeout(() => {
+        isFullyExpanded.current = true;
+      }, toastMessages.length * TOAST_TRANSITION_DELAY + 400);
     } else if (fullyExpandedTimeout.current) {
       clearTimeout(fullyExpandedTimeout.current);
       isFullyExpanded.current = false;

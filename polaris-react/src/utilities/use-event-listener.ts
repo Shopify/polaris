@@ -15,18 +15,18 @@ type UseEventListenerTarget =
 /**
  * Extracts the target element from a React `RefObject` or returns the input element.
  */
-type ExtractTargetElement<Target> =
-  Target extends RefObject<infer Element> ? Element : Target;
+type ExtractTargetElement<Target> = Target extends RefObject<infer Element>
+  ? Element
+  : Target;
 
 /**
  * Extracts a (lib.dom.ts) EventMap for a given target element.
  */
-type ExtractEventMap<Target> =
-  ExtractTargetElement<Target> extends Window
-    ? WindowEventMap
-    : ExtractTargetElement<Target> extends Document
-      ? DocumentEventMap
-      : HTMLElementEventMap;
+type ExtractEventMap<Target> = ExtractTargetElement<Target> extends Window
+  ? WindowEventMap
+  : ExtractTargetElement<Target> extends Document
+  ? DocumentEventMap
+  : HTMLElementEventMap;
 
 /**
  * Extracts all event names for a given target element.
