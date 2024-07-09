@@ -101,9 +101,10 @@ export function FiltersBar({
 
   const pinnedFilters = localPinnedFilters
     .map((key) => filters.find((filter) => filter.key === key))
-    .reduce<
-      FilterInterface[]
-    >((acc, filter) => (filter ? [...acc, filter] : acc), []);
+    .reduce<FilterInterface[]>(
+      (acc, filter) => (filter ? [...acc, filter] : acc),
+      [],
+    );
 
   const onFilterClick =
     ({key, onAction}: FilterInterface) =>

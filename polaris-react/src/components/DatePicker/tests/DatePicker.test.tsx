@@ -154,7 +154,7 @@ describe('<DatePicker />', () => {
         <DatePicker id={id} month={0} year={2018} />,
       );
 
-      expect(datePicker.find('div')).toHaveReactProps({
+      expect(datePicker.find('div'))!.toHaveReactProps({
         id,
       });
     });

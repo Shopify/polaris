@@ -1,8 +1,4 @@
 .next
-pnpm-lock.yaml
-**/CHANGELOG.md
-/polaris-migrator/src/migrations/**/tests/*.scss
-/polaris-migrator/templates/**/*.hbs
 dist
 node_modules
 /polaris-react/build

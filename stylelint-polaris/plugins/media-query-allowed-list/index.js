@@ -34,7 +34,7 @@ const {rule} = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primary */
   (primary) => {
-    return async (root, result) => {
+    return (root, result) => {
       const validOptions = stylelint.utils.validateOptions(
         result,
         ruleName,
@@ -79,7 +79,7 @@ const {rule} = stylelint.createPlugin(
 
       // Pass `primary.allowedMediaFeatureNames` to the
       // built-in `media-feature-name-allowed-list` rule
-      await stylelint.utils.checkAgainstRule(
+      stylelint.utils.checkAgainstRule(
         {
           ruleName: 'media-feature-name-allowed-list',
           ruleSettings: allowedMediaFeatureNames,

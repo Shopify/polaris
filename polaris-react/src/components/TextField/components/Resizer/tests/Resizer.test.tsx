@@ -68,7 +68,7 @@ describe('<Resizer />', () => {
       );
       const expectedEncodedContents =
         '&lt;div&gt;&amp;<br>Contents&lt;/div&gt;<br></div>';
-      expect(resizer).toContainReactHtml(expectedEncodedContents);
+      expect(resizer)!.toContainReactHtml(expectedEncodedContents);
     });
 
     it('ignores carriage returns when rendering content', () => {
@@ -78,7 +78,7 @@ describe('<Resizer />', () => {
       );
       const expectedEncodedContents =
         '&lt;div&gt;&amp;<br>Contents&lt;/div&gt;<br></div>';
-      expect(resizer).toContainReactHtml(expectedEncodedContents);
+      expect(resizer)!.toContainReactHtml(expectedEncodedContents);
     });
   });
 
@@ -88,14 +88,14 @@ describe('<Resizer />', () => {
       const resizer = mountWithApp(
         <Resizer {...mockProps} minimumLines={minimumLines} />,
       );
-      expect(resizer.find('div')).toContainReactHtml('<br><br><br>');
+      expect(resizer.find('div'))!.toContainReactHtml('<br><br><br>');
     });
 
     it('renders nothing when minimumLines is undefined', () => {
       const resizer = mountWithApp(
         <Resizer {...mockProps} minimumLines={undefined} />,
       );
-      expect(resizer.find('div')).not.toContainReactHtml('<br><br><br>');
+      expect(resizer.find('div'))!.not.toContainReactHtml('<br><br><br>');
     });
   });
 

@@ -62,16 +62,16 @@ export default function FrameComponent({
 
   // Tell parent frame of the initial size on first render
   useEffect(() => {
-    if (!wrapperRef.current || !content) {
+    if (!wrapperRef.current) {
       return;
     }
     var {height} = wrapperRef.current.getBoundingClientRect();
     updateGrowFrameHeight(`${Math.ceil(height)}px`);
-  }, [content]);
+  }, []);
 
   // Watch for changes in size (screen resizing, interacting, etc);
   useEffect(() => {
-    if (!wrapperRef.current || !content) {
+    if (!wrapperRef.current) {
       return;
     }
     const observer = new ResizeObserver((entries) => {
@@ -82,7 +82,7 @@ export default function FrameComponent({
     return () => {
       observer.disconnect();
     };
-  }, [content]);
+  }, []);
 
   useEffect(() => {
     const urlFeatures = new URLSearchParams(window.location.search).get(

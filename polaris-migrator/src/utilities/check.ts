@@ -58,14 +58,14 @@ export function check(
       // Assumes transform is one level up from tests directory
       const module = await import(path.join(dirName, '..', 'transform'));
       const output = await applyTransform(
-        {...module.default},
+        {...module},
         {source, path: inputPath},
         options,
       );
 
       // Format output and expected with prettier for white spaces and line breaks consistency
-      expect(await prettier.format(output, {parser})).toBe(
-        await prettier.format(expected, {parser}),
+      expect(prettier.format(output, {parser})).toBe(
+        prettier.format(expected, {parser}),
       );
     });
   });

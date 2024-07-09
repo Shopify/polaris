@@ -71,7 +71,7 @@ module.exports = stylelint.createPlugin(
       }
     }
 
-    return async (root, result) => {
+    return (root, result) => {
       const validOptions = stylelint.utils.validateOptions(
         result,
         coverageRuleName,
@@ -93,7 +93,7 @@ module.exports = stylelint.createPlugin(
           severity = result.stylelint.config?.defaultSeverity,
         } = rule;
 
-        await stylelint.utils.checkAgainstRule(
+        stylelint.utils.checkAgainstRule(
           {
             ruleName: stylelintRuleName,
             ruleSettings,

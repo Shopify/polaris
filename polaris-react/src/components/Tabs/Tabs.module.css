@@ -104,6 +104,7 @@
     @mixin focus-ring wide, 0, focused;
   }
 
+  /* stylelint-disable-next-line selector-max-specificity -- specificity required to override focus ring */
   &:not([aria-disabled='true']):focus-visible:not(:active) {
     /* stylelint-disable-next-line -- no way to set focus ring without mixin currently */
     @mixin focus-ring base, 0, focused;

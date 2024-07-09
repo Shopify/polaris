@@ -191,6 +191,7 @@
     .AddFilter {
       padding: var(--p-space-300) var(--p-space-200);
 
+      /* stylelint-disable-next-line selector-max-combinators -- required to hide the text of the button */
       span {
         display: none;
       }

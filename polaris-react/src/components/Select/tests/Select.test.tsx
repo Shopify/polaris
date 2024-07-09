@@ -299,7 +299,7 @@ describe('<Select />', () => {
       );
       const errorID = select.find('select')!.prop('aria-describedby');
       expect(typeof errorID).toBe('string');
-      expect(select.find('div', {id: errorID})).toContainReactText(
+      expect(select.find('div', {id: errorID})!).toContainReactText(
         'Some error',
       );
     });
@@ -325,7 +325,7 @@ describe('<Select />', () => {
 
       expect(select).toContainReactComponent('select', {'aria-invalid': true});
       expect(typeof errorID).toBe('string');
-      expect(fieldGroup.find('div', {id: errorID})).toContainReactText(
+      expect(fieldGroup.find('div', {id: errorID})!).toContainReactText(
         'Some error',
       );
     });

@@ -207,7 +207,7 @@ describe('<DropZone />', () => {
 
   it('renders a disabled input when the disabled prop is true', () => {
     const dropZone = mountWithApp(<DropZone disabled />);
-    expect(dropZone.find('input', {type: 'file'})).toHaveReactProps({
+    expect(dropZone.find('input', {type: 'file'})!).toHaveReactProps({
       disabled: true,
     });
   });

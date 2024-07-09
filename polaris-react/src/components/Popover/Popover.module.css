@@ -8,15 +8,13 @@
   margin: var(--pc-popover-visible-portion-of-arrow) var(--p-space-200)
     var(--p-space-400);
   will-change: left, top;
-
   @mixin shadow-bevel var(--p-shadow-300), var(--p-border-radius-300), null, '',
     2;
 }
 
 .PopoverOverlay {
   opacity: 0;
-  transition:
-    opacity var(--p-motion-duration-100) var(--p-motion-ease),
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
     transform var(--p-motion-duration-100) var(--p-motion-ease);
   /* stylelint-disable-next-line -- Polaris component custom properties */
   transform: translateY(var(--pc-popover-vertical-motion-offset));

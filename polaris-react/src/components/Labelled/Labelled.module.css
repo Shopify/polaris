@@ -7,6 +7,7 @@
   color: var(--p-color-text-disabled);
 }
 
+/* stylelint-disable-next-line -- color override since Text component doesn't support this color token */
 .disabled > .HelpText > span {
   color: var(--p-color-text-disabled);
 }
