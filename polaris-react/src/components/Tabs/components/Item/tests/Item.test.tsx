@@ -1,4 +1,5 @@
 import React from 'react';
+import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {UnstyledLink} from '../../../../UnstyledLink';
@@ -9,6 +10,14 @@ describe('<Item />', () => {
     id: 'foo',
     focused: false,
   };
+
+  beforeEach(() => {
+    timer.mock();
+  });
+
+  afterEach(() => {
+    timer.restore();
+  });
 
   it('renders UnstyledLink when item has url', () => {
     const url = 'http://shopify.com';
@@ -24,5 +33,13 @@ describe('<Item />', () => {
 
     expect(item).not.toContainReactComponent(UnstyledLink);
     expect(item).toContainReactComponent('button');
+  });
+
+  it('focuses itself when focused is true', () => {
+    const item = mountWithApp(<Item {...mockProps} focused />);
+
+    timer.runAllTimers();
+
+    expect(document.activeElement).toStrictEqual(item.find('button')!.domNode);
   });
 });

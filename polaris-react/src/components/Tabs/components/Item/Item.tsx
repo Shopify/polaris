@@ -24,12 +24,12 @@ export const Item = memo(function Item({
   const focusedNode = useRef<HTMLButtonElement | ReactElement | null>(null);
 
   useEffect(() => {
-    if (
-      focusedNode.current &&
-      focusedNode.current instanceof HTMLElement &&
-      focused
-    ) {
-      focusedNode.current.focus();
+    const focusTarget = focusedNode.current;
+
+    if (focusTarget && focusTarget instanceof HTMLElement && focused) {
+      requestAnimationFrame(() => {
+        focusTarget.focus();
+      });
     }
   }, [focusedNode, focused]);
 
