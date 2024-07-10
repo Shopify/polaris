@@ -32,5 +32,13 @@
     "constants.js",
     "../polaris-tokens/dist"
   ],
-  "exclude": ["node_modules", "scripts/get-props/testData"]
+  "exclude": ["node_modules", "scripts/get-props/testData"],
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+      "module": "CommonJS",
+      "jsx": "react"
+    }
+  }
 }
