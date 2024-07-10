@@ -5,7 +5,7 @@ import path from 'path';
 import * as jscodeshift from 'jscodeshift/src/Runner';
 import chalk from 'chalk';
 import isGitClean from 'is-git-clean';
-import globby from 'globby';
+import {globbySync} from 'globby';
 
 export interface MigrateOptions {
   dry?: boolean;
@@ -37,7 +37,7 @@ export async function migrate(
       checkGitStatus(options.force);
     }
 
-    const filepaths = globby.sync(files, {cwd: process.cwd()});
+    const filepaths = globbySync(files, {cwd: process.cwd()});
     if (filepaths.length === 0) {
       throw new Error(`No files found for ${files}`);
     }

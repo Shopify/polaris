@@ -3,7 +3,7 @@
 import * as ts from 'typescript';
 import * as fs from 'fs';
 import path from 'path';
-import globby from 'globby';
+import {globby} from 'globby';
 import {Type, FilteredTypes, AllTypes} from '../../../src/types';
 
 type NodeParser = (

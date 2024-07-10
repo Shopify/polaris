@@ -1,7 +1,7 @@
 import type {GetStaticProps} from 'next';
 import fs from 'fs';
 import path from 'path';
-import globby from 'globby';
+import {globbySync} from 'globby';
 import Longform from '../../../../src/components/Longform';
 import Markdown from '../../../../src/components/Markdown';
 import Page from '../../../../src/components/Page';
@@ -64,9 +64,9 @@ function indexPageMetadata() {
 
 function ruleListMarkdown(directory: string): string {
   const globPath = [`${directory}/*.mdx`];
-  const rulePagePaths = globby
-    .sync(globPath)
-    .filter((path) => !path.endsWith(`${rulesPath}/index.mdx`));
+  const rulePagePaths = globbySync(globPath).filter(
+    (path) => !path.endsWith(`${rulesPath}/index.mdx`),
+  );
 
   const content: {[key: string]: string[]} = {};
   rulePagePaths.forEach((markdownFilePath) => {
