@@ -378,7 +378,7 @@ function InAnApplicationComponent() {
 }
 
 export const WithAnOffset = {
-  render: (_args: Args) => <WithAnOffsetComponent  />
+  render: (_args: Args) => <WithAnOffsetComponent />,
 };
 
 function WithAnOffsetComponent() {
@@ -727,7 +727,7 @@ function WithAnOffsetComponent() {
 }
 
 export const WithSidebar = {
-  render: (_args: Args) => <WithSidebarEnabled />
+  render: (_args: Args) => <WithSidebarEnabled />,
 };
 
 function WithSidebarEnabled() {
@@ -1095,7 +1095,7 @@ function WithSidebarEnabled() {
 }
 
 export const WithoutATopBar = {
-  render: (_args: Args) => <WithoutATopBarComponent />
+  render: (_args: Args) => <WithoutATopBarComponent />,
 };
 
 function WithoutATopBarComponent() {

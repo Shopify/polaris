@@ -452,11 +452,5 @@ export function Frame(props: FrameProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
 
-  return (
-    <FrameInner
-      {...props}
-      i18n={i18n}
-      mediaQuery={mediaQuery}
-    />
-  );
+  return <FrameInner {...props} i18n={i18n} mediaQuery={mediaQuery} />;
 }
