@@ -189,7 +189,7 @@ describe('<Combobox />', () => {
   it('calls Popover.forceUpdatePosition() when onOptionSelected is triggered and allowMultiple is true and there are children', () => {
     const mockForceUpdatePosition = jest.fn();
     mockUseImperativeHandle.mockImplementation(
-      (ref: {current: PopoverPublicAPI}) => {
+      (ref: {current: Partial<PopoverPublicAPI>}) => {
         ref.current = {
           forceUpdatePosition: mockForceUpdatePosition,
         };

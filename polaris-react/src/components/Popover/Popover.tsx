@@ -82,8 +82,10 @@ export interface PopoverProps {
   captureOverscroll?: boolean;
 }
 
+type CloseTarget = 'activator' | 'next-node';
 export interface PopoverPublicAPI {
   forceUpdatePosition(): void;
+  close(target?: CloseTarget): void;
 }
 
 // TypeScript can't generate types that correctly infer the typing of
@@ -120,36 +122,6 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
       overlayRef.current?.forceUpdatePosition();
     }
 
-    useImperativeHandle(ref, () => {
-      return {
-        forceUpdatePosition,
-      };
-    });
-
-    const setAccessibilityAttributes = useCallback(() => {
-      if (activatorContainer.current == null) {
-        return;
-      }
-
-      const firstFocusable = findFirstFocusableNodeIncludingDisabled(
-        activatorContainer.current,
-      );
-      const focusableActivator: HTMLElement & {
-        disabled?: boolean;
-      } = firstFocusable || activatorContainer.current;
-
-      const activatorDisabled =
-        'disabled' in focusableActivator &&
-        Boolean(focusableActivator.disabled);
-
-      setActivatorAttributes(focusableActivator, {
-        id,
-        active,
-        ariaHaspopup,
-        activatorDisabled,
-      });
-    }, [id, active, ariaHaspopup]);
-
     const handleClose = (source: PopoverCloseSource) => {
       onClose(source);
       if (activatorContainer.current == null || preventFocusOnClose) {
@@ -180,6 +152,44 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
         }
       }
     };
+
+    useImperativeHandle(ref, () => {
+      return {
+        forceUpdatePosition,
+        close: (target = 'activator') => {
+          const source =
+            target === 'activator'
+              ? PopoverCloseSource.EscapeKeypress
+              : PopoverCloseSource.FocusOut;
+
+          handleClose(source);
+        },
+      };
+    });
+
+    const setAccessibilityAttributes = useCallback(() => {
+      if (activatorContainer.current == null) {
+        return;
+      }
+
+      const firstFocusable = findFirstFocusableNodeIncludingDisabled(
+        activatorContainer.current,
+      );
+      const focusableActivator: HTMLElement & {
+        disabled?: boolean;
+      } = firstFocusable || activatorContainer.current;
+
+      const activatorDisabled =
+        'disabled' in focusableActivator &&
+        Boolean(focusableActivator.disabled);
+
+      setActivatorAttributes(focusableActivator, {
+        id,
+        active,
+        ariaHaspopup,
+        activatorDisabled,
+      });
+    }, [id, active, ariaHaspopup]);
 
     useEffect(() => {
       if (!activatorNode && activatorContainer.current) {
