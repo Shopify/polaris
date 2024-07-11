@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {globbySync} from 'globby';
+import globby from 'globby';
 import path from 'path';
 import {VFile} from 'vfile';
 import type {GetStaticPaths, GetStaticProps} from 'next';
@@ -178,7 +178,8 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const globPath = path.resolve(process.cwd(), 'content/components/**/*.mdx');
-  const paths = globbySync(globPath)
+  const paths = globby
+    .sync(globPath)
     .filter((path) => !path.endsWith('index.mdx'))
     .map((path) =>
       path.replace(`${process.cwd()}/content`, '').replace('.mdx', ''),

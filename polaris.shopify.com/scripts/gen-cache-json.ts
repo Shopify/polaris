@@ -1,5 +1,5 @@
 import path from 'path';
-import {globby} from 'globby';
+import globby from 'globby';
 import {existsSync} from 'fs';
 import {mkdir, writeFile, readFile} from 'fs/promises';
 import matter from 'gray-matter';
