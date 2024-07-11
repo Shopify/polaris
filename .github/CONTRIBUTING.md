@@ -154,7 +154,7 @@ See the [README.md file](https://github.com/Shopify/polaris/blob/main/README.md#
 We recommend running tests as well as trying your build of a package in a real project, to make sure you don’t introduce any regressions as you work on your change.
 
 - `pnpm test` will run tests for all packages
-- `pnpm turbo run test --filter="[HEAD^1]"` will test any package that has changed in the last commit
+- `pnpm nx affected --target test --base=HEAD~1 --head=HEAD` will test any package that has changed in the last commit
 
 You can test your changes in another project locally by creating a [snapshot release](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md#snapshot-release).
 
