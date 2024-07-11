@@ -5,7 +5,6 @@
 .eslintcache
 .next
 .shadowenv.d
-.turbo
 .nx/cache
 .nx/workspace-data
 dist
