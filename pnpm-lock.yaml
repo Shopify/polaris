@@ -659,8 +659,8 @@ importers:
         specifier: ^1.49.9
         version: 1.51.0
       satori:
-        specifier: ^0.10.11
-        version: 0.10.11
+        specifier: ^0.10.14
+        version: 0.10.14
       style-loader:
         specifier: ^3.3.1
         version: 3.3.1(webpack@5.76.0)
@@ -20410,8 +20410,8 @@ packages:
       immutable: 4.0.0
       source-map-js: 1.0.2
 
-  /satori@0.10.11:
-    resolution: {integrity: sha512-yLm1xPRPZUaKcBZJ6nmezoJjHB4MqV8x7Mu0PyZUJodRWRDD27UbeMwzuY9LEGG57WYLO4CQsGPlbHWV1Ex9TQ==}
+  /satori@0.10.14:
+    resolution: {integrity: sha512-abovcqmwl97WKioxpkfuMeZmndB1TuDFY/R+FymrZyiGP+pMYomvgSzVPnbNMWHHESOPosVHGL352oFbdAnJcA==}
     engines: {node: '>=16'}
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
