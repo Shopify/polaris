@@ -15,7 +15,7 @@
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
-    "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
+    "clean": "rm -rf node_modules .next *.tsbuildinfo",
     "next-build": "next build",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "pnpm next-sitemap",
