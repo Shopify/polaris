@@ -1,10 +1,10 @@
 import path from 'path';
 import fs from 'fs';
-import {globbySync} from 'globby';
+import globby from 'globby';
 
 const pathGlob = path.join(process.cwd(), 'content/**/index.mdx');
 
-const filePaths = globbySync(pathGlob);
+const filePaths = globby.sync(pathGlob);
 
 filePaths.forEach((filePath) => {
   const segments = filePath.split('/');
