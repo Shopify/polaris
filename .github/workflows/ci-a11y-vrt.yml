@@ -47,10 +47,7 @@ jobs:
         id: node-cache
         uses: actions/cache@v3
         with:
-          path: |
-            **/.turbo
-            node_modules/.cache/turbo
-            polaris-react/build-internal/cache
+          path: .nx
           key: ${{ runner.os }}-accessibility-test-v3-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-accessibility-test-v3-
@@ -111,7 +108,7 @@ jobs:
         run: pnpm run build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
+        run: pnpm nx storybook:build @shopify/polaris --quiet
 
       - name: Run accessibility test
         run: pnpm --filter=@shopify/polaris run storybook:test
@@ -137,10 +134,7 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v3
         with:
-          path: |
-            **/.turbo
-            node_modules/.cache/turbo
-            polaris-react/build-internal/cache
+          path: .nx
           key: ${{ runner.os }}-visual-regression-test-v2-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-visual-regression-test-v2-
@@ -152,7 +146,7 @@ jobs:
         run: pnpm build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
+        run: pnpm nx storybook:build @shopify/polaris --quiet
         env:
           STORYBOOK_GITHUB_SHA: ${{ github.sha }}
           STORYBOOK_GITHUB_REPO_URL: ${{ github.server_url }}/${{ github.repository }}

@@ -47,11 +47,7 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v3
         with:
-          path: |
-            **/.eslintcache
-            **/.turbo
-            node_modules/.cache/turbo
-            polaris.shopify.com/.next/cache
+          path: .nx
           key: ${{ runner.os }}-node${{ steps.setup_node.outputs.node-version }}-test-v4-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-node${{ steps.setup_node.outputs.node-version }}-test-v4-

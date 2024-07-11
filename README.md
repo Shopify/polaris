@@ -44,16 +44,16 @@ pnpm install && pnpm build
 
 **One workspace**
 
-Run commands from a selected workspace using [`turbo run <command> --filter=<workspace>...`](https://turborepo.org/docs/core-concepts/filtering) flag.
+Run commands from a selected workspace using the [`nx <task> <workspace>`](https://nx.dev/features/run-tasks#run-a-single-task) command.
 
-| Command                                           | Runs                                 |
-| ------------------------------------------------- | ------------------------------------ |
-| `pnpm turbo run dev --filter=@shopify/polaris`    | Open the react component storybook   |
-| `pnpm turbo run dev --filter=polaris.shopify.com` | Open polaris.shopify.com NextJS site |
+| Command                           | Runs                                 |
+| --------------------------------- | ------------------------------------ |
+| `pnpm nx dev @shopify/polaris`    | Open the react component storybook   |
+| `pnpm nx dev polaris.shopify.com` | Open polaris.shopify.com NextJS site |
 
 **All workspaces**
 
-Run commands across all workspaces. This uses [`turbo run <command>`](https://turborepo.org/docs/reference/command-line-reference#turbo-run-task).
+Run commands across all workspaces using the [`nx run-many --target <task>`](https://nx.dev/features/run-tasks#run-tasks-for-multiple-projects) command.
 
 | Command           | Runs                                                                                                                  |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------- |

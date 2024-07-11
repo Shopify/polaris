@@ -5,7 +5,8 @@
 .eslintcache
 .next
 .shadowenv.d
-.turbo
+.nx/cache
+.nx/workspace-data
 dist
 node_modules
 Session.vim

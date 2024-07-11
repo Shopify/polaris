@@ -1,19 +1,18 @@
 const assert = require('assert').strict;
 const fs = require('fs');
 
-let globby;
+const globby = require('globby');
+
 const packageJSON = require('../package.json');
 
 // Validation to assert the output of the build.
-(async () => {
-  globby = (await import('globby')).globby;
-  await validateStandardBuild();
-  validateEsNextBuild();
-  validateAncillaryOutput();
-  await validateVersionReplacement();
-})();
 
-async function validateStandardBuild() {
+validateStandardBuild();
+validateEsNextBuild();
+validateAncillaryOutput();
+validateVersionReplacement();
+
+function validateStandardBuild() {
   // Standard build
   assert.ok(fs.existsSync('./build/cjs/index.js'));
   assert.ok(fs.existsSync('./build/esm/index.js'));
@@ -22,7 +21,7 @@ async function validateStandardBuild() {
   // Assert it uses named exports rather than properties from the React default
   // export to help tree-shaking.
   // React.createElement and React.Fragment are the allowed exceptions
-  const files = await globby('./build/cjs/**/*.js');
+  const files = globby.sync('./build/cjs/**/*.js');
   assert.notStrictEqual(files.length, 0);
   const filesContainingUnwantedReactUsage = [];
   files.forEach((file) => {
@@ -94,8 +93,8 @@ function validateAncillaryOutput() {
   assert.ok(fs.existsSync('./build/ts/src/index.d.ts'));
 }
 
-async function validateVersionReplacement() {
-  const files = await globby('./build/**/*.{js,mjs,esnext,css}');
+function validateVersionReplacement() {
+  const files = globby.sync('./build/**/*.{js,mjs,esnext,css}');
 
   assert.notStrictEqual(files.length, 0);
 

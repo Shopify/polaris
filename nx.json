@@ -1,0 +1,36 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultBase": "main",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "{projectRoot}/dist/**",
+        "{projectRoot}/build/**",
+        "{projectRoot}/.next/**",
+        "{projectRoot}/.cache/**"
+      ],
+      "cache": true
+    },
+    "storybook:build": {
+      "outputs": ["{projectRoot}/build-internal/**"],
+      "cache": true
+    },
+    "test": {
+      "cache": true
+    },
+    "lint": {
+      "outputs": ["{projectRoot}/.eslintcache"],
+      "cache": true
+    },
+    "dev": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    },
+    "gen-assets": {
+      "cache": false
+    }
+  }
+}
