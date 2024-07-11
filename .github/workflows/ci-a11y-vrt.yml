@@ -111,7 +111,7 @@ jobs:
         run: pnpm run build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
+        run: pnpm nx storybook:build @shopify/polaris --quiet
 
       - name: Run accessibility test
         run: pnpm --filter=@shopify/polaris run storybook:test
@@ -152,7 +152,7 @@ jobs:
         run: pnpm build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
+        run: pnpm nx storybook:build @shopify/polaris --quiet
         env:
           STORYBOOK_GITHUB_SHA: ${{ github.sha }}
           STORYBOOK_GITHUB_REPO_URL: ${{ github.server_url }}/${{ github.repository }}

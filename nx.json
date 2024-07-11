@@ -12,6 +12,10 @@
       ],
       "cache": true
     },
+    "storybook:build": {
+      "outputs": ["{projectRoot}/build-internal/**"],
+      "cache": true
+    },
     "test": {
       "cache": true
     },
