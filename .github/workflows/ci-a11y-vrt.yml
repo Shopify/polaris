@@ -47,10 +47,7 @@ jobs:
         id: node-cache
         uses: actions/cache@v3
         with:
-          path: |
-            **/.turbo
-            node_modules/.cache/turbo
-            polaris-react/build-internal/cache
+          path: .nx
           key: ${{ runner.os }}-accessibility-test-v3-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-accessibility-test-v3-
@@ -137,10 +134,7 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v3
         with:
-          path: |
-            **/.turbo
-            node_modules/.cache/turbo
-            polaris-react/build-internal/cache
+          path: .nx
           key: ${{ runner.os }}-visual-regression-test-v2-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-visual-regression-test-v2-
