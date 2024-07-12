@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  stylelint@16.6.1:
-    hash: wls6x7gbpq4g6z7ydobqcmwpgu
-    path: patches/stylelint@16.6.1.patch
-
 importers:
 
   .:
@@ -69,7 +64,7 @@ importers:
         version: 45.0.0(@babel/core@7.23.6)(eslint@8.57.0)(jest@29.7.0)(prettier@3.3.2)(typescript@4.9.3)
       '@shopify/stylelint-plugin':
         specifier: ^14.0.0
-        version: 14.0.0(prettier@3.3.2)(stylelint@16.6.1)
+        version: 14.0.0(prettier@3.3.2)(stylelint@16.7.0)
       '@shopify/typescript-configs':
         specifier: ^5.1.0
         version: 5.1.0
@@ -128,8 +123,8 @@ importers:
         specifier: ^5.0.3
         version: 5.0.5
       stylelint:
-        specifier: ^16.6.1
-        version: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
+        specifier: ^16.7.0
+        version: 16.7.0(typescript@4.9.3)
       ts-node:
         specifier: ^10.7.0
         version: 10.7.0(@types/node@20.12.5)(typescript@4.9.3)
@@ -229,8 +224,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       stylelint:
-        specifier: ^16.6.1
-        version: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
+        specifier: ^16.7.0
+        version: 16.7.0(typescript@4.9.3)
     devDependencies:
       '@rollup/plugin-babel':
         specifier: ^5.3.1
@@ -709,11 +704,11 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       stylelint:
-        specifier: ^16.0.0
-        version: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
+        specifier: ^16.7.0
+        version: 16.7.0(typescript@4.9.3)
       stylelint-scss:
         specifier: ^6.3.2
-        version: 6.3.2(stylelint@16.6.1)
+        version: 6.3.2(stylelint@16.7.0)
 
 packages:
 
@@ -3427,32 +3422,32 @@ packages:
       '@csstools/css-tokenizer': 2.2.1
     dev: true
 
-  /@csstools/css-parser-algorithms@2.7.0(@csstools/css-tokenizer@2.3.3):
-    resolution: {integrity: sha512-qvBMcOU/uWFCH/VO0MYe0AMs0BGMWAt6FTryMbFIKYtZtVnqTZtT8ktv5o718llkaGZWomJezJZjq3vJDHeJNQ==}
+  /@csstools/css-parser-algorithms@2.7.1(@csstools/css-tokenizer@2.4.1):
+    resolution: {integrity: sha512-2SJS42gxmACHgikc1WGesXLIT8d/q2l0UFM7TaEeIzdFCE/FPMtTiizcPGGJtlPo2xuQzY09OhrLTzRxqJqwGw==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      '@csstools/css-tokenizer': ^2.3.2
+      '@csstools/css-tokenizer': ^2.4.1
     dependencies:
-      '@csstools/css-tokenizer': 2.3.3
+      '@csstools/css-tokenizer': 2.4.1
 
   /@csstools/css-tokenizer@2.2.1:
     resolution: {integrity: sha512-Zmsf2f/CaEPWEVgw29odOj+WEVoiJy9s9NOv5GgNY9mZ1CZ7394By6wONrONrTsnNDv6F9hR02nvFihrGVGHBg==}
     engines: {node: ^14 || ^16 || >=18}
     dev: true
 
-  /@csstools/css-tokenizer@2.3.3:
-    resolution: {integrity: sha512-fTaF0vRcXVJ4cmwg8nHofydDjitKMDBzC8cCu+O/Lg13C4PdkC15GVjGpbmWauOOnhomVSTg5I5LpLJFJE2Hfw==}
+  /@csstools/css-tokenizer@2.4.1:
+    resolution: {integrity: sha512-eQ9DIktFJBhGjioABJRtUucoWR2mwllurfnM8LuNGAqX3ViZXaUchqk+1s7jjtkFiT9ySdACsFEA3etErkALUg==}
     engines: {node: ^14 || ^16 || >=18}
 
-  /@csstools/media-query-list-parser@2.1.12(@csstools/css-parser-algorithms@2.7.0)(@csstools/css-tokenizer@2.3.3):
-    resolution: {integrity: sha512-t1/CdyVJzOQUiGUcIBXRzTAkWTFPxiPnoKwowKW2z9Uj78c2bBWI/X94BeVfUwVq1xtCjD7dnO8kS6WONgp8Jw==}
+  /@csstools/media-query-list-parser@2.1.13(@csstools/css-parser-algorithms@2.7.1)(@csstools/css-tokenizer@2.4.1):
+    resolution: {integrity: sha512-XaHr+16KRU9Gf8XLi3q8kDlI18d5vzKSKCY510Vrtc9iNR0NJzbY9hhTmwhzYZj/ZwGL4VmB3TA9hJW0Um2qFA==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      '@csstools/css-parser-algorithms': ^2.7.0
-      '@csstools/css-tokenizer': ^2.3.2
+      '@csstools/css-parser-algorithms': ^2.7.1
+      '@csstools/css-tokenizer': ^2.4.1
     dependencies:
-      '@csstools/css-parser-algorithms': 2.7.0(@csstools/css-tokenizer@2.3.3)
-      '@csstools/css-tokenizer': 2.3.3
+      '@csstools/css-parser-algorithms': 2.7.1(@csstools/css-tokenizer@2.4.1)
+      '@csstools/css-tokenizer': 2.4.1
 
   /@csstools/media-query-list-parser@2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1):
     resolution: {integrity: sha512-IxVBdYzR8pYe89JiyXQuYk4aVVoCPhMJkz6ElRwlVysjwURTsTk/bmY/z4FfeRE+CRBMlykPwXEVUg8lThv7AQ==}
@@ -4330,7 +4325,7 @@ packages:
       jest-haste-map: 28.1.3
       jest-regex-util: 28.0.2
       jest-util: 28.1.3
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       pirates: 4.0.5
       slash: 3.0.0
       write-file-atomic: 4.0.2
@@ -5157,17 +5152,17 @@ packages:
       react-reconciler: 0.28.0(react@18.2.0)
     dev: true
 
-  /@shopify/stylelint-plugin@14.0.0(prettier@3.3.2)(stylelint@16.6.1):
+  /@shopify/stylelint-plugin@14.0.0(prettier@3.3.2)(stylelint@16.7.0):
     resolution: {integrity: sha512-2URgR6E+G7zUR5VjBxsLhEUwg+U6hNoOJOekuNUswJAvSlWYk38rca78FYDTBRZ2P7JW11vb61ODVEcty9CMaw==, tarball: https://registry.npmjs.org/@shopify/stylelint-plugin/-/stylelint-plugin-14.0.0.tgz}
     peerDependencies:
       stylelint: '>=16.0.0'
     dependencies:
       postcss: 8.4.39
       postcss-scss: 4.0.9(postcss@8.4.39)
-      stylelint: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
-      stylelint-order: 6.0.4(stylelint@16.6.1)
-      stylelint-prettier: 5.0.0(prettier@3.3.2)(stylelint@16.6.1)
-      stylelint-scss: 6.3.2(stylelint@16.6.1)
+      stylelint: 16.7.0(typescript@4.9.3)
+      stylelint-order: 6.0.4(stylelint@16.7.0)
+      stylelint-prettier: 5.0.0(prettier@3.3.2)(stylelint@16.7.0)
+      stylelint-scss: 6.3.2(stylelint@16.7.0)
     transitivePeerDependencies:
       - prettier
     dev: true
@@ -10254,7 +10249,7 @@ packages:
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
     dependencies:
       mdn-data: 2.0.30
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
 
   /css-what@5.1.0:
     resolution: {integrity: sha512-arSMRWIIFY0hV8pIxZMEfmMI47Wj3R/aWpZDDxWYCPEiOMv6tfOrnpDtgxBYPEQD4V0Y/958+1TdC3iWTFcUPw==}
@@ -10510,6 +10505,17 @@ packages:
 
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
+
+  /debug@4.3.5:
+    resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -14020,7 +14026,7 @@ packages:
       http-proxy: 1.18.1
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
-      micromatch: 4.0.5
+      micromatch: 4.0.7
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -15339,7 +15345,7 @@ packages:
       jest-runner: 28.1.3
       jest-util: 28.1.3
       jest-validate: 28.1.3
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       parse-json: 5.2.0
       pretty-format: 28.1.3
       slash: 3.0.0
@@ -15531,7 +15537,7 @@ packages:
       jest-regex-util: 28.0.2
       jest-util: 28.1.3
       jest-worker: 28.1.3
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       walker: 1.0.8
     optionalDependencies:
       fsevents: 2.3.2
@@ -15621,7 +15627,7 @@ packages:
       '@types/stack-utils': 2.0.1
       chalk: 4.1.2
       graceful-fs: 4.2.10
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       pretty-format: 28.1.3
       slash: 3.0.0
       stack-utils: 2.0.5
@@ -16426,6 +16432,9 @@ packages:
 
   /known-css-properties@0.31.0:
     resolution: {integrity: sha512-sBPIUGTNF0czz0mwGGUoKKJC8Q7On1GPbCSFPfyEsfHb2DyBG0Y4QtV+EVWpINSaiGKZblDNuF5AezxSgOhesQ==}
+
+  /known-css-properties@0.34.0:
+    resolution: {integrity: sha512-tBECoUqNFbyAY4RrbqsBQqDFpGXAEbdD5QKr8kACx3+rnArmuuR22nKQWKazvp07N9yjTyDZaw/20UIH8tL9DQ==}
 
   /language-subtag-registry@0.3.21:
     resolution: {integrity: sha512-L0IqwlIXjilBVVYKFT37X9Ih11Um5NEl9cbJIuU/SwP/zEEAbBPOnEeeuxVMf45ydWQRDQN3Nqc96OgbH1K+Pg==}
@@ -19643,7 +19652,7 @@ packages:
       caniuse-api: 3.0.0
       cssnano-utils: 3.1.0(postcss@8.4.39)
       postcss: 8.4.39
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /postcss-minify-font-values@5.1.0(postcss@8.4.39):
@@ -19687,7 +19696,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: 8.4.39
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /postcss-mixins@9.0.4(postcss@8.4.32):
@@ -19980,7 +19989,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: 8.4.39
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
   /postcss-value-parser@4.2.0:
@@ -22556,20 +22565,20 @@ packages:
     dependencies:
       browserslist: 4.22.2
       postcss: 8.4.39
-      postcss-selector-parser: 6.0.15
+      postcss-selector-parser: 6.1.0
     dev: true
 
-  /stylelint-order@6.0.4(stylelint@16.6.1):
+  /stylelint-order@6.0.4(stylelint@16.7.0):
     resolution: {integrity: sha512-0UuKo4+s1hgQ/uAxlYU4h0o0HS4NiQDud0NAUNI0aa8FJdmYHA5ZZTFHiV5FpmE3071e9pZx5j0QpVJW5zOCUA==}
     peerDependencies:
       stylelint: ^14.0.0 || ^15.0.0 || ^16.0.1
     dependencies:
       postcss: 8.4.39
       postcss-sorting: 8.0.2(postcss@8.4.39)
-      stylelint: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
+      stylelint: 16.7.0(typescript@4.9.3)
     dev: true
 
-  /stylelint-prettier@5.0.0(prettier@3.3.2)(stylelint@16.6.1):
+  /stylelint-prettier@5.0.0(prettier@3.3.2)(stylelint@16.7.0):
     resolution: {integrity: sha512-RHfSlRJIsaVg5Br94gZVdWlz/rBTyQzZflNE6dXvSxt/GthWMY3gEHsWZEBaVGg7GM+XrtVSp4RznFlB7i0oyw==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
@@ -22578,10 +22587,10 @@ packages:
     dependencies:
       prettier: 3.3.2
       prettier-linter-helpers: 1.0.0
-      stylelint: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
+      stylelint: 16.7.0(typescript@4.9.3)
     dev: true
 
-  /stylelint-scss@6.3.2(stylelint@16.6.1):
+  /stylelint-scss@6.3.2(stylelint@16.7.0):
     resolution: {integrity: sha512-pNk9mXOVKkQtd+SROPC9io8ISSgX+tOVPhFdBE+LaKQnJMLdWPbGKAGYv4Wmf/RrnOjkutunNTN9kKMhkdE5qA==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
@@ -22592,16 +22601,16 @@ packages:
       postcss-resolve-nested-selector: 0.1.1
       postcss-selector-parser: 6.1.0
       postcss-value-parser: 4.2.0
-      stylelint: 16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3)
+      stylelint: 16.7.0(typescript@4.9.3)
 
-  /stylelint@16.6.1(patch_hash=wls6x7gbpq4g6z7ydobqcmwpgu)(typescript@4.9.3):
-    resolution: {integrity: sha512-yNgz2PqWLkhH2hw6X9AweV9YvoafbAD5ZsFdKN9BvSDVwGvPh+AUIrn7lYwy1S7IHmtFin75LLfX1m0D2tHu8Q==}
+  /stylelint@16.7.0(typescript@4.9.3):
+    resolution: {integrity: sha512-Q1ATiXlz+wYr37a7TGsfvqYn2nSR3T/isw3IWlZQzFzCNoACHuGBb6xBplZXz56/uDRJHIygxjh7jbV/8isewA==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     dependencies:
-      '@csstools/css-parser-algorithms': 2.7.0(@csstools/css-tokenizer@2.3.3)
-      '@csstools/css-tokenizer': 2.3.3
-      '@csstools/media-query-list-parser': 2.1.12(@csstools/css-parser-algorithms@2.7.0)(@csstools/css-tokenizer@2.3.3)
+      '@csstools/css-parser-algorithms': 2.7.1(@csstools/css-tokenizer@2.4.1)
+      '@csstools/css-tokenizer': 2.4.1
+      '@csstools/media-query-list-parser': 2.1.13(@csstools/css-parser-algorithms@2.7.1)(@csstools/css-tokenizer@2.4.1)
       '@csstools/selector-specificity': 3.1.1(postcss-selector-parser@6.1.0)
       '@dual-bundle/import-meta-resolve': 4.1.0
       balanced-match: 2.0.0
@@ -22609,7 +22618,7 @@ packages:
       cosmiconfig: 9.0.0(typescript@4.9.3)
       css-functions-list: 3.2.2
       css-tree: 2.3.1
-      debug: 4.3.4
+      debug: 4.3.5
       fast-glob: 3.3.2
       fastest-levenshtein: 1.0.16
       file-entry-cache: 9.0.0
@@ -22620,7 +22629,7 @@ packages:
       ignore: 5.3.1
       imurmurhash: 0.1.4
       is-plain-object: 5.0.0
-      known-css-properties: 0.31.0
+      known-css-properties: 0.34.0
       mathml-tag-names: 2.1.3
       meow: 13.2.0
       micromatch: 4.0.7
@@ -22641,7 +22650,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
-    patched: true
 
   /stylis@4.1.2:
     resolution: {integrity: sha512-Nn2CCrG2ZaFziDxaZPN43CXqn+j7tcdjPFCkRBkFue8QYXC2HdEwnw5TCBo4yQZ2WxKYeSi0fdoOrtEqgDrXbA==}
