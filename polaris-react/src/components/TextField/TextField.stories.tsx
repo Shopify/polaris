@@ -18,6 +18,7 @@ import {
   Link,
 } from '@shopify/polaris';
 import {
+  CalendarIcon,
   DeleteIcon,
   QuestionCircleIcon,
   SearchIcon,
@@ -64,10 +65,20 @@ export const Magic = {
           tone="magic"
         />
         <TextField
-          label="Prefix icon"
+          label="Search"
           type="search"
-          value={value1}
-          onChange={handleChange1}
+          labelHidden
+          value="Value"
+          onChange={() => {}}
+          prefix={<Icon source={SearchIcon} />}
+          autoComplete="off"
+          connectedRight={<Button>Browse</Button>}
+        />
+        <TextField
+          label="Prefix icon with magic"
+          type="search"
+          value="Value"
+          onChange={() => {}}
           prefix={<Icon source={SearchIcon} />}
           autoComplete="off"
           tone="magic"
@@ -102,9 +113,13 @@ export const Number = {
         <TextField
           label="First Quantity"
           type="number"
+          prefix="$"
+          suffix="/5"
           value={value}
           onChange={handleChange}
           autoComplete="off"
+          min={1}
+          max={5}
         />
         <TextField
           label="Second Quantity"
@@ -112,6 +127,16 @@ export const Number = {
           value={value1}
           onChange={handleChange1}
           autoComplete="off"
+        />
+        <TextField
+          label="Third Quantity"
+          labelHidden
+          type="number"
+          value={value}
+          onChange={handleChange}
+          autoComplete="off"
+          min={1}
+          max={5}
         />
       </LegacyStack>
     );
@@ -1127,3 +1152,35 @@ export const WithLoading = {
     );
   },
 };
+
+export function WithNumberStepperLikeProps() {
+  const [value, setValue] = useState('0');
+
+  return (
+    <TextField
+      label="Quantity"
+      value={value}
+      onChange={setValue}
+      type="number"
+      labelHidden
+      min={0}
+      max={10}
+      autoComplete="off"
+      suffix="/ 10"
+    />
+  );
+}
+
+export function WithDatePickerLikeProps() {
+  const [value, setValue] = useState('');
+
+  return (
+    <TextField
+      label="Date"
+      value={value}
+      onChange={setValue}
+      prefix={<Icon source={CalendarIcon} />}
+      autoComplete="off"
+    />
+  );
+}
