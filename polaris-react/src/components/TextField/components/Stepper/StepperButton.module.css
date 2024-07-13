@@ -1,0 +1,6 @@
+.StepperButton {
+  display: flex;
+  padding: var(--p-space-200);
+  aligncontent: center;
+  verticalalign: middle;
+}
