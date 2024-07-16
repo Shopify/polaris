@@ -13,7 +13,6 @@ import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
 import {Text} from '../Text';
 import {TrapFocus} from '../TrapFocus';
-import {Scrollable} from '../Scrollable';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
 import {FrameContext} from '../../utilities/frame';
@@ -23,7 +22,6 @@ import type {
   ToastPropsWithID,
 } from '../../utilities/frame';
 import {UseTheme} from '../../utilities/use-theme';
-import {UseFeatures} from '../../utilities/features';
 
 import {
   ToastManager,
@@ -63,7 +61,6 @@ export interface FrameProps {
 type CombinedProps = FrameProps & {
   i18n: ReturnType<typeof useI18n>;
   mediaQuery: ReturnType<typeof useMediaQuery>;
-  dynamicTopBarAndReframe?: boolean;
 };
 
 interface State {
@@ -76,8 +73,6 @@ interface State {
 }
 
 const APP_FRAME_MAIN = 'AppFrameMain';
-const APP_FRAME_SCROLLABLE = 'AppFrameScrollable';
-const APP_FRAME_BEVEL = 'AppFrameBevel';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
 const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
@@ -103,7 +98,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     }
     this.setGlobalRibbonRootProperty();
     this.setOffset();
-    this.setBodyStyles();
     this.setScrollbarAlwaysVisible();
   }
 
@@ -112,7 +106,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       this.setGlobalRibbonHeight();
     }
     this.setOffset();
-    this.setBodyStyles();
   }
 
   render() {
@@ -248,20 +241,16 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         }
       : {};
 
-    const getFrameClassName = (hasDynamicTopBar?: boolean) =>
+    const getFrameClassName = () =>
       classNames(
         styles.Frame,
-        hasDynamicTopBar && styles['Frame-TopBarAndReframe'],
         navigation && styles.hasNav,
         topBar && styles.hasTopBar,
         sidebar && styles.hasSidebar,
-        sidebar && hasDynamicTopBar && styles['hasSidebar-TopBarAndReframe'],
         this.state.scrollbarAlwaysVisible && styles.ScrollbarAlwaysVisible,
       );
 
-    const contextualSaveBarMarkup = this.props.dynamicTopBarAndReframe ? (
-      <></>
-    ) : (
+    const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
         className={styles.ContextualSaveBar}
@@ -295,71 +284,26 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       contextualSaveBarProps: this.contextualSaveBar,
     };
 
-    const hasDynamicTopBar =
-      this.props.dynamicTopBarAndReframe && Boolean(topBar);
-
     return (
       <FrameContext.Provider value={context}>
         <div
-          className={getFrameClassName(hasDynamicTopBar)}
+          className={getFrameClassName()}
           {...layer.props}
           {...navigationAttributes}
         >
           {skipMarkup}
           {topBarMarkup}
-          {hasDynamicTopBar ? null : navigationMarkup}
+          {navigationMarkup}
           {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
-          {hasDynamicTopBar ? (
-            <div className={styles.ShadowBevel} id={APP_FRAME_BEVEL}>
-              {navigationMarkup}
-              <main
-                className={classNames(
-                  styles.Main,
-                  styles['Main-TopBarAndReframe'],
-                )}
-                id={APP_FRAME_MAIN}
-                data-has-global-ribbon={Boolean(globalRibbon)}
-              >
-                {hasDynamicTopBar ? (
-                  <Scrollable
-                    scrollbarWidth="thin"
-                    horizontal={false}
-                    className={classNames(
-                      styles.Scrollable,
-                      this.state.scrollbarAlwaysVisible &&
-                        styles['Scrollable-ScrollbarAlwaysVisible'],
-                    )}
-                    id={APP_FRAME_SCROLLABLE}
-                  >
-                    <div
-                      className={classNames(
-                        styles.Content,
-                        styles['Content-TopBarAndReframe'],
-                      )}
-                    >
-                      <div
-                        className={styles['ScrollbarSafeArea-TopBarAndReframe']}
-                      >
-                        {children}
-                      </div>
-                    </div>
-                  </Scrollable>
-                ) : (
-                  <div className={styles.Content}>{children}</div>
-                )}
-              </main>
-            </div>
-          ) : (
-            <main
-              className={styles.Main}
-              id={APP_FRAME_MAIN}
-              data-has-global-ribbon={Boolean(globalRibbon)}
-            >
-              <div className={styles.Content}>{children}</div>
-            </main>
-          )}
+          <main
+            className={styles.Main}
+            id={APP_FRAME_MAIN}
+            data-has-global-ribbon={Boolean(globalRibbon)}
+          >
+            <div className={styles.Content}>{children}</div>
+          </main>
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}
           <EventListener event="resize" handler={this.handleResize} />
@@ -402,17 +346,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       '--pc-frame-global-ribbon-height',
       `${globalRibbonHeight}px`,
     );
-  };
-
-  private setBodyStyles = () => {
-    if (!document) {
-      return;
-    }
-    if (this.props.dynamicTopBarAndReframe && Boolean(this.props.topBar)) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
   };
 
   private showToast = (toast: ToastPropsWithID) => {
@@ -519,16 +452,5 @@ export function Frame(props: FrameProps) {
   const i18n = useI18n();
   const mediaQuery = useMediaQuery();
 
-  return (
-    <UseFeatures>
-      {({dynamicTopBarAndReframe}) => (
-        <FrameInner
-          {...props}
-          i18n={i18n}
-          mediaQuery={mediaQuery}
-          dynamicTopBarAndReframe={dynamicTopBarAndReframe}
-        />
-      )}
-    </UseFeatures>
-  );
+  return <FrameInner {...props} i18n={i18n} mediaQuery={mediaQuery} />;
 }

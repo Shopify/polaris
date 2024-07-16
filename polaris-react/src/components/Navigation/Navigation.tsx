@@ -7,7 +7,6 @@ import {UnstyledLink} from '../UnstyledLink';
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useFrame} from '../../utilities/frame';
-import {useFeatures} from '../../utilities/features';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
 import {NavigationContext} from './context';
@@ -38,7 +37,6 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
 }: NavigationProps) {
   const {logo} = useFrame();
   const width = getWidth(logo, 104);
-  const features = useFeatures();
   const {mdUp} = useBreakpoints();
 
   const logoMarkup = logo ? (
@@ -78,22 +76,9 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   return (
     <NavigationContext.Provider value={context}>
       <WithinContentContext.Provider value>
-        <nav
-          className={classNames(
-            styles.Navigation,
-            features?.dynamicTopBarAndReframe &&
-              styles['NavigationFrame-TopBarAndReframe'],
-          )}
-          aria-labelledby={ariaLabelledBy}
-        >
-          {mdUp || !features?.dynamicTopBarAndReframe ? mediaMarkup : null}
-          <Scrollable
-            className={classNames(
-              styles.PrimaryNavigation,
-              features?.dynamicTopBarAndReframe &&
-                styles['PrimaryNavigation-TopBarAndReframe'],
-            )}
-          >
+        <nav className={styles.Navigation} aria-labelledby={ariaLabelledBy}>
+          {mdUp ? mediaMarkup : null}
+          <Scrollable className={styles.PrimaryNavigation}>
             {children}
           </Scrollable>
         </nav>

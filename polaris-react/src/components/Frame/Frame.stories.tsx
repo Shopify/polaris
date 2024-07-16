@@ -35,18 +35,10 @@ export default {
 } as Meta<typeof Frame>;
 
 export const InAnApplication = {
-  render: (_args: Args, {globals: {dynamicTopBarAndReframe}}) => (
-    <InAnApplicationComponent
-      dynamicTopBarAndReframe={dynamicTopBarAndReframe}
-    />
-  ),
+  render: (_args: Args) => <InAnApplicationComponent />,
 };
 
-function InAnApplicationComponent({
-  dynamicTopBarAndReframe,
-}: {
-  dynamicTopBarAndReframe: boolean;
-}) {
+function InAnApplicationComponent() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -365,7 +357,6 @@ function InAnApplicationComponent({
             },
           },
         }}
-        features={{dynamicTopBarAndReframe}}
       >
         <Frame
           logo={logo}
@@ -387,16 +378,10 @@ function InAnApplicationComponent({
 }
 
 export const WithAnOffset = {
-  render: (_args: Args, {globals: {dynamicTopBarAndReframe}}) => (
-    <WithAnOffsetComponent dynamicTopBarAndReframe={dynamicTopBarAndReframe} />
-  ),
+  render: (_args: Args) => <WithAnOffsetComponent />,
 };
 
-function WithAnOffsetComponent({
-  dynamicTopBarAndReframe,
-}: {
-  dynamicTopBarAndReframe: boolean;
-}) {
+function WithAnOffsetComponent() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -715,7 +700,6 @@ function WithAnOffsetComponent({
             },
           },
         }}
-        features={{dynamicTopBarAndReframe}}
       >
         <Frame
           logo={logo}
@@ -743,16 +727,10 @@ function WithAnOffsetComponent({
 }
 
 export const WithSidebar = {
-  render: (_args: Args, {globals: {dynamicTopBarAndReframe}}) => (
-    <WithSidebarEnabled dynamicTopBarAndReframe={dynamicTopBarAndReframe} />
-  ),
+  render: (_args: Args) => <WithSidebarEnabled />,
 };
 
-function WithSidebarEnabled({
-  dynamicTopBarAndReframe,
-}: {
-  dynamicTopBarAndReframe: boolean;
-}) {
+function WithSidebarEnabled() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -1080,7 +1058,6 @@ function WithSidebarEnabled({
             },
           },
         }}
-        features={{dynamicTopBarAndReframe}}
       >
         <Frame
           logo={logo}
@@ -1118,18 +1095,10 @@ function WithSidebarEnabled({
 }
 
 export const WithoutATopBar = {
-  render: (_args: Args, {globals: {dynamicTopBarAndReframe}}) => (
-    <WithoutATopBarComponent
-      dynamicTopBarAndReframe={dynamicTopBarAndReframe}
-    />
-  ),
+  render: (_args: Args) => <WithoutATopBarComponent />,
 };
 
-function WithoutATopBarComponent({
-  dynamicTopBarAndReframe,
-}: {
-  dynamicTopBarAndReframe: boolean;
-}) {
+function WithoutATopBarComponent() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -1395,7 +1364,6 @@ function WithoutATopBarComponent({
             },
           },
         }}
-        features={{dynamicTopBarAndReframe}}
       >
         <Frame
           logo={logo}
