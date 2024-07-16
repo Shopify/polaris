@@ -1,5 +1,18 @@
 # Changelog
 
+## 13.7.0
+
+### Minor Changes
+
+- [#12341](https://github.com/Shopify/polaris/pull/12341) [`f6728a410`](https://github.com/Shopify/polaris/commit/f6728a410a4dbd87e7c88a46e8aa003f1a8e4697) Thanks [@AndrewMusgrave](https://github.com/AndrewMusgrave)! - Exposed a `close` function on popovers imperative handle
+
+### Patch Changes
+
+- [#12335](https://github.com/Shopify/polaris/pull/12335) [`d71b3a282`](https://github.com/Shopify/polaris/commit/d71b3a282d4299a0b3568c12ad362af4a30237e4) Thanks [@AndrewMusgrave](https://github.com/AndrewMusgrave)! - Fixed `Tabs` automatically closing when opened in a scrolled position
+
+- Updated dependencies [[`b4cbdefd4`](https://github.com/Shopify/polaris/commit/b4cbdefd4ad2cf4666f649c4d1b798f65175b1e9)]:
+  - @shopify/polaris-tokens@9.3.0
+
 ## 13.6.1
 
 ### Patch Changes
