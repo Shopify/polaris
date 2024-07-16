@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.3.0
+
+### Minor Changes
+
+- [#12398](https://github.com/Shopify/polaris/pull/12398) [`b4cbdefd4`](https://github.com/Shopify/polaris/commit/b4cbdefd4ad2cf4666f649c4d1b798f65175b1e9) Thanks [@alex-page](https://github.com/alex-page)! - Update the green and red token values
+
 ## 9.2.0
 
 ### Minor Changes
