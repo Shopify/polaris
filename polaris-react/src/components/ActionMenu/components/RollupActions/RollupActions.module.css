@@ -8,12 +8,10 @@
     box-shadow: none;
     margin: 0;
 
-    /* stylelint-disable-next-line selector-max-specificity -- apply active styles */
     &:active {
       background: var(--p-color-bg-fill-tertiary-active);
     }
 
-    /* stylelint-disable-next-line selector-max-specificity -- apply focus styles */
     &:focus:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- button overrides */
       @mixin no-focus-ring;
@@ -22,7 +20,6 @@
       background: var(--p-color-bg-fill-tertiary-active);
     }
 
-    /* stylelint-disable-next-line selector-max-specificity -- apply hover styles */
     &:hover {
       background: var(--p-color-bg-fill-tertiary-hover);
     }

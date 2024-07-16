@@ -136,7 +136,7 @@ describe('Tabs', () => {
       const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
 
       tabs.forEach((tab) => {
-        expect(wrapper.find('ul')!).toContainReactComponent(Tab, {
+        expect(wrapper.find('ul')).toContainReactComponent(Tab, {
           id: tab.id,
         });
       });
@@ -155,7 +155,7 @@ describe('Tabs', () => {
       );
 
       panelIDedTabs.forEach((tab) => {
-        expect(wrapper.find('ul')!).toContainReactComponent(Tab, {
+        expect(wrapper.find('ul')).toContainReactComponent(Tab, {
           panelID: tab.panelID,
         });
       });

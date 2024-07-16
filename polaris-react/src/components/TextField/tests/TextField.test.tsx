@@ -624,7 +624,7 @@ describe('<TextField />', () => {
         .find('div', {className: styles.TextField})!
         .trigger('onClick', {target: button});
 
-      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
+      expect(textField.find(Connected)).not.toContainReactComponent('div', {
         className: expect.stringContaining(styles.focus),
       });
     });
@@ -650,13 +650,13 @@ describe('<TextField />', () => {
         textField.find('label', {
           id: `${labels[0]}`,
         }),
-      )!.toContainReactText('TextField');
+      ).toContainReactText('TextField');
 
       expect(
         textField.find('div', {
           id: `${labels[1]}`,
         }),
-      )!.toContainReactText('kg');
+      ).toContainReactText('kg');
     });
 
     it('does not set focus `onClick` for the <input /> if the `target` is the `suffix`', () => {
@@ -676,7 +676,7 @@ describe('<TextField />', () => {
         .find('div', {className: styles.TextField})!
         .trigger('onClick', {target: button});
 
-      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
+      expect(textField.find(Connected)).not.toContainReactComponent('div', {
         className: expect.stringContaining(styles.focus),
       });
     });
@@ -704,13 +704,13 @@ describe('<TextField />', () => {
         textField.find('label', {
           id: `${labels[0]}`,
         }),
-      )!.toContainReactText('TextField');
+      ).toContainReactText('TextField');
 
       expect(
         textField.find('div', {
           id: `${labels[1]}`,
         }),
-      )!.toContainReactText('Antique');
+      ).toContainReactText('Antique');
     });
 
     it('sets focus on the input when focused', () => {

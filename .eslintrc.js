@@ -69,6 +69,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/consistent-indexed-object-style': 'off',
     'jsx-a11y/label-has-for': [
       2,
       {
@@ -86,6 +87,8 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/no-noninteractive-element-to-interactive-role': 'off',
+    'jest/no-conditional-in-test': 'off',
+    'jest/no-standalone-expect': 'off',
     'no-restricted-imports': [
       'error',
       {

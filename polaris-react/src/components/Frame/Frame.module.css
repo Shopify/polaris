@@ -221,6 +221,7 @@
   border-inline-end: var(--p-border-width-025) solid var(--p-color-border);
 
   min-width: 0;
+
   @media (--p-breakpoints-sm-up) {
     /* stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties */
     max-width: calc(100vw - var(--pc-app-provider-scrollbar-width));
@@ -246,6 +247,7 @@
   .hasTopBar & {
     /* stylelint-disable-next-line -- polaris custom global property */
     padding-top: var(--pg-top-bar-height);
+
     @media print {
       padding-top: 0;
     }
@@ -274,6 +276,7 @@
     /* stylelint-disable-next-line -- polaris custom global property */
     margin-top: var(--pg-top-bar-height);
     padding-top: 0;
+
     @media print {
       margin-top: 0;
     }
@@ -426,7 +429,7 @@
     color: var(--p-color-text);
 
     &:focus {
-      border-color: none;
+      border-color: transparent;
       box-shadow: none;
     }
   }
