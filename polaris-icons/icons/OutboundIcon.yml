@@ -1,5 +1,5 @@
-name: Receivables
-description: Used to direct merchants to accounts receivables
+name: Outbound
+description: Used to represent an outbound transaction or payment
 keywords:
   - finances
   - financial accounts

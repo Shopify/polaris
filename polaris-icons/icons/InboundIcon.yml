@@ -1,5 +1,5 @@
-name: Refund
-description: Used to direct merchants to refund transactions
+name: Inbound
+description: Used to represent an inbound transaction or payment
 keywords:
   - finances
   - financial accounts
