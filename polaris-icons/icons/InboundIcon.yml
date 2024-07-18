@@ -1,0 +1,10 @@
+name: Inbound
+description: Used to represent an inbound transaction or payment
+keywords:
+  - finances
+  - financial accounts
+  - transactions
+authors:
+  - Eduardo Mujica
+date_added: 2024-06-07
+date_modified: 2024-06-07
