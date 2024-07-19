@@ -43,7 +43,7 @@
     },
     "ContextualSaveBar": {
       "save": "Opslaan",
-      "discard": "Verwijderen"
+      "discard": "Verwerpen"
     },
     "DataTable": {
       "sortAccessibilityLabel": "sorteer {direction} op",
@@ -91,9 +91,9 @@
       "end": "Einde van reeks"
     },
     "DiscardConfirmationModal": {
-      "title": "Alle niet-opgeslagen wijzigingen verwijderen",
-      "message": "Als je alle niet-opgeslagen wijzigingen verwijdert, wis je alle bewerkingen die je aanbracht sinds je voor het laatst opsloeg.",
-      "primaryAction": "Wijzigingen verwijderen",
+      "title": "Alle niet-opgeslagen wijzigingen verwerpen",
+      "message": "Als je wijzigingen verwerpt, worden alle wijzigingen sinds de laatste keer opslaan verwijderd.",
+      "primaryAction": "Wijzigingen verwerpen",
       "secondaryAction": "Doorgaan met bewerken"
     },
     "DropZone": {
