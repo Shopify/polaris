@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.3.0
+
+### Minor Changes
+
+- [#12233](https://github.com/Shopify/polaris/pull/12233) [`491cf8038`](https://github.com/Shopify/polaris/commit/491cf8038b7ad0d8bba8ea268a50bf563ab5657d) Thanks [@ngkay](https://github.com/ngkay)! - Adds new icons for Shopify Finance
+
 ## 9.2.0
 
 ### Minor Changes
