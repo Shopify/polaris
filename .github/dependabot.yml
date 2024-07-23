@@ -6,3 +6,10 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 100
+    ignore:
+      - dependency-name: 'stylelint'
+        # v16.7.0 introduced a regression where valid disables are being
+        # reported as errors.
+        # See Stylelint issue for more details:
+        # https://github.com/stylelint/stylelint/issues/7843
+        versions: ['16.7.0']
