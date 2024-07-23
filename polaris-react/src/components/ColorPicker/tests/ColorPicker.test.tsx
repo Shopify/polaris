@@ -5,6 +5,7 @@ import {mountWithApp} from 'tests/utilities';
 import {EventListener} from '../../EventListener';
 import {Slidable, AlphaPicker} from '../components';
 import {ColorPicker} from '../ColorPicker';
+import styles from '../ColorPicker.module.css';
 
 const red = {
   hue: 0,
@@ -177,6 +178,45 @@ describe('<ColorPicker />', () => {
       window.dispatchEvent(event);
 
       expect(event.preventDefault).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Iframe React portal bug fix', () => {
+    it('observes the resize event for the activator wrapper', () => {
+      const observe = jest.fn();
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe,
+        unobserve: jest.fn(),
+        disconnect: jest.fn(),
+      }));
+
+      const colorPicker = mountWithApp(
+        <ColorPicker color={red} onChange={jest.fn()} />,
+      );
+
+      expect(observe).toHaveBeenCalledWith(
+        colorPicker.find('div', {className: styles.MainColor})?.domNode,
+      );
+    });
+
+    it('disconnects the resize observer when component unmounts', () => {
+      const disconnect = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+        disconnect,
+      }));
+
+      const colorPicker = mountWithApp(
+        <ColorPicker color={red} onChange={jest.fn()} />,
+      );
+
+      colorPicker.unmount();
+
+      expect(disconnect).toHaveBeenCalled();
     });
   });
 });

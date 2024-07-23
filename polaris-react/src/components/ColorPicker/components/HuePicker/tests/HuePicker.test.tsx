@@ -67,6 +67,40 @@ describe('<HuePicker />', () => {
       });
     });
   });
+
+  describe('Iframe React portal bug fix', () => {
+    it('observes the resize event for the activator wrapper', () => {
+      const observe = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe,
+        unobserve: jest.fn(),
+        disconnect: jest.fn(),
+      }));
+
+      const huePicker = mountWithApp(<HuePicker {...mockProps} />);
+
+      expect(observe).toHaveBeenCalledWith(huePicker.find('div')?.domNode);
+    });
+
+    it('disconnects the resize observer when component unmounts', () => {
+      const disconnect = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+        disconnect,
+      }));
+
+      const huePicker = mountWithApp(<HuePicker {...mockProps} />);
+
+      huePicker.unmount();
+
+      expect(disconnect).toHaveBeenCalled();
+    });
+  });
 });
 
 function noop() {}

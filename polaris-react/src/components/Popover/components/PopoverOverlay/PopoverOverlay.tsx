@@ -59,6 +59,7 @@ export interface PopoverOverlayProps {
 
 interface State {
   transitionStatus: TransitionStatus;
+  window?: Window | null;
 }
 
 export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
@@ -74,6 +75,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
   private overlayRef: React.RefObject<PositionedOverlay>;
+  private observer?: ResizeObserver;
 
   constructor(props: PopoverOverlayProps) {
     super(props);
@@ -97,6 +99,22 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
       this.changeTransitionStatus(TransitionStatus.Entered);
     }
+
+    this.observer = new ResizeObserver(() => {
+      this.setState({
+        /**
+         * This is a workaround to enable event listeners to be
+         * re-attached when moving from one document to another
+         * when using a React portal across iframes.
+         * Using a resize observer works because when the clientWidth
+         * will go from 0 to the real width after the activator
+         * gets rendered in its new place.
+         */
+        window: this.props.activator.ownerDocument.defaultView,
+      });
+    });
+
+    this.observer.observe(this.props.activator);
   }
 
   componentDidUpdate(oldProps: PopoverOverlayProps) {
@@ -116,10 +134,16 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       this.clearTransitionTimeout();
       this.setState({transitionStatus: TransitionStatus.Exited});
     }
+
+    if (this.props.activator !== oldProps.activator) {
+      this.observer?.unobserve(oldProps.activator);
+      this.observer?.observe(this.props.activator);
+    }
   }
 
   componentWillUnmount() {
     this.clearTransitionTimeout();
+    this.observer?.disconnect();
   }
 
   render() {
@@ -232,11 +256,25 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fluidContent && styles['Content-fluidContent'],
     );
 
+    const {window} = this.state;
+
     return (
       <div className={className} {...overlay.props}>
-        <EventListener event="click" handler={this.handleClick} />
-        <EventListener event="touchstart" handler={this.handleClick} />
-        <KeypressListener keyCode={Key.Escape} handler={this.handleEscape} />
+        <EventListener
+          event="click"
+          handler={this.handleClick}
+          window={window}
+        />
+        <EventListener
+          event="touchstart"
+          handler={this.handleClick}
+          window={window}
+        />
+        <KeypressListener
+          keyCode={Key.Escape}
+          handler={this.handleEscape}
+          document={window?.document}
+        />
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

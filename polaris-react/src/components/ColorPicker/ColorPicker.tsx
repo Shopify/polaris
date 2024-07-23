@@ -5,8 +5,6 @@ import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
 import {hsbToRgb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../EventListener';
 
 import {AlphaPicker, HuePicker, Slidable} from './components';
 import type {SlidableProps} from './components';
@@ -67,11 +65,20 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
     {leading: true, trailing: true, maxWait: RESIZE_DEBOUNCE_TIME_MS},
   );
 
+  private observer?: ResizeObserver;
+
+  componentWillUnmount() {
+    this.observer?.disconnect();
+  }
+
   componentDidMount() {
     const {colorNode} = this;
-    if (colorNode == null) {
+    if (!colorNode) {
       return;
     }
+
+    this.observer = new ResizeObserver(this.handleResize);
+    this.observer.observe(colorNode);
 
     this.setState({
       pickerSize: {
@@ -135,7 +142,6 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
         </div>
         <HuePicker hue={hue} onChange={this.handleHueChange} />
         {alphaSliderMarkup}
-        <EventListener event="resize" handler={this.handleResize} />
       </div>
     );
   }

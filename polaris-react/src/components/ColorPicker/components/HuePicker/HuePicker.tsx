@@ -22,13 +22,31 @@ export class HuePicker extends PureComponent<HuePickerProps, State> {
     draggerHeight: 0,
   };
 
+  private node: HTMLElement | null = null;
+  private observer?: ResizeObserver;
+
+  componentWillUnmount() {
+    this.observer?.disconnect();
+  }
+
+  componentDidMount() {
+    if (!this.node) {
+      return;
+    }
+
+    this.observer = new ResizeObserver(this.setSliderHeight);
+    this.observer.observe(this.node);
+
+    this.setSliderHeight();
+  }
+
   render() {
     const {hue} = this.props;
     const {sliderHeight, draggerHeight} = this.state;
     const draggerY = calculateDraggerY(hue, sliderHeight, draggerHeight);
 
     return (
-      <div className={styles.HuePicker} ref={this.setSliderHeight}>
+      <div className={styles.HuePicker} ref={this.setNode}>
         <Slidable
           draggerY={draggerY}
           draggerX={0}
@@ -39,8 +57,18 @@ export class HuePicker extends PureComponent<HuePickerProps, State> {
     );
   }
 
-  private setSliderHeight = (node: HTMLElement | null) => {
-    if (node == null) {
+  private setNode = (node: HTMLElement | null) => {
+    if (!node) {
+      return;
+    }
+
+    this.node = node;
+  };
+
+  private setSliderHeight = () => {
+    const {node} = this;
+
+    if (!node) {
       return;
     }
 

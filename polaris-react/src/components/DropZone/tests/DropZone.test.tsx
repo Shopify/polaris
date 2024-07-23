@@ -10,6 +10,7 @@ import {Labelled} from '../../Labelled';
 import {DropZone} from '../DropZone';
 import type {DropZoneFileType} from '../DropZone';
 import {DropZoneContext} from '../context';
+import styles from '../DropZone.module.css';
 
 const files = [
   {
@@ -530,6 +531,46 @@ describe('<DropZone />', () => {
       expect(() => {
         dropZone.unmount();
       }).not.toThrow();
+    });
+  });
+
+  describe('Iframe React portal bug fix', () => {
+    it('observes the resize event for the activator wrapper', () => {
+      const observe = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe,
+        unobserve: jest.fn(),
+        disconnect: jest.fn(),
+      }));
+
+      const dropZone = mountWithApp(<DropZone onDrop={jest.fn()} />);
+
+      expect(observe).toHaveBeenCalledWith(
+        dropZone
+          .findAll('div')
+          .filter((node) =>
+            node.domNode?.getAttribute('class')?.includes(styles.DropZone),
+          )[0]?.domNode,
+      );
+    });
+
+    it('disconnects the resize observer when component unmounts', () => {
+      const disconnect = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+        disconnect,
+      }));
+
+      const dropZone = mountWithApp(<DropZone onDrop={jest.fn()} />);
+
+      dropZone.unmount();
+
+      expect(disconnect).toHaveBeenCalled();
     });
   });
 });

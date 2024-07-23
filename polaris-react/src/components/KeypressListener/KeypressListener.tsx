@@ -7,6 +7,7 @@ export interface NonMutuallyExclusiveProps {
   keyCode: Key;
   handler(event: KeyboardEvent): void;
   keyEvent?: KeyEvent;
+  document?: Document;
 }
 
 export type KeypressListenerProps = NonMutuallyExclusiveProps &
@@ -23,6 +24,7 @@ export function KeypressListener({
   keyEvent = 'keyup',
   options,
   useCapture,
+  document: ownerDocument = globalThis.document,
 }: KeypressListenerProps) {
   const tracked = useRef({handler, keyCode});
 
@@ -38,15 +40,19 @@ export function KeypressListener({
   }, []);
 
   useEffect(() => {
-    document.addEventListener(keyEvent, handleKeyEvent, useCapture || options);
+    ownerDocument.addEventListener(
+      keyEvent,
+      handleKeyEvent,
+      useCapture || options,
+    );
     return () => {
-      document.removeEventListener(
+      ownerDocument.removeEventListener(
         keyEvent,
         handleKeyEvent,
         useCapture || options,
       );
     };
-  }, [keyEvent, handleKeyEvent, useCapture, options]);
+  }, [keyEvent, handleKeyEvent, useCapture, options, ownerDocument]);
 
   return null;
 }

@@ -12,6 +12,7 @@ interface Position {
 
 interface State {
   dragging: boolean;
+  window?: Window | null;
 }
 
 export interface SlidableProps {
@@ -49,29 +50,40 @@ export class Slidable extends PureComponent<SlidableProps, State> {
 
   private node: HTMLElement | null = null;
   private draggerNode: HTMLElement | null = null;
+  private observer?: ResizeObserver;
+
+  componentWillUnmount() {
+    this.observer?.disconnect();
+  }
 
   componentDidMount() {
-    const {onDraggerHeight} = this.props;
-    if (onDraggerHeight == null) {
+    if (!this.node) {
       return;
     }
 
-    const {draggerNode} = this;
-    if (draggerNode == null) {
-      return;
-    }
+    this.observer = new ResizeObserver(() => {
+      /**
+       * This is a workaround to enable event listeners to be
+       * re-attached when moving from one document to another
+       * when using a React portal across iframes.
+       * Using a resize observer works because when the clientWidth
+       * will go from 0 to the real width after the node
+       * gets rendered in its new place.
+       */
+      const {window} = this.state;
+      if (window !== this.node?.ownerDocument.defaultView) {
+        this.setState({window: this.node?.ownerDocument.defaultView});
+      }
+      this.handleResize();
+    });
 
-    onDraggerHeight(draggerNode.clientWidth);
+    this.observer.observe(this.node);
 
-    if (process.env.NODE_ENV === 'development') {
-      setTimeout(() => {
-        onDraggerHeight(draggerNode.clientWidth);
-      }, 0);
-    }
+    this.handleResize();
   }
 
   render() {
-    const {dragging} = this.state;
+    const {dragging, window} = this.state;
     const {draggerX = 0, draggerY = 0} = this.props;
 
     const draggerPositioning = {
@@ -83,6 +95,7 @@ export class Slidable extends PureComponent<SlidableProps, State> {
         event="mousemove"
         handler={this.handleMove}
         passive={false}
+        window={window}
       />
     ) : null;
 
@@ -91,19 +104,32 @@ export class Slidable extends PureComponent<SlidableProps, State> {
         event="touchmove"
         handler={this.handleMove}
         passive={false}
+        window={window}
       />
     ) : null;
 
     const endDragListener = dragging ? (
-      <EventListener event="mouseup" handler={this.handleDragEnd} />
+      <EventListener
+        event="mouseup"
+        handler={this.handleDragEnd}
+        window={window}
+      />
     ) : null;
 
     const touchEndListener = dragging ? (
-      <EventListener event="touchend" handler={this.handleDragEnd} />
+      <EventListener
+        event="touchend"
+        handler={this.handleDragEnd}
+        window={window}
+      />
     ) : null;
 
     const touchCancelListener = dragging ? (
-      <EventListener event="touchcancel" handler={this.handleDragEnd} />
+      <EventListener
+        event="touchcancel"
+        handler={this.handleDragEnd}
+        window={window}
+      />
     ) : null;
 
     return (
@@ -125,6 +151,27 @@ export class Slidable extends PureComponent<SlidableProps, State> {
         />
       </div>
     );
+  }
+
+  private handleResize() {
+    const {onDraggerHeight} = this.props;
+    if (!onDraggerHeight) {
+      return;
+    }
+
+    const {draggerNode} = this;
+
+    if (!draggerNode) {
+      return;
+    }
+
+    onDraggerHeight(draggerNode.clientWidth);
+
+    if (process.env.NODE_ENV === 'development') {
+      setTimeout(() => {
+        onDraggerHeight(draggerNode.clientWidth);
+      }, 0);
+    }
   }
 
   private setDraggerNode = (node: HTMLElement | null) => {

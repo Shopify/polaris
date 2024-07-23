@@ -4,6 +4,7 @@ interface BaseEventProps {
   event: string;
   capture?: boolean;
   handler(event: Event): void;
+  window?: Window | null;
 }
 
 export interface EventListenerProps extends BaseEventProps {
@@ -30,12 +31,19 @@ export class EventListener extends PureComponent<EventListenerProps, never> {
   }
 
   private attachListener() {
-    const {event, handler, capture, passive} = this.props;
+    const {event, handler, capture, passive, window: customWindow} = this.props;
+    const window = customWindow || globalThis.window;
     window.addEventListener(event, handler, {capture, passive});
   }
 
   private detachListener(prevProps?: BaseEventProps) {
-    const {event, handler, capture} = prevProps || this.props;
+    const {
+      event,
+      handler,
+      capture,
+      window: customWindow,
+    } = prevProps || this.props;
+    const window = customWindow || globalThis.window;
     window.removeEventListener(event, handler, capture);
   }
 }

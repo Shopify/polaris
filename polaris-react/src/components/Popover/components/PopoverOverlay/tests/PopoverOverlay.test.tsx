@@ -1,13 +1,15 @@
+/* eslint-disable import/no-deprecated */
 import React, {useRef} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Key} from '../../../../../types';
-// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../../TextContainer';
+import {EventListener} from '../../../../EventListener';
 import {TextField} from '../../../../TextField';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
 import {Popover} from '../../../Popover';
+import {KeypressListener} from '../../../../KeypressListener';
 
 describe('<PopoverOverlay />', () => {
   let rafSpy: jest.SpyInstance;
@@ -594,6 +596,187 @@ describe('<PopoverOverlay />', () => {
       mountWithApp(<Test />);
 
       expect(overlayRef).toHaveProperty('current.forceUpdatePosition');
+    });
+  });
+
+  describe('Iframe React portal bug fix', () => {
+    it('observes the resize event for the activator', () => {
+      const observe = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe,
+        unobserve: jest.fn(),
+        disconnect: jest.fn(),
+      }));
+
+      mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+          fullWidth
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      expect(observe).toHaveBeenCalledWith(activator);
+    });
+
+    it('disconnects the resize observer when component unmounts', () => {
+      const disconnect = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+        disconnect,
+      }));
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+          fullWidth
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      popoverOverlay.unmount();
+
+      expect(disconnect).toHaveBeenCalled();
+    });
+
+    it('updates the observer when activator updates', () => {
+      const observe = jest.fn();
+      const unobserve = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe,
+        unobserve,
+        disconnect: jest.fn(),
+      }));
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+          fullWidth
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      const newActivator = document.createElement('button');
+
+      popoverOverlay.act(() => {
+        popoverOverlay.setProps({activator: newActivator});
+      });
+
+      expect(unobserve).toHaveBeenCalledWith(activator);
+      expect(observe).toHaveBeenCalledWith(newActivator);
+    });
+
+    it('passes the activator.ownerDocument.defaultView as the window for the click and touchstart event listeners after resize observer fires', () => {
+      let resizeCallback: () => void;
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation((callback) => {
+        resizeCallback = callback;
+        return {
+          observe: jest.fn(),
+          unobserve: jest.fn(),
+          disconnect: jest.fn(),
+        };
+      });
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+          fullWidth
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      popoverOverlay.act(() => resizeCallback());
+
+      popoverOverlay.forceUpdate();
+
+      // We can't assert using `toContainReactComponent` because the matcher blows up trying to assert on window as an argument
+      expect(
+        popoverOverlay
+          .find(EventListener, {
+            event: 'click',
+          })!
+          .prop('window'),
+      ).toStrictEqual(activator.ownerDocument.defaultView);
+
+      expect(
+        popoverOverlay
+          .find(EventListener, {
+            event: 'touchstart',
+          })!
+          .prop('window'),
+      ).toStrictEqual(activator.ownerDocument.defaultView);
+    });
+
+    it('passes the activator.ownerDocument as the document for the escape key press listener after ResizeObserver fires', () => {
+      let resizeCallback: () => void;
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation((callback) => {
+        resizeCallback = callback;
+        return {
+          observe: jest.fn(),
+          unobserve: jest.fn(),
+          disconnect: jest.fn(),
+        };
+      });
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={noop}
+          fullWidth
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      popoverOverlay.act(() => resizeCallback());
+
+      popoverOverlay.forceUpdate();
+
+      // We can't assert using `toContainReactComponent` because the matcher blows up trying to assert on window as an argument
+      expect(
+        popoverOverlay
+          .find(KeypressListener, {
+            keyCode: Key.Escape,
+          })!
+          .prop('document'),
+      ).toStrictEqual(activator.ownerDocument);
+
+      expect(
+        popoverOverlay
+          .find(EventListener, {
+            event: 'touchstart',
+          })!
+          .prop('window'),
+      ).toStrictEqual(activator.ownerDocument.defaultView);
     });
   });
 });

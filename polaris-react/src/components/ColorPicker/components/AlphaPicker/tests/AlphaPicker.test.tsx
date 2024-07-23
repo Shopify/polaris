@@ -79,6 +79,40 @@ describe('<AlphaPicker />', () => {
       });
     });
   });
+
+  describe('Iframe React portal bug fix', () => {
+    it('observes the resize event for the activator wrapper', () => {
+      const observe = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe,
+        unobserve: jest.fn(),
+        disconnect: jest.fn(),
+      }));
+
+      const alphaPicker = mountWithApp(<AlphaPicker {...mockProps} />);
+
+      expect(observe).toHaveBeenCalledWith(alphaPicker.find('div')?.domNode);
+    });
+
+    it('disconnects the resize observer when component unmounts', () => {
+      const disconnect = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+        disconnect,
+      }));
+
+      const alphaPicker = mountWithApp(<AlphaPicker {...mockProps} />);
+
+      alphaPicker.unmount();
+
+      expect(disconnect).toHaveBeenCalled();
+    });
+  });
 });
 
 function noop() {}

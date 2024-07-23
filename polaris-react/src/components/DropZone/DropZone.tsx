@@ -266,6 +266,10 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     [disabled, onDragOver],
   );
 
+  const document = isServer
+    ? null
+    : node.current?.ownerDocument || globalThis.document;
+
   const handleDragLeave = useCallback(
     (event: DropZoneEvent) => {
       event.preventDefault();
@@ -285,7 +289,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
       onDragLeave && onDragLeave();
     },
-    [dropOnPage, disabled, onDragLeave],
+    [disabled, onDragLeave, dropOnPage, document],
   );
 
   const dropNode = dropOnPage && !isServer ? document : node.current;
@@ -294,11 +298,23 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   useEventListener('dragover', handleDragOver, dropNode);
   useEventListener('dragenter', handleDragEnter, dropNode);
   useEventListener('dragleave', handleDragLeave, dropNode);
-  useEventListener('resize', adjustSize, isServer ? null : window);
 
   useComponentDidMount(() => {
     adjustSize();
   });
+
+  useEffect(() => {
+    if (!node.current) {
+      return;
+    }
+
+    const observer = new ResizeObserver(adjustSize);
+    observer.observe(node.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [adjustSize]);
 
   const uniqId = useId();
   const id = idProp ?? uniqId;
