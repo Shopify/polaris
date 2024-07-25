@@ -34,6 +34,7 @@ export type ColorBackgroundAlias =
   | 'bg-fill-magic-secondary'
   | 'bg-fill-magic'
   | 'bg-fill-secondary-active'
+  | 'bg-fill-secondary-selected'
   | 'bg-fill-secondary-hover'
   | 'bg-fill-secondary'
   | 'bg-fill-selected'
@@ -108,8 +109,6 @@ export type ColorBackgroundAlias =
   | 'avatar-two-bg-fill'
   | 'backdrop-bg'
   | 'button-gradient-bg-fill'
-  | 'button-gradient-bg-fill-selected-experimental'
-  | 'button-gradient-bg-fill-active-experimental'
   | 'checkbox-bg-surface-disabled'
   | 'input-bg-surface-active'
   | 'input-bg-surface-hover'
@@ -148,16 +147,12 @@ export type ColorBorderAlias =
   | 'border-tertiary'
   | 'border-warning'
   | 'border'
-  | 'border-gradient-experimental'
-  | 'border-gradient-hover-experimental'
-  | 'border-gradient-selected-experimental'
-  | 'border-gradient-active-experimental'
   /** Specialty and component border colors. */
   | 'input-border-active'
   | 'input-border-hover'
   | 'input-border'
-  | 'tooltip-tail-down-border-experimental'
-  | 'tooltip-tail-up-border-experimental';
+  | 'tooltip-tail-down-border'
+  | 'tooltip-tail-up-border';
 
 export type ColorIconAlias =
   | 'icon-active'
@@ -484,6 +479,11 @@ export const color: {
     value: colors.gray[8],
     description:
       'The active state (on press) color of elements with a smaller surface area and a secondary level of prominence.',
+  },
+  'color-bg-fill-secondary-selected': {
+    value: colors.gray[8],
+    description:
+      'The selected state (on press) color of elements with a smaller surface area and a secondary level of prominence.',
   },
   'color-bg-fill-tertiary': {
     value: colors.gray[8],
@@ -1019,25 +1019,13 @@ export const color: {
     description:
       'The active state (on press) color for borders on an inverse background.',
   },
-  'color-tooltip-tail-down-border-experimental': {
+  'color-tooltip-tail-down-border': {
     value: colors.gray[9],
     description: 'The border color for tooltip tails pointing down.',
   },
-  'color-tooltip-tail-up-border-experimental': {
+  'color-tooltip-tail-up-border': {
     value: colors.gray[8],
     description: 'The border color for tooltip tails pointing up.',
-  },
-  'color-border-gradient-experimental': {
-    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
-  },
-  'color-border-gradient-hover-experimental': {
-    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
-  },
-  'color-border-gradient-selected-experimental': {
-    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
-  },
-  'color-border-gradient-active-experimental': {
-    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
   },
   'color-icon': {
     value: colors.gray[14],
@@ -1166,14 +1154,6 @@ export const color: {
     value: colors.blackAlpha[14],
   },
   'color-button-gradient-bg-fill': {
-    value:
-      'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
-  },
-  'color-button-gradient-bg-fill-selected-experimental': {
-    value:
-      'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
-  },
-  'color-button-gradient-bg-fill-active-experimental': {
     value:
       'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
   },
