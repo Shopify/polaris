@@ -24,6 +24,8 @@ export interface NonMutuallyExclusiveProps {
   url?: string;
   /** The size of the tag */
   size?: 'large';
+  /** Apply secondary styling  */
+  secondary?: boolean;
 }
 
 export type TagProps = NonMutuallyExclusiveProps &
@@ -40,6 +42,7 @@ export function Tag({
   accessibilityLabel,
   url,
   size,
+  secondary,
 }: TagProps) {
   const i18n = useI18n();
 
@@ -52,6 +55,7 @@ export function Tag({
     url && !disabled && styles.linkable,
     segmented && styles.segmented,
     size && styles[variationName('size', size)],
+    secondary && styles.secondary,
   );
 
   let tagTitle = accessibilityLabel;

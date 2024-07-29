@@ -65,6 +65,10 @@
     padding-right: 0;
     padding-inline-end: 0;
   }
+
+  &.secondary {
+    background-color: var(--p-color-bg-fill-secondary);
+  }
 }
 
 .Button {

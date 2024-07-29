@@ -8,6 +8,7 @@ import {
   Bleed,
   BlockStack,
   Text,
+  Card,
 } from '@shopify/polaris';
 import {WandIcon} from '@shopify/polaris-icons';
 
@@ -40,6 +41,9 @@ export const All = {
         <br />
         <Text as="p">Removable large</Text>
         <RemovableLarge.render />
+        <br />
+        <Text as="p">Secondary</Text>
+        <Secondary.render />
       </BlockStack>
       /* eslint-enable react/jsx-pascal-case */
     );
@@ -190,6 +194,27 @@ export const RemovableLarge = {
         <Text as="p">Large with link</Text>
         <LegacyStack spacing="tight">{tagWithLinkMarkup}</LegacyStack>
       </BlockStack>
+    );
+  },
+};
+
+export const Secondary = {
+  render() {
+    return (
+      <Card>
+        <InlineStack gap="100">
+          <Tag secondary>Wholesale</Tag>
+          <Tag disabled secondary>
+            Disabled
+          </Tag>
+          <Tag secondary url="#">
+            With URL
+          </Tag>
+          <Tag secondary onRemove={() => {}}>
+            Removable
+          </Tag>
+        </InlineStack>
+      </Card>
     );
   },
 };
