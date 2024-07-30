@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.4.0
+
+### Minor Changes
+
+- [#12467](https://github.com/Shopify/polaris/pull/12467) [`a98276358`](https://github.com/Shopify/polaris/commit/a9827635844e9c43093c901966dbe8b623380e96) Thanks [@sophschneider](https://github.com/sophschneider)! - Remove experimental suffix from tooltip tokens, remove border gradient experimental tokens, add token for `bg-fill-secondary-selected`, and add more `dark-experimental` theme values.
+
 ## 9.3.0
 
 ### Minor Changes
