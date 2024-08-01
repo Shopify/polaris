@@ -254,7 +254,7 @@ function NavItem({
                         }
                       }}
                     >
-                      {child.title}
+                      <span>{child.title}</span>
                       <Icon source={LockIcon} width={16} height={16} />
                     </a>
                   ) : (
@@ -268,7 +268,7 @@ function NavItem({
                         }
                       }}
                     >
-                      {child.title}
+                      <span>{child.title}</span>
                       {child.status && <StatusBadge status={child.status} />}
                     </Link>
                   )}
