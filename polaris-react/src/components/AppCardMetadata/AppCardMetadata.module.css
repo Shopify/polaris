@@ -1,0 +1,14 @@
+.Container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.TitleLink {
+  cursor: pointer;
+}
+
+.TitleLink :hover {
+  text-decoration: underline;
+}

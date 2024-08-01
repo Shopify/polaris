@@ -1,0 +1,17 @@
+.TitleContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.TitleLink {
+  color: var(--p-color-text);
+  text-decoration: none;
+}
+
+.TitleLink:not(.LinkDisabled) {
+  cursor: pointer;
+}
+
+.TitleLink:not(.LinkDisabled) :hover {
+  text-decoration: underline;
+}
