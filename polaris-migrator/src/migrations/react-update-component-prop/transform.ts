@@ -15,9 +15,7 @@ import {
   normalizeImportSourcePaths,
 } from '../../utilities/imports';
 
-export interface MigrationOptions extends Options {
-  relative?: boolean;
-  componentName: string;
+interface ReplacementOptions {
   fromPropType?: 'string' | 'boolean';
   fromProp: string;
   toProp?: string;
@@ -25,23 +23,58 @@ export interface MigrationOptions extends Options {
   toValue?: string;
 }
 
+interface ReplacementMaps {
+  [componentName: string]: ReplacementOptions[];
+}
+
+export interface MigrationOptions extends Options, Partial<ReplacementOptions> {
+  relative?: boolean;
+  componentName?: string;
+  replacementMaps?: ReplacementMaps;
+}
+
 export default function transformer(
   file: FileInfo,
   {jscodeshift: j}: API,
   options: MigrationOptions,
 ) {
-  const {
-    componentName,
-    fromPropType = 'string',
-    fromProp,
-    toProp,
-    fromValue,
-    toValue,
-  } = options;
-
-  if (!componentName || !fromProp) {
-    throw new Error('Missing required options: componentName, fromProp');
+  if (
+    options.replacementMaps &&
+    (options.componentName ||
+      options.fromPropType ||
+      options.fromProp ||
+      options.toProp ||
+      options.fromValue ||
+      options.toValue)
+  ) {
+    throw new Error(
+      'Cannot provide both `replacementMaps` and `componentName`, `fromPropType`, `fromProp`, `toProp`, `fromValue`, or `toValue`',
+    );
   }
+
+  let replacementMaps: ReplacementMaps | undefined;
+
+  if (options.replacementMaps) {
+    replacementMaps = options.replacementMaps;
+  } else {
+    if (!options.componentName || !options.fromProp) {
+      throw new Error('Missing required options: componentName, fromProp');
+    }
+
+    replacementMaps = {
+      [options.componentName]: [
+        {
+          fromPropType: options.fromPropType,
+          fromProp: options.fromProp,
+          toProp: options.toProp,
+          fromValue: options.fromValue,
+          toValue: options.toValue,
+        },
+      ],
+    };
+  }
+
+  if (!replacementMaps) return;
 
   const source = j(file.source);
 
@@ -52,51 +85,87 @@ export default function transformer(
     return;
   }
 
-  const componentNames = componentName.split('.');
-  const targetComponentName = componentNames[0];
-
-  const sourcePaths = normalizeImportSourcePaths(j, source, {
-    relative: options.relative,
-    from: targetComponentName,
-    to: targetComponentName,
-  });
-
-  if (!sourcePaths) return;
-
-  if (!hasImportSpecifier(j, source, targetComponentName, sourcePaths.from)) {
-    return;
+  interface LocalElementConfig {
+    componentNames: string[];
+    replacementOptions: ReplacementOptions[];
   }
 
-  const localElementName =
-    getImportSpecifierName(j, source, targetComponentName, sourcePaths.from) ||
-    targetComponentName;
+  const localElementConfigs = Object.fromEntries(
+    Object.entries(replacementMaps)
+      .map((replacementMapEntry): null | [string, LocalElementConfig] => {
+        const [componentName, replacementOptions] = replacementMapEntry;
 
-  componentNames[0] = localElementName;
+        const componentNames = componentName.split('.');
+        const targetComponentName = componentNames[0];
+
+        const sourcePaths = normalizeImportSourcePaths(j, source, {
+          relative: options.relative,
+          from: targetComponentName,
+          to: targetComponentName,
+        });
+
+        if (
+          !sourcePaths ||
+          !hasImportSpecifier(j, source, targetComponentName, sourcePaths.from)
+        ) {
+          return null;
+        }
+
+        const localElementName =
+          getImportSpecifierName(
+            j,
+            source,
+            targetComponentName,
+            sourcePaths.from,
+          ) || targetComponentName;
+
+        componentNames[0] = localElementName;
+
+        return [
+          localElementName,
+          {
+            componentNames,
+            replacementOptions,
+          },
+        ];
+      })
+      .filter(Boolean) as [string, LocalElementConfig][],
+  );
 
   source.find(j.JSXElement).forEach((element) => {
+    const elementNames = getElementNames(element.node.openingElement.name);
+
+    const localElementConfig = localElementConfigs[elementNames[0]];
+
+    if (!localElementConfig) return;
+
+    const {componentNames, replacementOptions} = localElementConfig;
+
     if (
-      element.node.openingElement.name.type === 'JSXIdentifier' &&
-      element.node.openingElement.name.name !== localElementName
+      elementNames.length !== componentNames.length ||
+      !componentNames.every((name, index) => name === elementNames[index])
     ) {
       return;
     }
 
-    const nameChain = getNameChain(element.node.openingElement.name);
+    const allAttributes = element.node.openingElement.attributes ?? [];
 
     if (
-      nameChain.length === componentNames.length &&
-      componentNames.every((name, index) => name === nameChain[index])
+      // Early exit on spread operators
+      allAttributes.some((attribute) => attribute.type !== 'JSXAttribute')
     ) {
-      const allAttributes = element.node.openingElement.attributes ?? [];
+      insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+      return;
+    }
 
-      if (
-        // Early exit on spread operators
-        allAttributes.some((attribute) => attribute.type !== 'JSXAttribute')
-      ) {
-        insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
-        return;
-      }
-
+    for (const replacementOption of replacementOptions) {
+      const {
+        fromPropType = 'string',
+        fromProp,
+        toProp,
+        fromValue,
+        toValue,
+      } = replacementOption;
       const jsxAttributes = allAttributes as JSXAttribute[];
 
       const fromPropAttribute = jsxAttributes.find(
@@ -123,8 +192,6 @@ export default function transformer(
           return jsxAttribute;
         }
 
-        // Current jsxAttribute matches target fromProp
-
         const attributeValueValue =
           jsxAttribute.value?.type === 'StringLiteral'
             ? jsxAttribute.value.value
@@ -147,31 +214,33 @@ export default function transformer(
     }
   });
 
-  source
-    .find(j.Identifier)
-    .filter((path) => path.node.name === localElementName)
-    .forEach((path) => {
-      if (path.node.type !== 'Identifier') return;
+  Object.keys(localElementConfigs).forEach((localElementName) => {
+    source
+      .find(j.Identifier)
+      .filter((path) => path.node.name === localElementName)
+      .forEach((path) => {
+        if (path.node.type !== 'Identifier') return;
 
-      if (
-        path.parent.value.type === 'ImportSpecifier' ||
-        path.parent.value.type === 'MemberExpression'
-      ) {
-        return;
-      }
+        if (
+          path.parent.value.type === 'ImportSpecifier' ||
+          path.parent.value.type === 'MemberExpression'
+        ) {
+          return;
+        }
 
-      insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
-    });
+        insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
+      });
+  });
 
   return source.toSource();
 }
 
-function getNameChain(name: JSXOpeningElement['name']): string[] {
+function getElementNames(name: JSXOpeningElement['name']): string[] {
   if (name.type === 'JSXIdentifier') {
     return [name.name];
   }
   if (name.type === 'JSXMemberExpression') {
-    return [...getNameChain(name.object), name.property.name];
+    return [...getElementNames(name.object), name.property.name];
   }
   return [];
 }
