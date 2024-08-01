@@ -523,6 +523,63 @@ describe('<Popover />', () => {
       });
     });
   });
+
+  describe('Iframe React portal bug fix', () => {
+    it('does not render a positionedOverlay when activator node does not have an offsetParent even when active', () => {
+      // Replace patch for offsetParent for jsdom
+      Object.defineProperty(HTMLElement.prototype, 'offsetParent', {
+        get() {
+          return null;
+        },
+      });
+
+      const popover = mountWithApp(
+        <Popover active activator={<div>Activator</div>} onClose={spy} />,
+      );
+      expect(popover).not.toContainReactComponent(PositionedOverlay);
+    });
+
+    it('observes the resize event for the activator wrapper', () => {
+      const observe = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe,
+        unobserve: jest.fn(),
+        disconnect: jest.fn(),
+      }));
+
+      const popover = mountWithApp(
+        <Popover
+          active
+          activator={<div>Activator</div>}
+          activatorWrapper="span"
+          onClose={spy}
+        />,
+      );
+
+      expect(observe).toHaveBeenCalledWith(popover.find('span')?.domNode);
+    });
+
+    it('disconnects the resize observer when component unmounts', () => {
+      const disconnect = jest.fn();
+
+      // eslint-disable-next-line jest/prefer-spy-on
+      global.ResizeObserver = jest.fn().mockImplementation(() => ({
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+        disconnect,
+      }));
+
+      const popover = mountWithApp(
+        <Popover active activator={<div>Activator</div>} onClose={spy} />,
+      );
+
+      popover.unmount();
+
+      expect(disconnect).toHaveBeenCalled();
+    });
+  });
 });
 
 function noop() {}

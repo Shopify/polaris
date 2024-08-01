@@ -47,3 +47,12 @@ console.warn = (...args: any[]) => {
 
   originalConsoleWarn(...args);
 };
+
+if (typeof HTMLElement !== 'undefined') {
+  // Patch for offsetParent for jsdom, needed for Popover
+  Object.defineProperty(HTMLElement.prototype, 'offsetParent', {
+    get() {
+      return this.parentNode;
+    },
+  });
+}

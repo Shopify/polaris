@@ -35,6 +35,27 @@ describe('<EventListener />', () => {
     window.dispatchEvent(new Event('resize'));
     expect(spy).not.toHaveBeenCalled();
   });
+
+  it('uses the custom window if provided', () => {
+    const myWindow = {
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    };
+
+    const wrapper = mountWithApp(
+      <EventListener
+        event="resize"
+        handler={jest.fn()}
+        window={myWindow as any}
+      />,
+    );
+
+    expect(myWindow.addEventListener).toHaveBeenCalled();
+
+    wrapper.unmount();
+
+    expect(myWindow.removeEventListener).toHaveBeenCalled();
+  });
 });
 
 function noop() {}

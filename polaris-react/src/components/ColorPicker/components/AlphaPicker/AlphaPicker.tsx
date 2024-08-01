@@ -25,6 +25,24 @@ export class AlphaPicker extends PureComponent<AlphaPickerProps, State> {
     draggerHeight: 0,
   };
 
+  private node: HTMLElement | null = null;
+  private observer?: ResizeObserver;
+
+  componentWillUnmount() {
+    this.observer?.disconnect();
+  }
+
+  componentDidMount() {
+    if (!this.node) {
+      return;
+    }
+
+    this.observer = new ResizeObserver(this.setSliderHeight);
+    this.observer.observe(this.node);
+
+    this.setSliderHeight();
+  }
+
   render() {
     const {color, alpha} = this.props;
     const {sliderHeight, draggerHeight} = this.state;
@@ -33,7 +51,7 @@ export class AlphaPicker extends PureComponent<AlphaPickerProps, State> {
     const background = alphaGradientForColor(color);
 
     return (
-      <div className={styles.AlphaPicker} ref={this.setSliderHeight}>
+      <div className={styles.AlphaPicker} ref={this.setNode}>
         <div className={styles.ColorLayer} style={{background}} />
         <Slidable
           draggerY={draggerY}
@@ -45,8 +63,17 @@ export class AlphaPicker extends PureComponent<AlphaPickerProps, State> {
     );
   }
 
-  private setSliderHeight = (node: HTMLElement | null) => {
-    if (node == null) {
+  private setNode = (node: HTMLElement | null) => {
+    if (!node) {
+      return;
+    }
+
+    this.node = node;
+  };
+
+  private setSliderHeight = () => {
+    const {node} = this;
+    if (!node) {
       return;
     }
 

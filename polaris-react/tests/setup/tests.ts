@@ -11,6 +11,13 @@ if (typeof window !== 'undefined' && !matchMedia.isMocked()) {
 
 // eslint-disable-next-line jest/require-top-level-describe
 beforeEach(() => {
+  // eslint-disable-next-line jest/prefer-spy-on
+  global.ResizeObserver = jest.fn().mockImplementation(() => ({
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+    disconnect: jest.fn(),
+  }));
+
   if (typeof window !== 'undefined' && !matchMedia.isMocked()) {
     matchMedia.mock();
   }

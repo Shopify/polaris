@@ -172,7 +172,10 @@ export function intersectionWithViewport(
   });
 }
 
-export function windowRect() {
+export function windowRect(node?: HTMLElement) {
+  const document = node?.ownerDocument || globalThis.document;
+  const window = document.defaultView || globalThis.window;
+
   return new Rect({
     top: window.scrollY,
     left: window.scrollX,

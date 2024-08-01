@@ -83,6 +83,27 @@ describe('<KeypressListener />', () => {
 
     expect(listenerOptionsMap.keyup).toStrictEqual(eventOptions);
   });
+
+  it('uses the custom document if provided', () => {
+    const myDocument = {
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    };
+
+    const wrapper = mountWithApp(
+      <KeypressListener
+        handler={jest.fn()}
+        keyCode={Key.Escape}
+        document={myDocument as any}
+      />,
+    );
+
+    expect(myDocument.addEventListener).toHaveBeenCalled();
+
+    wrapper.unmount();
+
+    expect(myDocument.removeEventListener).toHaveBeenCalled();
+  });
 });
 
 function noop() {}

@@ -110,8 +110,8 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
     },
     ref,
   ) {
+    const [isDisplayed, setIsDisplay] = useState(false);
     const [activatorNode, setActivatorNode] = useState<HTMLElement>();
-
     const overlayRef = useRef<PopoverOverlay>(null);
     const activatorContainer = useRef<HTMLElement>(null);
 
@@ -127,7 +127,6 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
       if (activatorContainer.current == null || preventFocusOnClose) {
         return;
       }
-
       if (source === PopoverCloseSource.FocusOut && activatorNode) {
         const focusableActivator =
           findFirstFocusableNodeIncludingDisabled(activatorNode) ||
@@ -192,6 +191,42 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
     }, [id, active, ariaHaspopup]);
 
     useEffect(() => {
+      function setDisplayState() {
+        /**
+         * This is a workaround to prevent rendering the Popover when the content is moved into
+         * a React portal that hasn't been rendered. We don't want to render the Popover in this
+         * case because the auto-focus logic will break. We wait until the activatorContainer is
+         * displayed, which is when it has an offsetParent, or if the activatorContainer is the
+         * body, if it has a clientWidth bigger than 0.
+         * See: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
+         */
+
+        setIsDisplay(
+          Boolean(
+            activatorContainer.current &&
+              (activatorContainer.current.offsetParent !== null ||
+                (activatorContainer.current ===
+                  activatorContainer.current.ownerDocument.body &&
+                  activatorContainer.current.clientWidth > 0)),
+          ),
+        );
+      }
+
+      if (!activatorContainer.current) {
+        return;
+      }
+
+      const observer = new ResizeObserver(setDisplayState);
+      observer.observe(activatorContainer.current);
+
+      setDisplayState();
+
+      return () => {
+        observer.disconnect();
+      };
+    }, []);
+
+    useEffect(() => {
       if (!activatorNode && activatorContainer.current) {
         setActivatorNode(
           activatorContainer.current.firstElementChild as HTMLElement,
@@ -217,23 +252,24 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
       setAccessibilityAttributes();
     }, [activatorNode, setAccessibilityAttributes]);
 
-    const portal = activatorNode ? (
-      <Portal idPrefix="popover">
-        <PopoverOverlay
-          ref={overlayRef}
-          id={id}
-          activator={activatorNode}
-          preferInputActivator={preferInputActivator}
-          onClose={handleClose}
-          active={active}
-          fixed={fixed}
-          zIndexOverride={zIndexOverride}
-          {...rest}
-        >
-          {children}
-        </PopoverOverlay>
-      </Portal>
-    ) : null;
+    const portal =
+      activatorNode && isDisplayed ? (
+        <Portal idPrefix="popover">
+          <PopoverOverlay
+            ref={overlayRef}
+            id={id}
+            activator={activatorNode}
+            preferInputActivator={preferInputActivator}
+            onClose={handleClose}
+            active={active}
+            fixed={fixed}
+            zIndexOverride={zIndexOverride}
+            {...rest}
+          >
+            {children}
+          </PopoverOverlay>
+        </Portal>
+      ) : null;
 
     return (
       <WrapperComponent ref={activatorContainer}>
