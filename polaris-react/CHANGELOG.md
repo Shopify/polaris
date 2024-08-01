@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.9.0
+
+### Minor Changes
+
+- [#12445](https://github.com/Shopify/polaris/pull/12445) [`66acfb1c9`](https://github.com/Shopify/polaris/commit/66acfb1c9bf10ccfbdc12d1b71b2c709632ed98b) Thanks [@vividviolet](https://github.com/vividviolet)! - Fixed issues with Popover, Tooltip, Color Picker and Drop Zone not working correctly when used inside Modals for embedded apps.
+
 ## 13.8.1
 
 ### Patch Changes
