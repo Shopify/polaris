@@ -427,7 +427,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
 
     const helpTextMarkup = helpText ? (
       <div id="FiltersHelpText" className={styles.HelpText}>
-        <Text tone="subdued" as="span">
+        <Text tone="subdued" as="span" variant="bodySm">
           {helpText}
         </Text>
       </div>

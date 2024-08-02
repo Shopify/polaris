@@ -101,9 +101,7 @@ export function ChoiceList({
       ? choice.renderChildren(isSelected)
       : null;
     const children = renderedChildren ? (
-      <div className={styles.ChoiceChildren}>
-        <Box paddingBlockStart={{xs: '400', md: '0'}}>{renderedChildren}</Box>
-      </div>
+      <div className={styles.ChoiceChildren}>{renderedChildren}</div>
     ) : null;
     return (
       <li key={value}>
@@ -143,9 +141,7 @@ export function ChoiceList({
       id={finalName}
     >
       {titleMarkup}
-      <BlockStack as="ul" gap={{xs: '400', md: '0'}}>
-        {choicesMarkup}
-      </BlockStack>
+      <BlockStack as="ul">{choicesMarkup}</BlockStack>
       {errorMarkup}
     </BlockStack>
   );

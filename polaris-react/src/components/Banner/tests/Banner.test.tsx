@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {
   PlusCircleIcon,
-  CheckIcon,
+  CheckCircleIcon,
   AlertTriangleIcon,
   InfoIcon,
   AlertDiamondIcon,
@@ -356,7 +356,7 @@ describe('<Banner />', () => {
 
   describe('icon', () => {
     it.each([
-      ['success', CheckIcon],
+      ['success', CheckCircleIcon],
       ['info', InfoIcon],
       ['warning', AlertTriangleIcon],
       ['critical', AlertDiamondIcon],

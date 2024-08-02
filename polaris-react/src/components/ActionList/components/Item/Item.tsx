@@ -122,12 +122,18 @@ export function Item({
   );
 
   const contentElement = (
-    <InlineStack blockAlign="center" gap="150" wrap={false}>
-      {prefixMarkup}
-      {textMarkup}
-      {badgeMarkup}
-      {suffixMarkup}
-    </InlineStack>
+    <div className={styles.ContentElement}>
+      <InlineStack
+        blockAlign="center"
+        gap={{xs: '200', md: '150'}}
+        wrap={false}
+      >
+        {prefixMarkup}
+        {textMarkup}
+        {badgeMarkup}
+        {suffixMarkup}
+      </InlineStack>
+    </div>
   );
 
   const contentWrapper = <Box width="100%">{contentElement}</Box>;
