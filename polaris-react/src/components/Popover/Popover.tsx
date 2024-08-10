@@ -219,6 +219,16 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
       const observer = new ResizeObserver(setDisplayState);
       observer.observe(activatorContainer.current);
 
+      /**
+       * We want to observe the parent element when possible because it is the one controlling the display state of the popover.
+       * The parent element could be collapsed initially and then opened later on like in the case
+       * of using a `<details>` component.
+       */
+
+      observer.observe(
+        activatorContainer.current.parentElement || activatorContainer.current,
+      );
+
       setDisplayState();
 
       return () => {

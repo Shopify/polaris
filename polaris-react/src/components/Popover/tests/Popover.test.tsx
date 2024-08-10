@@ -539,7 +539,7 @@ describe('<Popover />', () => {
       expect(popover).not.toContainReactComponent(PositionedOverlay);
     });
 
-    it('observes the resize event for the activator wrapper', () => {
+    it("observes the resize event for the activator wrapper's parent element", () => {
       const observe = jest.fn();
 
       // eslint-disable-next-line jest/prefer-spy-on
@@ -558,7 +558,9 @@ describe('<Popover />', () => {
         />,
       );
 
-      expect(observe).toHaveBeenCalledWith(popover.find('span')?.domNode);
+      expect(observe).toHaveBeenCalledWith(
+        popover.find('span')?.domNode?.parentElement,
+      );
     });
 
     it('disconnects the resize observer when component unmounts', () => {
