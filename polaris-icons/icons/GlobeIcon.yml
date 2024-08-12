@@ -1,11 +1,18 @@
 name: Globe
 description: Used to represent a globe.
 keywords:
-  - globe
+- Connectivity
+- Explore
+- Geography
+- Globe
+- Planet
+- Travel
+- World
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Adam Whitcroft
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2019-03-15
 date_modified: 2023-11-07

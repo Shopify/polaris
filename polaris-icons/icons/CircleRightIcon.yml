@@ -1,10 +1,16 @@
 name: Circle right
 description: Used to represent forwards naviagation, or that something is after it.
 keywords:
-  - arrow
-  - forward
+- Arrow
+- Circular
+- Direction
+- Forward
+- Move
+- Navigation
+- Progress
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

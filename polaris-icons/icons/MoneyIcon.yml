@@ -1,13 +1,19 @@
 name: Money
 description: Used to represent the Finances section.
 keywords:
-  - balance
-  - billing
-  - finances
-  - money
-  - payout
+- Balance
+- Billing
+- Currency
+- Finances
+- Investment
+- Money
+- Payout
+- Savings
+- Transactions
+- Wealth
 authors:
-  - Sam Yuan
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Sam Yuan
 date_added: 2022-01-17
 date_modified: 2024-02-16

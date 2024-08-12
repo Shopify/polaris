@@ -1,12 +1,18 @@
 name: Collection reference
 description: Used to represent collections referenced on other resources
 keywords:
-  - collection
-  - reference
-  - metafields
+- Assets
+- Collection
+- Data
+- Database
+- Links
+- Metafields
+- Organization
+- Reference
 authors:
-  - Sai Nihas
-  - Leina Leung
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Leina Leung
+- Sai Nihas
 date_added: 2023-01-12
 date_modified: 2024-02-16

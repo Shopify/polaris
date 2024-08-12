@@ -1,13 +1,18 @@
 name: Markets filled
 description: Used to represent Markets, Shopify’s international commerce product.
 keywords:
-  - markets
-  - international
-  - commerce
-  - global
+- Commerce
+- Economy
+- Global
+- International
+- Markets
+- Seller
+- Shopping
+- Trade
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-29

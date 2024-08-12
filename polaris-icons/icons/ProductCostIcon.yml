@@ -1,11 +1,17 @@
 name: Product cost
 description: Used to represent the cost of a product
 keywords:
-  - product
-  - cost
+- Cost
+- Expense
+- Payment
+- Pricing
+- Product
+- Shopping
+- Value
 authors:
-  - Adam Whitcroft
-  - Anthony Menecola
-  - Joe Thomas
+- Adam Whitcroft
+- Anthony Menecola
+- Joe Thomas
+- John Finley
 date_added: 2022-08-08
 date_modified: 2024-03-03

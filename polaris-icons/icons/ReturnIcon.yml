@@ -1,12 +1,18 @@
 name: Return
-description: >-
-  Used to represent an action to create a new line, sometimes referred to as a
-  carriage return.
+description: Used to represent an action to create a new line, sometimes referred
+  to as a carriage return.
 keywords:
-  - enter
-  - return
+- Action
+- Arrow
+- Command
+- Enter
+- Line
+- Navigation
+- Return
+- Shortcut
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

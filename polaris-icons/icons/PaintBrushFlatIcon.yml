@@ -1,11 +1,17 @@
 name: Paint brush flat
 description: Used to represent a paintbrush or an action to customize an item or resource.
 keywords:
-  - brush
-  - customize
-  - paintbrush
+- Artist
+- Brush
+- Color
+- Creativity
+- Customize
+- Design
+- Paintbrush
+- Tool
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

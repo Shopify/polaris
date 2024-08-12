@@ -1,12 +1,18 @@
 name: Layout columns2
 description: Used to represent a 2 column layout.
 keywords:
-  - two columns
-  - column
-  - layout
-  - email
+- Alignment
+- Column
+- Design
+- Email
+- Format
+- Grid
+- Layout
+- Structure
+- Two columns
 authors:
-  - Laura Forbes
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Laura Forbes
 date_added: 2021-01-12
 date_modified: 2024-02-16

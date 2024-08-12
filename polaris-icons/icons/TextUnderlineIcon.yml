@@ -1,16 +1,22 @@
 name: Text underline
 description: Used to format text with an underline.
 keywords:
-  - text format
-  - stroke
-  - formatting
-  - rich text
-  - rte
-  - format
-  - text
-  - text editing
+- Decoration
+- Emphasis
+- Format
+- Formatting
+- Rich text
+- Rte
+- Stroke
+- Styling
+- Text
+- Text editing
+- Text format
+- Typography
+- Underline
 authors:
-  - Joe Thomas
-  - Russell Baylis
+- Joe Thomas
+- John Finley
+- Russell Baylis
 date_added: 2023-06-30
 date_modified: 2023-06-30

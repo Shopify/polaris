@@ -1,17 +1,24 @@
 name: List numbered
 description: Used to format text with a numbered list.
 keywords:
-  - text format
-  - list
-  - numbered list
-  - rich text
-  - rte
-  - format
-  - text
-  - text editing
+- Bullet
+- Enumeration
+- Format
+- Hierarchy
+- List
+- Numbered list
+- Ordered
+- Organization
+- Rich text
+- Rte
+- Structure
+- Text
+- Text editing
+- Text format
 authors:
-  - Joe Thomas
-  - José Torre
-  - Russell Baylis
+- Joe Thomas
+- John Finley
+- José Torre
+- Russell Baylis
 date_added: 2023-06-30
 date_modified: 2023-06-30

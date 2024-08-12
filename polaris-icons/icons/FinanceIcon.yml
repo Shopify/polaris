@@ -1,10 +1,16 @@
 name: Finance
 description: Used to direct merchants to Shopify Finance
 keywords:
-  - finances
-  - financial accounts
-  - transactions
+- Budget
+- Budgeting
+- Currency
+- Finances
+- Financial accounts
+- Money
+- Payment
+- Transactions
 authors:
-  - Eduardo Mujica
+- Eduardo Mujica
+- John Finley
 date_added: 2024-06-07
 date_modified: 2024-06-07

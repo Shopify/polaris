@@ -1,15 +1,22 @@
 name: Note
 description: Used to represent a document or note.
 keywords:
-  - annotations
-  - document
-  - note
-  - notes
-  - page
-  - paper
-  - tags
+- Annotations
+- Document
+- Ideas
+- Journal
+- Note
+- Notes
+- Organization
+- Page
+- Paper
+- Reminder
+- Tags
+- Tasks
+- Writing
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

@@ -1,11 +1,17 @@
 name: Layout popup
 description: Used to represent the option to popup the content.
 keywords:
-  - popup
-  - window
-  - overlay
+- Dialog
+- Display
+- Floating
+- Interface
+- Menu
+- Overlay
+- Popup
+- Window
 authors:
-  - Alex Page
-  - Joe Thomas
+- Alex Page
+- Joe Thomas
+- John Finley
 date_added: 2020-09-21
 date_modified: 2024-02-16

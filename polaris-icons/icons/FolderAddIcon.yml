@@ -1,11 +1,17 @@
 name: Folder add
 description: Used to represent an action to add a folder.
 keywords:
-  - add
-  - folder
-  - plus
+- Add
+- Archive
+- Create
+- Directory
+- Folder
+- Manage
+- Plus
+- Upload
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

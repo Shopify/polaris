@@ -1,16 +1,20 @@
 name: Sandbox
-description: >-
-  Used to represent a development store (feature exclusive to Shopify Plus
+description: Used to represent a development store (feature exclusive to Shopify Plus
   Partners).
 keywords:
-  - sandbox
-  - plus
-  - partners
-  - partner
-  - development
-  - testing
+- Creative
+- Development
+- Environment
+- Experimentation
+- Partner
+- Partners
+- Plus
+- Prototype
+- Sandbox
+- Testing
 authors:
-  - Brian Potstra
-  - Joe Thomas
+- Brian Potstra
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

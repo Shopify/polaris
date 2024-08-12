@@ -1,13 +1,19 @@
 name: Text align center
 description: Icon indicating alignment of text at the center
 keywords:
-  - align
-  - alignment
-  - center
-  - rte
-  - text
+- Align
+- Alignment
+- Arrange
+- Center
+- Distribution
+- Format
+- Middle
+- Position
+- Rte
+- Text
 authors:
-  - Arthur Gouveia
-  - Joe Thomas
+- Arthur Gouveia
+- Joe Thomas
+- John Finley
 date_added: 2019-08-07
 date_modified: 2023-06-23

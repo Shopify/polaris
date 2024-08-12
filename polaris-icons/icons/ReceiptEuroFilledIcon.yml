@@ -1,20 +1,26 @@
 name: Receipt euro filled
 description: N/A
 keywords:
-  - Euro
-  - Receipt
-  - Invoice
-  - Bill
-  - Payment
-  - Receipt
-  - Purchase
-  - Transaction
-  - Proof
-  - Expense
-  - Statement
+- Bill
+- Euro
+- Expense
+- Invoice
+- Payment
+- Proof
+- Purchase
+- Receipt
+- Statement
+- Transaction
+- Accounting
+- Document
+- Finance
+- Money
+- Record
+- Voucher
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

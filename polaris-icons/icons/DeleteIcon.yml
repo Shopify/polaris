@@ -1,13 +1,20 @@
 name: Delete
 description: Used to denote a destructive action to delete an item.
 keywords:
-  - delete
-  - remove
-  - trash
-  - garbage
-  - get rid of
+- Bin
+- Can
+- Delete
+- Discard
+- Eliminate
+- Garbage
+- Get rid of
+- Purge
+- Remove
+- Trash
+- Waste
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

@@ -1,9 +1,15 @@
 name: Organization filled
 description: Used to represent a plus organization.
 keywords:
-  - organization
-  - business
+- Business
+- Community
+- Group
+- Hierarchy
+- Organization
+- Structure
+- Teamwork
 authors:
-  - Ali Angco
+- Ali Angco
+- John Finley
 date_added: 2024-05-08
 date_modified: 2024-05-08

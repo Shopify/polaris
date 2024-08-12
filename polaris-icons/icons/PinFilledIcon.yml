@@ -1,13 +1,20 @@
 name: Pin filled
 description: Used to represent a pin or an action to pin or save something.
 keywords:
-  - pin
-  - save
+- Attachment
+- Favorite
+- Flag
+- Highlight
+- Location
+- Marker
+- Pin
+- Save
 authors:
-  - David Luong
-  - Adam Whitcroft
-  - Chris Blinstrub
-  - Joe Thomas
-  - José Torre
+- Adam Whitcroft
+- Chris Blinstrub
+- David Luong
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2019-03-15
 date_modified: 2023-11-07

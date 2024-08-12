@@ -1,11 +1,18 @@
 name: Rotate right
 description: Used in media editing for rotating an image clockwise.
 keywords:
-  - Rotate
-  - Right
-  - Clockwise
+- Clockwise
+- Right
+- Rotate
+- Action
+- Adjust
+- Change
+- Edit
+- Image
+- Rotate
 authors:
-  - David Goligorsky
-  - Arda Karaçizmeli
+- Arda Karaçizmeli
+- David Goligorsky
+- John Finley
 date_added: 2024-03-28
 date_modified: 2024-03-28

@@ -1,11 +1,18 @@
 name: Chart histogram last
 description: Used to represent the last click marketing attribution model
 keywords:
-  - marketing
-  - attribution model
-  - last click
+- Analysis
+- Attribution model
+- Data
+- Graph
+- Last click
+- Marketing
+- Metrics
+- Performance
+- Statistics
 authors:
-  - Serene Chen
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Serene Chen
 date_added: 2022-10-18
 date_modified: 2023-06-23

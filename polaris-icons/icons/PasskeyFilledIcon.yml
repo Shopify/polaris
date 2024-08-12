@@ -1,12 +1,18 @@
 name: Passkey filled
 description: Used to represent a passkey
 keywords:
-  - passkey
-  - identity
-  - security
+- Access
+- Authentication
+- Credential
+- Identity
+- Lock
+- Passkey
+- Secure
+- Security
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2024-03-03

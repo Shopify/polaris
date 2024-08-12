@@ -2,10 +2,17 @@ name: Instagram
 set: Minor
 description: Used to represent Instagram.
 keywords:
-  - Instagram
-  - social media
+- Instagram
+- Branding
+- Media
+- Network
+- Online
+- Photography
+- Presence
+- Social media
 authors:
-  - Joe Thomas
-  - José Torre
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-20
 date_modified: 2023-11-07

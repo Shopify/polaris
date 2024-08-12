@@ -1,14 +1,20 @@
 name: Viewport tall
 description: Used to represent an action to make a viewport, item or resource taller.
 keywords:
-  - viewport
-  - tall
-  - arrows
-  - vertical
-  - up
-  - down
+- Arrows
+- Control
+- Direction
+- Down
+- Expand
+- Focus
+- Resize
+- Tall
+- Up
+- Vertical
+- Viewport
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2022-08-26
 date_modified: 2023-06-23

@@ -1,10 +1,15 @@
 name: Order
 description: Used to represent an inbox or an item or resource arriving in an inbox.
 keywords:
-  - inbox
-  - orders
+- Check
+- Delivery
+- Inbox
+- Items
+- Orders
+- Shipment
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2022-01-17
 date_modified: 2023-06-23

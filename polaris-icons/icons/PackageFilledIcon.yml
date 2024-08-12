@@ -1,13 +1,20 @@
 name: Package filled
-description: Used to represent a package or box that merchants can ship their products in.
+description: Used to represent a package or box that merchants can ship their products
+  in.
 keywords:
-  - shipping
-  - box
-  - package
-  - cardboard
+- Box
+- Cardboard
+- Commerce
+- Delivery
+- Logistics
+- Package
+- Parcel
+- Shipping
+- Storage
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

@@ -1,10 +1,17 @@
 name: Store import
 description: N/A
 keywords:
-  - Import
-  - Store
+- Import
+- Store
+- Commerce
+- Management
+- Shopping
+- Store
+- Transfer
+- Upload
 authors:
-  - José Torre
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2019-03-12
 date_modified: 2023-11-07

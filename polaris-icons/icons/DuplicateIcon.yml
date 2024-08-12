@@ -1,15 +1,20 @@
 name: Duplicate
-description: >-
-  Used to denote the action of duplicating orders, to save as (reports), and to
-  copy content to clipboard like an address.
+description: Used to denote the action of duplicating orders, to save as (reports),
+  and to copy content to clipboard like an address.
 keywords:
-  - duplicate
-  - copy
-  - make another one
-  - two
-  - duo
+- Clone
+- Copy
+- Copycat
+- Duo
+- Duplicate
+- Duplication
+- Make another one
+- Replicate
+- Triplicate
+- Two
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2018-11-14
 date_modified: 2024-02-16

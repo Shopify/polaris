@@ -1,14 +1,21 @@
 name: Enter
-description: Used to represent the action of authenticating, gaining access or log in
+description: Used to represent the action of authenticating, gaining access or log
+  in
 keywords:
-  - authenticating
-  - access
-  - log in
-  - enter
-  - sign in
+- Access
+- Action
+- Authenticating
+- Confirm
+- Enter
+- Log in
+- Navigate
+- Proceed
+- Sign in
+- Submit
 authors:
-  - Ashley Allen
-  - José Torre
-  - Joe Thomas
+- Ashley Allen
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-01-20
 date_modified: 2024-02-16

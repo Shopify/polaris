@@ -1,12 +1,19 @@
 name: Forklift
 description: Used to represent a forklift or equipment used in a warehouse.
 keywords:
-  - forklift
-  - lift
-  - delivery
-  - warehouse
+- Cargo
+- Delivery
+- Equipment
+- Forklift
+- Handling
+- Lift
+- Lifting
+- Machinery
+- Transport
+- Warehouse
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

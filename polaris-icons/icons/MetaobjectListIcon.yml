@@ -1,12 +1,19 @@
 name: Metaobject list
 description: Used to represent a list of metaobjects
 keywords:
-  - metaobject
-  - metaobjects
-  - content
-  - list
+- Collection
+- Content
+- Data
+- Inventory
+- Items
+- List
+- Management
+- Metaobject
+- Metaobjects
+- Organization
 authors:
-  - Wanita Jana
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Wanita Jana
 date_added: 2024-01-29
 date_modified: 2024-03-04

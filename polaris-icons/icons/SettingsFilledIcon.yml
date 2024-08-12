@@ -1,10 +1,16 @@
 name: Settings filled
 description: Used to represent settings or a configuration option.
 keywords:
-  - configure
-  - settings
-  - cog
+- Adjust
+- Cog
+- Configure
+- Control
+- Gear
+- Options
+- Preferences
+- Settings
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

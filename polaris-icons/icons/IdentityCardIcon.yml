@@ -1,17 +1,23 @@
 name: Identity card
-description: >-
-  Used to represent a personal identification document, such as a driver’s
+description: Used to represent a personal identification document, such as a driver’s
   license.
 keywords:
-  - document
-  - upload
-  - license
-  - id
-  - identity
-  - card
+- Authentication
+- Card
+- Credential
+- Document
+- Id
+- Identity
+- Information
+- License
+- Personal
+- Profile
+- Upload
+- Verification
 authors:
-  - Fayçal Sabaou
-  - Joe Thomas
-  - José Torre
+- Fayçal Sabaou
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2022-08-24
 date_modified: 2023-11-07

@@ -1,17 +1,24 @@
 name: Replace
 description: Used to represent an action to replace an item or resource with another.
 keywords:
-  - replace
-  - image
-  - picture
-  - photo
-  - switch
-  - swap
-  - arrow
-  - arrows
-  - square
+- Action
+- Arrow
+- Arrows
+- Image
+- Interchange
+- Photo
+- Picture
+- Refresh
+- Replace
+- Square
+- Swap
+- Switch
+- Transform
+- Transition
+- Update
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-02-25
 date_modified: 2023-06-23

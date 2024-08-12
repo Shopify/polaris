@@ -1,11 +1,17 @@
 name: Search resource
 description: N/A
 keywords:
-  - Report
-  - Explore
+- Explore
+- Report
+- Browse
+- Discover
+- Find
+- Inquiry
+- Locate
 authors:
-  - José Torre
-  - Joe Thomas
-  - Miru Alves
+- Joe Thomas
+- John Finley
+- José Torre
+- Miru Alves
 date_added: 2019-03-15
 date_modified: 2023-11-07

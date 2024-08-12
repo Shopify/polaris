@@ -1,15 +1,22 @@
 name: Person exit
 description: Represents the concept of opting out, or exiting.
 keywords:
-  - Opt-out
-  - User
-  - Logout
-  - Exit
-  - Sign out
-  - Leave
-  - Disconnect
+- Disconnect
+- Exit
+- Leave
+- Logout
+- Opt-out
+- Sign out
+- User
+- Departure
+- Exit
+- Farewell
+- Goodbye
+- Leave
+- Sign-out
 authors:
-  - José Torre
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2024-01-11
 date_modified: 2024-03-03

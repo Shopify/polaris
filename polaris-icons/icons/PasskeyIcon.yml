@@ -1,11 +1,17 @@
 name: Passkey
 description: Used to represent a passkey
 keywords:
-  - passkey
-  - identity
-  - security
+- Access
+- Authentication
+- Identity
+- Key
+- Login
+- Passkey
+- Secure
+- Security
 authors:
-  - Ashley Allen
-  - Joe Thomas
+- Ashley Allen
+- Joe Thomas
+- John Finley
 date_added: 2022-11-15
 date_modified: 2023-03-03

@@ -1,14 +1,20 @@
 name: Plus circle
-description: >-
-  Used to denote the action of adding new content, like adding a new variant
+description: Used to denote the action of adding new content, like adding a new variant
   option name in the mobile app.
 keywords:
-  - plus
-  - circle
-  - outline
-  - +
+- "+"
+- Action
+- Add
+- Circle
+- Create
+- Enhance
+- Growth
+- New
+- Outline
+- Plus
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

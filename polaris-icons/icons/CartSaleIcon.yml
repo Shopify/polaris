@@ -1,12 +1,18 @@
 name: Cart sale
 description: Used to represent a quick checkout process or quick sale.
 keywords:
-  - cart
-  - checkout
-  - quick
-  - sale
+- Cart
+- Checkout
+- Discount
+- Purchase
+- Quick
+- Sale
+- Shopping
+- Store
+- Transaction
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

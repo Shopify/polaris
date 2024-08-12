@@ -1,12 +1,19 @@
 name: Tax filled
 description: Used to represent sales tax or a tax receipt.
 keywords:
-  - sales tax
-  - tax reciept
-  - tax
+- Bookkeeping
+- Calculation
+- Document
+- Financial
+- Invoice
+- Refund
+- Sales tax
+- Tax
+- Tax reciept
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

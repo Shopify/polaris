@@ -1,16 +1,22 @@
 name: Text italic
 description: Used to format text with an italicized style.
 keywords:
-  - text format
-  - italic
-  - italicize
-  - rich text
-  - rte
-  - format
-  - text
-  - text editing
+- Design
+- Emphasis
+- Format
+- Italic
+- Italicize
+- Rich text
+- Rte
+- Slant
+- Style
+- Text
+- Text editing
+- Text format
+- Typography
 authors:
-  - Joe Thomas
-  - Russell Baylis
+- Joe Thomas
+- John Finley
+- Russell Baylis
 date_added: 2023-06-30
 date_modified: 2023-07-19

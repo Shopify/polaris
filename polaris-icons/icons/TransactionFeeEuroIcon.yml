@@ -1,8 +1,13 @@
 name: Transaction fee euro
 description: N/A
 keywords:
-  - N/A
+- Charge
+- Currency
+- Fee
+- Money
+- Payment
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

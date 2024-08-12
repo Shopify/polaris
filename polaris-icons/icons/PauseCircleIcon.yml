@@ -1,8 +1,14 @@
 name: Pause circle
 description: N/A
 keywords:
-  - N/A
+- Action
+- Control
+- Media
+- Pause
+- Play
+- Stop
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

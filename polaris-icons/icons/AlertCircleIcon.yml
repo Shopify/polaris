@@ -1,15 +1,21 @@
 name: Alert circle
 description: Used to alert merchants of a warning message.
 keywords:
-  - attention
-  - alert
-  - warning
-  - exclamation
-  - bang
-  - circle
-  - round
+- Alert
+- Attention
+- Bang
+- Caution
+- Circle
+- Emphasize
+- Exclamation
+- Mark
+- Notification
+- Round
+- Signal
+- Warning
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-02-21
 date_modified: 2023-06-23

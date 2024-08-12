@@ -1,12 +1,17 @@
 name: Megaphone filled
-description: >-
-  Used to represent an action to open an external resource, or promote an item
-  or resource.
+description: Used to represent an action to open an external resource, or promote
+  an item or resource.
 keywords:
-  - external
-  - promote
+- Alert
+- Announce
+- Campaign
+- Communicate
+- External
+- Message
+- Promote
 authors:
-  - Joe Thomas
-  - José Torre
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

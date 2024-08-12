@@ -1,11 +1,17 @@
 name: Notification
 description: Used to represent a notification or alert.
 keywords:
-  - notifications
-  - alerts
-  - bell
+- Alert
+- Alerts
+- Bell
+- Indicator
+- Message
+- Notifications
+- Reminder
+- Updates
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

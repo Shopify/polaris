@@ -1,14 +1,19 @@
 name: Shield check mark
-description: >-
-  Used to represent a secure or protected item or resource, or than an item or
-  resource can be trusted.
+description: Used to represent a secure or protected item or resource, or than an
+  item or resource can be trusted.
 keywords:
-  - protected
-  - secure
-  - trust
-  - verified
+- Approval
+- Assurance
+- Confidence
+- Protected
+- Safeguard
+- Secure
+- Security
+- Trust
+- Verified
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

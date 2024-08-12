@@ -1,8 +1,13 @@
 name: Book
 description: N/A
 keywords:
-  - N/A
+- Education
+- Journal
+- Library
+- Reading
+- Study
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

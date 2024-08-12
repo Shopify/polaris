@@ -1,10 +1,16 @@
 name: Notification filled
 description: Used to represent a notification or alert.
 keywords:
-  - notifications
-  - alerts
-  - bell
+- Alert
+- Alerts
+- Bell
+- Information
+- Message
+- Notifications
+- Reminder
+- Signal
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

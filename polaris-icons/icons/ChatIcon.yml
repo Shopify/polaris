@@ -1,14 +1,20 @@
 name: Chat
 description: Used to give merchants an indication of comments attached to an order.
 keywords:
-  - speech
-  - bubble
-  - conversation
-  - talk
-  - chat
-  - comment
+- Bubble
+- Chat
+- Comment
+- Conversation
+- Discussion
+- Feedback
+- Interaction
+- Message
+- Notification
+- Speech
+- Talk
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

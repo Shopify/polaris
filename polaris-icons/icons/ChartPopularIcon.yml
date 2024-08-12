@@ -1,11 +1,17 @@
 name: Chart popular
 description: Used to represent activity or something increasing in popularity.
 keywords:
-  - activity
-  - graph
-  - popular
+- Activity
+- Analytics
+- Graph
+- Growth
+- Metrics
+- Popular
+- Trend
+- Visualization
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

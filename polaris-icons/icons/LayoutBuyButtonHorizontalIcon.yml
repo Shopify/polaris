@@ -1,11 +1,21 @@
 name: Layout buy button horizontal
 description: Used to represent a horizontal layout for our Buy Button.
 keywords:
-  - button
-  - buy button
-  - layout
+- Action
+- Alignment
+- Button
+- Buy button
+- Design
+- Element
+- Horizontal
+- Interactive
+- Interface
+- Layout
+- Purchase
+- User
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2024-02-16

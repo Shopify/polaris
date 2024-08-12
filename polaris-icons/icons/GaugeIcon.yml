@@ -1,11 +1,18 @@
 name: Gauge
 description: Used to represent an analytics benchmark
 keywords:
-  - analytics
-  - benchmark
-  - gauge chart
+- Analytics
+- Benchmark
+- Data
+- Gauge chart
+- Indicators
+- Measurement
+- Performance
+- Progress
+- Visualization
 authors:
-  - Arushi Singh
-  - Joe Thomas
+- Arushi Singh
+- Joe Thomas
+- John Finley
 date_added: 2023-05-31
 date_modified: 2023-06-23

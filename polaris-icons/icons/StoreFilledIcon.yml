@@ -1,10 +1,17 @@
 name: Store filled
 description: Used to represent a store or shop.
 keywords:
-  - store
-  - shop
+- Basket
+- Commerce
+- Location
+- Retail
+- Shop
+- Shopping
+- Store
+- Storefront
 authors:
-  - Joe Thomas
-  - José Torre
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

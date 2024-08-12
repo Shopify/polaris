@@ -1,12 +1,16 @@
 name: Menu vertical
 description: Used to represent an action to reveal a menu or more options.
 keywords:
-  - dots
-  - menu
-  - options
-  - overflow
+- Action
+- Dots
+- Menu
+- Navigation
+- Options
+- Overflow
+- Settings
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

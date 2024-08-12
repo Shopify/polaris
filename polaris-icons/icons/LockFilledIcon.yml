@@ -1,11 +1,15 @@
 name: Lock filled
-description: >-
-  Used to represent a lock, a secure item or resource or that an option or
-  setting is currently locked.
+description: Used to represent a lock, a secure item or resource or that an option
+  or setting is currently locked.
 keywords:
-  - lock
-  - secure
+- Access
+- Lock
+- Privacy
+- Protection
+- Safety
+- Secure
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

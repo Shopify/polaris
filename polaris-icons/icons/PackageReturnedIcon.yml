@@ -1,11 +1,17 @@
 name: Package returned
 description: Used to represent returns on an order.
 keywords:
-  - returns
-  - return
-  - order
+- Delivery
+- Logistics
+- Order
+- Parcel
+- Refund
+- Return
+- Returns
+- Shipping
 authors:
-  - Jenna Stephens-Wells
-  - Joe Thomas
+- Jenna Stephens-Wells
+- Joe Thomas
+- John Finley
 date_added: 2022-11-29
 date_modified: 2024-03-03

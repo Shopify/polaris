@@ -1,11 +1,17 @@
 name: Watch
 description: Used to represent a wearable device or wristwatch.
 keywords:
-  - wearable
-  - watch
-  - wristwatch
+- Accessory
+- Clock
+- Gadget
+- Time
+- Timer
+- Watch
+- Wearable
+- Wristwatch
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

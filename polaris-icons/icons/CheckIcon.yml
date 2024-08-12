@@ -1,12 +1,18 @@
 name: Check
 description: N/A
 keywords:
-  - checkmark
-  - 'yes'
-  - ok
-  - good
-  - tick
+- Assurance
+- Checkmark
+- Completion
+- Confirmation
+- Good
+- Ok
+- Selection
+- Tick
+- Validation
+- 'Yes'
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

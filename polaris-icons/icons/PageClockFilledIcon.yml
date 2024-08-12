@@ -1,13 +1,20 @@
 name: Page clock filled
-description: Used to represent a story activity log, or any other report/series of events that happened in the past.
+description: Used to represent a story activity log, or any other report/series of
+  events that happened in the past.
 keywords:
-  - History
-  - Timeline
-  - Events
-  - Past
-  - Monitoring
+- Events
+- History
+- Monitoring
+- Past
+- Timeline
+- Archive
+- Duration
+- Logging
+- Report
+- Schedule
 authors:
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- John Finley
+- José Torre
 date_added: 2023-11-07
 date_modified: 2023-11-07

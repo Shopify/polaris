@@ -1,10 +1,16 @@
 name: Incentive
 description: Used to represent an incentive
 keywords:
-  - incentive
-  - incentives
-  - growth
+- Achievement
+- Bonus
+- Growth
+- Incentive
+- Incentives
+- Motivation
+- Progress
+- Reward
 authors:
-  - Bryce Coster
+- Bryce Coster
+- John Finley
 date_added: 2023-01-09
 date_modified: 2023-01-09

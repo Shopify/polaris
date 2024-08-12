@@ -1,14 +1,20 @@
 name: Cursor banner
 description: Represents a cookie/permissions banner
 keywords:
-  - Cursor
-  - Cookie
-  - Permissions
-  - Banner
-  - Consent
-  - Agreement
+- Agreement
+- Banner
+- Consent
+- Cookie
+- Cursor
+- Permissions
+- Consent-management
+- Interaction
+- Notification
+- Usability
+- User-agreement
 authors:
-  - José Torre
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2024-01-11
 date_modified: 2024-03-03

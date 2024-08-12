@@ -1,13 +1,19 @@
 name: Incoming
-description: >-
-  Used to represent an incoming item or resource, or importing an item or
-  resource.
+description: Used to represent an incoming item or resource, or importing an item
+  or resource.
 keywords:
-  - import
-  - inbox
-  - incoming
+- Arrow
+- Flow
+- Import
+- Inbox
+- Incoming
+- Motion
+- Transfer
+- Upload
+- اشارة
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

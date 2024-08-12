@@ -1,12 +1,18 @@
 name: Drag drop
 description: Used to represent drag and drop.
 keywords:
-  - drag
-  - drop
-  - files
-  - copy
+- Copy
+- Drag
+- Drop
+- Files
+- Gesture
+- Interaction
+- Move
+- Transfer
+- Upload
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-02-21
 date_modified: 2023-06-23

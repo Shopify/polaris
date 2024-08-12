@@ -1,14 +1,20 @@
 name: Airplane
 description: Used as a navigation item in our emoji picker for the transport category.
 keywords:
-  - transport
-  - plane
-  - airplane
-  - emoji
-  - navigation
+- Aircraft
+- Airplane
+- Aviation
+- Emoji
+- Flight
+- Journey
+- Navigation
+- Plane
+- Transport
+- Travel
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
-  - José Torre
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2019-03-15
 date_modified: 2023-11-07

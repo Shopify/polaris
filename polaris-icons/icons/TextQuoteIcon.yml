@@ -1,16 +1,23 @@
 name: Text quote
 description: Used to represent a quote.
 keywords:
-  - blockquote
-  - testimonials
-  - quote
-  - speech
-  - text
-  - sections
-  - writing
-  - content
+- Blockquote
+- Citation
+- Content
+- Dialogue
+- Highlight
+- Opinion
+- Quote
+- References
+- Sections
+- Snippet
+- Speech
+- Testimonials
+- Text
+- Writing
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-02-25
 date_modified: 2023-06-23

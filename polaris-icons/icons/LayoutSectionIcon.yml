@@ -1,13 +1,19 @@
 name: Layout section
 description: Used to represent the middle section of a component, page or layout.
 keywords:
-  - layout
-  - middle
-  - content
-  - dashed
-  - section
+- Container
+- Content
+- Dashed
+- Design
+- Division
+- Grid
+- Layout
+- Middle
+- Placeholder
+- Section
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2024-02-16

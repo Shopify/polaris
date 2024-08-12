@@ -1,15 +1,21 @@
 name: Select
 description: Used to denote the action opening a select.
 keywords:
-  - caret
-  - arrow
-  - up
-  - down
-  - select
-  - open
+- Arrow
+- Caret
+- Choices
+- Down
+- Dropdown
+- Interaction
+- Menu
+- Open
+- Options
+- Select
+- Up
 authors:
-  - Adam Whitcroft
-  - Jordan Ouellette
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
+- Jordan Ouellette
 date_added: 2018-11-14
 date_modified: 2023-06-23

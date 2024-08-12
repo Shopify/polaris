@@ -1,11 +1,18 @@
 name: File filled
 description: Used to denote a file such as images, video, pdfs, etc.
 keywords:
-  - file
-  - images
-  - video
+- Data
+- Document
+- Download
+- File
+- Folder
+- Images
+- Storage
+- Upload
+- Video
 authors:
-  - Joe Thomas
-  - José Torre
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

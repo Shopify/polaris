@@ -1,16 +1,23 @@
 name: Play circle
 description: Used to represent an action to play or resume something.
 keywords:
-  - video
-  - control
-  - media
-  - play
-  - motion
-  - animation
-  - film
-  - circle
+- Action
+- Animation
+- Audio
+- Button
+- Circle
+- Control
+- Engage
+- Entertainment
+- Film
+- Interaction
+- Media
+- Motion
+- Play
+- Video
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-02-25
 date_modified: 2023-06-23

@@ -1,11 +1,17 @@
 name: Blog
 description: Used to represent a blog post, or something being written.
 keywords:
-  - author
-  - blog
-  - pen
-  - pencil
+- Article
+- Author
+- Blog
+- Content
+- Creative
+- Pen
+- Pencil
+- Publish
+- Writing
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2024-03-03

@@ -1,11 +1,18 @@
 name: Package
-description: Used to represent a package or box that merchants can ship their products in.
+description: Used to represent a package or box that merchants can ship their products
+  in.
 keywords:
-  - shipping
-  - box
-  - package
-  - cardboard
+- Box
+- Cardboard
+- Courier
+- Delivery
+- Freight
+- Logistics
+- Package
+- Shipping
+- Transport
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

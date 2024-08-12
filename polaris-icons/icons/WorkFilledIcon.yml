@@ -1,13 +1,19 @@
 name: Work filled
 description: N/A
 keywords:
-  - Job
-  - Briefcase
-  - Work
-  - Luggage
-  - Business
+- Briefcase
+- Business
+- Job
+- Luggage
+- Work
+- Career
+- Employment
+- Office
+- Profession
+- Tools
 authors:
-  - Joe Thomas
-  - José Torre
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

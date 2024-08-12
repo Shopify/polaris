@@ -1,11 +1,16 @@
 name: Logo tumblr
 description: Logo for Tumblr social media platform
 keywords:
-  - tumblr
-  - social media
+- Blogging
+- Creative
+- Messaging
+- Network
+- Platform
+- Social
+- Social media
+- Tumblr
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2023-08-11
 date_modified: 2023-08-11
-# Optional: fill exclusive_use if the icon should *only* be used
-# in specific areas of the admin (such as “Orders”):

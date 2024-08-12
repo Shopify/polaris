@@ -1,13 +1,18 @@
 name: Sort descending
-description: >-
-  Used to indicate that a list of items or resources has been sorted by
+description: Used to indicate that a list of items or resources has been sorted by
   descending order.
 keywords:
-  - descending
-  - sort
-  - order
+- Descending
+- Filter
+- List
+- Order
+- Organization
+- Priority
+- Rearrange
+- Sort
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-07-17

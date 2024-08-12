@@ -1,16 +1,24 @@
 name: Bill filled
 description: User to represent Bill Pay, or a receipt.
 keywords:
-  - Invoice
-  - Bill
-  - Payment
-  - Receipt
-  - Purchase
-  - Transaction
-  - Proof
-  - Expense
-  - Statement
+- Bill
+- Expense
+- Invoice
+- Payment
+- Proof
+- Purchase
+- Receipt
+- Statement
+- Transaction
+- Accounting
+- Budget
+- Document
+- Due
+- Finance
+- Payment
+- Statement
 authors:
-  - José Torre
+- John Finley
+- José Torre
 date_added: 2023-11-07
 date_modified: 2023-11-07

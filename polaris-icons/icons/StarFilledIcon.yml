@@ -1,12 +1,18 @@
 name: Star filled
 description: N/A
 keywords:
-  - star
-  - starred
-  - favourite
-  - favorite
+- Achievement
+- Commendation
+- Favorite
+- Favourite
+- Highlight
+- Rating
+- Select
+- Star
+- Starred
 authors:
-  - Sara Hill
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Sara Hill
 date_added: 2019-03-01
 date_modified: 2023-06-23

@@ -1,18 +1,23 @@
 name: Reward
-description: >-
-  Used to represent the concept of a reward, prize or loyalty.
+description: Used to represent the concept of a reward, prize or loyalty.
 keywords:
-  - rewards
-  - loyalty
-  - incentive
-  - bonus
-  - perks
-  - benefits
-  - appreciation
-  - prize
-  - recognition
+- Achievement
+- Appreciation
+- Benefits
+- Bonus
+- Honor
+- Incentive
+- Loyalty
+- Medal
+- Perks
+- Prize
+- Recognition
+- Rewards
+- Success
+- Trophy
 authors:
-  - José Torre
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-30-11
 date_modified: 2024-03-04

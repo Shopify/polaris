@@ -1,9 +1,15 @@
 name: Language filled
 description: Used to represent internationalization or multiple language options.
 keywords:
-  - language
-  - international
+- Accessibility
+- Communication
+- Diversity
+- Globe
+- International
+- Language
+- Translation
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-17

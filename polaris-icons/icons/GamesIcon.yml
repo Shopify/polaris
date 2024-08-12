@@ -1,11 +1,18 @@
 name: Games
 description: Used to represent a console controller.
 keywords:
-  - console
-  - controller
-  - games
+- Console
+- Controller
+- Entertainment
+- Fun
+- Games
+- Gaming
+- Interactive
+- Joystick
+- Multiplayer
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

@@ -1,16 +1,23 @@
 name: Text color
 description: Used to format text with a specific color.
 keywords:
-  - text format
-  - color
-  - colour
-  - rich text
-  - rte
-  - format
-  - text
-  - text editing
+- Color
+- Colour
+- Design
+- Format
+- Hue
+- Palette
+- Rich text
+- Rte
+- Styling
+- Text
+- Text editing
+- Text format
+- Typography
+- Vibrant
 authors:
-  - Joe Thomas
-  - Russell Baylis
+- Joe Thomas
+- John Finley
+- Russell Baylis
 date_added: 2023-06-30
 date_modified: 2023-06-30

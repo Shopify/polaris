@@ -1,13 +1,17 @@
 name: Bullet
-description:
-  Used for bulleted lists
+description: Used for bulleted lists
 keywords:
-  - Bullet 
-  - List
+- Bullet
+- List
+- Content
+- Item
+- List
+- Marker
+- Notation简化
+- Organized
 authors:
-  - Vihar Kothamasu
-  - Joe Thoams
+- Joe Thoams
+- John Finley
+- Vihar Kothamasu
 date_added: 2024-04-04
 date_modified: 2024-04-04
-# Optional: fill exclusive_use if the icon should *only* be used
-# in specific areas of the admin (such as “Orders”):

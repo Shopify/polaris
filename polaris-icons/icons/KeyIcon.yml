@@ -1,13 +1,20 @@
 name: Key
 description: Used to represent a key or security.
 keywords:
-  - key
-  - lock
-  - secure
-  - security
-  - unlock
+- Access
+- Authenticate
+- Control
+- Credential
+- Encryption
+- Key
+- Lock
+- Privacy
+- Secure
+- Security
+- Unlock
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

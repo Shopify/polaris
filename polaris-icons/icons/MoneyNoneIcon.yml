@@ -1,12 +1,20 @@
 name: Money none
 description: Used to represent blocked payouts or lack of funds.
 keywords:
-  - blocked payouts
-  - payouts blocked
-  - payouts
-  - money
-  - none
+- Blocked
+- Blocked payouts
+- Empty
+- Finance
+- Funds
+- Limit
+- Money
+- None
+- Payouts
+- Payouts blocked
+- Restriction
+- Wallet
 authors:
-  - Leen Tan
+- John Finley
+- Leen Tan
 date_added: 2023-10-31
 date_modified: 2024-02-16

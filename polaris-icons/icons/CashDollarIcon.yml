@@ -1,12 +1,18 @@
 name: Cash dollar
 description: Used to represent Dollar currency.
 keywords:
-  - currency
-  - money
+- Commerce
+- Currency
+- Finance
+- Money
+- Savings
+- Transactions
+- Wealth
 authors:
-  - Sara Hill
-  - Nayeob Kim
-  - Leina Leung
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Leina Leung
+- Nayeob Kim
+- Sara Hill
 date_added: 2022-09-19
 date_modified: 2023-06-23

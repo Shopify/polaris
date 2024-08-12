@@ -1,16 +1,22 @@
 name: Magic
 description: Concept     | Used to represent AI-assisted features.
 keywords:
-  - Magic
-  - AI
-  - Artificial Intelligence
-  - ML
-  - Machine Learning
-  - Generative
-  - Sparkle
-  - Stars
+- Ai
+- Artificial intelligence
+- Generative
+- Ml
+- Machine learning
+- Magic
+- Sparkle
+- Stars
+- Creativity
+- Enchantment
+- Innovation
+- Spell
+- Wizardry
 authors:
-  - David Goligorsky
-  - Joe Thomas
+- David Goligorsky
+- Joe Thomas
+- John Finley
 date_added: 2023-01-12
 date_modified: 2023-06-23

@@ -1,12 +1,18 @@
 name: Gift card filled
 description: Used to represent a gift card or present.
 keywords:
-  - gift
-  - gift card
-  - present
+- Expenses
+- Gift
+- Gift card
+- Present
+- Rewards
+- Shopping
+- Transaction
+- Voucher
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2024-02-16

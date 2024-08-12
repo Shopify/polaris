@@ -1,14 +1,21 @@
 name: Text indent
 description: Used to increase text indentation with list formatting.
 keywords:
-  - text format
-  - list
-  - rich text
-  - rte
-  - format
-  - text
-  - text editing
+- Alignment
+- Editing
+- Format
+- Formatting
+- Indentation
+- List
+- Paragraph
+- Rich text
+- Rte
+- Style
+- Text
+- Text editing
+- Text format
 authors:
-  - Russell Baylis
+- John Finley
+- Russell Baylis
 date_added: 2023-06-30
 date_modified: 2023-06-30

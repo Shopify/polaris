@@ -1,14 +1,20 @@
 name: Outdent
 description: Used to decrease text indentation with list formatting.
 keywords:
-  - text format
-  - list
-  - rich text
-  - rte
-  - format
-  - text
-  - text editing
+- Align
+- Decrease
+- Format
+- Hierarchy
+- Layout
+- List
+- Rich text
+- Rte
+- Spacing
+- Text
+- Text editing
+- Text format
 authors:
-  - Russell Baylis
+- John Finley
+- Russell Baylis
 date_added: 2023-06-30
 date_modified: 2023-06-30

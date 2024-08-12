@@ -1,11 +1,19 @@
 name: Image Magic
-description: Used for signifying Magic media editing, like background removal and image generation.
+description: Used for signifying Magic media editing, like background removal and
+  image generation.
 keywords:
-  - Magic
-  - Generation
-  - Media
+- Generation
+- Magic
+- Media
+- Automation
+- Creativity
+- Design
+- Editing
+- Tools
+- Transformation
 authors:
-  - David Goligorsky
-  - Arda Karaçizmeli
+- Arda Karaçizmeli
+- David Goligorsky
+- John Finley
 date_added: 2024-03-28
 date_modified: 2024-03-28

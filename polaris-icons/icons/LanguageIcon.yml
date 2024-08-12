@@ -1,10 +1,16 @@
 name: Language
 description: Used to represent internationalization or multiple language options.
 keywords:
-  - language
-  - international
+- Communication
+- Culture
+- Diversity
+- International
+- Language
+- Options
+- Translation
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-07-17

@@ -1,10 +1,16 @@
 name: Status
 description: Used to represent the activity of a shop or store.
 keywords:
-  - status
-  - activity
+- Activity
+- Availability
+- Commerce
+- Engagement
+- Indicator
+- Shop
+- Status
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

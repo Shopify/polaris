@@ -1,14 +1,20 @@
 name: Markets
 description: Used to represent Markets, Shopify’s international commerce product.
 keywords:
-  - markets
-  - international
-  - commerce
-  - global
+- Commerce
+- E-commerce
+- Exchange
+- Finance
+- Global
+- Growth
+- International
+- Markets
+- Trade
 authors:
-  - Justina Chua
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
+- Justina Chua
 date_added: 2022-03-09
 date_modified: 2023-11-29

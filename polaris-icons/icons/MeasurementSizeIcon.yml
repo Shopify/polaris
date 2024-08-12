@@ -1,23 +1,26 @@
 name: Measurement size
 description: Used to represent measurement including dimension, volume, and weight.
 keywords:
-  - dimension
-  - weight
-  - volume
-  - measurement
-  - size
+- Analytics
+- Dimension
+- Gauge
+- Measurement
+- Physicality
+- Quantify
+- Scale
+- Size
+- Volume
+- Weight
 authors:
-  - L
-  - e
-  - i
-  - 'n'
-  - a
-  - ' '
-  - L
-  - e
-  - u
-  - 'n'
-  - g
-  - Joe Thomas
+- " "
+- Joe Thomas
+- John Finley
+- L
+- a
+- e
+- g
+- i
+- "n"
+- u
 date_added: 2022-09-13
 date_modified: 2024-02-16

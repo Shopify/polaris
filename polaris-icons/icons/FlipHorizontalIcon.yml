@@ -1,11 +1,17 @@
 name: Flip horizontal
 description: Used in media editing for flipping an image horizontally.
 keywords:
-  - flip
-  - mirror
-  - horizontal
+- Adjustment
+- Edit
+- Flip
+- Horizontal
+- Mirror
+- Reflection
+- Rotate
+- Transform
 authors:
-  - David Goligorsky
-  - Arda Karaçizmeli
+- Arda Karaçizmeli
+- David Goligorsky
+- John Finley
 date_added: 2024-03-28
 date_modified: 2024-03-28

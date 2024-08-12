@@ -1,12 +1,18 @@
 name: Star
 description: N/A
 keywords:
-  - favorite
-  - favourite
-  - starred
-  - star
+- Achievement
+- Award
+- Favorite
+- Favourite
+- Highlight
+- Pledge
+- Rating
+- Star
+- Starred
 authors:
-  - Sara Hill
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Sara Hill
 date_added: 2019-03-01
 date_modified: 2023-06-23

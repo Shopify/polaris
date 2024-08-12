@@ -1,12 +1,18 @@
 name: Product filled
 description: Used to represent products or a price tag.
 keywords:
-  - tag
-  - products
-  - price
+- Commerce
+- Inventory
+- Label
+- Price
+- Pricing
+- Products
+- Shopping
+- Tag
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

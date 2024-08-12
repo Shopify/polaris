@@ -1,13 +1,18 @@
 name: Megaphone
-description: >-
-  Used to represent an action to open an external resource, or promote an item
-  or resource.
+description: Used to represent an action to open an external resource, or promote
+  an item or resource.
 keywords:
-  - external
-  - promote
+- Announce
+- Communicate
+- External
+- Loudspeaker
+- Message
+- Promote
+- Share
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
-  - José Torre
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2019-03-15
 date_modified: 2023-11-07

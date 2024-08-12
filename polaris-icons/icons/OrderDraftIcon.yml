@@ -1,10 +1,17 @@
 name: Order draft
 description: Used to represent an order that is in a Draft state.
 keywords:
-  - draft
-  - order
-  - pending
+- Cart
+- Document
+- Draft
+- Edit
+- Incomplete
+- Order
+- Pending
+- Symbol
+- Text
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2024-03-03

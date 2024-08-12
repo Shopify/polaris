@@ -1,9 +1,16 @@
 name: Discount
 description: Used to represent a discount.
 keywords:
-  - discount
+- Coupon
+- Discount
+- Offer
+- Price
+- Sale
+- Savings
+- Tag
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2022-01-17
 date_modified: 2023-06-23

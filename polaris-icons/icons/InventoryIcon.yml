@@ -1,8 +1,13 @@
 name: Inventory
 description: N/A
 keywords:
-  - N/A
+- Checklist
+- Items
+- Management
+- Storage
+- Update
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

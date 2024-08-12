@@ -1,10 +1,16 @@
 name: Referral code
 description: Used to represent a referral code’s usage status.
 keywords:
-  - referral
-  - code
-  - coupon
+- Code
+- Coupon
+- Incentive
+- Program
+- Promotion
+- Referral
+- Share
+- Status
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-11-05
 date_modified: 2024-03-04

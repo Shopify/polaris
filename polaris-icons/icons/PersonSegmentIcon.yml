@@ -1,12 +1,19 @@
 name: Person segment
 description: Used for customer segments
 keywords:
-  - Person
-  - Customer
-  - Segments
-  - Customer Segment
+- Customer
+- Customer segment
+- Person
+- Segments
+- Analysis
+- Audience
+- Community
+- Demographics
+- Segmentation
+- Users
 authors:
-  - Salma Amzil
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Salma Amzil
 date_added: 2024-04-22
 date_modified: 2024-04-22

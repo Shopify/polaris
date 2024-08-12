@@ -1,20 +1,26 @@
 name: Receipt dollar filled
 description: N/A
 keywords:
-  - Dollar
-  - Receipt
-  - Invoice
-  - Bill
-  - Payment
-  - Receipt
-  - Purchase
-  - Transaction
-  - Proof
-  - Expense
-  - Statement
+- Bill
+- Dollar
+- Expense
+- Invoice
+- Payment
+- Proof
+- Purchase
+- Receipt
+- Statement
+- Transaction
+- Accounting
+- Cash
+- Expense
+- Finance
+- Shopping
+- Transaction
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

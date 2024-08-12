@@ -1,10 +1,16 @@
 name: Payout yen
 description: Used to label payout transactions in yen
 keywords:
-  - finances
-  - financial accounts
-  - transactions
+- Currency
+- Exchange
+- Finances
+- Financial accounts
+- Payment
+- Transactions
+- Transfer
+- Withdrawal
 authors:
-  - Eduardo Mujica
+- Eduardo Mujica
+- John Finley
 date_added: 2024-06-07
 date_modified: 2024-06-07

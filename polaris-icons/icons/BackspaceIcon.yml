@@ -1,11 +1,18 @@
 name: Backspace
 description: Used to represent backspace on a mobile keyboard.
 keywords:
-  - backspace
-  - x
-  - delete
+- Backspace
+- Button
+- Delete
+- Erase
+- Input
+- Keyboard
+- Remove
+- Text
+- X
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

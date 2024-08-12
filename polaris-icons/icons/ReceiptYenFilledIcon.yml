@@ -1,20 +1,27 @@
 name: Receipt yen filled
 description: N/A
 keywords:
-  - Yen
-  - Receipt
-  - Invoice
-  - Bill
-  - Payment
-  - Receipt
-  - Purchase
-  - Transaction
-  - Proof
-  - Expense
-  - Statement
+- Bill
+- Expense
+- Invoice
+- Payment
+- Proof
+- Purchase
+- Receipt
+- Statement
+- Transaction
+- Yen
+- Accounting
+- Cash
+- Currency
+- Documentation
+- Finance
+- Payment
+- Record
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

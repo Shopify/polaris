@@ -1,12 +1,19 @@
 name: Layout column1
 description: Used to represent a 1 column layout.
 keywords:
-  - single column
-  - column
-  - layout
-  - email
+- Alignment
+- Column
+- Design
+- Email
+- Layout
+- Organization
+- Simplicity
+- Single column
+- Structure
+- Template
 authors:
-  - Laura Forbes
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Laura Forbes
 date_added: 2021-01-12
 date_modified: 2024-02-16

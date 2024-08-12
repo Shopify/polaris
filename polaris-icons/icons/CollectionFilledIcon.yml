@@ -1,11 +1,17 @@
 name: Collection filled
 description: Used to represent a collection of products.
 keywords:
-  - collection
-  - tag
-  - tags
-  - swing
+- Catalog
+- Collection
+- Grouping
+- Items
+- Organization
+- Storage
+- Swing
+- Tag
+- Tags
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2023-07-06
 date_modified: 2024-02-16

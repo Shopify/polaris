@@ -1,13 +1,19 @@
 name: Credit card cancel
 description: Used to represent a cancellation related to a charge
 keywords:
-  - card
-  - credit card
-  - payment
-  - credit card cancel
+- Card
+- Credit card
+- Credit card cancel
+- Deactivate
+- Payment
+- Refund
+- Revoke
+- Terminate
+- Transaction
 authors:
-  - Elushika Weerakoon
-  - Zackery Wilson
-  - Joe Thomas
+- Elushika Weerakoon
+- Joe Thomas
+- John Finley
+- Zackery Wilson
 date_added: 2022-04-01
 date_modified: 2023-06-23

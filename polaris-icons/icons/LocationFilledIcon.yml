@@ -1,11 +1,17 @@
 name: Location filled
 description: Used to represent a location.
 keywords:
-  - location
-  - pin
+- Coordinates
+- Geo
+- Location
+- Map
+- Marker
+- Navigation
+- Pin
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

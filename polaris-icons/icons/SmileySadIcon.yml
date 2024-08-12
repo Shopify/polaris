@@ -1,10 +1,17 @@
 name: Smiley sad
 description: Used to represent a sad customer or user, a sad face or a sad emoji.
 keywords:
-  - sad
-  - emoji
+- Disappointment
+- Emoji
+- Emotion
+- Experience
+- Expression
+- Feedback
+- Sad
+- User
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

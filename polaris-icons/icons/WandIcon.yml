@@ -1,13 +1,19 @@
 name: Wand
-description: >-
-  Used to represent an action to perform an automatic process or series of
-  processes.
+description: Used to represent an action to perform an automatic process or series
+  of processes.
 keywords:
-  - magic
-  - wand
-  - automatic
+- Action
+- Automatic
+- Creative
+- Magic
+- Process
+- Sparkle
+- Tool
+- Transformation
+- Wand
 authors:
-  - Jordan Ouellette
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Jordan Ouellette
 date_added: 2021-12-13
 date_modified: 2024-02-16

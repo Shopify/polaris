@@ -1,12 +1,18 @@
 name: List bulleted
 description: Used to represent a list of items or resources, or a bulleted list.
 keywords:
-  - bulleted list
-  - list
-  - keywords
-  - todo
+- Bulleted list
+- Checklist
+- Documentation
+- Items
+- Keywords
+- List
+- Organize
+- Text
+- Todo
 authors:
-  - Rachel Ng
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Rachel Ng
 date_added: 2023-04-26
 date_modified: 2023-06-23

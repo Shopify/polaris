@@ -1,13 +1,18 @@
 name: Outgoing
-description: >-
-  Used to represent an outgoing item or resource, or exporting an item or
-  resource.
+description: Used to represent an outgoing item or resource, or exporting an item
+  or resource.
 keywords:
-  - export
-  - outbox
-  - outgoing
+- Delivery
+- Dispatch
+- Export
+- Outbox
+- Outgoing
+- Send
+- Share
+- Transfer
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

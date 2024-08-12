@@ -1,11 +1,17 @@
 name: Chart line
 description: Used to represent a line chart.
 keywords:
-  - analytics
-  - graph
-  - line chart
+- Analytics
+- Data
+- Graph
+- Line chart
+- Performance
+- Statistics
+- Trends
+- Visualization
 authors:
-  - Rachel Ng
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Rachel Ng
 date_added: 2023-04-26
 date_modified: 2023-06-23

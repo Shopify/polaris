@@ -1,12 +1,19 @@
 name: Automation filled
 description: Used to represent automation, or a task that can be automated.
 keywords:
-  - automation
-  - cog
-  - automated
-  - gear
+- Automated
+- Automation
+- Cog
+- Control
+- Efficiency
+- Gear
+- Process
+- Streamline
+- System
+- Technology
 authors:
-  - Joe Thomas
-  - José Torre
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

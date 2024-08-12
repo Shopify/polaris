@@ -1,11 +1,17 @@
 name: Product
 description: Used to represent products or a price tag.
 keywords:
-  - tag
-  - products
-  - price
+- Commerce
+- Label
+- Listing
+- Merchandise
+- Price
+- Products
+- Shopping
+- Tag
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2022-01-17
 date_modified: 2023-06-23

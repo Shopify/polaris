@@ -1,12 +1,19 @@
 name: Layout columns3
 description: Used to represent a 3 column layout or an action to hide or show columns
 keywords:
-  - three columns
-  - column
-  - options
-  - layout
+- Column
+- Display
+- Grid
+- Layout
+- Manipulate
+- Options
+- Organization
+- Structure
+- Three columns
+- Visibility
 authors:
-  - Andrea Crouch
-  - Joe Thomas
+- Andrea Crouch
+- Joe Thomas
+- John Finley
 date_added: 2022-01-05
 date_modified: 2024-02-16

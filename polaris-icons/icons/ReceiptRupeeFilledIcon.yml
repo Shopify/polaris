@@ -1,20 +1,29 @@
 name: Receipt rupee filled
 description: N/A
 keywords:
-  - Rupee
-  - Receipt
-  - Invoice
-  - Bill
-  - Payment
-  - Receipt
-  - Purchase
-  - Transaction
-  - Proof
-  - Expense
-  - Statement
+- Bill
+- Expense
+- Invoice
+- Payment
+- Proof
+- Purchase
+- Receipt
+- Rupee
+- Statement
+- Transaction
+- Accounting
+- Expense
+- Financial
+- Money
+- Receipt
+- Record
+- Report
+- Transaction
+- Verification
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

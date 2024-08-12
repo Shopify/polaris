@@ -1,14 +1,20 @@
 name: Collection list
 description: Used to represent a list of collections.
 keywords:
-  - collection
-  - collections
-  - list
-  - tag
-  - tags
-  - swing
+- Categories
+- Collection
+- Collections
+- Display
+- Items
+- List
+- Organization
+- Overview
+- Swing
+- Tag
+- Tags
 authors:
-  - Wanita Jana
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Wanita Jana
 date_added: 2024-01-29
 date_modified: 2024-03-03

@@ -1,11 +1,17 @@
 name: Flip vertical
 description: Used in media editing for flipping an image vertically.
 keywords:
-  - flip
-  - mirror
-  - vertical
+- Edit
+- Flip
+- Mirror
+- Reflection
+- Rotate
+- Symmetry
+- Transformation
+- Vertical
 authors:
-  - David Goligorsky
-  - Arda Karaçizmeli
+- Arda Karaçizmeli
+- David Goligorsky
+- John Finley
 date_added: 2024-03-28
 date_modified: 2024-03-28

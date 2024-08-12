@@ -1,10 +1,17 @@
 name: Keyboard hide
 description: Used to represent an action to hide the keyboard on a mobile device.
 keywords:
-  - hide keyboard
-  - keyboard
+- Action
+- Device
+- Hide keyboard
+- Interface
+- Keyboard
+- Minimize
+- Mobile
+- Toggle
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

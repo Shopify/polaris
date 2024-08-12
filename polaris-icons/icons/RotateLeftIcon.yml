@@ -1,11 +1,18 @@
 name: Rotate left
 description: Used in media editing for rotating an image counterclockwise.
 keywords:
-  - Rotate
-  - Left
-  - Counterclockwise
+- Counterclockwise
+- Left
+- Rotate
+- Clockwise
+- Editing
+- Functionality
+- Image
+- Movement
+- Transformation
 authors:
-  - David Goligorsky
-  - Arda Karaçizmeli
+- Arda Karaçizmeli
+- David Goligorsky
+- John Finley
 date_added: 2024-03-28
 date_modified: 2024-03-28

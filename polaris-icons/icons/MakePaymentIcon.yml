@@ -1,10 +1,16 @@
 name: Make payment
 description: Used to denote making a payment
 keywords:
-  - finances
-  - financial accounts
-  - transactions
+- Billing
+- Checkout
+- Currency
+- Finances
+- Financial accounts
+- Purchase
+- Transactions
+- Transfer
 authors:
-  - Eduardo Mujica
+- Eduardo Mujica
+- John Finley
 date_added: 2024-06-07
 date_modified: 2024-06-07

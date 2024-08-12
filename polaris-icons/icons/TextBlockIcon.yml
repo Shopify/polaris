@@ -1,10 +1,17 @@
 name: Text block
 description: Used to represent a paragraph or block of text.
 keywords:
-  - text
-  - paragraph
+- Article
+- Blockquote
+- Content
+- Document
+- Layout
+- Paragraph
+- Text
+- Typography
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

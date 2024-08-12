@@ -1,10 +1,16 @@
 name: Payout dollar
 description: Used to label payout transactions in dollars
 keywords:
-  - finances
-  - financial accounts
-  - transactions
+- Cash
+- Currency
+- Earnings
+- Finances
+- Financial accounts
+- Money
+- Payment
+- Transactions
 authors:
-  - Eduardo Mujica
+- Eduardo Mujica
+- John Finley
 date_added: 2024-06-07
 date_modified: 2024-06-07

@@ -1,14 +1,19 @@
 name: Caret up
-description: >-
-  Used to denote the action of contracting a section to hide additional content,
-  like an accordion. Also used to represent sorting order.
+description: Used to denote the action of contracting a section to hide additional
+  content, like an accordion. Also used to represent sorting order.
 keywords:
-  - caret
-  - up
-  - close
+- Accordion
+- Caret
+- Close
+- Collapse
+- Dropdown
+- Minimize
+- Toggle
+- Up
 authors:
-  - Adam Whitcroft
-  - Jordan Ouellette
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
+- Jordan Ouellette
 date_added: 2018-11-14
 date_modified: 2023-06-23

@@ -1,11 +1,17 @@
 name: Search
 description: Used to denote the action of searching throughout the admin.
 keywords:
-  - search
-  - find
-  - glass
+- Explore
+- Find
+- Glass
+- Locate
+- Navigation
+- Query
+- Search
+- Tools
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

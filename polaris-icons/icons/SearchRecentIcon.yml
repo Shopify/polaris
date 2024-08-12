@@ -1,12 +1,18 @@
 name: Search recent
 description: Used to represent recent searches or search history.
 keywords:
-  - history
-  - recent
-  - recent search
-  - search history
+- Exploration
+- History
+- Inquiry
+- Memories
+- Navigation
+- Recent
+- Recent search
+- Retrieval
+- Search history
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

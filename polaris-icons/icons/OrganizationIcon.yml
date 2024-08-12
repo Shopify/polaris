@@ -1,10 +1,16 @@
 name: Organization
 description: Used to represent a plus organization.
 keywords:
-  - organization
-  - business
+- Business
+- Collaboration
+- Hierarchy
+- Network
+- Organization
+- Structure
+- Team
 authors:
-  - Anna Borg
-  - Joe Thomas
+- Anna Borg
+- Joe Thomas
+- John Finley
 date_added: 2022-09-20
 date_modified: 2023-06-23

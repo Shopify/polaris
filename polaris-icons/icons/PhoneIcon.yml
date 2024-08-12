@@ -1,10 +1,17 @@
 name: Phone
 description: Used to represent a phone or phone call.
 keywords:
-  - call
-  - phone
+- Call
+- Communication
+- Contact
+- Device
+- Handset
+- Mobile
+- Phone
+- Telephony
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-12
 date_modified: 2023-06-23

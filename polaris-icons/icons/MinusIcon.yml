@@ -1,16 +1,22 @@
 name: Minus
 description: Used to denote the action of removing an item.
 keywords:
-  - minus
-  - negative
-  - subtract
-  - subtraction
-  - math
-  - '-'
-  - substract
-  - less
+- "-"
+- Action
+- Contraction
+- Decrease
+- Delete
+- Less
+- Math
+- Minus
+- Negative
+- Remove
+- Substract
+- Subtract
+- Subtraction
 authors:
-  - Nayeob Kim
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Nayeob Kim
 date_added: 2018-11-14
 date_modified: 2024-03-04

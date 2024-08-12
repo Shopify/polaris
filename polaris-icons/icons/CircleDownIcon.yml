@@ -1,10 +1,17 @@
 name: Circle down
 description: Used to represent downwards navigation, or that something is below it.
 keywords:
-  - arrow
-  - down
+- Arrow
+- Down
+- Downwards
+- Flow
+- Guide
+- Interface
+- Navigation
+- Pointer
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-12
 date_modified: 2023-06-23

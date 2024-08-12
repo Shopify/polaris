@@ -1,11 +1,17 @@
 name: Redo
 description: Used to indicate redoing an action after undoing it.
 keywords:
-  - redo
-  - undo
-  - rollback
-  - return
+- Action
+- Navigate
+- Redo
+- Refresh
+- Repeat
+- Restore
+- Return
+- Rollback
+- Undo
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-11
 date_modified: 2023-06-23

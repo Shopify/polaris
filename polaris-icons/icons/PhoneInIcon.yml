@@ -1,11 +1,16 @@
 name: Phone in
 description: Used to represent an incoming phone call.
 keywords:
-  - call
-  - incoming
-  - phone
+- Alert
+- Call
+- Communication
+- Contact
+- Device
+- Incoming
+- Phone
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

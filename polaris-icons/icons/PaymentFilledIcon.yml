@@ -1,12 +1,18 @@
 name: Payment filled
 description: Used to represent a payment made by credit or debit card.
 keywords:
-  - credit
-  - credit card
-  - debit
-  - debit card
-  - payment
+- Billing
+- Commerce
+- Credit
+- Credit card
+- Debit
+- Debit card
+- Finance
+- Payment
+- Purchase
+- Transaction
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

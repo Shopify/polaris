@@ -1,8 +1,13 @@
 name: Markets Yen
 description: N/A
 keywords:
-  - N/A
+- Currency
+- Economy
+- Finance
+- Market
+- Trade
 authors:
-  - José Torre
+- John Finley
+- José Torre
 date_added: 2023-11-29
 date_modified: 2023-11-29

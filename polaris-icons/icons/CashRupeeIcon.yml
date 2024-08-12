@@ -1,9 +1,16 @@
 name: Cash rupee
 description: N/A
 keywords:
-  - currency
-  - money
+- Bank
+- Currency
+- Finance
+- Money
+- Payment
+- Rupee
+- Symbol
+- Transaction
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

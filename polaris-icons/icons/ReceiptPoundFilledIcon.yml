@@ -1,20 +1,27 @@
 name: Receipt pound filled
 description: N/A
 keywords:
-  - Pound
-  - Receipt
-  - Invoice
-  - Bill
-  - Payment
-  - Receipt
-  - Purchase
-  - Transaction
-  - Proof
-  - Expense
-  - Statement
+- Bill
+- Expense
+- Invoice
+- Payment
+- Pound
+- Proof
+- Purchase
+- Receipt
+- Statement
+- Transaction
+- Bill
+- Document
+- Expense
+- Finance
+- Payment
+- Proof
+- Value
 authors:
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

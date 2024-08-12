@@ -1,11 +1,18 @@
 name: Package on hold
 description: The fulfillment icon is associated with the 'on hold' status.
 keywords:
-  - fulfillment
-  - on hold
-  - on-hold
+- Delay
+- Fulfillment
+- Inventory
+- Logistics
+- On hold
+- On-hold
+- Package
+- Shipping
+- Status
 authors:
-  - Flavia Scudeler
-  - Joe Thomas
+- Flavia Scudeler
+- Joe Thomas
+- John Finley
 date_added: 2022-08-10
 date_modified: 2023-06-23

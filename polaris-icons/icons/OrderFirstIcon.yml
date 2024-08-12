@@ -1,12 +1,18 @@
 name: Order first
 description: Used to represent a first order.
 keywords:
-  - celebrate
-  - first
-  - milestone
-  - order
+- Achievement
+- Celebrate
+- First
+- Goal
+- Milestone
+- Order
+- Progress
+- Start
+- Success
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

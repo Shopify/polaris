@@ -1,11 +1,17 @@
 name: Metaobject reference
 description: Used to represent a metaobject referenced on other resources
 keywords:
-  - metaobject
-  - reference
+- Association
+- Connectivity
+- Hierarchy
+- Link
+- Metaobject
+- Object
+- Reference
 authors:
-  - Sai Nihas
-  - Russell Baylis
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Russell Baylis
+- Sai Nihas
 date_added: 2023-01-24
 date_modified: 2024-03-04

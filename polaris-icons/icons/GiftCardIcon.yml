@@ -1,13 +1,19 @@
 name: Gift card
 description: Used to represent a gift card or present.
 keywords:
-  - gift
-  - gift card
-  - present
+- Festive
+- Gift
+- Gift card
+- Present
+- Purchase
+- Reward
+- Shopping
+- Voucher
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
-  - José Torre
-  - Holly Schofield
+- Adam Whitcroft
+- Holly Schofield
+- Joe Thomas
+- John Finley
+- José Torre
 date_added: 2019-03-15
 date_modified: 2024-02-16

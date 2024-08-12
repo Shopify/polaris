@@ -1,14 +1,20 @@
 name: Money filled
 description: Used to represent money.
 keywords:
-  - money
-  - balance
-  - billing
-  - finances
-  - money
-  - payout
-  - cash
+- Balance
+- Billing
+- Cash
+- Currency
+- Finance
+- Finances
+- Investment
+- Money
+- Payout
+- Savings
+- Security
+- Value
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2023-07-06
 date_modified: 2024-02-16

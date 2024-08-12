@@ -1,12 +1,19 @@
 name: Page attachment
 description: This icon denotes an attachment of any file to a timeline.
 keywords:
-  - timeline
-  - attachment
-  - generic
-  - file
+- Attachment
+- Connectivity
+- Document
+- File
+- Generic
+- Media
+- Shareable
+- Timeline
+- Transfer
+- Upload
 authors:
-  - Brian Potstra
-  - Joe Thomas
+- Brian Potstra
+- Joe Thomas
+- John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

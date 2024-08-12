@@ -1,10 +1,16 @@
 name: Sun
 description: Indicates day or light mode.
 keywords:
-  - day
-  - light
-  - sun
+- Brightness
+- Day
+- Energy
+- Glow
+- Light
+- Nature
+- Sun
+- Warmth
 authors:
-  - Joe Thomas
+- Joe Thomas
+- John Finley
 date_added: 2024-02-22
 date_modified: 2024-02-22

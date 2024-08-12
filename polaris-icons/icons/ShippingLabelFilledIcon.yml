@@ -1,14 +1,20 @@
 name: Shipping label filled
 description: Used to represent shipping labels.
 keywords:
-  - Label
-  - Shipping
-  - Delivery
-  - Package
-  - Postage
-  - Parcel
+- Delivery
+- Label
+- Package
+- Parcel
+- Postage
+- Shipping
+- Courier
+- Delivery
+- Freight
+- Logistics
+- Transport
 authors:
-  - José Torre
-  - Holly Schofield
+- Holly Schofield
+- John Finley
+- José Torre
 date_added: 2023-11-07
 date_modified: 2023-11-07

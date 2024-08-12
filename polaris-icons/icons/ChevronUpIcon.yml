@@ -1,10 +1,18 @@
 name: Chevron up
-description: Used to denote the action of contracting a section to hide additional content.
+description: Used to denote the action of contracting a section to hide additional
+  content.
 keywords:
-  - chevron
-  - up
+- Arrow
+- Chevron
+- Collapse
+- Expand
+- Hide
+- Interface
+- Navigation
+- Up
 authors:
-  - Adam Whitcroft
-  - Joe Thomas
+- Adam Whitcroft
+- Joe Thomas
+- John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

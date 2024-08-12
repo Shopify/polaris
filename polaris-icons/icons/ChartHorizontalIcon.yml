@@ -1,11 +1,18 @@
 name: Chart horizontal
 description: Used to represent a horizontal bar chart.
 keywords:
-  - analytics
-  - graph
-  - horizontal bar chart
+- Analytics
+- Comparison
+- Data
+- Graph
+- Horizontal bar chart
+- Metrics
+- Performance
+- Statistics
+- Visualization
 authors:
-  - Rachel Ng
-  - Joe Thomas
+- Joe Thomas
+- John Finley
+- Rachel Ng
 date_added: 2023-04-26
 date_modified: 2023-06-23
