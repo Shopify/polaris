@@ -1,18 +1,22 @@
 name: Check
 description: N/A
 keywords:
-- Assurance
-- Checkmark
-- Completion
-- Confirmation
-- Good
-- Ok
-- Selection
-- Tick
-- Validation
-- 'Yes'
+  - Approve
+  - Check
+  - Checkmark
+  - Circle
+  - Confirmation
+  - Done
+  - Good
+  - Ok
+  - Passed
+  - Positive
+  - Round
+  - Success
+  - Tick
+  - 'Yes'
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

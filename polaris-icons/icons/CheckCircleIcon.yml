@@ -1,21 +1,20 @@
 name: Check circle
 description: Used to represent an action to approve or confirm.
 keywords:
-- Approve
-- Checkmark
-- Circle
-- Confirmation
-- Done
-- Good
-- Positive
-- Round
-- Success
-- Symbol
-- Tick
-- Validation
+  - Approve
+  - Check
+  - Checkmark
+  - Circle
+  - Confirmation
+  - Done
+  - Good
+  - Positive
+  - Round
+  - Success
+  - Tick
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

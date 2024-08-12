@@ -1,18 +1,15 @@
 name: Clipboard
 description: Used to represent a clipboard, usually accompanying a copy action.
 keywords:
-- Clipboard
-- Copy
-- Copy and paste
-- Document
-- Interface
-- Notes
-- Organization
-- Task
+  - Clipboard
+  - Copy
+  - Copy and paste
+  - Document
+  - Text
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
-- José Torre
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
+  - José Torre
 date_added: 2019-03-15
 date_modified: 2023-06-23

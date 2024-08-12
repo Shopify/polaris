@@ -1,19 +1,19 @@
 name: Circle chevron up
 description: Used to represent a collapsible section, or an action to navigate up.
 keywords:
-- Action
-- Arrow
-- Chevron
-- Circle
-- Collapse
-- Direction
-- Expand
-- Navigate
-- Outline
-- Up
+  - Arrow
+  - Chevron
+  - Circle
+  - Collapse
+  - Down
+  - Dropdown
+  - Expand
+  - Outline
+  - Reveal
+  - Up
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

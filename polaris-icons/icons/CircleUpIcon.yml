@@ -1,18 +1,14 @@
 name: Circle up
 description: Used to represent upwards naviagation, or that something is above it.
 keywords:
-- Arrow
-- Circular
-- Direction
-- Elevation
-- Indicator
-- Motion
-- Navigation
-- Up
-- Upward
+  - Arrow
+  - Circular
+  - Direction
+  - Navigation
+  - Up
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

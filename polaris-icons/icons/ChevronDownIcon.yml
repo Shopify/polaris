@@ -1,16 +1,16 @@
 name: Chevron down
 description: Used to denote the action of expanding a section to reveal more content.
 keywords:
-- Arrow
-- Chevron
-- Collapse
-- Down
-- Dropdown
-- Expand
-- Reveal
+  - Arrow
+  - Chevron
+  - Collapse
+  - Down
+  - Dropdown
+  - Expand
+  - Reveal
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

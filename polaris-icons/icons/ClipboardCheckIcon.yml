@@ -1,16 +1,16 @@
 name: Clipboard check
 description: Used to represent a completed checklist.
 keywords:
-- Action
-- Approval
-- Checklist
-- Complete
-- Document
-- Task
-- Verified
+  - Action
+  - Approval
+  - Checklist
+  - Complete
+  - Document
+  - Task
+  - Verified
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

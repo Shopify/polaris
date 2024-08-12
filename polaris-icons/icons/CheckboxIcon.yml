@@ -1,16 +1,23 @@
 name: Checkbox
 description: N/A
 keywords:
-- Checkmark
-- Confirm
-- Interactive
-- List
-- Option
-- Select
-- Toggle
+  - Approve
+  - Check
+  - Checkmark
+  - Circle
+  - Confirmation
+  - Done
+  - Good
+  - Ok
+  - Passed
+  - Positive
+  - Select
+  - Success
+  - Tick
+  - 'Yes'
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-02-21
 date_modified: 2023-06-23

@@ -1,15 +1,15 @@
 name: Clipboard check filled
 description: Used to represent a completed checklist.
 keywords:
-- Approval
-- Checklist
-- Clipboard
-- Complete
-- Organize
-- Task
-- Verification
+  - Action
+  - Approval
+  - Checklist
+  - Complete
+  - Document
+  - Task
+  - Verified
 authors:
-- John Finley
-- José Torre
+  - John Finley
+  - José Torre
 date_added: 2021-29-11
 date_modified: 2021-29-11

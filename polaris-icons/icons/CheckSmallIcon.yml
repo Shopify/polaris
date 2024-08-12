@@ -1,21 +1,23 @@
 name: Check small
 description: Used to denote the action of checking a Polaris checkbox.
 keywords:
-- Approval
-- Checkmark
-- Confirmation
-- Good
-- Indication
-- Ok
-- Passed
-- Selection
-- Tick
-- Verification
-- 'Yes'
+  - Approve
+  - Check
+  - Checkmark
+  - Circle
+  - Confirmation
+  - Done
+  - Good
+  - Ok
+  - Passed
+  - Positive
+  - Success
+  - Tick
+  - 'Yes'
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
-- Nayeob Kim
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
+  - Nayeob Kim
 date_added: 2018-11-14
 date_modified: 2023-06-23

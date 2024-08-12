@@ -1,18 +1,17 @@
 name: Clipboard checklist
 description: Used to represent a checklist.
 keywords:
-- Checklist
-- Clipboard
-- Document
-- List
-- Management
-- Organization
-- Summary
-- Tasks
-- Todo
+  - Action
+  - Approval
+  - Checklist
+  - Complete
+  - Document
+  - Task
+  - Todo
+  - Summary
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

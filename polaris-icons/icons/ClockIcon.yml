@@ -1,21 +1,17 @@
 name: Clock
 description: Used to indicate time.
 keywords:
-- Alarm
-- Circle
-- Clock
-- Hour
-- Minute
-- Reminder
-- Schedule
-- Second
-- Stopwatch
-- Time
-- Timing
-- Watch
-- Watchfulness
+  - Alarm
+  - Circle
+  - Clock
+  - Hour
+  - Minute
+  - Schedule
+  - Second
+  - Stopwatch
+  - Time
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-11
 date_modified: 2023-06-23

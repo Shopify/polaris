@@ -1,20 +1,16 @@
 name: Circle chevron right
-description: Used to help direct merchants from a item’s name in a list to the item’s
-  show page.
+description: Used to help direct merchants from a item’s name in a list to the item’s show page.
 keywords:
-- Action
-- Assist
-- Chevron
-- Circle
-- Forward
-- Indicator
-- Link
-- Navigation
-- Outline
-- Right
+  - Arrow
+  - Back
+  - Chevron
+  - Circle
+  - Expand
+  - Outline
+  - Right
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

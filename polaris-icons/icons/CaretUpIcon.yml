@@ -1,7 +1,5 @@
 name: Caret up
-description:
-  Used to denote the action of contracting a section to hide additional
-  content, like an accordion. Also used to represent sorting order.
+description: Used to denote the action of contracting a section to hide additional content, like an accordion. Also used to represent sorting order.
 keywords:
   - Accordion
   - Caret
