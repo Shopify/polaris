@@ -1,15 +1,15 @@
 name: Cursor filled
 description: Used to represent a user clicking, or interacting with something.
 keywords:
-- Click
-- Cursor
-- Engage
-- Interaction
-- Navigate
-- Pointer
-- Select
+  - Click
+  - Cursor
+  - Engage
+  - Interaction
+  - Navigate
+  - Pointer
+  - Select
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

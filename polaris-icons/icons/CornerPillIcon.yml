@@ -1,22 +1,16 @@
 name: Corner pill
 description: Used to represent the corner shape of a button.
 keywords:
-- Aesthetic
-- Button corner
-- Button radius
-- Curve
-- Design
-- Editor
-- Element
-- Email
-- Pill
-- Rounded
-- Shape
-- Smooth
-- Visual
+  - Button corner
+  - Button radius
+  - Design
+  - Editor
+  - Email
+  - Pill
+  - Shape
 authors:
-- Joe Thomas
-- John Finley
-- Laura Forbes
+  - Joe Thomas
+  - John Finley
+  - Laura Forbes
 date_added: 2021-02-09
 date_modified: 2023-06-23

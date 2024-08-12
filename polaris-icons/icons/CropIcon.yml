@@ -1,16 +1,16 @@
 name: Crop
 description: Used in media editing for croping an image.
 keywords:
-- Adjustment
-- Crop
-- Edit
-- Frame
-- Photo
-- Resize
+  - Adjustment
+  - Crop
+  - Edit
+  - Frame
+  - Photo
+  - Resize
 authors:
-- Arda Karaçizmeli
-- David Goligorsky
-- Joe Thomas
-- John Finley
+  - Arda Karaçizmeli
+  - David Goligorsky
+  - Joe Thomas
+  - John Finley
 date_added: 2024-03-28
 date_modified: 2024-03-28

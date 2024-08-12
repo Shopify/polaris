@@ -1,18 +1,17 @@
 name: Credit card percent
 description: Used to represent a credit card interest.
 keywords:
-- Approval
-- Card
-- Credit card
-- Discount
-- Finance
-- Interest
-- Payment
-- Savings
-- Transaction
+  - Card
+  - Credit card
+  - Discount
+  - Interest
+  - Payment
+  - Savings
+  - Transaction
+  - Wallet
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

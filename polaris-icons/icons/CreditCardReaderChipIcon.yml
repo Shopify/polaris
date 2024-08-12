@@ -1,15 +1,15 @@
 name: Credit card reader chip
 description: Used to represent a card chip reader.
 keywords:
-- Access
-- Credit card
-- Device
-- Payment
-- Reader
-- Technology
-- Transaction
+  - Credit card
+  - Device
+  - Payment
+  - POS
+  - Reader
+  - Transaction
+  - Wallet
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-12
 date_modified: 2023-06-23

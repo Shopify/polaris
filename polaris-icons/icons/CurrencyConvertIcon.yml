@@ -1,17 +1,16 @@
 name: Currency convert
 description: Used to represent currency conversion.
 keywords:
-- Currency
-- Exchange
-- Finance
-- Forex
-- Money
-- Trade
-- Transaction
-- Transfer
+  - Currency
+  - Exchange
+  - Finance
+  - Forex
+  - Money
+  - Transaction
+  - Transfer
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-01
 date_modified: 2023-06-23

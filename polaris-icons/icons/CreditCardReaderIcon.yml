@@ -1,19 +1,16 @@
 name: Credit card reader
 description: Used to represent the Shopify Tap and Chip reader.
 keywords:
-- Pos
-- Card reader
-- Checkout
-- Chip and swipe
-- Device
-- Electronic
-- Mobile
-- Payment
-- Processing
-- Terminal
-- Transaction
+  - Card reader
+  - Checkout
+  - Chip and swipe
+  - Device
+  - Payment
+  - POS
+  - Terminal
+  - Transaction
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-12
 date_modified: 2023-06-23

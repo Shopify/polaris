@@ -1,17 +1,15 @@
 name: Credit card
 description: Used to represent a credit card.
 keywords:
-- Card
-- Credit card
-- Fees
-- Finance
-- Payment
-- Purchase
-- Transaction
-- Wallet
+  - Card
+  - Credit card
+  - Payment
+  - Purchase
+  - Transaction
+  - Wallet
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23
