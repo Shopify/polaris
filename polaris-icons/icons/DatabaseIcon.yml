@@ -1,24 +1,13 @@
 name: Database
 description: Used to represent a dynamic source
 keywords:
-- Administration
-- Backup
-- Data
-- Data source
-- Database
-- Datasource
-- Db
-- Dynamic
-- Dynamic source
-- Dynamicsource
-- Information
-- Management
-- Records
-- Server
-- Storage
+  - Data
+  - Data source
+  - Database
+  - Dynamic
 authors:
-- Joe Thomas
-- John Finley
-- Russell Baylis
+  - Joe Thomas
+  - John Finley
+  - Russell Baylis
 date_added: 2022-09-06
 date_modified: 2023-06-23

@@ -1,16 +1,17 @@
 name: Discount code
 description: Used to represent a discount code or coupon.
 keywords:
-- Coupon
-- Deal
-- Discount
-- Offer
-- Promotion
-- Savings
-- Voucher
+  - Coupon
+  - Deal
+  - Discount
+  - Offer
+  - Promotion
+  - Sale
+  - Savings
+  - Voucher
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2024-02-16

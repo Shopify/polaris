@@ -1,14 +1,16 @@
 name: Discount filled
 description: Used to represent a discount.
 keywords:
-- Coupon
-- Discount
-- Offer
-- Promotion
-- Sale
-- Savings
+  - Coupon
+  - Deal
+  - Discount
+  - Offer
+  - Promotion
+  - Sale
+  - Savings
+  - Voucher
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

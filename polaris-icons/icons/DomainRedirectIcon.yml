@@ -1,19 +1,19 @@
 name: Domain redirect
 description: Used to represent a redirect domain.
 keywords:
-- Domain
-- Redirect
-- Arrow
-- Forward
-- Link
-- Network
-- Routing
-- Transfer
+  - Digital
+  - Domain
+  - Network
+  - Online
+  - Routing
+  - Transfer
+  - Web
+  - Website
 authors:
-- Holly Schofield
-- Joe Thomas
-- John Finley
-- José Torre
-- Kyryll Odobetskiy
+  - Holly Schofield
+  - Joe Thomas
+  - John Finley
+  - José Torre
+  - Kyryll Odobetskiy
 date_added: 2022-02-23
 date_modified: 2024-03-03

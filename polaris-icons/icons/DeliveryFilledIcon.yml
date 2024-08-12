@@ -1,25 +1,21 @@
 name: Delivery filled
-description: Used to represent shipping-related events or actions such as shipping
-  labels or tracking information.
+description: Used to represent shipping-related events or actions such as shipping labels or tracking information.
 keywords:
-- Carrier
-- Delivery
-- Express
-- Fulfillment
-- Fulfilment
-- Label
-- Logistics
-- Order
-- Service
-- Ship
-- Shipment
-- Shipping
-- Tracking
-- Transport
-- Truck
+  - Carrier
+  - Delivery
+  - Express
+  - Fulfillment
+  - Fulfilment
+  - Label
+  - Order
+  - Ship
+  - Shipment
+  - Shipping
+  - Tracking
+  - Truck
 authors:
-- Joe Thomas
-- John Finley
-- José Torre
+  - Joe Thomas
+  - John Finley
+  - José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

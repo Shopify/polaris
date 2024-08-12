@@ -1,16 +1,15 @@
 name: Desktop
 description: Used to represent a large screen or desktop computer.
 keywords:
-- Computer
-- Desktop
-- Display
-- Monitor
-- Screen
-- Technology
-- Workspace
+  - Computer
+  - Desktop
+  - Device
+  - Display
+  - Monitor
+  - Screen
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

@@ -1,19 +1,16 @@
 name: Drag handle
 description: Used to represent drag handles.
 keywords:
-- Adjust
-- Drag
-- Draggable
-- Grab
-- Interface
-- Manipulate
-- Move
-- Reposition
-- Shift
+  - Copy
+  - Drag
+  - Drop
+  - Grab
+  - Move
+  - Reposition
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
-- Russell Baylis
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
+  - Russell Baylis
 date_added: 2019-03-15
 date_modified: 2023-06-23

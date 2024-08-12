@@ -1,20 +1,17 @@
 name: Dock floating
-description: Used to represent a window that is floating in the bottom right of the
-  admin
+description: Used to represent a window that is floating in the bottom right of the admin
 keywords:
-- Chat
-- Dashboard
-- Floating
-- Interface
-- Layout
-- Magic
-- Overlay
-- Right
-- Utility
-- Window
+  - Dashboard
+  - Floating
+  - Interface
+  - Layout
+  - Magic
+  - Overlay
+  - Right
+  - Window
 authors:
-- Joe Thomas
-- John Finley
-- Jon Rundle
+  - Joe Thomas
+  - John Finley
+  - Jon Rundle
 date_added: 2023-04-28
 date_modified: 2023-06-23

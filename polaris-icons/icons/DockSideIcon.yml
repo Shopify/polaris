@@ -1,20 +1,17 @@
 name: Dock side
 description: Used to represent a window that is docked to the right side of the admin
 keywords:
-- Application
-- Chat
-- Docked
-- Interactive
-- Interface
-- Layout
-- Magic
-- Panel
-- Right
-- Sidebar
-- Window
+  - Dashboard
+  - Interface
+  - Layout
+  - Magic
+  - Overlay
+  - Side
+  - Sidebar
+  - Window
 authors:
-- Joe Thomas
-- John Finley
-- Jon Rundle
+  - Joe Thomas
+  - John Finley
+  - Jon Rundle
 date_added: 2023-04-28
 date_modified: 2023-06-23

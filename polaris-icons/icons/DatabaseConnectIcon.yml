@@ -1,23 +1,13 @@
-name: Database
+name: Database connect
 description: Used to represent a dynamic source
 keywords:
-- Connection
-- Data
-- Data source
-- Database
-- Datasource
-- Db
-- Dynamic
-- Dynamic source
-- Dynamicsource
-- Integration
-- Link
-- Network
-- Sync
-- Transfer
+  - Data
+  - Data source
+  - Database
+  - Dynamic
 authors:
-- Joe Thomas
-- John Finley
-- Russell Baylis
+  - Joe Thomas
+  - John Finley
+  - Russell Baylis
 date_added: 2024-01-23
 date_modified: 2024-03-03

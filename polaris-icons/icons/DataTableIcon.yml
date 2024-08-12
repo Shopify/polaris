@@ -1,17 +1,15 @@
 name: Data table
 description: Used to represent a data table.
 keywords:
-- Analytics
-- Data table
-- Display
-- Grid
-- Organization
-- Records
-- Spreadsheet
-- Structure
+  - Analytics
+  - Data table
+  - Display
+  - Grid
+  - Records
+  - Spreadsheet
 authors:
-- Joe Thomas
-- John Finley
-- Rachel Ng
+  - Joe Thomas
+  - John Finley
+  - Rachel Ng
 date_added: 2023-04-26
 date_modified: 2023-06-23

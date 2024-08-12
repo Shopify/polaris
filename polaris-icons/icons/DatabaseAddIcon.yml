@@ -1,29 +1,16 @@
 name: Database add
 description: Used to represent adding, inserting, or connecting a dynamic source.
 keywords:
-- Add
-- Add data source
-- Add dynamic source
-- Connection
-- Create
-- Data
-- Data source
-- Database
-- Datasource
-- Db
-- Dynamic
-- Dynamic data
-- Dynamic source
-- Dynamicsource
-- Expand
-- Insert
-- Insert data source
-- Insert dynamic source
-- Management
-- Storage
+  - Add
+  - Create
+  - Data
+  - Data source
+  - Database
+  - Dynamic
+  - Insert
 authors:
-- Joe Thomas
-- John Finley
-- Russell Baylis
+  - Joe Thomas
+  - John Finley
+  - Russell Baylis
 date_added: 2022-09-06
 date_modified: 2023-06-23

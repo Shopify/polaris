@@ -1,20 +1,16 @@
 name: Domain
-description: N/A
+description: Used to represent a web site.
 keywords:
-- Digital
-- Domain
-- Web
-- Website
-- Hosting
-- Internet
-- Management
-- Network
-- Security
-- Server
+  - Digital
+  - Domain
+  - Network
+  - Online
+  - Web
+  - Website
 authors:
-- Holly Schofield
-- Joe Thomas
-- John Finley
-- José Torre
+  - Holly Schofield
+  - Joe Thomas
+  - John Finley
+  - José Torre
 date_added: 2019-03-01
 date_modified: 2023-11-07

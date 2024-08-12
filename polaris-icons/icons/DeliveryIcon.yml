@@ -1,24 +1,20 @@
 name: Delivery
-description: Used to represent shipping-related events or actions such as shipping
-  labels or tracking information.
+description: Used to represent shipping-related events or actions such as shipping labels or tracking information.
 keywords:
-- Carrier
-- Courier
-- Delivery
-- Express
-- Fulfillment
-- Fulfilment
-- Label
-- Logistics
-- Parcel
-- Ship
-- Shipment
-- Shipping
-- Tracking
-- Transport
-- Truck
+  - Carrier
+  - Delivery
+  - Express
+  - Fulfillment
+  - Fulfilment
+  - Label
+  - Order
+  - Ship
+  - Shipment
+  - Shipping
+  - Tracking
+  - Truck
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-01
 date_modified: 2023-06-23
