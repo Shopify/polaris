@@ -1,18 +1,15 @@
 name: Barcode
 description: Used to represent a barcode.
 keywords:
-- 3d
-- Barcode
-- Checkout
-- Inventory
-- Printing
-- Product
-- Retail
-- Scan
-- Scanner
+  - Barcode
+  - Checkout
+  - Inventory
+  - Product
+  - Retail
+  - Scanner
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

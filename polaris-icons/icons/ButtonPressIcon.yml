@@ -1,18 +1,16 @@
 name: Button press
 description: Used to represent our Buy Button.
 keywords:
-- Action
-- Button
-- Buy button
-- Click
-- Engage
-- Interaction
-- Interface
-- Press
-- Purchase
+  - Action
+  - Button
+  - Buy button
+  - Click
+  - Element
+  - Press
+  - Purchase
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

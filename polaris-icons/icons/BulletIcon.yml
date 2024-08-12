@@ -1,17 +1,13 @@
 name: Bullet
 description: Used for bulleted lists
 keywords:
-- Bullet
-- List
-- Content
-- Item
-- List
-- Marker
-- Notation简化
-- Organized
+  - Bullet
+  - Content
+  - Item
+  - List
 authors:
-- Joe Thoams
-- John Finley
-- Vihar Kothamasu
+  - Joe Thoams
+  - John Finley
+  - Vihar Kothamasu
 date_added: 2024-04-04
 date_modified: 2024-04-04

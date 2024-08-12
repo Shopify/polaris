@@ -1,16 +1,14 @@
 name: Blank
 description: Represents the absence of an icon
 keywords:
-- Empty
-- 'Null'
-- Undefined
-- Absence
-- Clean
-- Minimalist
-- Placeholder
-- Void
+  - Empty
+  - Null
+  - Undefined
+  - Absence
+  - Placeholder
+  - Void
 authors:
-- John Finley
-- José Torre
+  - John Finley
+  - José Torre
 date_added: 2024-01-11
 date_modified: 2024-01-11

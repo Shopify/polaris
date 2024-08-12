@@ -1,14 +1,14 @@
 name: Bank
 description: N/A
 keywords:
-- Building
-- Finance
-- Institution
-- Money
-- Savings
-- Security
+  - Bank
+  - Building
+  - Finance
+  - Money
+  - Savings
+  - Security
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

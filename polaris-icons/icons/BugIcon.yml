@@ -1,16 +1,15 @@
 name: Bug
 description: Used to represent a bug in code.
 keywords:
-- Bug
-- Debug
-- Error
-- Insect
-- Issue
-- Software
-- Troubleshooting
+  - Bug
+  - Debug
+  - Error
+  - Insect
+  - Issue
+  - Software
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23
