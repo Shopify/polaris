@@ -1,18 +1,21 @@
 name: Chart histogram second last
 description: Used to represent the last non-direct click marketing attribution model
 keywords:
-- Analysis
-- Analytics
-- Attribution model
-- Data
-- Last non-direct click
-- Marketing
-- Metrics
-- Performance
-- Trends
+  - Analysis
+  - Attribution model
+  - Chart
+  - Data
+  - Graph
+  - Histogram
+  - Insight
+  - Last non-direct click
+  - Marketing
+  - Metric
+  - Report
+  - Visualization
 authors:
-- Joe Thomas
-- John Finley
-- Serene Chen
+  - Joe Thomas
+  - John Finley
+  - Serene Chen
 date_added: 2022-10-18
 date_modified: 2023-06-23

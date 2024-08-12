@@ -1,18 +1,16 @@
 name: Chart stacked
 description: Used to represent a stacked bar chart.
 keywords:
-- Analytics
-- Dashboard
-- Data
-- Diagram
-- Graph
-- Metrics
-- Stacked bar chart
-- Trends
-- Visualization
+  - Analytics
+  - Chart
+  - Data
+  - Graph
+  - Insight
+  - Metric
+  - Report
 authors:
-- Joe Thomas
-- John Finley
-- Rachel Ng
+  - Joe Thomas
+  - John Finley
+  - Rachel Ng
 date_added: 2023-04-26
 date_modified: 2024-02-16

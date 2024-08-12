@@ -1,15 +1,14 @@
 name: Cash euro
 description: N/A
 keywords:
-- Banking
-- Currency
-- Exchange
-- Finance
-- Money
-- Payment
-- Transaction
+  - Currency
+  - Finance
+  - Income
+  - Money
+  - Payment
+  - Transaction
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

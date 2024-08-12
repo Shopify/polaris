@@ -1,18 +1,14 @@
 name: Cart
 description: Used to represent a shopping cart.
 keywords:
-- Buy
-- Cart
-- Checkout
-- Delivery
-- E-commerce
-- Online
-- Product
-- Purchase
-- Shopping
+  - Cart
+  - Checkout
+  - Purchase
+  - Shop
+  - Shopping
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-02-25
 date_modified: 2023-06-23

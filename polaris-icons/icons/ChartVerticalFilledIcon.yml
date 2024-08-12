@@ -1,18 +1,16 @@
 name: Chart vertical filled
 description: Used to represent analytics or data.
 keywords:
-- Analytics
-- Data
-- Graph
-- Insights
-- Metrics
-- Reports
-- Statistics
-- Trends
-- Visualization
+  - Analytics
+  - Chart
+  - Data
+  - Graph
+  - Insight
+  - Metric
+  - Report
 authors:
-- Joe Thomas
-- John Finley
-- José Torre
+  - Joe Thomas
+  - John Finley
+  - José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

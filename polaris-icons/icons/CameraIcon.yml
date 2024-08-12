@@ -1,16 +1,16 @@
 name: Camera
 description: Used to represent a camera.
 keywords:
-- Camera
-- Capture
-- Lens
-- Photo
-- Photography
-- Snapshot
-- Viewfinder
+  - Camera
+  - Capture
+  - Lens
+  - Photo
+  - Photography
+  - Snapshot
+  - Viewfinder
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

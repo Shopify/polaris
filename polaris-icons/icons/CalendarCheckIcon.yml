@@ -1,14 +1,14 @@
 name: Calendar check
 description: N/A
 keywords:
-- Appointment
-- Calendar
-- Checkmark
-- Confirmation
-- Event
-- Task
+  - Appointment
+  - Calendar
+  - Checkmark
+  - Confirmation
+  - Event
+  - Task
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

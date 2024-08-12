@@ -1,17 +1,13 @@
 name: Cart up
 description: Used to represent retrieving the contents of saved shopping cart.
 keywords:
-- Basket
-- Cart
-- Checkout
-- Items
-- Retrieve
-- Save
-- Shopping
-- Upload
+  - Cart
+  - Checkout
+  - Save
+  - Shopping
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

@@ -1,18 +1,22 @@
 name: Chart histogram first last
 description: Used to represent the position based marketing attribution model
 keywords:
-- Analysis
-- Attribution model
-- Data
-- Marketing
-- Metrics
-- Position based
-- Statistics
-- Trends
-- Visualization
+  - Analytics
+  - Attribution model
+  - Chart
+  - Data
+  - First click
+  - Graph
+  - Histogram
+  - Insight
+  - Marketing
+  - Metric
+  - Position based
+  - Report
+  - Visualization
 authors:
-- Joe Thomas
-- John Finley
-- Serene Chen
+  - Joe Thomas
+  - John Finley
+  - Serene Chen
 date_added: 2022-10-18
 date_modified: 2023-06-23

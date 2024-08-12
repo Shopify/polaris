@@ -1,21 +1,19 @@
 name: Calendar time
 description: Used to denote the action of opening a date picker with time
 keywords:
-- Calendar
-- Date
-- Day
-- Function
-- Interface
-- Month
-- Picker
-- Reminder
-- Schedule
-- Time
-- Year
+  - Calendar
+  - Date
+  - Datepicker
+  - Day
+  - Month
+  - Reminder
+  - Schedule
+  - Time
+  - Year
 authors:
-- Joe Thomas
-- John Finley
-- Leina Leung
-- Sai Nihas
+  - Joe Thomas
+  - John Finley
+  - Leina Leung
+  - Sai Nihas
 date_added: 2023-01-12
 date_modified: 2024-03-03

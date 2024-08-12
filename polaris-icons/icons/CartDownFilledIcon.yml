@@ -1,16 +1,12 @@
 name: Cart down filled
 description: Used to represent saving the contents of a shopping cart.
 keywords:
-- Basket
-- Cart
-- Checkout
-- Download
-- Iconography
-- Save
-- Shopping
-- Storage
+  - Cart
+  - Checkout
+  - Save
+  - Shopping
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

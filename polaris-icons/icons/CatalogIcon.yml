@@ -1,18 +1,15 @@
 name: Catalog
 description: Represents catalogs within the Admin
 keywords:
-- Catalog
-- Database
-- Documentation
-- Files
-- Inventory
-- Management
-- Markets
-- Organization
-- Products
+  - Catalog
+  - Database
+  - Inventory
+  - Markets
+  - Organization
+  - Products
 authors:
-- James Findlater
-- Joe Thomas
-- John Finley
+  - James Findlater
+  - Joe Thomas
+  - John Finley
 date_added: 2024-06-21
 date_modified: 2024-06-21

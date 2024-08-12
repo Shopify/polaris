@@ -1,16 +1,13 @@
 name: Cart filled
 description: Used to represent a shopping cart.
 keywords:
-- Cart
-- Checkout
-- Ecommerce
-- Goods
-- Market
-- Purchase
-- Shop
-- Shopping
+  - Cart
+  - Checkout
+  - Purchase
+  - Shop
+  - Shopping
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

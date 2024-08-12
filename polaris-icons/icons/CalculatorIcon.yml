@@ -1,17 +1,15 @@
 name: Calculator
 description: Used to represent a handheld credit card reader.
 keywords:
-- Computation
-- Credit card
-- Digital
-- Finance
-- Moneris
-- Numbers
-- Payment
-- Tools
+  - Credit card
+  - Finance
+  - Moneris
+  - Numbers
+  - Payment
+  - Tools
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

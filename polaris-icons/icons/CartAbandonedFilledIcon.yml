@@ -1,18 +1,17 @@
 name: Cart abandoned filled
 description: Used to represent a prospective purchase that a buyer didn’t complete.
 keywords:
-- Abandon
-- Cart.
-- Checkout
-- Empty
-- Funnel
-- Loss
-- Orders
-- Purchase
-- Sales
-- Shopping
+  - Abandon
+  - Cart
+  - Checkout
+  - Empty
+  - Funnel
+  - Loss
+  - Orders
+  - Purchase
+  - Sales
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

@@ -1,16 +1,14 @@
 name: Categories
 description: Used to represent either list of categories or files.
 keywords:
-- Categories
-- Files
-- Folder
-- List
-- Management
-- Organization
-- Structure
+  - Categories
+  - Files
+  - List
+  - Organization
+  - Structure
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

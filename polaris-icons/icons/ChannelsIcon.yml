@@ -1,19 +1,15 @@
 name: Channels
 description: Used to represent channels, or items connected by a common root.
 keywords:
-- Channels
-- Connect
-- Connected
-- Connection
-- Flow
-- Link
-- Network
-- Path
-- Related
-- Structure
+  - Channels
+  - Connect
+  - Connected
+  - Network
+  - Path
+  - Related
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23
