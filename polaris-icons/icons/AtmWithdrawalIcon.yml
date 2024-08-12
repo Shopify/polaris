@@ -1,16 +1,16 @@
 name: ATM withdrawal
 description: Used to direct merchants to details about an ATM withdrawal
 keywords:
-- Access
-- Banking
-- Cash
-- Finances
-- Financial accounts
-- Money
-- Transactions
-- Withdrawal
+  - Access
+  - Banking
+  - Cash
+  - Finances
+  - Financial account
+  - Money
+  - Transaction
+  - Withdrawal
 authors:
-- Eduardo Mujica
-- John Finley
+  - Eduardo Mujica
+  - John Finley
 date_added: 2024-06-07
 date_modified: 2024-06-07

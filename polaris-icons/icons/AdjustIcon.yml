@@ -1,19 +1,17 @@
 name: Adjust
 description: Used to denote that an adjustment can be made.
 keywords:
-- Adjust
-- Adjustment
-- Controls
-- Dials
-- Edit
-- Enhance
-- Modify
-- Settings
+  - Adjustment
+  - Controls
+  - Dials
+  - Edit
+  - Modify
+  - Settings
 authors:
-- Chris Poirier
-- James Findlater
-- Joe Thomas
-- John Finley
-- Lauren Mayers
+  - Chris Poirier
+  - James Findlater
+  - Joe Thomas
+  - John Finley
+  - Lauren Mayers
 date_added: 2022-02-02
 date_modified: 2023-06-23

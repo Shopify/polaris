@@ -1,18 +1,18 @@
 name: Arrows in horizontal
 description: Action | Used when a merchant simplifies text using AI.
 keywords:
-- Direction
-- Flow
-- Move
-- Navigation
-- Reduce
-- Shorten
-- Simplify
-- Summarize
-- Transfer
+  - Direction
+  - Flow
+  - Move
+  - Navigation
+  - Reduce
+  - Shorten
+  - Simplify
+  - Summarize
+  - Transfer
 authors:
-- David Goligorsky
-- Joe Thomas
-- John Finley
+  - David Goligorsky
+  - Joe Thomas
+  - John Finley
 date_added: 2023-03-18
 date_modified: 2023-06-23

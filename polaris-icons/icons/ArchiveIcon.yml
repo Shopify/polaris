@@ -1,17 +1,17 @@
 name: Archive
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 description: Used to denote the action of archiving an item or resource.
 keywords:
-- Archive
-- Box
-- Container
-- Document
-- Folder
-- Organize
-- Save
-- Storage
+  - Archive
+  - Box
+  - Container
+  - Document
+  - Folder
+  - Organize
+  - Save
+  - Storage
 date_added: 2019-03-15
 date_modified: 2023-06-23

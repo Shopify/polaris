@@ -1,13 +1,12 @@
 name: App extension
 description: N/A
 keywords:
-- Add-on
-- Enhancement
-- Extension
-- Module
-- Plugin
+  - Add-on
+  - Extension
+  - Module
+  - Plugin
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-12
 date_modified: 2023-06-23

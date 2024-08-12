@@ -1,17 +1,15 @@
 name: Attachment filled
 description: Used to represent an attachment.
 keywords:
-- Attachment
-- Document
-- Download
-- File
-- Files
-- Paper clip
-- Resources
-- Share
-- Upload
+  - Attachment
+  - Document
+  - File
+  - Link
+  - Paper clip
+  - Resource
+  - Upload
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2023-07-06
 date_modified: 2023-07-06

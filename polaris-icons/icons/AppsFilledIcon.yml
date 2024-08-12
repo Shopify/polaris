@@ -1,21 +1,20 @@
 name: Apps filled
 description: Used to represent partner apps.
 keywords:
-- Add
-- Applications
-- Apps
-- Blocks
-- Collaboration
-- Embedded
-- Extensions
-- Integration
-- Partners
-- Services
-- Tools
+  - Add
+  - Applications
+  - Apps
+  - Blocks
+  - Embedded
+  - Extension
+  - Integration
+  - Partner
+  - Service
+  - Tools
 authors:
-- Holly Schofield
-- Joe Thomas
-- John Finley
-- José Torre
+  - Holly Schofield
+  - Joe Thomas
+  - John Finley
+  - José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07

@@ -1,17 +1,17 @@
 name: Alert triangle
 description: Used to represent risk associated with orders.
 keywords:
-- Alert
-- Attention
-- Caution
-- Danger
-- Notification
-- Risk
-- Triangle
-- Warning
+  - Alert
+  - Attention
+  - Caution
+  - Danger
+  - Notification
+  - Risk
+  - Triangle
+  - Warning
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23
