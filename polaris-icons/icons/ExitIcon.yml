@@ -1,22 +1,18 @@
 name: Exit
 description: Used to denote the action of logging out of Shopify.
 keywords:
-- Close
-- Departure
-- Disconnect
-- Exit
-- Leave
-- Log-out
-- Logout
-- 'Off'
-- Quit
-- Sign-off
-- Sign-out
-- Signoff
-- Transfer
+  - Close
+  - Disconnect
+  - Exit
+  - Leave
+  - Log out
+  - 'Off'
+  - Quit
+  - Sign off
+  - Sign out
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2018-11-14
 date_modified: 2024-02-16

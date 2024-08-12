@@ -1,18 +1,13 @@
 name: Envelope
-description: Used to represent an envelope that merchants can use to ship orders to
-  their customers.
+description: Used to represent an envelope that merchants can use to ship orders to their customers.
 keywords:
-- Communication
-- Delivery
-- Envelope
-- Letter
-- Mail
-- Notification
-- Packaging
-- Send
-- Shipping
+  - Delivery
+  - Envelope
+  - Packaging
+  - Send
+  - Shipping
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

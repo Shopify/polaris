@@ -1,13 +1,13 @@
 name: Exchange
 description: N/A
 keywords:
-- Currency
-- Reload
-- Swap
-- Trade
-- Transfer
+  - Currency
+  - Reload
+  - Swap
+  - Trade
+  - Transfer
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

@@ -1,25 +1,16 @@
 name: Eye dropper
 description: Used to represent a color picker.
 keywords:
-- Accessory
-- Color
-- Color picker
-- Design
-- Eye dropper
-- Fluid
-- Graphics
-- Select
-- Tool
+  - Color
+  - Color picker
+  - Design
+  - Eye dropper
+  - Graphics
+  - Select
+  - Tool
 authors:
-- " "
-- Joe Thomas
-- John Finley
-- L
-- a
-- e
-- g
-- i
-- "n"
-- u
+  - Joe Thomas
+  - John Finley
+  - Leina Leung
 date_added: 2022-09-13
 date_modified: 2024-02-16

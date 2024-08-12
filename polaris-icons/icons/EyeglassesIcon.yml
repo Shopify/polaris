@@ -1,17 +1,15 @@
 name: Eyeglasses
 description: Used to represent resources to learn more about a topic or feature.
 keywords:
-- Clarity
-- Glasses
-- Insight
-- Knowledge
-- Learn more
-- Reading
-- Research
-- Resources
-- Vision
+  - Glasses
+  - Insight
+  - Knowledge
+  - Learn more
+  - Reading
+  - Research
+  - Vision
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

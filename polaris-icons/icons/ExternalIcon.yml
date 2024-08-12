@@ -1,17 +1,15 @@
 name: External
 description: Used to denote the action of navigating to an external resource.
 keywords:
-- Access
-- Departure
-- External
-- Link
-- Navigate
-- Not here
-- Outside
-- Resource
+  - Access
+  - External
+  - Link
+  - Navigate
+  - Not here
+  - Resource
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

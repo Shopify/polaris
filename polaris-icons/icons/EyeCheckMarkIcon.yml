@@ -1,21 +1,14 @@
 name: Eye check mark
 description: Used to represent accessibility information or features.
 keywords:
-- A11y
-- Accessibility
-- Clarity
-- Disability
-- Equal access
-- Eye
-- Insight
-- Symbol
-- Thoroughness
-- Universal design
-- Usability
-- Verification
-- Vision
+  - a11y
+  - Accessibility
+  - Disability
+  - Equal access
+  - Eye
+  - Visibility
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2024-03-03

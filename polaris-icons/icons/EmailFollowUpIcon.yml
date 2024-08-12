@@ -1,13 +1,13 @@
 name: Email follow up
 description: N/A
 keywords:
-- Communication
-- Message
-- Notification
-- Reply
-- Response
+  - Communication
+  - Message
+  - Notification
+  - Reply
+  - Response
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23
