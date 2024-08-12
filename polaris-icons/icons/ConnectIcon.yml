@@ -1,19 +1,16 @@
 name: Connect
 description: Used to represent a connection between two items or resources.
 keywords:
-- Communication
-- Connect
-- Connected
-- Flow
-- Join
-- Link
-- Network
-- Path
-- Related
-- Unity
+  - Connect
+  - Connected
+  - Join
+  - Link
+  - Network
+  - Path
+  - Related
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

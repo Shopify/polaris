@@ -1,15 +1,12 @@
 name: Code add
 description: N/A
 keywords:
-- Add
-- Code
-- Development
-- Interface
-- Plus
-- Programming
-- Symbol
+  - Add
+  - Code
+  - Development
+  - Programming
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2023-06-23

@@ -1,18 +1,14 @@
 name: Color
 description: Used to represent a color swatch, or palette of colors.
 keywords:
-- Color
-- Design
-- Hue
-- Palette
-- Shades
-- Spectrum
-- Swatch
-- Vibrant
+  - Color
+  - Design
+  - Palette
+  - Swatch
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
-- José Torre
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
+  - José Torre
 date_added: 2019-03-15
 date_modified: 2023-11-07

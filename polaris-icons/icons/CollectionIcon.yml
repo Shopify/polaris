@@ -1,18 +1,15 @@
 name: Collection
 description: Used to represent a collection of products.
 keywords:
-- Collection
-- Inventory
-- Items
-- Organizer
-- Products
-- Showcase
-- Swing
-- Tag
-- Tags
+  - Catalog
+  - Collection
+  - Group
+  - Items
+  - Swing
+  - Tag
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2019-03-15
 date_modified: 2024-02-16

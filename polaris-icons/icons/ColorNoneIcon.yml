@@ -1,26 +1,26 @@
 name: Color none
-description: Used to represent a lack of color, or that a color is not allowed or
+description:
+  Used to represent a lack of color, or that a color is not allowed or
   available.
 keywords:
-- Absence
-- Color
-- Crossed
-- Disabled
-- Drop
-- Droplet
-- Empty
-- Filter
-- Line
-- 'No'
-- 'Null'
-- Prohibition
-- Strike
-- Water
+  - Color
+  - Crossed
+  - Design
+  - Palette
+  - Swatch
+  - Disabled
+  - Drop
+  - Droplet
+  - Empty
+  - Line
+  - 'No'
+  - Strike
+  - Water
 authors:
-- Adam Whitcroft
-- Holly Schofield
-- Joe Thomas
-- John Finley
-- José Torre
+  - Adam Whitcroft
+  - Holly Schofield
+  - Joe Thomas
+  - John Finley
+  - José Torre
 date_added: 2019-02-25
 date_modified: 2023-11-07

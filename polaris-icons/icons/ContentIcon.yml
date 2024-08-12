@@ -1,18 +1,17 @@
 name: Content
 description: Used to represent content.
 keywords:
-- Assets
-- Content
-- Digital
-- Document
-- Files
-- Management
-- Media
-- Metaobjects
+  - Assent
+  - Content
+  - Data
+  - Document
+  - File
+  - Metaobjects
+  - Storage
 authors:
-- Joe Thomas
-- John Finley
-- Rusty Baylis
-- Sai Nihas
+  - Joe Thomas
+  - John Finley
+  - Rusty Baylis
+  - Sai Nihas
 date_added: 2023-01-23
 date_modified: 2023-06-23

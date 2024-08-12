@@ -1,18 +1,16 @@
 name: Code
 description: Used to represent an object embedded from a web resource.
 keywords:
-- Coding
-- Development
-- Embed
-- Iframe
-- Programming
-- Scripts
-- Software
-- Web
-- Web resource
+  - Coding
+  - Development
+  - Embed
+  - Iframe
+  - Programming
+  - Web
+  - Web resource
 authors:
-- Adam Whitcroft
-- Joe Thomas
-- John Finley
+  - Adam Whitcroft
+  - Joe Thomas
+  - John Finley
 date_added: 2018-11-14
 date_modified: 2023-06-23

@@ -1,17 +1,13 @@
 name: Collection featured
 description: Used to represent a featured or favorite collection.
 keywords:
-- Collection
-- Curation
-- Display
-- Favorite
-- Favourite
-- Featured
-- Highlight
-- Selection
-- Showcase
+  - Collection
+  - Favorite
+  - Favourite
+  - Featured
+  - Highlight
 authors:
-- Joe Thomas
-- John Finley
+  - Joe Thomas
+  - John Finley
 date_added: 2019-02-25
 date_modified: 2024-03-03

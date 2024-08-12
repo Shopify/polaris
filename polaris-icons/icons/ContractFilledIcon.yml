@@ -1,19 +1,16 @@
 name: Contract filled
 description: N/A
 keywords:
-- Agreement
-- Document
-- Form
-- Legal
-- Page
-- Paper
-- Scroll
-- Signature
-- Transaction
-- Validate
+  - Agreement
+  - Document
+  - Legal
+  - Page
+  - Paper
+  - Scroll
+  - Signature
 authors:
-- Joe Thomas
-- John Finley
-- José Torre
+  - Joe Thomas
+  - John Finley
+  - José Torre
 date_added: 2023-07-06
 date_modified: 2023-11-07
