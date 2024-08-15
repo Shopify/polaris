@@ -76,7 +76,7 @@
     "@types/mdast": "^3.0.10",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.2.0",
-    "@types/unist": "^2.0.6",
+    "@types/unist": "^3.0.3",
     "@types/uuid": "^9.0.1",
     "babel-plugin-preval": "^5.1.0",
     "chalk": "^5.2.0",
