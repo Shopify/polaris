@@ -194,16 +194,19 @@ export function FiltersBar({
   const pinnedFiltersMarkup = pinnedFilters.map(
     ({key: filterKey, ...pinnedFilter}) => {
       const appliedFilter = appliedFilters?.find(({key}) => key === filterKey);
-      const handleFilterPillRemove = () => {
-        setLocalPinnedFilters((currentLocalPinnedFilters) =>
-          currentLocalPinnedFilters.filter((key) => {
-            const isMatchedFilters = key === filterKey;
-            const isPinnedFilterFromProps = pinnedFromPropsKeys.includes(key);
-            return !isMatchedFilters || isPinnedFilterFromProps;
-          }),
-        );
-        appliedFilter?.onRemove(filterKey);
-      };
+      const handleFilterPillRemove = appliedFilter?.locked
+        ? undefined
+        : () => {
+            setLocalPinnedFilters((currentLocalPinnedFilters) =>
+              currentLocalPinnedFilters.filter((key) => {
+                const isMatchedFilters = key === filterKey;
+                const isPinnedFilterFromProps =
+                  pinnedFromPropsKeys.includes(key);
+                return !isMatchedFilters || isPinnedFilterFromProps;
+              }),
+            );
+            appliedFilter?.onRemove?.(filterKey);
+          };
 
       return (
         <FilterPill

@@ -1,48 +1,39 @@
 import React from 'react';
-import type {CSSProperties} from 'react';
-import {SearchIcon, FilterIcon} from '@shopify/polaris-icons';
+import {FilterIcon} from '@shopify/polaris-icons';
 
-import {Icon} from '../../../Icon';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
-import {InlineStack} from '../../../InlineStack';
 import {Button} from '../../../Button';
 
-export interface SearchFilterButtonProps {
+import styles from './FilterButton.module.css';
+
+export interface FilterButtonProps {
   onClick: () => void;
   label: string;
   disabled?: boolean;
+  pressed?: boolean;
   tooltipContent: string;
   disclosureZIndexOverride?: number;
-  hideFilters?: boolean;
-  hideQueryField?: boolean;
-  style: CSSProperties;
 }
 
-export function SearchFilterButton({
+export function FilterButton({
   onClick,
   label,
   disabled,
+  pressed,
   tooltipContent,
   disclosureZIndexOverride,
-  style,
-  hideFilters,
-  hideQueryField,
-}: SearchFilterButtonProps) {
-  const iconMarkup = (
-    <InlineStack gap="0">
-      {hideQueryField ? null : <Icon source={SearchIcon} tone="base" />}
-      {hideFilters ? null : <Icon source={FilterIcon} tone="base" />}
-    </InlineStack>
-  );
+}: FilterButtonProps) {
+  const className = pressed ? styles.pressed : undefined;
 
   const activator = (
-    <div style={style}>
+    <div className={className}>
       <Button
         size="slim"
         onClick={onClick}
         disabled={disabled}
-        icon={iconMarkup}
+        pressed={pressed}
+        icon={FilterIcon}
         accessibilityLabel={label}
       />
     </div>

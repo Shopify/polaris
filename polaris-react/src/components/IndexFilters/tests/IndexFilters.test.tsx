@@ -7,7 +7,7 @@ import {Filters} from '../../Filters';
 import {IndexFilters, IndexFiltersMode} from '..';
 import type {IndexFiltersProps} from '../IndexFilters';
 import {
-  SearchFilterButton,
+  FilterButton,
   SortButton,
   UpdateButtons,
   EditColumnsButton,
@@ -102,7 +102,7 @@ describe('IndexFilters', () => {
       <IndexFilters {...defaultProps} setMode={setMode} />,
     );
     wrapper.act(() => {
-      wrapper.find(SearchFilterButton)!.trigger('onClick');
+      wrapper.find(FilterButton)!.trigger('onClick');
     });
 
     expect(setMode).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
@@ -119,7 +119,7 @@ describe('IndexFilters', () => {
       />,
     );
     wrapper.act(() => {
-      wrapper.find(SearchFilterButton)!.trigger('onClick');
+      wrapper.find(FilterButton)!.trigger('onClick');
     });
 
     expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
@@ -155,15 +155,15 @@ describe('IndexFilters', () => {
     });
   });
 
-  it('renders the SearchFilterButton tooltipContent with keyboard shortcut by default', () => {
+  it('renders the FilterButton tooltipContent with keyboard shortcut by default', () => {
     const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
 
-    expect(wrapper).toContainReactComponent(SearchFilterButton, {
+    expect(wrapper).toContainReactComponent(FilterButton, {
       tooltipContent: 'Search and filter (F)',
     });
   });
 
-  it('passes the disclosureZIndexOverride to the SearchFilterButton when provided', () => {
+  it('passes the disclosureZIndexOverride to the FilterButton when provided', () => {
     const disclosureZIndexOverride = 517;
     const wrapper = mountWithApp(
       <IndexFilters
@@ -172,7 +172,7 @@ describe('IndexFilters', () => {
       />,
     );
 
-    expect(wrapper).toContainReactComponent(SearchFilterButton, {
+    expect(wrapper).toContainReactComponent(FilterButton, {
       disclosureZIndexOverride,
     });
   });
@@ -276,7 +276,7 @@ describe('IndexFilters', () => {
       expect(wrapper).not.toContainReactComponent(Filters);
     });
 
-    it('does not render the SortButton or SearchFilterButton component', () => {
+    it('does not render the SortButton or FilterButton component', () => {
       const wrapper = mountWithApp(
         <IndexFilters
           {...defaultProps}
@@ -285,7 +285,7 @@ describe('IndexFilters', () => {
       );
 
       expect(wrapper).not.toContainReactComponent(SortButton);
-      expect(wrapper).not.toContainReactComponent(SearchFilterButton);
+      expect(wrapper).not.toContainReactComponent(FilterButton);
     });
 
     it('does not render the EditColumnsButton', () => {
@@ -411,12 +411,12 @@ describe('IndexFilters', () => {
   });
 
   describe('disableKeyboardShortcuts', () => {
-    it('renders the SearchFilterButton tooltipContent without the keyboard shortcut', () => {
+    it('renders the FilterButton tooltipContent without the keyboard shortcut', () => {
       const wrapper = mountWithApp(
         <IndexFilters {...defaultProps} disableKeyboardShortcuts />,
       );
 
-      expect(wrapper).toContainReactComponent(SearchFilterButton, {
+      expect(wrapper).toContainReactComponent(FilterButton, {
         tooltipContent: 'Search and filter',
       });
     });

@@ -177,9 +177,17 @@
       "unsavedChanges": "Unsaved changes - {label}"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Search and filter",
-      "searchFilterTooltipWithShortcut": "Search and filter (F)",
-      "searchFilterAccessibilityLabel": "Search and filter results",
+      "searchFilterTooltip": "Filter",
+      "searchFilterTooltipWithShortcut": "Filter (F)",
+      "searchFilterAccessibilityLabel": "Filter results",
+      "editSearchFilter": "Edit search filter",
+      "SearchField": {
+        "defaultPlaceholder": "Search",
+        "action": {
+          "addAsFilter": "add as filter",
+          "addToFilter": "add to filter"
+        }
+      },
       "sort": "Sort your results",
       "addView": "Add a new view",
       "newView": "Custom search",
