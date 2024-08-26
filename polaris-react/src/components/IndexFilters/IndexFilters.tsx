@@ -358,7 +358,7 @@ export function IndexFilters({
         onQueryChange(searchFilterValue ? searchFilterValue + value : value);
         setSearchOnlyValue(value);
       } else {
-        onQueryChange(searchOnlyValue ? value + searchOnlyValue : value);
+        onQueryChange(searchOnlyValue ? `${value},${searchOnlyValue}` : value);
         setSearchFilterValue(value);
       }
     },
@@ -377,7 +377,13 @@ export function IndexFilters({
       setSearchFilterValue(augmentedQuery);
       setSearchOnlyValue('');
     }
-  }, [mode, searchFilterValue, searchOnlyValue, handleShowFilters]);
+  }, [
+    mode,
+    searchFilterValue,
+    searchOnlyValue,
+    onQueryChange,
+    handleShowFilters,
+  ]);
 
   const handleQueryClear = useCallback(
     (input: 'searchOnly' | 'searchFilter') => () => {
@@ -455,6 +461,7 @@ export function IndexFilters({
     let searchFilter;
 
     const supportsSavedFilters =
+      !hideQueryField &&
       !hideFilters &&
       primaryAction &&
       (primaryAction.type === 'save' || primaryAction.type === 'save-as');
@@ -481,6 +488,7 @@ export function IndexFilters({
   }, [
     queryValue,
     hideFilters,
+    hideQueryField,
     primaryAction,
     appliedFilters,
     searchFilterValue,
