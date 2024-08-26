@@ -179,13 +179,14 @@
     "IndexFilters": {
       "searchFilterTooltip": "Filter",
       "searchFilterTooltipWithShortcut": "Filter (F)",
-      "searchFilterAccessibilityLabel": "Filter results",
+      "searchFilterAccessibilityLabel": "Type a query to search the list, and keypress enter to add your query as a filter",
       "editSearchFilter": "Edit search filter",
       "SearchField": {
         "defaultPlaceholder": "Search",
         "action": {
           "addAsFilter": "add as filter",
-          "addToFilter": "add to filter"
+          "addToFilter": "add to filter",
+          "accessibilityLabel": "Add search query as a list filter"
         }
       },
       "sort": "Sort your results",

@@ -7,6 +7,9 @@ import {TextField} from '../../../TextField';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {useI18n} from '../../../../utilities/i18n';
 import {InlineStack} from '../../../InlineStack';
+import {UnstyledButton} from '../../../UnstyledButton';
+
+import styles from './SearchField.module.css';
 
 export interface SearchFieldProps {
   focused?: boolean;
@@ -55,6 +58,10 @@ export function SearchField({
     if (event.key === 'Enter') onKeyDownEnter?.();
   }
 
+  function handleClick() {
+    onKeyDownEnter?.();
+  }
+
   function handleFocus() {
     onFocus?.();
     setFocused(true);
@@ -67,12 +74,20 @@ export function SearchField({
 
   const addAsFilterText =
     value && focused ? (
-      <InlineStack gap="200" blockAlign="center" align="end">
-        {i18n.translate('Polaris.IndexFilters.SearchField.action.addAsFilter')}
-        <Box borderRadius="100" background="bg-surface-tertiary-hover">
+      <UnstyledButton
+        onClick={handleClick}
+        className={styles.AddAsFilterAction}
+        accessibilityLabel={i18n.translate(
+          'Polaris.IndexFilters.SearchField.action.accessibilityLabel',
+        )}
+      >
+        <InlineStack gap="100" blockAlign="center" align="end">
+          {i18n.translate(
+            'Polaris.IndexFilters.SearchField.action.addAsFilter',
+          )}
           <Icon source={ReturnIcon} tone="inherit" />
-        </Box>
-      </InlineStack>
+        </InlineStack>
+      </UnstyledButton>
     ) : undefined;
 
   return (
