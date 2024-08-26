@@ -168,7 +168,7 @@ export function IndexFilters({
     } else if (queryValue.length > 0 && searchOnlyValue.length === 0) {
       setSearchFilterValue(queryValue);
     }
-  }, [queryValue, searchOnlyValue]);
+  }, [queryValue, searchOnlyValue, searchFilterValue]);
 
   const {
     value: filtersFocused,
@@ -370,12 +370,14 @@ export function IndexFilters({
       handleShowFilters();
     }
     if (searchOnlyValue) {
-      setSearchFilterValue((searchFilter) =>
-        searchFilter ? `${searchFilter},${searchOnlyValue}` : searchOnlyValue,
-      );
+      const augmentedQuery = searchFilterValue
+        ? `${searchFilterValue},${searchOnlyValue}`
+        : searchOnlyValue;
+      onQueryChange(augmentedQuery);
+      setSearchFilterValue(augmentedQuery);
       setSearchOnlyValue('');
     }
-  }, [mode, handleShowFilters, searchOnlyValue]);
+  }, [mode, searchFilterValue, searchOnlyValue, handleShowFilters]);
 
   const handleQueryClear = useCallback(
     (input: 'searchOnly' | 'searchFilter') => () => {
