@@ -1,6 +1,5 @@
 // @ts-expect-error -- leave me alone
 // @ts-nocheck
-
 import React, {useEffect, useRef, useState} from 'react';
 import {
   ChartVerticalIcon,
@@ -20,7 +19,6 @@ import type {
   IndexFiltersProps,
   FilterInterface,
   AppliedFilterInterface,
-  BadgeProps,
 } from '../src';
 import {
   Thumbnail,
@@ -412,15 +410,95 @@ function OrdersIndexTableWithFilters(
     'Unpaid',
     'Open',
     'Archived',
+    'Express shipping',
   ]);
-  const [selectedView, setSelectedView] = useState(0);
+  const [selectedView, setSelectedView] = useState(5);
   const [sortSelected, setSortSelected] = useState(['order asc']);
-  const [queryValue, setQueryValue] = useState('');
+  const [queryValue, setQueryValue] = useState('express');
   const [status, setStatus] = useState<string[]>([]);
   const [paymentStatus, setPaymentStatus] = useState<string[]>([]);
   const [fulfillmentStatus, setFulfillmentStatus] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [filteredOrders, setFilteredOrders] = useState(orders);
+  const [filteredOrders, setFilteredOrders] = useState([
+    {
+      id: '1052',
+      date: 'Aug 22, 2024 at 5:13 am',
+      customer: 'Esmeralda Ernser',
+      channel: 'TikTok',
+      total: '$35.58',
+      paymentStatus: ['Paid'],
+      fulfillmentStatus: ['Unfulfilled'],
+      items: '22',
+      deliveryMethod: 'Express',
+      status: 'Open',
+      tags: 'gift wrap',
+    },
+    {
+      id: '1046',
+      date: 'Jul 6, 2024 at 9:31 pm',
+      customer: 'Melany Sauer',
+      channel: 'Online Store',
+      total: '$237.28',
+      paymentStatus: ['Paid'],
+      fulfillmentStatus: ['Fulfilled'],
+      items: '949',
+      deliveryMethod: 'Express',
+      status: 'Open',
+      tags: '',
+    },
+    {
+      id: '1034',
+      date: ' Dec 5, 2023',
+      customer: 'Dario Krajcik',
+      channel: 'Online Store',
+      total: '$865.93',
+      paymentStatus: ['Paid'],
+      fulfillmentStatus: ['Fulfilled'],
+      items: '3,464',
+      deliveryMethod: 'Express',
+      status: 'Open',
+      tags: '',
+    },
+    {
+      id: '1028',
+      date: ' May 19, 2023',
+      customer: 'Guy Haley',
+      channel: 'Instagram',
+      total: '$361.90',
+      paymentStatus: ['Paid'],
+      fulfillmentStatus: ['Fulfilled'],
+      items: '1,448',
+      deliveryMethod: 'Express',
+      status: 'Open',
+      tags: '',
+    },
+    {
+      id: '1023',
+      date: ' Feb 25, 2023',
+      customer: 'Walton Rowe',
+      channel: 'Online Store',
+      total: '$495.99',
+      paymentStatus: ['Paid'],
+      fulfillmentStatus: ['Fulfilled'],
+      items: '1,984',
+      deliveryMethod: 'Express',
+      status: 'Open',
+      tags: 'wholesale, net 30',
+    },
+    {
+      id: '1017',
+      date: ' Nov 26, 2022',
+      customer: 'Kailyn Paucek',
+      channel: 'Online Store',
+      total: '$653.15',
+      paymentStatus: ['Paid'],
+      fulfillmentStatus: ['Fulfilled'],
+      items: '2,613',
+      deliveryMethod: 'Express',
+      status: 'Archived',
+      tags: '',
+    },
+  ]);
   const [savedViewFilters, setSavedViewFilters] = useState<SavedViewFilter[][]>(
     [
       [],
@@ -460,6 +538,13 @@ function OrdersIndexTableWithFilters(
           key: 'status',
           label: 'Status',
           value: ['Archived'],
+        },
+      ],
+      [
+        {
+          key: 'queryValue',
+          label: 'Search',
+          value: 'express',
         },
       ],
     ],
@@ -579,7 +664,7 @@ function OrdersIndexTableWithFilters(
     setFilteredOrders(result);
   };
 
-  // Psuedo-loading state transitions
+  // Psuedo loading state transitions
   useEffect(() => {
     if (queryValue !== '') {
       setLoading(true);
@@ -869,7 +954,7 @@ function OrdersIndexTableWithFilters(
 
   const handleSelectView = async (view: number) => {
     setQueryValue('');
-    // setMode(IndexFiltersMode.Default);
+    setMode(IndexFiltersMode.Default);
     setSelectedView(view);
     setLoading(true);
     handleResetToSavedFilters(view);
