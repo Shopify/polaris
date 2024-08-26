@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect, useRef, useState} from 'react';
 import {
   ChartVerticalIcon,
@@ -410,93 +411,14 @@ function OrdersIndexTableWithFilters(
     'Archived',
     'Express shipping',
   ]);
-  const [selectedView, setSelectedView] = useState(1);
+  const [selectedView, setSelectedView] = useState(0);
   const [sortSelected, setSortSelected] = useState(['order asc']);
-  const [queryValue, setQueryValue] = useState('express');
+  const [queryValue, setQueryValue] = useState('');
   const [status, setStatus] = useState<string[]>([]);
   const [paymentStatus, setPaymentStatus] = useState<string[]>([]);
   const [fulfillmentStatus, setFulfillmentStatus] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [filteredOrders, setFilteredOrders] = useState([
-    {
-      id: '1053',
-      date: 'Aug 22, 2024 at 11:11 pm',
-      customer: 'Ian Nikolaus',
-      channel: 'Online Store',
-      total: '$2,051.20',
-      paymentStatus: ['Paid'],
-      fulfillmentStatus: ['Unfulfilled'],
-      items: '8,205',
-      deliveryMethod: 'Ground',
-      status: 'Open',
-      tags: 'vip, wholesale, net 60',
-    },
-    {
-      id: '1052',
-      date: 'Aug 22, 2024 at 5:13 am',
-      customer: 'Esmeralda Ernser',
-      channel: 'TikTok',
-      total: '$35.58',
-      paymentStatus: ['Paid'],
-      fulfillmentStatus: ['Unfulfilled'],
-      items: '22',
-      deliveryMethod: 'Express',
-      status: 'Open',
-      tags: 'gift wrap',
-    },
-    {
-      id: '1050',
-      date: 'Aug 20, 2024 at 11:47 am',
-      customer: 'Brennan Schowalter',
-      channel: 'TikTok',
-      total: '$207.24',
-      paymentStatus: ['Paid'],
-      fulfillmentStatus: ['Partially fulfilled'],
-      items: '829',
-      deliveryMethod: 'Standard',
-      status: 'Open',
-      tags: '',
-    },
-    {
-      id: '1049',
-      date: 'Aug 20, 2024 at 2:56 am',
-      customer: 'Ryder Glover',
-      channel: 'TikTok',
-      total: '$438.15',
-      paymentStatus: ['Payment pending'],
-      fulfillmentStatus: ['Partially fulfilled'],
-      items: '1,753',
-      deliveryMethod: 'Standard',
-      status: 'Open',
-      tags: '',
-    },
-    {
-      id: '1048',
-      date: 'Aug 20, 2024 at 2:14 am',
-      customer: 'Dillon Weissnat',
-      channel: 'TikTok',
-      total: '$577.10',
-      paymentStatus: ['Paid'],
-      fulfillmentStatus: ['Partially fulfilled'],
-      items: '2,308',
-      deliveryMethod: 'Standard',
-      status: 'Open',
-      tags: '',
-    },
-    {
-      id: '1047',
-      date: 'Jul 18, 2024 at 6:46 am',
-      customer: 'Patrick Gerlach',
-      channel: 'Online Store',
-      total: '$56.73',
-      paymentStatus: ['Payment pending', 'Overdue'],
-      fulfillmentStatus: ['Unfulfilled'],
-      items: '227',
-      deliveryMethod: 'Standard',
-      status: 'Open',
-      tags: '',
-    },
-  ]);
+  const [filteredOrders, setFilteredOrders] = useState(orders);
   const [savedViewFilters, setSavedViewFilters] = useState<SavedViewFilter[][]>(
     [
       [],
