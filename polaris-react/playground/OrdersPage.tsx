@@ -555,7 +555,7 @@ function OrdersIndexTableWithFilters(
   );
 
   const escapeSpecialChars = (text: string) => {
-    return text.replace(/[.*+?^${}()#|[\]\\]/g, ' ');
+    return text.replace(/[.,*+?^${}()#|[\]\\]/g, ' ');
   };
 
   const getSearchRegex = (input: string) => {
