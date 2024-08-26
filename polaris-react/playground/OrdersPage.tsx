@@ -1,7 +1,5 @@
-// @ts-expect-error -- leave me alone
 // @ts-nocheck
-
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useMemo} from 'react';
 import {
   ChartVerticalIcon,
   AppsIcon,
@@ -678,7 +676,7 @@ function OrdersIndexTableWithFilters(
       remove: handleStatusRemove,
       label: 'Status',
       emptyValue: [],
-      locked: selectedView === 3 || selectedView === 4,
+      locked: selectedView > 0 && selectedView < 5,
     },
     paymentStatus: {
       set: setPaymentStatus,
@@ -858,9 +856,31 @@ function OrdersIndexTableWithFilters(
     });
   });
 
-  const hasUnsavedChanges = appliedFilters.some(
-    (filter) => filter.unsavedChanges,
-  );
+  const appliedFilterMatchesSavedFilter = (
+    appliedFilter: AppliedFilterInterface,
+  ) => {
+    const savedFilter = savedViewFilters[selectedView].find(
+      (savedFilter) => savedFilter.key === appliedFilter.key,
+    );
+
+    if (!savedFilter) {
+      return false;
+    } else if (typeof appliedFilter.value === 'string') {
+      return appliedFilter.value === savedFilter.value;
+    } else {
+      const hasSameArrayValue =
+        new Set(savedFilter.value).difference(new Set(appliedFilter.value))
+          .size === 0;
+
+      return hasSameArrayValue;
+    }
+  };
+
+  const hasUnsavedChanges =
+    (!savedViewFilters[selectedView] && appliedFilters.length > 0) ||
+    (appliedFilters.length === 0 &&
+      savedViewFilters[selectedView].length > 0) ||
+    !appliedFilters.every(appliedFilterMatchesSavedFilter);
 
   // ---- View event handlers
   const sleep = (ms: number) => {
