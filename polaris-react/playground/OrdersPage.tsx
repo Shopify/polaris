@@ -414,9 +414,12 @@ function OrdersIndexTableWithFilters(
   const [selectedView, setSelectedView] = useState(1);
   const [sortSelected, setSortSelected] = useState(['order asc']);
   const [queryValue, setQueryValue] = useState('');
-  const [status, setStatus] = useState<string[]>([]);
+  const [status, setStatus] = useState<string[]>(['Open']);
   const [paymentStatus, setPaymentStatus] = useState<string[]>([]);
-  const [fulfillmentStatus, setFulfillmentStatus] = useState<string[]>([]);
+  const [fulfillmentStatus, setFulfillmentStatus] = useState<string[]>([
+    'Unfulfilled',
+    'Partially fulfilled',
+  ]);
   const [loading, setLoading] = useState<boolean>(false);
   const [filteredOrders, setFilteredOrders] = useState([
     {
