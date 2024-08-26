@@ -1,0 +1,21 @@
+.AddAsFilterAction {
+  padding-block: var(--p-space-050);
+  background: none;
+  border: none;
+  color: unset;
+  cursor: pointer;
+  border-radius: var(--p-border-radius-100);
+
+  &:hover {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-secondary);
+
+    svg {
+      fill: var(--p-color-icon-secondary-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--p-color-bg-fill-transparent-active);
+  }
+}
