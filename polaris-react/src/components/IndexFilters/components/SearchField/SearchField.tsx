@@ -1,7 +1,6 @@
 import React, {useId, useState} from 'react';
 import {SearchIcon, ReturnIcon} from '@shopify/polaris-icons';
 
-import {Box} from '../../../Box';
 import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
