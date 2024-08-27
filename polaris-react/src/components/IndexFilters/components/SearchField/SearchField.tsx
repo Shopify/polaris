@@ -1,6 +1,7 @@
 import React, {useId, useState} from 'react';
 import {SearchIcon, ReturnIcon} from '@shopify/polaris-icons';
 
+import {Box} from '../../../Box';
 import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
@@ -84,7 +85,9 @@ export function SearchField({
           {i18n.translate(
             'Polaris.IndexFilters.SearchField.action.addAsFilter',
           )}
-          <Icon source={ReturnIcon} tone="inherit" />
+          <Box borderRadius="100" background="bg-surface-tertiary-hover">
+            <Icon source={ReturnIcon} tone="inherit" />
+          </Box>
         </InlineStack>
       </UnstyledButton>
     ) : undefined;
