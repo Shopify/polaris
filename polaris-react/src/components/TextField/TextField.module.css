@@ -38,7 +38,7 @@
   }
 
   /* stylelint-disable-next-line selector-max-specificity -- set Backdrop styles */
-  &:not(.disabled):not(.error):not(.readOnly)
+  &:not(.disabled):not(.error):not(.readOnly):not(.borderless)
     > .Input:hover:not(:focus-visible) {
     /* stylelint-disable-next-line -- set Backdrop styles */
     ~ .Backdrop {
@@ -322,13 +322,25 @@
   }
 }
 
+/* stylelint-disable -- set secondary Backdrop styles */
 .borderless {
   .Input,
   .Backdrop {
-    border: none;
     min-height: var(--p-space-800);
+    border-color: transparent;
+
+    &:not(:active):not(:hover) {
+      border-color: var(--p-color-border-secondary);
+    }
+
+    &.Input:hover:not(:focus-visible) {
+      ~ .Backdrop {
+        background-color: var(--p-color-input-bg-surface-hover);
+      }
+    }
   }
 }
+/* stylelint-enable */
 
 .slim {
   .Input,
