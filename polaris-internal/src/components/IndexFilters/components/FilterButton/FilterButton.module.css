@@ -1,6 +1,0 @@
-.pressed > button {
-  /* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- Filter section activator pressed state */
-  background: var(--pc-button-bg_active);
-  color: var(--pc-button-color_active);
-  box-shadow: var(--pc-button-box-shadow_active);
-}
