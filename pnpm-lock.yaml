@@ -541,8 +541,8 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
       vfile:
-        specifier: ^5.3.7
-        version: 5.3.7
+        specifier: ^6.0.3
+        version: 6.0.3
       vfile-is:
         specifier: ^3.0.0
         version: 3.0.0
@@ -22877,7 +22877,7 @@ packages:
     resolution: {integrity: sha512-bKpmSqgcEUugFQd39ekQEUZfVIXnTmMCK+jOkgexy7yulbPdbu09wz4BQbjVzpx1UtG8x50PRTi1SPdGaHtwxw==}
     dependencies:
       minimatch: 9.0.3
-      vfile: 6.0.1
+      vfile: 6.0.3
     dev: false
 
   /vfile-location@3.2.0:
@@ -22936,11 +22936,10 @@ packages:
       unist-util-stringify-position: 3.0.2
       vfile-message: 3.1.2
 
-  /vfile@6.0.1:
-    resolution: {integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==}
+  /vfile@6.0.3:
+    resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
     dependencies:
       '@types/unist': 3.0.0
-      unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
     dev: false
 
