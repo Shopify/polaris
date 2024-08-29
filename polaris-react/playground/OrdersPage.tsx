@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {useEffect, useRef, useState, useMemo} from 'react';
+import React, {useEffect, useRef, useState, useMemo, useCallback} from 'react';
 import {
   ChartVerticalIcon,
   AppsIcon,
@@ -676,7 +676,6 @@ function OrdersIndexTableWithFilters(
       remove: handleStatusRemove,
       label: 'Status',
       emptyValue: [],
-      locked: selectedView > 0 && selectedView < 5,
     },
     paymentStatus: {
       set: setPaymentStatus,
@@ -684,7 +683,6 @@ function OrdersIndexTableWithFilters(
       remove: handlePaymentStatusRemove,
       label: 'Payment status',
       emptyValue: [],
-      locked: selectedView === 2,
     },
     fulfillmentStatus: {
       set: setFulfillmentStatus,
@@ -692,7 +690,6 @@ function OrdersIndexTableWithFilters(
       remove: handleFulfillmentStatusRemove,
       label: 'Fulfillment status',
       emptyValue: [],
-      locked: selectedView === 1,
     },
   };
 
@@ -849,10 +846,9 @@ function OrdersIndexTableWithFilters(
     appliedFilters.push({
       key,
       value,
-      locked: handlers[key].locked,
       label: getHumanReadableValue(handlers[key].label, value),
       unsavedChanges: selectedView === 0 ? true : isUnsaved(value, savedValue),
-      onRemove: handlers[key].locked ? undefined : handlers[key].remove,
+      onRemove: handlers[key].remove,
     });
   });
 
@@ -876,12 +872,10 @@ function OrdersIndexTableWithFilters(
     }
   };
 
-  console.lof;
-
   const hasUnsavedChanges =
     (!savedViewFilters[selectedView] && appliedFilters.length > 0) ||
     (appliedFilters.length === 0 &&
-      savedViewFilters[selectedView].length > 0) ||
+      savedViewFilters[selectedView]?.length > 0) ||
     !appliedFilters.every(appliedFilterMatchesSavedFilter);
 
   // ---- View event handlers
@@ -891,20 +885,18 @@ function OrdersIndexTableWithFilters(
 
   const handleSelectView = async (view: number) => {
     setQueryValue('');
-    // if (view > 0 && savedViewFilters[view].length > 0) {
-    //   setMode(IndexFiltersMode.Filtering);
-    // } else {
-    setMode(IndexFiltersMode.Default);
-    // }
+
+    if (view > 0 && savedViewFilters[view].length > 0) {
+      setMode(IndexFiltersMode.Filtering);
+    } else {
+      setMode(IndexFiltersMode.Default);
+    }
+
     setSelectedView(view);
     setLoading(true);
     handleResetToSavedFilters(view);
     await sleep(250);
     setLoading(false);
-  };
-
-  const handleEditView = (index: number) => () => {
-    setMode(IndexFiltersMode.Filtering);
   };
 
   const handleDeleteView = (index: number) => async () => {
@@ -949,26 +941,50 @@ function OrdersIndexTableWithFilters(
     return true;
   };
 
-  const handleSaveViewFilters = async (index: number) => {
-    const nextSavedFilters = [...savedViewFilters];
-    nextSavedFilters[index] = appliedFilters.map(({key, value, label}) => ({
-      key,
-      value,
-      label,
-      locked: false,
-    }));
+  const handleSaveViewFilters = useCallback(
+    async (index: number) => {
+      const nextSavedFilters = [...savedViewFilters];
+      nextSavedFilters[index] = appliedFilters.map(({key, value, label}) => ({
+        key,
+        value,
+        label,
+      }));
 
-    setSavedViewFilters(nextSavedFilters);
-    await sleep(300);
-    return true;
-  };
+      setSavedViewFilters(nextSavedFilters);
+      await sleep(300);
+      return true;
+    },
+    [appliedFilters, savedViewFilters],
+  );
 
   const handleCreateNewView = async (name: string) => {
-    const newViewIndex = viewNames.length;
     setViewNames((names) => [...names, name]);
-    handleSaveViewFilters(newViewIndex);
+    const newViewIndex = viewNames.length;
+    const shouldSaveAppliedFiltersAsNew =
+      selectedView === 0 &&
+      (queryValue ||
+        paymentStatus.length > 0 ||
+        fulfillmentStatus.length > 0 ||
+        status.length > 0);
+
+    const nextFilters = shouldSaveAppliedFiltersAsNew
+      ? {queryValue, status, paymentStatus, fulfillmentStatus}
+      : {
+          queryValue: '',
+          status: [],
+          paymentStatus: [],
+          fulfillmentStatus: [],
+        };
+
+    if (shouldSaveAppliedFiltersAsNew) {
+      handleSaveViewFilters(newViewIndex);
+    } else {
+      handleClearFilters();
+      setSavedViewFilters((filters) => [...filters, []]);
+    }
+
+    handleFilterOrders(nextFilters);
     await sleep(250);
-    setMode(IndexFiltersMode.Default);
     setSelectedView(newViewIndex);
     return true;
   };
@@ -997,10 +1013,8 @@ function OrdersIndexTableWithFilters(
   };
 
   useEffect(() => {
-    if (hasUnsavedChanges) {
-      if (selectedView > 0) {
-        handleSaveViewFilters(selectedView);
-      }
+    if (hasUnsavedChanges && selectedView > 0) {
+      handleSaveViewFilters(selectedView);
     }
   }, [
     hasUnsavedChanges,
@@ -1042,10 +1056,6 @@ function OrdersIndexTableWithFilters(
                 onPrimaryAction: handleDuplicateView(index),
               },
               {
-                type: 'edit',
-                onAction: handleEditView(index),
-              },
-              {
                 type: 'delete',
                 onPrimaryAction: handleDeleteView(index),
               },
@@ -1054,22 +1064,26 @@ function OrdersIndexTableWithFilters(
     };
   });
 
-  // const primaryAction: IndexFiltersProps['primaryAction'] = {
-  //   type: selectedView > 4 ? 'save' : 'save-as',
-  //   onAction: handleSave,
-  //   disabled: !hasUnsavedChanges,
-  //   loading: false,
-  // };
+  const primaryAction: IndexFiltersProps['primaryAction'] =
+    selectedView === 0
+      ? {
+          type: selectedView > 4 ? 'save' : 'save-as',
+          onAction: handleSave,
+          disabled: !hasUnsavedChanges,
+          loading: false,
+        }
+      : undefined;
 
-  // const cancelAction: IndexFiltersProps['cancelAction'] = {
-  //   onAction: handleCancel,
-  //   disabled: false,
-  //   loading: false,
-  // };
+  const cancelAction: IndexFiltersProps['cancelAction'] =
+    selectedView === 0
+      ? {
+          onAction: handleCancel,
+          disabled: false,
+          loading: false,
+        }
+      : undefined;
 
-  const queryPlaceholder = `Searching in ${viewNames[
-    selectedView
-  ].toLowerCase()}`;
+  const queryPlaceholder = `Search ${viewNames[selectedView]?.toLowerCase()}`;
 
   return (
     <Card padding="0">
@@ -1085,8 +1099,8 @@ function OrdersIndexTableWithFilters(
         onQueryChange={handleQueryValueChange}
         onQueryClear={handleQueryValueRemove}
         onSort={setSortSelected}
-        // primaryAction={primaryAction}
-        // cancelAction={cancelAction}
+        primaryAction={primaryAction}
+        cancelAction={cancelAction}
         tabs={tabs}
         selected={selectedView}
         onSelect={handleSelectView}

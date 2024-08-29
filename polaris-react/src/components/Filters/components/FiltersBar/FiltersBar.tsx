@@ -1,5 +1,5 @@
 import type {PropsWithChildren} from 'react';
-import React, {useState, useRef, useEffect, useMemo} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {PlusIcon} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
 

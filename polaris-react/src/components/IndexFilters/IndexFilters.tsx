@@ -162,9 +162,6 @@ export function IndexFilters({
   const [searchFilterValue, setSearchFilterValue] = useState(queryValue);
 
   useEffect(() => {
-    console.log(
-      `'${queryValue}', '${searchOnlyValue}', '${searchFilterValue}'`,
-    );
     if (queryValue === '') {
       setSearchOnlyValue('');
       setSearchFilterValue('');
@@ -618,7 +615,6 @@ export function IndexFilters({
                       >
                         {updateButtonsMarkup}
                       </div>
-                      {sortMarkup}
                     </InlineStack>
                   </div>
                 </Filters>
