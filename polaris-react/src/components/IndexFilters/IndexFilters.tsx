@@ -1,4 +1,4 @@
-import React, {useMemo, useEffect, useCallback, useRef, useState} from 'react';
+import React, {useMemo, useCallback, useRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
@@ -12,7 +12,6 @@ import {Filters} from '../Filters';
 import type {FiltersProps} from '../Filters';
 import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
-import {TextField} from '../TextField';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
 import {useIsSticky} from './hooks';
@@ -157,18 +156,6 @@ export function IndexFilters({
   const {mdDown} = useBreakpoints();
   const defaultRef = useRef(null);
   const filteringRef = useRef(null);
-
-  const [searchOnlyValue, setSearchOnlyValue] = useState('');
-  const [searchFilterValue, setSearchFilterValue] = useState(queryValue);
-
-  useEffect(() => {
-    if (queryValue === '') {
-      setSearchOnlyValue('');
-      setSearchFilterValue('');
-    } else if (queryValue.length > 0 && searchOnlyValue.length === 0) {
-      setSearchFilterValue(queryValue);
-    }
-  }, [queryValue, searchOnlyValue, searchFilterValue]);
 
   const {
     value: filtersFocused,
@@ -352,53 +339,6 @@ export function IndexFilters({
     setMode(IndexFiltersMode.Default);
   }
 
-  const handleQueryChange = useCallback(
-    (input: 'searchOnly' | 'searchFilter') => (value: string) => {
-      if (input === 'searchOnly') {
-        onQueryChange(searchFilterValue ? searchFilterValue + value : value);
-        setSearchOnlyValue(value);
-      } else {
-        onQueryChange(searchOnlyValue ? `${value},${searchOnlyValue}` : value);
-        setSearchFilterValue(value);
-      }
-    },
-    [searchFilterValue, searchOnlyValue, onQueryChange],
-  );
-
-  const handleAddAsFilter = useCallback(() => {
-    if (mode !== IndexFiltersMode.Filtering) {
-      handleShowFilters();
-    }
-    if (searchOnlyValue) {
-      const augmentedQuery = searchFilterValue
-        ? `${searchFilterValue},${searchOnlyValue}`
-        : searchOnlyValue;
-      onQueryChange(augmentedQuery);
-      setSearchFilterValue(augmentedQuery);
-      setSearchOnlyValue('');
-    }
-  }, [
-    mode,
-    searchFilterValue,
-    searchOnlyValue,
-    onQueryChange,
-    handleShowFilters,
-  ]);
-
-  const handleQueryClear = useCallback(
-    (input: 'searchOnly' | 'searchFilter') => () => {
-      if (input === 'searchOnly') {
-        setSearchOnlyValue('');
-        onQueryChange(searchFilterValue);
-      } else {
-        onQueryClear?.();
-        setSearchOnlyValue('');
-        setSearchFilterValue('');
-      }
-    },
-    [searchFilterValue, onQueryChange, onQueryClear],
-  );
-
   function handleQueryBlur() {
     setFiltersUnFocused();
   }
@@ -415,86 +355,6 @@ export function IndexFilters({
 
     handleShowFilters();
   }
-
-  const handleKeyDownEnter = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'Enter') {
-        onQueryChange(
-          searchOnlyValue
-            ? searchFilterValue + searchOnlyValue
-            : searchFilterValue,
-        );
-      }
-    },
-    [searchOnlyValue, searchFilterValue, onQueryChange],
-  );
-
-  const searchFilterLabel = i18n.translate(
-    'Polaris.IndexFilters.SearchField.defaultPlaceholder',
-  );
-
-  const filtersWithSearch = [
-    ...filters,
-    {
-      key: 'appliedSearchFilter',
-      label: searchFilterLabel,
-      hidden: true,
-      filter: (
-        <div onKeyDown={handleKeyDownEnter}>
-          <TextField
-            multiline
-            selectTextOnFocus
-            type="text"
-            autoComplete="off"
-            label={i18n.translate(
-              'Polaris.IndexFilters.SearchField.editSearchFilter',
-            )}
-            value={searchFilterValue}
-            onChange={handleQueryChange('searchFilter')}
-          />
-        </div>
-      ),
-    },
-  ];
-
-  const getAppliedFilters = useMemo(() => {
-    let searchFilter;
-
-    // const supportsSavedFilters =
-    //   !hideQueryField &&
-    //   !hideFilters &&
-    //   primaryAction &&
-    //   (primaryAction.type === 'save' || primaryAction.type === 'save-as');
-
-    if (queryValue && searchFilterValue) {
-      searchFilter = {
-        key: 'appliedSearchFilter',
-        label: `${searchFilterLabel}: ${searchFilterValue}`,
-        value: searchFilterValue,
-        unsavedChanges: appliedFilters?.find(
-          ({key}) => key.includes('search') || key.includes('query'),
-        )?.unsavedChanges,
-        onRemove: handleQueryClear('searchFilter'),
-      };
-    }
-
-    if (searchFilter) {
-      return Array.isArray(appliedFilters)
-        ? [...appliedFilters, searchFilter]
-        : [searchFilter];
-    }
-
-    return appliedFilters;
-  }, [
-    queryValue,
-    // hideFilters,
-    // hideQueryField,
-    // primaryAction,
-    appliedFilters,
-    searchFilterValue,
-    searchFilterLabel,
-    handleQueryClear,
-  ]);
 
   return (
     <div
@@ -547,14 +407,13 @@ export function IndexFilters({
               </div>
               <div className={styles.ActionWrap}>
                 <SearchField
-                  value={searchOnlyValue}
+                  value={queryValue}
                   placeholder={queryPlaceholder}
                   disabled={disabled || disableQueryField}
-                  onChange={handleQueryChange('searchOnly')}
+                  onChange={onQueryChange}
                   onFocus={handleQueryFocus}
                   onBlur={handleQueryBlur}
-                  onClear={handleQueryClear('searchOnly')}
-                  onKeyDownEnter={handleAddAsFilter}
+                  onClear={onQueryClear}
                 />
                 {isLoading && !mdDown && (
                   <div className={styles.DesktopLoading}>
@@ -595,8 +454,8 @@ export function IndexFilters({
                   onQueryChange={() => {}}
                   onQueryClear={() => {}}
                   onAddFilterClick={onAddFilterClick}
-                  filters={filtersWithSearch}
-                  appliedFilters={getAppliedFilters}
+                  filters={filters}
+                  appliedFilters={appliedFilters}
                   onClearAll={onClearAll}
                   disableFilters={disabled}
                   hideFilters={hideFilters}

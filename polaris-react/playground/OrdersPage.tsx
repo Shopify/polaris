@@ -884,9 +884,12 @@ function OrdersIndexTableWithFilters(
   };
 
   const handleSelectView = async (view: number) => {
-    setQueryValue('');
+    const nextModeIsOpen =
+      view > 0 &&
+      savedViewFilters[view].length > 0 &&
+      savedViewFilters[view].some(({key}) => key !== 'queryValue');
 
-    if (view > 0 && savedViewFilters[view].length > 0) {
+    if (nextModeIsOpen) {
       setMode(IndexFiltersMode.Filtering);
     } else {
       setMode(IndexFiltersMode.Default);
