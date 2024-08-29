@@ -1,5 +1,5 @@
 import type {PropsWithChildren} from 'react';
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect, useMemo} from 'react';
 import {PlusIcon} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
 
@@ -89,11 +89,12 @@ export function FiltersBar({
       return isPinnedOrApplied;
     },
   );
+
   const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>(
     pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
   );
 
-  useOnValueChange(filters.length, () => {
+  useOnValueChange(appliedFilters, () => {
     setLocalPinnedFilters(
       pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
     );
@@ -194,19 +195,16 @@ export function FiltersBar({
   const pinnedFiltersMarkup = pinnedFilters.map(
     ({key: filterKey, ...pinnedFilter}) => {
       const appliedFilter = appliedFilters?.find(({key}) => key === filterKey);
-      const handleFilterPillRemove = appliedFilter?.locked
-        ? undefined
-        : () => {
-            setLocalPinnedFilters((currentLocalPinnedFilters) =>
-              currentLocalPinnedFilters.filter((key) => {
-                const isMatchedFilters = key === filterKey;
-                const isPinnedFilterFromProps =
-                  pinnedFromPropsKeys.includes(key);
-                return !isMatchedFilters || isPinnedFilterFromProps;
-              }),
-            );
-            appliedFilter?.onRemove?.(filterKey);
-          };
+      const handleFilterPillRemove = () => {
+        setLocalPinnedFilters((currentLocalPinnedFilters) =>
+          currentLocalPinnedFilters.filter((key) => {
+            const isMatchedFilters = key === filterKey;
+            const isPinnedFilterFromProps = pinnedFromPropsKeys.includes(key);
+            return !isMatchedFilters || isPinnedFilterFromProps;
+          }),
+        );
+        appliedFilter?.onRemove?.(filterKey);
+      };
 
       return (
         <FilterPill
