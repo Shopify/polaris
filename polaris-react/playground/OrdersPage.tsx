@@ -876,6 +876,8 @@ function OrdersIndexTableWithFilters(
     }
   };
 
+  console.lof;
+
   const hasUnsavedChanges =
     (!savedViewFilters[selectedView] && appliedFilters.length > 0) ||
     (appliedFilters.length === 0 &&
@@ -889,7 +891,11 @@ function OrdersIndexTableWithFilters(
 
   const handleSelectView = async (view: number) => {
     setQueryValue('');
+    // if (view > 0 && savedViewFilters[view].length > 0) {
+    //   setMode(IndexFiltersMode.Filtering);
+    // } else {
     setMode(IndexFiltersMode.Default);
+    // }
     setSelectedView(view);
     setLoading(true);
     handleResetToSavedFilters(view);
@@ -960,8 +966,7 @@ function OrdersIndexTableWithFilters(
   const handleCreateNewView = async (name: string) => {
     const newViewIndex = viewNames.length;
     setViewNames((names) => [...names, name]);
-    setSavedViewFilters((filters) => [...filters, []]);
-    handleClearFilters();
+    handleSaveViewFilters(newViewIndex);
     await sleep(250);
     setMode(IndexFiltersMode.Default);
     setSelectedView(newViewIndex);
@@ -990,6 +995,22 @@ function OrdersIndexTableWithFilters(
     setLoading(false);
     return saved;
   };
+
+  useEffect(() => {
+    if (hasUnsavedChanges) {
+      if (selectedView > 0) {
+        handleSaveViewFilters(selectedView);
+      }
+    }
+  }, [
+    hasUnsavedChanges,
+    handleSaveViewFilters,
+    selectedView,
+    queryValue,
+    status,
+    paymentStatus,
+    fulfillmentStatus,
+  ]);
 
   const handleCancel = () => {
     if (!hasUnsavedChanges) {
@@ -1033,18 +1054,18 @@ function OrdersIndexTableWithFilters(
     };
   });
 
-  const primaryAction: IndexFiltersProps['primaryAction'] = {
-    type: selectedView > 4 ? 'save' : 'save-as',
-    onAction: handleSave,
-    disabled: !hasUnsavedChanges,
-    loading: false,
-  };
+  // const primaryAction: IndexFiltersProps['primaryAction'] = {
+  //   type: selectedView > 4 ? 'save' : 'save-as',
+  //   onAction: handleSave,
+  //   disabled: !hasUnsavedChanges,
+  //   loading: false,
+  // };
 
-  const cancelAction: IndexFiltersProps['cancelAction'] = {
-    onAction: handleCancel,
-    disabled: false,
-    loading: false,
-  };
+  // const cancelAction: IndexFiltersProps['cancelAction'] = {
+  //   onAction: handleCancel,
+  //   disabled: false,
+  //   loading: false,
+  // };
 
   const queryPlaceholder = `Searching in ${viewNames[
     selectedView
@@ -1064,8 +1085,8 @@ function OrdersIndexTableWithFilters(
         onQueryChange={handleQueryValueChange}
         onQueryClear={handleQueryValueRemove}
         onSort={setSortSelected}
-        primaryAction={primaryAction}
-        cancelAction={cancelAction}
+        // primaryAction={primaryAction}
+        // cancelAction={cancelAction}
         tabs={tabs}
         selected={selectedView}
         onSelect={handleSelectView}

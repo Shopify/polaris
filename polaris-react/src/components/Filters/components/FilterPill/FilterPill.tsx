@@ -135,16 +135,16 @@ export function FilterPill({
     </Box>
   );
 
-  const unsavedPip = unsavedChanges ? (
-    <Box paddingInlineEnd="150">
-      <Box
-        background="bg-fill-emphasis"
-        borderRadius="050"
-        width="6px"
-        minHeight="6px"
-      />
-    </Box>
-  ) : null;
+  // const unsavedPip = unsavedChanges ? (
+  //   <Box paddingInlineEnd="150">
+  //     <Box
+  //       background="bg-fill-emphasis"
+  //       borderRadius="050"
+  //       width="6px"
+  //       minHeight="6px"
+  //     />
+  //   </Box>
+  // ) : null;
 
   const removeFilterButtonMarkup =
     selected && onRemove !== undefined ? (
@@ -176,7 +176,7 @@ export function FilterPill({
           }
         >
           <InlineStack wrap={false} align="center" blockAlign="center" gap="0">
-            {unsavedPip}
+            {/* {unsavedPip} */}
             {labelMarkup}
             {disclosureMarkup}
           </InlineStack>

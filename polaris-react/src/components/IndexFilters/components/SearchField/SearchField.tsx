@@ -118,7 +118,6 @@ export function SearchField({
         labelHidden
         clearButton
         loading={loading}
-        suffix={addAsFilterText}
       />
     </div>
   );
