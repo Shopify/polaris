@@ -182,7 +182,7 @@
       "searchFilterAccessibilityLabel": "Type a query to search the list, and keypress enter to add your query as a filter",
       "editSearchFilter": "Edit search filter",
       "SearchField": {
-        "defaultPlaceholder": "Matches text",
+        "defaultPlaceholder": "Search",
         "action": {
           "addAsFilter": "add as filter",
           "addToFilter": "add to filter",
