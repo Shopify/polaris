@@ -114,7 +114,7 @@ export function Tooltip({
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleFocus = useCallback(() => {
-    if (originalActive !== false) {
+    if (Boolean(originalActive) !== false) {
       setActiveTrue();
     }
   }, [originalActive, setActiveTrue]);
@@ -168,7 +168,7 @@ export function Tooltip({
   );
 
   useEffect(() => {
-    if (originalActive === false && active) {
+    if (Boolean(originalActive) === false && active) {
       handleClose();
       handleBlur();
     }
