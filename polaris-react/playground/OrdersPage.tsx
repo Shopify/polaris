@@ -1013,7 +1013,7 @@ function OrdersIndexTableWithFilters(
   };
 
   useEffect(() => {
-    if (hasUnsavedChanges && selectedView > 0) {
+    if (hasUnsavedChanges) {
       handleSaveViewFilters(selectedView);
     }
   }, [
