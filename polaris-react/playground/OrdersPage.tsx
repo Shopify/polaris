@@ -1060,21 +1060,6 @@ function OrdersIndexTableWithFilters(
     return saved;
   };
 
-  useEffect(() => {
-    if (hasUnsavedChanges) {
-      handleSaveViewFilters(selectedView);
-    }
-  }, [
-    hasUnsavedChanges,
-    handleSaveViewFilters,
-    selectedView,
-    contains,
-    queryValue,
-    status,
-    paymentStatus,
-    fulfillmentStatus,
-  ]);
-
   const handleCancel = () => {
     if (!hasUnsavedChanges) {
       console.log('cancelled -- no unsaved changes');
@@ -1112,26 +1097,19 @@ function OrdersIndexTableWithFilters(
     };
   });
 
-  const primaryAction: IndexFiltersProps['primaryAction'] =
-    selectedView === 0
-      ? {
-          type: selectedView > 4 ? 'save' : 'save-as',
-          onAction: handleSave,
-          disabled:
-            (!hasUnsavedChanges && selectedView !== 0) ||
-            (selectedView === 0 && appliedFilters.length === 0),
-          loading: false,
-        }
-      : undefined;
+  const primaryAction: IndexFiltersProps['primaryAction'] = {
+    type: selectedView === 0 ? 'save as' : 'save',
+    onAction: handleSave,
+    disabled:
+      (!hasUnsavedChanges && selectedView !== 0) ||
+      (selectedView === 0 && appliedFilters.length === 0),
+    loading: false,
+  };
 
-  const cancelAction: IndexFiltersProps['cancelAction'] =
-    selectedView === 0
-      ? {
-          onAction: handleCancel,
-          disabled: false,
-          loading: false,
-        }
-      : undefined;
+  const cancelAction: IndexFiltersProps['cancelAction'] = {
+    onAction: handleCancel,
+    disabled: !hasUnsavedChanges,
+  };
 
   const queryPlaceholder = `Search ${viewNames[selectedView]?.toLowerCase()}`;
 
