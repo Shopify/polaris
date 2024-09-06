@@ -25,14 +25,9 @@ export function FilterButton({
   disabled,
   pressed,
   tooltipContent,
-  hasAppliedFilters = false,
   disclosureZIndexOverride,
 }: FilterButtonProps) {
   const className = classNames(styles.FilterButton, pressed && styles.pressed);
-
-  const appliedFilterIndicator = hasAppliedFilters ? (
-    <div className={styles.AppliedFilterIndicator} />
-  ) : null;
 
   const activator = (
     <div className={className}>
@@ -45,7 +40,6 @@ export function FilterButton({
         accessibilityLabel={label}
         ariaExpanded={pressed}
       />
-      {appliedFilterIndicator}
     </div>
   );
 
