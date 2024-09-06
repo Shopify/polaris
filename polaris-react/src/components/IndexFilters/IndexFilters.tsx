@@ -355,7 +355,7 @@ export function IndexFilters({
   }
 
   function handleQueryFocus() {
-    setFiltersFocused();
+    setMode(IndexFiltersMode.Filtering);
     onQueryFocus?.();
   }
 
