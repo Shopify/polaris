@@ -4,16 +4,19 @@ import {FilterIcon} from '@shopify/polaris-icons';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
 import {Button} from '../../../Button';
+import {Box} from '../../../Box';
+import {classNames} from '../../../../utilities/css';
 
 import styles from './FilterButton.module.css';
 
 export interface FilterButtonProps {
-  onClick: () => void;
   label: string;
   disabled?: boolean;
   pressed?: boolean;
   tooltipContent: string;
   disclosureZIndexOverride?: number;
+  hasAppliedFilters?: boolean;
+  onClick: () => void;
 }
 
 export function FilterButton({
@@ -22,9 +25,14 @@ export function FilterButton({
   disabled,
   pressed,
   tooltipContent,
+  hasAppliedFilters = false,
   disclosureZIndexOverride,
 }: FilterButtonProps) {
-  const className = pressed ? styles.pressed : undefined;
+  const className = classNames(styles.FilterButton, pressed && styles.pressed);
+
+  const appliedFilterIndicator = hasAppliedFilters ? (
+    <div className={styles.AppliedFilterIndicator} />
+  ) : null;
 
   const activator = (
     <div className={className}>
@@ -35,7 +43,9 @@ export function FilterButton({
         pressed={pressed}
         icon={FilterIcon}
         accessibilityLabel={label}
+        ariaExpanded={pressed}
       />
+      {appliedFilterIndicator}
     </div>
   );
 

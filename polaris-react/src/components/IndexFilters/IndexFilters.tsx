@@ -158,18 +158,6 @@ export function IndexFilters({
   const defaultRef = useRef(null);
   const filteringRef = useRef(null);
 
-  const [searchOnlyValue, setSearchOnlyValue] = useState('');
-  const [searchFilterValue, setSearchFilterValue] = useState(queryValue);
-
-  useEffect(() => {
-    if (queryValue === '') {
-      setSearchOnlyValue('');
-      setSearchFilterValue('');
-    } else if (queryValue.length > 0 && searchOnlyValue.length === 0) {
-      setSearchFilterValue(queryValue);
-    }
-  }, [queryValue, searchOnlyValue, searchFilterValue]);
-
   const {
     value: filtersFocused,
     setFalse: setFiltersUnFocused,
@@ -353,51 +341,15 @@ export function IndexFilters({
   }
 
   const handleQueryChange = useCallback(
-    (input: 'searchOnly' | 'searchFilter') => (value: string) => {
-      if (input === 'searchOnly') {
-        onQueryChange(searchFilterValue ? searchFilterValue + value : value);
-        setSearchOnlyValue(value);
-      } else {
-        onQueryChange(searchOnlyValue ? `${value},${searchOnlyValue}` : value);
-        setSearchFilterValue(value);
-      }
+    (value: string) => {
+      onQueryChange(value);
     },
-    [searchFilterValue, searchOnlyValue, onQueryChange],
+    [onQueryChange],
   );
 
-  const handleAddAsFilter = useCallback(() => {
-    if (mode !== IndexFiltersMode.Filtering) {
-      handleShowFilters();
-    }
-    if (searchOnlyValue) {
-      const augmentedQuery = searchFilterValue
-        ? `${searchFilterValue},${searchOnlyValue}`
-        : searchOnlyValue;
-      onQueryChange(augmentedQuery);
-      setSearchFilterValue(augmentedQuery);
-      setSearchOnlyValue('');
-    }
-  }, [
-    mode,
-    searchFilterValue,
-    searchOnlyValue,
-    onQueryChange,
-    handleShowFilters,
-  ]);
-
-  const handleQueryClear = useCallback(
-    (input: 'searchOnly' | 'searchFilter') => () => {
-      if (input === 'searchOnly') {
-        setSearchOnlyValue('');
-        onQueryChange(searchFilterValue);
-      } else {
-        onQueryClear?.();
-        setSearchOnlyValue('');
-        setSearchFilterValue('');
-      }
-    },
-    [searchFilterValue, onQueryChange, onQueryClear],
-  );
+  const handleQueryClear = useCallback(() => {
+    onQueryClear?.();
+  }, [onQueryClear]);
 
   function handleQueryBlur() {
     setFiltersUnFocused();
@@ -415,86 +367,6 @@ export function IndexFilters({
 
     handleShowFilters();
   }
-
-  const handleKeyDownEnter = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'Enter') {
-        onQueryChange(
-          searchOnlyValue
-            ? searchFilterValue + searchOnlyValue
-            : searchFilterValue,
-        );
-      }
-    },
-    [searchOnlyValue, searchFilterValue, onQueryChange],
-  );
-
-  const searchFilterLabel = i18n.translate(
-    'Polaris.IndexFilters.SearchField.defaultPlaceholder',
-  );
-
-  const filtersWithSearch = [
-    ...filters,
-    {
-      key: 'appliedSearchFilter',
-      label: searchFilterLabel,
-      hidden: true,
-      filter: (
-        <div onKeyDown={handleKeyDownEnter}>
-          <TextField
-            multiline
-            selectTextOnFocus
-            type="text"
-            autoComplete="off"
-            label={i18n.translate(
-              'Polaris.IndexFilters.SearchField.editSearchFilter',
-            )}
-            value={searchFilterValue}
-            onChange={handleQueryChange('searchFilter')}
-          />
-        </div>
-      ),
-    },
-  ];
-
-  const getAppliedFilters = useMemo(() => {
-    let searchFilter;
-
-    // const supportsSavedFilters =
-    //   !hideQueryField &&
-    //   !hideFilters &&
-    //   primaryAction &&
-    //   (primaryAction.type === 'save' || primaryAction.type === 'save-as');
-
-    if (queryValue && searchFilterValue) {
-      searchFilter = {
-        key: 'appliedSearchFilter',
-        label: `${searchFilterLabel}: ${searchFilterValue}`,
-        value: searchFilterValue,
-        unsavedChanges: appliedFilters?.find(
-          ({key}) => key.includes('search') || key.includes('query'),
-        )?.unsavedChanges,
-        onRemove: handleQueryClear('searchFilter'),
-      };
-    }
-
-    if (searchFilter) {
-      return Array.isArray(appliedFilters)
-        ? [...appliedFilters, searchFilter]
-        : [searchFilter];
-    }
-
-    return appliedFilters;
-  }, [
-    queryValue,
-    // hideFilters,
-    // hideQueryField,
-    // primaryAction,
-    appliedFilters,
-    searchFilterValue,
-    searchFilterLabel,
-    handleQueryClear,
-  ]);
 
   return (
     <div
@@ -547,14 +419,13 @@ export function IndexFilters({
               </div>
               <div className={styles.ActionWrap}>
                 <SearchField
-                  value={searchOnlyValue}
+                  value={queryValue}
                   placeholder={queryPlaceholder}
                   disabled={disabled || disableQueryField}
-                  onChange={handleQueryChange('searchOnly')}
+                  onChange={handleQueryChange}
                   onFocus={handleQueryFocus}
                   onBlur={handleQueryBlur}
-                  onClear={handleQueryClear('searchOnly')}
-                  onKeyDownEnter={handleAddAsFilter}
+                  onClear={handleQueryClear}
                 />
                 {isLoading && !mdDown && (
                   <div className={styles.DesktopLoading}>
@@ -564,12 +435,15 @@ export function IndexFilters({
 
                 {hideFilters ? null : (
                   <FilterButton
-                    onClick={handleClickFilterButton}
                     label={searchFilterAriaLabel}
                     tooltipContent={searchFilterTooltip}
                     disabled={disabled}
                     pressed={mode === IndexFiltersMode.Filtering}
                     disclosureZIndexOverride={disclosureZIndexOverride}
+                    hasAppliedFilters={
+                      appliedFilters && appliedFilters?.length > 0
+                    }
+                    onClick={handleClickFilterButton}
                   />
                 )}
                 {editColumnsMarkup}
@@ -595,8 +469,8 @@ export function IndexFilters({
                   onQueryChange={() => {}}
                   onQueryClear={() => {}}
                   onAddFilterClick={onAddFilterClick}
-                  filters={filtersWithSearch}
-                  appliedFilters={getAppliedFilters}
+                  filters={filters}
+                  appliedFilters={appliedFilters}
                   onClearAll={onClearAll}
                   disableFilters={disabled}
                   hideFilters={hideFilters}

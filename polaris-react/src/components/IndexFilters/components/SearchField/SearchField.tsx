@@ -1,6 +1,7 @@
 import React, {useId, useState} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
+import {Box} from '../../../Box';
 import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
@@ -17,7 +18,6 @@ export interface SearchFieldProps {
   onFocus?: () => void;
   onBlur?: () => void;
   onClear?: () => void;
-  onKeyDownEnter?(): void;
 }
 
 export function SearchField({
@@ -30,7 +30,6 @@ export function SearchField({
   onClear,
   onFocus,
   onBlur,
-  onKeyDownEnter,
 }: SearchFieldProps) {
   const id = useId();
   const i18n = useI18n();
@@ -49,10 +48,6 @@ export function SearchField({
     }
   }
 
-  function handleKeyDown(event: React.KeyboardEvent) {
-    if (event.key === 'Enter') onKeyDownEnter?.();
-  }
-
   function handleFocus() {
     onFocus?.();
     setFocused(true);
@@ -64,12 +59,10 @@ export function SearchField({
   }
 
   return (
-    <div
-      onKeyDown={handleKeyDown}
-      style={{width: '100%', minWidth: mdUp ? '22.5rem' : 'none'}}
-    >
+    <Box width="100%" minWidth={mdUp ? '22.5rem' : 'none'}>
       <TextField
         id={id}
+        autoFocus
         value={value}
         onChange={handleChange}
         onFocus={handleFocus}
@@ -90,6 +83,6 @@ export function SearchField({
         clearButton
         loading={loading}
       />
-    </div>
+    </Box>
   );
 }
