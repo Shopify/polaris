@@ -62,7 +62,6 @@ export function SearchField({
     <Box width="100%" minWidth={mdUp ? '22.5rem' : 'none'}>
       <TextField
         id={id}
-        autoFocus
         value={value}
         onChange={handleChange}
         onFocus={handleFocus}

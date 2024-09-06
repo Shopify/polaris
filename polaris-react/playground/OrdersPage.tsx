@@ -463,9 +463,7 @@ function OrdersIndexTableWithFilters(
     ],
   );
 
-  const {mode, setMode} = useSetIndexFiltersMode(
-    props?.withFilteringByDefault ? IndexFiltersMode.Filtering : undefined,
-  );
+  const {mode, setMode} = useSetIndexFiltersMode(IndexFiltersMode.Default);
 
   const preProcessText = (input: string) => {
     // Insert a space between numbers and letters if they are adjacent
@@ -1048,7 +1046,7 @@ function OrdersIndexTableWithFilters(
   });
 
   const primaryAction: IndexFiltersProps['primaryAction'] = {
-    type: selectedView === 0 ? 'save as' : 'save',
+    type: selectedView === 0 ? 'save-as' : 'save',
     onAction: handleSave,
     disabled:
       (!hasUnsavedChanges && selectedView !== 0) ||
