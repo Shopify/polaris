@@ -716,7 +716,7 @@ function OrdersIndexTableWithFilters(
       fulfillmentStatus: string[];
       status: string[];
     } = {
-      queryValue,
+      queryValue: '',
       paymentStatus: [],
       fulfillmentStatus: [],
       status: [],
