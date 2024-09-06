@@ -1,4 +1,4 @@
-import React, {useMemo, useEffect, useCallback, useRef, useState} from 'react';
+import React, {useMemo, useCallback, useRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
@@ -12,7 +12,6 @@ import {Filters} from '../Filters';
 import type {FiltersProps} from '../Filters';
 import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
-import {TextField} from '../TextField';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
 import {useIsSticky} from './hooks';
@@ -440,9 +439,6 @@ export function IndexFilters({
                     disabled={disabled}
                     pressed={mode === IndexFiltersMode.Filtering}
                     disclosureZIndexOverride={disclosureZIndexOverride}
-                    hasAppliedFilters={
-                      appliedFilters && appliedFilters?.length > 0
-                    }
                     onClick={handleClickFilterButton}
                   />
                 )}
