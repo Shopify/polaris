@@ -749,7 +749,7 @@ function OrdersIndexTableWithFilters(
       status: string[];
     } = {
       contains: '',
-      queryValue,
+      queryValue: '',
       paymentStatus: [],
       fulfillmentStatus: [],
       status: [],
