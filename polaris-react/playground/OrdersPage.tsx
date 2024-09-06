@@ -881,7 +881,6 @@ function OrdersIndexTableWithFilters(
   const appliedFilters: AppliedFilterInterface[] = [];
 
   Object.entries({
-    queryValue,
     contains,
     status,
     paymentStatus,
@@ -901,6 +900,25 @@ function OrdersIndexTableWithFilters(
       onRemove: handlers[key].remove,
     });
   });
+
+  const appliedFiltersWithQueryValue = [
+    ...appliedFilters,
+    {
+      key: 'queryValue',
+      value: queryValue,
+      label: getHumanReadableValue(handlers.queryValue.label, queryValue),
+      unsavedChanges:
+        selectedView === 0
+          ? true
+          : isUnsaved(
+              queryValue,
+              savedViewFilters[selectedView].find(
+                (filter) => filter.key === 'queryValue',
+              )?.value,
+            ),
+      onRemove: handlers.queryValue.remove,
+    },
+  ];
 
   const appliedFilterMatchesSavedFilter = (
     appliedFilter: AppliedFilterInterface,
@@ -923,10 +941,11 @@ function OrdersIndexTableWithFilters(
   };
 
   const hasUnsavedChanges =
-    (!savedViewFilters[selectedView] && appliedFilters.length > 0) ||
-    (appliedFilters.length === 0 &&
+    (!savedViewFilters[selectedView] &&
+      appliedFiltersWithQueryValue.length > 0) ||
+    (appliedFiltersWithQueryValue.length === 0 &&
       savedViewFilters[selectedView]?.length > 0) ||
-    !appliedFilters.every(appliedFilterMatchesSavedFilter);
+    !appliedFiltersWithQueryValue.every(appliedFilterMatchesSavedFilter);
 
   // ---- View event handlers
   const sleep = (ms: number) => {
@@ -990,7 +1009,7 @@ function OrdersIndexTableWithFilters(
       const nextSavedFilters = [...savedViewFilters];
       nextSavedFilters[index] = nextFilters
         ? nextFilters
-        : appliedFilters.map(({key, value, label}) => ({
+        : appliedFiltersWithQueryValue.map(({key, value, label}) => ({
             key,
             value,
             label,
@@ -1000,7 +1019,7 @@ function OrdersIndexTableWithFilters(
       await sleep(300);
       return true;
     },
-    [appliedFilters, savedViewFilters],
+    [appliedFiltersWithQueryValue, savedViewFilters],
   );
 
   const handleCreateNewView = async (name: string) => {
