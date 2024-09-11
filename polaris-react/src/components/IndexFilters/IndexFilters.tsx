@@ -4,8 +4,6 @@ import {Transition} from 'react-transition-group';
 import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
 import {useEventListener} from '../../utilities/use-event-listener';
-import {useToggle} from '../../utilities/use-toggle';
-import {useOnValueChange} from '../../utilities/use-on-value-change';
 import {InlineStack} from '../InlineStack';
 import {Spinner} from '../Spinner';
 import {Filters} from '../Filters';
