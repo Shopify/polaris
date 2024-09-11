@@ -59,7 +59,7 @@ export function SearchField({
   }
 
   return (
-    <Box width="100%" minWidth={mdUp ? '22.5rem' : 'none'}>
+    <Box width="100%">
       <TextField
         id={id}
         autoFocus

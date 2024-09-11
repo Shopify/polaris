@@ -420,12 +420,12 @@ export function IndexFilters({
                   </div>
                 )}
 
-                {hideFilters ? null : (
+                {hideFilters || mode === IndexFiltersMode.Filtering ? null : (
                   <FilterButton
                     label={searchFilterAriaLabel}
                     tooltipContent={searchFilterTooltip}
                     disabled={disabled}
-                    pressed={mode === IndexFiltersMode.Filtering}
+                    // pressed={mode === IndexFiltersMode.Filtering}
                     disclosureZIndexOverride={disclosureZIndexOverride}
                     // hasAppliedFilters={
                     //    appliedFilters && appliedFilters?.length > 0
