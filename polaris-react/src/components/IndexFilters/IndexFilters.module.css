@@ -92,11 +92,13 @@
   align-items: center;
   justify-content: flex-start;
   padding: var(--p-space-150) var(--p-space-200);
+  min-width: 24rem;
 
   @media (--p-breakpoints-md-down) {
     padding: var(--p-space-200);
     height: 3rem;
     border-left: var(--p-border-width-025) solid var(--p-color-border-secondary);
+    min-width: none;
 
     &::before {
       content: '';

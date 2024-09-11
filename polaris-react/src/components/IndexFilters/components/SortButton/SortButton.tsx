@@ -48,7 +48,6 @@ export function SortButton({
   const [selectedValueKey, selectedDirection] = selected[0].split(' ');
 
   function handleClick() {
-    if (!active) onClick();
     setActive((pastActive) => !pastActive);
   }
 
@@ -57,6 +56,7 @@ export function SortButton({
   }
 
   function handleChangeChoiceList(sel: string[]) {
+    onClick();
     if (onChangeKey) {
       const [key] = sel[0].split(' ');
       onChangeKey(key);
@@ -66,6 +66,7 @@ export function SortButton({
   }
 
   function handleChangeDirection(sel: string[]) {
+    onClick();
     if (onChangeDirection) {
       const [, direction] = sel[0].split(' ');
       onChangeDirection(direction);
