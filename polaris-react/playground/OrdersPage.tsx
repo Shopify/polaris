@@ -388,13 +388,13 @@ function OrdersIndexTableWithFilters(
   },
 ) {
   const sortOptions: IndexFiltersProps['sortOptions'] = [
-    {label: 'Order', value: 'order asc', directionLabel: 'Ascending'},
+    {label: 'Order', value: 'order desc', directionLabel: 'Ascending'},
     {label: 'Order', value: 'order desc', directionLabel: 'Descending'},
-    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
+    {label: 'Customer', value: 'customer desc', directionLabel: 'A-Z'},
     {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
-    {label: 'Date', value: 'date asc', directionLabel: 'A-Z'},
+    {label: 'Date', value: 'date desc', directionLabel: 'A-Z'},
     {label: 'Date', value: 'date desc', directionLabel: 'Z-A'},
-    {label: 'Total', value: 'total asc', directionLabel: 'Ascending'},
+    {label: 'Total', value: 'total desc', directionLabel: 'Ascending'},
     {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
   ];
 
@@ -406,7 +406,7 @@ function OrdersIndexTableWithFilters(
     'Archived',
   ]);
   const [selectedView, setSelectedView] = useState(0);
-  const [sortSelected, setSortSelected] = useState(['order asc']);
+  const [sortSelected, setSortSelected] = useState(['order desc']);
   const [queryValue, setQueryValue] = useState('');
   const [status, setStatus] = useState<string[]>([]);
   const [paymentStatus, setPaymentStatus] = useState<string[]>([]);
@@ -458,11 +458,11 @@ function OrdersIndexTableWithFilters(
   );
 
   const [savedSortSelected, setSavedSortSelected] = useState([
-    'order asc',
-    'order asc',
-    'order asc',
-    'order asc',
-    'order asc',
+    'order desc',
+    'order desc',
+    'order desc',
+    'order desc',
+    'order desc',
   ]);
 
   const {mode, setMode} = useSetIndexFiltersMode(IndexFiltersMode.Default);
@@ -628,30 +628,6 @@ function OrdersIndexTableWithFilters(
     handleFilterOrders({status: []});
   };
 
-  function isEmpty(value: string | string[]) {
-    return Array.isArray(value) ? value.length === 0 : value === '';
-  }
-
-  const isUnsaved = (
-    value?: string | string[],
-    savedValue?: string | string[],
-  ) => {
-    if (value === undefined) return false;
-    if (value.length && savedValue === undefined) return true;
-
-    const isArray = Array.isArray(value) && Array.isArray(status);
-    const isString =
-      typeof value === 'string' && typeof savedValue === 'string';
-
-    if (isString) return value !== savedValue;
-    if (isArray)
-      return !(
-        savedValue?.length &&
-        value.length === savedValue.length &&
-        value.every((status) => savedValue.indexOf(status) > -1)
-      );
-  };
-
   const handlers = {
     queryValue: {
       set: setQueryValue,
@@ -683,6 +659,32 @@ function OrdersIndexTableWithFilters(
     },
   };
 
+  // ----  Applied filter event handlers ----
+
+  function isEmpty(value: string | string[]) {
+    return Array.isArray(value) ? value.length === 0 : value === '';
+  }
+
+  const isUnsaved = (
+    value?: string | string[],
+    savedValue?: string | string[],
+  ) => {
+    if (value === undefined) return false;
+    if (value.length && savedValue === undefined) return true;
+
+    const isArray = Array.isArray(value) && Array.isArray(status);
+    const isString =
+      typeof value === 'string' && typeof savedValue === 'string';
+
+    if (isString) return value !== savedValue;
+    if (isArray)
+      return !(
+        savedValue?.length &&
+        value.length === savedValue.length &&
+        value.every((status) => savedValue.indexOf(status) > -1)
+      );
+  };
+
   const handleChangeFilters = (nextFilterValues: {
     queryValue?: string;
     paymentStatus?: string[];
@@ -698,7 +700,6 @@ function OrdersIndexTableWithFilters(
     handleFilterOrders(nextFilterValues);
   };
 
-  // ----  Applied filter event handlers ----
   const handleResetToSavedFilters = (view: number) => {
     const nextFilters: {
       queryValue: string;
@@ -720,6 +721,7 @@ function OrdersIndexTableWithFilters(
       `resetting to ---
         `,
       nextFilters,
+      [savedSortSelected[view]],
     );
 
     setSortSelected([savedSortSelected[view]]);
@@ -758,7 +760,8 @@ function OrdersIndexTableWithFilters(
 
     return `${label}: ${humanReadableValue}`;
   };
-  // ----
+
+  // ---- Filters
 
   const filters: FilterInterface[] = [
     {
@@ -846,7 +849,7 @@ function OrdersIndexTableWithFilters(
       value,
       label: getHumanReadableValue(handlers[key].label, value),
       unsavedChanges: selectedView === 0 ? true : isUnsaved(value, savedValue),
-      onRemove: handlers[key].remove,
+      onRemove: key === 'queryValue' ? undefined : handlers[key].remove,
     });
   });
 
@@ -870,12 +873,18 @@ function OrdersIndexTableWithFilters(
     }
   };
 
-  const hasUnsavedChanges =
-    sortSelected[0] !== savedSortSelected[selectedView] ||
+  const hasUnsavedSortChange =
+    (selectedView === 0 && sortSelected[0] !== 'order desc') ||
+    sortSelected[0] !== savedSortSelected[selectedView];
+
+  const hasUnsavedFilterChange =
+    (selectedView === 0 && appliedFilters.length > 0) ||
     (!savedViewFilters[selectedView] && appliedFilters.length > 0) ||
     (appliedFilters.length === 0 &&
       savedViewFilters[selectedView]?.length > 0) ||
     !appliedFilters.every(appliedFilterMatchesSavedFilter);
+
+  const hasUnsavedChanges = hasUnsavedSortChange || hasUnsavedFilterChange;
 
   // ---- View event handlers
   const sleep = (ms: number) => {
@@ -897,18 +906,11 @@ function OrdersIndexTableWithFilters(
 
   const handleSelectView = async (view: number) => {
     const previousView = selectedView;
+    const previousSortSelected = sortSelected[0];
     let nextFilters;
-    if (previousView === 0 && (queryValue || hasUnsavedChanges)) {
+
+    if (previousView === 0 && hasUnsavedChanges) {
       nextFilters = getFiltersToSave();
-    } else if (queryValue) {
-      nextFilters = [
-        ...savedViewFilters[previousView],
-        {
-          key: 'queryValue',
-          value: queryValue,
-          label: handlers.queryValue.label,
-        },
-      ];
     }
 
     setQueryValue('');
@@ -916,8 +918,13 @@ function OrdersIndexTableWithFilters(
     setSelectedView(view);
     setLoading(true);
     handleResetToSavedFilters(view);
-    if (nextFilters) await handleSaveViewFilters(previousView, nextFilters);
-    else await sleep(250);
+    if (nextFilters) {
+      await handleSaveViewFilters(
+        previousView,
+        nextFilters,
+        previousSortSelected,
+      );
+    } else await sleep(250);
     setLoading(false);
   };
 
@@ -1014,7 +1021,7 @@ function OrdersIndexTableWithFilters(
       setSavedViewFilters((filters) => [...filters, []]);
       setSavedSortSelected((currentSavedSortSelected) => [
         ...currentSavedSortSelected,
-        'order asc',
+        'order desc',
       ]);
     }
 
@@ -1052,13 +1059,19 @@ function OrdersIndexTableWithFilters(
   const handleCancel = () => {
     if (!hasUnsavedChanges) {
       console.log('cancelled -- no unsaved changes');
-      // } else if (selectedView === 0) {
-      //   console.log('cancelled -- persisting all');
+    } else if (selectedView === 0) {
+      console.log('cancelled -- clearing all');
+      const nextSavedSortSelected = [...savedSortSelected];
+      nextSavedSortSelected[0] = 'order desc';
+      handleClearFilters();
+      setSortSelected(['order desc']);
+      setSavedSortSelected(nextSavedSortSelected);
     } else {
       handleResetToSavedFilters(selectedView);
       console.log('cancelled -- resetting to saved');
     }
   };
+
   const tabs: TabProps[] = viewNames.map((name, index) => {
     return {
       index,
@@ -1095,7 +1108,6 @@ function OrdersIndexTableWithFilters(
 
   const cancelAction: IndexFiltersProps['cancelAction'] = {
     onAction: handleCancel,
-    disabled: !hasUnsavedChanges,
   };
 
   const queryPlaceholder = `Search ${viewNames[selectedView]?.toLowerCase()}`;
@@ -1124,7 +1136,7 @@ function OrdersIndexTableWithFilters(
         onClearAll={handleClearFilters}
         mode={mode}
         setMode={setMode}
-        sortUnsaved={sortSelected[0] !== savedSortSelected[selectedView]}
+        sortUnsaved={hasUnsavedSortChange}
       />
       <Table orders={filteredOrders} />
     </Card>

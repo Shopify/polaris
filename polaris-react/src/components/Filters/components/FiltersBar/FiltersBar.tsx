@@ -217,7 +217,9 @@ export function FiltersBar({
           label={appliedFilter?.label || pinnedFilter.label}
           filterKey={filterKey}
           selected={appliedFilterKeys?.includes(filterKey)}
-          onRemove={handleFilterPillRemove}
+          onRemove={
+            appliedFilter?.onRemove ? handleFilterPillRemove : undefined
+          }
           disabled={pinnedFilter.disabled || disableFilters}
           closeOnChildOverlayClick={closeOnChildOverlayClick}
         />
