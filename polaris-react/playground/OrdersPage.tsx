@@ -877,16 +877,6 @@ function OrdersIndexTableWithFilters(
       savedViewFilters[selectedView]?.length > 0) ||
     !appliedFilters.every(appliedFilterMatchesSavedFilter);
 
-  console.log(
-    selectedView,
-    viewNames,
-    hasUnsavedChanges,
-    savedViewFilters,
-    appliedFilters,
-    savedSortSelected,
-    sortSelected[0],
-  );
-
   // ---- View event handlers
   const sleep = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
