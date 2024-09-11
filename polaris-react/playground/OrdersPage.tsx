@@ -1052,8 +1052,8 @@ function OrdersIndexTableWithFilters(
   const handleCancel = () => {
     if (!hasUnsavedChanges) {
       console.log('cancelled -- no unsaved changes');
-    } else if (selectedView === 0) {
-      console.log('cancelled -- persisting all');
+      // } else if (selectedView === 0) {
+      //   console.log('cancelled -- persisting all');
     } else {
       handleResetToSavedFilters(selectedView);
       console.log('cancelled -- resetting to saved');
