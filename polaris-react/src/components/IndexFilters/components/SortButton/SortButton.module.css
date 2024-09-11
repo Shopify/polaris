@@ -1,0 +1,14 @@
+.FilterButton {
+  position: relative;
+}
+
+.AppliedFilterIndicator {
+  position: absolute;
+  top: var(--p-space-300);
+  right: var(--p-space-300);
+  background: var(--p-color-bg-fill-emphasis);
+  border-radius: var(--p-border-radius-full);
+  border: var(--p-border-width-025) solid var(--p-color-bg-surface);
+  width: var(--p-width-200);
+  height: var(--p-height-200);
+}

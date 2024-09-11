@@ -65,6 +65,10 @@ export interface IndexFiltersProps
   sortOptions?: SortButtonChoice[];
   /** The currently selected sort choice. Required if using sorting */
   sortSelected?: string[];
+  /** Whether or not the current sort order has been saved. An indicator of unsaved changes renders when sort is unsaved.
+   * @default false
+   */
+  sortUnsaved?: boolean;
   /** Optional callback invoked when a merchant changes the sort order. Required if using sorting */
   onSort?: (value: string[]) => void;
   /** Optional callback when using saved views and changing the sort key */
@@ -108,8 +112,6 @@ export interface IndexFiltersProps
   disableKeyboardShortcuts?: boolean;
   /** Whether to display the edit columns button with the other default mode filter actions */
   showEditColumnsButton?: boolean;
-  /** Whether or not to auto-focus the search field when it renders */
-  autoFocusSearchField?: boolean;
 }
 
 export function IndexFilters({
@@ -120,6 +122,7 @@ export function IndexFilters({
   onSortKeyChange,
   onSortDirectionChange,
   onAddFilterClick,
+  sortUnsaved,
   sortOptions,
   sortSelected,
   queryValue = '',
@@ -137,7 +140,7 @@ export function IndexFilters({
   disableQueryField,
   hideFilters,
   loading,
-  mode,
+  mode = IndexFiltersMode.Default,
   setMode,
   disclosureZIndexOverride,
   disableStickyMode,
@@ -150,28 +153,11 @@ export function IndexFilters({
   closeOnChildOverlayClick,
   disableKeyboardShortcuts,
   showEditColumnsButton,
-  autoFocusSearchField = true,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
   const defaultRef = useRef(null);
   const filteringRef = useRef(null);
-
-  const {
-    value: filtersFocused,
-    setFalse: setFiltersUnFocused,
-    setTrue: setFiltersFocused,
-  } = useToggle(mode === IndexFiltersMode.Filtering && autoFocusSearchField);
-
-  const handleModeChange = (newMode: IndexFiltersMode) => {
-    if (newMode === IndexFiltersMode.Filtering && autoFocusSearchField) {
-      setFiltersFocused();
-    } else {
-      setFiltersUnFocused();
-    }
-  };
-
-  useOnValueChange(mode, handleModeChange);
 
   useEventListener('keydown', (event) => {
     const hasNoFiltersOrSearch = hideQueryField && hideFilters;
@@ -275,17 +261,23 @@ export function IndexFilters({
       <SortButton
         choices={sortOptions}
         selected={sortSelected!}
+        disabled={disabled}
+        hasUnsavedChanges={sortUnsaved}
+        disclosureZIndexOverride={disclosureZIndexOverride}
+        onClick={() => {
+          setMode(IndexFiltersMode.Filtering);
+        }}
         onChange={handleChangeSortButton}
         onChangeKey={onSortKeyChange}
         onChangeDirection={onSortDirectionChange}
-        disabled={disabled}
-        disclosureZIndexOverride={disclosureZIndexOverride}
       />
     );
   }, [
+    setMode,
     handleChangeSortButton,
     onSortDirectionChange,
     onSortKeyChange,
+    sortUnsaved,
     sortOptions,
     sortSelected,
     disabled,
@@ -341,21 +333,20 @@ export function IndexFilters({
 
   const handleQueryChange = useCallback(
     (value: string) => {
+      if (mode === IndexFiltersMode.Default) {
+        setMode(IndexFiltersMode.Filtering);
+      }
+
       onQueryChange(value);
     },
-    [onQueryChange],
+    [mode, onQueryChange, setMode],
   );
 
   const handleQueryClear = useCallback(() => {
     onQueryClear?.();
   }, [onQueryClear]);
 
-  function handleQueryBlur() {
-    setFiltersUnFocused();
-  }
-
   function handleQueryFocus() {
-    setFiltersFocused();
     onQueryFocus?.();
   }
 
@@ -423,7 +414,6 @@ export function IndexFilters({
                   disabled={disabled || disableQueryField}
                   onChange={handleQueryChange}
                   onFocus={handleQueryFocus}
-                  onBlur={handleQueryBlur}
                   onClear={handleQueryClear}
                 />
                 {isLoading && !mdDown && (
@@ -439,9 +429,9 @@ export function IndexFilters({
                     disabled={disabled}
                     pressed={mode === IndexFiltersMode.Filtering}
                     disclosureZIndexOverride={disclosureZIndexOverride}
-                    hasAppliedFilters={
-                      appliedFilters && appliedFilters?.length > 0
-                    }
+                    // hasAppliedFilters={
+                    //    appliedFilters && appliedFilters?.length > 0
+                    // }
                     onClick={handleClickFilterButton}
                   />
                 )}
@@ -474,7 +464,6 @@ export function IndexFilters({
                   disableFilters={disabled}
                   hideFilters={hideFilters}
                   loading={loading || isActionLoading}
-                  focused={filtersFocused}
                   mountedState={mdDown ? undefined : state}
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
