@@ -58,6 +58,7 @@ describe('SortButton', () => {
   it('shows the popover on click and hides it on click again', () => {
     const props: SortButtonProps = {
       onChange: jest.fn(),
+      onClick: jest.fn(),
       choices,
       selected: ['order-number asc'],
     };
@@ -84,6 +85,7 @@ describe('SortButton', () => {
     const disclosureZIndexOverride = 517;
     const props: SortButtonProps = {
       onChange: jest.fn(),
+      onClick: jest.fn(),
       choices,
       selected: ['order-number asc'],
       disclosureZIndexOverride,
@@ -99,6 +101,7 @@ describe('SortButton', () => {
     const disclosureZIndexOverride = 517;
     const props: SortButtonProps = {
       onChange: jest.fn(),
+      onClick: jest.fn(),
       choices,
       selected: ['order-number asc'],
       disclosureZIndexOverride,
@@ -113,6 +116,7 @@ describe('SortButton', () => {
   it('fires the onChange handler when the ChoiceList changes', () => {
     const props: SortButtonProps = {
       onChange: jest.fn(),
+      onClick: jest.fn(),
       choices,
       selected: ['order-number asc'],
     };
@@ -132,6 +136,7 @@ describe('SortButton', () => {
   it('selects ascending', () => {
     const props: SortButtonProps = {
       onChange: jest.fn(),
+      onClick: jest.fn(),
       choices,
       selected: ['order-number asc'],
     };
@@ -150,6 +155,7 @@ describe('SortButton', () => {
   it('selects descending', () => {
     const props: SortButtonProps = {
       onChange: jest.fn(),
+      onClick: jest.fn(),
       choices,
       selected: ['order-number desc'],
     };
@@ -168,6 +174,7 @@ describe('SortButton', () => {
   it('invokes onChange when clicking the ascending button', () => {
     const props: SortButtonProps = {
       onChange: jest.fn(),
+      onClick: jest.fn(),
       choices,
       selected: ['order-number desc'],
     };
@@ -190,6 +197,7 @@ describe('SortButton', () => {
   it('invokes onChange when clicking the descending button', () => {
     const props: SortButtonProps = {
       onChange: jest.fn(),
+      onClick: jest.fn(),
       choices,
       selected: ['order-number asc'],
     };
