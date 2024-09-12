@@ -316,8 +316,8 @@ importers:
         specifier: ^8.0.8
         version: 8.0.9(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       '@storybook/components':
-        specifier: ^8.0.8
-        version: 8.0.9(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^8.3.0
+        version: 8.3.0(storybook@8.0.9)
       '@storybook/manager-api':
         specifier: ^8.0.8
         version: 8.0.9(react-dom@18.2.0)(react@18.2.0)
@@ -5451,6 +5451,14 @@ packages:
       util-deprecate: 1.0.2
     transitivePeerDependencies:
       - '@types/react'
+    dev: true
+
+  /@storybook/components@8.3.0(storybook@8.0.9):
+    resolution: {integrity: sha512-SO/iTkmWp3aYCIy8DEhRMoOn6K7lcKTPNC/YjTvOFFzwq/CLq86WNqz6aX+wV5n6MvWTs7evSwMoz7lp4Lc4sw==}
+    peerDependencies:
+      storybook: ^8.3.0
+    dependencies:
+      storybook: 8.0.9(@babel/preset-env@7.23.6)(react-dom@18.2.0)(react@18.2.0)
     dev: true
 
   /@storybook/core-common@8.0.9:
