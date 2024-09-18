@@ -93,7 +93,7 @@
   }
 
   &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-surface-hover);
+    background-color: var(--p-color-bg-fill-transparent-selected);
     color: var(--p-color-text);
   }
 
@@ -112,7 +112,7 @@
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-surface-tertiary);
+    background-color: var(--p-color-bg-fill-transparent-selected);
     color: var(--p-color-text-brand);
     z-index: var(--p-z-index-1);
   }
@@ -133,7 +133,7 @@
   }
 
   &:not([aria-disabled='true']):hover,
-  &:not([aria-disabled='true']):focus {
+  &:not([aria-disabled='true']):focus-visible {
     background-color: var(--p-color-bg-fill-transparent-hover);
     color: var(--p-color-text-brand);
   }
