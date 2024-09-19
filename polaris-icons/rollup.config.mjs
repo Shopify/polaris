@@ -40,7 +40,7 @@ iconPaths.forEach((filename) => {
     ...iconData,
   };
   iconExports.push(
-    `export {default as ${exportName}} from '../icons/${exportName}.svg';`,
+    `export {default as ${exportName}} from '../icons/EmptyIcon.svg';`,
   );
   iconTypes.push(
     `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
