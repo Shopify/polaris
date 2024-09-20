@@ -337,8 +337,8 @@ importers:
         specifier: ^0.17.0
         version: 0.17.0(@types/node@20.12.5)(ts-node@10.7.0)
       '@storybook/theming':
-        specifier: ^8.0.8
-        version: 8.0.9(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^8.3.2
+        version: 8.3.2(storybook@8.0.9)
       '@types/js-yaml':
         specifier: ^4.0.5
         version: 4.0.5
@@ -5873,6 +5873,14 @@ packages:
       memoizerific: 1.11.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: true
+
+  /@storybook/theming@8.3.2(storybook@8.0.9):
+    resolution: {integrity: sha512-JXAVc08Tlbu4GTTMGNmwUy69lShqSpJixAJc4bvWTnNAtPTRltiNJCg/KJ0GauEyRFk8ZR2Ha4KhN3DB1felNQ==}
+    peerDependencies:
+      storybook: ^8.3.2
+    dependencies:
+      storybook: 8.0.9(@babel/preset-env@7.23.6)(react-dom@18.2.0)(react@18.2.0)
     dev: true
 
   /@storybook/types@8.0.9:
@@ -12369,7 +12377,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
