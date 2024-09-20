@@ -76,6 +76,7 @@ export const TabMeasurer = memo(function TabMeasurer({
         selected={index === selected}
         url={tab.url}
         content={tab.content}
+        badge={tab.badge}
         onTogglePopover={noop}
         onToggleModal={noop}
       />
