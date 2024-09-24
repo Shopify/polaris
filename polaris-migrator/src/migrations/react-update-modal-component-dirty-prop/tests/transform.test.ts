@@ -26,6 +26,12 @@ const fixtures = [
   {
     name: 'with-use-route-form-import',
   },
+  {
+    name: 'with-use-route-form-import-and-dirty-object',
+  },
+  {
+    name: 'with-use-route-form-import-and-dirty-variable',
+  },
 ];
 
 for (const fixture of fixtures) {

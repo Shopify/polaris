@@ -55,9 +55,27 @@ export default function transformer(fileInfo: FileInfo, {jscodeshift: j}: API) {
     [],
   );
 
-  const hasDirtyIdentifier = source
-    .find(j.Identifier)
-    .some((path) => path.node.name === 'dirty');
+  const hasDirtyIdentifier = source.find(j.VariableDeclarator).some((path) => {
+    const {id} = path.node;
+
+    return (
+      (id.type === 'Identifier' && id.name === 'dirty') ||
+      (id.type === 'ArrayPattern' &&
+        id.elements.some(
+          (element) =>
+            element &&
+            element.type === 'Identifier' &&
+            element.name === 'dirty',
+        )) ||
+      (id.type === 'ObjectPattern' &&
+        id.properties.some(
+          (property) =>
+            property.type === 'ObjectProperty' &&
+            property.key.type === 'Identifier' &&
+            property.key.name === 'dirty',
+        ))
+    );
+  });
 
   source.find(j.JSXElement).forEach((element) => {
     if (element.node.openingElement.name.type !== 'JSXIdentifier') return;
