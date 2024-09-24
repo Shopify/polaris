@@ -1,6 +1,7 @@
 import React from 'react';
 // @ts-expect-error
 import {Modal, TextContainer} from '@shopify/polaris-internal';
+
 // @ts-expect-error
 import FormState from '~/shared/utilities/react-form-state';
 
