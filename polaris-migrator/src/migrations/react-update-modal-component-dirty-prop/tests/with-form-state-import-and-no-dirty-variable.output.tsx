@@ -9,7 +9,7 @@ export function App() {
     <FormState>
       {(formDetails) => {
         return (
-          /* Verify if `dirty` variable exists in the file */
+          /* polaris-migrator: Verify if `dirty` variable exists in the file */
           <Modal
             open={false}
             onClose={() => {}}

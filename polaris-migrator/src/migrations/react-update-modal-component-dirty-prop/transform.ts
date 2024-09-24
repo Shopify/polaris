@@ -84,7 +84,7 @@ export default function transformer(fileInfo: FileInfo, {jscodeshift: j}: API) {
         insertCommentBefore(
           j,
           element,
-          'Verify if `dirty` variable exists in the file',
+          'polaris-migrator: Verify if `dirty` variable exists in the file',
         );
       }
     }
