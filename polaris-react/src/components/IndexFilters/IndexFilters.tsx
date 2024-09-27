@@ -1,9 +1,6 @@
 import React, {useMemo, useCallback, useRef} from 'react';
-import {Transition} from 'react-transition-group';
 
-import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
-import {useEventListener} from '../../utilities/use-event-listener';
 import {InlineStack} from '../InlineStack';
 import {Spinner} from '../Spinner';
 import {Filters} from '../Filters';
@@ -16,8 +13,6 @@ import {useIsSticky} from './hooks';
 import {
   Container,
   SortButton,
-  SearchField,
-  FilterButton,
   UpdateButtons,
   EditColumnsButton,
 } from './components';
@@ -28,23 +23,6 @@ import type {
 } from './types';
 import {IndexFiltersMode} from './types';
 import styles from './IndexFilters.module.css';
-
-const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
-
-const TRANSITION_DURATION = 150;
-
-const defaultStyle = {
-  transition: `opacity ${TRANSITION_DURATION}ms var(--p-motion-ease)`,
-  opacity: 0,
-};
-
-const transitionStyles = {
-  entering: {opacity: 1},
-  entered: {opacity: 1},
-  exiting: {opacity: 0},
-  exited: {opacity: 0},
-  unmounted: {opacity: 0},
-};
 
 type ExecutedCallback = (name: string) => Promise<boolean>;
 
@@ -99,15 +77,8 @@ export interface IndexFiltersProps
   canCreateNewView?: boolean;
   /** Callback invoked when a merchant creates a new view */
   onCreateNewView?: (name: string) => Promise<boolean>;
-  /** Optional override to the default aria-label for the button that toggles the filtering mode */
-  filteringAccessibilityLabel?: string;
-  /** Optional override to the default Tooltip message for the button that toggles the filtering mode */
-  filteringAccessibilityTooltip?: string;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
-  /** Optional override to the default keyboard shortcuts available. Should be set to true for all instances
-   * of this component not controlling a root-level index */
-  disableKeyboardShortcuts?: boolean;
   /** Whether to display the edit columns button with the other default mode filter actions */
   showEditColumnsButton?: boolean;
 }
@@ -134,50 +105,27 @@ export function IndexFilters({
   onQueryFocus,
   onQueryClear,
   onEditStart,
+  mode,
+  setMode,
   disabled,
   disableQueryField,
   hideFilters,
   loading,
-  mode = IndexFiltersMode.Default,
-  setMode,
   disclosureZIndexOverride,
   disableStickyMode,
   isFlushWhenSticky = false,
   canCreateNewView = true,
   onCreateNewView,
-  filteringAccessibilityLabel,
-  filteringAccessibilityTooltip,
   hideQueryField,
   closeOnChildOverlayClick,
-  disableKeyboardShortcuts,
   showEditColumnsButton,
 }: IndexFiltersProps) {
-  const i18n = useI18n();
   const {mdDown} = useBreakpoints();
   const defaultRef = useRef(null);
   const filteringRef = useRef(null);
 
-  useEventListener('keydown', (event) => {
-    const hasNoFiltersOrSearch = hideQueryField && hideFilters;
-    if (disableKeyboardShortcuts || hasNoFiltersOrSearch) return;
-
-    const {key} = event;
-    const tag = document?.activeElement?.tagName;
-    if (mode !== IndexFiltersMode.Default && event.key === 'Escape') {
-      onPressEscape();
-    }
-
-    if (key === 'f' && mode === IndexFiltersMode.Default) {
-      if (tag && DEFAULT_IGNORED_TAGS.includes(tag)) {
-        return;
-      }
-      onPressF();
-      event.preventDefault();
-    }
-  });
-
   const {intersectionRef, measurerRef, indexFilteringHeight, isSticky} =
-    useIsSticky(mode, Boolean(disableStickyMode), isFlushWhenSticky);
+    useIsSticky(Boolean(disableStickyMode), isFlushWhenSticky);
 
   const viewNames = tabs.map(({content}) => content);
 
@@ -196,7 +144,7 @@ export function IndexFilters({
       async (name: string) => {
         const hasExecuted = await action?.(name);
         if (hasExecuted) {
-          setMode(IndexFiltersMode.Default);
+          // setMode(IndexFiltersMode.Default);
           afterEffect?.();
         }
       },
@@ -207,10 +155,7 @@ export function IndexFilters({
 
   const onExecutedCancelAction = useCallback(() => {
     cancelAction?.onAction?.();
-    // setSearchOnlyValue('');
-    // setSearchFilterValue('');
-    setMode(IndexFiltersMode.Default);
-  }, [cancelAction, setMode]);
+  }, [cancelAction]);
 
   const enhancedPrimaryAction = useMemo(() => {
     return primaryAction
@@ -262,16 +207,12 @@ export function IndexFilters({
         disabled={disabled}
         hasUnsavedChanges={sortUnsaved}
         disclosureZIndexOverride={disclosureZIndexOverride}
-        onClick={() => {
-          setMode(IndexFiltersMode.Filtering);
-        }}
         onChange={handleChangeSortButton}
         onChangeKey={onSortKeyChange}
         onChangeDirection={onSortDirectionChange}
       />
     );
   }, [
-    setMode,
     handleChangeSortButton,
     onSortDirectionChange,
     onSortKeyChange,
@@ -295,49 +236,13 @@ export function IndexFilters({
 
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
 
-  function handleHideFilters() {
-    cancelAction?.onAction();
-    setMode(IndexFiltersMode.Default);
-  }
-
-  const handleShowFilters = useCallback(() => {
-    beginEdit(IndexFiltersMode.Filtering);
-  }, [beginEdit]);
-
-  function handleClickFilterButton() {
-    if (mode === IndexFiltersMode.Filtering) {
-      handleHideFilters();
-    } else {
-      handleShowFilters();
-    }
-  }
-
-  const searchFilterTooltipLabelId = disableKeyboardShortcuts
-    ? 'Polaris.IndexFilters.searchFilterTooltip'
-    : 'Polaris.IndexFilters.searchFilterTooltipWithShortcut';
-
-  const searchFilterTooltip =
-    filteringAccessibilityTooltip || i18n.translate(searchFilterTooltipLabelId);
-  const searchFilterAriaLabel =
-    filteringAccessibilityLabel ||
-    i18n.translate('Polaris.IndexFilters.searchFilterAccessibilityLabel');
-
   const isLoading = loading || isActionLoading;
-
-  function onPressEscape() {
-    cancelAction?.onAction();
-    setMode(IndexFiltersMode.Default);
-  }
 
   const handleQueryChange = useCallback(
     (value: string) => {
-      if (mode === IndexFiltersMode.Default) {
-        setMode(IndexFiltersMode.Filtering);
-      }
-
       onQueryChange(value);
     },
-    [mode, onQueryChange, setMode],
+    [onQueryChange],
   );
 
   const handleQueryClear = useCallback(() => {
@@ -346,14 +251,6 @@ export function IndexFilters({
 
   function handleQueryFocus() {
     onQueryFocus?.();
-  }
-
-  function onPressF() {
-    if (mode !== IndexFiltersMode.Default) {
-      return;
-    }
-
-    handleShowFilters();
   }
 
   return (
@@ -406,32 +303,10 @@ export function IndexFilters({
                 )}
               </div>
               <div className={styles.ActionWrap}>
-                <SearchField
-                  value={queryValue}
-                  placeholder={queryPlaceholder}
-                  disabled={disabled || disableQueryField}
-                  onChange={handleQueryChange}
-                  onFocus={handleQueryFocus}
-                  onClear={handleQueryClear}
-                />
                 {isLoading && !mdDown && (
                   <div className={styles.DesktopLoading}>
                     {isLoading ? <Spinner size="small" /> : null}
                   </div>
-                )}
-
-                {hideFilters || mode === IndexFiltersMode.Filtering ? null : (
-                  <FilterButton
-                    label={searchFilterAriaLabel}
-                    tooltipContent={searchFilterTooltip}
-                    disabled={disabled}
-                    // pressed={mode === IndexFiltersMode.Filtering}
-                    disclosureZIndexOverride={disclosureZIndexOverride}
-                    // hasAppliedFilters={
-                    //    appliedFilters && appliedFilters?.length > 0
-                    // }
-                    onClick={handleClickFilterButton}
-                  />
                 )}
                 {editColumnsMarkup}
                 {sortMarkup}
@@ -443,45 +318,27 @@ export function IndexFilters({
           </Container>
         </div>
 
-        <Transition
-          nodeRef={filteringRef}
-          in={mode === IndexFiltersMode.Filtering}
-          timeout={TRANSITION_DURATION}
-        >
-          {(state) => (
-            <div ref={filteringRef}>
-              {mode === IndexFiltersMode.Filtering ? (
-                <Filters
-                  hideQueryField
-                  onQueryChange={() => {}}
-                  onQueryClear={() => {}}
-                  onAddFilterClick={onAddFilterClick}
-                  filters={filters}
-                  appliedFilters={appliedFilters}
-                  onClearAll={onClearAll}
-                  disableFilters={disabled}
-                  hideFilters={hideFilters}
-                  loading={loading || isActionLoading}
-                  mountedState={mdDown ? undefined : state}
-                  closeOnChildOverlayClick={closeOnChildOverlayClick}
-                >
-                  <div className={styles.ButtonWrap}>
-                    <InlineStack gap="200" align="start" blockAlign="center">
-                      <div
-                        style={{
-                          ...defaultStyle,
-                          ...transitionStyles[state],
-                        }}
-                      >
-                        {updateButtonsMarkup}
-                      </div>
-                    </InlineStack>
-                  </div>
-                </Filters>
-              ) : null}
-            </div>
-          )}
-        </Transition>
+        <div ref={filteringRef}>
+          <Filters
+            hideQueryField={hideQueryField}
+            queryValue={queryValue}
+            queryPlaceholder={queryPlaceholder}
+            disabled={disabled || disableQueryField}
+            onQueryChange={handleQueryChange}
+            onQueryFocus={handleQueryFocus}
+            onQueryClear={handleQueryClear}
+            onAddFilterClick={onAddFilterClick}
+            filters={filters}
+            appliedFilters={appliedFilters}
+            onClearAll={onClearAll}
+            disableFilters={disabled}
+            hideFilters={hideFilters}
+            loading={loading || isActionLoading}
+            closeOnChildOverlayClick={closeOnChildOverlayClick}
+          >
+            <div className={styles.ButtonWrap}>{updateButtonsMarkup}</div>
+          </Filters>
+        </div>
       </div>
     </div>
   );

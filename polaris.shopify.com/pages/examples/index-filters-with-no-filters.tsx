@@ -234,7 +234,6 @@ function IndexFiltersWithNoFiltersExample() {
         mode={mode}
         setMode={setMode}
         hideFilters
-        filteringAccessibilityTooltip="Search (F)"
       />
       <IndexTable
         resourceName={resourceName}

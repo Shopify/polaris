@@ -465,7 +465,7 @@ function OrdersIndexTableWithFilters(
     'order desc',
   ]);
 
-  const {mode, setMode} = useSetIndexFiltersMode(IndexFiltersMode.Default);
+  const {mode, setMode} = useSetIndexFiltersMode();
 
   const preProcessText = (input: string) => {
     // Insert a space between numbers and letters if they are adjacent
@@ -555,24 +555,6 @@ function OrdersIndexTableWithFilters(
         fulfillmentStatusSet,
       );
 
-      // if (
-      //   matchesQueryValue &&
-      //   matchesPaymentStatus &&
-      //   matchesFulfillmentStatus &&
-      //   matchesStatus
-      // ) {
-      //   console.log(
-      //     `
-      //   nextFilters: `,
-      //     nextFilters,
-      //     `
-      //   matchesQueryValue: ${matchesQueryValue},
-      //   matchesPaymentStatus: ${matchesPaymentStatus},
-      //   matchesFulfillmentStatus: ${matchesFulfillmentStatus},
-      //   matchesStatus: ${matchesStatus}
-      // `,
-      //   );
-      // }
       setLoading(false);
       return (
         matchesQueryValue &&
@@ -765,12 +747,6 @@ function OrdersIndexTableWithFilters(
 
   const filters: FilterInterface[] = [
     {
-      key: 'queryValue',
-      label: handlers.queryValue.label,
-      hidden: true,
-      filter: null,
-    },
-    {
       key: 'paymentStatus',
       value: paymentStatus,
       label: handlers.paymentStatus.label,
@@ -833,7 +809,6 @@ function OrdersIndexTableWithFilters(
   const appliedFilters: AppliedFilterInterface[] = [];
 
   Object.entries({
-    queryValue,
     status,
     paymentStatus,
     fulfillmentStatus,
@@ -873,16 +848,32 @@ function OrdersIndexTableWithFilters(
     }
   };
 
+  const appliedFiltersWithQuery = [
+    ...appliedFilters,
+    {
+      key: 'queryValue',
+      value: queryValue,
+      unsavedChanges:
+        queryValue && selectedView === 0
+          ? true
+          : queryValue &&
+            queryValue !==
+              savedViewFilters[selectedView]?.find(
+                ({key}) => key === 'queryValue',
+              )?.value,
+    },
+  ];
+
   const hasUnsavedSortChange =
     (selectedView === 0 && sortSelected[0] !== 'order desc') ||
     sortSelected[0] !== savedSortSelected[selectedView];
 
   const hasUnsavedFilterChange =
-    (selectedView === 0 && appliedFilters.length > 0) ||
+    (selectedView === 0 && appliedFiltersWithQuery.length > 0) ||
     (!savedViewFilters[selectedView] && appliedFilters.length > 0) ||
-    (appliedFilters.length === 0 &&
+    (appliedFiltersWithQuery.length === 0 &&
       savedViewFilters[selectedView]?.length > 0) ||
-    !appliedFilters.every(appliedFilterMatchesSavedFilter);
+    !appliedFiltersWithQuery.every(appliedFilterMatchesSavedFilter);
 
   const hasUnsavedChanges = hasUnsavedSortChange || hasUnsavedFilterChange;
 
@@ -914,7 +905,6 @@ function OrdersIndexTableWithFilters(
     }
 
     setQueryValue('');
-    setMode(IndexFiltersMode.Default);
     setSelectedView(view);
     setLoading(true);
     handleResetToSavedFilters(view);
@@ -1032,7 +1022,6 @@ function OrdersIndexTableWithFilters(
   };
 
   const handleSaveViewAs = async (index: number, name: string) => {
-    setMode(IndexFiltersMode.Default);
     setViewNames((names) => [...names, name]);
     setSelectedView(index);
     const nextFilters = getFiltersToSave();

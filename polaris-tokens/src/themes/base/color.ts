@@ -945,7 +945,7 @@ export const color: {
       'The border color on any element. Pair with bg-surface-tertiary or bg-fill-tertiary.',
   },
   'color-border-focus': {
-    value: colors.blue[13],
+    value: colors.gray[16],
     description:
       'The focus ring for any interactive element in a focused state.',
   },

@@ -90,9 +90,8 @@
   display: flex;
   gap: var(--p-space-200);
   align-items: center;
-  justify-content: flex-start;
-  padding: var(--p-space-150) var(--p-space-200);
-  min-width: 24rem;
+  justify-content: end;
+  padding: var(--p-space-150) var(--p-space-300);
 
   @media (--p-breakpoints-md-down) {
     padding: var(--p-space-200);
@@ -135,6 +134,7 @@
 .ButtonWrap,
 .ActionWrap {
   button {
+    white-space: nowrap;
     display: flex;
   }
 }

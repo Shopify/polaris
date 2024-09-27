@@ -1,59 +1,11 @@
 import React from 'react';
 import type {ReactNode} from 'react';
-import type {TransitionStatus} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
 import type {AppliedFilterInterface, FilterInterface} from '../../types';
-import {InlineStack} from '../InlineStack';
-import {Box} from '../Box';
 
 import {FiltersBar, SearchField} from './components';
 import styles from './Filters.module.css';
-
-const TRANSITION_DURATION = 'var(--p-motion-duration-150)';
-const TRANSITION_MARGIN = '-36px';
-
-const defaultStyle = {
-  transition: `opacity ${TRANSITION_DURATION} var(--p-motion-ease)`,
-  opacity: 0,
-};
-
-const transitionStyles = {
-  entering: {opacity: 1},
-  entered: {opacity: 1},
-  exiting: {opacity: 0},
-  exited: {opacity: 0},
-  unmounted: {opacity: 0},
-};
-
-const defaultFilterStyles = {
-  transition: `opacity ${TRANSITION_DURATION} var(--p-motion-ease), margin ${TRANSITION_DURATION} var(--p-motion-ease)`,
-  opacity: 0,
-  marginTop: TRANSITION_MARGIN,
-};
-
-const transitionFilterStyles = {
-  entering: {
-    opacity: 1,
-    marginTop: 0,
-  },
-  entered: {
-    opacity: 1,
-    marginTop: 0,
-  },
-  exiting: {
-    opacity: 0,
-    marginTop: TRANSITION_MARGIN,
-  },
-  exited: {
-    opacity: 0,
-    marginTop: TRANSITION_MARGIN,
-  },
-  unmounted: {
-    opacity: 0,
-    marginTop: TRANSITION_MARGIN,
-  },
-};
 
 export interface FiltersProps {
   /** Currently entered text in the query field */
@@ -88,17 +40,12 @@ export interface FiltersProps {
   disableQueryField?: boolean;
   /** Disable the filters */
   disableFilters?: boolean;
-  /** Whether the text field should be borderless. Should be true when used as part of the IndexFilters component. */
-  borderlessQueryField?: boolean;
   /** Whether an asyncronous task is currently being run. */
   loading?: boolean;
-  mountedState?: TransitionStatus;
   /** Callback when the add filter button is clicked. */
   onAddFilterClick?: () => void;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
-  /** @deprecated The name of the currently selected view */
-  selectedViewName?: string;
 }
 
 export function Filters({
@@ -117,64 +64,25 @@ export function Filters({
   hideFilters,
   hideQueryField,
   disableQueryField,
-  borderlessQueryField,
   loading,
   disableFilters,
-  mountedState,
   onAddFilterClick,
   closeOnChildOverlayClick,
-  selectedViewName,
 }: FiltersProps) {
   const hideFilterBar = hideFilters || filters.length === 0;
   const queryFieldMarkup = hideQueryField ? null : (
-    <div className={styles.Container}>
-      <Box padding="200">
-        <InlineStack
-          align="start"
-          blockAlign="center"
-          gap={{
-            xs: '400',
-            md: '300',
-          }}
-        >
-          <div
-            className={styles.SearchField}
-            style={
-              mountedState
-                ? {
-                    ...defaultStyle,
-                    ...transitionStyles[mountedState],
-                  }
-                : undefined
-            }
-          >
-            <SearchField
-              onChange={onQueryChange}
-              onFocus={onQueryFocus}
-              onBlur={onQueryBlur}
-              onClear={onQueryClear}
-              value={queryValue}
-              placeholder={queryPlaceholder}
-              focused={focused}
-              disabled={disabled || disableQueryField}
-              borderlessQueryField={borderlessQueryField}
-              loading={loading}
-              selectedViewName={selectedViewName}
-            />
-          </div>
-          {children}
-        </InlineStack>
-      </Box>
-    </div>
+    <SearchField
+      onChange={onQueryChange}
+      onFocus={onQueryFocus}
+      onBlur={onQueryBlur}
+      onClear={onQueryClear}
+      value={queryValue}
+      placeholder={queryPlaceholder}
+      focused={focused}
+      disabled={disabled || disableQueryField}
+      loading={loading}
+    />
   );
-
-  const mountedStateStyles =
-    mountedState && !hideQueryField
-      ? {
-          ...defaultFilterStyles,
-          ...transitionFilterStyles[mountedState],
-        }
-      : undefined;
 
   const filtersMarkup = hideFilterBar ? null : (
     <FiltersBar
@@ -182,11 +90,10 @@ export function Filters({
       appliedFilters={appliedFilters}
       onClearAll={onClearAll}
       disabled={disabled}
-      hideQueryField={hideQueryField}
+      queryField={queryFieldMarkup}
       disableFilters={disableFilters}
       onAddFilterClick={onAddFilterClick}
       closeOnChildOverlayClick={closeOnChildOverlayClick}
-      mountedStateStyles={mountedStateStyles}
     >
       {children}
     </FiltersBar>
@@ -199,7 +106,6 @@ export function Filters({
         hideQueryField && styles.hideQueryField,
       )}
     >
-      {queryFieldMarkup}
       {filtersMarkup}
     </div>
   );

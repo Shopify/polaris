@@ -1,6 +1,7 @@
 import React, {useId, useState} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
+import {Bleed} from '../../../Bleed';
 import {Box} from '../../../Box';
 import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
@@ -59,7 +60,7 @@ export function SearchField({
   }
 
   return (
-    <Box width="100%">
+    <Box width="300px">
       <TextField
         id={id}
         autoFocus
@@ -73,7 +74,13 @@ export function SearchField({
         disabled={disabled}
         variant="borderless"
         size="slim"
-        prefix={mdUp ? <Icon source={SearchIcon} /> : undefined}
+        prefix={
+          mdUp ? (
+            <Bleed marginInlineStart="200">
+              <Icon source={SearchIcon} />
+            </Bleed>
+          ) : undefined
+        }
         focused={focused}
         label={
           placeholder ??

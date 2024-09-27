@@ -1,53 +1,41 @@
-import React, {useId} from 'react';
+import React, {useId, useState} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
+import {Bleed} from '../../../Bleed';
+import {Box} from '../../../Box';
 import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
-import {Text} from '../../../Text';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {useI18n} from '../../../../utilities/i18n';
 
 export interface SearchFieldProps {
-  onChange: (value: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  onClear?: () => void;
   focused?: boolean;
   value?: string;
   placeholder?: string;
   disabled?: boolean;
-  borderlessQueryField?: boolean;
-  /** Show a loading spinner to the right of the input */
+  /** Shows a loading spinner to the right of the input */
   loading?: boolean;
-  /** @deprecated If present, will show as a suffix in the text field when entering a search term */
-  selectedViewName?: string;
+  onChange: (value: string) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  onClear?: () => void;
 }
 
 export function SearchField({
+  focused: forceFocus = false,
+  value,
+  placeholder,
+  disabled,
+  loading,
   onChange,
   onClear,
   onFocus,
   onBlur,
-  focused,
-  value,
-  placeholder,
-  disabled,
-  borderlessQueryField,
-  loading,
-  selectedViewName,
 }: SearchFieldProps) {
-  const i18n = useI18n();
   const id = useId();
+  const i18n = useI18n();
   const {mdUp} = useBreakpoints();
-
-  const suffix =
-    value && selectedViewName && mdUp ? (
-      <Text as="span" variant="bodyMd" tone="subdued">
-        {i18n.translate('Polaris.Filters.searchInView', {
-          viewName: selectedViewName,
-        })}
-      </Text>
-    ) : null;
+  const [focused, setFocused] = useState(forceFocus);
 
   function handleChange(eventValue: string) {
     onChange(eventValue ?? value);
@@ -61,27 +49,47 @@ export function SearchField({
     }
   }
 
+  function handleFocus() {
+    onFocus?.();
+    setFocused(true);
+  }
+
+  function handleBlur() {
+    onBlur?.();
+    setFocused(false);
+  }
+
   return (
-    <TextField
-      id={id}
-      value={value}
-      onChange={handleChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onClearButtonClick={handleClear}
-      autoComplete="off"
-      placeholder={placeholder}
-      disabled={disabled}
-      variant={borderlessQueryField ? 'borderless' : 'inherit'}
-      size="slim"
-      prefix={mdUp ? <Icon source={SearchIcon} /> : undefined}
-      suffix={suffix}
-      focused={focused}
-      label={placeholder}
-      labelHidden
-      clearButton
-      autoSize={Boolean(suffix)}
-      loading={loading}
-    />
+    <Box width={mdUp ? '200px' : '100px'}>
+      <TextField
+        id={id}
+        autoFocus
+        value={value}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onClearButtonClick={handleClear}
+        autoComplete="off"
+        placeholder={placeholder}
+        disabled={disabled}
+        variant="borderless"
+        size="slim"
+        prefix={
+          mdUp ? (
+            <Bleed marginInlineStart="200">
+              <Icon source={SearchIcon} />
+            </Bleed>
+          ) : undefined
+        }
+        focused={focused}
+        label={
+          placeholder ??
+          i18n.translate('Polaris.IndexFilters.SearchField.defaultPlaceholder')
+        }
+        labelHidden
+        clearButton
+        loading={loading}
+      />
+    </Box>
   );
 }
