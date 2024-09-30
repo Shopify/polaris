@@ -60,7 +60,7 @@ export function SearchField({
   }
 
   return (
-    <Box width="300px">
+    <Box width="304px">
       <TextField
         id={id}
         autoFocus

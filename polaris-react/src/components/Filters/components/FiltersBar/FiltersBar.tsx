@@ -1,6 +1,7 @@
 import type {PropsWithChildren, ReactNode} from 'react';
 import React, {useState, useRef, useEffect} from 'react';
 import {PlusIcon} from '@shopify/polaris-icons';
+import {Transition} from 'react-transition-group';
 import type {TransitionStatus} from 'react-transition-group';
 
 import {useI18n} from '../../../../utilities/i18n';
@@ -179,13 +180,7 @@ export function FiltersBar({
     </div>
   );
 
-  const handleClearAllFilters = () => {
-    setLocalPinnedFilters(pinnedFromPropsKeys);
-    onClearAll?.();
-  };
-  const shouldShowAddButton =
-    filters.some((filter) => !filter.pinned) ||
-    filters.length !== localPinnedFilters.length;
+  const shouldShowAddButton = filters.length !== localPinnedFilters?.length;
 
   const pinnedFiltersMarkup = (
     <Scrollable
@@ -248,32 +243,17 @@ export function FiltersBar({
     </div>
   ) : null;
 
-  const clearAllMarkup = appliedFilters?.length ? (
-    <div className={styles.ClearAll}>
-      <Button
-        size="micro"
-        onClick={handleClearAllFilters}
-        variant="monochromePlain"
-      >
-        {i18n.translate('Polaris.Filters.clearFilters')}
-      </Button>
-    </div>
-  ) : null;
-
   const filterMarkup = (
     <div className={styles.FiltersInner} aria-live="polite">
       {pinnedFiltersMarkup}
-      <div className={styles.FilterActionWrapper}>
-        {addButton}
-        {clearAllMarkup}
-      </div>
+      <div className={styles.FilterActionWrapper}>{addButton}</div>
     </div>
   );
 
   return (
     <Box paddingInline="200" borderColor="border" borderBlockEndWidth="025">
       <InlineGrid
-        columns={{xs: 1, md: ['twoThirds', 'oneThird']}}
+        columns={{xs: 1, md: children ? ['twoThirds', 'oneThird'] : 1}}
         alignItems="center"
       >
         <InlineStack wrap={false} align="start" blockAlign="center">
