@@ -606,7 +606,8 @@ function OrdersIndexTableWithFilters(
 
   const handleContainsRemove = (value: string[]) => {
     setContains('');
-    handleFilterOrders({contains: ''});
+    setQueryValue('');
+    handleFilterOrders({queryValue: '', contains: ''});
   };
 
   const handlePaymentStatusChange = (value: string[]) => {
@@ -645,7 +646,7 @@ function OrdersIndexTableWithFilters(
       change: handleQueryValueChange,
       remove: handleQueryValueRemove,
       emptyValue: '',
-      label: 'Include',
+      label: 'Search',
     },
     contains: {
       set: setContains,
@@ -783,6 +784,17 @@ function OrdersIndexTableWithFilters(
     return `${label}: ${humanReadableValue}`;
   };
 
+  const getContainsValue = (contains: string) => {
+    let containsValue = contains;
+    if (queryValue.length > 0) {
+      containsValue = containsValue
+        ? `${containsValue}, ${queryValue}`
+        : queryValue;
+    }
+
+    return containsValue;
+  };
+
   // ---- Filters
 
   const filters: FilterInterface[] = [
@@ -864,13 +876,15 @@ function OrdersIndexTableWithFilters(
   const appliedFilters: AppliedFilterInterface[] = [];
 
   Object.entries({
-    contains,
     queryValue,
+    contains,
     status,
     paymentStatus,
     fulfillmentStatus,
   }).forEach(([key, value]) => {
-    if (isEmpty(value)) return;
+    if (isEmpty(value)) {
+      return;
+    }
 
     const savedValue = savedViewFilters[selectedView]?.find(
       (filter) => filter.key === key,
@@ -885,28 +899,10 @@ function OrdersIndexTableWithFilters(
     });
   });
 
-  // const appliedFiltersWithQuery = [
-  //   ...appliedFilters,
-  //   {
-  //     key: 'queryValue',
-  //     value: queryValue,
-  //     label: handlers.queryValue.label,
-  //     onRemove: handlers.queryValue.remove,
-  //   },
-  // ];
-
-  const appliedFiltersWithoutQuery = appliedFilters.filter(
-    ({key}) => key !== 'queryValue',
-  );
-
-  const savedViewFiltersWithoutQuery = savedViewFilters.filter(
-    ({key}) => key !== 'queryValue',
-  );
-
   const appliedFilterMatchesSavedFilter = (
     appliedFilter: AppliedFilterInterface,
   ) => {
-    const savedFilter = savedViewFiltersWithoutQuery[selectedView]?.find(
+    const savedFilter = savedViewFilters[selectedView]?.find(
       (savedFilter) => savedFilter.key === appliedFilter.key,
     );
 
@@ -929,14 +925,14 @@ function OrdersIndexTableWithFilters(
     sortSelected[0] !== savedSortSelected[selectedView];
 
   const isAllViewAndFiltersAreApplied =
-    selectedView === 0 && appliedFiltersWithoutQuery.length > 0;
+    selectedView === 0 && appliedFilters.length > 0;
 
   const appliedFilterCountDoesNotEqualSavedFilterCount =
-    appliedFiltersWithoutQuery.length !==
-    savedViewFiltersWithoutQuery[selectedView]?.length;
+    appliedFilters.length !== savedViewFilters[selectedView]?.length;
 
-  const appliedFiltersDoNotMatchSavedFilters =
-    !appliedFiltersWithoutQuery.every(appliedFilterMatchesSavedFilter);
+  const appliedFiltersDoNotMatchSavedFilters = !appliedFilters.every(
+    appliedFilterMatchesSavedFilter,
+  );
 
   const hasUnsavedFilterChange =
     isAllViewAndFiltersAreApplied ||
@@ -944,32 +940,33 @@ function OrdersIndexTableWithFilters(
       (appliedFilterCountDoesNotEqualSavedFilterCount ||
         appliedFiltersDoNotMatchSavedFilters));
 
-  console.table({
-    hasUnsavedFilterChange,
-    isAllViewAndFiltersAreApplied,
-    countDoesNotEqual:
-      selectedView > 0 && appliedFilterCountDoesNotEqualSavedFilterCount,
-    filtersDoNotMatch: selectedView > 0 && appliedFiltersDoNotMatchSavedFilters,
-  });
-
-  console.table(savedViewFilters[selectedView]);
-
   const hasUnsavedChanges = hasUnsavedSortChange || hasUnsavedFilterChange;
+
+  console.log(appliedFilters, savedViewFilters[selectedView]);
 
   // ---- View event handlers
   const sleep = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
-  const getFiltersToSave = () => {
-    return Object.entries({
-      contains,
-      queryValue,
-      status,
-      paymentStatus,
-      fulfillmentStatus,
-    })
-      .filter(([, value]) => value !== undefined)
+  const getFiltersToSave = (saveQueryValueToIncludes?: boolean) => {
+    const filtersToSave = saveQueryValueToIncludes
+      ? {
+          contains: getContainsValue(contains),
+          status,
+          paymentStatus,
+          fulfillmentStatus,
+        }
+      : {
+          queryValue,
+          contains,
+          status,
+          paymentStatus,
+          fulfillmentStatus,
+        };
+
+    return Object.entries(filtersToSave)
+      .filter(([, value]) => !isEmpty(value))
       .map(([key, value]) => {
         return {key, value, label: handlers[key].label};
       });
@@ -1049,16 +1046,16 @@ function OrdersIndexTableWithFilters(
   };
 
   const handleSaveViewFilters = async (
-    index: number,
+    view: number,
     nextFilters?: SavedViewFilter[],
     nextSortSelected?: string,
   ) => {
     const nextSavedFilters = [...savedViewFilters];
     const nextSavedSortSelected = [...savedSortSelected];
-    nextSavedSortSelected[index] = nextSortSelected
+    nextSavedSortSelected[view] = nextSortSelected
       ? nextSortSelected
       : sortSelected[0];
-    nextSavedFilters[index] = nextFilters
+    nextSavedFilters[view] = nextFilters
       ? nextFilters
       : appliedFilters.map(({key, value, label}) => ({
           key,
@@ -1113,7 +1110,7 @@ function OrdersIndexTableWithFilters(
   const handleSaveViewAs = async (index: number, name: string) => {
     setViewNames((names) => [...names, name]);
     setSelectedView(index);
-    const nextFilters = getFiltersToSave();
+    const nextFilters = getFiltersToSave(true);
     const nextSortSelected = sortSelected[0];
     await handleSaveViewFilters(0, []);
     return handleSaveViewFilters(index, nextFilters, nextSortSelected);
@@ -1121,13 +1118,20 @@ function OrdersIndexTableWithFilters(
 
   const handleSave = async (name: string) => {
     let saved = false;
+    const nextFilters = getFiltersToSave(true);
     const index = !name ? selectedView : viewNames.indexOf(name);
     setLoading(true);
 
     if (index <= 0) {
       saved = await handleSaveViewAs(viewNames.length, name);
     } else {
-      saved = await handleSaveViewFilters(index);
+      saved = await handleSaveViewFilters(index, nextFilters);
+    }
+
+    const nextContains = nextFilters.find(({key}) => key === 'contains')?.value;
+    if (nextContains) {
+      setQueryValue('');
+      setContains(nextContains);
     }
 
     setLoading(false);
@@ -1148,8 +1152,6 @@ function OrdersIndexTableWithFilters(
       handleResetToSavedFilters(selectedView);
       console.log('cancelled -- resetting to saved');
     }
-
-    setQueryValue('');
   };
 
   const tabs: TabProps[] = viewNames.map((name, index) => {

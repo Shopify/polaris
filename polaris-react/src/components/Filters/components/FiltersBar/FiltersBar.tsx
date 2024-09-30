@@ -1,7 +1,6 @@
 import type {PropsWithChildren, ReactNode} from 'react';
 import React, {useState, useRef, useEffect} from 'react';
 import {PlusIcon} from '@shopify/polaris-icons';
-import {Transition} from 'react-transition-group';
 import type {TransitionStatus} from 'react-transition-group';
 
 import {useI18n} from '../../../../utilities/i18n';
@@ -18,7 +17,6 @@ import type {
 import {InlineStack} from '../../../InlineStack';
 import {InlineGrid} from '../../../InlineGrid';
 import {Box} from '../../../Box';
-import {Button} from '../../../Button';
 import {FilterPill} from '../FilterPill';
 import styles from '../../Filters.module.css';
 import {Scrollable} from '../../../Scrollable';
@@ -50,7 +48,6 @@ export interface FiltersBarProps {
 export function FiltersBar({
   filters,
   appliedFilters,
-  onClearAll,
   disabled,
   queryField,
   disableFilters,
