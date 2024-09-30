@@ -158,7 +158,7 @@ export function IndexFilters({
   }, [cancelAction]);
 
   const enhancedPrimaryAction = useMemo(() => {
-    return primaryAction
+    return primaryAction && !primaryAction.disabled
       ? {
           ...primaryAction,
           onAction: onExecutedPrimaryAction,
@@ -167,7 +167,7 @@ export function IndexFilters({
   }, [onExecutedPrimaryAction, primaryAction]);
 
   const enhancedCancelAction = useMemo(() => {
-    return cancelAction
+    return cancelAction && !cancelAction.disabled
       ? {
           ...cancelAction,
           onAction: onExecutedCancelAction,
@@ -186,12 +186,14 @@ export function IndexFilters({
   const updateButtonsMarkup = useMemo(
     () =>
       enhancedCancelAction || enhancedPrimaryAction ? (
-        <UpdateButtons
-          primaryAction={enhancedPrimaryAction}
-          cancelAction={enhancedCancelAction}
-          viewNames={viewNames}
-          disabled={disabled}
-        />
+        <div className={styles.ButtonWrap}>
+          <UpdateButtons
+            primaryAction={enhancedPrimaryAction}
+            cancelAction={enhancedCancelAction}
+            viewNames={viewNames}
+            disabled={disabled}
+          />
+        </div>
       ) : null,
     [enhancedPrimaryAction, enhancedCancelAction, disabled, viewNames],
   );
@@ -336,7 +338,7 @@ export function IndexFilters({
             loading={loading || isActionLoading}
             closeOnChildOverlayClick={closeOnChildOverlayClick}
           >
-            <div className={styles.ButtonWrap}>{updateButtonsMarkup}</div>
+            {updateButtonsMarkup}
           </Filters>
         </div>
       </div>

@@ -45,6 +45,7 @@ import {
   IndexFiltersMode,
   Badge,
   Text,
+  TextField,
 } from '../src';
 
 import {orders} from './orders';
@@ -408,11 +409,20 @@ function OrdersIndexTableWithFilters(
   const [selectedView, setSelectedView] = useState(0);
   const [sortSelected, setSortSelected] = useState(['order desc']);
   const [queryValue, setQueryValue] = useState('');
+  const [contains, setContains] = useState<string>('');
   const [status, setStatus] = useState<string[]>([]);
   const [paymentStatus, setPaymentStatus] = useState<string[]>([]);
   const [fulfillmentStatus, setFulfillmentStatus] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [filteredOrders, setFilteredOrders] = useState(orders);
+  const [tempPersistedSearch, setTempPersistedSearch] = useState<string[]>([
+    '',
+    '',
+    '',
+    '',
+    '',
+  ]);
+
   const [savedViewFilters, setSavedViewFilters] = useState<SavedViewFilter[][]>(
     [
       [],
@@ -512,6 +522,7 @@ function OrdersIndexTableWithFilters(
   };
 
   const handleFilterOrders = (nextFilters: {
+    contains?: string;
     queryValue?: string;
     paymentStatus?: string[];
     fulfillmentStatus?: string[];
@@ -523,6 +534,8 @@ function OrdersIndexTableWithFilters(
         ? nextFilters.queryValue
         : queryValue;
 
+    const nextContains =
+      nextFilters.contains !== undefined ? nextFilters.contains : contains;
     const nextStatus =
       nextFilters.status !== undefined ? nextFilters.status : status;
     const nextPaymentStatus =
@@ -534,11 +547,16 @@ function OrdersIndexTableWithFilters(
         ? nextFilters.fulfillmentStatus
         : fulfillmentStatus;
 
+    const containsSet = new Set(nextContains);
     const statusSet = new Set(nextStatus);
     const paymentStatusSet = new Set(nextPaymentStatus);
     const fulfillmentStatusSet = new Set(nextFulfillmentStatus);
     const result = orders.filter((order) => {
       const matchesQueryValue = hasTextValueMatches(nextQueryValue, order);
+      const matchesContains = hasTextValueMatches(
+        preProcessText(nextContains),
+        order,
+      );
 
       const matchesStatus = hasArrayValueMatches(
         new Set([order.status]),
@@ -558,6 +576,7 @@ function OrdersIndexTableWithFilters(
       setLoading(false);
       return (
         matchesQueryValue &&
+        matchesContains &&
         matchesPaymentStatus &&
         matchesFulfillmentStatus &&
         matchesStatus
@@ -578,6 +597,16 @@ function OrdersIndexTableWithFilters(
   const handleQueryValueRemove = () => {
     setQueryValue('');
     handleFilterOrders({queryValue: ''});
+  };
+
+  const handleContainsChange = (value: string) => {
+    setContains(value);
+    handleFilterOrders({contains: value});
+  };
+
+  const handleContainsRemove = (value: string[]) => {
+    setContains('');
+    handleFilterOrders({contains: ''});
   };
 
   const handlePaymentStatusChange = (value: string[]) => {
@@ -615,6 +644,20 @@ function OrdersIndexTableWithFilters(
       set: setQueryValue,
       change: handleQueryValueChange,
       remove: handleQueryValueRemove,
+      emptyValue: '',
+      label: 'Search',
+    },
+    contains: {
+      set: setContains,
+      change: handleContainsChange,
+      remove: handleContainsRemove,
+      emptyValue: '',
+      label: 'Include',
+    },
+    contains: {
+      set: setContains,
+      change: handleContainsChange,
+      remove: handleContainsRemove,
       emptyValue: '',
       label: 'Include',
     },
@@ -668,6 +711,7 @@ function OrdersIndexTableWithFilters(
   };
 
   const handleChangeFilters = (nextFilterValues: {
+    contains?: string;
     queryValue?: string;
     paymentStatus?: string[];
     fulfillmentStatus?: string[];
@@ -684,11 +728,13 @@ function OrdersIndexTableWithFilters(
 
   const handleResetToSavedFilters = (view: number) => {
     const nextFilters: {
+      contains: string;
       queryValue: string;
       paymentStatus: string[];
       fulfillmentStatus: string[];
       status: string[];
     } = {
+      contains: '',
       queryValue: '',
       paymentStatus: [],
       fulfillmentStatus: [],
@@ -713,6 +759,7 @@ function OrdersIndexTableWithFilters(
 
   const handleClearFilters = () => {
     handleChangeFilters({
+      contains: '',
       queryValue: '',
       paymentStatus: [],
       fulfillmentStatus: [],
@@ -746,6 +793,21 @@ function OrdersIndexTableWithFilters(
   // ---- Filters
 
   const filters: FilterInterface[] = [
+    {
+      key: 'contains',
+      label: handlers.contains.label,
+      filter: (
+        <TextField
+          autoFocus
+          labelHidden
+          type="text"
+          autoComplete="off"
+          label={handlers.contains.label}
+          value={contains}
+          onChange={handleContainsChange}
+        />
+      ),
+    },
     {
       key: 'paymentStatus',
       value: paymentStatus,
@@ -809,11 +871,14 @@ function OrdersIndexTableWithFilters(
   const appliedFilters: AppliedFilterInterface[] = [];
 
   Object.entries({
+    contains,
     status,
     paymentStatus,
     fulfillmentStatus,
   }).forEach(([key, value]) => {
-    if (isEmpty(value)) return;
+    if (isEmpty(value)) {
+      return;
+    }
 
     const savedValue = savedViewFilters[selectedView]?.find(
       (filter) => filter.key === key,
@@ -824,14 +889,18 @@ function OrdersIndexTableWithFilters(
       value,
       label: getHumanReadableValue(handlers[key].label, value),
       unsavedChanges: selectedView === 0 ? true : isUnsaved(value, savedValue),
-      onRemove: key === 'queryValue' ? undefined : handlers[key].remove,
+      onRemove: handlers[key].remove,
     });
   });
+
+  const savedViewFiltersWithoutQuery = savedViewFilters[selectedView]?.filter(
+    ({key}) => key !== 'queryValue',
+  );
 
   const appliedFilterMatchesSavedFilter = (
     appliedFilter: AppliedFilterInterface,
   ) => {
-    const savedFilter = savedViewFilters[selectedView].find(
+    const savedFilter = savedViewFiltersWithoutQuery?.find(
       (savedFilter) => savedFilter.key === appliedFilter.key,
     );
 
@@ -839,41 +908,36 @@ function OrdersIndexTableWithFilters(
       return false;
     } else if (typeof appliedFilter.value === 'string') {
       return appliedFilter.value === savedFilter.value;
-    } else {
+    } else if (Array.isArray(appliedFilter.value)) {
       const hasSameArrayValue =
         new Set(savedFilter.value).difference(new Set(appliedFilter.value))
           .size === 0;
-
       return hasSameArrayValue;
+    } else {
+      return true;
     }
   };
 
-  const appliedFiltersWithQuery = [
-    ...appliedFilters,
-    {
-      key: 'queryValue',
-      value: queryValue,
-      unsavedChanges:
-        queryValue && selectedView === 0
-          ? true
-          : queryValue &&
-            queryValue !==
-              savedViewFilters[selectedView]?.find(
-                ({key}) => key === 'queryValue',
-              )?.value,
-    },
-  ];
-
   const hasUnsavedSortChange =
     (selectedView === 0 && sortSelected[0] !== 'order desc') ||
-    sortSelected[0] !== savedSortSelected[selectedView];
+    (savedSortSelected[selectedView] !== undefined &&
+      savedSortSelected[selectedView] !== sortSelected[0]);
+
+  const isAllViewAndFiltersAreApplied =
+    selectedView === 0 && appliedFilters.length > 0;
+
+  const appliedFilterCountDoesNotEqualSavedFilterCount =
+    appliedFilters.length !== savedViewFiltersWithoutQuery?.length;
+
+  const appliedFiltersDoNotMatchSavedFilters = !appliedFilters.every(
+    appliedFilterMatchesSavedFilter,
+  );
 
   const hasUnsavedFilterChange =
-    (selectedView === 0 && appliedFiltersWithQuery.length > 0) ||
-    (!savedViewFilters[selectedView] && appliedFilters.length > 0) ||
-    (appliedFiltersWithQuery.length === 0 &&
-      savedViewFilters[selectedView]?.length > 0) ||
-    !appliedFiltersWithQuery.every(appliedFilterMatchesSavedFilter);
+    isAllViewAndFiltersAreApplied ||
+    (selectedView > 0 &&
+      (appliedFilterCountDoesNotEqualSavedFilterCount ||
+        appliedFiltersDoNotMatchSavedFilters));
 
   const hasUnsavedChanges = hasUnsavedSortChange || hasUnsavedFilterChange;
 
@@ -885,11 +949,12 @@ function OrdersIndexTableWithFilters(
   const getFiltersToSave = () => {
     return Object.entries({
       queryValue,
-      fulfillmentStatus,
-      paymentStatus,
+      contains,
       status,
+      paymentStatus,
+      fulfillmentStatus,
     })
-      .filter(([, value]) => value !== undefined)
+      .filter(([, value]) => !isEmpty(value))
       .map(([key, value]) => {
         return {key, value, label: handlers[key].label};
       });
@@ -900,7 +965,7 @@ function OrdersIndexTableWithFilters(
     const previousSortSelected = sortSelected[0];
     let nextFilters;
 
-    if (previousView === 0 && hasUnsavedChanges) {
+    if ((previousView === 0 && hasUnsavedChanges) || queryValue) {
       nextFilters = getFiltersToSave();
     }
 
@@ -920,8 +985,10 @@ function OrdersIndexTableWithFilters(
 
   const handleDeleteView = (index: number) => async () => {
     const nextViewNames = [...viewNames];
+    const nextTempPersistedSearch = [...tempPersistedSearch];
     const nextSavedViewFilters = [...savedViewFilters];
     nextViewNames.splice(index, 1);
+    nextTempPersistedSearch.splice(index, 1);
     nextSavedViewFilters.splice(index, 1);
     setSavedViewFilters(nextSavedViewFilters);
     setViewNames(nextViewNames);
@@ -945,6 +1012,7 @@ function OrdersIndexTableWithFilters(
     setSavedViewFilters((filters) => [...filters, duplicateViewFilters]);
     const nextAppliedFilters = {
       queryValue: '',
+      contains: '',
       status: [],
       paymentStatus: [],
       fulfillmentStatus: [],
@@ -953,7 +1021,12 @@ function OrdersIndexTableWithFilters(
     duplicateViewFilters.forEach(({key, value}) => {
       nextAppliedFilters[key] = value;
     });
+
     setViewNames((names) => [...names, name]);
+    setSavedSortSelected((currentSavedSortSelected) => [
+      ...currentSavedSortSelected,
+      'order desc',
+    ]);
     await sleep(250);
     setSelectedView(duplicateViewIndex);
     setLoading(false);
@@ -961,16 +1034,16 @@ function OrdersIndexTableWithFilters(
   };
 
   const handleSaveViewFilters = async (
-    index: number,
+    view: number,
     nextFilters?: SavedViewFilter[],
     nextSortSelected?: string,
   ) => {
     const nextSavedFilters = [...savedViewFilters];
     const nextSavedSortSelected = [...savedSortSelected];
-    nextSavedSortSelected[index] = nextSortSelected
+    nextSavedSortSelected[view] = nextSortSelected
       ? nextSortSelected
       : sortSelected[0];
-    nextSavedFilters[index] = nextFilters
+    nextSavedFilters[view] = nextFilters
       ? nextFilters
       : appliedFilters.map(({key, value, label}) => ({
           key,
@@ -996,8 +1069,9 @@ function OrdersIndexTableWithFilters(
         sortSelected[0] !== savedSortSelected[0]);
 
     const nextFilters = shouldSaveAppliedFiltersAsNew
-      ? {queryValue, status, paymentStatus, fulfillmentStatus}
+      ? getFiltersToSave()
       : {
+          contains: '',
           queryValue: '',
           status: [],
           paymentStatus: [],
@@ -1005,7 +1079,7 @@ function OrdersIndexTableWithFilters(
         };
 
     if (shouldSaveAppliedFiltersAsNew) {
-      handleSaveViewFilters(newViewIndex);
+      handleSaveViewFilters(newViewIndex, nextFilters);
     } else {
       handleClearFilters();
       setSavedViewFilters((filters) => [...filters, []]);
@@ -1024,7 +1098,7 @@ function OrdersIndexTableWithFilters(
   const handleSaveViewAs = async (index: number, name: string) => {
     setViewNames((names) => [...names, name]);
     setSelectedView(index);
-    const nextFilters = getFiltersToSave();
+    const nextFilters = getFiltersToSave(true);
     const nextSortSelected = sortSelected[0];
     await handleSaveViewFilters(0, []);
     return handleSaveViewFilters(index, nextFilters, nextSortSelected);
@@ -1059,6 +1133,8 @@ function OrdersIndexTableWithFilters(
       handleResetToSavedFilters(selectedView);
       console.log('cancelled -- resetting to saved');
     }
+
+    setQueryValue('');
   };
 
   const tabs: TabProps[] = viewNames.map((name, index) => {
@@ -1097,6 +1173,7 @@ function OrdersIndexTableWithFilters(
 
   const cancelAction: IndexFiltersProps['cancelAction'] = {
     onAction: handleCancel,
+    disabled: !hasUnsavedChanges,
   };
 
   const queryPlaceholder = `Search ${viewNames[selectedView]?.toLowerCase()}`;

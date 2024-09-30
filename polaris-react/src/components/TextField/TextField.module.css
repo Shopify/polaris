@@ -337,11 +337,11 @@
       border-color: transparent;
     }
 
-    /* &.Input:hover:not(:focus-visible) {
+    &.Input:focus-visible {
       ~ .Backdrop {
-        background-color: var(--p-color-input-bg-surface-hover);
+        outline-width: var(--p-border-width-025);
       }
-    } */
+    }
   }
 }
 /* stylelint-enable */
