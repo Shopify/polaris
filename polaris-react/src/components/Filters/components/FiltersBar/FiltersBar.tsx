@@ -3,6 +3,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import {PlusIcon} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
 
+import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {useOnValueChange} from '../../../../utilities/use-on-value-change';
 import {Popover} from '../../../Popover';
@@ -49,6 +50,7 @@ export function FiltersBar({
   filters,
   appliedFilters,
   disabled,
+  hideQueryField,
   queryField,
   disableFilters,
   onAddFilterClick,
@@ -185,7 +187,7 @@ export function FiltersBar({
       hint
       vertical={false}
       scrollbarWidth="none"
-      className={styles.AppliedFilters}
+      className={classNames(styles.AppliedFilters)}
     >
       {pinnedFilters.map(({key: filterKey, ...pinnedFilter}) => {
         const appliedFilter = appliedFilters?.find(
@@ -240,6 +242,10 @@ export function FiltersBar({
     </div>
   ) : null;
 
+  const searchFieldMarkup = hideQueryField ? null : (
+    <div className={styles.SearchFieldWrapper}>{queryField}</div>
+  );
+
   const filterMarkup = (
     <div className={styles.FiltersInner} aria-live="polite">
       {pinnedFiltersMarkup}
@@ -247,16 +253,27 @@ export function FiltersBar({
     </div>
   );
 
+  const searchAndFilterMarkup = searchFieldMarkup ? (
+    <InlineStack wrap={false} align="start" blockAlign="center">
+      {searchFieldMarkup}
+      {filterMarkup}
+    </InlineStack>
+  ) : (
+    filterMarkup
+  );
+
   return (
-    <Box paddingInline="200" borderColor="border" borderBlockEndWidth="025">
+    <Box
+      paddingInlineStart={hideQueryField ? '0' : '200'}
+      paddingInlineEnd="200"
+      borderColor="border"
+      borderBlockEndWidth="025"
+    >
       <InlineGrid
-        columns={{xs: 1, md: children ? ['twoThirds', 'oneThird'] : 1}}
+        columns={{xs: 1, md: children ? ['threeQuarters', 'oneQuarter'] : 1}}
         alignItems="center"
       >
-        <InlineStack wrap={false} align="start" blockAlign="center">
-          <div className={styles.SearchFieldWrapper}>{queryField}</div>
-          {filterMarkup}
-        </InlineStack>
+        {searchAndFilterMarkup}
         {children}
       </InlineGrid>
     </Box>

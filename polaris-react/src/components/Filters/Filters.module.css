@@ -20,7 +20,7 @@
 }
 
 .FiltersInner {
-  max-width: 90%;
+  /* max-width: 90%; */
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -85,7 +85,6 @@
 }
 
 .AppliedFilters {
-  flex: 1;
   display: flex;
   align-items: center;
   gap: var(--p-space-100);

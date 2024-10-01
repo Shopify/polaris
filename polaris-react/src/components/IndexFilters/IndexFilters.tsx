@@ -12,6 +12,7 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import {useIsSticky} from './hooks';
 import {
   Container,
+  SearchField,
   SortButton,
   UpdateButtons,
   EditColumnsButton,
@@ -116,7 +117,6 @@ export function IndexFilters({
   isFlushWhenSticky = false,
   canCreateNewView = true,
   onCreateNewView,
-  hideQueryField,
   closeOnChildOverlayClick,
   showEditColumnsButton,
 }: IndexFiltersProps) {
@@ -310,6 +310,14 @@ export function IndexFilters({
                     {isLoading ? <Spinner size="small" /> : null}
                   </div>
                 )}
+                <SearchField
+                  value={queryValue}
+                  placeholder={queryPlaceholder}
+                  disabled={disabled || disableQueryField}
+                  onChange={handleQueryChange}
+                  onFocus={handleQueryFocus}
+                  onClear={handleQueryClear}
+                />
                 {editColumnsMarkup}
                 {sortMarkup}
                 {mode === IndexFiltersMode.EditingColumns
@@ -322,7 +330,7 @@ export function IndexFilters({
 
         <div ref={filteringRef}>
           <Filters
-            hideQueryField={hideQueryField}
+            hideQueryField
             queryValue={queryValue}
             queryPlaceholder={queryPlaceholder}
             disabled={disabled || disableQueryField}

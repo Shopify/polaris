@@ -93,20 +93,12 @@ export function Filters({
       queryField={queryFieldMarkup}
       disableFilters={disableFilters}
       onAddFilterClick={onAddFilterClick}
+      hideQueryField={hideQueryField}
       closeOnChildOverlayClick={closeOnChildOverlayClick}
     >
       {children}
     </FiltersBar>
   );
 
-  return (
-    <div
-      className={classNames(
-        styles.Filters,
-        hideQueryField && styles.hideQueryField,
-      )}
-    >
-      {filtersMarkup}
-    </div>
-  );
+  return <div className={classNames(styles.Filters)}>{filtersMarkup}</div>;
 }

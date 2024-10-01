@@ -10,7 +10,12 @@ import type {ResponsiveValue, ResponsiveProp} from '../../utilities/css';
 
 import styles from './InlineGrid.module.css';
 
-type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
+type ColumnsAlias =
+  | 'oneThird'
+  | 'oneHalf'
+  | 'twoThirds'
+  | 'oneQuarter'
+  | 'threeQuarters';
 type ColumnsType = number | string | ColumnsAlias[];
 type Columns = ResponsiveProp<ColumnsType>;
 type Gap = ResponsiveProp<SpaceScale>;
@@ -95,6 +100,10 @@ function getColumnValue(columns?: ColumnsType) {
           return 'minmax(0, 1fr)';
         case 'twoThirds':
           return 'minmax(0, 2fr)';
+        case 'oneQuarter':
+          return 'minmax(0, 1fr)';
+        case 'threeQuarters':
+          return 'minmax(0, 3fr)';
       }
     })
     .join(' ');
