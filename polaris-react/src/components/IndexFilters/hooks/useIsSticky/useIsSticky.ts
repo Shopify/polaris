@@ -2,15 +2,10 @@ import {useEffect, useRef, useState} from 'react';
 import type {RefObject} from 'react';
 
 import {debounce} from '../../../../utilities/debounce';
-import type {IndexFiltersMode} from '../../types';
 
 const DEBOUNCE_PERIOD = 250;
 
-export function useIsSticky(
-  mode: IndexFiltersMode,
-  disabled: boolean,
-  isFlushWhenSticky: boolean,
-) {
+export function useIsSticky(disabled: boolean, isFlushWhenSticky: boolean) {
   const hasIOSupport =
     typeof window !== 'undefined' && Boolean(window.IntersectionObserver);
 
@@ -64,7 +59,7 @@ export function useIsSticky(
 
     return () =>
       window.removeEventListener('resize', debouncedComputeDimensions);
-  }, [measurerRef, mode]);
+  }, [measurerRef]);
 
   useEffect(() => {
     const observer = observerRef.current;

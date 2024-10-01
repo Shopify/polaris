@@ -108,10 +108,7 @@ export function FilterPill({
     focused && styles.focusedFilterButton,
   );
 
-  const clearButtonClassNames = classNames(
-    styles.PlainButton,
-    styles.clearButton,
-  );
+  const clearButtonClassNames = classNames(styles.clearButton);
 
   const toggleButtonClassNames = classNames(
     styles.PlainButton,
