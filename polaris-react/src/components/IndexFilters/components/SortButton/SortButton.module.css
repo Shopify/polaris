@@ -5,7 +5,7 @@
 .AppliedFilterIndicator {
   position: absolute;
   top: calc(var(--p-space-300) - var(--p-border-width-050));
-  right: var(--p-space-300);
+  right: var(--p-space-400);
   background: var(--p-color-bg-fill-emphasis);
   border-radius: var(--p-border-radius-full);
   border: var(--p-border-width-025) solid var(--p-color-bg-surface);

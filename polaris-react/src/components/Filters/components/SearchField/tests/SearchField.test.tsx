@@ -87,9 +87,7 @@ describe('SearchField', () => {
 
   it('will add a suffix when there is a selectedViewName and value', () => {
     mockUseBreakpoints(true);
-    const wrapper = mountWithApp(
-      <SearchField {...defaultProps} selectedViewName="All" />,
-    );
+    const wrapper = mountWithApp(<SearchField {...defaultProps} />);
 
     expect(wrapper).toContainReactText('in:All');
   });
@@ -102,11 +100,7 @@ describe('SearchField', () => {
 
   it('will not add a suffix when there is no value', () => {
     const wrapper = mountWithApp(
-      <SearchField
-        {...defaultProps}
-        value={undefined}
-        selectedViewName="All"
-      />,
+      <SearchField {...defaultProps} value={undefined} />,
     );
 
     expect(wrapper).not.toContainReactText('in:All');

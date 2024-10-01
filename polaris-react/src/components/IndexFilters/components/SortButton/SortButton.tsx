@@ -25,7 +25,6 @@ export interface SortButtonProps {
   disabled?: boolean;
   disclosureZIndexOverride?: number;
   hasUnsavedChanges?: boolean;
-  onClick(): void;
   onChange: (selected: string[]) => void;
   onChangeKey?: (key: string) => void;
   onChangeDirection?: (direction: string) => void;
@@ -37,7 +36,6 @@ export function SortButton({
   disabled,
   disclosureZIndexOverride,
   hasUnsavedChanges,
-  onClick,
   onChange,
   onChangeKey,
   onChangeDirection,
@@ -56,7 +54,6 @@ export function SortButton({
   }
 
   function handleChangeChoiceList(sel: string[]) {
-    onClick();
     if (onChangeKey) {
       const [key] = sel[0].split(' ');
       onChangeKey(key);
@@ -66,7 +63,6 @@ export function SortButton({
   }
 
   function handleChangeDirection(sel: string[]) {
-    onClick();
     if (onChangeDirection) {
       const [, direction] = sel[0].split(' ');
       onChangeDirection(direction);

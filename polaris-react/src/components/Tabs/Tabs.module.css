@@ -47,7 +47,6 @@
   gap: var(--p-space-100);
 
   @media (--p-breakpoints-md-up) {
-    padding: 0 var(--p-space-100);
     flex-wrap: wrap;
     align-items: stretch;
   }
