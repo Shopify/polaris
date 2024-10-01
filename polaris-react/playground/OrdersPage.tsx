@@ -942,8 +942,6 @@ function OrdersIndexTableWithFilters(
 
   const hasUnsavedChanges = hasUnsavedSortChange || hasUnsavedFilterChange;
 
-  console.log(appliedFilters, savedViewFilters[selectedView]);
-
   // ---- View event handlers
   const sleep = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -1005,7 +1003,7 @@ function OrdersIndexTableWithFilters(
     setSavedViewFilters(nextSavedViewFilters);
     setViewNames(nextViewNames);
     await sleep(250);
-    handleClearFilters();
+    handleSelectView(0);
     return true;
   };
 
