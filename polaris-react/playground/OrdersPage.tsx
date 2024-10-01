@@ -596,7 +596,12 @@ function OrdersIndexTableWithFilters(
 
   const handleQueryValueRemove = () => {
     setQueryValue('');
+    const nextSavedViewFilters = [...savedViewFilters];
+    nextSavedViewFilters[selectedView] = nextSavedViewFilters[
+      selectedView
+    ].filter(({key}) => key !== 'queryValue');
     handleFilterOrders({queryValue: ''});
+    setSavedViewFilters(nextSavedViewFilters);
   };
 
   const handleContainsChange = (value: string) => {
