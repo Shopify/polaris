@@ -1005,7 +1005,7 @@ function OrdersIndexTableWithFilters(
     setSavedViewFilters(nextSavedViewFilters);
     setViewNames(nextViewNames);
     await sleep(250);
-    handleClearFilters();
+    handleSelectView(0);
     return true;
   };
 
