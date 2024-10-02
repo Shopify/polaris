@@ -29,13 +29,13 @@ const formUtilityImportSources = [
 export default function transformer(fileInfo: FileInfo, {jscodeshift: j}: API) {
   const source = j(fileInfo.source);
 
-  const hasModalImports = modalImportSources.some((importSource) =>
-    hasImportDeclaration(j, source, importSource),
-  );
+  // const hasModalImports = modalImportSources.some((importSource) =>
+  //   hasImportDeclaration(j, source, importSource),
+  // );
 
-  if (!hasModalImports) {
-    return fileInfo.source;
-  }
+  // if (!hasModalImports) {
+  //   return fileInfo.source;
+  // }
 
   const hasFormUtilityImports = formUtilityImportSources.some((importSource) =>
     hasImportDeclaration(j, source, importSource),
@@ -83,7 +83,10 @@ export default function transformer(fileInfo: FileInfo, {jscodeshift: j}: API) {
   source.find(j.JSXElement).forEach((element) => {
     if (element.node.openingElement.name.type !== 'JSXIdentifier') return;
 
-    if (!localElementNames.includes(element.node.openingElement.name.name))
+    if (
+      localElementNames.includes(element.node.openingElement.name.name) ||
+      !element.node.openingElement.name.name.includes('Modal')
+    )
       return;
 
     const allAttributes = element.node.openingElement.attributes ?? [];
