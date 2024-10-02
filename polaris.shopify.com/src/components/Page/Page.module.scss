@@ -67,7 +67,9 @@
   top: calc(var(--header-height) + 4.25rem);
   padding: var(--p-space-400) var(--p-space-200) var(--p-space-200);
   width: var(--toc-width);
+  max-height: calc(100vh - var(--toc-top) - var(--p-space-200));
   overscroll-behavior: contain;
+  overflow-y: auto;
   border: 1.5px solid var(--border-color);
   border-radius: var(--p-border-radius-300);
 
