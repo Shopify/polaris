@@ -118,7 +118,7 @@ function TOC({items, collapsibleTOC = false}: Props) {
     }
   }
 
-  const detectLinkVisibility = useCallback((linkElement: HTMLAnchorElement) => {
+  const detectLinkVisibility = useCallback((linkElement: HTMLElement) => {
     if (!linkElement) return;
 
     const observer = new IntersectionObserver((entries) => {
@@ -136,7 +136,7 @@ function TOC({items, collapsibleTOC = false}: Props) {
     return () => observer.disconnect();
   }, []);
 
-  function scrollLinkIntoView(linkElement: HTMLAnchorElement) {
+  function scrollLinkIntoView(linkElement: HTMLElement) {
     if (!linkElement) return;
     linkElement.scrollIntoView();
   }
