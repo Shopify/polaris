@@ -108,11 +108,39 @@ function TOC({items, collapsibleTOC = false}: Props) {
     }
   }
 
+  function detectLinkVisibility(linkElement: HTMLAnchorElement) {
+    if (!linkElement) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log({entry});
+        if (!entry.isIntersecting) {
+          // scroll.
+          console.log('not intersecting');
+          return;
+        } else {
+          console.log('intersecting');
+          return;
+        }
+      });
+      observer.disconnect();
+    });
+
+    observer.observe(linkElement);
+  }
+
   useEffect(() => {
     detectCurrentHeading();
     window.addEventListener('scroll', detectCurrentHeading);
     return () => window.removeEventListener('scroll', detectCurrentHeading);
   }, []);
+
+  if (idOfCurrentHeading) {
+    const currentHeadingLinkElement = document.getElementById(
+      `${idOfCurrentHeading}-link`,
+    );
+    detectLinkVisibility(currentHeadingLinkElement);
+  }
 
   useEffect(() => detectCurrentHeading(), [items]);
 
@@ -130,6 +158,7 @@ function TOC({items, collapsibleTOC = false}: Props) {
 
     return (
       <a
+        id={`${toId}-link`}
         className={className}
         href={`#${toId}`}
         onClick={(evt) => {
