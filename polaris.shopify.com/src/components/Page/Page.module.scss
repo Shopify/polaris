@@ -69,6 +69,7 @@
   width: var(--toc-width);
   max-height: calc(100vh - var(--toc-top) - var(--p-space-200));
   overscroll-behavior: contain;
+  scroll-behavior: smooth;
   overflow-y: auto;
   border: 1.5px solid var(--border-color);
   border-radius: var(--p-border-radius-300);

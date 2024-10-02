@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {Box} from '../Box';
 import {TOCItem} from '../../utils/hooks';
 import {className as classNames} from '../../utils/various';
@@ -50,6 +50,7 @@ function TOC({items, collapsibleTOC = false}: Props) {
   const [idOfCurrentHeading, setIdOfCurrentHeading] = useState<string>();
   const temporarilyIgnoreScrolling = useRef(false);
   const lastScrollY = useRef(0);
+  const linkSuffix = '-link';
 
   const [manuallyExpandedSections, setManuallyExpandedSections] = useState<{
     [id: string]: boolean;
@@ -78,7 +79,7 @@ function TOC({items, collapsibleTOC = false}: Props) {
     setTimeout(checkIfStillScrolling, 100);
   }
 
-  function scrollIntoView(id: string) {
+  function scrollHeadingIntoView(id: string) {
     setIdOfCurrentHeading(id);
     const contentTopMargin = getContentTopMargin();
     const targetEl = document.getElementById(id);
@@ -108,39 +109,47 @@ function TOC({items, collapsibleTOC = false}: Props) {
     }
   }
 
-  function detectLinkVisibility(linkElement: HTMLAnchorElement) {
+  const detectLinkVisibility = useCallback((linkElement: HTMLAnchorElement) => {
     if (!linkElement) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log({entry});
-        if (!entry.isIntersecting) {
-          // scroll.
-          console.log('not intersecting');
+        if (entry.isIntersecting) {
           return;
         } else {
-          console.log('intersecting');
-          return;
+          scrollLinkIntoView(linkElement);
         }
       });
-      observer.disconnect();
     });
 
     observer.observe(linkElement);
+
+    return () => observer.disconnect();
+  }, []);
+
+  function scrollLinkIntoView(linkElement: HTMLAnchorElement) {
+    if (!linkElement) return;
+    linkElement.scrollIntoView();
   }
 
   useEffect(() => {
     detectCurrentHeading();
     window.addEventListener('scroll', detectCurrentHeading);
-    return () => window.removeEventListener('scroll', detectCurrentHeading);
+    return () => {
+      window.removeEventListener('scroll', detectCurrentHeading);
+    };
   }, []);
 
-  if (idOfCurrentHeading) {
-    const currentHeadingLinkElement = document.getElementById(
-      `${idOfCurrentHeading}-link`,
-    );
-    detectLinkVisibility(currentHeadingLinkElement);
-  }
+  useEffect(() => {
+    if (idOfCurrentHeading) {
+      const currentHeadingLinkElement = document.getElementById(
+        `${idOfCurrentHeading}${linkSuffix}`,
+      ) as HTMLAnchorElement | null;
+      if (currentHeadingLinkElement) {
+        detectLinkVisibility(currentHeadingLinkElement);
+      }
+    }
+  }, [detectLinkVisibility, idOfCurrentHeading]);
 
   useEffect(() => detectCurrentHeading(), [items]);
 
@@ -158,11 +167,11 @@ function TOC({items, collapsibleTOC = false}: Props) {
 
     return (
       <a
-        id={`${toId}-link`}
+        id={`${toId}${linkSuffix}`}
         className={className}
         href={`#${toId}`}
         onClick={(evt) => {
-          scrollIntoView(toId);
+          scrollHeadingIntoView(toId);
           evt.preventDefault();
         }}
       >
