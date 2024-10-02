@@ -46,11 +46,20 @@ function scanPageForCurrentHeading(): string | void {
 }
 
 function TOC({items, collapsibleTOC = false}: Props) {
+  const [isPointerInside, setIsPointerInside] = useState(false);
   const isNested = !!items.find((item) => item.children.length > 0);
   const [idOfCurrentHeading, setIdOfCurrentHeading] = useState<string>();
   const temporarilyIgnoreScrolling = useRef(false);
   const lastScrollY = useRef(0);
   const linkSuffix = '-link';
+
+  const handlePointerEnter = () => {
+    setIsPointerInside(true);
+  };
+
+  const handlePointerLeave = () => {
+    setIsPointerInside(false);
+  };
 
   const [manuallyExpandedSections, setManuallyExpandedSections] = useState<{
     [id: string]: boolean;
@@ -135,21 +144,19 @@ function TOC({items, collapsibleTOC = false}: Props) {
   useEffect(() => {
     detectCurrentHeading();
     window.addEventListener('scroll', detectCurrentHeading);
-    return () => {
-      window.removeEventListener('scroll', detectCurrentHeading);
-    };
+    return () => window.removeEventListener('scroll', detectCurrentHeading);
   }, []);
 
   useEffect(() => {
-    if (idOfCurrentHeading) {
+    if (idOfCurrentHeading && !isPointerInside) {
       const currentHeadingLinkElement = document.getElementById(
         `${idOfCurrentHeading}${linkSuffix}`,
-      ) as HTMLAnchorElement | null;
+      );
       if (currentHeadingLinkElement) {
         detectLinkVisibility(currentHeadingLinkElement);
       }
     }
-  }, [detectLinkVisibility, idOfCurrentHeading]);
+  }, [detectLinkVisibility, idOfCurrentHeading, isPointerInside]);
 
   useEffect(() => detectCurrentHeading(), [items]);
 
@@ -188,7 +195,11 @@ function TOC({items, collapsibleTOC = false}: Props) {
   };
 
   return (
-    <div className={classNames(styles.TOC, isNested && styles.isNested)}>
+    <div
+      className={classNames(styles.TOC, isNested && styles.isNested)}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+    >
       <ul>
         <Box
           style={{
