@@ -11,7 +11,7 @@
 
 > Build. Contribute. Evolve. Shape the merchant experience for Shopify’s core product, the admin.
 
-[![storybook](https://shields.io/badge/storybook-grey?logo=storybook&style=flat)](https://storybook.polaris.shopify.com) [![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?label=@shopify/polaris)](https://www.npmjs.com/package/@shopify/polaris) [![CI](https://github.com/shopify/polaris/workflows/CI/badge.svg)](https://github.com/Shopify/polaris/actions?query=branch%3Amain) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
+[![storybook](https://shields.io/badge/storybook-grey?logo=storybook&style=flat)](https://storybook.polaris.shopify.dev) [![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?label=@shopify/polaris)](https://www.npmjs.com/package/@shopify/polaris) [![CI](https://github.com/shopify/polaris/workflows/CI/badge.svg)](https://github.com/Shopify/polaris/actions?query=branch%3Amain) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
 
 | Status | Owner            | Help                                                       |
 | ------ | ---------------- | ---------------------------------------------------------- |
