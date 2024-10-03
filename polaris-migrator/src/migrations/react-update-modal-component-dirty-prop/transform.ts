@@ -15,13 +15,14 @@ import {
 const modalImportSources = [
   '@shopify/polaris-internal',
   '~/shared/components/Modal',
+  '~/shared/components/Modal/Modal',
 ];
 
-const formUtilityImportSources = [
-  '~/shared/utilities/react-form-state',
-  '~/shared/utilities/forms/useRouteForm',
-  '~/shared/utilities/react-form',
-];
+// const formUtilityImportSources = [
+//   '~/shared/utilities/react-form-state',
+//   '~/shared/utilities/forms/useRouteForm',
+//   '~/shared/utilities/react-form',
+// ];
 
 export default function transformer(fileInfo: FileInfo, {jscodeshift: j}: API) {
   const source = j(fileInfo.source);
@@ -34,11 +35,17 @@ export default function transformer(fileInfo: FileInfo, {jscodeshift: j}: API) {
     return fileInfo.source;
   }
 
-  const hasFormUtilityImports = formUtilityImportSources.some((importSource) =>
-    hasImportDeclaration(j, source, importSource),
-  );
+  // const hasFormUtilityImports = formUtilityImportSources.some((importSource) =>
+  //   hasImportDeclaration(j, source, importSource),
+  // );
 
-  if (!hasFormUtilityImports) {
+  // if (!hasFormUtilityImports) {
+  //   return fileInfo.source;
+  // }
+
+  const dirtyRegex = new RegExp('dirty', 'i');
+  // const submitRegex = new RegExp('submit', 'i');
+  if (!dirtyRegex.test(fileInfo.source)) {
     return fileInfo.source;
   }
 
