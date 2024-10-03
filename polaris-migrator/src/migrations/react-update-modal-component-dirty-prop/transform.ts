@@ -15,6 +15,7 @@ import {
 const modalImportSources = [
   '@shopify/polaris-internal',
   '~/shared/components/Modal',
+  '~/shared/components/Modal/Modal',
 ];
 
 const formUtilityImportSources = [
