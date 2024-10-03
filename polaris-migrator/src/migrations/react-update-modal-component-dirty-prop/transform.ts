@@ -21,6 +21,7 @@ const formUtilityImportSources = [
   '~/shared/utilities/react-form-state',
   '~/shared/utilities/forms/useRouteForm',
   '~/shared/utilities/react-form',
+  '~/shared/utilities/forms/useFormState',
 ];
 
 export default function transformer(fileInfo: FileInfo, {jscodeshift: j}: API) {
