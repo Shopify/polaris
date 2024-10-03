@@ -22,6 +22,7 @@ const formUtilityImportSources = [
   '~/shared/utilities/react-form-state',
   '~/shared/utilities/forms/useRouteForm',
   '~/shared/utilities/react-form',
+  '~/shared/utilities/react-form/hooks/form',
   '~/shared/utilities/forms/useFormState',
 ];
 
