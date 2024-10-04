@@ -1,5 +1,15 @@
 # polaris.shopify.com
 
+## 1.1.0
+
+### Minor Changes
+
+- [#12662](https://github.com/Shopify/polaris/pull/12662) [`5bb85b547`](https://github.com/Shopify/polaris/commit/5bb85b547ea0fa7b8cdc07c1fe68966b48cc2cdf) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Removes unnecessary new badges from navigation
+
+### Patch Changes
+
+- [#12739](https://github.com/Shopify/polaris/pull/12739) [`af15611a6`](https://github.com/Shopify/polaris/commit/af15611a67fa0a0ea5ac0b4d2da9e33387dd5c60) Thanks [@sarahill](https://github.com/sarahill)! - Updated common action guidelines
+
 ## 1.0.13
 
 ### Patch Changes
