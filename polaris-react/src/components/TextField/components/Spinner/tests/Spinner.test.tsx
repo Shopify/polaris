@@ -5,6 +5,9 @@ import {Spinner} from '../Spinner';
 
 describe('<Spinner />', () => {
   const defaultProps = {
+    labelInside: true,
+    canIncrement: true,
+    canDecrement: true,
     onChange: noop,
     onMouseDown: noop,
     onMouseUp: noop,
