@@ -1,6 +1,14 @@
 import {Rect} from '../../../utilities/geometry';
 
-export type PreferredPosition = 'above' | 'below' | 'mostSpace' | 'cover';
+const MINIMUM_SURROUNDING_SPACE = 16;
+
+export type PreferredPosition =
+  | 'above'
+  | 'below'
+  | 'mostSpace'
+  | 'right'
+  | 'left'
+  | 'cover';
 
 export type PreferredAlignment = 'left' | 'center' | 'right';
 
@@ -20,103 +28,167 @@ export function calculateVerticalPosition(
   fixed: boolean | undefined,
   topBarOffset = 0,
 ) {
+  const positionedHorizontal =
+    preferredPosition === 'right' || preferredPosition === 'left';
+  // const hasScrollBar = scrollableContainerRect.height > containerRect.height;
   const activatorTop = activatorRect.top;
   const activatorBottom = activatorTop + activatorRect.height;
-  const spaceAbove = activatorRect.top - topBarOffset;
-  const spaceBelow =
-    containerRect.height - activatorRect.top - activatorRect.height;
-
-  const desiredHeight = overlayRect.height;
   const verticalMargins = overlayMargins.activator + overlayMargins.container;
-  const minimumSpaceToScroll = overlayMargins.container;
-  const distanceToTopScroll =
-    activatorRect.top - Math.max(scrollableContainerRect.top, 0);
-  const distanceToBottomScroll =
-    containerRect.top +
-    Math.min(
-      containerRect.height,
-      scrollableContainerRect.top + scrollableContainerRect.height,
-    ) -
-    (activatorRect.top + activatorRect.height);
-  const enoughSpaceFromTopScroll = distanceToTopScroll >= minimumSpaceToScroll;
-  const enoughSpaceFromBottomScroll =
-    distanceToBottomScroll >= minimumSpaceToScroll;
-  const heightIfAbove = Math.min(spaceAbove, desiredHeight);
-  const heightIfBelow = Math.min(spaceBelow, desiredHeight);
-  const heightIfAboveCover = Math.min(
-    spaceAbove + activatorRect.height,
-    desiredHeight,
-  );
-  const heightIfBelowCover = Math.min(
-    spaceBelow + activatorRect.height,
-    desiredHeight,
-  );
+  const minimumSurroundingSpace = verticalMargins
+    ? verticalMargins
+    : MINIMUM_SURROUNDING_SPACE;
+  const spaceAbove = positionedHorizontal
+    ? activatorRect.top + activatorRect.height - topBarOffset
+    : activatorRect.top - topBarOffset;
+  const spaceBelow = positionedHorizontal
+    ? containerRect.height - activatorRect.top
+    : containerRect.height - activatorRect.top - activatorRect.height;
+  const desiredHeight = overlayRect.height;
+  const enoughSpaceFromTopEdge =
+    spaceAbove >= desiredHeight + minimumSurroundingSpace;
+  const enoughSpaceFromBottomEdge =
+    spaceBelow >= desiredHeight + minimumSurroundingSpace;
   const containerRectTop = fixed ? 0 : containerRect.top;
+  const mostSpaceOnTop =
+    (enoughSpaceFromTopEdge ||
+      (spaceAbove >= spaceBelow && !enoughSpaceFromBottomEdge)) &&
+    (spaceAbove >= desiredHeight || spaceAbove >= spaceBelow);
 
-  const positionIfAbove = {
-    height: heightIfAbove - verticalMargins,
-    top: activatorTop + containerRectTop - heightIfAbove,
-    positioning: 'above',
-  };
+  const mostSpaceOnBottom =
+    (enoughSpaceFromBottomEdge ||
+      (spaceBelow >= spaceAbove && !enoughSpaceFromTopEdge)) &&
+    (spaceBelow >= desiredHeight || spaceBelow >= spaceAbove);
 
-  const positionIfBelow = {
-    height: heightIfBelow - verticalMargins,
-    top: activatorBottom + containerRectTop,
-    positioning: 'below',
-  };
+  const heightIfAbove = enoughSpaceFromTopEdge
+    ? desiredHeight - verticalMargins
+    : spaceAbove - minimumSurroundingSpace;
+  const heightIfBelow = enoughSpaceFromBottomEdge
+    ? desiredHeight - verticalMargins
+    : spaceBelow - minimumSurroundingSpace;
 
-  const positionIfCoverBelow = {
-    height: heightIfBelowCover - verticalMargins,
-    top: activatorTop + containerRectTop,
-    positioning: 'cover',
-  };
+  const positionIfAbove =
+    activatorTop + containerRectTop - heightIfAbove - verticalMargins;
+  const positionIfBelow = activatorBottom + containerRectTop;
 
-  const positionIfCoverAbove = {
-    height: heightIfAboveCover - verticalMargins,
-    top:
-      activatorTop +
-      containerRectTop -
-      heightIfAbove +
-      activatorRect.height +
-      verticalMargins,
-    positioning: 'cover',
-  };
+  console.table([
+    {variable: 'activatorRect.top', value: activatorRect.top},
+    {variable: 'containerRect.top', value: containerRect.top},
+    {
+      variable: 'scrollableContainerRect.top',
+      value: scrollableContainerRect.top,
+    },
 
-  if (preferredPosition === 'above') {
-    return (enoughSpaceFromTopScroll ||
-      (distanceToTopScroll >= distanceToBottomScroll &&
-        !enoughSpaceFromBottomScroll)) &&
-      (spaceAbove > desiredHeight || spaceAbove > spaceBelow)
-      ? positionIfAbove
-      : positionIfBelow;
+    {variable: 'overlayRect.height', value: overlayRect.height},
+    {variable: 'activatorRect.height', value: activatorRect.height},
+    {variable: 'containerRect.height', value: containerRect.height},
+    {
+      variable: 'scrollableContainerRect.height',
+      value: scrollableContainerRect.height,
+    },
+    {variable: 'verticalMargins', value: verticalMargins},
+    {
+      variable: 'spaceAbove',
+      value: spaceAbove,
+    },
+    {
+      variable: 'spaceBelow',
+      value: spaceBelow,
+    },
+    {
+      variable: 'enoughSpaceFromTopEdge',
+      value: enoughSpaceFromTopEdge,
+    },
+    {
+      variable: 'enoughSpaceFromBottomEdge',
+      value: enoughSpaceFromBottomEdge,
+    },
+    {
+      variable: 'mostSpaceOnTop',
+      value: mostSpaceOnTop,
+    },
+    {
+      variable: 'mostSpaceOnBottom',
+      value: mostSpaceOnBottom,
+    },
+    {
+      variable: 'positionIfAbove',
+      value: positionIfAbove,
+    },
+    {
+      variable: 'positionIfBelow',
+      value: positionIfBelow,
+    },
+    {variable: 'desiredHeight', value: desiredHeight},
+    {
+      variable: 'heightIfAbove',
+      value: heightIfAbove,
+    },
+    {
+      variable: 'heightIfBelow',
+      value: heightIfBelow,
+    },
+    {
+      variable: 'hasScrollBar',
+      value: scrollableContainerRect.height > containerRect.height,
+    },
+  ]);
+
+  if (!positionedHorizontal) {
+    if (preferredPosition === 'above') {
+      return mostSpaceOnTop
+        ? {
+            height: heightIfAbove,
+            top: positionIfAbove,
+            positioning: 'above',
+          }
+        : {
+            height: heightIfBelow,
+            top: positionIfBelow,
+            positioning: 'below',
+          };
+    }
+
+    if (preferredPosition === 'below') {
+      return mostSpaceOnBottom
+        ? {
+            height: heightIfBelow,
+            top: positionIfBelow,
+            positioning: 'below',
+          }
+        : {
+            height: heightIfAbove,
+            top: positionIfAbove,
+            positioning: 'above',
+          };
+    }
   }
 
-  if (preferredPosition === 'below') {
-    return (enoughSpaceFromBottomScroll ||
-      (distanceToBottomScroll >= distanceToTopScroll &&
-        !enoughSpaceFromTopScroll)) &&
-      (spaceBelow > desiredHeight || spaceBelow > spaceAbove)
-      ? positionIfBelow
-      : positionIfAbove;
+  // if (positionedHorizontal) {
+  //   positionIfAbove = !hasScrollBar
+  //     ? containerRect.height - activatorBottom
+  //     : scrollableContainerRect.bottom - activatorBottom;
+  //   positionIfBelow = activatorTop + containerRect.top;
+
+  //   return mostSpaceOnBottom
+  //     ? {
+  //         height: heightIfBelow,
+  //         top: positionIfBelow,
+  //         positioning: 'below',
+  //       }
+  //     : {
+  //         height: heightIfAbove,
+  //         bottom: positionIfAbove,
+  //         positioning: 'above',
+  //       };
+  // }
+
+  if (enoughSpaceFromTopEdge && enoughSpaceFromBottomEdge) {
+    return {height: heightIfBelow, top: positionIfBelow, positioning: 'below'};
   }
 
-  if (preferredPosition === 'cover') {
-    return (enoughSpaceFromBottomScroll ||
-      (distanceToBottomScroll >= distanceToTopScroll &&
-        !enoughSpaceFromTopScroll)) &&
-      (spaceBelow + activatorRect.height > desiredHeight ||
-        spaceBelow > spaceAbove)
-      ? positionIfCoverBelow
-      : positionIfCoverAbove;
-  }
-
-  if (enoughSpaceFromTopScroll && enoughSpaceFromBottomScroll) {
-    return spaceAbove > spaceBelow ? positionIfAbove : positionIfBelow;
-  }
-
-  return distanceToTopScroll > minimumSpaceToScroll
-    ? positionIfAbove
-    : positionIfBelow;
+  return mostSpaceOnBottom
+    ? {height: heightIfBelow, top: positionIfBelow, positioning: 'below'}
+    : {height: heightIfAbove, top: positionIfAbove, positioning: 'above'};
 }
 
 export function calculateHorizontalPosition(
