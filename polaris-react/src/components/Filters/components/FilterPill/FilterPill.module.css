@@ -87,6 +87,14 @@
   @media (--p-breakpoints-md-up) {
     padding-right: 0;
   }
+
+  &.locked {
+    padding-right: calc(var(--p-space-050) + var(--p-space-300));
+
+    @media (--p-breakpoints-md-up) {
+      padding-right: calc(var(--p-space-050) + var(--p-space-200));
+    }
+  }
 }
 
 .clearButton {
