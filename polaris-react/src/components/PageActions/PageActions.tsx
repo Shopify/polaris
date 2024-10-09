@@ -5,12 +5,13 @@ import type {
   DisableableAction,
   LoadableAction,
 } from '../../types';
-// eslint-disable-next-line import/no-deprecated
-import {LegacyStack} from '../LegacyStack';
 import {ButtonGroup} from '../ButtonGroup';
 import {buttonsFrom} from '../Button';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
+import {useBreakpoints} from '../../utilities/breakpoints';
+import {BlockStack} from '../BlockStack';
+import {InlineStack} from '../InlineStack';
 
 import styles from './PageActions.module.css';
 
@@ -27,6 +28,8 @@ export function PageActions({
   primaryAction,
   secondaryActions,
 }: PageActionsProps) {
+  const {mdUp} = useBreakpoints();
+
   let primaryActionMarkup: MaybeJSX = null;
   if (isReactElement(primaryAction)) {
     primaryActionMarkup = <>{primaryAction}</>;
@@ -43,12 +46,17 @@ export function PageActions({
     secondaryActionsMarkup = <>{secondaryActions}</>;
   }
 
-  return (
-    <div className={styles.PageActions}>
-      <LegacyStack distribution="trailing" spacing="tight">
-        {secondaryActionsMarkup}
-        {primaryActionMarkup}
-      </LegacyStack>
-    </div>
+  const actionsMarkup = mdUp ? (
+    <InlineStack gap="200" align="end">
+      {secondaryActionsMarkup}
+      {primaryActionMarkup}
+    </InlineStack>
+  ) : (
+    <BlockStack gap="200">
+      {primaryActionMarkup}
+      {secondaryActionsMarkup}
+    </BlockStack>
   );
+
+  return <div className={styles.PageActions}>{actionsMarkup}</div>;
 }

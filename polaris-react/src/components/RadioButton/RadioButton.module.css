@@ -1,6 +1,9 @@
 .RadioButton {
   position: relative;
-  margin: var(--p-space-025);
+
+  @media (--p-breakpoints-md-up) {
+    margin: var(--p-space-025);
+  }
 }
 
 /* stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators -- code is much more readable this way */
@@ -97,13 +100,13 @@
 
 .Backdrop {
   /* stylelint-disable-next-line -- Polaris component custom properties */
-  --pc-icon-size-small: 8px;
+  --pc-icon-size-small: 10px;
 
   /* ::before is the selected dot, ::after the focus-ring */
 
-  @media (--p-breakpoints-md-down) {
+  @media (--p-breakpoints-md-up) {
     /* stylelint-disable-next-line -- Polaris component custom properties */
-    --pc-icon-size-small: 10px;
+    --pc-icon-size-small: 8px;
   }
   position: relative;
   top: 0;
@@ -111,10 +114,14 @@
   display: block;
   width: 100%;
   height: 100%;
-  border: var(--p-border-width-0165) solid var(--p-color-input-border);
+  border: var(--p-border-width-025) solid var(--p-color-input-border);
   border-radius: var(--p-border-radius-full);
   background-color: var(--p-color-input-bg-surface);
   transition: border-color var(--p-motion-duration-100) var(--p-motion-ease-out);
+
+  @media (--p-breakpoints-md-up) {
+    border: var(--p-border-width-0165) solid var(--p-color-input-border);
+  }
 
   &::before {
     content: '';

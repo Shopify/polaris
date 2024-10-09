@@ -18,7 +18,7 @@ export function FooterHelp({children, align = 'center'}: FooterHelpProps) {
 
   return (
     <div className={styles.FooterHelp} style={style}>
-      <Text as="p" variant="bodyLg">
+      <Text as="p" variant="bodySm">
         {children}
       </Text>
     </div>

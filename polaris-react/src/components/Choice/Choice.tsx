@@ -161,6 +161,7 @@ export function Choice({
     <div className={styles.HelpText} id={helpTextID(id)}>
       <Text
         as="span"
+        variant="bodySm"
         // `undefined` means color: inherit
         // the nearest ancestor with a specified color is .Descriptions in Choice.scss
         tone={disabled ? undefined : 'subdued'}

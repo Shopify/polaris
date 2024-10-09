@@ -1,7 +1,8 @@
 import React from 'react';
 
-import {Text} from '../Text';
 import {classNames} from '../../utilities/css';
+import type {TextProps} from '../Text';
+import {Text} from '../Text';
 
 import styles from './Label.module.css';
 
@@ -14,13 +15,21 @@ export interface LabelProps {
   hidden?: boolean;
   /** Visual required indicator for the label */
   requiredIndicator?: boolean;
+
+  variant?: TextProps['variant'];
 }
 
 export function labelID(id: string) {
   return `${id}Label`;
 }
 
-export function Label({children, id, hidden, requiredIndicator}: LabelProps) {
+export function Label({
+  children,
+  id,
+  hidden,
+  requiredIndicator,
+  variant = 'bodyMd',
+}: LabelProps) {
   const className = classNames(styles.Label, hidden && styles.hidden);
 
   return (
@@ -33,7 +42,7 @@ export function Label({children, id, hidden, requiredIndicator}: LabelProps) {
           requiredIndicator && styles.RequiredIndicator,
         )}
       >
-        <Text as="span" variant="bodyMd">
+        <Text as="span" variant={variant}>
           {children}
         </Text>
       </label>

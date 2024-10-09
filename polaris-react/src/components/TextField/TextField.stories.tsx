@@ -18,6 +18,7 @@ import {
   Link,
 } from '@shopify/polaris';
 import {
+  CalendarIcon,
   DeleteIcon,
   QuestionCircleIcon,
   SearchIcon,
@@ -64,12 +65,14 @@ export const Magic = {
           tone="magic"
         />
         <TextField
-          label="Prefix icon"
+          label="Search"
           type="search"
+          labelHidden
           value={value1}
           onChange={handleChange1}
           prefix={<Icon source={SearchIcon} />}
           autoComplete="off"
+          connectedRight={<Button>Browse</Button>}
           tone="magic"
         />
         <TextField
@@ -105,6 +108,7 @@ export const Number = {
           value={value}
           onChange={handleChange}
           autoComplete="off"
+          suffix="/10"
         />
         <TextField
           label="Second Quantity"
@@ -716,8 +720,30 @@ export const WithInlineSuggestion = {
 
 export const All = {
   render() {
+    const [stepperValue, setStepperValue] = useState(3);
+    const [stepperValue2, setStepperValue2] = useState(3);
+
     return (
       <FormLayout>
+        <FormLayout.Group>
+          <TextField
+            label="Working Stepper with a min value of 0 and max value of 10"
+            value={stepperValue}
+            onChange={setStepperValue}
+            min={0}
+            max={10}
+            autoComplete="off"
+            type="number"
+          />
+          <TextField
+            label="Stepper with suffix"
+            value={stepperValue2}
+            onChange={setStepperValue2}
+            suffix={'/10'}
+            autoComplete="off"
+            type="number"
+          />
+        </FormLayout.Group>
         <FormLayout.Group>
           <TextField
             label="Default"
@@ -908,9 +934,19 @@ export const All = {
           <TextField
             label="Connected"
             type="number"
-            value="Value"
+            value="1"
             onChange={() => {}}
             autoComplete="off"
+            connectedLeft={<Button>Left</Button>}
+            connectedRight={<Button>Right</Button>}
+          />
+          <TextField
+            label="Connected with suffix"
+            type="number"
+            value="1"
+            onChange={() => {}}
+            autoComplete="off"
+            suffix="/100"
             connectedLeft={<Button>Left</Button>}
             connectedRight={<Button>Right</Button>}
           />
@@ -1123,6 +1159,42 @@ export const WithLoading = {
         clearButton
         onClearButtonClick={handleClearButtonClick}
         loading
+      />
+    );
+  },
+};
+
+export const WithNumberStepperLikeProps = {
+  render() {
+    const [value, setValue] = useState('0');
+
+    return (
+      <TextField
+        label="Quantity"
+        value={value}
+        onChange={setValue}
+        type="number"
+        labelHidden
+        min={0}
+        max={10}
+        autoComplete="off"
+        suffix="/ 10"
+      />
+    );
+  },
+};
+
+export const WithDatePickerLikeProps = {
+  render() {
+    const [value, setValue] = useState('');
+
+    return (
+      <TextField
+        label="Date"
+        value={value}
+        onChange={setValue}
+        prefix={<Icon source={CalendarIcon} />}
+        autoComplete="off"
       />
     );
   },

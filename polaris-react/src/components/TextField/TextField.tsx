@@ -20,10 +20,13 @@ import {Icon} from '../Icon';
 import {Text} from '../Text';
 import {Spinner as LoadingSpinner} from '../Spinner';
 import {useEventListener} from '../../utilities/use-event-listener';
+import {useIsMobileFormsInline} from '../../utilities/use-is-mobile-forms-inline';
+import {useIsMobileBreakpoint} from '../../utilities/use-is-mobile-breakpoint';
 
-import {Resizer, Spinner} from './components';
+import {Resizer, Spinner, useStepper} from './components';
 import type {SpinnerProps} from './components';
 import styles from './TextField.module.css';
+import {Stepper} from './components/Stepper/Stepper';
 
 type Type =
   | 'text'
@@ -211,7 +214,7 @@ export function TextField({
   helpText,
   label,
   labelAction,
-  labelHidden,
+  labelHidden: incomingLabelHidden,
   disabled,
   clearButton,
   readOnly,
@@ -255,13 +258,21 @@ export function TextField({
   onFocus,
   onBlur,
   tone,
-  autoSize,
+  autoSize: incomingAutoSize,
   loading,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
+  const isMobileFormsInline = useIsMobileFormsInline();
+  const isTallInput = isMobileFormsInline && !verticalContent;
+
+  const labelInside =
+    isTallInput && !incomingLabelHidden && !labelAction && !connectedLeft;
+
+  const labelHidden = labelInside ? value.length === 0 : incomingLabelHidden;
+
   const uniqId = useId();
   const id = idProp ?? uniqId;
 
@@ -306,8 +317,18 @@ export function TextField({
   const normalizedMax = max != null ? max : Infinity;
   const normalizedMin = min != null ? min : -Infinity;
 
+  const isNumericType = type === 'number' || type === 'integer';
+  const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
+  const isMobileBreakpoint = useIsMobileBreakpoint();
+
+  const showStepper =
+    isMobileBreakpoint && isNumericType && step !== 0 && !disabled && !readOnly;
+
   const className = classNames(
     styles.TextField,
+    isTallInput && styles.tallInput,
+    labelInside && styles.labelInside,
+    Boolean(labelAction) && styles.labelAction,
     Boolean(normalizedValue) && styles.hasValue,
     disabled && styles.disabled,
     readOnly && styles.readOnly,
@@ -317,26 +338,34 @@ export function TextField({
     focus && !disabled && styles.focus,
     variant !== 'inherit' && styles[variant],
     size === 'slim' && styles.slim,
+    showStepper && styles.showStepper,
   );
 
-  const inputType = type === 'currency' ? 'text' : type;
-  const isNumericType = type === 'number' || type === 'integer';
-  const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
+  const inputType = type === 'currency' || showStepper ? 'text' : type;
 
-  const prefixMarkup = prefix ? (
-    <div
-      className={classNames(styles.Prefix, iconPrefix && styles.PrefixIcon)}
-      id={`${id}-Prefix`}
-      ref={prefixRef}
-    >
-      <Text as="span" variant="bodyMd">
-        {prefix}
-      </Text>
-    </div>
-  ) : null;
+  const fullWidthStepper = showStepper && !(labelHidden || connectedLeft);
+
+  const autoSize = incomingAutoSize || fullWidthStepper;
+
+  const prefixMarkup =
+    prefix && !showStepper ? (
+      <div
+        className={classNames(styles.Prefix, iconPrefix && styles.PrefixIcon)}
+        id={`${id}-Prefix`}
+        ref={prefixRef}
+      >
+        <Text as="span" variant="bodyMd">
+          {prefix}
+        </Text>
+      </div>
+    ) : null;
 
   const suffixMarkup = suffix ? (
-    <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
+    <div
+      className={classNames(styles.Suffix, showStepper && styles.StepperSuffix)}
+      id={`${id}-Suffix`}
+      ref={suffixRef}
+    >
       <Text as="span" variant="bodyMd">
         {suffix}
       </Text>
@@ -473,7 +502,11 @@ export function TextField({
   );
 
   const spinnerMarkup =
-    isNumericType && step !== 0 && !disabled && !readOnly ? (
+    !isMobileBreakpoint &&
+    isNumericType &&
+    step !== 0 &&
+    !disabled &&
+    !readOnly ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
@@ -541,6 +574,7 @@ export function TextField({
     monospaced && styles.monospaced,
     suggestion && styles.suggestion,
     autoSize && styles['Input-autoSize'],
+    showStepper && styles.stepperInput,
   );
 
   const handleOnFocus = (
@@ -574,7 +608,7 @@ export function TextField({
     role,
     autoFocus,
     value: normalizedValue,
-    placeholder,
+    placeholder: labelInside ? placeholder || label : placeholder,
     style,
     autoComplete,
     className: inputClassName,
@@ -615,6 +649,13 @@ export function TextField({
     'data-form-type': autoComplete === 'off' ? 'other' : undefined,
   });
 
+  const {canDecrement, canIncrement} = useStepper({
+    value: isNumericType ? Number(value) : null,
+    minValue: min ? Number(min) : undefined,
+    maxValue: max ? Number(max) : undefined,
+    disabled,
+  });
+
   const inputWithVerticalContentMarkup = verticalContent ? (
     <div
       className={styles.VerticalContent}
@@ -640,7 +681,12 @@ export function TextField({
   );
 
   const inputAndSuffixMarkup = autoSize ? (
-    <div className={styles.InputAndSuffixWrapper}>
+    <div
+      className={classNames(
+        styles.InputAndSuffixWrapper,
+        showStepper && styles.StepperwithSuffixWrapper,
+      )}
+    >
       <div
         className={classNames(
           styles.AutoSizeWrapper,
@@ -659,13 +705,29 @@ export function TextField({
     </>
   );
 
+  const finalInputMarkup = showStepper ? (
+    <Stepper
+      input={
+        <div className={styles.stepperInputWrapper}>{inputAndSuffixMarkup}</div>
+      }
+      label={label}
+      hideLabel={Boolean(labelHidden || connectedLeft)}
+      canDecrement={canDecrement}
+      canIncrement={canIncrement}
+      handleNumberChange={handleNumberChange}
+    />
+  ) : (
+    inputAndSuffixMarkup
+  );
+
   return (
     <Labelled
       label={label}
       id={id}
       error={error}
       action={labelAction}
-      labelHidden={labelHidden}
+      labelHidden={labelHidden || showStepper}
+      labelInline={labelInside}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
       disabled={disabled}
@@ -674,7 +736,7 @@ export function TextField({
       <Connected left={connectedLeft} right={connectedRight}>
         <div className={className} onClick={handleClick} ref={textFieldRef}>
           {prefixMarkup}
-          {inputAndSuffixMarkup}
+          {finalInputMarkup}
           {characterCountMarkup}
           {loadingMarkup}
           {clearButtonMarkup}
