@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, {
   createElement,
   useState,
@@ -20,6 +21,7 @@ import {Icon} from '../Icon';
 import {Text} from '../Text';
 import {Spinner as LoadingSpinner} from '../Spinner';
 import {useEventListener} from '../../utilities/use-event-listener';
+import {useBreakpoints} from '../../utilities/breakpoints';
 
 import {Resizer, Spinner} from './components';
 import type {SpinnerProps} from './components';
@@ -262,6 +264,11 @@ export function TextField({
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
+  const {mdDown: tallerInlineInputs} = useBreakpoints();
+  const isTallInput = tallerInlineInputs && !verticalContent;
+  const inlineLabelOptOut = labelHidden || labelAction || connectedLeft;
+  const labelInside = isTallInput && !inlineLabelOptOut;
+
   const uniqId = useId();
   const id = idProp ?? uniqId;
 
@@ -308,6 +315,8 @@ export function TextField({
 
   const className = classNames(
     styles.TextField,
+    isTallInput && styles.tallInput,
+    labelInside && styles.labelInside,
     Boolean(normalizedValue) && styles.hasValue,
     disabled && styles.disabled,
     readOnly && styles.readOnly,
@@ -484,6 +493,13 @@ export function TextField({
       />
     ) : null;
 
+  // TODO: cleanup
+  const labelPosition = labelInside
+    ? value.length > 0 || spinnerMarkup
+      ? 'Inside'
+      : 'InsidePlaceholder'
+    : 'Outside';
+
   const style =
     multiline && height
       ? {
@@ -574,7 +590,7 @@ export function TextField({
     role,
     autoFocus,
     value: normalizedValue,
-    placeholder,
+    placeholder: labelInside ? undefined : placeholder,
     style,
     autoComplete,
     className: inputClassName,
@@ -666,6 +682,7 @@ export function TextField({
       error={error}
       action={labelAction}
       labelHidden={labelHidden}
+      labelPosition={labelPosition}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
       disabled={disabled}
