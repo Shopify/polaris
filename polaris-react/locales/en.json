@@ -15,6 +15,26 @@
         "placeholder": "Search actions"
       }
     },
+    "AppCard": {
+      "accessibilityLabel": "{appTitle} app card"
+    },
+    "AppCardAction": {
+      "Actions": {
+        "install": "Install",
+        "installAlt": "Install app",
+        "open": "Open",
+        "openAlt": "Open app"
+      }
+    },
+    "AppCardBadge": {
+      "builtForShopify": "Built for Shopify"
+    },
+    "AppIcon": {
+      "accessibilityLabel": "View app details for the app",
+      "accessibilityLabelWithAppTitle": "View app details for app: {app}",
+      "alt": "App icon",
+      "altWithAppTitle": "{app} icon"
+    },
     "Avatar": {
       "label": "Avatar",
       "labelWithInitials": "Avatar with initials {initials}"
@@ -288,6 +308,9 @@
     },
     "SkeletonPage": {
       "loadingLabel": "Page loading"
+    },
+    "SkeletonAppCard": {
+      "loadingLabel": "App card loading"
     },
     "Tabs": {
       "newViewAccessibilityLabel": "Create new view",
