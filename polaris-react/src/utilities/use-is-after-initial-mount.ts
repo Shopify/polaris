@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, startTransition} from 'react';
 
 /**
  * useIsAfterInitialMount will trigger a re-render to provide
@@ -18,7 +18,9 @@ export function useIsAfterInitialMount() {
   const [isAfterInitialMount, setIsAfterInitialMount] = useState(false);
 
   useEffect(() => {
-    setIsAfterInitialMount(true);
+    startTransition(() => {
+      setIsAfterInitialMount(true);
+    });
   }, []);
 
   return isAfterInitialMount;
