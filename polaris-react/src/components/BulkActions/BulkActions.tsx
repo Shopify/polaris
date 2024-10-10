@@ -19,6 +19,7 @@ import {Button} from '../Button';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
 import {InlineStack} from '../InlineStack';
+import {MenuGroup} from '../ActionMenu';
 import type {ButtonProps} from '../Button';
 
 import {
@@ -210,33 +211,22 @@ export const BulkActions = ({
 
   const selectAllActionsMarkup = selectMode ? (
     <div aria-live={ariaLive}>
-      <Popover
+      <MenuGroup
+        title={i18n.translate(
+          'Polaris.ResourceList.BulkActions.selectAllMenu.activator',
+          {selectedItemsCount},
+        )}
         active={selectedAllMenuActive}
+        actions={[
+          selectAllOnPageItem,
+          ...(selectAllInStoreItem
+            ? [selectAllInStoreItem, unselectAllItem]
+            : [unselectAllItem]),
+        ]}
+        onOpen={() => {}}
         onClose={toggleSelectAllMenu}
-        activator={
-          <Button
-            disclosure
-            pressed={selectedAllMenuActive}
-            variant="tertiary"
-            onClick={toggleSelectAllMenu}
-          >
-            {i18n.translate(
-              'Polaris.ResourceList.BulkActions.selectAllMenu.activator',
-              {selectedItemsCount},
-            )}
-          </Button>
-        }
-      >
-        <ActionList
-          items={[
-            selectAllOnPageItem,
-            ...(selectAllInStoreItem
-              ? [selectAllInStoreItem, unselectAllItem]
-              : [unselectAllItem]),
-          ]}
-          onActionAnyItem={toggleSelectAllMenu}
-        />
-      </Popover>
+        onClick={toggleSelectAllMenu}
+      />
     </div>
   ) : null;
 

@@ -43,7 +43,7 @@
     z-index: var(--p-z-index-1);
     position: absolute;
     top: 0;
-    right: calc((-1 * var(--p-space-100)) - 1);
+    right: calc(-1 * var(--p-space-100));
     width: var(--p-width-200);
     height: 100%;
     pointer-events: none;
