@@ -41,6 +41,7 @@ import type {
   TooltipOverlayProps,
 } from '../Tooltip';
 import {InlineStack} from '../InlineStack';
+import {Bleed} from '../Bleed';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -540,9 +541,7 @@ function IndexTableBase({
         selected={bulkSelectState}
         promotedActions={promotedActions}
         actions={actions}
-        onSelectModeToggle={condensed ? handleSelectModeToggle : undefined}
         label={selectAllActionsLabel}
-        buttonSize="micro"
       />
     ) : null;
 
@@ -711,7 +710,7 @@ function IndexTableBase({
     pagination || bulkActions ? (
       <div className={styles.Footer}>
         <Box
-          borderWidth="025"
+          borderBlockStartWidth="025"
           borderColor="border"
           background="bg-surface-secondary"
           paddingBlockStart="150"
@@ -721,7 +720,13 @@ function IndexTableBase({
         >
           <InlineStack align="start" blockAlign="center" gap="200" wrap={false}>
             {paginationMarkup}
-            {bulkActionsMarkup}
+            <Bleed
+              marginInlineStart={
+                pagination?.hasNext || pagination?.hasPrevious ? '0' : '200'
+              }
+            >
+              {bulkActionsMarkup}
+            </Bleed>
           </InlineStack>
         </Box>
       </div>

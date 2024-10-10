@@ -59,7 +59,9 @@ export interface BulkActionsProps {
   disabled?: boolean;
   /** Callback when more actions button is toggled */
   onMoreActionPopoverToggle?(isOpen: boolean): void;
-  /** The size of the buttons to render */
+  /** The size of the buttons to render
+   * @default 'medium'
+   */
   buttonSize?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
   /** Label for the bulk actions */
   label?: string;
@@ -94,7 +96,7 @@ export const BulkActions = ({
   promotedActions,
   actions,
   disabled,
-  buttonSize,
+  buttonSize = 'medium',
   paginatedSelectAllAction,
   paginatedSelectAllText,
   selected,
@@ -212,7 +214,12 @@ export const BulkActions = ({
         active={selectedAllMenuActive}
         onClose={toggleSelectAllMenu}
         activator={
-          <Button disclosure variant="tertiary" onClick={toggleSelectAllMenu}>
+          <Button
+            disclosure
+            pressed={selectedAllMenuActive}
+            variant="tertiary"
+            onClick={toggleSelectAllMenu}
+          >
             {i18n.translate(
               'Polaris.ResourceList.BulkActions.selectAllMenu.activator',
               {selectedItemsCount},

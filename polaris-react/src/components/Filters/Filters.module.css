@@ -26,11 +26,7 @@
   align-items: center;
   flex-wrap: nowrap;
   white-space: nowrap;
-  padding-inline: var(--p-space-100);
-
-  > :first-child {
-    padding-left: var(--p-space-100);
-  }
+  padding-inline-end: var(--p-space-100);
 }
 
 .hideQueryField .FiltersInner {
@@ -40,14 +36,14 @@
 
 .SearchFieldWrapper {
   position: relative;
-  padding: var(--p-space-150) var(--p-space-100) var(--p-space-150) 0;
+  padding: var(--p-space-150) var(--p-space-200) var(--p-space-150) 0;
 
   &::after {
     content: '';
     z-index: var(--p-z-index-1);
     position: absolute;
     top: 0;
-    right: calc(-1 * var(--p-space-300));
+    right: calc((-1 * var(--p-space-100)) - 1);
     width: var(--p-width-200);
     height: 100%;
     pointer-events: none;
@@ -102,7 +98,6 @@
   border-radius: var(--p-border-radius-200);
   border: var(--p-color-border) dashed var(--p-border-width-025);
   padding: 0 var(--p-space-300) 0 var(--p-space-200);
-  margin-left: var(--p-space-100);
   height: 28px;
   cursor: pointer;
   display: flex;

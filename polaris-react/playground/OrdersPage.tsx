@@ -311,19 +311,27 @@ function Table({orders}: {orders: Order[]}) {
     );
   };
 
-  const paginationLabel =
-    pageCount === 1
-      ? `${totalOrderCount} orders`
-      : `${
+  const totalCountText = `${totalOrderCount} ${
+    totalOrderCount === 1 ? 'order' : 'orders'
+  }`;
+
+  const rangeText =
+    pagedOrders.length > 1
+      ? `${
           pagedOrdersStartIndex + 1
-        }-${pagedOrdersEndIndex} of ${totalOrderCount} orders`;
+        }-${pagedOrdersEndIndex} of ${totalOrderCount} orders`
+      : totalCountText;
+
+  const paginationLabel = pageCount === 1 ? totalCountText : rangeText;
 
   const pagination = {
     type: 'table',
     label:
       selectedResources.length > 0 ? undefined : (
         <Bleed marginInlineStart={pageCount === 1 ? '400' : '0'}>
-          <Box padding="150">{paginationLabel}</Box>
+          <Box padding="150" paddingInlineStart="200">
+            {paginationLabel}
+          </Box>
         </Bleed>
       ),
     hasNext,

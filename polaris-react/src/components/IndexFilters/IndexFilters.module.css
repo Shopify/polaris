@@ -91,7 +91,7 @@
   gap: var(--p-space-200);
   align-items: center;
   justify-content: end;
-  padding: var(--p-space-150) var(--p-space-300);
+  padding: var(--p-space-150) var(--p-space-200);
 
   @media (--p-breakpoints-md-down) {
     padding: var(--p-space-200);
