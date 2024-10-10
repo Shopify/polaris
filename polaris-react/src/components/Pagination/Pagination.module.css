@@ -1,4 +1,8 @@
 .Pagination {
+  [data-buttongroup-variant='segmented'] {
+    gap: var(--p-space-050);
+  }
+
   button {
     /* stylelint-disable-next-line declaration-no-important -- override border */
     border: none !important;

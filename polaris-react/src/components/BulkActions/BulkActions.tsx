@@ -51,8 +51,6 @@ export interface BulkActionsProps {
   paginatedSelectAllText?: string;
   /** Action for selecting all across pages */
   paginatedSelectAllAction?: Action;
-  /** Callback when the select all checkbox is clicked */
-  onToggleAll?(): void;
   /** Actions that will be given more prominence */
   promotedActions?: (BulkAction | MenuGroupDescriptor)[];
   /** List of actions */
@@ -71,6 +69,8 @@ export interface BulkActionsProps {
   selectedItemsCount?: number | 'All';
   /** The total number of rows in the table */
   itemCount: number;
+  /** Callback when the select all checkbox is clicked */
+  onSelect?(selectionType: 'page' | 'all' | 'none'): void;
   /** @deprecated Used for forwarding the ref. Use `ref` prop instead */
   innerRef?: React.Ref<any>;
   /** @deprecated Callback when selectable state of list is changed. Unused callback */
@@ -98,7 +98,7 @@ export const BulkActions = ({
   paginatedSelectAllAction,
   paginatedSelectAllText,
   selected,
-  onToggleAll,
+  onSelect,
   onMoreActionPopoverToggle,
   width,
   selectMode,
@@ -112,6 +112,11 @@ export const BulkActions = ({
   const toggleSelectAllMenu = () => {
     setSelectedAllMenuActive((active) => !active);
   };
+
+  const handleBulkSelection =
+    (selectionType: 'page' | 'all' | 'none') => () => {
+      onSelect?.(selectionType);
+    };
 
   const [state, setState] = useReducer(
     (
@@ -177,7 +182,7 @@ export const BulkActions = ({
       'Polaris.ResourceList.BulkActions.selectAllMenu.items.selectAllOnPage',
     ),
     disabled: selected === true,
-    onAction: onToggleAll,
+    onAction: handleBulkSelection('page'),
   };
 
   const selectAllInStoreItem = paginatedSelectAllAction
@@ -197,8 +202,8 @@ export const BulkActions = ({
     content: i18n.translate(
       'Polaris.ResourceList.BulkActions.selectAllMenu.items.unselectAll',
     ),
-    disabled: !selected || selected === 'indeterminate',
-    onAction: onToggleAll,
+    disabled: selectedItemsCount === 0,
+    onAction: handleBulkSelection('none'),
   };
 
   const selectAllActionsMarkup = selectMode ? (

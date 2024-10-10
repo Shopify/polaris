@@ -1,4 +1,5 @@
 import React, {createRef} from 'react';
+import {ChevronLeftIcon, ChevronRightIcon} from '@shopify/polaris-icons';
 
 import type {Key} from '../../types';
 import {useI18n} from '../../utilities/i18n';
@@ -87,7 +88,7 @@ export function Pagination({
       onClick={onPrevious}
       disabled={!hasPrevious}
       id="previousURL"
-      icon="chevron-left"
+      icon={ChevronLeftIcon}
     />
   );
   const constructedPrevious =
@@ -110,7 +111,7 @@ export function Pagination({
       onClick={onNext}
       disabled={!hasNext}
       id="nextURL"
-      icon="chevron-right"
+      icon={ChevronRightIcon}
     />
   );
   const constructedNext =
@@ -168,6 +169,10 @@ export function Pagination({
         </Text>
       </Box>
     ) : null;
+
+    if (!hasNext && !hasPrevious) {
+      return labelMarkup ? labelMarkup : null;
+    }
 
     return (
       <nav

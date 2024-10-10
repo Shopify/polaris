@@ -569,7 +569,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         itemCount={items.length}
         selectedItemsCount={selectedItems.length}
         selectMode={selectMode}
-        onSelectModeToggle={handleSelectMode}
         label={selectAllActionsLabel}
         paginatedSelectAllAction={paginatedSelectAllAction}
         paginatedSelectAllText={paginatedSelectAllText}
@@ -578,7 +577,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         disabled={loading}
         accessibilityLabel={bulkActionsAccessibilityLabel}
         selected={selectAllSelectState}
-        onToggleAll={handleToggleAll}
+        onSelect={handleToggleAll}
         buttonSize="medium"
       />
     </div>

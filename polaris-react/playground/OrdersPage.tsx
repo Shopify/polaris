@@ -11,6 +11,7 @@ import {
   ProductIcon,
   SettingsIcon,
   SearchIcon,
+  DeleteIcon,
 } from '@shopify/polaris-icons';
 
 import type {
@@ -22,6 +23,7 @@ import type {
 } from '../src';
 import {
   Tag,
+  Bleed,
   Avatar,
   Box,
   Icon,
@@ -259,11 +261,15 @@ export const OrdersPage = {
   },
 };
 
+const PAGE_LIMIT = 50;
+
 function Table({orders}: {orders: Order[]}) {
   const resourceName = {
     singular: 'order',
     plural: 'orders',
   };
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     // @ts-expect-error -- I don't expect an error here, you're doing too much
@@ -288,7 +294,76 @@ function Table({orders}: {orders: Order[]}) {
     return {tone, progress};
   };
 
-  const rowMarkup = orders.map(
+  const totalOrderCount = orders.length;
+  const pageCount = 1 + Math.ceil((orders.length - PAGE_LIMIT) / PAGE_LIMIT);
+  const hasNext = currentPage < pageCount;
+  const hasPrevious = currentPage > 1 && pageCount > 1;
+  const pagedOrdersStartIndex =
+    currentPage === 1 ? 0 : PAGE_LIMIT * (currentPage - 1);
+  const pagedOrdersEndIndex = hasNext
+    ? pagedOrdersStartIndex + PAGE_LIMIT
+    : totalOrderCount;
+  const pagedOrders = orders.slice(pagedOrdersStartIndex, pagedOrdersEndIndex);
+
+  const handlePagination = (direction: 'prev' | 'next') => () => {
+    setCurrentPage((current) =>
+      direction === 'prev' ? current - 1 : current + 1,
+    );
+  };
+
+  const paginationLabel =
+    pageCount === 1
+      ? `${totalOrderCount} orders`
+      : `${
+          pagedOrdersStartIndex + 1
+        }-${pagedOrdersEndIndex} of ${totalOrderCount} orders`;
+
+  const pagination = {
+    type: 'table',
+    label:
+      selectedResources.length > 0 ? undefined : (
+        <Bleed marginInlineStart={pageCount === 1 ? '400' : '0'}>
+          <Box padding="150">{paginationLabel}</Box>
+        </Bleed>
+      ),
+    hasNext,
+    hasPrevious,
+    onNext: handlePagination('next'),
+    onPrevious: handlePagination('prev'),
+  };
+
+  const promotedBulkActions = [
+    {
+      content: 'Create shipping labels',
+      onAction: () => console.log('Todo: implement create shipping labels'),
+    },
+    {
+      content: 'Mark as fulfilled',
+      onAction: () => console.log('Todo: implement mark as fulfilled'),
+    },
+    {
+      content: 'Capture payment',
+      onAction: () => console.log('Todo: implement capture payment'),
+    },
+  ];
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      icon: DeleteIcon,
+      destructive: true,
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const rowMarkup = pagedOrders.map(
     (
       {
         id,
@@ -362,6 +437,10 @@ function Table({orders}: {orders: Order[]}) {
         allResourcesSelected ? 'All' : selectedResources.length
       }
       onSelectionChange={handleSelectionChange}
+      pagination={pagination}
+      bulkActions={bulkActions}
+      promotedBulkActions={promotedBulkActions}
+      hasMoreItems={false}
       headings={[
         {title: 'Order'},
         {title: 'Date'},

@@ -139,8 +139,8 @@ const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
 
 function IndexTableBase({
   headings,
-  bulkActions = [],
-  promotedBulkActions = [],
+  bulkActions,
+  promotedBulkActions,
   children,
   emptyState,
   sort,
@@ -482,12 +482,15 @@ function IndexTableBase({
     selectedItemsCount: selectedItemsCountValue,
   });
 
-  const handleTogglePage = useCallback(() => {
-    handleSelectionChange(
-      SelectionType.Page,
-      Boolean(!bulkSelectState || bulkSelectState === 'indeterminate'),
-    );
-  }, [bulkSelectState, handleSelectionChange]);
+  const handleBulkSelection = useCallback(
+    (selectionType: 'page' | 'all' | 'none') => {
+      handleSelectionChange(
+        selectionType === 'page' ? SelectionType.Page : SelectionType.All,
+        selectionType === 'none',
+      );
+    },
+    [handleSelectionChange],
+  );
 
   const paginatedSelectAllAction = getPaginatedSelectAllAction();
 
@@ -518,16 +521,19 @@ function IndexTableBase({
     condensed && styles['StickyTable-condensed'],
   );
 
-  const shouldShowActions = !condensed || selectedItemsCount;
+  const shouldShowActions =
+    !condensed ||
+    (typeof selectedItemsCount === 'number' && selectedItemsCount > 0) ||
+    selectedItemsCount === 'All';
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
   const bulkActionsMarkup =
-    shouldShowActions && !condensed ? (
+    bulkActions && shouldShowActions && !condensed ? (
       <BulkActions
         itemCount={itemCount}
         selectedItemsCount={selectedItemsCount}
         selectMode={selectMode}
-        onToggleAll={handleTogglePage}
+        onSelect={handleBulkSelection}
         paginatedSelectAllText={paginatedSelectAllText}
         paginatedSelectAllAction={paginatedSelectAllAction}
         accessibilityLabel={bulkActionsAccessibilityLabel}
@@ -697,9 +703,13 @@ function IndexTableBase({
       <div className={styles.EmptySearchResultWrapper}>{emptyStateMarkup}</div>
     );
 
+  const paginationMarkup = pagination ? (
+    <Pagination type="table" {...pagination} />
+  ) : null;
+
   const footerMarkup =
     pagination || bulkActions ? (
-      <div className={styles.PaginationWrapper}>
+      <div className={styles.Footer}>
         <Box
           borderWidth="025"
           borderColor="border"
@@ -710,7 +720,7 @@ function IndexTableBase({
           paddingInlineEnd="200"
         >
           <InlineStack align="start" blockAlign="center" gap="200" wrap={false}>
-            <Pagination type="table" {...pagination} />
+            {paginationMarkup}
             {bulkActionsMarkup}
           </InlineStack>
         </Box>
