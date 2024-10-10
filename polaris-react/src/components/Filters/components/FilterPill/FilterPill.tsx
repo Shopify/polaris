@@ -108,14 +108,12 @@ export function FilterPill({
     focused && styles.focusedFilterButton,
   );
 
-  const clearButtonClassNames = classNames(
-    styles.PlainButton,
-    styles.clearButton,
-  );
+  const clearButtonClassNames = classNames(styles.clearButton);
 
   const toggleButtonClassNames = classNames(
     styles.PlainButton,
     styles.ToggleButton,
+    onRemove === undefined && styles.locked,
   );
 
   const disclosureMarkup = !selected ? (
@@ -145,18 +143,19 @@ export function FilterPill({
     </Box>
   ) : null;
 
-  const removeFilterButtonMarkup = selected ? (
-    <UnstyledButton
-      onClick={handleClear}
-      className={clearButtonClassNames}
-      type="button"
-      aria-label={i18n.translate('Polaris.FilterPill.clear')}
-    >
-      <div className={styles.IconWrapper}>
-        <Icon source={XSmallIcon} tone="base" />
-      </div>
-    </UnstyledButton>
-  ) : null;
+  const removeFilterButtonMarkup =
+    selected && onRemove !== undefined ? (
+      <UnstyledButton
+        onClick={handleClear}
+        className={clearButtonClassNames}
+        type="button"
+        aria-label={i18n.translate('Polaris.FilterPill.clear')}
+      >
+        <div className={styles.IconWrapper}>
+          <Icon source={XSmallIcon} tone="base" />
+        </div>
+      </UnstyledButton>
+    ) : null;
 
   const activator = (
     <div className={buttonClasses}>

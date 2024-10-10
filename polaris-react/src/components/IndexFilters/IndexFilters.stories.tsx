@@ -372,7 +372,7 @@ function BasicExample(
         sortOptions={sortOptions}
         sortSelected={sortSelected}
         queryValue={queryValue}
-        queryPlaceholder="Searching in all"
+        queryPlaceholder={`Searching in ${itemStrings[selected].toLowerCase()}`}
         onQueryChange={handleFiltersQueryChange}
         onQueryClear={() => setQueryValue('')}
         onSort={setSortSelected}
@@ -687,9 +687,10 @@ export const WithPinnedFilters = {
           sortOptions={sortOptions}
           sortSelected={sortSelected}
           queryValue={queryValue}
-          queryPlaceholder="Searching in all"
+          queryPlaceholder={`Searching in ${itemStrings[selected].toLowerCase()}
+          `}
           onQueryChange={handleFiltersQueryChange}
-          onQueryClear={() => setQueryValue('')}
+          onQueryClear={handleQueryValueRemove}
           onSort={setSortSelected}
           primaryAction={primaryAction}
           cancelAction={{
@@ -975,7 +976,7 @@ export const WithPrefilledFilters = {
           sortOptions={sortOptions}
           sortSelected={sortSelected}
           queryValue={queryValue}
-          queryPlaceholder="Searching in all"
+          queryPlaceholder={`Searching in ${itemStrings[selected].toLowerCase()}`}
           onQueryChange={handleFiltersQueryChange}
           onQueryClear={() => setQueryValue('')}
           onSort={setSortSelected}
@@ -1275,7 +1276,7 @@ export const WithHiddenFilter = {
           sortOptions={sortOptions}
           sortSelected={sortSelected}
           queryValue={queryValue}
-          queryPlaceholder="Searching in all"
+          queryPlaceholder={`Searching in ${itemStrings[selected].toLowerCase()}`}
           onQueryChange={handleFiltersQueryChange}
           onQueryClear={() => setQueryValue('')}
           onSort={setSortSelected}
@@ -1612,7 +1613,7 @@ export const WithAsyncData = {
           sortOptions={sortOptions}
           sortSelected={sortSelected}
           queryValue={queryValue}
-          queryPlaceholder="Searching in all"
+          queryPlaceholder={`Searching in ${itemStrings[selected].toLowerCase()}`}
           onQueryChange={handleFiltersQueryChange}
           onQueryClear={() => setQueryValue('')}
           onSort={setSortSelected}
@@ -1918,7 +1919,7 @@ export const Disabled = {
           sortOptions={sortOptions}
           sortSelected={sortSelected}
           queryValue={queryValue}
-          queryPlaceholder="Searching in all"
+          queryPlaceholder={`Searching in ${itemStrings[selected].toLowerCase()}`}
           onQueryChange={handleFiltersQueryChange}
           onQueryClear={() => setQueryValue('')}
           onSort={setSortSelected}
@@ -2087,7 +2088,7 @@ export const WithQueryFieldAndFiltersHidden = {
           sortOptions={sortOptions}
           sortSelected={sortSelected}
           queryValue=""
-          queryPlaceholder="Searching in all"
+          queryPlaceholder={`Searching in ${itemStrings[selected].toLowerCase()}`}
           onQueryChange={() => {}}
           onQueryClear={() => {}}
           onSort={setSortSelected}
@@ -2336,7 +2337,7 @@ export const WithNoFilters = {
           sortOptions={sortOptions}
           sortSelected={sortSelected}
           queryValue={queryValue}
-          queryPlaceholder="Searching in all"
+          queryPlaceholder={`Searching in ${itemStrings[selected].toLowerCase()}`}
           onQueryChange={handleFiltersQueryChange}
           onQueryClear={() => setQueryValue('')}
           onSort={setSortSelected}
@@ -2382,7 +2383,7 @@ export const WithNoFilters = {
   },
 };
 
-export const WithOnlySearchAndSort = {
+export const WithSearchAndSortOnly = {
   render() {
     const sleep = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms));
@@ -2514,7 +2515,7 @@ export const WithOnlySearchAndSort = {
           sortOptions={sortOptions}
           sortSelected={sortSelected}
           queryValue={queryValue}
-          queryPlaceholder="Searching in all"
+          queryPlaceholder={'Search'}
           onQueryChange={handleFiltersQueryChange}
           onQueryClear={() => setQueryValue('')}
           onSort={setSortSelected}

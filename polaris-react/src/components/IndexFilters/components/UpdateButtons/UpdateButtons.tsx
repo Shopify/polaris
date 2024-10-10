@@ -117,65 +117,66 @@ export function UpdateButtons({
     return cancelButtonMarkup;
   }
 
-  return (
-    <InlineStack align="start" blockAlign="center" gap="100">
-      {cancelButtonMarkup}
-      {primaryAction.type === 'save-as' ? (
-        <Modal
-          activator={<InlineStack>{saveButton}</InlineStack>}
-          open={savedViewModalOpen}
-          title={i18n.translate(
-            'Polaris.IndexFilters.UpdateButtons.modal.title',
-          )}
-          onClose={handleCloseModal}
-          primaryAction={{
-            onAction: handlePrimaryAction,
+  const saveButtonMarkup =
+    primaryAction.type === 'save-as' ? (
+      <Modal
+        activator={saveButton}
+        open={savedViewModalOpen}
+        title={i18n.translate('Polaris.IndexFilters.UpdateButtons.modal.title')}
+        onClose={handleCloseModal}
+        primaryAction={{
+          onAction: handlePrimaryAction,
+          content: i18n.translate(
+            'Polaris.IndexFilters.UpdateButtons.modal.save',
+          ),
+          disabled: isPrimaryActionDisabled,
+        }}
+        secondaryActions={[
+          {
+            onAction: handleCloseModal,
             content: i18n.translate(
-              'Polaris.IndexFilters.UpdateButtons.modal.save',
+              'Polaris.IndexFilters.UpdateButtons.modal.cancel',
             ),
-            disabled: isPrimaryActionDisabled,
-          }}
-          secondaryActions={[
-            {
-              onAction: handleCloseModal,
-              content: i18n.translate(
-                'Polaris.IndexFilters.UpdateButtons.modal.cancel',
-              ),
-            },
-          ]}
-        >
-          <Modal.Section>
-            <Form onSubmit={handlePrimaryAction}>
-              <FormLayout>
-                <div ref={container}>
-                  <TextField
-                    label={i18n.translate(
-                      'Polaris.IndexFilters.UpdateButtons.modal.label',
-                    )}
-                    value={savedViewName}
-                    onChange={handleChange}
-                    autoComplete="off"
-                    maxLength={MAX_VIEW_NAME_LENGTH}
-                    showCharacterCount
-                    error={
-                      hasSameNameError
-                        ? i18n.translate(
-                            'Polaris.IndexFilters.UpdateButtons.modal.sameName',
-                            {
-                              name: savedViewName,
-                            },
-                          )
-                        : undefined
-                    }
-                  />
-                </div>
-              </FormLayout>
-            </Form>
-          </Modal.Section>
-        </Modal>
-      ) : (
-        saveButton
-      )}
+          },
+        ]}
+      >
+        <Modal.Section>
+          <Form onSubmit={handlePrimaryAction}>
+            <FormLayout>
+              <div ref={container}>
+                <TextField
+                  label={i18n.translate(
+                    'Polaris.IndexFilters.UpdateButtons.modal.label',
+                  )}
+                  value={savedViewName}
+                  onChange={handleChange}
+                  autoComplete="off"
+                  maxLength={MAX_VIEW_NAME_LENGTH}
+                  showCharacterCount
+                  error={
+                    hasSameNameError
+                      ? i18n.translate(
+                          'Polaris.IndexFilters.UpdateButtons.modal.sameName',
+                          {
+                            name: savedViewName,
+                          },
+                        )
+                      : undefined
+                  }
+                />
+              </div>
+            </FormLayout>
+          </Form>
+        </Modal.Section>
+      </Modal>
+    ) : (
+      saveButton
+    );
+
+  return (
+    <InlineStack align="end" blockAlign="center" gap="100" wrap={false}>
+      {cancelButtonMarkup}
+      {saveButtonMarkup}
     </InlineStack>
   );
 }

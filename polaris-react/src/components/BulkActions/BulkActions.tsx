@@ -1,5 +1,4 @@
 import React, {
-  forwardRef,
   useReducer,
   useState,
   useEffect,
@@ -16,12 +15,10 @@ import type {
   MenuGroupDescriptor,
   Action,
 } from '../../types';
+import {Button} from '../Button';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
 import {InlineStack} from '../InlineStack';
-import {CheckableButton} from '../CheckableButton';
-import {Text} from '../Text';
-import {UnstyledButton} from '../UnstyledButton';
 import type {ButtonProps} from '../Button';
 
 import {
@@ -54,8 +51,6 @@ export interface BulkActionsProps {
   paginatedSelectAllText?: string;
   /** Action for selecting all across pages */
   paginatedSelectAllAction?: Action;
-  /** Callback when the select all checkbox is clicked */
-  onToggleAll?(): void;
   /** Actions that will be given more prominence */
   promotedActions?: (BulkAction | MenuGroupDescriptor)[];
   /** List of actions */
@@ -64,12 +59,20 @@ export interface BulkActionsProps {
   disabled?: boolean;
   /** Callback when more actions button is toggled */
   onMoreActionPopoverToggle?(isOpen: boolean): void;
-  /** The size of the buttons to render */
+  /** The size of the buttons to render
+   * @default 'medium'
+   */
   buttonSize?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
   /** Label for the bulk actions */
   label?: string;
   /** List is in a selectable state. Will only render the bulk actions when `true` */
   selectMode?: boolean;
+  /** The number of rows selected in the table */
+  selectedItemsCount?: number | 'All';
+  /** The total number of rows in the table */
+  itemCount: number;
+  /** Callback when the select all checkbox is clicked */
+  onSelect?(selectionType: 'page' | 'all' | 'none'): void;
   /** @deprecated Used for forwarding the ref. Use `ref` prop instead */
   innerRef?: React.Ref<any>;
   /** @deprecated Callback when selectable state of list is changed. Unused callback */
@@ -89,26 +92,33 @@ interface BulkActionsState {
   hasMeasured: boolean;
 }
 
-export const BulkActions = forwardRef(function BulkActions(
-  {
-    promotedActions,
-    actions,
-    disabled,
-    buttonSize,
-    paginatedSelectAllAction,
-    paginatedSelectAllText,
-    label,
-    accessibilityLabel,
-    selected,
-    onToggleAll,
-    onMoreActionPopoverToggle,
-    width,
-    selectMode,
-  }: BulkActionsProps,
-  ref,
-) {
+export const BulkActions = ({
+  promotedActions,
+  actions,
+  disabled,
+  buttonSize = 'medium',
+  paginatedSelectAllAction,
+  paginatedSelectAllText,
+  selected,
+  onSelect,
+  onMoreActionPopoverToggle,
+  width,
+  selectMode,
+  selectedItemsCount = 0,
+  itemCount,
+}: BulkActionsProps) => {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
+  const [selectedAllMenuActive, setSelectedAllMenuActive] = useState(false);
+
+  const toggleSelectAllMenu = () => {
+    setSelectedAllMenuActive((active) => !active);
+  };
+
+  const handleBulkSelection =
+    (selectionType: 'page' | 'all' | 'none') => () => {
+      onSelect?.(selectionType);
+    };
 
   const [state, setState] = useReducer(
     (
@@ -165,32 +175,70 @@ export const BulkActions = forwardRef(function BulkActions(
           'Polaris.ResourceList.BulkActions.moreActionsActivatorLabel',
         );
 
-  const paginatedSelectAllMarkup = paginatedSelectAllAction ? (
-    <UnstyledButton
-      className={styles.AllAction}
-      onClick={paginatedSelectAllAction.onAction}
-      size="slim"
-      disabled={disabled}
-    >
-      <Text as="span" variant="bodySm" fontWeight="medium">
-        {paginatedSelectAllAction.content}
-      </Text>
-    </UnstyledButton>
-  ) : null;
-
   const hasTextAndAction = paginatedSelectAllText && paginatedSelectAllAction;
 
   const ariaLive: AriaLive = hasTextAndAction ? 'polite' : undefined;
 
-  const checkableButtonProps = {
-    accessibilityLabel,
-    label: hasTextAndAction ? paginatedSelectAllText : label,
-    selected,
-    onToggleAll,
-    disabled,
-    ariaLive,
-    ref,
+  const selectAllOnPageItem = {
+    content: i18n.translate(
+      'Polaris.ResourceList.BulkActions.selectAllMenu.items.selectAllOnPage',
+    ),
+    disabled: selected === true,
+    onAction: handleBulkSelection('page'),
   };
+
+  const selectAllInStoreItem = paginatedSelectAllAction
+    ? {
+        ...paginatedSelectAllAction,
+        disabled: selectedItemsCount === 'All',
+        content: paginatedSelectAllText
+          ? paginatedSelectAllText
+          : i18n.translate(
+              'Polaris.ResourceList.BulkActions.selectAllMenu.items.selectAllInStore',
+              {itemCount},
+            ),
+      }
+    : null;
+
+  const unselectAllItem = {
+    content: i18n.translate(
+      'Polaris.ResourceList.BulkActions.selectAllMenu.items.unselectAll',
+    ),
+    disabled: selectedItemsCount === 0,
+    onAction: handleBulkSelection('none'),
+  };
+
+  const selectAllActionsMarkup = selectMode ? (
+    <div aria-live={ariaLive}>
+      <Popover
+        active={selectedAllMenuActive}
+        onClose={toggleSelectAllMenu}
+        activator={
+          <Button
+            disclosure
+            pressed={selectedAllMenuActive}
+            variant="tertiary"
+            onClick={toggleSelectAllMenu}
+          >
+            {i18n.translate(
+              'Polaris.ResourceList.BulkActions.selectAllMenu.activator',
+              {selectedItemsCount},
+            )}
+          </Button>
+        }
+      >
+        <ActionList
+          items={[
+            selectAllOnPageItem,
+            ...(selectAllInStoreItem
+              ? [selectAllInStoreItem, unselectAllItem]
+              : [unselectAllItem]),
+          ]}
+          onActionAnyItem={toggleSelectAllMenu}
+        />
+      </Popover>
+    </div>
+  ) : null;
 
   const togglePopover = useCallback(() => {
     onMoreActionPopoverToggle?.(popoverActive);
@@ -360,32 +408,25 @@ export const BulkActions = forwardRef(function BulkActions(
     />
   );
 
-  return (
+  return selectMode ? (
     <div className={styles.BulkActions} style={width ? {width} : undefined}>
-      <InlineStack gap="400" blockAlign="center">
-        <div className={styles.BulkActionsSelectAllWrapper}>
-          <CheckableButton {...checkableButtonProps} />
-          {paginatedSelectAllMarkup}
-        </div>
-        {selectMode ? (
-          <div className={styles.BulkActionsPromotedActionsWrapper}>
-            <InlineStack gap="100" blockAlign="center">
-              <div className={styles.BulkActionsOuterLayout}>
-                {measurerMarkup}
-                <div
-                  className={classNames(
-                    styles.BulkActionsLayout,
-                    !hasMeasured && styles['BulkActionsLayout--measuring'],
-                  )}
-                >
-                  {promotedActionsMarkup}
-                </div>
-              </div>
+      <div className={styles.BulkActionsPromotedActionsWrapper}>
+        <InlineStack gap="100" align="start" blockAlign="center" wrap={false}>
+          {selectAllActionsMarkup}
+          <div className={styles.BulkActionsOuterLayout}>
+            {measurerMarkup}
+            <div
+              className={classNames(
+                styles.BulkActionsLayout,
+                !hasMeasured && styles['BulkActionsLayout--measuring'],
+              )}
+            >
+              {promotedActionsMarkup}
               {actionsMarkup}
-            </InlineStack>
+            </div>
           </div>
-        ) : null}
-      </InlineStack>
+        </InlineStack>
+      </div>
     </div>
-  );
-});
+  ) : null;
+};

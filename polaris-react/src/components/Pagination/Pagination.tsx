@@ -1,5 +1,5 @@
-import {ChevronLeftIcon, ChevronRightIcon} from '@shopify/polaris-icons';
 import React, {createRef} from 'react';
+import {ChevronLeftIcon, ChevronRightIcon} from '@shopify/polaris-icons';
 
 import type {Key} from '../../types';
 import {useI18n} from '../../utilities/i18n';
@@ -83,12 +83,12 @@ export function Pagination({
 
   const prev = (
     <Button
-      icon={ChevronLeftIcon}
       accessibilityLabel={previousLabel}
       url={previousURL}
       onClick={onPrevious}
       disabled={!hasPrevious}
       id="previousURL"
+      icon={ChevronLeftIcon}
     />
   );
   const constructedPrevious =
@@ -106,12 +106,12 @@ export function Pagination({
 
   const next = (
     <Button
-      icon={ChevronRightIcon}
       accessibilityLabel={nextLabel}
       url={nextURL}
       onClick={onNext}
       disabled={!hasNext}
       id="nextURL"
+      icon={ChevronRightIcon}
     />
   );
   const constructedNext =
@@ -170,6 +170,10 @@ export function Pagination({
       </Box>
     ) : null;
 
+    if (!hasNext && !hasPrevious) {
+      return labelMarkup ? labelMarkup : null;
+    }
+
     return (
       <nav
         aria-label={navLabel}
@@ -178,24 +182,13 @@ export function Pagination({
       >
         {previousButtonEvents}
         {nextButtonEvents}
-        <Box
-          background="bg-surface-secondary"
-          paddingBlockStart="150"
-          paddingBlockEnd="150"
-          paddingInlineStart="300"
-          paddingInlineEnd="200"
-        >
-          <InlineStack align="center" blockAlign="center">
-            <div
-              className={styles.TablePaginationActions}
-              data-buttongroup-variant="segmented"
-            >
-              <div>{constructedPrevious}</div>
-              {labelMarkup}
-              <div>{constructedNext}</div>
-            </div>
-          </InlineStack>
-        </Box>
+        <InlineStack align="start" blockAlign="center" wrap={false}>
+          <ButtonGroup variant="segmented">
+            {constructedPrevious}
+            {constructedNext}
+          </ButtonGroup>
+          {labelMarkup}
+        </InlineStack>
       </nav>
     );
   }

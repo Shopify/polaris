@@ -1404,9 +1404,10 @@
   }
 }
 
-.PaginationWrapper {
+.Footer {
   /* stylelint-disable-next-line -- custom z index to work with the z-indexes in the IndexTable */
   --pc-pagination-index: 30;
+  white-space: nowrap;
   /* stylelint-disable-next-line -- sets the z-index created above */
   z-index: var(--pc-pagination-index);
   @media (--p-breakpoints-md-up) {

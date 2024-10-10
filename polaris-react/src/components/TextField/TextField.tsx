@@ -6,7 +6,7 @@ import React, {
   useCallback,
   useId,
 } from 'react';
-import {XCircleIcon} from '@shopify/polaris-icons';
+import {XSmallIcon} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -17,6 +17,7 @@ import {Connected} from '../Connected';
 import {Key} from '../../types';
 import type {Error} from '../../types';
 import {Icon} from '../Icon';
+import {Bleed} from '../Bleed';
 import {Text} from '../Text';
 import {Spinner as LoadingSpinner} from '../Spinner';
 import {useEventListener} from '../../utilities/use-event-listener';
@@ -390,17 +391,19 @@ export function TextField({
 
   const clearButtonMarkup =
     clearButton && clearButtonVisible ? (
-      <button
-        type="button"
-        className={styles.ClearButton}
-        onClick={handleClearButtonPress}
-        disabled={disabled}
-      >
-        <Text as="span" visuallyHidden>
-          {i18n.translate('Polaris.Common.clear')}
-        </Text>
-        <Icon source={XCircleIcon} tone="base" />
-      </button>
+      <Bleed marginInlineEnd="200">
+        <button
+          type="button"
+          className={styles.ClearButton}
+          onClick={handleClearButtonPress}
+          disabled={disabled}
+        >
+          <Text as="span" visuallyHidden>
+            {i18n.translate('Polaris.Common.clear')}
+          </Text>
+          <Icon source={XSmallIcon} tone="base" />
+        </button>
+      </Bleed>
     ) : null;
 
   const handleNumberChange = useCallback(

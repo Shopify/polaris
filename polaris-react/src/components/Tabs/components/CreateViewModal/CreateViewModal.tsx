@@ -103,14 +103,14 @@ export function CreateViewModal({
                 autoComplete="off"
                 maxLength={MAX_VIEW_NAME_LENGTH}
                 showCharacterCount
-                error={
-                  hasSameNameError
-                    ? i18n.translate(
-                        'Polaris.Tabs.CreateViewModal.errors.sameName',
-                        {name: value},
-                      )
-                    : undefined
-                }
+                // error={
+                //   hasSameNameError
+                //     ? i18n.translate(
+                //         'Polaris.Tabs.CreateViewModal.errors.sameName',
+                //         {name: value},
+                //       )
+                //     : undefined
+                // }
               />
             </div>
           </FormLayout>

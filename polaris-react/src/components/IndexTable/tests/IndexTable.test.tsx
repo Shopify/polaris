@@ -467,7 +467,7 @@ describe('<IndexTable>', () => {
       expect(index.find(BulkActions)).toContainReactText(customString);
     });
 
-    it('toggles all page resources when onToggleAll is triggered', () => {
+    it('toggles all page resources when onSelect is triggered', () => {
       const onSelectionChangeSpy = jest.fn();
       const index = mountWithApp(
         <IndexTable
@@ -483,7 +483,7 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      index.find(BulkActions)!.trigger('onToggleAll');
+      index.find(BulkActions)!.trigger('onSelect');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
         SelectionType.Page,

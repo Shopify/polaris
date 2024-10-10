@@ -90,13 +90,14 @@
   display: flex;
   gap: var(--p-space-200);
   align-items: center;
-  justify-content: flex-start;
+  justify-content: end;
   padding: var(--p-space-150) var(--p-space-200);
 
   @media (--p-breakpoints-md-down) {
     padding: var(--p-space-200);
     height: 3rem;
     border-left: var(--p-border-width-025) solid var(--p-color-border-secondary);
+    min-width: none;
 
     &::before {
       content: '';
@@ -133,6 +134,29 @@
 .ButtonWrap,
 .ActionWrap {
   button {
+    white-space: nowrap;
     display: flex;
   }
+}
+
+.ButtonWrap .animateSlideIn {
+  will-change: transform, opacity;
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform var(--p-motion-ease) var(--p-motion-duration-200),
+    opacity var(--p-motion-ease) var(--p-motion-duration-200);
+
+  /* stylelint-disable selector-max-class -- animation for entrance of save action */
+  &.entering,
+  &.exiting,
+  &.exited {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+
+  &.entered {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  /* stylelint-enable */
 }

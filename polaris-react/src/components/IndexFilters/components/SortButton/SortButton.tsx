@@ -9,8 +9,10 @@ import {Tooltip} from '../../../Tooltip';
 import {Box} from '../../../Box';
 import type {SortButtonChoice} from '../../types';
 import {Button} from '../../../Button';
+import {classNames} from '../../../../utilities/css';
 
 import {DirectionButton} from './components';
+import styles from './SortButton.module.css';
 
 export enum SortButtonDirection {
   Asc = 'asc',
@@ -22,6 +24,7 @@ export interface SortButtonProps {
   selected: ChoiceListProps['selected'];
   disabled?: boolean;
   disclosureZIndexOverride?: number;
+  hasUnsavedChanges?: boolean;
   onChange: (selected: string[]) => void;
   onChangeKey?: (key: string) => void;
   onChangeDirection?: (direction: string) => void;
@@ -32,6 +35,7 @@ export function SortButton({
   selected,
   disabled,
   disclosureZIndexOverride,
+  hasUnsavedChanges,
   onChange,
   onChangeKey,
   onChangeDirection,
@@ -96,6 +100,12 @@ export function SortButton({
     return currentKey === selectedValueKey;
   });
 
+  const className = classNames(styles.SortButton);
+
+  const unsavedChangeIndicator = hasUnsavedChanges ? (
+    <div className={styles.AppliedFilterIndicator} />
+  ) : null;
+
   const sortButton = (
     <Tooltip
       content={i18n.translate('Polaris.IndexFilters.SortButton.tooltip')}
@@ -103,15 +113,18 @@ export function SortButton({
       hoverDelay={400}
       zIndexOverride={disclosureZIndexOverride}
     >
-      <Button
-        size="slim"
-        icon={SortIcon}
-        onClick={handleClick}
-        disabled={disabled}
-        accessibilityLabel={i18n.translate(
-          'Polaris.IndexFilters.SortButton.ariaLabel',
-        )}
-      />
+      <div className={className}>
+        <Button
+          size="slim"
+          icon={SortIcon}
+          onClick={handleClick}
+          disabled={disabled}
+          accessibilityLabel={i18n.translate(
+            'Polaris.IndexFilters.SortButton.ariaLabel',
+          )}
+        />
+        {unsavedChangeIndicator}
+      </div>
     </Tooltip>
   );
 

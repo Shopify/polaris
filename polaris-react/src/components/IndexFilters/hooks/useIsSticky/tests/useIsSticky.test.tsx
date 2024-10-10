@@ -2,7 +2,6 @@ import React from 'react';
 import {intersectionObserver} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {IndexFiltersMode} from '../../../types';
 import {useIsSticky} from '..';
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 
 function Component({disabled}: Props) {
   const {intersectionRef, measurerRef, isSticky, indexFilteringHeight} =
-    useIsSticky(IndexFiltersMode.Default, Boolean(disabled), false);
+    useIsSticky(Boolean(disabled), false);
 
   return (
     <div

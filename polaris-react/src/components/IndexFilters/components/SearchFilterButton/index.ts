@@ -1,1 +1,0 @@
-export {SearchFilterButton} from './SearchFilterButton';

@@ -369,14 +369,20 @@ export type NonEmptyArray<T> = [T, ...T[]];
 export type ArrayElement<T> = T extends (infer U)[] ? U : never;
 
 export interface AppliedFilterInterface {
+  /** Whether or not the filter can be removed */
+  locked?: boolean;
   /** A unique key used to identify the filter */
   key: string;
-  /** The name of the filter */
+  /** The name of the filter.
+   * The rendered applied filter pill label will prefix the value with the label in standardized format. For example, label 'Product vender' and value ['Tootsie Roll Industries LLC' or 'The Hershey Company'] will be parsed into human readable label 'Product vendor: Tootsie Roll Industries LLC or The Hershey Company'
+   */
   label: string;
+  /** The human readable filter input value */
+  value?: any;
   /** Whether the filter is newly applied or updated and hasn't been saved */
   unsavedChanges?: boolean;
   /** Callback when the remove button is pressed */
-  onRemove(key: string): void;
+  onRemove?(key: string): void;
 }
 
 export interface FilterInterface {
@@ -384,6 +390,8 @@ export interface FilterInterface {
   key: string;
   /** The name of the filter */
   label: string;
+  /** The current filter input value */
+  value?: any;
   /** The markup for the given filter */
   filter: React.ReactNode;
   /** Whether or not the filter should have a shortcut popover displayed */
