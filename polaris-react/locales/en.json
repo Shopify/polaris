@@ -291,6 +291,14 @@
         "viewItem": "View details for {itemName}"
       },
       "BulkActions": {
+        "selectAllMenu": {
+          "activator": "{selectedItemsCount} selected",
+          "items": {
+            "selectAllOnPage": "Select all 50 on page",
+            "selectAllInStore": "Select all {itemCount} in store",
+            "unselectAll": "Unselect all"
+          }
+        },
         "actionsActivatorLabel": "Actions",
         "moreActionsActivatorLabel": "More actions"
       }

@@ -6,6 +6,7 @@ import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
 import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import {useI18n} from '../../utilities/i18n';
+import {Box} from '../Box';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
@@ -39,6 +40,7 @@ import type {
   Width,
   TooltipOverlayProps,
 } from '../Tooltip';
+import {InlineStack} from '../InlineStack';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -519,6 +521,24 @@ function IndexTableBase({
   const shouldShowActions = !condensed || selectedItemsCount;
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
+  const bulkActionsMarkup =
+    shouldShowActions && !condensed ? (
+      <BulkActions
+        itemCount={itemCount}
+        selectedItemsCount={selectedItemsCount}
+        selectMode={selectMode}
+        onToggleAll={handleTogglePage}
+        paginatedSelectAllText={paginatedSelectAllText}
+        paginatedSelectAllAction={paginatedSelectAllAction}
+        accessibilityLabel={bulkActionsAccessibilityLabel}
+        selected={bulkSelectState}
+        promotedActions={promotedActions}
+        actions={actions}
+        onSelectModeToggle={condensed ? handleSelectModeToggle : undefined}
+        label={selectAllActionsLabel}
+        buttonSize="micro"
+      />
+    ) : null;
 
   const stickyHeaderMarkup = (
     <div className={stickyTableClassNames} role="presentation">
@@ -541,34 +561,6 @@ function IndexTableBase({
               canScrollRight &&
               styles['StickyTableHeader-sticky-scrolling'],
           );
-
-          const bulkActionsClassName = classNames(
-            styles.BulkActionsWrapper,
-            selectMode && styles.BulkActionsWrapperVisible,
-            condensed && styles['StickyTableHeader-condensed'],
-            isSticky && styles['StickyTableHeader-isSticky'],
-          );
-
-          const bulkActionsMarkup =
-            shouldShowActions && !condensed ? (
-              <div className={bulkActionsClassName}>
-                <BulkActions
-                  selectMode={selectMode}
-                  onToggleAll={handleTogglePage}
-                  paginatedSelectAllText={paginatedSelectAllText}
-                  paginatedSelectAllAction={paginatedSelectAllAction}
-                  accessibilityLabel={bulkActionsAccessibilityLabel}
-                  selected={bulkSelectState}
-                  promotedActions={promotedActions}
-                  actions={actions}
-                  onSelectModeToggle={
-                    condensed ? handleSelectModeToggle : undefined
-                  }
-                  label={selectAllActionsLabel}
-                  buttonSize="micro"
-                />
-              </div>
-            ) : null;
 
           const headerMarkup = condensed ? (
             <div
@@ -595,12 +587,7 @@ function IndexTableBase({
             </div>
           );
 
-          return (
-            <>
-              {headerMarkup}
-              {bulkActionsMarkup}
-            </>
-          );
+          return headerMarkup;
         }}
       </Sticky>
     </div>
@@ -710,11 +697,25 @@ function IndexTableBase({
       <div className={styles.EmptySearchResultWrapper}>{emptyStateMarkup}</div>
     );
 
-  const paginationMarkup = pagination ? (
-    <div className={styles.PaginationWrapper}>
-      <Pagination type="table" {...pagination} />
-    </div>
-  ) : null;
+  const footerMarkup =
+    pagination || bulkActions ? (
+      <div className={styles.PaginationWrapper}>
+        <Box
+          borderWidth="025"
+          borderColor="border"
+          background="bg-surface-secondary"
+          paddingBlockStart="150"
+          paddingBlockEnd="150"
+          paddingInlineStart="300"
+          paddingInlineEnd="200"
+        >
+          <InlineStack align="start" blockAlign="center" gap="200" wrap={false}>
+            <Pagination type="table" {...pagination} />
+            {bulkActionsMarkup}
+          </InlineStack>
+        </Box>
+      </div>
+    ) : null;
 
   return (
     <>
@@ -723,7 +724,7 @@ function IndexTableBase({
           {!condensed && loadingMarkup}
           {tableContentMarkup}
           {scrollBarMarkup}
-          {paginationMarkup}
+          {footerMarkup}
         </div>
       </div>
     </>

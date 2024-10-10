@@ -556,11 +556,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
-
-    // setTimeout ensures execution after the Transition on BulkActions
-    setTimeout(() => {
-      checkableButtonRef?.current?.focus();
-    }, 0);
   };
 
   const bulkActionClassNames = classNames(
@@ -571,6 +566,8 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   const bulkActionsMarkup = isSelectable ? (
     <div className={bulkActionClassNames}>
       <BulkActions
+        itemCount={items.length}
+        selectedItemsCount={selectedItems.length}
         selectMode={selectMode}
         onSelectModeToggle={handleSelectMode}
         label={selectAllActionsLabel}
@@ -582,7 +579,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         accessibilityLabel={bulkActionsAccessibilityLabel}
         selected={selectAllSelectState}
         onToggleAll={handleToggleAll}
-        ref={checkableButtonRef}
         buttonSize="medium"
       />
     </div>

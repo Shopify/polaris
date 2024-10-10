@@ -11,8 +11,11 @@
     }
 
     &:active {
-      /* stylelint-disable-next-line declaration-no-important -- override box shadow */
-      box-shadow: var(--p-shadow-inset-200) !important;
+      /* stylelint-disable-next-line polaris/media-queries/polaris/media-query-allowed-list -- target desktop + mouse */
+      @media (--p-breakpoints-md-up) and (pointer: fine) {
+        /* stylelint-disable-next-line declaration-no-important -- override box shadow */
+        box-shadow: var(--p-shadow-inset-200) !important;
+      }
     }
 
     &:active,
@@ -22,8 +25,6 @@
   }
 
   &.table {
-    border-top: 1px solid var(--p-color-border);
-
     button {
       --button-min-height: var(--p-height-700);
       background-color: var(--p-color-bg-surface-secondary-selected);
@@ -60,11 +61,4 @@
       /* stylelint-enable */
     }
   }
-}
-
-.TablePaginationActions {
-  display: flex;
-  gap: var(--p-space-025);
-  align-items: center;
-  justify-content: center;
 }

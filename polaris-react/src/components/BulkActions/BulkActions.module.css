@@ -1,7 +1,10 @@
+.BulkActions {
+  width: 100%;
+}
+
 .BulkActionsOuterLayout {
   position: relative;
-  flex: 1;
-  width: 100%;
+  flex-wrap: nowrap;
 }
 
 .BulkActionsSelectAllWrapper {
@@ -19,7 +22,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex: 1 1 auto;
   gap: var(--p-space-100);
 
@@ -34,7 +37,6 @@
 }
 
 .BulkActionsMeasurerLayout {
-  position: absolute;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
