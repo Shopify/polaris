@@ -1,4 +1,10 @@
-import type {ASTPath, Collection, JSXAttribute, JSXElement} from 'jscodeshift';
+import type {
+  ASTPath,
+  Collection,
+  JSXAttribute,
+  JSXElement,
+  JSXExpressionContainer,
+} from 'jscodeshift';
 import type core from 'jscodeshift';
 
 export function getJSXAttributes(
@@ -57,14 +63,16 @@ export function insertJSXAttribute(
   j: core.JSCodeshift,
   element: ASTPath<any>,
   attributeName: string,
-  attributeValue?: string,
+  attributeValue?: string | JSXExpressionContainer,
 ) {
   const newComponent = j.jsxElement(
     j.jsxOpeningElement(element.node.openingElement.name, [
       ...(element.node.openingElement.attributes || []),
       j.jsxAttribute(
         j.jsxIdentifier(attributeName),
-        attributeValue ? j.stringLiteral(attributeValue) : null,
+        typeof attributeValue === 'string'
+          ? j.stringLiteral(attributeValue)
+          : attributeValue || null,
       ),
     ]),
     element.node.closingElement,
