@@ -42,6 +42,7 @@ interface Props {
   selected: boolean;
   selectMode: boolean;
   itemCount: number;
+  pageCount: number;
   selectedItemsCount: number | 'All';
 }
 
@@ -61,6 +62,7 @@ const bulkActionProps: Props = {
   disabled: false,
   selectMode: true,
   itemCount: 2,
+  pageCount: 2,
   selectedItemsCount: 0,
 };
 
@@ -345,6 +347,7 @@ describe('<BulkActions />', () => {
           ],
           disabled: false,
           itemCount: 2,
+          pageCount: 2,
           selectedItemsCount: 0,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
@@ -384,6 +387,7 @@ describe('<BulkActions />', () => {
           ],
           disabled: false,
           itemCount: 2,
+          pageCount: 2,
           selectedItemsCount: 0,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
@@ -430,6 +434,7 @@ describe('<BulkActions />', () => {
           ],
           disabled: false,
           itemCount: 2,
+          pageCount: 2,
           selectedItemsCount: 0,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
@@ -468,6 +473,7 @@ describe('<BulkActions />', () => {
           ],
           disabled: false,
           itemCount: 2,
+          pageCount: 2,
           selectedItemsCount: 0,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
@@ -517,6 +523,7 @@ describe('<BulkActions />', () => {
           ],
           disabled: false,
           itemCount: 2,
+          pageCount: 2,
           selectedItemsCount: 0,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);

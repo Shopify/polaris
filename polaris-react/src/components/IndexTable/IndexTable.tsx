@@ -166,6 +166,8 @@ function IndexTableBase({
     selectable = restProps.selectable,
     paginatedSelectAllText,
     itemCount,
+    pageCount,
+    pageSelectionRange,
     hasMoreItems,
     selectedItemsCount,
     condensed,
@@ -223,13 +225,8 @@ function IndexTableBase({
   );
 
   const handleSelectAllItemsInStore = useCallback(() => {
-    handleSelectionChange(
-      selectedItemsCount === SELECT_ALL_ITEMS
-        ? SelectionType.Page
-        : SelectionType.All,
-      true,
-    );
-  }, [handleSelectionChange, selectedItemsCount]);
+    handleSelectionChange(SelectionType.All, true);
+  }, [handleSelectionChange]);
 
   const resizeTableHeadings = useMemo(
     () =>
@@ -484,13 +481,14 @@ function IndexTableBase({
   });
 
   const handleBulkSelection = useCallback(
-    (selectionType: 'page' | 'all' | 'none') => {
+    (selectionType: 'page' | 'all' | 'none', isSelecting: boolean) => {
       handleSelectionChange(
         selectionType === 'page' ? SelectionType.Page : SelectionType.All,
-        selectionType === 'none',
+        isSelecting,
+        selectionType === 'page' ? pageSelectionRange : undefined,
       );
     },
-    [handleSelectionChange],
+    [pageSelectionRange, handleSelectionChange],
   );
 
   const paginatedSelectAllAction = getPaginatedSelectAllAction();
@@ -532,13 +530,13 @@ function IndexTableBase({
     bulkActions && shouldShowActions && !condensed ? (
       <BulkActions
         itemCount={itemCount}
+        pageCount={pageCount}
         selectedItemsCount={selectedItemsCount}
         selectMode={selectMode}
         onSelect={handleBulkSelection}
         paginatedSelectAllText={paginatedSelectAllText}
         paginatedSelectAllAction={paginatedSelectAllAction}
         accessibilityLabel={bulkActionsAccessibilityLabel}
-        selected={bulkSelectState}
         promotedActions={promotedActions}
         actions={actions}
         label={selectAllActionsLabel}
@@ -1061,7 +1059,7 @@ function IndexTableBase({
   }
 
   function handleSelectPage(checked: boolean) {
-    handleSelectionChange(SelectionType.Page, checked);
+    handleSelectionChange(SelectionType.Page, checked, pageSelectionRange);
   }
 
   function getPaginatedSelectAllAction() {
@@ -1069,26 +1067,17 @@ function IndexTableBase({
       return;
     }
 
-    const customActionText =
+    const actionText =
       paginatedSelectAllActionText ??
       i18n.translate('Polaris.IndexTable.selectAllItems', {
-        itemsLength: itemCount,
+        itemCount,
         resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
       });
-
-    const actionText =
-      selectedItemsCount === SELECT_ALL_ITEMS
-        ? i18n.translate('Polaris.IndexTable.undo')
-        : customActionText;
 
     return {
       content: actionText,
       onAction: handleSelectAllItemsInStore,
     };
-  }
-
-  function handleSelectModeToggle() {
-    handleSelectionChange(SelectionType.All, false);
   }
 }
 
@@ -1110,6 +1099,8 @@ export function IndexTable({
   children,
   selectable = true,
   itemCount,
+  pageCount,
+  pageSelectionRange,
   selectedItemsCount = 0,
   resourceName: passedResourceName,
   loading,
@@ -1124,6 +1115,8 @@ export function IndexTable({
       <IndexProvider
         selectable={selectable && !condensed}
         itemCount={itemCount}
+        pageCount={pageCount}
+        pageSelectionRange={pageSelectionRange}
         selectedItemsCount={selectedItemsCount}
         resourceName={passedResourceName}
         loading={loading}

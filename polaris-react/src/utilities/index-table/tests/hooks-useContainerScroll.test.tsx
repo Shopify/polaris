@@ -20,7 +20,9 @@ function Component({condensed}: {condensed?: boolean}) {
 }
 
 const defaultIndexTableProps: IndexTableProps = {
-  itemCount: 1,
+  itemCount: 10,
+  pageCount: 10,
+  pageSelectionRange: [0, 9],
   selectedItemsCount: 0,
   onSelectionChange: () => {},
   headings: [{title: 'Heading one'}, {title: 'Heading two'}],

@@ -239,7 +239,7 @@
       "selectAllLabel": "Select all {resourceNamePlural}",
       "selected": "{selectedItemsCount} selected",
       "undo": "Undo",
-      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural}",
+      "selectAllItems": "Select all {itemCount} in store",
       "selectItem": "Select {resourceName}",
       "selectButtonText": "Select",
       "sortAccessibilityLabel": "sort {direction} by"
@@ -294,8 +294,8 @@
         "selectAllMenu": {
           "activator": "{selectedItemsCount} selected",
           "items": {
-            "selectAllOnPage": "Select all 50 on page",
-            "selectAllInStore": "Select all {itemCount} in store",
+            "selectAllOnPage": "Select all {pageCount} on page",
+            "unselectAllOnPage": "Unselect all {pageCount} on page",
             "unselectAll": "Unselect all"
           }
         },

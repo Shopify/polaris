@@ -576,7 +576,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         actions={bulkActions}
         disabled={loading}
         accessibilityLabel={bulkActionsAccessibilityLabel}
-        selected={selectAllSelectState}
         onSelect={handleToggleAll}
         buttonSize="medium"
       />

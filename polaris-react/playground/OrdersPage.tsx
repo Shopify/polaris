@@ -304,7 +304,7 @@ function Table({orders}: {orders: Order[]}) {
     ? pagedOrdersStartIndex + PAGE_LIMIT
     : totalOrderCount;
   const pagedOrders = orders.slice(pagedOrdersStartIndex, pagedOrdersEndIndex);
-
+  const pageRange = [pagedOrdersStartIndex, pagedOrdersEndIndex - 1];
   const handlePagination = (direction: 'prev' | 'next') => () => {
     setCurrentPage((current) =>
       direction === 'prev' ? current - 1 : current + 1,
@@ -342,8 +342,6 @@ function Table({orders}: {orders: Order[]}) {
     onPrevious: handlePagination('prev'),
   };
 
-  console.log(pageCount);
-
   const promotedBulkActions = [
     {
       content: 'Create shipping labels',
@@ -366,12 +364,6 @@ function Table({orders}: {orders: Order[]}) {
     {
       content: 'Remove tags',
       onAction: () => console.log('Todo: implement bulk remove tags'),
-    },
-    {
-      icon: DeleteIcon,
-      destructive: true,
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
     },
   ];
 
@@ -445,6 +437,8 @@ function Table({orders}: {orders: Order[]}) {
     <IndexTable
       resourceName={resourceName}
       itemCount={orders.length}
+      pageCount={pagedOrders.length}
+      pageSelectionRange={pageRange}
       selectedItemsCount={
         allResourcesSelected ? 'All' : selectedResources.length
       }
@@ -452,7 +446,7 @@ function Table({orders}: {orders: Order[]}) {
       pagination={pagination}
       bulkActions={bulkActions}
       promotedBulkActions={promotedBulkActions}
-      hasMoreItems={false}
+      hasMoreItems
       headings={[
         {title: 'Order'},
         {title: 'Date'},
@@ -1012,12 +1006,6 @@ function OrdersIndexTableWithFilters(
         onRemove: handlers[key].remove,
       });
     });
-
-  console.log(
-    appliedFilterKeys,
-    appliedFilters,
-    savedViewFilters[selectedView],
-  );
 
   const appliedFilterMatchesSavedFilter = (
     appliedFilter: AppliedFilterInterface,

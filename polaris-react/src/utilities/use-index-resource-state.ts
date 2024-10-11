@@ -71,7 +71,6 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
           );
           break;
         case SelectionType.All:
-        case SelectionType.Page:
           if (resourceFilter) {
             const filteredResources = resources.filter(resourceFilter);
             setSelectedResources(
@@ -117,6 +116,7 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
 
           break;
         case SelectionType.Range:
+        case SelectionType.Page:
           if (!selection) break;
 
           setSelectedResources((currentSelectedResources) => {

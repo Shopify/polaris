@@ -148,11 +148,13 @@ describe('useIndexValue', () => {
   });
 
   it('returns index context values', () => {
-    const contextValues = {
+    const contextValues: IndexContextType = {
       resourceName: {singular: 'singular', plural: 'plural'},
       selectedItemsCount: 0,
       selectMode: false,
-      itemCount: 3,
+      itemCount: 10,
+      pageCount: 10,
+      pageSelectionRange: [0, 9],
     };
     const mockComponent = mount(
       <IndexContext.Provider value={contextValues}>

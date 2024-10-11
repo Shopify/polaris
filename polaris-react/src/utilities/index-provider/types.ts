@@ -16,6 +16,8 @@ export interface IndexProviderProps {
   children?: React.ReactNode;
   selectable?: boolean;
   itemCount: number;
+  pageCount: number;
+  pageSelectionRange: Range;
   selectedItemsCount?: typeof SELECT_ALL_ITEMS | number;
   resourceName?: {
     singular: string;

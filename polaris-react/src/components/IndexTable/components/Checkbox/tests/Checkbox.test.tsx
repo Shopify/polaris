@@ -229,7 +229,9 @@ function triggerCheckboxEvent(
 
 const defaultIndexProps: IndexTableProps = {
   headings: [{title: 'first heading'}],
-  itemCount: 1,
+  itemCount: 10,
+  pageCount: 10,
+  pageSelectionRange: [0, 9],
   selectedItemsCount: 0,
   onSelectionChange: () => {},
 };

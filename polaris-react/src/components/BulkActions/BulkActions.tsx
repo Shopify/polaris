@@ -15,7 +15,6 @@ import type {
   MenuGroupDescriptor,
   Action,
 } from '../../types';
-import {Button} from '../Button';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
 import {InlineStack} from '../InlineStack';
@@ -46,8 +45,6 @@ type AriaLive = 'off' | 'polite' | undefined;
 export interface BulkActionsProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
-  /** State of the bulk actions checkbox */
-  selected?: boolean | 'indeterminate';
   /** Text to select all across pages */
   paginatedSelectAllText?: string;
   /** Action for selecting all across pages */
@@ -70,10 +67,12 @@ export interface BulkActionsProps {
   selectMode?: boolean;
   /** The number of rows selected in the table */
   selectedItemsCount?: number | 'All';
-  /** The total number of rows in the table */
+  /** The total number of items in the store */
   itemCount: number;
+  /** The total number of items on the current page */
+  pageCount?: number;
   /** Callback when the select all checkbox is clicked */
-  onSelect?(selectionType: 'page' | 'all' | 'none'): void;
+  onSelect?(selectionType: 'page' | 'all' | 'none', isSelecting: boolean): void;
   /** @deprecated Used for forwarding the ref. Use `ref` prop instead */
   innerRef?: React.Ref<any>;
   /** @deprecated Callback when selectable state of list is changed. Unused callback */
@@ -100,13 +99,13 @@ export const BulkActions = ({
   buttonSize = 'medium',
   paginatedSelectAllAction,
   paginatedSelectAllText,
-  selected,
   onSelect,
   onMoreActionPopoverToggle,
   width,
   selectMode,
   selectedItemsCount = 0,
   itemCount,
+  pageCount,
 }: BulkActionsProps) => {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
@@ -117,8 +116,8 @@ export const BulkActions = ({
   };
 
   const handleBulkSelection =
-    (selectionType: 'page' | 'all' | 'none') => () => {
-      onSelect?.(selectionType);
+    (selectionType: 'page' | 'all' | 'none', isSelecting: boolean) => () => {
+      onSelect?.(selectionType, isSelecting);
     };
 
   const [state, setState] = useReducer(
@@ -180,24 +179,37 @@ export const BulkActions = ({
 
   const ariaLive: AriaLive = hasTextAndAction ? 'polite' : undefined;
 
+  // No idea why this translation borks...
+  // ? i18n.translate(
+  //     'Polaris.ResourceList.BulkActions.selectAllMenu.items.unselectAllOnPage',
+  //     {pageCount},
+  //   )
+  const selectAllOnPageContent =
+    selectedItemsCount === pageCount ||
+    selectedItemsCount === 'All' ||
+    selectedItemsCount === itemCount
+      ? `Unselect all ${pageCount ?? itemCount} on page`
+      : i18n.translate(
+          'Polaris.ResourceList.BulkActions.selectAllMenu.items.selectAllOnPage',
+          {pageCount: pageCount ?? itemCount},
+        );
+
   const selectAllOnPageItem = {
-    content: i18n.translate(
-      'Polaris.ResourceList.BulkActions.selectAllMenu.items.selectAllOnPage',
+    content: selectAllOnPageContent,
+    onAction: handleBulkSelection(
+      'page',
+      !(
+        selectedItemsCount === pageCount ||
+        selectedItemsCount === 'All' ||
+        selectedItemsCount === itemCount
+      ),
     ),
-    disabled: selected === true,
-    onAction: handleBulkSelection('page'),
   };
 
   const selectAllInStoreItem = paginatedSelectAllAction
     ? {
         ...paginatedSelectAllAction,
         disabled: selectedItemsCount === 'All',
-        content: paginatedSelectAllText
-          ? paginatedSelectAllText
-          : i18n.translate(
-              'Polaris.ResourceList.BulkActions.selectAllMenu.items.selectAllInStore',
-              {itemCount},
-            ),
       }
     : null;
 
@@ -206,7 +218,7 @@ export const BulkActions = ({
       'Polaris.ResourceList.BulkActions.selectAllMenu.items.unselectAll',
     ),
     disabled: selectedItemsCount === 0,
-    onAction: handleBulkSelection('none'),
+    onAction: handleBulkSelection('all', false),
   };
 
   const selectAllActionsMarkup = selectMode ? (
@@ -375,7 +387,7 @@ export const BulkActions = ({
       <Popover
         active={popoverActive}
         activator={activator}
-        preferredAlignment="right"
+        preferredAlignment="left"
         onClose={togglePopover}
       >
         <ActionList
