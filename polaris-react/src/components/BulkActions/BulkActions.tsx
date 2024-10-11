@@ -197,7 +197,11 @@ export const BulkActions = ({
   const selectAllOnPageItem = {
     content: selectAllOnPageContent,
     onAction: handleBulkSelection(
-      'page',
+      pageCount &&
+        typeof selectedItemsCount === 'number' &&
+        pageCount + selectedItemsCount === itemCount
+        ? 'all'
+        : 'page',
       !(
         selectedItemsCount === pageCount ||
         selectedItemsCount === 'All' ||
