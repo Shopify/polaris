@@ -263,7 +263,7 @@ export const OrdersPage = {
 
 const PAGE_LIMIT = 50;
 
-function Table({orders}: {orders: Order[]}) {
+function Table({orders, filtered}: {orders: Order[]; filtered: boolean}) {
   const resourceName = {
     singular: 'order',
     plural: 'orders',
@@ -446,7 +446,7 @@ function Table({orders}: {orders: Order[]}) {
       pagination={pagination}
       bulkActions={bulkActions}
       promotedBulkActions={promotedBulkActions}
-      hasMoreItems
+      hasMoreItems={!filtered}
       headings={[
         {title: 'Order'},
         {title: 'Date'},
@@ -1310,6 +1310,7 @@ function OrdersIndexTableWithFilters(
   };
 
   const queryPlaceholder = `Search ${viewNames[selectedView]?.toLowerCase()}`;
+  const isTableFiltered = queryValue.length > 0 || appliedFilterKeys.length > 0;
 
   return (
     <Card padding="0">
@@ -1337,7 +1338,7 @@ function OrdersIndexTableWithFilters(
         setMode={setMode}
         sortUnsaved={hasUnsavedSortChange}
       />
-      <Table orders={filteredOrders} />
+      <Table orders={filteredOrders} filtered={isTableFiltered} />
     </Card>
   );
 }
