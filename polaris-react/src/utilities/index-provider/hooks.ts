@@ -178,12 +178,12 @@ export function useHandleBulkSelection({
         const min = Math.min(prevSelected as number, sortOrder as number);
         const max = Math.max(prevSelected as number, sortOrder as number);
         onSelectionChange(selectionType, toggleType, [min, max]);
+      } else if (selectionType === SelectionType.All) {
+        onSelectionChange(selectionType, toggleType);
       } else if (
         selectionType === SelectionType.Page ||
-        selectionType === SelectionType.All
+        selectionType === SelectionType.Range
       ) {
-        onSelectionChange(selectionType, toggleType);
-      } else if (selectionType === SelectionType.Range) {
         onSelectionChange(SelectionType.Range, toggleType, selection);
       }
     },

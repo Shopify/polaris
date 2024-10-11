@@ -16,6 +16,8 @@ export function IndexProvider({
   onSelectionChange,
   selectedItemsCount = 0,
   itemCount,
+  pageCount,
+  pageSelectionRange,
   hasMoreItems,
   condensed,
   selectable: isSelectableIndex = true,
@@ -40,6 +42,8 @@ export function IndexProvider({
   const contextValue = useMemo(
     () => ({
       itemCount,
+      pageCount,
+      pageSelectionRange,
       selectMode: selectMode && isSelectableIndex,
       selectable: isSelectableIndex,
       resourceName,
@@ -54,6 +58,8 @@ export function IndexProvider({
     }),
     [
       itemCount,
+      pageCount,
+      pageSelectionRange,
       selectMode,
       isSelectableIndex,
       resourceName,

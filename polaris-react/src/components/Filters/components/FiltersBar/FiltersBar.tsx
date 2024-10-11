@@ -1,4 +1,4 @@
-import type {PropsWithChildren} from 'react';
+import type {PropsWithChildren, ReactNode} from 'react';
 import React, {useState, useRef, useEffect} from 'react';
 import {PlusIcon} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
@@ -9,23 +9,21 @@ import {Popover} from '../../../Popover';
 import {ActionList} from '../../../ActionList';
 import {Text} from '../../../Text';
 import {UnstyledButton} from '../../../UnstyledButton';
-import {classNames} from '../../../../utilities/css';
 import type {
   ActionListItemDescriptor,
   AppliedFilterInterface,
   FilterInterface,
 } from '../../../../types';
 import {InlineStack} from '../../../InlineStack';
+import {InlineGrid} from '../../../InlineGrid';
 import {Box} from '../../../Box';
-import {Button} from '../../../Button';
 import {FilterPill} from '../FilterPill';
 import styles from '../../Filters.module.css';
+import {Scrollable} from '../../../Scrollable';
 
 export interface FiltersBarProps {
-  /** Currently entered text in the query field */
-  queryValue?: string;
-  /** Placeholder text for the query field. */
-  queryPlaceholder?: string;
+  /** The query field markup to render left of the filters */
+  queryField?: ReactNode;
   /** Whether the query field is focused. */
   focused?: boolean;
   /** Available filters added to the filter bar. Shortcut filters are pinned to the front of the bar. */
@@ -45,17 +43,14 @@ export interface FiltersBarProps {
   onAddFilterClick?: () => void;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
-  mountedStateStyles?: any;
 }
 
 export function FiltersBar({
-  filters,
+  filters: unsortedFilters,
   appliedFilters,
-  onClearAll,
   disabled,
-  hideQueryField,
+  queryField,
   disableFilters,
-  mountedStateStyles,
   onAddFilterClick,
   closeOnChildOverlayClick,
   children,
@@ -76,7 +71,34 @@ export function FiltersBar({
     togglePopoverActive();
   };
 
+  const sortFiltersInAppliedOrder = (
+    filters: FilterInterface[],
+    appliedFilterKeys: string[] = [],
+  ) => {
+    // eslint-disable-next-line id-length
+    return filters.sort(({key: a}, {key: b}) => {
+      const aIndex = appliedFilterKeys.indexOf(a);
+      const bIndex = appliedFilterKeys.indexOf(b);
+
+      if (aIndex === -1 && bIndex === -1) {
+        // Neither element is in the order array, so keep their original order
+        return 0;
+      } else if (aIndex === -1) {
+        // Only b is in the order array, so put b first
+        return 1;
+      } else if (bIndex === -1) {
+        // Only a is in the order array, so put a first
+        return -1;
+      } else {
+        // Both elements are in the order array, so sort by their index in the order array
+        return aIndex - bIndex;
+      }
+    });
+  };
+
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
+
+  const filters = sortFiltersInAppliedOrder(unsortedFilters, appliedFilterKeys);
 
   const pinnedFromPropsKeys = filters
     .filter(({pinned}) => pinned)
@@ -161,8 +183,6 @@ export function FiltersBar({
       }[],
     );
 
-  const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
-
   const addFilterActivator = (
     <div>
       <UnstyledButton
@@ -176,64 +196,63 @@ export function FiltersBar({
           disableFilters
         }
       >
+        <PlusIcon />
         <Text as="span" variant="bodySm" tone={disabled ? 'disabled' : 'base'}>
           {i18n.translate('Polaris.Filters.addFilter')}{' '}
         </Text>
-        <PlusIcon />
       </UnstyledButton>
     </div>
   );
 
-  const handleClearAllFilters = () => {
-    setLocalPinnedFilters(pinnedFromPropsKeys);
-    onClearAll?.();
-  };
-  const shouldShowAddButton =
-    filters.some((filter) => !filter.pinned) ||
-    filters.length !== localPinnedFilters.length;
+  const shouldShowAddButton = filters.length !== localPinnedFilters?.length;
 
-  const pinnedFiltersMarkup = pinnedFilters.map(
-    ({key: filterKey, ...pinnedFilter}) => {
-      const appliedFilter = appliedFilters?.find(({key}) => key === filterKey);
-      const handleFilterPillRemove = () => {
-        setLocalPinnedFilters((currentLocalPinnedFilters) =>
-          currentLocalPinnedFilters.filter((key) => {
-            const isMatchedFilters = key === filterKey;
-            const isPinnedFilterFromProps = pinnedFromPropsKeys.includes(key);
-            return !isMatchedFilters || isPinnedFilterFromProps;
-          }),
+  const pinnedFiltersMarkup = (
+    <Scrollable
+      shadow
+      hint
+      vertical={false}
+      scrollbarWidth="none"
+      className={styles.AppliedFilters}
+    >
+      {pinnedFilters.map(({key: filterKey, ...pinnedFilter}) => {
+        const appliedFilter = appliedFilters?.find(
+          ({key}) => key === filterKey,
         );
-        appliedFilter?.onRemove?.(filterKey);
-      };
+        const handleFilterPillRemove = () => {
+          setLocalPinnedFilters((currentLocalPinnedFilters) =>
+            currentLocalPinnedFilters.filter((key) => {
+              const isMatchedFilters = key === filterKey;
+              const isPinnedFilterFromProps = pinnedFromPropsKeys.includes(key);
+              return !isMatchedFilters || isPinnedFilterFromProps;
+            }),
+          );
+          appliedFilter?.onRemove?.(filterKey);
+        };
 
-      return (
-        <FilterPill
-          key={filterKey}
-          {...pinnedFilter}
-          initialActive={
-            hasMounted.current && !pinnedFilter.pinned && !appliedFilter
-          }
-          unsavedChanges={appliedFilter?.unsavedChanges}
-          label={appliedFilter?.label || pinnedFilter.label}
-          filterKey={filterKey}
-          selected={appliedFilterKeys?.includes(filterKey)}
-          onRemove={
-            appliedFilter?.onRemove ? handleFilterPillRemove : undefined
-          }
-          disabled={pinnedFilter.disabled || disableFilters}
-          closeOnChildOverlayClick={closeOnChildOverlayClick}
-        />
-      );
-    },
+        return (
+          <FilterPill
+            key={filterKey}
+            {...pinnedFilter}
+            initialActive={
+              hasMounted.current && !pinnedFilter.pinned && !appliedFilter
+            }
+            unsavedChanges={appliedFilter?.unsavedChanges}
+            label={appliedFilter?.label || pinnedFilter.label}
+            filterKey={filterKey}
+            selected={appliedFilterKeys?.includes(filterKey)}
+            onRemove={
+              appliedFilter?.onRemove ? handleFilterPillRemove : undefined
+            }
+            disabled={pinnedFilter.disabled || disableFilters}
+            closeOnChildOverlayClick={closeOnChildOverlayClick}
+          />
+        );
+      })}
+    </Scrollable>
   );
 
   const addButton = shouldShowAddButton ? (
-    <div
-      className={classNames(
-        styles.AddFilterActivator,
-        hasOneOrMorePinnedFilters && styles.AddFilterActivatorMultiple,
-      )}
-    >
+    <div className={styles.AddFilterActivator}>
       <Popover
         active={popoverActive && !disabled}
         activator={addFilterActivator}
@@ -248,61 +267,25 @@ export function FiltersBar({
     </div>
   ) : null;
 
-  const clearAllMarkup = appliedFilters?.length ? (
-    <div
-      className={classNames(
-        styles.ClearAll,
-        hasOneOrMorePinnedFilters &&
-          shouldShowAddButton &&
-          styles.MultiplePinnedFilterClearAll,
-      )}
-    >
-      <Button
-        size="micro"
-        onClick={handleClearAllFilters}
-        variant="monochromePlain"
-      >
-        {i18n.translate('Polaris.Filters.clearFilters')}
-      </Button>
+  const filterMarkup = (
+    <div className={styles.FiltersInner} aria-live="polite">
+      {pinnedFiltersMarkup}
+      <div className={styles.FilterActionWrapper}>{addButton}</div>
     </div>
-  ) : null;
+  );
 
   return (
-    <div
-      className={classNames(
-        styles.FiltersWrapper,
-        shouldShowAddButton &&
-          hasOneOrMorePinnedFilters &&
-          styles.FiltersWrapperWithAddButton,
-      )}
-      aria-live="polite"
-      style={mountedStateStyles}
-    >
-      <div className={classNames(styles.FiltersInner)}>
-        <div className={classNames(styles.FiltersStickyArea)}>
-          {pinnedFiltersMarkup}
-          {addButton}
-          {clearAllMarkup}
-        </div>
-      </div>
-      {hideQueryField ? (
-        <Box
-          paddingInlineEnd="300"
-          paddingBlockStart="200"
-          paddingBlockEnd="200"
-        >
-          <InlineStack
-            align="start"
-            blockAlign="center"
-            gap={{
-              xs: '400',
-              md: '300',
-            }}
-          >
-            {children}
-          </InlineStack>
-        </Box>
-      ) : null}
-    </div>
+    <Box paddingInline="200" borderColor="border" borderBlockEndWidth="025">
+      <InlineGrid
+        columns={{xs: 1, md: children ? ['twoThirds', 'oneThird'] : 1}}
+        alignItems="center"
+      >
+        <InlineStack wrap={false} align="start" blockAlign="center">
+          <div className={styles.SearchFieldWrapper}>{queryField}</div>
+          {filterMarkup}
+        </InlineStack>
+        {children}
+      </InlineGrid>
+    </Box>
   );
 }
