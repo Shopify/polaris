@@ -310,8 +310,8 @@ importers:
         specifier: ^8.0.8
         version: 8.0.9
       '@storybook/addon-viewport':
-        specifier: ^8.0.8
-        version: 8.0.9
+        specifier: ^8.3.5
+        version: 8.3.5(storybook@8.0.9)
       '@storybook/blocks':
         specifier: ^8.0.8
         version: 8.0.9(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
@@ -5234,10 +5234,13 @@ packages:
     resolution: {integrity: sha512-nNSBnnBOhQ+EJwkrIkK4ZBYPcozNmEH770CZ/6NK85SUJ6WEBZapE6ru33jIUokFGEvlOlNCeai0GUc++cQP8w==}
     dev: true
 
-  /@storybook/addon-viewport@8.0.9:
-    resolution: {integrity: sha512-Ao4+D56cO7biaw+iTlMU1FBec1idX0cmdosDeCFZin06MSawcPkeBlRBeruaSQYdLes8TBMdZPFgfuqI5yIk6g==}
+  /@storybook/addon-viewport@8.3.5(storybook@8.0.9):
+    resolution: {integrity: sha512-FSWydoPiVWFXEittG7O1YgvuaqoU9Vb+qoq9XfP/hvQHHMDcMZvC40JaV8AnJeTXaM7ngIjcn9XDEfGbFfOzXw==}
+    peerDependencies:
+      storybook: ^8.3.5
     dependencies:
       memoizerific: 1.11.3
+      storybook: 8.0.9(@babel/preset-env@7.23.6)(react-dom@18.2.0)(react@18.2.0)
     dev: true
 
   /@storybook/blocks@8.0.9(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0):
@@ -12369,7 +12372,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
