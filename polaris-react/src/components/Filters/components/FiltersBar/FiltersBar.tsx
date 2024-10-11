@@ -46,7 +46,7 @@ export interface FiltersBarProps {
 }
 
 export function FiltersBar({
-  filters,
+  filters: unsortedFilters,
   appliedFilters,
   disabled,
   queryField,
@@ -71,7 +71,34 @@ export function FiltersBar({
     togglePopoverActive();
   };
 
+  const sortFiltersInAppliedOrder = (
+    filters: FilterInterface[],
+    appliedFilterKeys: string[] = [],
+  ) => {
+    // eslint-disable-next-line id-length
+    return filters.sort(({key: a}, {key: b}) => {
+      const aIndex = appliedFilterKeys.indexOf(a);
+      const bIndex = appliedFilterKeys.indexOf(b);
+
+      if (aIndex === -1 && bIndex === -1) {
+        // Neither element is in the order array, so keep their original order
+        return 0;
+      } else if (aIndex === -1) {
+        // Only b is in the order array, so put b first
+        return 1;
+      } else if (bIndex === -1) {
+        // Only a is in the order array, so put a first
+        return -1;
+      } else {
+        // Both elements are in the order array, so sort by their index in the order array
+        return aIndex - bIndex;
+      }
+    });
+  };
+
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
+
+  const filters = sortFiltersInAppliedOrder(unsortedFilters, appliedFilterKeys);
 
   const pinnedFromPropsKeys = filters
     .filter(({pinned}) => pinned)

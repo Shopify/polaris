@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {useRef, useState, useCallback} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   ChartVerticalIcon,
   AppsIcon,
@@ -328,7 +328,9 @@ function Table({orders}: {orders: Order[]}) {
     type: 'table',
     label:
       selectedResources.length > 0 ? undefined : (
-        <Bleed marginInlineStart={pageCount === 1 ? '400' : '0'}>
+        <Bleed
+          marginInlineStart={paginationLabel === totalCountText ? '400' : '0'}
+        >
           <Box padding="150" paddingInlineStart="200">
             {paginationLabel}
           </Box>
@@ -339,6 +341,8 @@ function Table({orders}: {orders: Order[]}) {
     onNext: handlePagination('next'),
     onPrevious: handlePagination('prev'),
   };
+
+  console.log(pageCount);
 
   const promotedBulkActions = [
     {
@@ -502,6 +506,7 @@ function OrdersIndexTableWithFilters(
   const [fulfillmentStatus, setFulfillmentStatus] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [filteredOrders, setFilteredOrders] = useState(orders);
+  const [appliedFilterKeys, setAppliedFilterKeys] = useState<string[]>([]);
   const [tempPersistedSearch, setTempPersistedSearch] = useState<string[]>([
     '',
     '',
@@ -509,7 +514,6 @@ function OrdersIndexTableWithFilters(
     '',
     '',
   ]);
-
   const [savedViewFilters, setSavedViewFilters] = useState<SavedViewFilter[][]>(
     [
       [],
@@ -675,6 +679,20 @@ function OrdersIndexTableWithFilters(
 
   // ---- Filter input event handlers  ----
 
+  const updateAppliedFilterKeys = (key: string, remove = false) => {
+    const nextAppliedFilterKeys = [...appliedFilterKeys];
+    const appliedFilterIndex = nextAppliedFilterKeys.indexOf(key);
+
+    if (remove) {
+      setAppliedFilterKeys(
+        nextAppliedFilterKeys.filter((filterKey) => filterKey !== key),
+      );
+    } else if (appliedFilterIndex === -1) {
+      nextAppliedFilterKeys.push(key);
+      setAppliedFilterKeys(nextAppliedFilterKeys);
+    }
+  };
+
   const handleQueryValueChange = (value: string) => {
     const processedInput = preProcessText(value);
     setQueryValue(processedInput);
@@ -688,42 +706,49 @@ function OrdersIndexTableWithFilters(
 
   const handleContainsChange = (value: string) => {
     setContains(value);
+    updateAppliedFilterKeys('contains');
     handleFilterOrders({contains: value});
   };
 
-  const handleContainsRemove = (value: string[]) => {
+  const handleContainsRemove = () => {
     setContains('');
-    setQueryValue('');
-    handleFilterOrders({queryValue: '', contains: ''});
+    updateAppliedFilterKeys('contains', true);
+    handleFilterOrders({contains: ''});
   };
 
   const handlePaymentStatusChange = (value: string[]) => {
     setPaymentStatus(value);
+    updateAppliedFilterKeys('paymentStatus');
     handleFilterOrders({paymentStatus: value});
   };
 
   const handlePaymentStatusRemove = () => {
     setPaymentStatus([]);
+    updateAppliedFilterKeys('paymentStatus', true);
     handleFilterOrders({paymentStatus: []});
   };
 
   const handleFulfillmentStatusChange = (value: string[]) => {
     setFulfillmentStatus(value);
+    updateAppliedFilterKeys('fulfillmentStatus');
     handleFilterOrders({fulfillmentStatus: value});
   };
 
   const handleFulfillmentStatusRemove = () => {
     setFulfillmentStatus([]);
+    updateAppliedFilterKeys('fulfillmentStatus', true);
     handleFilterOrders({fulfillmentStatus: []});
   };
 
   const handleStatusChange = (value: string[]) => {
     setStatus(value);
+    updateAppliedFilterKeys('status');
     handleFilterOrders({status: value});
   };
 
   const handleStatusRemove = () => {
     setStatus([]);
+    updateAppliedFilterKeys('status', true);
     handleFilterOrders({status: []});
   };
 
@@ -734,6 +759,7 @@ function OrdersIndexTableWithFilters(
       remove: handleQueryValueRemove,
       emptyValue: '',
       label: 'Search',
+      value: queryValue,
     },
     contains: {
       set: setContains,
@@ -741,13 +767,15 @@ function OrdersIndexTableWithFilters(
       remove: handleContainsRemove,
       emptyValue: '',
       label: 'Include',
+      value: contains,
     },
     status: {
       set: setStatus,
       change: handleStatusChange,
       remove: handleStatusRemove,
-      label: 'Status',
       emptyValue: [],
+      label: 'Status',
+      value: status,
     },
     paymentStatus: {
       set: setPaymentStatus,
@@ -755,6 +783,7 @@ function OrdersIndexTableWithFilters(
       remove: handlePaymentStatusRemove,
       label: 'Payment status',
       emptyValue: [],
+      value: paymentStatus,
     },
     fulfillmentStatus: {
       set: setFulfillmentStatus,
@@ -762,6 +791,7 @@ function OrdersIndexTableWithFilters(
       remove: handleFulfillmentStatusRemove,
       label: 'Fulfillment status',
       emptyValue: [],
+      value: fulfillmentStatus,
     },
   };
 
@@ -962,29 +992,32 @@ function OrdersIndexTableWithFilters(
 
   const appliedFilters: AppliedFilterInterface[] = [];
 
-  Object.entries({
-    queryValue,
-    contains,
-    status,
-    paymentStatus,
-    fulfillmentStatus,
-  }).forEach(([key, value]) => {
-    if (isEmpty(value)) {
-      return;
-    }
+  appliedFilterKeys
+    .map((key) => [key, handlers[key].value])
+    .forEach(([key, value]) => {
+      if (isEmpty(value)) {
+        return;
+      }
 
-    const savedValue = savedViewFilters[selectedView]?.find(
-      (filter) => filter.key === key,
-    )?.value;
+      const savedValue = savedViewFilters[selectedView]?.find(
+        (filter) => filter.key === key,
+      )?.value;
 
-    appliedFilters.push({
-      key,
-      value,
-      label: getHumanReadableValue(handlers[key].label, value),
-      unsavedChanges: selectedView === 0 ? true : isUnsaved(value, savedValue),
-      onRemove: handlers[key].remove,
+      appliedFilters.push({
+        key,
+        value,
+        label: getHumanReadableValue(handlers[key].label, value),
+        unsavedChanges:
+          selectedView === 0 ? true : isUnsaved(value, savedValue),
+        onRemove: handlers[key].remove,
+      });
     });
-  });
+
+  console.log(
+    appliedFilterKeys,
+    appliedFilters,
+    savedViewFilters[selectedView],
+  );
 
   const appliedFilterMatchesSavedFilter = (
     appliedFilter: AppliedFilterInterface,
@@ -1035,26 +1068,36 @@ function OrdersIndexTableWithFilters(
   };
 
   const getFiltersToSave = (saveQueryValueToIncludes?: boolean) => {
-    const filtersToSave = saveQueryValueToIncludes
-      ? {
-          contains: getContainsValue(contains),
-          status,
-          paymentStatus,
-          fulfillmentStatus,
-        }
-      : {
-          queryValue,
-          contains,
-          status,
-          paymentStatus,
-          fulfillmentStatus,
-        };
+    // const filtersToSave = saveQueryValueToIncludes
+    //   ? {
+    //       contains: getContainsValue(contains),
+    //       status,
+    //       paymentStatus,
+    //       fulfillmentStatus,
+    //     }
+    //   : {
+    //       queryValue,
+    //       contains,
+    //       status,
+    //       paymentStatus,
+    //       fulfillmentStatus,
+    //     };
 
-    return Object.entries(filtersToSave)
-      .filter(([, value]) => !isEmpty(value))
-      .map(([key, value]) => {
-        return {key, value, label: handlers[key].label};
-      });
+    const filtersToSave = appliedFilterKeys.map((key) => [
+      key,
+      handlers[key].value,
+    ]);
+
+    return filtersToSave.map(([key, value]) => {
+      return {
+        key,
+        value:
+          key === 'contains' && saveQueryValueToIncludes
+            ? getContainsValue(value)
+            : value,
+        label: handlers[key].label,
+      };
+    });
   };
 
   const handleSelectView = async (view: number) => {
@@ -1213,11 +1256,11 @@ function OrdersIndexTableWithFilters(
       saved = await handleSaveViewFilters(index, nextFilters);
     }
 
-    const nextContains = nextFilters.find(({key}) => key === 'contains')?.value;
-    if (nextContains) {
-      setQueryValue('');
-      setContains(nextContains);
-    }
+    // const nextContains = nextFilters.find(({key}) => key === 'contains')?.value;
+    // if (nextContains) {
+    //   setQueryValue('');
+    //   setContains(nextContains);
+    // }
 
     setLoading(false);
     return saved;
