@@ -26,7 +26,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@floating-ui/react-dom-interactions": "^0.10.1",
+    "@floating-ui/react-dom-interactions": "^0.13.3",
     "@headlessui/react": "^1.6.5",
     "@juggle/resize-observer": "^3.4.0",
     "@radix-ui/react-polymorphic": "^0.0.14",
