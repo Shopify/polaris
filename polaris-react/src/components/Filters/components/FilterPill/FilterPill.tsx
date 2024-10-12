@@ -116,6 +116,7 @@ export function FilterPill({
   const toggleButtonClassNames = classNames(
     styles.PlainButton,
     styles.ToggleButton,
+    onRemove === undefined && styles.locked,
   );
 
   const disclosureMarkup = !selected ? (
@@ -134,29 +135,30 @@ export function FilterPill({
     </Box>
   );
 
-  const unsavedPip = unsavedChanges ? (
-    <Box paddingInlineEnd="150">
-      <Box
-        background="bg-fill-emphasis"
-        borderRadius="050"
-        width="6px"
-        minHeight="6px"
-      />
-    </Box>
-  ) : null;
+  // const unsavedPip = unsavedChanges ? (
+  //   <Box paddingInlineEnd="150">
+  //     <Box
+  //       background="bg-fill-emphasis"
+  //       borderRadius="050"
+  //       width="6px"
+  //       minHeight="6px"
+  //     />
+  //   </Box>
+  // ) : null;
 
-  const removeFilterButtonMarkup = selected ? (
-    <UnstyledButton
-      onClick={handleClear}
-      className={clearButtonClassNames}
-      type="button"
-      aria-label={i18n.translate('Polaris.FilterPill.clear')}
-    >
-      <div className={styles.IconWrapper}>
-        <Icon source={XSmallIcon} tone="base" />
-      </div>
-    </UnstyledButton>
-  ) : null;
+  const removeFilterButtonMarkup =
+    selected && onRemove !== undefined ? (
+      <UnstyledButton
+        onClick={handleClear}
+        className={clearButtonClassNames}
+        type="button"
+        aria-label={i18n.translate('Polaris.FilterPill.clear')}
+      >
+        <div className={styles.IconWrapper}>
+          <Icon source={XSmallIcon} tone="base" />
+        </div>
+      </UnstyledButton>
+    ) : null;
 
   const activator = (
     <div className={buttonClasses}>
@@ -174,7 +176,7 @@ export function FilterPill({
           }
         >
           <InlineStack wrap={false} align="center" blockAlign="center" gap="0">
-            {unsavedPip}
+            {/* {unsavedPip} */}
             {labelMarkup}
             {disclosureMarkup}
           </InlineStack>

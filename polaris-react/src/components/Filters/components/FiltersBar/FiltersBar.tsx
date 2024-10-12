@@ -89,11 +89,12 @@ export function FiltersBar({
       return isPinnedOrApplied;
     },
   );
+
   const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>(
     pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
   );
 
-  useOnValueChange(filters.length, () => {
+  useOnValueChange(appliedFilters, () => {
     setLocalPinnedFilters(
       pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
     );
@@ -202,7 +203,7 @@ export function FiltersBar({
             return !isMatchedFilters || isPinnedFilterFromProps;
           }),
         );
-        appliedFilter?.onRemove(filterKey);
+        appliedFilter?.onRemove?.(filterKey);
       };
 
       return (
