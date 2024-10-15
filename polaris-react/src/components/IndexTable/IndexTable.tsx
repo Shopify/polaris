@@ -6,6 +6,7 @@ import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
 import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import {useI18n} from '../../utilities/i18n';
+import {Box} from '../Box';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
@@ -39,6 +40,8 @@ import type {
   Width,
   TooltipOverlayProps,
 } from '../Tooltip';
+import {InlineStack} from '../InlineStack';
+import {Bleed} from '../Bleed';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -137,8 +140,8 @@ const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
 
 function IndexTableBase({
   headings,
-  bulkActions = [],
-  promotedBulkActions = [],
+  bulkActions,
+  promotedBulkActions,
   children,
   emptyState,
   sort,
@@ -163,6 +166,8 @@ function IndexTableBase({
     selectable = restProps.selectable,
     paginatedSelectAllText,
     itemCount,
+    pageCount,
+    pageSelectionRange,
     hasMoreItems,
     selectedItemsCount,
     condensed,
@@ -220,13 +225,8 @@ function IndexTableBase({
   );
 
   const handleSelectAllItemsInStore = useCallback(() => {
-    handleSelectionChange(
-      selectedItemsCount === SELECT_ALL_ITEMS
-        ? SelectionType.Page
-        : SelectionType.All,
-      true,
-    );
-  }, [handleSelectionChange, selectedItemsCount]);
+    handleSelectionChange(SelectionType.All, true);
+  }, [handleSelectionChange]);
 
   const resizeTableHeadings = useMemo(
     () =>
@@ -480,12 +480,16 @@ function IndexTableBase({
     selectedItemsCount: selectedItemsCountValue,
   });
 
-  const handleTogglePage = useCallback(() => {
-    handleSelectionChange(
-      SelectionType.Page,
-      Boolean(!bulkSelectState || bulkSelectState === 'indeterminate'),
-    );
-  }, [bulkSelectState, handleSelectionChange]);
+  const handleBulkSelection = useCallback(
+    (selectionType: 'page' | 'all' | 'none', isSelecting: boolean) => {
+      handleSelectionChange(
+        selectionType === 'page' ? SelectionType.Page : SelectionType.All,
+        isSelecting,
+        selectionType === 'page' ? pageSelectionRange : undefined,
+      );
+    },
+    [pageSelectionRange, handleSelectionChange],
+  );
 
   const paginatedSelectAllAction = getPaginatedSelectAllAction();
 
@@ -516,9 +520,28 @@ function IndexTableBase({
     condensed && styles['StickyTable-condensed'],
   );
 
-  const shouldShowActions = !condensed || selectedItemsCount;
+  const shouldShowActions =
+    !condensed ||
+    (typeof selectedItemsCount === 'number' && selectedItemsCount > 0) ||
+    selectedItemsCount === 'All';
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
+  const bulkActionsMarkup =
+    bulkActions && shouldShowActions && !condensed ? (
+      <BulkActions
+        itemCount={itemCount}
+        pageCount={pageCount}
+        selectedItemsCount={selectedItemsCount}
+        selectMode={selectMode}
+        onSelect={handleBulkSelection}
+        paginatedSelectAllText={paginatedSelectAllText}
+        paginatedSelectAllAction={paginatedSelectAllAction}
+        accessibilityLabel={bulkActionsAccessibilityLabel}
+        promotedActions={promotedActions}
+        actions={actions}
+        label={selectAllActionsLabel}
+      />
+    ) : null;
 
   const stickyHeaderMarkup = (
     <div className={stickyTableClassNames} role="presentation">
@@ -541,34 +564,6 @@ function IndexTableBase({
               canScrollRight &&
               styles['StickyTableHeader-sticky-scrolling'],
           );
-
-          const bulkActionsClassName = classNames(
-            styles.BulkActionsWrapper,
-            selectMode && styles.BulkActionsWrapperVisible,
-            condensed && styles['StickyTableHeader-condensed'],
-            isSticky && styles['StickyTableHeader-isSticky'],
-          );
-
-          const bulkActionsMarkup =
-            shouldShowActions && !condensed ? (
-              <div className={bulkActionsClassName}>
-                <BulkActions
-                  selectMode={selectMode}
-                  onToggleAll={handleTogglePage}
-                  paginatedSelectAllText={paginatedSelectAllText}
-                  paginatedSelectAllAction={paginatedSelectAllAction}
-                  accessibilityLabel={bulkActionsAccessibilityLabel}
-                  selected={bulkSelectState}
-                  promotedActions={promotedActions}
-                  actions={actions}
-                  onSelectModeToggle={
-                    condensed ? handleSelectModeToggle : undefined
-                  }
-                  label={selectAllActionsLabel}
-                  buttonSize="micro"
-                />
-              </div>
-            ) : null;
 
           const headerMarkup = condensed ? (
             <div
@@ -595,12 +590,7 @@ function IndexTableBase({
             </div>
           );
 
-          return (
-            <>
-              {headerMarkup}
-              {bulkActionsMarkup}
-            </>
-          );
+          return headerMarkup;
         }}
       </Sticky>
     </div>
@@ -711,10 +701,34 @@ function IndexTableBase({
     );
 
   const paginationMarkup = pagination ? (
-    <div className={styles.PaginationWrapper}>
-      <Pagination type="table" {...pagination} />
-    </div>
+    <Pagination type="table" {...pagination} />
   ) : null;
+
+  const footerMarkup =
+    pagination || bulkActions ? (
+      <div className={styles.Footer}>
+        <Box
+          borderBlockStartWidth="025"
+          borderColor="border"
+          background="bg-surface-secondary"
+          paddingBlockStart="150"
+          paddingBlockEnd="150"
+          paddingInlineStart="300"
+          paddingInlineEnd="200"
+        >
+          <InlineStack align="start" blockAlign="center" gap="200" wrap={false}>
+            {paginationMarkup}
+            <Bleed
+              marginInlineStart={
+                pagination?.hasNext || pagination?.hasPrevious ? '0' : '200'
+              }
+            >
+              {bulkActionsMarkup}
+            </Bleed>
+          </InlineStack>
+        </Box>
+      </div>
+    ) : null;
 
   return (
     <>
@@ -723,7 +737,7 @@ function IndexTableBase({
           {!condensed && loadingMarkup}
           {tableContentMarkup}
           {scrollBarMarkup}
-          {paginationMarkup}
+          {footerMarkup}
         </div>
       </div>
     </>
@@ -1045,7 +1059,7 @@ function IndexTableBase({
   }
 
   function handleSelectPage(checked: boolean) {
-    handleSelectionChange(SelectionType.Page, checked);
+    handleSelectionChange(SelectionType.Page, checked, pageSelectionRange);
   }
 
   function getPaginatedSelectAllAction() {
@@ -1053,26 +1067,17 @@ function IndexTableBase({
       return;
     }
 
-    const customActionText =
+    const actionText =
       paginatedSelectAllActionText ??
       i18n.translate('Polaris.IndexTable.selectAllItems', {
-        itemsLength: itemCount,
+        itemCount,
         resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
       });
-
-    const actionText =
-      selectedItemsCount === SELECT_ALL_ITEMS
-        ? i18n.translate('Polaris.IndexTable.undo')
-        : customActionText;
 
     return {
       content: actionText,
       onAction: handleSelectAllItemsInStore,
     };
-  }
-
-  function handleSelectModeToggle() {
-    handleSelectionChange(SelectionType.All, false);
   }
 }
 
@@ -1094,6 +1099,8 @@ export function IndexTable({
   children,
   selectable = true,
   itemCount,
+  pageCount,
+  pageSelectionRange,
   selectedItemsCount = 0,
   resourceName: passedResourceName,
   loading,
@@ -1108,6 +1115,8 @@ export function IndexTable({
       <IndexProvider
         selectable={selectable && !condensed}
         itemCount={itemCount}
+        pageCount={pageCount}
+        pageSelectionRange={pageSelectionRange}
         selectedItemsCount={selectedItemsCount}
         resourceName={passedResourceName}
         loading={loading}

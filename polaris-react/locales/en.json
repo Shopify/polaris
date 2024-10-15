@@ -177,9 +177,18 @@
       "unsavedChanges": "Unsaved changes - {label}"
     },
     "IndexFilters": {
-      "searchFilterTooltip": "Search and filter",
-      "searchFilterTooltipWithShortcut": "Search and filter (F)",
-      "searchFilterAccessibilityLabel": "Search and filter results",
+      "searchFilterTooltip": "Filter",
+      "searchFilterTooltipWithShortcut": "Filter (F)",
+      "searchFilterAccessibilityLabel": "Type a query to search the list, and keypress enter to add your query as a filter",
+      "editSearchFilter": "Edit search filter",
+      "SearchField": {
+        "defaultPlaceholder": "Search",
+        "action": {
+          "addAsFilter": "add as filter",
+          "addToFilter": "add to filter",
+          "accessibilityLabel": "Add search query as a list filter"
+        }
+      },
       "sort": "Sort your results",
       "addView": "Add a new view",
       "newView": "Custom search",
@@ -230,7 +239,7 @@
       "selectAllLabel": "Select all {resourceNamePlural}",
       "selected": "{selectedItemsCount} selected",
       "undo": "Undo",
-      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural}",
+      "selectAllItems": "Select all {itemCount} in store",
       "selectItem": "Select {resourceName}",
       "selectButtonText": "Select",
       "sortAccessibilityLabel": "sort {direction} by"
@@ -282,6 +291,14 @@
         "viewItem": "View details for {itemName}"
       },
       "BulkActions": {
+        "selectAllMenu": {
+          "activator": "{selectedItemsCount} selected",
+          "items": {
+            "selectAllOnPage": "Select all {pageCount} on page",
+            "unselectAllOnPage": "Unselect all {pageCount} on page",
+            "unselectAll": "Unselect all"
+          }
+        },
         "actionsActivatorLabel": "Actions",
         "moreActionsActivatorLabel": "More actions"
       }

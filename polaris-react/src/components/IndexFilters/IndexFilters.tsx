@@ -1,11 +1,6 @@
 import React, {useMemo, useCallback, useRef} from 'react';
-import {Transition} from 'react-transition-group';
 
-import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
-import {useEventListener} from '../../utilities/use-event-listener';
-import {useToggle} from '../../utilities/use-toggle';
-import {useOnValueChange} from '../../utilities/use-on-value-change';
 import {InlineStack} from '../InlineStack';
 import {Spinner} from '../Spinner';
 import {Filters} from '../Filters';
@@ -18,7 +13,6 @@ import {useIsSticky} from './hooks';
 import {
   Container,
   SortButton,
-  SearchFilterButton,
   UpdateButtons,
   EditColumnsButton,
 } from './components';
@@ -29,23 +23,6 @@ import type {
 } from './types';
 import {IndexFiltersMode} from './types';
 import styles from './IndexFilters.module.css';
-
-const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
-
-const TRANSITION_DURATION = 150;
-
-const defaultStyle = {
-  transition: `opacity ${TRANSITION_DURATION}ms var(--p-motion-ease)`,
-  opacity: 0,
-};
-
-const transitionStyles = {
-  entering: {opacity: 1},
-  entered: {opacity: 1},
-  exiting: {opacity: 0},
-  exited: {opacity: 0},
-  unmounted: {opacity: 0},
-};
 
 type ExecutedCallback = (name: string) => Promise<boolean>;
 
@@ -64,13 +41,17 @@ export interface IndexFiltersProps
   sortOptions?: SortButtonChoice[];
   /** The currently selected sort choice. Required if using sorting */
   sortSelected?: string[];
+  /** Whether or not the current sort order has been saved. An indicator of unsaved changes renders when sort is unsaved.
+   * @default false
+   */
+  sortUnsaved?: boolean;
   /** Optional callback invoked when a merchant changes the sort order. Required if using sorting */
   onSort?: (value: string[]) => void;
   /** Optional callback when using saved views and changing the sort key */
   onSortKeyChange?: (value: string) => void;
   /** Optional callback when using saved views and changing the sort direction */
   onSortDirectionChange?: (value: string) => void;
-  /** Callback when the add filter button is clicked, to be passed to AlphaFilters. */
+  /** Callback when the add filter button is clicked, to be passed to Filters. */
   onAddFilterClick?: () => void;
   /** The primary action to display  */
   primaryAction?: IndexFiltersPrimaryAction;
@@ -96,19 +77,10 @@ export interface IndexFiltersProps
   canCreateNewView?: boolean;
   /** Callback invoked when a merchant creates a new view */
   onCreateNewView?: (name: string) => Promise<boolean>;
-  /** Optional override to the default aria-label for the button that toggles the filtering mode */
-  filteringAccessibilityLabel?: string;
-  /** Optional override to the default Tooltip message for the button that toggles the filtering mode */
-  filteringAccessibilityTooltip?: string;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
-  /** Optional override to the default keyboard shortcuts available. Should be set to true for all instances
-   * of this component not controlling a root-level index */
-  disableKeyboardShortcuts?: boolean;
   /** Whether to display the edit columns button with the other default mode filter actions */
   showEditColumnsButton?: boolean;
-  /** Whether or not to auto-focus the search field when it renders */
-  autoFocusSearchField?: boolean;
 }
 
 export function IndexFilters({
@@ -119,6 +91,7 @@ export function IndexFilters({
   onSortKeyChange,
   onSortDirectionChange,
   onAddFilterClick,
+  sortUnsaved,
   sortOptions,
   sortSelected,
   queryValue = '',
@@ -132,67 +105,27 @@ export function IndexFilters({
   onQueryFocus,
   onQueryClear,
   onEditStart,
+  mode,
+  setMode,
   disabled,
   disableQueryField,
   hideFilters,
   loading,
-  mode,
-  setMode,
   disclosureZIndexOverride,
   disableStickyMode,
   isFlushWhenSticky = false,
   canCreateNewView = true,
   onCreateNewView,
-  filteringAccessibilityLabel,
-  filteringAccessibilityTooltip,
   hideQueryField,
   closeOnChildOverlayClick,
-  disableKeyboardShortcuts,
   showEditColumnsButton,
-  autoFocusSearchField = true,
 }: IndexFiltersProps) {
-  const i18n = useI18n();
   const {mdDown} = useBreakpoints();
   const defaultRef = useRef(null);
   const filteringRef = useRef(null);
 
-  const {
-    value: filtersFocused,
-    setFalse: setFiltersUnFocused,
-    setTrue: setFiltersFocused,
-  } = useToggle(mode === IndexFiltersMode.Filtering && autoFocusSearchField);
-
-  const handleModeChange = (newMode: IndexFiltersMode) => {
-    if (newMode === IndexFiltersMode.Filtering && autoFocusSearchField) {
-      setFiltersFocused();
-    } else {
-      setFiltersUnFocused();
-    }
-  };
-
-  useOnValueChange(mode, handleModeChange);
-
-  useEventListener('keydown', (event) => {
-    const hasNoFiltersOrSearch = hideQueryField && hideFilters;
-    if (disableKeyboardShortcuts || hasNoFiltersOrSearch) return;
-
-    const {key} = event;
-    const tag = document?.activeElement?.tagName;
-    if (mode !== IndexFiltersMode.Default && event.key === 'Escape') {
-      onPressEscape();
-    }
-
-    if (key === 'f' && mode === IndexFiltersMode.Default) {
-      if (tag && DEFAULT_IGNORED_TAGS.includes(tag)) {
-        return;
-      }
-      onPressF();
-      event.preventDefault();
-    }
-  });
-
   const {intersectionRef, measurerRef, indexFilteringHeight, isSticky} =
-    useIsSticky(mode, Boolean(disableStickyMode), isFlushWhenSticky);
+    useIsSticky(Boolean(disableStickyMode), isFlushWhenSticky);
 
   const viewNames = tabs.map(({content}) => content);
 
@@ -203,13 +136,6 @@ export function IndexFilters({
     [onSort],
   );
 
-  const handleChangeSearch = useCallback(
-    (value: string) => {
-      onQueryChange(value);
-    },
-    [onQueryChange],
-  );
-
   const useExecutedCallback = (
     action?: ExecutedCallback,
     afterEffect?: () => void,
@@ -218,7 +144,7 @@ export function IndexFilters({
       async (name: string) => {
         const hasExecuted = await action?.(name);
         if (hasExecuted) {
-          setMode(IndexFiltersMode.Default);
+          // setMode(IndexFiltersMode.Default);
           afterEffect?.();
         }
       },
@@ -229,11 +155,10 @@ export function IndexFilters({
 
   const onExecutedCancelAction = useCallback(() => {
     cancelAction?.onAction?.();
-    setMode(IndexFiltersMode.Default);
-  }, [cancelAction, setMode]);
+  }, [cancelAction]);
 
   const enhancedPrimaryAction = useMemo(() => {
-    return primaryAction
+    return primaryAction && !primaryAction.disabled
       ? {
           ...primaryAction,
           onAction: onExecutedPrimaryAction,
@@ -242,7 +167,7 @@ export function IndexFilters({
   }, [onExecutedPrimaryAction, primaryAction]);
 
   const enhancedCancelAction = useMemo(() => {
-    return cancelAction
+    return cancelAction && !cancelAction.disabled
       ? {
           ...cancelAction,
           onAction: onExecutedCancelAction,
@@ -261,12 +186,14 @@ export function IndexFilters({
   const updateButtonsMarkup = useMemo(
     () =>
       enhancedCancelAction || enhancedPrimaryAction ? (
-        <UpdateButtons
-          primaryAction={enhancedPrimaryAction}
-          cancelAction={enhancedCancelAction}
-          viewNames={viewNames}
-          disabled={disabled}
-        />
+        <div className={styles.ButtonWrap}>
+          <UpdateButtons
+            primaryAction={enhancedPrimaryAction}
+            cancelAction={enhancedCancelAction}
+            viewNames={viewNames}
+            disabled={disabled}
+          />
+        </div>
       ) : null,
     [enhancedPrimaryAction, enhancedCancelAction, disabled, viewNames],
   );
@@ -279,17 +206,19 @@ export function IndexFilters({
       <SortButton
         choices={sortOptions}
         selected={sortSelected!}
+        disabled={disabled}
+        hasUnsavedChanges={sortUnsaved}
+        disclosureZIndexOverride={disclosureZIndexOverride}
         onChange={handleChangeSortButton}
         onChangeKey={onSortKeyChange}
         onChangeDirection={onSortDirectionChange}
-        disabled={disabled}
-        disclosureZIndexOverride={disclosureZIndexOverride}
       />
     );
   }, [
     handleChangeSortButton,
     onSortDirectionChange,
     onSortKeyChange,
+    sortUnsaved,
     sortOptions,
     sortSelected,
     disabled,
@@ -309,45 +238,21 @@ export function IndexFilters({
 
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
 
-  function handleClickFilterButton() {
-    beginEdit(IndexFiltersMode.Filtering);
-  }
-
-  const searchFilterTooltipLabelId = disableKeyboardShortcuts
-    ? 'Polaris.IndexFilters.searchFilterTooltip'
-    : 'Polaris.IndexFilters.searchFilterTooltipWithShortcut';
-
-  const searchFilterTooltip =
-    filteringAccessibilityTooltip || i18n.translate(searchFilterTooltipLabelId);
-  const searchFilterAriaLabel =
-    filteringAccessibilityLabel ||
-    i18n.translate('Polaris.IndexFilters.searchFilterAccessibilityLabel');
-
   const isLoading = loading || isActionLoading;
 
-  function onPressEscape() {
-    cancelAction?.onAction();
-    setMode(IndexFiltersMode.Default);
-  }
+  const handleQueryChange = useCallback(
+    (value: string) => {
+      onQueryChange(value);
+    },
+    [onQueryChange],
+  );
 
-  function handleClearSearch() {
+  const handleQueryClear = useCallback(() => {
     onQueryClear?.();
-  }
-
-  function handleQueryBlur() {
-    setFiltersUnFocused();
-  }
+  }, [onQueryClear]);
 
   function handleQueryFocus() {
-    setFiltersFocused();
     onQueryFocus?.();
-  }
-
-  function onPressF() {
-    if (mode !== IndexFiltersMode.Default) {
-      return;
-    }
-    beginEdit(IndexFiltersMode.Filtering);
   }
 
   return (
@@ -364,142 +269,78 @@ export function IndexFilters({
         )}
         ref={measurerRef}
       >
-        <Transition
-          nodeRef={defaultRef}
-          in={mode !== IndexFiltersMode.Filtering}
-          timeout={TRANSITION_DURATION}
-        >
-          {(state) => (
-            <div ref={defaultRef}>
-              {mode !== IndexFiltersMode.Filtering ? (
-                <Container>
-                  <InlineStack
-                    align="start"
-                    blockAlign="center"
-                    gap={{
-                      xs: '0',
-                      md: '200',
-                    }}
-                    wrap={false}
-                  >
-                    <div
-                      className={classNames(
-                        styles.TabsWrapper,
-                        mdDown && styles.SmallScreenTabsWrapper,
-                        isLoading && styles.TabsWrapperLoading,
-                      )}
-                    >
-                      <div
-                        className={styles.TabsInner}
-                        style={{
-                          ...defaultStyle,
-                          ...transitionStyles[state],
-                        }}
-                      >
-                        <Tabs
-                          tabs={tabs}
-                          selected={selected}
-                          onSelect={onSelect}
-                          disabled={Boolean(
-                            mode !== IndexFiltersMode.Default || disabled,
-                          )}
-                          disclosureZIndexOverride={disclosureZIndexOverride}
-                          canCreateNewView={canCreateNewView}
-                          onCreateNewView={onCreateNewView}
-                        />
-                      </div>
-                      {isLoading && mdDown && (
-                        <div className={styles.TabsLoading}>
-                          <Spinner size="small" />
-                        </div>
-                      )}
-                    </div>
-                    <div className={styles.ActionWrap}>
-                      {isLoading && !mdDown && (
-                        <div className={styles.DesktopLoading}>
-                          {isLoading ? <Spinner size="small" /> : null}
-                        </div>
-                      )}
-                      {mode === IndexFiltersMode.Default ? (
-                        <>
-                          {hideFilters && hideQueryField ? null : (
-                            <SearchFilterButton
-                              onClick={handleClickFilterButton}
-                              label={searchFilterAriaLabel}
-                              tooltipContent={searchFilterTooltip}
-                              disabled={disabled}
-                              hideFilters={hideFilters}
-                              hideQueryField={hideQueryField}
-                              style={{
-                                ...defaultStyle,
-                                ...transitionStyles[state],
-                              }}
-                              disclosureZIndexOverride={
-                                disclosureZIndexOverride
-                              }
-                            />
-                          )}
-                          {editColumnsMarkup}
-                          {sortMarkup}
-                        </>
-                      ) : null}
-                      {mode === IndexFiltersMode.EditingColumns
-                        ? updateButtonsMarkup
-                        : null}
-                    </div>
-                  </InlineStack>
-                </Container>
-              ) : null}
-            </div>
-          )}
-        </Transition>
-        <Transition
-          nodeRef={filteringRef}
-          in={mode === IndexFiltersMode.Filtering}
-          timeout={TRANSITION_DURATION}
-        >
-          {(state) => (
-            <div ref={filteringRef}>
-              {mode === IndexFiltersMode.Filtering ? (
-                <Filters
-                  queryValue={queryValue}
-                  queryPlaceholder={queryPlaceholder}
-                  onQueryChange={handleChangeSearch}
-                  onQueryClear={handleClearSearch}
-                  onQueryFocus={handleQueryFocus}
-                  onQueryBlur={handleQueryBlur}
-                  onAddFilterClick={onAddFilterClick}
-                  filters={filters}
-                  appliedFilters={appliedFilters}
-                  onClearAll={onClearAll}
-                  disableFilters={disabled}
-                  hideFilters={hideFilters}
-                  hideQueryField={hideQueryField}
-                  disableQueryField={disabled || disableQueryField}
-                  loading={loading || isActionLoading}
-                  focused={filtersFocused}
-                  mountedState={mdDown ? undefined : state}
-                  borderlessQueryField
-                  closeOnChildOverlayClick={closeOnChildOverlayClick}
-                >
-                  <div className={styles.ButtonWrap}>
-                    <InlineStack gap="200" align="start" blockAlign="center">
-                      <div
-                        style={{
-                          ...defaultStyle,
-                          ...transitionStyles[state],
-                        }}
-                      >
-                        {updateButtonsMarkup}
-                      </div>
-                      {sortMarkup}
-                    </InlineStack>
+        <div ref={defaultRef}>
+          <Container>
+            <InlineStack
+              align="start"
+              blockAlign="center"
+              gap={{
+                xs: '0',
+                md: '200',
+              }}
+              wrap={false}
+            >
+              <div
+                className={classNames(
+                  styles.TabsWrapper,
+                  mdDown && styles.SmallScreenTabsWrapper,
+                  isLoading && styles.TabsWrapperLoading,
+                )}
+              >
+                <div className={styles.TabsInner}>
+                  <Tabs
+                    tabs={tabs}
+                    selected={selected}
+                    onSelect={onSelect}
+                    disabled={disabled}
+                    disclosureZIndexOverride={disclosureZIndexOverride}
+                    canCreateNewView={canCreateNewView}
+                    onCreateNewView={onCreateNewView}
+                  />
+                </div>
+                {isLoading && mdDown && (
+                  <div className={styles.TabsLoading}>
+                    <Spinner size="small" />
                   </div>
-                </Filters>
-              ) : null}
-            </div>
-          )}
-        </Transition>
+                )}
+              </div>
+              <div className={styles.ActionWrap}>
+                {isLoading && !mdDown && (
+                  <div className={styles.DesktopLoading}>
+                    {isLoading ? <Spinner size="small" /> : null}
+                  </div>
+                )}
+                {editColumnsMarkup}
+                {sortMarkup}
+                {mode === IndexFiltersMode.EditingColumns
+                  ? updateButtonsMarkup
+                  : null}
+              </div>
+            </InlineStack>
+          </Container>
+        </div>
+
+        <div ref={filteringRef}>
+          <Filters
+            hideQueryField={hideQueryField}
+            queryValue={queryValue}
+            queryPlaceholder={queryPlaceholder}
+            disabled={disabled || disableQueryField}
+            onQueryChange={handleQueryChange}
+            onQueryFocus={handleQueryFocus}
+            onQueryClear={handleQueryClear}
+            onAddFilterClick={onAddFilterClick}
+            filters={filters}
+            appliedFilters={appliedFilters}
+            onClearAll={onClearAll}
+            disableFilters={disabled}
+            hideFilters={hideFilters}
+            loading={loading || isActionLoading}
+            closeOnChildOverlayClick={closeOnChildOverlayClick}
+          >
+            {updateButtonsMarkup}
+          </Filters>
+        </div>
       </div>
     </div>
   );

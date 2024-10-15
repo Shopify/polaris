@@ -62,8 +62,9 @@ export const Default = {
     ];
     return (
       <BulkActions
+        itemCount={48}
         selectMode
-        onToggleAll={() => console.log('toggling all')}
+        onSelect={() => console.log('toggling all')}
         accessibilityLabel="Select all items"
         selected={false}
         promotedActions={promotedActions}
@@ -128,7 +129,8 @@ export const WithDeprecatedProps = {
     return (
       <BulkActions
         selectMode
-        onToggleAll={() => console.log('toggling all')}
+        itemCount={30}
+        onSelect={() => console.log('toggling all')}
         accessibilityLabel="Select all items"
         selected={false}
         promotedActions={promotedActions}

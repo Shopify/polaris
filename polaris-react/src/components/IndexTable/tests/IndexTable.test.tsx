@@ -77,7 +77,9 @@ const mockRenderCondensedRow = (item: any) => {
 describe('<IndexTable>', () => {
   const defaultProps: IndexTableProps = {
     onSelectionChange: () => {},
-    itemCount: 0,
+    itemCount: 10,
+    pageCount: 10,
+    pageSelectionRange: [0, 9],
     selectedItemsCount: 0,
     headings: mockTableHeadings,
   };
@@ -467,7 +469,7 @@ describe('<IndexTable>', () => {
       expect(index.find(BulkActions)).toContainReactText(customString);
     });
 
-    it('toggles all page resources when onToggleAll is triggered', () => {
+    it('toggles all page resources when onSelect is triggered', () => {
       const onSelectionChangeSpy = jest.fn();
       const index = mountWithApp(
         <IndexTable
@@ -475,7 +477,8 @@ describe('<IndexTable>', () => {
           selectable
           hasMoreItems
           selectedItemsCount={1}
-          itemCount={2}
+          itemCount={200}
+          pageSelectionRange={[0, 50]}
           promotedBulkActions={[{content: 'promoted action'}]}
           onSelectionChange={onSelectionChangeSpy}
         >
@@ -483,7 +486,7 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      index.find(BulkActions)!.trigger('onToggleAll');
+      index.find(BulkActions)!.trigger('onSelect');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
         SelectionType.Page,
@@ -496,6 +499,8 @@ describe('<IndexTable>', () => {
     const defaultIndexTableProps: IndexTableProps = {
       headings: mockTableHeadings,
       itemCount: mockTableItems.length,
+      pageCount: mockTableItems.length,
+      pageSelectionRange: [0, mockTableItems.length - 1],
       selectedItemsCount: 0,
       onSelectionChange: () => {},
     };
