@@ -77,7 +77,7 @@
     "@shopify/useful-types": "^5.1.2",
     "@storybook/addon-a11y": "^8.0.8",
     "@storybook/addon-toolbars": "^8.0.8",
-    "@storybook/addon-viewport": "^8.0.8",
+    "@storybook/addon-viewport": "^8.3.6",
     "@storybook/blocks": "^8.0.8",
     "@storybook/components": "^8.0.8",
     "@storybook/manager-api": "^8.0.8",
