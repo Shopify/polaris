@@ -110,7 +110,7 @@ export function FiltersBar({
     ({key, onAction}: FilterInterface) =>
     () => {
       // PopoverOverlay will cause a rerender of the component and nuke the
-      // popoverActive state, so we set this as a microtask
+      // popoverActive state, so we set this as a macrotask
       setTimeout(() => {
         setLocalPinnedFilters((currentLocalPinnedFilters) => [
           ...new Set([...currentLocalPinnedFilters, key]),
