@@ -44,7 +44,7 @@
     "lodash.mapvalues": "^4.6.0",
     "lodash.throttle": "^4.1.1",
     "nanoid": "^4.0.2",
-    "next": "^13.5.7",
+    "next": "^15.0.1",
     "next-mdx-remote": "^4.4.1",
     "prismjs": "^1.27.0",
     "react": "^18.2.0",
