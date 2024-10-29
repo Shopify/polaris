@@ -6,7 +6,7 @@
     "node": ">=20.10.0"
   },
   "scripts": {
-    "build": "concurrently \"pnpm gen-colors\" \"pnpm gen-assets\" \"playroom build\" && next build && mkdir -p ./.next/standalone/polaris.shopify.com/ && mkdir -p ./.next/standalone/polaris.shopify.com/.next/static && cp -r public/* ./.next/standalone/polaris.shopify.com/ && cp -r .next/static/* ./.next/standalone/polaris.shopify.com/.next/static",
+    "build": "concurrently \"pnpm gen-colors\" \"pnpm gen-assets\" \"playroom build\" && next build && mkdir -p ./.next/standalone/polaris.shopify.com/ && cp -r public ./.next/standalone/polaris.shopify.com/ && if [ -d \".next/static\" ]; then mkdir -p ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/; fi",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
     "dev": "pnpm gen-colors && pnpm get-props && run-p dev:*",
     "dev:server": "open http://localhost:${POLARIS_WEBSITE_PORT:=3000} && next dev -p 3000",
