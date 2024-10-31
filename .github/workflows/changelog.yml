@@ -12,6 +12,7 @@ on:
 jobs:
   check:
     if: |
+      github.event.pull_request.user.login != 'dependabot[bot]' &&
       !contains(github.event.pull_request.head.ref, 'changeset-release') &&
       !contains(github.event.pull_request.labels.*.name, '🤖Skip Changelog')
     runs-on: ubuntu-latest
