@@ -5,6 +5,7 @@ import {useEffect, StrictMode} from 'react';
 import {useRouter} from 'next/router';
 import useDarkMode from 'use-dark-mode';
 import '@shopify/polaris/build/esm/styles.css';
+import pkg from '../package.json';
 
 import {className} from '../src/utils/various';
 import Frame from '../src/components/Frame';
@@ -102,7 +103,12 @@ function MyApp({Component, pageProps}: AppProps) {
       </Head>
 
       <div
-        style={{background: isPolarisExample ? '#fafafa' : 'unset'}}
+        style={
+          {
+            background: isPolarisExample ? '#fafafa' : 'unset',
+            '--polaris-shopify-com-version': pkg.version,
+          } as React.CSSProperties
+        }
         className={className(
           !isPolarisExample && 'styles-for-site-but-not-polaris-examples',
         )}
