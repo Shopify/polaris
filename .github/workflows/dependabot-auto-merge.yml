@@ -16,8 +16,8 @@ jobs:
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
 
-      - name: Approve and /shipit Dependabot PRs for patch versions
-        if: ${{ steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' }}
+      - name: Approve and /shipit Dependabot PRs for patch and minor versions
+        if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
