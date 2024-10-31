@@ -1,0 +1,24 @@
+name: Dependabot Auto-merge
+on: pull_request_target
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  dependabot:
+    runs-on: shopify-ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v1.3.6
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+
+      - name: Approve and /shipit Dependabot PRs for patch versions
+        if: ${{ steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' }}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
