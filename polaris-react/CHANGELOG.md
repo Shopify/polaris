@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.9.1
+
+### Patch Changes
+
+- [#12824](https://github.com/Shopify/polaris/pull/12824) [`85c5bb7b4`](https://github.com/Shopify/polaris/commit/85c5bb7b4d96bdf72a246bf996975c7071c40085) Thanks [@moraleslevi](https://github.com/moraleslevi)! - Fix hydration issues with SSR
+
 ## 13.9.0
 
 ### Minor Changes
