@@ -1,4 +1,4 @@
-name: Dependabot Auto-merge
+name: Dependabot auto-merge
 on: pull_request_target
 
 permissions:
@@ -15,10 +15,51 @@ jobs:
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
-
       - name: Approve and /shipit Dependabot PRs for patch and minor versions
         if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        uses: actions/github-script@v7
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          script: |
+            const getPullRequestIdQuery = `query GetPullRequestId($owner: String!, $repo: String!, $pullRequestNumber: Int!) {
+              repository(owner: $owner, name: $repo) {
+                pullRequest(number: $pullRequestNumber) {
+                  id
+                }
+              }
+            }`
+            const repoInfo = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pullRequestNumber: context.issue.number,
+            }
+            const response = await github.graphql(getPullRequestIdQuery, repoInfo)
+
+            await github.rest.pulls.createReview({
+              pull_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              event: 'APPROVE',
+            })
+
+            const enableAutoMergeQuery = `mutation ($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+              enablePullRequestAutoMerge(input: {
+                pullRequestId: $pullRequestId,
+                mergeMethod: $mergeMethod
+              }) {
+                pullRequest {
+                  autoMergeRequest {
+                    enabledAt
+                    enabledBy {
+                      login
+                    }
+                  }
+                }
+              }
+            }`
+            const data = {
+              pullRequestId: response.repository.pullRequest.id,
+              mergeMethod: 'MERGE',
+            }
+
+            await github.graphql(enableAutoMergeQuery, data)
