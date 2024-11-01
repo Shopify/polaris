@@ -1,5 +1,8 @@
 name: Dependabot auto-merge
-on: pull_request_target
+on:
+  pull_request:
+  check_suite:
+    types: [completed]
 
 permissions:
   pull-requests: write
@@ -82,8 +85,8 @@ jobs:
             const statusResponse = await github.graphql(checkStatusQuery, repoInfo)
             const checkState = statusResponse.repository.pullRequest.commits.nodes[0]?.commit?.statusCheckRollup?.state
 
-            if (checkState !== 'SUCCESS') {
-              console.log('Status checks are not successful yet. Current state:', checkState)
+            if (checkState === 'FAILURE' || checkState === 'ERROR') {
+              console.log('Status checks failed. Current state:', checkState)
               core.setFailed('Status checks must pass before enabling auto-merge')
               return
             }
