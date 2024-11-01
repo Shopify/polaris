@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   dependabot:
-    runs-on: shopify-ubuntu-latest
+    runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
     steps:
       - name: Dependabot metadata
