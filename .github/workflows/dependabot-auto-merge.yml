@@ -3,8 +3,6 @@ on:
   pull_request:
   check_suite:
     types: [completed]
-  check_run:
-    types: [completed]
 
 permissions:
   pull-requests: write
