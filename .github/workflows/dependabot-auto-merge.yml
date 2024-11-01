@@ -1,8 +1,14 @@
 name: Dependabot auto-merge
 on:
-  pull_request:
-  check_suite:
-    types: [completed]
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+
+  workflow_run:
+    workflows: ['*']
+    types:
+      - completed
 
 permissions:
   pull-requests: write
@@ -11,15 +17,17 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == 'neutral')
     steps:
       - name: Dependabot metadata
-        id: dependabot-metadata
+        id: metadata
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
-      - name: Approve and /shipit Dependabot PRs for patch and minor versions
-        if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
+      - name: Enable auto-merge for Dependabot PRs
+        if: ${{ steps.metadata.outputs.update-type != 'version-update:semver-major' }}
         uses: actions/github-script@v7
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
@@ -31,11 +39,13 @@ jobs:
                 }
               }
             }`
+
             const repoInfo = {
               owner: context.repo.owner,
               repo: context.repo.repo,
               pullRequestNumber: context.issue.number,
             }
+
             const response = await github.graphql(getPullRequestIdQuery, repoInfo)
 
             await github.rest.pulls.createReview({
@@ -60,40 +70,14 @@ jobs:
                 }
               }
             }`
+
             const data = {
               pullRequestId: response.repository.pullRequest.id,
               mergeMethod: 'SQUASH',
             }
 
-            const checkStatusQuery = `query($owner: String!, $repo: String!, $pullRequestNumber: Int!) {
-              repository(owner: $owner, name: $repo) {
-                pullRequest(number: $pullRequestNumber) {
-                  commits(last: 1) {
-                    nodes {
-                      commit {
-                        statusCheckRollup {
-                          state
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }`
-
-            // Check if status checks are successful
-            const statusResponse = await github.graphql(checkStatusQuery, repoInfo)
-            const checkState = statusResponse.repository.pullRequest.commits.nodes[0]?.commit?.statusCheckRollup?.state
-
-            if (checkState === 'FAILURE' || checkState === 'ERROR') {
-              console.log('Status checks failed. Current state:', checkState)
-              core.setFailed('Status checks must pass before enabling auto-merge')
-              return
-            }
-
             try {
               await github.graphql(enableAutoMergeQuery, data)
             } catch (error) {
-              console.log('Failed to enable auto-merge:', error.message)
-              core.setFailed(error.message)
+              console.error('Error enabling auto-merge:', error)
             }
