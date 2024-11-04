@@ -12,8 +12,8 @@ importers:
         specifier: ^7.20.12
         version: 7.23.6
       '@babel/node':
-        specifier: ^7.20.7
-        version: 7.20.7(@babel/core@7.23.6)
+        specifier: ^7.26.0
+        version: 7.26.0(@babel/core@7.23.6)
       '@babel/preset-env':
         specifier: ^7.16.4
         version: 7.23.6(@babel/core@7.23.6)
@@ -1138,19 +1138,19 @@ packages:
       js-tokens: 4.0.0
       picocolors: 1.0.0
 
-  /@babel/node@7.20.7(@babel/core@7.23.6):
-    resolution: {integrity: sha512-AQt3gVcP+fpFuoFn4FmIW/+5JovvEoA9og4Y1LrRw0pv3jkl4tujZMMy3X/3ugjLrEy3k1aNywo3JIl3g+jVXQ==}
+  /@babel/node@7.26.0(@babel/core@7.23.6):
+    resolution: {integrity: sha512-5ASMjh42hbnqyCOK68Q5chh1jKAqn91IswFTN+niwt4FLABhEWCT1tEuuo6mlNQ4WG/oFQLvJ71PaHAKtWtJyA==}
     engines: {node: '>=6.9.0'}
     hasBin: true
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.23.6
-      '@babel/register': 7.22.15(@babel/core@7.23.6)
-      commander: 4.1.1
-      core-js: 3.27.2
+      '@babel/register': 7.25.9(@babel/core@7.23.6)
+      commander: 6.2.1
+      core-js: 3.39.0
       node-environment-flags: 1.0.6
-      regenerator-runtime: 0.13.11
+      regenerator-runtime: 0.14.0
       v8flags: 3.2.0
     dev: true
 
@@ -3059,6 +3059,7 @@ packages:
       make-dir: 2.1.0
       pirates: 4.0.5
       source-map-support: 0.5.21
+    dev: false
 
   /@babel/register@7.22.15(@babel/core@7.24.4):
     resolution: {integrity: sha512-V3Q3EqoQdn65RCgTLwauZaTfd1ShhwPmbBv+1dkZV/HpCGMKVyn6oFcRlI7RaKqiDQjX2Qd3AuoEguBgdjIKlg==}
@@ -3071,6 +3072,20 @@ packages:
       find-cache-dir: 2.1.0
       make-dir: 2.1.0
       pirates: 4.0.5
+      source-map-support: 0.5.21
+    dev: true
+
+  /@babel/register@7.25.9(@babel/core@7.23.6):
+    resolution: {integrity: sha512-8D43jXtGsYmEeDvm4MWHYUpWf8iiXgWYx3fW7E7Wb7Oe6FWqJPl5K6TuFW0dOwNZzEE5rjlaSJYH9JjrUKJszA==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.23.6
+      clone-deep: 4.0.1
+      find-cache-dir: 2.1.0
+      make-dir: 2.1.0
+      pirates: 4.0.6
       source-map-support: 0.5.21
     dev: true
 
@@ -9666,6 +9681,11 @@ packages:
 
   /core-js@3.27.2:
     resolution: {integrity: sha512-9ashVQskuh5AZEZ1JdQWp1GqSoC1e1G87MzRqg2gIfVAQ7Qn9K+uFj8EcniUFA4P2NLZfV+TOlX1SzoKfo+s7w==}
+    requiresBuild: true
+    dev: true
+
+  /core-js@3.39.0:
+    resolution: {integrity: sha512-raM0ew0/jJUqkJ0E6e8UDtl+y/7ktFivgWvqw8dNSQeNWoSDLvQ1H/RN3aPXB9tBd4/FhyR4RDPGhsNIMsAn7g==}
     requiresBuild: true
     dev: true
 
@@ -18223,6 +18243,11 @@ packages:
   /pirates@4.0.5:
     resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==}
     engines: {node: '>= 6'}
+
+  /pirates@4.0.6:
+    resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
+    engines: {node: '>= 6'}
+    dev: true
 
   /pkg-dir@3.0.0:
     resolution: {integrity: sha512-/E57AYkoeQ25qkxMj5PBOVgF8Kiu/h7cYS30Z5+R7WaiCCBfLq58ZI/dSeaEKb9WVJV5n/03QwrN3IeWIFllvw==}
