@@ -26,7 +26,7 @@
     "@babel/core": "^7.26.0",
     "@babel/node": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
-    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-react": "^7.25.9",
     "@babel/preset-typescript": "^7.26.0",
     "@changesets/changelog-github": "^0.4.4",
     "@changesets/cli": "^2.23.0",
