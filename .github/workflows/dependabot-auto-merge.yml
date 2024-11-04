@@ -6,7 +6,7 @@ on:
       - synchronize
 
   workflow_run:
-    workflows: ['*']
+    workflows: ['*', '!changelog']
     types:
       - completed
 
