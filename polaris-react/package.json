@@ -83,7 +83,7 @@
     "@storybook/manager-api": "^8.0.8",
     "@storybook/preview-api": "^8.4.1",
     "@storybook/react": "^8.4.1",
-    "@storybook/react-vite": "^8.0.8",
+    "@storybook/react-vite": "^8.4.1",
     "@storybook/test": "^8.4.1",
     "@storybook/test-runner": "^0.17.0",
     "@storybook/theming": "^8.4.1",
