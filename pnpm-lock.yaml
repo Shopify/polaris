@@ -337,8 +337,8 @@ importers:
         specifier: ^0.17.0
         version: 0.17.0(@types/node@20.12.5)(ts-node@10.7.0)
       '@storybook/theming':
-        specifier: ^8.0.8
-        version: 8.0.9(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^8.4.1
+        version: 8.4.1(storybook@8.0.9)
       '@types/js-yaml':
         specifier: ^4.0.5
         version: 4.0.5
@@ -5864,6 +5864,14 @@ packages:
       memoizerific: 1.11.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: true
+
+  /@storybook/theming@8.4.1(storybook@8.0.9):
+    resolution: {integrity: sha512-Sz24isryVFZaVahXkjgnCsMAQqQeeKg41AtLsldlYdesIo6fr5tc6/SkTUy+CYadK4Dkhqp+vVRDnwToYYRGhA==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.0.9(@babel/preset-env@7.23.6)(react-dom@18.2.0)(react@18.2.0)
     dev: true
 
   /@storybook/types@8.0.9:
