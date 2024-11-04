@@ -620,8 +620,8 @@ importers:
         specifier: ^0.4.0
         version: 0.4.0
       get-site-urls:
-        specifier: 3.0.0-alpha.1
-        version: 3.0.0-alpha.1
+        specifier: 3.0.0
+        version: 3.0.0
       globby:
         specifier: ^11.1.0
         version: 11.1.0
@@ -10494,7 +10494,7 @@ packages:
     dependencies:
       domelementtype: 2.3.0
       domhandler: 5.0.3
-      entities: 4.3.1
+      entities: 4.5.0
     dev: true
 
   /domain-browser@1.2.0:
@@ -10730,11 +10730,6 @@ packages:
 
   /entities@2.1.0:
     resolution: {integrity: sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==}
-    dev: true
-
-  /entities@4.3.1:
-    resolution: {integrity: sha512-o4q/dYJlmyjP2zfnaWDUC6A3BQFmVTX+tZPezK7k0GLSU9QYCauscf5Y+qcEPzKL+EixVouYDgLQK5H9GrLpkg==}
-    engines: {node: '>=0.12'}
     dev: true
 
   /entities@4.5.0:
@@ -12352,8 +12347,8 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: true
 
-  /get-site-urls@3.0.0-alpha.1:
-    resolution: {integrity: sha512-DNrETLu3wQAHGNGZ0cFV7FRpY92OzrjHlOkDXO59XlwCtv9bOzqr1rOHBJYAZ8TqJpMQFxkM1DO1Fvrt+Im6pw==}
+  /get-site-urls@3.0.0:
+    resolution: {integrity: sha512-HJYGtvUqqSmZCNQUqQC7pBWfnXfp4zf9Yf3cTKVE9y4b76AM96joTYDzXYNTI+gkvZX9bF24f22ZrIVXbKFtgA==}
     engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
@@ -13095,7 +13090,7 @@ packages:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       domutils: 3.0.1
-      entities: 4.3.1
+      entities: 4.5.0
     dev: true
 
   /http-cache-semantics@3.8.1:
