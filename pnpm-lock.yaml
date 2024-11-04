@@ -307,8 +307,8 @@ importers:
         specifier: ^8.0.8
         version: 8.0.9
       '@storybook/addon-toolbars':
-        specifier: ^8.0.8
-        version: 8.0.9
+        specifier: ^8.4.1
+        version: 8.4.1(storybook@8.0.9)
       '@storybook/addon-viewport':
         specifier: ^8.4.1
         version: 8.4.1(storybook@8.0.9)
@@ -5510,8 +5510,12 @@ packages:
       '@storybook/global': 5.0.0
     dev: true
 
-  /@storybook/addon-toolbars@8.0.9:
-    resolution: {integrity: sha512-nNSBnnBOhQ+EJwkrIkK4ZBYPcozNmEH770CZ/6NK85SUJ6WEBZapE6ru33jIUokFGEvlOlNCeai0GUc++cQP8w==}
+  /@storybook/addon-toolbars@8.4.1(storybook@8.0.9):
+    resolution: {integrity: sha512-yrzX6BFeJM5KFY0+ZAYfRax2QgWi2e5vF6yPz+MGIPr4nhHay0wTkOHhkBhIPBjQO9x0vqc7MS2EBDydCBWqlg==}
+    peerDependencies:
+      storybook: ^8.4.1
+    dependencies:
+      storybook: 8.0.9(@babel/preset-env@7.26.0)(react-dom@18.2.0)(react@18.2.0)
     dev: true
 
   /@storybook/addon-viewport@8.4.1(storybook@8.0.9):
