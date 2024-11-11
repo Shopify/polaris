@@ -529,8 +529,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
       remark-unwrap-images:
-        specifier: ^3.0.1
-        version: 3.0.1
+        specifier: ^5.0.0
+        version: 5.0.0
       terminate:
         specifier: ^2.8.0
         version: 2.8.0
@@ -19581,13 +19581,9 @@ packages:
       unist-util-visit: 4.1.0
     dev: false
 
-  /remark-unwrap-images@3.0.1:
-    resolution: {integrity: sha512-5VUY0n+J9lPTPfkct5S3/SbutryBjp8J/4mbgtlkDrOk3h8jde0hyqdYUJOoJKherZezS08tjd6i4+nnQ+wl5w==}
-    dependencies:
-      '@types/mdast': 3.0.10
-      hast-util-whitespace: 2.0.0
-      unified: 10.1.2
-      unist-util-visit: 4.1.0
+  /remark-unwrap-images@5.0.0:
+    resolution: {integrity: sha512-s7WSIA6s98ywa93v/5x+wFeGgJSl1VJnNYgg//0MUgu12CyxVMi+vcCifXFEUtQfnnWSTXWOH6f8LkDBNLthrg==}
+    deprecated: 'Deprecated: use `rehype-unwrap-images` instead'
     dev: false
 
   /remote-origin-url@0.4.0:
