@@ -532,8 +532,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       terminate:
-        specifier: ^2.6.1
-        version: 2.6.1
+        specifier: ^2.8.0
+        version: 2.8.0
       use-dark-mode:
         specifier: ^2.3.1
         version: 2.3.1(react@18.2.0)
@@ -21296,8 +21296,8 @@ packages:
       supports-hyperlinks: 2.3.0
     dev: true
 
-  /terminate@2.6.1:
-    resolution: {integrity: sha512-0kdr49oam98yvjkVY+gfUaT3SMaJI6Sc+yijJjU+qhat+0NQKQn60OsIZZeKyVgTO0/33nRa3HowRbpw3A7u9A==}
+  /terminate@2.8.0:
+    resolution: {integrity: sha512-bcbjJEg0wY5nuJXvGxxHfmoEPkyHLCctUKO6suwtxy7jVSgGcgPeGwpbLDLELFhIaxCGRr3dPvyNg1yuz2V0eg==}
     engines: {node: '>=12'}
     dependencies:
       ps-tree: 1.2.0
