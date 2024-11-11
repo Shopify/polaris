@@ -626,8 +626,8 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0
       inter-ui:
-        specifier: 3.19.3
-        version: 3.19.3
+        specifier: 4.0.2
+        version: 4.0.2
       is-ci:
         specifier: ^3.0.1
         version: 3.0.1
@@ -13299,8 +13299,9 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
-  /inter-ui@3.19.3:
-    resolution: {integrity: sha512-5FG9fjuYOXocIfjzcCBhICL5cpvwEetseL3FU6tP3d6Bn7g8wODhB+I9RNGRTizCT7CUG4GOK54OPxqq3msQgg==}
+  /inter-ui@4.0.2:
+    resolution: {integrity: sha512-YmfzwEtzuVzEenQwSB/tmmqi/A0a2GnFk4mG4ZFULXiO5DNk0fJWiO3o9i1sdVKuMVGx9iiNQnCq8ghWZJVVHw==}
+    engines: {node: '>=16.0.0'}
     dev: true
 
   /internal-slot@1.0.5:
