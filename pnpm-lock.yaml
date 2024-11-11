@@ -322,8 +322,8 @@ importers:
         specifier: ^8.4.1
         version: 8.4.1(storybook@8.4.2)
       '@storybook/preview-api':
-        specifier: ^8.4.1
-        version: 8.4.1(storybook@8.4.2)
+        specifier: ^8.4.2
+        version: 8.4.2(storybook@8.4.2)
       '@storybook/react':
         specifier: ^8.4.1
         version: 8.4.1(@storybook/test@8.4.1)(react-dom@18.2.0)(react@18.2.0)(storybook@8.4.2)(typescript@4.9.3)
@@ -5799,7 +5799,7 @@ packages:
       '@storybook/core-common': 8.0.9
       '@storybook/csf': 0.1.2
       '@storybook/csf-tools': 8.0.9
-      '@storybook/preview-api': 8.4.1(storybook@8.4.2)
+      '@storybook/preview-api': 8.4.2(storybook@8.4.2)
       '@swc/core': 1.4.17
       '@swc/jest': 0.2.36(@swc/core@1.4.17)
       expect-playwright: 0.8.0
