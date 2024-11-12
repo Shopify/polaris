@@ -9,6 +9,7 @@ const noValidate = true;
 const acceptCharset = 'UTF-8';
 const action = 'shopifyapi.com';
 const encType = 'text/plain';
+const formId = 'formId';
 const method = 'get';
 const target = '_blank';
 
@@ -42,6 +43,13 @@ describe('<Form />', () => {
     it('sets the encType attribute when provided', () => {
       const wrapper = mountWithApp(<Form encType={encType} onSubmit={noop} />);
       expect(wrapper).toContainReactComponent('form', {encType});
+    });
+  });
+
+  describe('formId', () => {
+    it('sets the formId attribute when provided', () => {
+      const wrapper = mountWithApp(<Form formId={formId} onSubmit={noop} />);
+      expect(wrapper).toContainReactComponent('form', {id: formId});
     });
   });
 

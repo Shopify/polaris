@@ -23,6 +23,8 @@ export interface FormProps {
   children?: React.ReactNode;
   /** Media type when submitting content to server */
   encType?: Enctype;
+  /** Name id of the form */
+  formId?: string;
   /** Toggles if form submits on Enter keypress. Defaults to true. */
   implicitSubmit?: boolean;
   /** Method used to submit form */
@@ -46,6 +48,7 @@ export function Form({
   children,
   encType,
   implicitSubmit = true,
+  formId = '',
   method = 'post',
   name,
   noValidate,
@@ -83,6 +86,7 @@ export function Form({
       action={action}
       autoComplete={autoCompleteInputs}
       encType={encType}
+      id={formId}
       method={method}
       name={name}
       noValidate={noValidate}
