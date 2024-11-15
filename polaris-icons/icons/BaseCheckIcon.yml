@@ -1,0 +1,11 @@
+name: Base check
+description: Used for status of a capital funding application in the application steps. Indicates a completed step that is not the current step.
+keywords:
+  - steps
+  - check
+  - done
+  - status
+authors:
+  - Kazden Cattapan
+date_added: 2024-11-15
+date_modified: 2024-11-15

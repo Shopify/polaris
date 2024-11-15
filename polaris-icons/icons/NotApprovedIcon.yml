@@ -1,0 +1,10 @@
+name: Not approved
+description: Used for status of a capital funding application in the application steps. Indicates that the application has not been approved.
+keywords:
+  - steps
+  - status
+  - not approved
+authors:
+  - Kazden Cattapan
+date_added: 2024-11-15
+date_modified: 2024-11-15

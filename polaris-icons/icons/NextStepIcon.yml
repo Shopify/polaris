@@ -1,0 +1,10 @@
+name: Next step
+description: Used for status of a capital funding application in the application steps. Indicates the current step that is in progress.
+keywords:
+  - steps
+  - status
+  - next
+authors:
+  - Kazden Cattapan
+date_added: 2024-11-15
+date_modified: 2024-11-15

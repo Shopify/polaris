@@ -1,0 +1,10 @@
+name: Not started
+description: Used for status of a capital funding application in the application steps. Indicates that the step has not been started (not the current step).
+keywords:
+  - steps
+  - status
+  - not started
+authors:
+  - Kazden Cattapan
+date_added: 2024-11-15
+date_modified: 2024-11-15
