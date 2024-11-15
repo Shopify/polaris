@@ -30,6 +30,7 @@ function AutocompleteActionBeforeExample() {
       setTimeout(() => {
         if (value === '') {
           setOptions(deselectedOptions);
+          setSelectedOptions([]);
           setLoading(false);
           return;
         }
@@ -37,7 +38,12 @@ function AutocompleteActionBeforeExample() {
         const resultOptions = options.filter((option) =>
           option.label.match(filterRegex),
         );
+        const exactMatchRegex = new RegExp(`^${value}$`);
+        const selectedOption = deselectedOptions.find((option) =>
+          exactMatchRegex.test(option.label),
+        );
         setOptions(resultOptions);
+        setSelectedOptions(selectedOption ? [selectedOption.value] : []);
         setLoading(false);
       }, 300);
     },

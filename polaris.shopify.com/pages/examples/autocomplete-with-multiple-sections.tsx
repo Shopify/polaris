@@ -3,12 +3,14 @@ import {SearchIcon} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
+type Option = {
+  value: string;
+  label: string;
+};
+
 type Section = {
   title: string;
-  options: {
-    value: string;
-    label: string;
-  }[];
+  options: Option[];
 };
 
 function AutocompleteExample() {
@@ -41,6 +43,7 @@ function AutocompleteExample() {
 
       if (value === '') {
         setOptions(deselectedOptions);
+        setSelectedOptions([]);
         return;
       }
 
@@ -58,7 +61,13 @@ function AutocompleteExample() {
         });
       });
 
+      const exactMatchRegex = new RegExp(`^${value}$`);
+      const matchingOption = deselectedOptions
+        .flatMap((option) => option.options)
+        .find((option) => exactMatchRegex.test(option.label));
+
       setOptions(resultOptions);
+      setSelectedOptions(matchingOption ? [matchingOption.value] : []);
     },
     [deselectedOptions],
   );
