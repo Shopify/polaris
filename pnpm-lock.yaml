@@ -147,8 +147,8 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       vscode-languageserver-textdocument:
-        specifier: ^1.0.11
-        version: 1.0.11
+        specifier: ^1.0.12
+        version: 1.0.12
     devDependencies:
       '@types/node':
         specifier: ^20.10.0
@@ -22225,8 +22225,8 @@ packages:
       vscode-languageserver-types: 3.17.5
     dev: false
 
-  /vscode-languageserver-textdocument@1.0.11:
-    resolution: {integrity: sha512-X+8T3GoiwTVlJbicx/sIAF+yuJAqz8VvwJyoMVhwEMoEKE/fkDmrqUgDMyBECcM2A2frVZIUj5HI/ErRXCfOeA==}
+  /vscode-languageserver-textdocument@1.0.12:
+    resolution: {integrity: sha512-cxWNPesCnQCcMPeenjKKsOCKQZ/L6Tv19DTRIGuLWe32lyzWhihGVJ/rcckZXJxfdKCFvRLS3fpBIsV/ZGX4zA==}
     dev: false
 
   /vscode-languageserver-types@3.17.5:
