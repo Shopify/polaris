@@ -1,6 +1,5 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {Card} from '..';
@@ -42,17 +41,29 @@ describe('Card', () => {
     expect(card).toContainReactComponentTimes('p', 2);
   });
 
-  it('sets default border radius when roundedAbove breakpoint passed in', () => {
-    setMediaWidth('breakpoints-sm');
+  it('cards are rounded sm and above by default', () => {
     const card = mountWithApp(
-      <Card roundedAbove="sm">
+      <Card>
         {heading}
         {subheading}
       </Card>,
     );
 
     expect(card).toContainReactComponent(ShadowBevel, {
-      borderRadius: '300',
+      bevel: {sm: true},
+    });
+  });
+
+  it('cards respect incoming roundedAbove prop', () => {
+    const card = mountWithApp(
+      <Card roundedAbove="md">
+        {heading}
+        {subheading}
+      </Card>,
+    );
+
+    expect(card).toContainReactComponent(ShadowBevel, {
+      bevel: {md: true},
     });
   });
 });

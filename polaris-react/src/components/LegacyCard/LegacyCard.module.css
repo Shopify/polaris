@@ -1,11 +1,7 @@
 .LegacyCard {
   background-color: var(--p-color-bg-surface);
-  box-shadow: var(--p-shadow-300);
   outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
-
-  @mixin shadow-bevel var(--p-shadow-100), var(--p-border-radius-0), null, '',
-    101;
 
   + .LegacyCard {
     margin-top: var(--p-space-400);
@@ -16,6 +12,7 @@
   }
 
   @media (--p-breakpoints-sm-up) {
+    box-shadow: var(--p-shadow-300);
     border-radius: var(--p-border-radius-200);
 
     @mixin shadow-bevel var(--p-shadow-100), var(--p-border-radius-300), null,
