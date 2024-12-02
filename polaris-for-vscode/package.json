@@ -46,7 +46,7 @@
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/vscode": "^1.64.0",
-    "globby": "^11.1.0",
+    "globby": "^14.0.2",
     "vsce": "^2.15.0"
   }
 }
