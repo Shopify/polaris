@@ -51,8 +51,8 @@ importers:
         specifier: ^15.0.1
         version: 15.0.1(rollup@3.29.5)
       '@rollup/plugin-replace':
-        specifier: ^5.0.2
-        version: 5.0.2(rollup@3.29.5)
+        specifier: ^6.0.1
+        version: 6.0.1(rollup@3.29.5)
       '@rollup/plugin-virtual':
         specifier: ^3.0.1
         version: 3.0.1(rollup@3.29.5)
@@ -5148,17 +5148,17 @@ packages:
       rollup: 3.29.5
     dev: true
 
-  /@rollup/plugin-replace@5.0.2(rollup@3.29.5):
-    resolution: {integrity: sha512-M9YXNekv/C/iHHK+cvORzfRYfPbq0RDD8r0G+bMiTXjNGKulPnCT9O3Ss46WfhI6ZOCgApOP7xAdmCQJ+U2LAA==}
+  /@rollup/plugin-replace@6.0.1(rollup@3.29.5):
+    resolution: {integrity: sha512-2sPh9b73dj5IxuMmDAsQWVFT7mR+yoHweBaXG2W/R8vQ+IWZlnaI7BR7J6EguVQUp1hd8Z7XuozpDjEKQAAC2Q==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
     dependencies:
       '@rollup/pluginutils': 5.0.2(rollup@3.29.5)
-      magic-string: 0.27.0
+      magic-string: 0.30.5
       rollup: 3.29.5
     dev: true
 
