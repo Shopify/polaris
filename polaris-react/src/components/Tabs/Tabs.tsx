@@ -251,7 +251,7 @@ export const Tabs = ({
       const relatedTarget = event.relatedTarget;
       const isInNaturalDOMOrder = relatedTarget?.closest?.(`.${styles.Tabs}`);
       const targetIsATab = target?.classList?.contains?.(styles.Tab);
-      const focusReceiverIsAnItem = relatedTarget?.classList.contains(
+      const focusReceiverIsAnItem = relatedTarget?.classList?.contains(
         styles.Item,
       );
 
