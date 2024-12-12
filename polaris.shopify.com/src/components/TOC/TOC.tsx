@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {Box} from '../Box';
 import {TOCItem} from '../../utils/hooks';
 import {className as classNames} from '../../utils/various';
@@ -46,10 +46,20 @@ function scanPageForCurrentHeading(): string | void {
 }
 
 function TOC({items, collapsibleTOC = false}: Props) {
+  const [isPointerInside, setIsPointerInside] = useState(false);
   const isNested = !!items.find((item) => item.children.length > 0);
   const [idOfCurrentHeading, setIdOfCurrentHeading] = useState<string>();
   const temporarilyIgnoreScrolling = useRef(false);
   const lastScrollY = useRef(0);
+  const linkSuffix = '-link';
+
+  const handlePointerEnter = () => {
+    setIsPointerInside(true);
+  };
+
+  const handlePointerLeave = () => {
+    setIsPointerInside(false);
+  };
 
   const [manuallyExpandedSections, setManuallyExpandedSections] = useState<{
     [id: string]: boolean;
@@ -78,7 +88,7 @@ function TOC({items, collapsibleTOC = false}: Props) {
     setTimeout(checkIfStillScrolling, 100);
   }
 
-  function scrollIntoView(id: string) {
+  function scrollHeadingIntoView(id: string) {
     setIdOfCurrentHeading(id);
     const contentTopMargin = getContentTopMargin();
     const targetEl = document.getElementById(id);
@@ -108,11 +118,45 @@ function TOC({items, collapsibleTOC = false}: Props) {
     }
   }
 
+  const detectLinkVisibility = useCallback((linkElement: HTMLElement) => {
+    if (!linkElement) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          return;
+        } else {
+          scrollLinkIntoView(linkElement);
+        }
+      });
+    });
+
+    observer.observe(linkElement);
+
+    return () => observer.disconnect();
+  }, []);
+
+  function scrollLinkIntoView(linkElement: HTMLElement) {
+    if (!linkElement) return;
+    linkElement.scrollIntoView();
+  }
+
   useEffect(() => {
     detectCurrentHeading();
     window.addEventListener('scroll', detectCurrentHeading);
     return () => window.removeEventListener('scroll', detectCurrentHeading);
   }, []);
+
+  useEffect(() => {
+    if (idOfCurrentHeading && !isPointerInside) {
+      const currentHeadingLinkElement = document.getElementById(
+        `${idOfCurrentHeading}${linkSuffix}`,
+      );
+      if (currentHeadingLinkElement) {
+        detectLinkVisibility(currentHeadingLinkElement);
+      }
+    }
+  }, [detectLinkVisibility, idOfCurrentHeading, isPointerInside]);
 
   useEffect(() => detectCurrentHeading(), [items]);
 
@@ -130,10 +174,11 @@ function TOC({items, collapsibleTOC = false}: Props) {
 
     return (
       <a
+        id={`${toId}${linkSuffix}`}
         className={className}
         href={`#${toId}`}
         onClick={(evt) => {
-          scrollIntoView(toId);
+          scrollHeadingIntoView(toId);
           evt.preventDefault();
         }}
       >
@@ -150,7 +195,11 @@ function TOC({items, collapsibleTOC = false}: Props) {
   };
 
   return (
-    <div className={classNames(styles.TOC, isNested && styles.isNested)}>
+    <div
+      className={classNames(styles.TOC, isNested && styles.isNested)}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+    >
       <ul>
         <Box
           style={{
