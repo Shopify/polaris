@@ -149,6 +149,26 @@ const nextConfig = {
         destination: '/coming-soon/view-transitions',
         permanent: false,
       },
+      {
+        source: '/content/product-content',
+        destination: '/content/fundamentals',
+        permanent: true,
+      },
+      {
+        source: '/content/actionable-language',
+        destination: '/content/fundamentals',
+        permanent: true,
+      },
+      {
+        source: '/content/help-content',
+        destination: '/content/fundamentals',
+        permanent: true,
+      },
+      {
+        source: '/content/help-documentation',
+        destination: '/content/fundamentals',
+        permanent: true,
+      },
       ...whatsNew,
       ...actions,
       ...deprecated,
