@@ -1,5 +1,16 @@
 # Changelog
 
+## 13.9.2
+
+### Patch Changes
+
+- [#12967](https://github.com/Shopify/polaris/pull/12967) [`50246bbbd0455c30c6950b08c93ac7f7d1811fc0`](https://github.com/Shopify/polaris/commit/50246bbbd0455c30c6950b08c93ac7f7d1811fc0) Thanks [@moraleslevi](https://github.com/moraleslevi)! - CalloutCard dismiss button improvements:
+
+  - Use tertiary button variant
+  - Use regular sized X icon
+  - Adjust position to match Banner
+  - Add translated label
+
 ## 13.9.1
 
 ### Patch Changes
