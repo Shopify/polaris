@@ -9,9 +9,6 @@
   transition: border-color var(--p-motion-duration-100) var(--p-motion-ease-out),
     border-width var(--p-motion-duration-100) var(--p-motion-ease-out),
     box-shadow var(--p-motion-duration-100) var(--p-motion-ease-out);
-
-  /* This fixes artifacts caused by box-shadow in some browsers */
-  transform: translate3d(0, 0, 0);
 }
 
 .ChoiceLabel:hover .Backdrop {
