@@ -418,8 +418,8 @@ importers:
         specifier: ^8.4.1
         version: 8.4.2(prettier@2.8.8)
       transitions-all-settled:
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^0.4.0
+        version: 0.4.0
       vite:
         specifier: ^4.5.3
         version: 4.5.3(@types/node@20.12.5)
@@ -21333,8 +21333,8 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /transitions-all-settled@0.3.0:
-    resolution: {integrity: sha512-03d25ePUZVWH6ickWlUUe885Ep1SrJmVzNBAi3yHsipUlXTcq7E/37VcqKiUOVXwigNbaPXHkHFCV8cByqqOlg==}
+  /transitions-all-settled@0.4.0:
+    resolution: {integrity: sha512-0Y3QzrGEfd9CngFHXYICAxxTm1XIB6YyIYBwc90L7dQwgoYbcEx8Czw/Os/qWRvGLFO7iEj6qp8OX8SyuLkb3g==}
     dev: true
 
   /tree-kill@1.2.2:
