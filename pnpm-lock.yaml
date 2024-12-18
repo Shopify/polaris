@@ -301,8 +301,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
       '@shopify/useful-types':
-        specifier: ^5.1.2
-        version: 5.1.2
+        specifier: ^5.3.0
+        version: 5.3.0
       '@storybook/addon-a11y':
         specifier: ^8.4.1
         version: 8.4.2(storybook@8.4.2)
@@ -5297,7 +5297,7 @@ packages:
       react: '>=16.8.0 <19.0.0'
       react-dom: '>=16.8.0 <19.0.0'
     dependencies:
-      '@shopify/useful-types': 5.1.2
+      '@shopify/useful-types': 5.3.0
       jest-matcher-utils: 26.6.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -5324,9 +5324,9 @@ packages:
     resolution: {integrity: sha512-RywGBTR+nQyJLxcrUcihPkHPIG3pIQI6i0YwMrM5rs9nWJ0+9A5HKEcboyGPLH+8V08EXGfFQ6H820O9ajyk4A==}
     dev: true
 
-  /@shopify/useful-types@5.1.2:
-    resolution: {integrity: sha512-EjwIljAYHT1pfIxdMFp6ytJvCUmKXa5NWsvG7zXFX5EnLs7wYp66M/QCuoyJjI0Lq+5ZVyrJXJqqeBiXQVVs0w==}
-    engines: {node: ^14.17.0 || >=16.0.0}
+  /@shopify/useful-types@5.3.0:
+    resolution: {integrity: sha512-8BlaedSqR7ssQAhCsa88K+l2eIImSBlTLlnf7/dlqSlMSEqGVUf+O8oPsnyy9Oh3aDMt+rD4Q5JPOo984Cbz7Q==}
+    engines: {node: '>=18.12.0'}
     dev: true
 
   /@shuding/opentype.js@1.4.0-beta.0:
