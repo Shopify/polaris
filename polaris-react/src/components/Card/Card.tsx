@@ -1,12 +1,10 @@
 import type {
   BreakpointsAlias,
   ColorBackgroundAlias,
-  BorderRadiusAliasOrScale,
   SpaceScale,
 } from '@shopify/polaris-tokens';
 import React from 'react';
 
-import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
 import {ShadowBevel} from '../ShadowBevel';
@@ -39,16 +37,15 @@ export const Card = ({
   padding = {xs: '400'},
   roundedAbove = 'sm',
 }: CardProps) => {
-  const breakpoints = useBreakpoints();
-  const defaultBorderRadius: BorderRadiusAliasOrScale = '300';
-  const hasBorderRadius = Boolean(breakpoints[`${roundedAbove}Up`]);
-
   return (
     <WithinContentContext.Provider value>
       <ShadowBevel
         boxShadow="100"
-        borderRadius={hasBorderRadius ? defaultBorderRadius : '0'}
+        borderRadius="300"
         zIndex="32"
+        bevel={{
+          [roundedAbove]: true,
+        }}
       >
         <Box
           background={background}
