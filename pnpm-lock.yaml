@@ -304,8 +304,8 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       '@storybook/addon-a11y':
-        specifier: ^8.4.1
-        version: 8.4.2(storybook@8.4.2)
+        specifier: ^8.4.7
+        version: 8.4.7(storybook@8.4.2)
       '@storybook/addon-toolbars':
         specifier: ^8.4.7
         version: 8.4.7(storybook@8.4.2)
@@ -5455,20 +5455,20 @@ packages:
       webpack: 5.76.0
     dev: true
 
-  /@storybook/addon-a11y@8.4.2(storybook@8.4.2):
-    resolution: {integrity: sha512-v6Tl+qr3Eslf06qmt2hq1ticYi7oRLIFosePQUOlW1+cgdIbV+r1IxsZ7creCDWX4kIMTbUFhbET9LTYGHem1A==}
+  /@storybook/addon-a11y@8.4.7(storybook@8.4.2):
+    resolution: {integrity: sha512-GpUvXp6n25U1ZSv+hmDC+05BEqxWdlWjQTb/GaboRXZQeMBlze6zckpVb66spjmmtQAIISo0eZxX1+mGcVR7lA==}
     peerDependencies:
-      storybook: ^8.4.2
+      storybook: ^8.4.7
     dependencies:
-      '@storybook/addon-highlight': 8.4.2(storybook@8.4.2)
+      '@storybook/addon-highlight': 8.4.7(storybook@8.4.2)
       axe-core: 4.9.0
       storybook: 8.4.2(prettier@2.8.8)
     dev: true
 
-  /@storybook/addon-highlight@8.4.2(storybook@8.4.2):
-    resolution: {integrity: sha512-vTtwp7nyJ09SXrsMnH+pukCjHjRMjQXgHZHxvbrv09uoH8ldQMv9B7u+X+9Wcy/jYSKFz/ng7pWo4b4a2oXHkg==}
+  /@storybook/addon-highlight@8.4.7(storybook@8.4.2):
+    resolution: {integrity: sha512-whQIDBd3PfVwcUCrRXvCUHWClXe9mQ7XkTPCdPo4B/tZ6Z9c6zD8JUHT76ddyHivixFLowMnA8PxMU6kCMAiNw==}
     peerDependencies:
-      storybook: ^8.4.2
+      storybook: ^8.4.7
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.4.2(prettier@2.8.8)
@@ -7821,11 +7821,6 @@ packages:
   /available-typed-arrays@1.0.5:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
-
-  /axe-core@4.4.1:
-    resolution: {integrity: sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==}
-    engines: {node: '>=4'}
-    dev: true
 
   /axe-core@4.9.0:
     resolution: {integrity: sha512-H5orY+M2Fr56DWmMFpMrq5Ge93qjNdPVqzBv5gWK3aD1OvjBEJlEzxf09z93dGVQeI0LiW+aCMIx1QtShC/zUw==}
@@ -10907,7 +10902,7 @@ packages:
       aria-query: 4.2.2
       array-includes: 3.1.6
       ast-types-flow: 0.0.7
-      axe-core: 4.4.1
+      axe-core: 4.9.0
       axobject-query: 2.2.0
       damerau-levenshtein: 1.0.8
       emoji-regex: 9.2.2
