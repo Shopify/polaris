@@ -56,7 +56,7 @@
     "remark-definition-list": "^1.2.0",
     "remark-gfm": "^3.0.1",
     "remark-slug": "^7.0.1",
-    "remark-unwrap-images": "^3.0.1",
+    "remark-unwrap-images": "^5.0.0",
     "terminate": "^2.8.0",
     "use-dark-mode": "^2.3.1",
     "uuid": "^9.0.0",
