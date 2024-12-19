@@ -59,7 +59,7 @@
   "devDependencies": {
     "@svgr/core": "^4.3.3",
     "globby": "^11.1.0",
-    "hast-util-select": "^3.0.0",
+    "hast-util-select": "^6.0.3",
     "js-yaml": "^4.0.0",
     "rehype-parse": "^7.0.1",
     "svgo": "^2.8.0",
