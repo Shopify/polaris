@@ -96,8 +96,8 @@ importers:
         specifier: ^29.7.0
         version: 29.7.0
       jest-preset-stylelint:
-        specifier: ^5.0.3
-        version: 5.0.4(jest@29.7.0)
+        specifier: ^7.1.1
+        version: 7.1.1(jest@29.7.0)
       jest-watch-typeahead:
         specifier: ^2.2.2
         version: 2.2.2(jest@29.7.0)
@@ -14394,11 +14394,11 @@ packages:
       jest-resolve: 29.7.0
     dev: true
 
-  /jest-preset-stylelint@5.0.4(jest@29.7.0):
-    resolution: {integrity: sha512-y9j3kATHB/FIxfKsNZEnK/3GkeVnmyXz2GgtFO5fogMOlZrNf0mvF674kmTaebguvRGn7Gxmd7kqMihwIIgN3A==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+  /jest-preset-stylelint@7.1.1(jest@29.7.0):
+    resolution: {integrity: sha512-uORhI27dzzcWxIMuusr+7wkrLROH7ShRkvmax+sV389CKnNO7cPGh4oPrMZiNYQiWR9B6iX+r+vye156/ZcoKg==}
+    engines: {node: '>=18.12.0'}
     peerDependencies:
-      jest: ^25.3.0 || ^26.0.1 || ^27.0.1 || ^28.0.2
+      jest: ^29.0.2
     dependencies:
       jest: 29.7.0(@types/node@20.12.5)(ts-node@10.7.0)
     dev: true
