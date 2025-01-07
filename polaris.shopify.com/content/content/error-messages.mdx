@@ -1,7 +1,8 @@
 ---
 title: Error messages
-description: Error messages can be scary. Make errors visible to merchants, easy to understand, and helpful.
+description: Make it clear what went wrong and how to fix it
 icon: AlertDiamondIcon
+order: 3
 keywords:
   - error states
   - invalid
@@ -17,764 +18,138 @@ keywords:
 
 Error messages should:
 
-- Tell merchants what happened. If there’s a solution, explain it. If possible, offer a one-click fix with a button. If there’s
-  [no solution](#errors-without-solutions), give troubleshooting instructions.
-- Be placed close to the source of the problem.
-- Communicate severity using the appropriate [color](#colors) and
-  [tone of voice](#voice-and-tone).
-- Use
-  [plain language](/content/product-content#respond-to-merchant-needs).
-- Be specific. For example, use precise
-  [numbers and dates](/content/grammar-and-mechanics#dates--numbers--and-measurements).
-- Be brief.
+- Explain what’s wrong and what the merchant needs to do
+- Be specific (exact numbers and dates, or even the merchant’s own data)
+- Don’t overapologize or bring “us”/”we” into the conversation unless Shopify caused the problem
+- Avoid error jargon like “invalid”
+- Use detailed instructions for the next step
+- Help merchants avoid mistakes in the first place, using clear content to manage expectations and highlight potential risks
+- Only explain what happened behind the scenes when it’s helpful to merchants or you can’t offer a solution
 
-Good design can reduce the need for error messages by preventing them in the first place.
+As always, follow all our content principles of keeping it short, using plain language, and getting rid of repetition. Also, good design can reduce the need for error messages by preventing them.
 
----
+## Design for clarity
 
-## Error message types
+- Use iconography and color to communicate the severity of the problem and draw the merchant’s attention to what’s wrong
+- Place the error close to what needs fixed
+- Use red for critical messages that merchants need to deal with immediately to avoid harm to their business
+form validation errors
+- Use yellow for errors that are part of a daily workflow or warnings that could lead to critical errors if not addressed
 
-Think about the scope of the error when selecting a message type. Is something wrong with the entire application, with the entire current screen, or with a specific element on the screen?
+## Anatomy of an error message
 
-If the cause of the error is visible and the error just happened, show the error message immediately and as close to the source of the problem as possible.
+#### Heading (optional)
+- Clearly state the effect of the error on the merchant
+- Command immediate attention
 
-### [Text field validation error](#form-validation)
+#### Body
+- If you don’t have a header, clearly state the effect of the error on the merchant
+- Explain how to fix it
+- Link to help documentation
 
-Use when:
+#### CTA (optional)
+- Provide a one-step solution
+- Take merchants to another location expressly for fixing the issue
 
-- An error applies to a text field and feedback can be provided while merchants are typing
+## Examples
 
-![Text field validation](/images/content/error-messages/text-field-validation-error@2x.png)
 
-### [Settings warning](#settings-warning)
-
-Use when:
-
-- The form input is valid, but you want to warn merchants of a consequence they might not expect
-
-![Settings warning error](/images/content/error-messages/settings-warning@2x.png)
-
-### [Page-level banner: critical or warning](#page-level-banners)
-
-Use when:
-
-- An error applies to the entire page
-- The error is far down the page and it’s critical merchants see the message
-- Multiple validation errors on the page need to be summarized
-- The error was delayed and it’s okay to inform merchants of the problem when they return to the page
-
-![Yellow page level banner](/images/content/error-messages/page-level-warning-banner@2x.png)
-
-![Red page level banner](/images/content/error-messages/page-level-critical-banner@2x.png)
-
-### [Banner in a card or modal: critical or warning](#banners-in-cards-modals)
-
-Use when:
-
-- An error applies to a single card within the page, a single section within a card, or a modal
-- You need to direct merchants to a page with multiple sections and you want to visually call out the section with the error
-
-![Yellow section level banner](/images/content/error-messages/section-level-warning@2x.png)
-![Yellow field level banner](/images/content/error-messages/field-level-warning-02@2x.png)
-
-### [Exception list: critical or warning](#exception-list-errors)
-
-Use when:
-
-- A message placed within or next to a component can help merchants make better decisions about routine tasks
-
-![Warning exception list error](/images/content/error-messages/exception-list-warning@2x.png)
-
-![Critical exception list error](/images/content/error-messages/high-risk-fraud@2x.png)
-
-### [Home notification: critical or warning](#home-notifications)
-
-Note: Home notifications should rarely be used for errors. Always attempt to display an error close to the source of the problem.
-
-Use when:
-
-- A high-priority task must be completed immediately to continue using Shopify or avoid losing money
-- A feature doesn’t have a dedicated details page
-
-![Yellow home notification](/images/content/error-messages/home-notification-warning@2x.png)
-
-![Red home notification](/images/content/error-messages/home-notification-critical@2x.png)
-
-### [Admin unavailable](#admin-unavailable-errors)
-
-Use when:
-
-- A server error is preventing an entire page from being displayed, like with 400 or 500-series server errors
-- Account permissions are preventing someone from accessing Shopify
-
-![Admin page not found error](/images/content/error-messages/page-not-found@2x.png)
-
-![Admin page load error](/images/content/error-messages/admin-error@2x.png)
-
----
-
-## Error colors
-
-Red is the scariest error color. Only use red for critical messages that merchants need to deal with immediately to avoid harm to their business. For example, if merchants don’t act on the message right away, they might lose money or their store might be suspended.
-
-Yellow error messages still demand attention, but are more appropriate for messages that are part of a daily workflow.
-
-### Red (critical)
-
-Use critical messages to:
-
-- Bring attention to urgent tasks. If not dealt with immediately, merchants' businesses will be noticeably impacted, like an account being suspended or money being lost.
-
-Examples of critical message types:
-
-- Update a payment method expiry date
-- Unsuspend an account
-- Review an order for fraud
-- Fix a problem that’s preventing payment from being processed
+#### Multiple errors
 
 <DoDont>
 
 #### Do
 
-![Red banner with high fraud risk message](/images/content/error-messages/red-banner@2x.png)
+To save this product, make 2 changes:
+
+- Enter title
+- Add weight
 
 #### Don’t
 
-![Yellow banner with high fraud risk message](/images/content/error-messages/yellow-banner@2x.png)
+There are 2 errors on this page.
+
+- Invalid title
+- Weight must be a number value greater than 0.1 lb
 
 </DoDont>
 
-The one exception to using red is in form validation errors because this is a standard convention merchants are used to seeing outside of Shopify.
+#### Settings warning
 
 <DoDont>
 
 #### Do
 
-![Form validation with red banner](/images/content/error-messages/validation-banner-red@2x.png)
+Changing store currency will affect reporting, pricing, and more
 
 #### Don’t
 
-![Form validation with yellow banner](/images/content/error-messages/validation-banner-yellow@2x.png)
+**Are you sure you want to change your currency?** \
+Your new currency isn’t supported by PayPal Express.
 
 </DoDont>
 
-### Yellow (warning)
-
-Use warning messages to:
-
-- Help merchants fix issues so they can complete a common workflow or continue to the next step
-- Notify merchants about upcoming expirations or pending requests that, if not dealt with soon, could lead to problems in the future
-
-Examples of warning message types:
-
-- Fix a problem before proceeding to the next step.
-- Fix a problem at some point in a common workflow.
-- There’s a pending request.
-- There’s an upcoming expiration.
-- Changing a setting might have unintended consequences. See
-  [settings warning](#settings-warning).
+#### Admin unavailable
 
 <DoDont>
 
 #### Do
 
-![Yellow banner with warning message](/images/content/error-messages/yellow-do@2x.png)
+Heading: The page you’re looking for isn’t available \
+Body: Check the web address or try again later \
+Button: Retry
 
 #### Don’t
 
-![Red banner with warning message](/images/content/error-messages/yellow-dont@2x.png)
+Heading: That page doesn’t exist \
+Body: You must have the wrong address \
+Button: Shopify Home
 
 </DoDont>
 
----
-
-## Anti-patterns
-
-<LayoutSection>
-  <Medium variant="dont">
-  ![Toast error message](/images/content/error-messages/dont-toast-error@2x.png)
-
-### Avoid using toast for error messages
-
-Although error toast is still available, we discourage its use. Toast messages are too short to adequately explain what went wrong and how to fix the problem. Because the toast component appears at the bottom of the screen and disappears after 3 seconds, it can easily be missed. Reserve toast for errors not caused by merchants, like a connection issue. Always try to use a banner to inform merchants about persistent errors.
-
-  </Medium>
-
-  <Medium variant="dont">
-  ![Modal error message](/images/content/error-messages/dont-modals-for-errors@2x.png)
-
-### Don’t use modals for errors
-
-Modal dialogs are a good way to ask merchants to confirm a destructive action, but not to tell them an error has occurred.
-Modals block merchants until a decision is made, which is likely to make merchants feel pressured. Most errors don’t need to block access to the rest of the feature.
-
-  </Medium>
-
-  <Medium variant="dont">
-  ![Home notification error message](/images/content/error-messages/dont-home-notification@2x.png)
-
-### Avoid using [home notifications](#home-notifications) for errors
-
-Home notification errors are for high-priority tasks that merchants must complete immediately to continue using Shopify or prevent
-a negative impact to their business, like losing money.
-One exception is errors for features that don‘t have a dedicated details page.
-
-  </Medium>
-</LayoutSection>
-
----
-
-## Form validation
-
-### Text field validation
-
-Use when:
-
-- A text field has formatting requirements. Use this pattern to enhance
-  [validation on form submission](#validate-on-submit).
-
-Don’t use when:
-
-- It takes
-  [more than a full second](https://developers.google.com/web/fundamentals/performance/rail#ux) to validate input and display a message. If there’s a lag before a validation message appears, merchants might shift their attention and miss the error.
-  Either find a way to improve the validation speed, or rely on the
-  [validation after form submission](#validate-on-submit).
-- The field is empty. Merchants might tab through a form before filling it out, and errors on empty fields can cause confusion and frustration.
-
-### Component
-
-- [Text field](/components/selection-and-input/text-field)
-
-### Content
-
-- Use two or three words to explain what’s wrong or what’s needed to fix the problem.
-- Avoid using the word "invalid" to define an error. When appropriate, use "not valid" instead.
-- Since the message is directly below the text field, the copy only needs to explain why the error happened. Optionally, the message can clarify what to do next or offer a one-click fix.
-
-![Text field validation error](/images/content/error-messages/text-field-validation-error-no-cursor@2x.png)
-
-**Usage**
-
-Do an initial validation check as soon as merchants finish typing in the field.
-
-Merchants can be considered to be finished typing only when keyboard focus moves away from the field and there is at least one character in the field. This helps avoid marking the field as not valid before merchants are really done typing.
-
-![Initial validation check with purple border](/images/content/error-messages/text-field-validation-purple-incorrect-input@2x.png)
-
-If the validation check fails, show an error message below the field.
-
-![Text field turns red](/images/content/error-messages/text-field-validation-error-no-cursor@2x.png)
-
-Once a field has an error, complete validation checks after each keystroke.
-
-![Text field validation with cursor by incorrect semi colon](/images/content/error-messages/text-field-validation-cursor@2x.png)
-
-Remove the error message as soon as the input becomes valid so merchants can immediately tell they fixed the issue.
-
-![Text field validation with purple border](/images/content/error-messages/text-field-validation-purple-border-cursor@2x.png)
-
-If the validation process is less than a second but not instant, show a spinner on the field to indicate validation progress.
-
-![Text field validation in loading state with spinner](/images/content/error-messages/text-field-validation-loading@2x.png)
-
----
-
-## Validate on submit
-
-Validate on submit is triggered when merchants press the form’s submit button. The submit button is often \[Save\], but can be another call to action.
-
-Use when:
-
-- Not all fields can be validated while merchants are typing. When a form is used for saving data, always validate on submit and validate text fields while typing. For example, if merchants never interact with a required text field, there’s no change to mark it as not valid until they press the submit button. The same applies to form controls other than text fields, such as radio buttons, and selects.
-
-Don’t use when:
-
-- A form doesn’t have specific validation requirements, or the form doesn’t save data. For example, a search form that returns no results should display an empty state, rather than a validation error.
-
-### Component
-
-- [Banner](/components/feedback-indicators/banner#navigation)
-
-And one or more of the following:
-
-- [Text field]
-- [Select]
-- [Choice list]
-- [Checkbox]
-- [Radio button]
-
-### Content
-
-Banner heading
-
-- Use a colon to introduce the list.
-- Make the heading instructional. Don’t just call out that there are \{x\} number of errors.
-
-Banner body text
-
-- Use the [list component](/components/lists/list#navigation) to itemize the errors
-- Start each list item with the label of the field that isn't valid, and describe the action needed to fix it
-
-Individual field error messages:
-
-- See content guidelines for [validation while typing](#validate-while-typing)
-
-![Red form validation banner](/images/content/error-messages/validation-banner-red@2x.png)
-
-Rather than pointing out that there are \{x\} number of errors, be more descriptive. Explain that in order to save or continue, \{x\} number of fields need to be changed. For the bullet point instructions, see if you can word them to be more actionable, for example, “Add a discount code,“ instead of “Discount can’t be blank.“
+#### Banner
 
 <DoDont>
 
 #### Do
 
-![Instructional validation banner](/images/content/error-messages/validation-banner-content-do@2x.png)
+Heading: Couldn’t deposit payout \
+Body: The bank account we have on file was closed. Update your details, and we’ll retry automatically.
+Button: Update bank account
 
 #### Don’t
 
-![Validation banner that only points out that there is an error](/images/content/error-messages/validation-banner-content-dont@2x.png)
+Heading: Invalid bank account
+Body: Your payout was not deposited because your bank account was closed. Go to your bank account details and update them to match a valid checking account. Then save so that we can retry.
+Button: Next
+
 
 </DoDont>
 
-**Usage**
-
-Always indicate submission progress. If the fields aren't valid, don’t clear or alter them on behalf of merchants during validation.
-
-![Spinner displaying on save](/images/content/error-messages/submission-progress@2x.png)
-
-If the form submission has a single error:
-
-- Move scroll position to the field that is not valid
-- Focus the field
-- Show an error message below the field
-
-![Validation error for a price entry field](/images/content/error-messages/input-validation@2x.png)
-
-If the form submission has multiple errors:
-
-- Move scroll position to the top of the screen
-- Use a banner to display a summary of all the errors
-- Show an error message below each field that is not valid so merchants can scroll through and make corrections
-
-![Red form validation banner](/images/content/error-messages/validation-banner-red@2x.png)
-
----
-
-## Settings warning
-
-Use:
-
-- To help merchants prevent potential mistakes
-- When form input is valid, but you want to warn merchants of a consequence they might not be expecting
-
-Don’t use:
-
-- For actual error states
-
-Tip: Explore ways to prevent the warning message from showing at all. Look for opportunities to add help text or other contextual information to surface or highlight potential risks or consequences of taking, or not taking, the action.
-
-### Component
-
-- [Banner](/components/feedback-indicators/banner) without title
-
-### Content
-
-- Since the warning message is in close context to the action that triggered the warning, it should be short
-- Explain the risks or consequences of an action that’s just been taken
-- These messages don’t have to start with actionable language, like, “Change currency.” Here are some options
-  - Start with the word “This” and explain the consequence, for example, “This will affect inventory prices”
-  - Start by noting the action, then explain the consequence, “Changing \{x\} will affect \{y\}”
-- If available, link to a resource where merchants can learn more
-
-![In line warning banner below a drop down](/images/content/error-messages/settings-warning@2x.png)
-
----
-
-## Banners
-
-### Page-level banners
-
-Use when:
-
-- An error applies to the entire screen
-- The error is far down the page and it’s critical that they see the message
-- [A form was submitted with fields that are not valid](#form-validation)
-- If the error was delayed, for example, an action was taken and the error doesn’t immediately appear in context
-
-Don’t use when:
-
-- It’s possible to place the banner [in context] because the source of the error is in view and the event that triggered the action just happened
-
-For multiple error guidelines, see [validate on submit](#validate-on-submit)
-
-Page-level banner errors should explain:
-
-- Where the error happened
-- What happened
-- Why it happened
-- What to do next
+#### Toast
 
 <DoDont>
 
 #### Do
 
-![Error message with arrows pointing at different parts of the message](/images/content/error-messages/banner-breakdown@2x.png)
+Connection timed out
 
 #### Don’t
 
-- Unable to process payment for checkout with negative taxes.
+Sorry, the connection time out. Try again later.
 
 </DoDont>
 
-### Component
-
-- [Banner](/components/feedback-indicators/banner)
-
-### Content
-
-Headings should:
-
-- Clearly state the problem
-- Not use punctuation
-
-Body content should:
-
-- Explain how to solve the problem.
-- Use actionable language like “do x.” Don‘t use permissive language, like “you can x.” Be concise: no longer than 2 sentences.
-- Use periods.
-
-Calls to action should:
-
-- Be action-led (verb+noun format)
-- Aim for a one-click fix. If the error can be fixed via a single button or menu, offer that action directly in the error message.
-- Open a dedicated error-correction view for more complex problems such as reviewing a risky order or editing an unverified customer address.
-- Provide a link to documentation for information that may be valuable but can’t fit in a brief error message.
-
-![Page level warning banner](/images/content/error-messages/page-level-warning-banner@2x.png)
-
-### Banners in cards and modals
-
-Use when:
-
-- Merchants are engaged in a task flow and you want to warn them about potential issues with the task at hand, or inform them something has gone wrong
-- Directing merchants to a page with multiple sections and you want to visibly call out the section with the error
-
-Don’t use when:
-
-- An error applies to the entire screen.
-- The error is far down the page and it’s critical that merchants see the message.
-- If the error was delayed. For example, an action was taken and the error doesn’t immediately appear in context. In these cases, use the
-  [page-level banner](#page-level-banners)
-
-### Component
-
-- [Banner](/components/feedback-indicators/banner#navigation)
-
-### Variant
-
-- Without title
-
-### Content
-
-- The more contextual the message, the less you need to say, so go straight to explaining what happened and how to fix
-- Keep to one sentence
-- Contextual banners don’t have titles
-- Try to add a next step, whether in a button or link
-- Use when there is more than one call to action
-
-## ![Warning banner at the top of a card below the card title](/images/content/error-messages/section-level-warning@2x.png)
-
-## Exception lists
-
-Use when:
-
-- Items in a list are in a noteworthy state that you want to make merchants aware of, like a status, or piece of information (like a high risk order) that’s directly relevant to the information it’s connected to
-
-Example:
-
-- High risk order
-
-Don’t use when:
-
-- The source of the problem is an entire card or page
-
-### Component
-
-- [Exception list](/components/feedback-indicators/exception-list)
-
-Variant
-
-- Status: critical or warning
-
-### Content
-
-Content should:
-
-- Highlight an exceptional state that encourages clicking on the list item
-- Pair content with a warning or error icon
-- Always lead with what went wrong
-- A description is required
-- A title is optional
-- Links are optional but not common because the list item is actionable
-- Be concise
-
-![Exception list warning](/images/content/error-messages/exception-list-warning@2x.png)
-
-![Exception list error](/images/content/error-messages/high-risk-fraud@2x.png)
-
----
-
-## Home notifications
-
-Home notifications are primarily used to prevent merchants from losing money or help them continue using Shopify if they don’t act on the error message instructions immediately.
-
-Use for:
-
-- High-priority tasks that must be completed immediately to continue using
-  Shopify or avoid losing money.
-- Important enough tasks that we wouldn’t want merchants to navigate to another place in Shopify to find it, or stumble upon while completing another task.
-- Errors for features that don’t have a dedicated details page. For example, before
-  Shopify Capital had a details page, related status messages were temporarily surfaced in Home.
-
-Don’t use for:
-
-- Tips or advice
-- Positive feedback
-- Confirmation messages
-- New feature announcements
-- Status messages, other than those for Shopify Capital
-- Messages that can be displayed in context
-- Error messages that should be displayed in context
-- Task-related errors like a problem with saving a page
-
-![Structure of home notification with a header, body content, and button](/images/content/error-messages/home-notification-anatomy@2x.png)
-
-### Warning home notifications
-
-Warning home notifications are pre-emptive. They let merchants know that their finances will be impacted if action isn’t taken in a couple days or more, or that an action can be taken to make money sooner.
-
-- Financing request is pending
-- Warn about upcoming expiration
-- Pending status, like with Shopify Capital application status
+#### Errors without solutions
 
 <DoDont>
 
 #### Do
 
-![Warning home notification with credit card expiry message](/images/content/error-messages/home-notification-warning@2x.png)
+Something went wrong. Refresh your browser to try again.
 
 #### Don’t
 
-![Warning home notification with chargeback message](/images/content/error-messages/dont-home-notification@2x.png)
-
-</DoDont>
-
-### Critical home notifications
-
-Critical home notifications inform merchants of issues that:
-
-- Currently impact their finances
-- Will have an impact on their finances if action isn’t taken immediately
-- Prevent the normal operation of their business or account
-
-Critical home notifications can be used for these message types:
-
-- Trial expired
-- Domain expired
-- Credit card expired
-- Account is suspended
-- Shopify Payment payouts on hold
-- Payment processing issues
-- Payment authorizations expiring that day
-
-<DoDont>
-
-#### Do
-
-![Critical home notification with account on hold message](/images/content/error-messages/home-notification-critical@2x.png)
-
-#### Don’t
-
-![Critical home notification with out of stock message](/images/content/error-messages/dont-home-notification-02@2x.png)
-
-</DoDont>
-
----
-
-## Admin unavailable errors
-
-Sometimes the admin can’t be displayed due to a network issue, browser limitation, connection problem, or server issue. 400 and 500 series errors fall in this category. In these cases, always explain what went wrong and provide merchants with a troubleshooting step, like refreshing the page.
-
-Use when:
-
-- A page or the entire admin can’t be displayed
-
-Don’t use when:
-
-- The error can be placed in context, close to the source of the problem
-
-<DoDont>
-
-#### Do
-
-![Page not found error with internet connection message](/images/content/error-messages/page-not-found-02@2x.png)
-
-#### Don’t
-
-![Page not found error with oops, something went wrong message](/images/content/error-messages/dont-page-not-found@2x.png)
-
-</DoDont>
-
-Don’t use internal language in error messages and avoid using question formats.
-
-<DoDont>
-
-#### Do
-
-![Problem loading page error with troubleshooting tips](/images/content/error-messages/admin-error@2x.png)
-
-#### Don’t
-
-![Problem loading page error with content that talks about operational engineers](/images/content/error-messages/dont-admin-error@2x.png)
-
-</DoDont>
-
-### Component:
-
-- [Empty state](/components/layout-and-structure/empty-state)
-
-### Content
-
-Headings should:
-
-- Heading should explain what went wrong
-- Body should help merchants troubleshoot the problem
-- Call to action should provide the most probable fix, like reloading the page, or going to the previous page or Shopify Home
-
-![Page not found error](/images/content/error-messages/page-not-found@2x.png)
-
----
-
-## Errors without solutions
-
-When a service issue occurs in Shopify or is caused by a third party, we don’t always have a solution to offer to merchants. In these cases, always explain what went wrong so they can attempt to troubleshoot. If available, provide them with a troubleshooting step, like refreshing the page or returning at a later time.
-
-Use when:
-
-- Merchants are being denied access to a page or the entire admin
-  [See admin unavailable errors](#admin-unavailable-errors)
-- A third party issue is causing a disruption to merchants’ workflows
-
-Don’t use when:
-
-- There’s literally any solution we can offer to merchants
-
-<DoDont>
-
-#### Do
-
-![Carrier may not be able to pick up package error message](/images/content/error-messages/warning-no-solution@2x.png)
-![Carrier may not be able to pick up package error message](/images/content/error-messages/warning-no-solution-2@2x.png)
-
-#### Don’t
-
-- Don’t use the “Something went wrong. Please try again in a few minutes.” message when there’s any option to offer more context.
-
-</DoDont>
-
-<DoDont>
-
-#### Do
-
-- This error message is a last resort: "Something went wrong. Please try again in
-  a few minutes."
-
-#### Don’t
-
-- An error occurred
-- 1 error
-- Invalid
-
-</DoDont>
-
----
-
-## Voice and tone
-
-These content guidelines are based on common copy mistakes. Avoid sounding overly apologetic, too technical, or hyperbolic. Keep Shopify out of the conversation unless Shopify was the cause of the error. Don’t downplay the error by telling merchants not to worry or by adding humor to a negative situation.
-
-Avoid the word “please” so it’s not overused throughout the admin. Don’t downplay serious problems.
-
-<DoDont>
-
-#### Do
-
-- Some of today’s sales data isn’t updated yet. This will be fixed soon. Your data is safe, and your actual sales are not affected.
-
-#### Don’t
-
-- Today’s sales data **might** not be accurate, but **please don’t worry—it’s just temporary**.
-
-</DoDont>
-
-Don’t use scary, technical words in error messages.
-
-<DoDont>
-
-#### Do
-
-- Product weight can’t be negative. Change the product weight to be 0 or higher and try again.
-
-#### Don’t
-
-- **Error** **Line items grams** must be greater than or equal to 0.
-
-</DoDont>
-
-Error messages are not the place for hyperbole or injecting personality.
-
-<DoDont>
-
-#### Do
-
-- High risk of fraud detected
-
-Before fulfilling this order or capturing payment, review the Risk Analysis and determine if this order is fraudulent.
-
-#### Don’t
-
-- **Uh oh! High risk of fraud detected**
-
-Looks like there’s a high fraud risk with this order. Better review the Risk
-Analysis to make sure the order is safe!
-
-</DoDont>
-
-Don’t use internal Shopify terms. Only include the information merchants need.
-
-<DoDont>
-
-#### Do
-
-- There’s a problem loading this page
-
-There’s a technical problem with Shopify that has prevented this page from loading. Try reloading this page or going to another page in Shopify. If that doesn’t work, visit our status page for updates and try again later.
-
-#### Don’t
-
-- There’s a technical problem with Shopify that has prevented this page from loading. **Our operation engineers are aware of this problem and are working hard to get it solved**.
-
-</DoDont>
-
-Keep Shopify out of the conversation. Focus on the information merchants need to complete their task efficiently.
-
-<DoDont>
-
-#### Do
-
-- Before you can view earnings from your store, you need to complete your account setup. [Complete account setup]
-
-#### Don’t
-
-- Before **we** can provide you with earnings from your store, **we** need some additional information. [Complete account setup]
+Sorry, something went wrong. Learn more.
 
 </DoDont>
