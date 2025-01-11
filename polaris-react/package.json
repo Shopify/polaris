@@ -94,7 +94,7 @@
     "@types/react-transition-group": "^4.4.2",
     "axe-playwright": "^2.0.1",
     "babel-core": "7.0.0-bridge.0",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^9.2.1",
     "change-case": "^3.1.0",
     "chromatic": "^6.5.4",
     "concurrently": "^8.2.2",
