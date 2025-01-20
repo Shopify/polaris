@@ -346,8 +346,8 @@ importers:
         specifier: ^20.10.0
         version: 20.12.5
       axe-playwright:
-        specifier: ^2.0.1
-        version: 2.0.1(playwright@1.49.1)
+        specifier: ^2.0.3
+        version: 2.0.3(playwright@1.49.1)
       babel-core:
         specifier: 7.0.0-bridge.0
         version: 7.0.0-bridge.0(@babel/core@7.26.0)
@@ -8112,32 +8112,36 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
+  /axe-core@4.10.2:
+    resolution: {integrity: sha512-RE3mdQ7P3FRSe7eqCWoeQ/Z9QXrtniSjp1wUjt5nRC3WIpz5rSCve6o3fsZ2aCpJtrZjSZgjwXAoTO5k4tEI0w==}
+    engines: {node: '>=4'}
+    dev: true
+
   /axe-core@4.9.0:
     resolution: {integrity: sha512-H5orY+M2Fr56DWmMFpMrq5Ge93qjNdPVqzBv5gWK3aD1OvjBEJlEzxf09z93dGVQeI0LiW+aCMIx1QtShC/zUw==}
     engines: {node: '>=4'}
     dev: true
 
-  /axe-html-reporter@2.2.3(axe-core@4.9.0):
-    resolution: {integrity: sha512-io8aCEt4fJvv43W+33n3zEa8rdplH5Ti2v5fOnth3GBKLhLHarNs7jj46xGfpnGnpaNrz23/tXPHC3HbwTzwwA==}
+  /axe-html-reporter@2.2.11(axe-core@4.10.2):
+    resolution: {integrity: sha512-WlF+xlNVgNVWiM6IdVrsh+N0Cw7qupe5HT9N6Uyi+aN7f6SSi92RDomiP1noW8OWIV85V6x404m5oKMeqRV3tQ==}
     engines: {node: '>=8.9.0'}
     peerDependencies:
       axe-core: '>=3'
     dependencies:
-      axe-core: 4.9.0
+      axe-core: 4.10.2
       mustache: 4.2.0
-      rimraf: 3.0.2
     dev: true
 
-  /axe-playwright@2.0.1(playwright@1.49.1):
-    resolution: {integrity: sha512-MHjNjGARulF9XzqSfspmNjw+tpBz4x9o1VlTuLWEUW9fqzhn+xWa1qEpuOIQPbsRWQiLfooDjQAunLeE0PM5AQ==}
+  /axe-playwright@2.0.3(playwright@1.49.1):
+    resolution: {integrity: sha512-s7iI2okyHHsD3XZK4RMJtTy2UASkNWLQtnzLuaHiK3AWkERf+cqZJqkxb7O4b56fnbib9YnZVRByTl92ME3o6g==}
     peerDependencies:
       playwright: '>1.0.0'
     dependencies:
       '@types/junit-report-builder': 3.0.2
-      axe-core: 4.9.0
-      axe-html-reporter: 2.2.3(axe-core@4.9.0)
-      junit-report-builder: 3.2.1
-      picocolors: 1.0.0
+      axe-core: 4.10.2
+      axe-html-reporter: 2.2.11(axe-core@4.10.2)
+      junit-report-builder: 5.1.1
+      picocolors: 1.1.1
       playwright: 1.49.1
     dev: true
 
@@ -9296,7 +9300,7 @@ packages:
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
-      braces: 3.0.3
+      braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -10267,11 +10271,6 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.26.0
-    dev: true
-
-  /date-format@4.0.3:
-    resolution: {integrity: sha512-7P3FyqDcfeznLZp2b+OMitV9Sz2lUnsT87WaTat9nVwqsBkTzPG3lPLNwW3en6F4pHUiWzr6vb8CLhjdK9bcxQ==}
-    engines: {node: '>=4.0'}
     dev: true
 
   /debug@2.6.9:
@@ -11284,7 +11283,7 @@ packages:
       aria-query: 4.2.2
       array-includes: 3.1.6
       ast-types-flow: 0.0.7
-      axe-core: 4.9.0
+      axe-core: 4.10.2
       axobject-query: 2.2.0
       damerau-levenshtein: 1.0.8
       emoji-regex: 9.2.2
@@ -15404,11 +15403,10 @@ packages:
       object.assign: 4.1.4
     dev: true
 
-  /junit-report-builder@3.2.1:
-    resolution: {integrity: sha512-IMCp5XyDQ4YESDE4Za7im3buM0/7cMnRfe17k2X8B05FnUl9vqnaliX6cgOEmPIeWKfJrEe/gANRq/XgqttCqQ==}
-    engines: {node: '>=8'}
+  /junit-report-builder@5.1.1:
+    resolution: {integrity: sha512-ZNOIIGMzqCGcHQEA2Q4rIQQ3Df6gSIfne+X9Rly9Bc2y55KxAZu8iGv+n2pP0bLf0XAOctJZgeloC54hWzCahQ==}
+    engines: {node: '>=16'}
     dependencies:
-      date-format: 4.0.3
       lodash: 4.17.21
       make-dir: 3.1.0
       xmlbuilder: 15.1.1
