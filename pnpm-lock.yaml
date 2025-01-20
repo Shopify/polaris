@@ -319,8 +319,8 @@ importers:
         specifier: ^8.4.5
         version: 8.4.5(storybook@8.4.2)
       '@storybook/manager-api':
-        specifier: ^8.4.5
-        version: 8.4.5(storybook@8.4.2)
+        specifier: ^8.5.0
+        version: 8.5.0(storybook@8.4.2)
       '@storybook/preview-api':
         specifier: ^8.4.2
         version: 8.4.2(storybook@8.4.2)
@@ -5721,16 +5721,16 @@ packages:
       storybook: 8.4.2(prettier@2.8.8)
     dev: true
 
-  /@storybook/manager-api@8.4.5(storybook@8.4.2):
-    resolution: {integrity: sha512-t39JaMy3UX4StbUH/tIDcaflBDxTcyIq853wQtBMhVL3e1+Dw3MIiiG/5bw79HU4R7kSmPVLXIIbV3FmXkq7KQ==}
+  /@storybook/manager-api@8.4.6(storybook@8.4.2):
+    resolution: {integrity: sha512-TsXlQ5m5rTl2KNT9icPFyy822AqXrx1QplZBt/L7cFn7SpqQKDeSta21FH7MG0piAvzOweXebVSqKngJ6cCWWQ==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
       storybook: 8.4.2(prettier@2.8.8)
     dev: true
 
-  /@storybook/manager-api@8.4.6(storybook@8.4.2):
-    resolution: {integrity: sha512-TsXlQ5m5rTl2KNT9icPFyy822AqXrx1QplZBt/L7cFn7SpqQKDeSta21FH7MG0piAvzOweXebVSqKngJ6cCWWQ==}
+  /@storybook/manager-api@8.5.0(storybook@8.4.2):
+    resolution: {integrity: sha512-Ildriueo3eif4M+gMlMxu/mrBIbAnz8+oesmQJKdzZfe/U9eQTI9OUqJsxx/IVBmdzQ3ySsgNmzj5VweRkse4A==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
@@ -9296,7 +9296,7 @@ packages:
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
-      braces: 3.0.3
+      braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
