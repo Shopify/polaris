@@ -307,8 +307,8 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(storybook@8.4.2)(vitest@3.0.2)
       '@storybook/addon-toolbars':
-        specifier: ^8.4.7
-        version: 8.4.7(storybook@8.4.2)
+        specifier: ^8.5.0
+        version: 8.5.0(storybook@8.4.2)
       '@storybook/addon-viewport':
         specifier: ^8.5.0
         version: 8.5.0(storybook@8.4.2)
@@ -5938,10 +5938,10 @@ packages:
       storybook: 8.4.2(prettier@2.8.8)
     dev: true
 
-  /@storybook/addon-toolbars@8.4.7(storybook@8.4.2):
-    resolution: {integrity: sha512-OSfdv5UZs+NdGB+nZmbafGUWimiweJ/56gShlw8Neo/4jOJl1R3rnRqqY7MYx8E4GwoX+i3GF5C3iWFNQqlDcw==}
+  /@storybook/addon-toolbars@8.5.0(storybook@8.4.2):
+    resolution: {integrity: sha512-q3yYYO2WX8K2DYNM++FzixGDjzYaeREincgsl2WXYXrcuGb5hkOoOgRiAQL8Nz9NQ1Eo+B/yZxrhG/5VoVhUUQ==}
     peerDependencies:
-      storybook: ^8.4.7
+      storybook: ^8.5.0
     dependencies:
       storybook: 8.4.2(prettier@2.8.8)
     dev: true
@@ -5990,14 +5990,6 @@ packages:
 
   /@storybook/components@8.4.2(storybook@8.4.2):
     resolution: {integrity: sha512-+W59oF7D73LAxLNmCfFrfs98cH9pyNHK9HlJoO5/lKbK4IdWhhOoqUR/AJ3ueksoLuetFat4DxyE8SN1H4Bvrg==}
-    peerDependencies:
-      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
-    dependencies:
-      storybook: 8.4.2(prettier@2.8.8)
-    dev: true
-
-  /@storybook/components@8.4.6(storybook@8.4.2):
-    resolution: {integrity: sha512-9tKSJJCyFT5RZMRGyozTBJkr9C9Yfk1nuOE9XbDEE1Z+3/IypKR9+iwc5mfNBStDNY+rxtYWNLKBb5GPR2yhzA==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
