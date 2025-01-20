@@ -313,8 +313,8 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(storybook@8.4.2)
       '@storybook/blocks':
-        specifier: ^8.4.1
-        version: 8.4.1(react-dom@18.2.0)(react@18.2.0)(storybook@8.4.2)
+        specifier: ^8.5.0
+        version: 8.5.0(react-dom@18.2.0)(react@18.2.0)(storybook@8.4.2)
       '@storybook/components':
         specifier: ^8.4.5
         version: 8.4.5(storybook@8.4.2)
@@ -5574,20 +5574,20 @@ packages:
       storybook: 8.4.2(prettier@2.8.8)
     dev: true
 
-  /@storybook/blocks@8.4.1(react-dom@18.2.0)(react@18.2.0)(storybook@8.4.2):
-    resolution: {integrity: sha512-C4w5T5fhg0iONXozHQ1bh9im2Lr1BiY7Bj/9XoFjkc5YeCzxlMpujFA6Nmo4ToUFW90QbvKN7/QVhbrtY9O1Jg==}
+  /@storybook/blocks@8.5.0(react-dom@18.2.0)(react@18.2.0)(storybook@8.4.2):
+    resolution: {integrity: sha512-2sTOgjH/JFOgWnpqkKjpKVvKAgUaC9ZBjH1gnCoA5dne/SDafYaCAYfv6yZn7g2Xm1sTxWCAmMIUkYSALeWr+w==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.4.1
+      storybook: ^8.5.0
     peerDependenciesMeta:
       react:
         optional: true
       react-dom:
         optional: true
     dependencies:
-      '@storybook/csf': 0.1.11
-      '@storybook/icons': 1.2.12(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/csf': 0.1.12
+      '@storybook/icons': 1.3.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       storybook: 8.4.2(prettier@2.8.8)
@@ -5678,6 +5678,12 @@ packages:
       type-fest: 2.19.0
     dev: true
 
+  /@storybook/csf@0.1.12:
+    resolution: {integrity: sha512-9/exVhabisyIVL0VxTCxo01Tdm8wefIXKXfltAPTSr8cbLn5JAxGQ6QV3mjdecLGEOucfoVhAKtJfVHxEK1iqw==}
+    dependencies:
+      type-fest: 2.19.0
+    dev: true
+
   /@storybook/csf@0.1.13:
     resolution: {integrity: sha512-7xOOwCLGB3ebM87eemep89MYRFTko+D8qE7EdAAq74lgdqRR5cOUtYWJLjO2dLtP94nqoOdHJo6MdLLKzg412Q==}
     dependencies:
@@ -5688,12 +5694,12 @@ packages:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
     dev: true
 
-  /@storybook/icons@1.2.12(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-UxgyK5W3/UV4VrI3dl6ajGfHM4aOqMAkFLWe2KibeQudLf6NJpDrDMSHwZj+3iKC4jFU7dkKbbtH2h/al4sW3Q==}
+  /@storybook/icons@1.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Nz/UzeYQdUZUhacrPyfkiiysSjydyjgg/p0P9HxB4p/WaJUUjMAcaoaLgy3EXx61zZJ3iD36WPuDkZs5QYrA0A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
