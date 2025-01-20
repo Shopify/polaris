@@ -258,8 +258,8 @@ importers:
         specifier: ^2.7.1
         version: 2.8.8
       type-fest:
-        specifier: ^2.19.0
-        version: 2.19.0
+        specifier: ^4.32.0
+        version: 4.32.0
 
   polaris-react:
     dependencies:
@@ -22838,6 +22838,11 @@ packages:
   /type-fest@2.19.0:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
+    dev: true
+
+  /type-fest@4.32.0:
+    resolution: {integrity: sha512-rfgpoi08xagF3JSdtJlCwMq9DGNDE0IMh3Mkpc1wUypg9vPi786AiqeBBKcqvIkq42azsBM85N490fyZjeUftw==}
+    engines: {node: '>=16'}
     dev: true
 
   /type-is@1.6.18:
