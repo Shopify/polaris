@@ -337,8 +337,8 @@ importers:
         specifier: ^0.21.0
         version: 0.21.0(@types/node@20.12.5)(storybook@8.5.0)(ts-node@10.7.0)
       '@storybook/theming':
-        specifier: ^8.5.0
-        version: 8.5.0(storybook@8.5.0)
+        specifier: ^8.5.1
+        version: 8.5.1(storybook@8.5.0)
       '@types/js-yaml':
         specifier: ^4.0.5
         version: 4.0.5
@@ -6728,10 +6728,6 @@ packages:
 
   /@types/estree@0.0.51:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
-    dev: true
-
-  /@types/estree@1.0.0:
-    resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
   /@types/estree@1.0.6:
