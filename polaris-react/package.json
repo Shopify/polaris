@@ -78,7 +78,7 @@
     "@storybook/addon-a11y": "^8.5.1",
     "@storybook/addon-toolbars": "^8.5.0",
     "@storybook/addon-viewport": "^8.5.1",
-    "@storybook/blocks": "^8.5.0",
+    "@storybook/blocks": "^8.5.1",
     "@storybook/components": "^8.5.1",
     "@storybook/manager-api": "^8.5.0",
     "@storybook/preview-api": "^8.5.1",
