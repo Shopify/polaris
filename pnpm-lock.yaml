@@ -322,8 +322,8 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(storybook@8.5.0)
       '@storybook/preview-api':
-        specifier: ^8.5.0
-        version: 8.5.0(storybook@8.5.0)
+        specifier: ^8.5.1
+        version: 8.5.1(storybook@8.5.0)
       '@storybook/react':
         specifier: ^8.5.0
         version: 8.5.0(@storybook/test@8.5.0)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.0)(typescript@4.9.3)
