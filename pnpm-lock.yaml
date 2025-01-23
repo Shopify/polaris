@@ -310,8 +310,8 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(storybook@8.5.0)
       '@storybook/addon-viewport':
-        specifier: ^8.5.0
-        version: 8.5.0(storybook@8.5.0)
+        specifier: ^8.5.1
+        version: 8.5.1(storybook@8.5.0)
       '@storybook/blocks':
         specifier: ^8.5.0
         version: 8.5.0(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.0)
@@ -5908,10 +5908,10 @@ packages:
       storybook: 8.5.0(prettier@2.8.8)
     dev: true
 
-  /@storybook/addon-viewport@8.5.0(storybook@8.5.0):
-    resolution: {integrity: sha512-MlhVELImk9YzjEgGR2ciLC8d5tUSGcO7my4kWIClN0VyTRcvG4ZfwrsEC+jN3/l52nrgjLmKrDX5UAGZm6w5mQ==}
+  /@storybook/addon-viewport@8.5.1(storybook@8.5.0):
+    resolution: {integrity: sha512-kKCXZT3keUEQulv2tOzRSl/GdFA2JeFjHmks/n7qQLY0zDqdx/C7K9jUECcrOJiLclZwTJvHA3YXrglVJoa6Hw==}
     peerDependencies:
-      storybook: ^8.5.0
+      storybook: ^8.5.1
     dependencies:
       memoizerific: 1.11.3
       storybook: 8.5.0(prettier@2.8.8)
