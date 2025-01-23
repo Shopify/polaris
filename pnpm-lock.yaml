@@ -325,8 +325,8 @@ importers:
         specifier: ^8.5.1
         version: 8.5.1(storybook@8.5.0)
       '@storybook/react':
-        specifier: ^8.5.0
-        version: 8.5.0(@storybook/test@8.5.0)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.0)(typescript@4.9.3)
+        specifier: ^8.5.1
+        version: 8.5.1(@storybook/test@8.5.0)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.0)(typescript@4.9.3)
       '@storybook/react-vite':
         specifier: ^8.5.1
         version: 8.5.1(@storybook/test@8.5.0)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.5.0)(typescript@4.9.3)(vite@4.5.6)
@@ -5950,14 +5950,6 @@ packages:
       vite: 4.5.6(@types/node@20.12.5)
     dev: true
 
-  /@storybook/components@8.5.0(storybook@8.5.0):
-    resolution: {integrity: sha512-DhaHtwfEcfWYj3ih/5RBSDHe3Idxyf+oHw2/DmaLKJX6MluhdK3ZqigjRcTmA9Gj/SbR4CkHEEtDzAvBlW0BYw==}
-    peerDependencies:
-      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
-    dependencies:
-      storybook: 8.5.0(prettier@2.8.8)
-    dev: true
-
   /@storybook/components@8.5.1(storybook@8.5.0):
     resolution: {integrity: sha512-dgZfIIRdI7yA9bYb1rhWzbvU4AnbndAeNhLouxHJkUR5r2Ycp9mJba5UNynN1slgDOxB+VMnq1fWKyfWQrBqnw==}
     peerDependencies:
@@ -6070,31 +6062,11 @@ packages:
       storybook: 8.5.0(prettier@2.8.8)
     dev: true
 
-  /@storybook/preview-api@8.5.0(storybook@8.5.0):
-    resolution: {integrity: sha512-g0XbD54zMUkl6bpuA7qEBCE9rW1QV6KKmwkO4bkxMOJcMke3x9l00JTaYn7Un8wItjXiS3BIG15B6mnfBG7fng==}
-    peerDependencies:
-      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
-    dependencies:
-      storybook: 8.5.0(prettier@2.8.8)
-    dev: true
-
   /@storybook/preview-api@8.5.1(storybook@8.5.0):
     resolution: {integrity: sha512-fLR7nvAbjHVLazDA6CLy9O/bpBzKDKqxyBp6SybTBPYa76IzsX8ITSMMt1YcP6rOGhVgcKNA9iBNxRddjLIV0Q==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
-      storybook: 8.5.0(prettier@2.8.8)
-    dev: true
-
-  /@storybook/react-dom-shim@8.5.0(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.0):
-    resolution: {integrity: sha512-7P8xg4FiuFpM6kQOzZynno+0zyLVs8NgsmRK58t3JRZXbda1tzlxTXzvqx4hUevvbPJGjmrB0F3xTFH+8Otnvw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.5.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
       storybook: 8.5.0(prettier@2.8.8)
     dev: true
 
@@ -6141,34 +6113,6 @@ packages:
       - rollup
       - supports-color
       - typescript
-    dev: true
-
-  /@storybook/react@8.5.0(@storybook/test@8.5.0)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.0)(typescript@4.9.3):
-    resolution: {integrity: sha512-/jbkmGGc95N7KduIennL/k8grNTP5ye/YBnkcS4TbF7uDWBtKy3/Wqvx5BIlFXq3qeUnZJ8YtZc0lPIYeCY8XQ==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      '@storybook/test': 8.5.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.5.0
-      typescript: '>= 4.2.x'
-    peerDependenciesMeta:
-      '@storybook/test':
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@storybook/components': 8.5.0(storybook@8.5.0)
-      '@storybook/global': 5.0.0
-      '@storybook/manager-api': 8.5.0(storybook@8.5.0)
-      '@storybook/preview-api': 8.5.0(storybook@8.5.0)
-      '@storybook/react-dom-shim': 8.5.0(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.0)
-      '@storybook/test': 8.5.0(storybook@8.5.0)
-      '@storybook/theming': 8.5.0(storybook@8.5.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      storybook: 8.5.0(prettier@2.8.8)
-      typescript: 4.9.3
     dev: true
 
   /@storybook/react@8.5.1(@storybook/test@8.5.0)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.0)(typescript@4.9.3):
@@ -6728,10 +6672,6 @@ packages:
 
   /@types/estree@0.0.51:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
-    dev: true
-
-  /@types/estree@1.0.0:
-    resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
   /@types/estree@1.0.6:
