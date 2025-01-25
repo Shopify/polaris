@@ -6,7 +6,7 @@ import {motion, AnimatePresence} from 'framer-motion';
 
 import GlobalSearch from '../GlobalSearch';
 import nav from '../../../.cache/nav';
-import {NavItem, Breakpoints} from '../../types';
+import {type NavItem, Breakpoints} from '../../types';
 
 import styles from './Frame.module.scss';
 import {className} from '../../utils/various';
