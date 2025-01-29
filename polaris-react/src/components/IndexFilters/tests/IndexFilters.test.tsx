@@ -633,7 +633,7 @@ describe('IndexFilters', () => {
       expect(onSelect).toHaveBeenCalledWith(0);
     });
 
-    it('calls the correct onAction when switching between tabs', () => {
+    it('calls the valid onAction when switching between tabs', () => {
       const onAction1 = jest.fn();
       const onAction2 = jest.fn();
       const tabs = [
