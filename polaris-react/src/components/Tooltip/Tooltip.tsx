@@ -22,8 +22,8 @@ export type BorderRadius = Extract<BorderRadiusAliasOrScale, '100' | '200'>;
 export interface TooltipProps {
   /** The element that will activate to tooltip */
   children?: React.ReactNode;
-  /** The content to display within the tooltip */
-  content: React.ReactNode;
+  /** The content to display within the tooltip. If null, the tooltip will not be rendered. */
+  content: React.ReactNode | null;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
   /** Delay in milliseconds while hovering over an element before the tooltip is visible */
@@ -174,7 +174,7 @@ export function Tooltip({
     }
   }, [originalActive, active, handleClose, handleBlur]);
 
-  const portal = activatorNode ? (
+  const tooltipPortal = activatorNode ? (
     <Portal idPrefix="tooltip">
       <TooltipOverlay
         id={id}
@@ -224,7 +224,7 @@ export function Tooltip({
       className={wrapperClassNames}
     >
       {children}
-      {portal}
+      {content !== null && tooltipPortal}
     </WrapperComponent>
   );
 
