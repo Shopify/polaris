@@ -7,6 +7,10 @@ import {Option} from '../Option';
 import {TextOption} from '../../TextOption';
 import {MappedActionContext} from '../../../../../utilities/autocomplete';
 import {UnstyledLink} from '../../../../UnstyledLink';
+import {Badge} from '../../../../Badge';
+import {InlineStack} from '../../../../InlineStack';
+import {Text} from '../../../../Text';
+import {Icon} from '../../../../Icon';
 
 const defaultProps = {
   accessibilityLabel: 'label',
@@ -372,6 +376,47 @@ describe('Option', () => {
         role: 'option',
         className: 'Option divider',
       });
+    });
+  });
+
+  it('renders a string child in TextOption', () => {
+    const option = mountWithListboxProvider(
+      <Option {...defaultProps}>String content</Option>,
+    );
+
+    expect(option).toContainReactComponent(TextOption, {
+      children: 'String content',
+    });
+  });
+
+  it('renders ReactNode children in TextOption', () => {
+    const complexContent = (
+      <InlineStack gap="200">
+        <Text as="span">Complex content</Text>
+        <Badge>New</Badge>
+      </InlineStack>
+    );
+
+    const option = mountWithListboxProvider(
+      <Option {...defaultProps}>{complexContent}</Option>,
+    );
+
+    expect(option).toContainReactComponent(TextOption, {
+      children: expect.objectContaining({
+        type: InlineStack,
+        props: expect.objectContaining({
+          children: [
+            expect.objectContaining({
+              type: Text,
+              props: {as: 'span', children: 'Complex content'},
+            }),
+            expect.objectContaining({
+              type: Badge,
+              props: {children: 'New'},
+            }),
+          ],
+        }),
+      }),
     });
   });
 });
