@@ -35,7 +35,7 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
-  const optionMarkup = selected ? (
+  const contentMarkup = selected && !allowMultiple ? (
     <Box width="100%">
       <InlineStack wrap={false} align="space-between" gap="200">
         {children}
@@ -45,7 +45,11 @@ export const TextOption = memo(function TextOption({
       </InlineStack>
     </Box>
   ) : (
-    <>{children}</>
+    <Box width="100%">
+      <InlineStack wrap={false} gap="200">
+        {children}
+      </InlineStack>
+    </Box>
   );
 
   return (
@@ -56,7 +60,7 @@ export const TextOption = memo(function TextOption({
             <Checkbox disabled={disabled} checked={selected} label={children} />
           </div>
         ) : (
-          optionMarkup
+          contentMarkup
         )}
       </div>
     </div>
