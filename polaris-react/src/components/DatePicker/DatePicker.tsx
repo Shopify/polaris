@@ -124,8 +124,7 @@ export function DatePicker({
           onMultipleDatesChange(newDates);
         }
       } else if (allowRange) {
-        const rangeValue =
-          range instanceof Date ? {start: range, end: range} : range;
+        const rangeValue = range instanceof Date ? {start: range, end: range} : range;
         setHoverDate(rangeValue.end);
         setFocusDate(new Date(rangeValue.end));
         onChange(rangeValue);
@@ -190,7 +189,7 @@ export function DatePicker({
 
       if (key === 'ArrowDown') {
         const nextWeek = new Date(focusedDate);
-        nextWeek.setDate(focusedDate.getDate() + 7);
+        nextWeek.setDate(Number(focusedDate.getDate()) + 7);
         if (
           !(
             (disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter)) ||
@@ -204,7 +203,7 @@ export function DatePicker({
 
       if (key === 'ArrowRight') {
         const tomorrow = new Date(focusedDate);
-        tomorrow.setDate(focusedDate.getDate() + 1);
+        tomorrow.setDate(Number(focusedDate.getDate()) + 1);
         if (
           !(
             (disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter)) ||
@@ -265,7 +264,7 @@ export function DatePicker({
     secondDatePickerAccessibilityLabelPrefix,
   ];
 
-  const showNextYear = getNextDisplayYear(month, year);
+  const showNextYear = getNextDisplayYear(Number(month), year);
   const showNextMonth = getNextDisplayMonth(month);
 
   const showNextToNextYear = getNextDisplayYear(showNextMonth, showNextYear);
@@ -283,6 +282,14 @@ export function DatePicker({
       )
     : i18n.translate(`Polaris.DatePicker.months.${monthName(showNextMonth)}`);
   const nextYear = multiMonth ? showNextToNextYear : showNextYear;
+
+  const accessibilityLabel = i18n.translate(
+    'Polaris.DatePicker.previousMonth',
+    {
+      previousMonthName,
+      showPreviousYear,
+    },
+  );
 
   const secondDatePicker = multiMonth ? (
     <Month
@@ -326,13 +333,7 @@ export function DatePicker({
             )
           }
           icon={ArrowLeftIcon}
-          accessibilityLabel={i18n.translate(
-            'Polaris.DatePicker.previousMonth',
-            {
-              previousMonthName: previousMonthName,
-              showPreviousYear,
-            },
-          )}
+          accessibilityLabel={accessibilityLabel}
         />
         <Button
           onClick={() => handleMonthChangeClick(showNextMonth, nextYear)}
