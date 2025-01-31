@@ -21,7 +21,7 @@ import {monthName, weekdayName} from '../../utilities';
 
 export interface MonthProps {
   focusedDate?: Date;
-  selected?: Range | Range[];
+  selected?: Range | Range[] | Date[];
   hoverDate?: Date;
   month: number;
   year: number;
@@ -108,7 +108,16 @@ export function Month({
     let isInRange = false;
 
     if (allowMultiple && Array.isArray(selected)) {
-      isSelected = selected.some((range) => dateIsSelected(day, range));
+      if (selected.some(date => date instanceof Date)) {
+        // Handle Date[] case
+        isSelected = (selected as Date[]).some(date => isSameDay(day, date));
+      } else {
+        // Handle Range[] case
+        isSelected = (selected as Range[]).some(range => dateIsSelected(day, range));
+      }
+      isFirstSelectedDay = false;
+      isLastSelectedDay = false;
+      isInRange = false;
     } else if (selected) {
       const singleSelected = selected as Range;
       isFirstSelectedDay = Boolean(allowRange && isDateStart(day, singleSelected));

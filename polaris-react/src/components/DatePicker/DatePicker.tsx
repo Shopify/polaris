@@ -50,7 +50,9 @@ export interface DatePickerProps {
   /** Visually hidden prefix text for selected days on single selection date pickers */
   dayAccessibilityLabelPrefix?: string;
   /** Callback when date is selected. */
-  onChange?(date: Range | Date[]): void;
+  onChange?(date: Range): void;
+  /** Callback when multiple dates are selected. Only called when allowMultiple is true. */
+  onMultipleDatesChange?(dates: Date[]): void;
   /** Callback when month is changed. */
   onMonthChange?(month: number, year: number): void;
 }
@@ -70,10 +72,14 @@ export function DatePicker({
   dayAccessibilityLabelPrefix,
   onMonthChange,
   onChange = noop,
+  onMultipleDatesChange,
 }: DatePickerProps) {
   const i18n = useI18n();
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
+  const [multipleSelectedDates, setMultipleSelectedDates] = useState<Date[]>(
+    Array.isArray(selected) ? selected as Date[] : []
+  );
 
   useEffect(() => {
     setFocusDate(undefined);
@@ -97,30 +103,40 @@ export function DatePicker({
   const handleDateSelection = useCallback(
     (range: Range | Date) => {
       if (allowMultiple) {
-        const newSelected = Array.isArray(selected) ? [...selected] : [];
         const dateToAdd = range instanceof Date ? range : range.start;
-        
-        const existingIndex = newSelected.findIndex((date) => 
-          date.getTime() === dateToAdd.getTime()
+        const existingIndex = multipleSelectedDates.findIndex(
+          (date) => date.getTime() === dateToAdd.getTime()
         );
 
+        let newDates: Date[];
         if (existingIndex >= 0) {
-          newSelected.splice(existingIndex, 1);
+          newDates = [...multipleSelectedDates];
+          newDates.splice(existingIndex, 1);
         } else {
-          newSelected.push(dateToAdd);
+          newDates = [...multipleSelectedDates, dateToAdd];
         }
-
+        
+        setMultipleSelectedDates(newDates);
         setHoverDate(dateToAdd);
         setFocusDate(dateToAdd);
-        onChange(newSelected);
-      } else {
+
+        if (onMultipleDatesChange) {
+          onMultipleDatesChange(newDates);
+        }
+      } else if (allowRange) {
         const rangeValue = range instanceof Date ? {start: range, end: range} : range;
         setHoverDate(rangeValue.end);
         setFocusDate(new Date(rangeValue.end));
         onChange(rangeValue);
+      } else {
+        // Single date selection - set start and end to the same date
+        const date = range instanceof Date ? range : range.start;
+        setHoverDate(date);
+        setFocusDate(date);
+        onChange({start: date, end: date});
       }
     },
-    [allowMultiple, onChange, selected],
+    [allowMultiple, allowRange, onChange, onMultipleDatesChange, multipleSelectedDates],
   );
 
   const handleMonthChangeClick = useCallback(
@@ -218,11 +234,16 @@ export function DatePicker({
   );
 
   const monthIsSelected = useMemo(() => {
-    if (allowMultiple && Array.isArray(selected)) {
-      return selected.map((date) => ({start: date, end: date}));
+    if (!allowMultiple) {
+      return deriveRange(selected as (Date | Range));
     }
-    return deriveRange(selected);
-  }, [selected, allowMultiple]);
+    
+    // Convert Date[] to Range[] for multiple selection
+    return multipleSelectedDates.map(date => ({
+      start: date,
+      end: date
+    }));
+  }, [selected, allowMultiple, multipleSelectedDates]);
 
   const firstDatePickerAccessibilityLabelPrefix = allowRange
     ? i18n.translate(`Polaris.DatePicker.start`)
@@ -298,7 +319,7 @@ export function DatePicker({
           }
           icon={ArrowLeftIcon}
           accessibilityLabel={i18n.translate('Polaris.DatePicker.previousMonth', {
-            previousMonth: previousMonthName,
+            previousMonthName: previousMonthName,
             showPreviousYear,
           })}
         />
@@ -349,15 +370,15 @@ function deriveRange(selected?: Date | Range | Date[]) {
     return undefined;
   }
 
-  if (Array.isArray(selected)) {
-    return selected.map((date) => ({start: date, end: date}));
-  }
-
   if (selected instanceof Date) {
     return {
       start: selected,
       end: selected,
     };
+  }
+
+  if (Array.isArray(selected)) {
+    return undefined;
   }
 
   return selected;
