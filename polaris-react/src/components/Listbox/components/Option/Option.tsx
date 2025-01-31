@@ -67,21 +67,22 @@ export const Option = memo(function Option({
     event.preventDefault();
   };
 
-  const content = typeof children === 'string' ? (
+  const content =
+    typeof children === 'string' ? (
       <TextOption selected={selected} disabled={disabled}>
         {children}
       </TextOption>
     ) : (
-    <Box
-      padding="200"
-      borderRadius="200"
-      background={selected ? 'bg-surface-secondary-selected' : undefined}
-      color={disabled ? 'text-disabled' : undefined}
-    >
-      <InlineStack gap="200" wrap={false}>
-        {children}
-      </InlineStack>
-    </Box>
+      <Box
+        padding="200"
+        borderRadius="200"
+        background={selected ? 'bg-surface-secondary-selected' : undefined}
+        color={disabled ? 'text-disabled' : undefined}
+      >
+        <InlineStack gap="200" wrap={false}>
+          {children}
+        </InlineStack>
+      </Box>
     );
 
   const sectionAttributes = {

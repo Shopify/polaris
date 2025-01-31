@@ -79,7 +79,12 @@ export function Month({
       if (allowMultiple) {
         onChange(selectedDate);
       } else {
-        onChange(getNewRange(allowRange ? selected as Range : undefined, selectedDate));
+        onChange(
+          getNewRange(
+            allowRange ? (selected as Range) : undefined,
+            selectedDate,
+          ),
+        );
       }
     },
     [allowRange, allowMultiple, onChange, selected],
@@ -108,27 +113,32 @@ export function Month({
     let isInRange = false;
 
     if (allowMultiple && Array.isArray(selected)) {
-      if (selected.some(date => date instanceof Date)) {
+      if (selected.some((date) => date instanceof Date)) {
         // Handle Date[] case
-        isSelected = (selected as Date[]).some(date => isSameDay(day, date));
+        isSelected = (selected as Date[]).some((date) => isSameDay(day, date));
       } else {
         // Handle Range[] case
-        isSelected = (selected as Range[]).some(range => dateIsSelected(day, range));
+        isSelected = (selected as Range[]).some((range) =>
+          dateIsSelected(day, range),
+        );
       }
       isFirstSelectedDay = false;
       isLastSelectedDay = false;
       isInRange = false;
     } else if (selected) {
       const singleSelected = selected as Range;
-      isFirstSelectedDay = Boolean(allowRange && isDateStart(day, singleSelected));
+      isFirstSelectedDay = Boolean(
+        allowRange && isDateStart(day, singleSelected),
+      );
       isLastSelectedDay = Boolean(
         allowRange &&
-        ((!isSameDay(singleSelected.start, singleSelected.end) && isDateEnd(day, singleSelected)) ||
-          (hoverDate &&
-            isSameDay(singleSelected.start, singleSelected.end) &&
-            isDateAfter(hoverDate, singleSelected.start) &&
-            isSameDay(day, hoverDate) &&
-            !isFirstSelectedDay))
+          ((!isSameDay(singleSelected.start, singleSelected.end) &&
+            isDateEnd(day, singleSelected)) ||
+            (hoverDate &&
+              isSameDay(singleSelected.start, singleSelected.end) &&
+              isDateAfter(hoverDate, singleSelected.start) &&
+              isSameDay(day, hoverDate) &&
+              !isFirstSelectedDay)),
       );
       isSelected = dateIsSelected(day, singleSelected);
       isInRange = dateIsInRange(day, singleSelected);

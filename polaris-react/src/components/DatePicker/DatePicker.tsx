@@ -78,7 +78,7 @@ export function DatePicker({
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
   const [multipleSelectedDates, setMultipleSelectedDates] = useState<Date[]>(
-    Array.isArray(selected) ? selected as Date[] : []
+    Array.isArray(selected) ? (selected as Date[]) : [],
   );
 
   useEffect(() => {
@@ -105,7 +105,7 @@ export function DatePicker({
       if (allowMultiple) {
         const dateToAdd = range instanceof Date ? range : range.start;
         const existingIndex = multipleSelectedDates.findIndex(
-          (date) => date.getTime() === dateToAdd.getTime()
+          (date) => date.getTime() === dateToAdd.getTime(),
         );
 
         let newDates: Date[];
@@ -115,7 +115,7 @@ export function DatePicker({
         } else {
           newDates = [...multipleSelectedDates, dateToAdd];
         }
-        
+
         setMultipleSelectedDates(newDates);
         setHoverDate(dateToAdd);
         setFocusDate(dateToAdd);
@@ -124,7 +124,8 @@ export function DatePicker({
           onMultipleDatesChange(newDates);
         }
       } else if (allowRange) {
-        const rangeValue = range instanceof Date ? {start: range, end: range} : range;
+        const rangeValue =
+          range instanceof Date ? {start: range, end: range} : range;
         setHoverDate(rangeValue.end);
         setFocusDate(new Date(rangeValue.end));
         onChange(rangeValue);
@@ -136,7 +137,13 @@ export function DatePicker({
         onChange({start: date, end: date});
       }
     },
-    [allowMultiple, allowRange, onChange, onMultipleDatesChange, multipleSelectedDates],
+    [
+      allowMultiple,
+      allowRange,
+      onChange,
+      onMultipleDatesChange,
+      multipleSelectedDates,
+    ],
   );
 
   const handleMonthChangeClick = useCallback(
@@ -159,7 +166,8 @@ export function DatePicker({
       const {key} = event;
 
       const range = deriveRange(selected);
-      const focusedDate = focusDate || (Array.isArray(range) ? range[0]?.start : range?.start);
+      const focusedDate =
+        focusDate || (Array.isArray(range) ? range[0]?.start : range?.start);
 
       if (focusedDate == null) {
         return;
@@ -235,13 +243,13 @@ export function DatePicker({
 
   const monthIsSelected = useMemo(() => {
     if (!allowMultiple) {
-      return deriveRange(selected as (Date | Range));
+      return deriveRange(selected as Date | Range);
     }
-    
+
     // Convert Date[] to Range[] for multiple selection
-    return multipleSelectedDates.map(date => ({
+    return multipleSelectedDates.map((date) => ({
       start: date,
-      end: date
+      end: date,
     }));
   }, [selected, allowMultiple, multipleSelectedDates]);
 
@@ -318,19 +326,19 @@ export function DatePicker({
             )
           }
           icon={ArrowLeftIcon}
-          accessibilityLabel={i18n.translate('Polaris.DatePicker.previousMonth', {
-            previousMonthName: previousMonthName,
-            showPreviousYear,
-          })}
+          accessibilityLabel={i18n.translate(
+            'Polaris.DatePicker.previousMonth',
+            {
+              previousMonthName: previousMonthName,
+              showPreviousYear,
+            },
+          )}
         />
         <Button
           onClick={() => handleMonthChangeClick(showNextMonth, nextYear)}
           disabled={
             disableDatesAfter != null &&
-            isDateAfter(
-              new Date(nextYear, showNextMonth, 1),
-              disableDatesAfter,
-            )
+            isDateAfter(new Date(nextYear, showNextMonth, 1), disableDatesAfter)
           }
           icon={ArrowRightIcon}
           accessibilityLabel={i18n.translate('Polaris.DatePicker.nextMonth', {
