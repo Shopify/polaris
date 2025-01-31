@@ -7,6 +7,8 @@ import {TextOption} from '../TextOption';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
 import {ActionContext} from '../../../../utilities/listbox/context';
+import {Box} from '../../../Box';
+import {InlineStack} from '../../../InlineStack';
 
 import styles from './Option.module.css';
 
@@ -65,13 +67,21 @@ export const Option = memo(function Option({
     event.preventDefault();
   };
 
-  const content =
-    typeof children === 'string' ? (
+  const content = typeof children === 'string' ? (
       <TextOption selected={selected} disabled={disabled}>
         {children}
       </TextOption>
     ) : (
-      children
+    <Box
+      padding="200"
+      borderRadius="200"
+      background={selected ? 'bg-surface-secondary-selected' : undefined}
+      color={disabled ? 'text-disabled' : undefined}
+    >
+      <InlineStack gap="200" wrap={false}>
+        {children}
+      </InlineStack>
+    </Box>
     );
 
   const sectionAttributes = {

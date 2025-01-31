@@ -21,7 +21,7 @@ import {monthName, weekdayName} from '../../utilities';
 
 export interface MonthProps {
   focusedDate?: Date;
-  selected?: Range;
+  selected?: Range | Range[];
   hoverDate?: Date;
   month: number;
   year: number;
@@ -29,9 +29,10 @@ export interface MonthProps {
   disableDatesAfter?: Date;
   disableSpecificDates?: Date[];
   allowRange?: boolean;
+  allowMultiple?: boolean;
   weekStartsOn: number;
   accessibilityLabelPrefixes: [string | undefined, string];
-  onChange?(date: Range): void;
+  onChange?(date: Range | Date): void;
   onHover?(hoverEnd: Date): void;
   onFocus?(date: Date): void;
 }
@@ -43,7 +44,8 @@ export function Month({
   disableDatesBefore,
   disableDatesAfter,
   disableSpecificDates,
-  allowRange,
+  allowRange = false,
+  allowMultiple = false,
   onChange = noop,
   onHover = noop,
   onFocus = noop,
@@ -74,9 +76,13 @@ export function Month({
 
   const handleDateClick = useCallback(
     (selectedDate: Date) => {
-      onChange(getNewRange(allowRange ? selected : undefined, selectedDate));
+      if (allowMultiple) {
+        onChange(selectedDate);
+      } else {
+        onChange(getNewRange(allowRange ? selected as Range : undefined, selectedDate));
+      }
     },
-    [allowRange, onChange, selected],
+    [allowRange, allowMultiple, onChange, selected],
   );
 
   const lastDayOfMonth = useMemo(
@@ -90,26 +96,35 @@ export function Month({
         <Day key={dayIndex} onHover={onHover} lastDayOfMonth={lastDayOfMonth} />
       );
     }
+
     const disabled =
       (disableDatesBefore && isDateBefore(day, disableDatesBefore)) ||
       (disableDatesAfter && isDateAfter(day, disableDatesAfter)) ||
       (disableSpecificDates && isDateDisabled(day, disableSpecificDates));
 
-    const isFirstSelectedDay =
-      allowRange && selected && isDateStart(day, selected);
-    const isLastSelectedDay =
-      allowRange &&
-      selected &&
-      ((!isSameDay(selected.start, selected.end) && isDateEnd(day, selected)) ||
-        (hoverDate &&
-          isSameDay(selected.start, selected.end) &&
-          isDateAfter(hoverDate, selected.start) &&
-          isSameDay(day, hoverDate) &&
-          !isFirstSelectedDay));
-    const rangeIsDifferent = !(
-      selected && isSameDay(selected.start, selected.end)
-    );
-    const isHoveringRight = hoverDate && isDateBefore(day, hoverDate);
+    let isFirstSelectedDay = false;
+    let isLastSelectedDay = false;
+    let isSelected = false;
+    let isInRange = false;
+
+    if (allowMultiple && Array.isArray(selected)) {
+      isSelected = selected.some((range) => dateIsSelected(day, range));
+    } else if (selected) {
+      const singleSelected = selected as Range;
+      isFirstSelectedDay = Boolean(allowRange && isDateStart(day, singleSelected));
+      isLastSelectedDay = Boolean(
+        allowRange &&
+        ((!isSameDay(singleSelected.start, singleSelected.end) && isDateEnd(day, singleSelected)) ||
+          (hoverDate &&
+            isSameDay(singleSelected.start, singleSelected.end) &&
+            isDateAfter(hoverDate, singleSelected.start) &&
+            isSameDay(day, hoverDate) &&
+            !isFirstSelectedDay))
+      );
+      isSelected = dateIsSelected(day, singleSelected);
+      isInRange = dateIsInRange(day, singleSelected);
+    }
+
     const [firstAccessibilityLabelPrefix, lastAccessibilityLabelPrefix] =
       accessibilityLabelPrefixes;
     let accessibilityLabelPrefix;
@@ -133,18 +148,23 @@ export function Month({
         onFocus={onFocus}
         onClick={handleDateClick}
         onHover={onHover}
-        selected={selected != null && dateIsSelected(day, selected)}
-        inRange={selected != null && dateIsInRange(day, selected)}
+        selected={isSelected}
+        inRange={isInRange}
         disabled={disabled}
         inHoveringRange={
           selected != null &&
           hoverDate != null &&
-          isInHoveringRange(day, selected, hoverDate)
+          !allowMultiple &&
+          isInHoveringRange(day, selected as Range, hoverDate)
         }
         isLastSelectedDay={isLastSelectedDay}
         isFirstSelectedDay={isFirstSelectedDay}
-        isHoveringRight={isHoveringRight}
-        rangeIsDifferent={rangeIsDifferent}
+        isHoveringRight={hoverDate && isDateBefore(day, hoverDate)}
+        rangeIsDifferent={
+          selected && !allowMultiple
+            ? !isSameDay((selected as Range).start, (selected as Range).end)
+            : false
+        }
       />
     );
   }
