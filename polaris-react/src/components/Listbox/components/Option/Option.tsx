@@ -7,8 +7,6 @@ import {TextOption} from '../TextOption';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
 import {ActionContext} from '../../../../utilities/listbox/context';
-import {Box} from '../../../Box';
-import {InlineStack} from '../../../InlineStack';
 
 import styles from './Option.module.css';
 
@@ -73,16 +71,7 @@ export const Option = memo(function Option({
         {children}
       </TextOption>
     ) : (
-      <Box
-        padding="200"
-        borderRadius="200"
-        background={selected ? 'bg-surface-secondary-selected' : undefined}
-        color={disabled ? 'text-disabled' : undefined}
-      >
-        <InlineStack gap="200" wrap={false}>
-          {children}
-        </InlineStack>
-      </Box>
+      children
     );
 
   const sectionAttributes = {
