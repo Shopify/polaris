@@ -394,6 +394,7 @@ export function TextField({
         type="button"
         className={styles.ClearButton}
         onClick={handleClearButtonPress}
+        onBlur={handleOnBlur}
         disabled={disabled}
       >
         <Text as="span" visuallyHidden>
