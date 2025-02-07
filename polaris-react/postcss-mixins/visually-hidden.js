@@ -5,12 +5,12 @@ module.exports = {
     https://github.com/Shopify/polaris-react/pull/5208
   */
   top: 0,
-  width: '1px !important;',
-  height: '1px !important;',
-  margin: '0 !important;',
-  padding: '0 !important;',
-  overflow: 'hidden !important;',
-  clipPath: 'inset(50%) !important;',
-  border: '0 !important;',
-  whiteSpace: 'nowrap !important;',
+  width: '1px !important',
+  height: '1px !important',
+  margin: '0 !important',
+  padding: '0 !important',
+  overflow: 'hidden !important',
+  clipPath: 'inset(50%) !important',
+  border: '0 !important',
+  whiteSpace: 'nowrap !important',
 };
