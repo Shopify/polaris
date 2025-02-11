@@ -169,6 +169,16 @@ const nextConfig = {
         destination: '/content/fundamentals',
         permanent: true,
       },
+      {
+        source: '/content/voice-and-tone',
+        destination: '/content/fundamentals',
+        permanent: true,
+      },
+      {
+        source: '/content/merchant-to-customer',
+        destination: '/content/fundamentals',
+        permanent: true,
+      },
       ...whatsNew,
       ...actions,
       ...deprecated,
