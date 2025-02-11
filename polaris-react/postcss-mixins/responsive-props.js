@@ -29,7 +29,7 @@ module.exports = (mixin, componentName, componentProp, declarationProp) => {
             var(--pc-${componentName}-${componentProp}-xs)
           )
         )
-      );`,
+      )`,
     },
     '@media (--p-breakpoints-xl-up)': {
       [declarationProp]: `var(
@@ -44,7 +44,7 @@ module.exports = (mixin, componentName, componentProp, declarationProp) => {
             )
           )
         )
-      );`,
+      )`,
     },
   };
 };
