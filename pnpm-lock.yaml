@@ -307,8 +307,8 @@ importers:
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.1)
       '@storybook/addon-toolbars':
-        specifier: ^8.5.1
-        version: 8.5.1(storybook@8.5.1)
+        specifier: ^8.5.6
+        version: 8.5.6(storybook@8.5.1)
       '@storybook/addon-viewport':
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.1)
@@ -5937,10 +5937,10 @@ packages:
       storybook: 8.5.1(prettier@2.8.8)
     dev: true
 
-  /@storybook/addon-toolbars@8.5.1(storybook@8.5.1):
-    resolution: {integrity: sha512-01Odzujfq/g9u1ZTmH/X3I9cCnsNzG/wuyhzFr/T99jerx8QG/U45iYYph2Ytw6A5AtYyCnPYmsTsI+phjUvuA==}
+  /@storybook/addon-toolbars@8.5.6(storybook@8.5.1):
+    resolution: {integrity: sha512-e6wJne/bH0EOnqUCz4SDIYxwuEgDzLOYcJZvcl8aNWfoHTgZBSI/5ai9d23CvM0SFY9dGdKwjEejvdJjwRcK0w==}
     peerDependencies:
-      storybook: ^8.5.1
+      storybook: ^8.5.6
     dependencies:
       storybook: 8.5.1(prettier@2.8.8)
     dev: true
@@ -19557,7 +19557,6 @@ packages:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
-    dev: false
 
   /postinstall-postinstall@2.1.0:
     resolution: {integrity: sha512-7hQX6ZlZXIoRiWNrbMQaLzUUfH+sSx39u8EJ9HYuDc1kLo9IXKWjM5RSquZN1ad5GnH8CGFM78fsAAQi3OKEEQ==}
