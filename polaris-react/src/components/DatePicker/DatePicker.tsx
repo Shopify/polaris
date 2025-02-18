@@ -25,13 +25,15 @@ export interface DatePickerProps {
   /** ID for the element */
   id?: string;
   /** The selected date or range of dates */
-  selected?: Date | Range;
+  selected?: Date | Range | Date[];
   /** The month to show, from 0 to 11. 0 is January, 1 is February ... 11 is December */
   month: number;
   /** The year to show */
   year: number;
   /** Allow a range of dates to be selected */
   allowRange?: boolean;
+  /** Allow multiple dates to be selected */
+  allowMultiple?: boolean;
   /** Disable selecting dates before this. */
   disableDatesBefore?: Date;
   /** Disable selecting dates after this. */
@@ -49,6 +51,8 @@ export interface DatePickerProps {
   dayAccessibilityLabelPrefix?: string;
   /** Callback when date is selected. */
   onChange?(date: Range): void;
+  /** Callback when multiple dates are selected. Only called when allowMultiple is true. */
+  onMultipleDatesChange?(dates: Date[]): void;
   /** Callback when month is changed. */
   onMonthChange?(month: number, year: number): void;
 }
@@ -59,6 +63,7 @@ export function DatePicker({
   month,
   year,
   allowRange,
+  allowMultiple,
   multiMonth,
   disableDatesBefore,
   disableDatesAfter,
@@ -67,10 +72,14 @@ export function DatePicker({
   dayAccessibilityLabelPrefix,
   onMonthChange,
   onChange = noop,
+  onMultipleDatesChange,
 }: DatePickerProps) {
   const i18n = useI18n();
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
+  const [multipleSelectedDates, setMultipleSelectedDates] = useState<Date[]>(
+    Array.isArray(selected) ? (selected as Date[]) : [],
+  );
 
   useEffect(() => {
     setFocusDate(undefined);
@@ -92,14 +101,48 @@ export function DatePicker({
   );
 
   const handleDateSelection = useCallback(
-    (range: Range) => {
-      const {end} = range;
+    (range: Range | Date) => {
+      if (allowMultiple) {
+        const dateToAdd = range instanceof Date ? range : range.start;
+        const existingIndex = multipleSelectedDates.findIndex(
+          (date) => date.getTime() === dateToAdd.getTime(),
+        );
 
-      setHoverDate(end);
-      setFocusDate(new Date(end));
-      onChange(range);
+        let newDates: Date[];
+        if (existingIndex >= 0) {
+          newDates = [...multipleSelectedDates];
+          newDates.splice(existingIndex, 1);
+        } else {
+          newDates = [...multipleSelectedDates, dateToAdd];
+        }
+
+        setMultipleSelectedDates(newDates);
+        setHoverDate(dateToAdd);
+        setFocusDate(dateToAdd);
+
+        if (onMultipleDatesChange) {
+          onMultipleDatesChange(newDates);
+        }
+      } else if (allowRange) {
+        const rangeValue = range instanceof Date ? {start: range, end: range} : range;
+        setHoverDate(rangeValue.end);
+        setFocusDate(new Date(rangeValue.end));
+        onChange(rangeValue);
+      } else {
+        // Single date selection - set start and end to the same date
+        const date = range instanceof Date ? range : range.start;
+        setHoverDate(date);
+        setFocusDate(date);
+        onChange({start: date, end: date});
+      }
     },
-    [onChange],
+    [
+      allowMultiple,
+      allowRange,
+      onChange,
+      onMultipleDatesChange,
+      multipleSelectedDates,
+    ],
   );
 
   const handleMonthChangeClick = useCallback(
@@ -122,7 +165,8 @@ export function DatePicker({
       const {key} = event;
 
       const range = deriveRange(selected);
-      const focusedDate = focusDate || (range && range.start);
+      const focusedDate =
+        focusDate || (Array.isArray(range) ? range[0]?.start : range?.start);
 
       if (focusedDate == null) {
         return;
@@ -145,7 +189,7 @@ export function DatePicker({
 
       if (key === 'ArrowDown') {
         const nextWeek = new Date(focusedDate);
-        nextWeek.setDate(focusedDate.getDate() + 7);
+        nextWeek.setDate(Number(focusedDate.getDate()) + 7);
         if (
           !(
             (disableDatesAfter && isDateAfter(nextWeek, disableDatesAfter)) ||
@@ -159,7 +203,7 @@ export function DatePicker({
 
       if (key === 'ArrowRight') {
         const tomorrow = new Date(focusedDate);
-        tomorrow.setDate(focusedDate.getDate() + 1);
+        tomorrow.setDate(Number(focusedDate.getDate()) + 1);
         if (
           !(
             (disableDatesAfter && isDateAfter(tomorrow, disableDatesAfter)) ||
@@ -196,7 +240,31 @@ export function DatePicker({
     ],
   );
 
-  const showNextYear = getNextDisplayYear(month, year);
+  const monthIsSelected = useMemo(() => {
+    if (!allowMultiple) {
+      return deriveRange(selected as Date | Range);
+    }
+
+    // Convert Date[] to Range[] for multiple selection
+    return multipleSelectedDates.map((date) => ({
+      start: date,
+      end: date,
+    }));
+  }, [selected, allowMultiple, multipleSelectedDates]);
+
+  const firstDatePickerAccessibilityLabelPrefix = allowRange
+    ? i18n.translate(`Polaris.DatePicker.start`)
+    : dayAccessibilityLabelPrefix;
+  const secondDatePickerAccessibilityLabelPrefix = i18n.translate(
+    `Polaris.DatePicker.end`,
+  );
+
+  const accessibilityLabelPrefixes: [string | undefined, string] = [
+    firstDatePickerAccessibilityLabelPrefix,
+    secondDatePickerAccessibilityLabelPrefix,
+  ];
+
+  const showNextYear = getNextDisplayYear(Number(month), year);
   const showNextMonth = getNextDisplayMonth(month);
 
   const showNextToNextYear = getNextDisplayYear(showNextMonth, showNextYear);
@@ -215,19 +283,13 @@ export function DatePicker({
     : i18n.translate(`Polaris.DatePicker.months.${monthName(showNextMonth)}`);
   const nextYear = multiMonth ? showNextToNextYear : showNextYear;
 
-  const monthIsSelected = useMemo(() => deriveRange(selected), [selected]);
-
-  const firstDatePickerAccessibilityLabelPrefix = allowRange
-    ? i18n.translate(`Polaris.DatePicker.start`)
-    : dayAccessibilityLabelPrefix;
-  const secondDatePickerAccessibilityLabelPrefix = i18n.translate(
-    `Polaris.DatePicker.end`,
+  const accessibilityLabel = i18n.translate(
+    'Polaris.DatePicker.previousMonth',
+    {
+      previousMonthName,
+      showPreviousYear,
+    },
   );
-
-  const accessibilityLabelPrefixes: [string | undefined, string] = [
-    firstDatePickerAccessibilityLabelPrefix,
-    secondDatePickerAccessibilityLabelPrefix,
-  ];
 
   const secondDatePicker = multiMonth ? (
     <Month
@@ -243,43 +305,47 @@ export function DatePicker({
       disableDatesAfter={disableDatesAfter}
       disableSpecificDates={disableSpecificDates}
       allowRange={allowRange}
+      allowMultiple={allowMultiple}
       weekStartsOn={weekStartsOn}
       accessibilityLabelPrefixes={accessibilityLabelPrefixes}
     />
   ) : null;
 
-  const datePickerClassName = classNames(styles.DatePicker);
-
   return (
     <div
       id={id}
-      className={datePickerClassName}
-      onKeyDown={handleKeyDown}
+      className={classNames(
+        styles.DatePicker,
+        multiMonth && styles.DatePickerMultiMonth,
+      )}
       onKeyUp={handleKeyUp}
     >
       <div className={styles.Header}>
         <Button
-          variant="tertiary"
-          icon={ArrowLeftIcon}
-          accessibilityLabel={i18n.translate(
-            'Polaris.DatePicker.previousMonth',
-            {
-              previousMonthName,
-              showPreviousYear,
-            },
-          )}
           onClick={() =>
             handleMonthChangeClick(showPreviousMonth, showPreviousYear)
           }
+          disabled={
+            disableDatesBefore != null &&
+            isDateBefore(
+              new Date(showPreviousYear, showPreviousMonth, 1),
+              disableDatesBefore,
+            )
+          }
+          icon={ArrowLeftIcon}
+          accessibilityLabel={accessibilityLabel}
         />
         <Button
-          variant="tertiary"
+          onClick={() => handleMonthChangeClick(showNextMonth, nextYear)}
+          disabled={
+            disableDatesAfter != null &&
+            isDateAfter(new Date(nextYear, showNextMonth, 1), disableDatesAfter)
+          }
           icon={ArrowRightIcon}
           accessibilityLabel={i18n.translate('Polaris.DatePicker.nextMonth', {
             nextMonth,
             nextYear,
           })}
-          onClick={() => handleMonthChangeClick(showNextMonth, showNextYear)}
         />
       </div>
       <div className={styles.MonthLayout}>
@@ -288,7 +354,7 @@ export function DatePicker({
           focusedDate={focusDate}
           month={month}
           year={year}
-          selected={deriveRange(selected)}
+          selected={monthIsSelected}
           hoverDate={hoverDate}
           onChange={handleDateSelection}
           onHover={handleHover}
@@ -296,6 +362,7 @@ export function DatePicker({
           disableDatesAfter={disableDatesAfter}
           disableSpecificDates={disableSpecificDates}
           allowRange={allowRange}
+          allowMultiple={allowMultiple}
           weekStartsOn={weekStartsOn}
           accessibilityLabelPrefixes={accessibilityLabelPrefixes}
         />
@@ -307,20 +374,21 @@ export function DatePicker({
 
 function noop() {}
 
-function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-  const {key} = event;
-
-  if (
-    key === 'ArrowUp' ||
-    key === 'ArrowDown' ||
-    key === 'ArrowLeft' ||
-    key === 'ArrowRight'
-  ) {
-    event.preventDefault();
-    event.stopPropagation();
+function deriveRange(selected?: Date | Range | Date[]) {
+  if (selected == null) {
+    return undefined;
   }
-}
 
-function deriveRange(selected?: Date | Range) {
-  return selected instanceof Date ? {start: selected, end: selected} : selected;
+  if (selected instanceof Date) {
+    return {
+      start: selected,
+      end: selected,
+    };
+  }
+
+  if (Array.isArray(selected)) {
+    return undefined;
+  }
+
+  return selected;
 }
