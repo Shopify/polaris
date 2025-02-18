@@ -313,8 +313,8 @@ importers:
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.1)
       '@storybook/blocks':
-        specifier: ^8.5.1
-        version: 8.5.1(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.1)
+        specifier: ^8.5.6
+        version: 8.5.6(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.1)
       '@storybook/components':
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.1)
@@ -5954,12 +5954,12 @@ packages:
       storybook: 8.5.1(prettier@2.8.8)
     dev: true
 
-  /@storybook/blocks@8.5.1(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.1):
-    resolution: {integrity: sha512-xUjnOa9udmHhlBTZ+bmMHeU1M9a5OnvnX8urQ0TrNpSyHH7HoPd3xZC4fzz73nSJNMVHIYMZYsz2pj/WfeA/hg==}
+  /@storybook/blocks@8.5.6(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.1):
+    resolution: {integrity: sha512-5RL2hnk3y9MX8TxJUY4OxGw0rBuJ8OhuWtBK4DlFug3dRKd/TuOuAfIqVWzV5KybI6LyQLD0GOgt+REqP4YQeA==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.5.1
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      storybook: ^8.5.6
     peerDependenciesMeta:
       react:
         optional: true
@@ -5967,7 +5967,7 @@ packages:
         optional: true
     dependencies:
       '@storybook/csf': 0.1.12
-      '@storybook/icons': 1.3.1(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/icons': 1.3.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       storybook: 8.5.1(prettier@2.8.8)
@@ -6060,8 +6060,8 @@ packages:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
     dev: true
 
-  /@storybook/icons@1.3.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-tgiD2v9v/4sjGOliemoP/8bUe4+ZFpehcqdCVQcPiGZfV0kSBv34Ge+MafeKqM7SLwvGesrbOEOakaogSqGxiQ==}
+  /@storybook/icons@1.3.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-t3xcbCKkPvqyef8urBM0j/nP6sKtnlRkVgC+8JTbTAZQjaTmOjes3byEgzs89p4B/K6cJsg9wLW2k3SknLtYJw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
@@ -19557,7 +19557,6 @@ packages:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
-    dev: false
 
   /postinstall-postinstall@2.1.0:
     resolution: {integrity: sha512-7hQX6ZlZXIoRiWNrbMQaLzUUfH+sSx39u8EJ9HYuDc1kLo9IXKWjM5RSquZN1ad5GnH8CGFM78fsAAQi3OKEEQ==}
