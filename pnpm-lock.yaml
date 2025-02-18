@@ -494,7 +494,7 @@ importers:
         version: 4.0.2
       next:
         specifier: ^14.2.7
-        version: 14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.83.4)
+        version: 14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.0)
       next-mdx-remote:
         specifier: ^4.4.1
         version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -653,8 +653,8 @@ importers:
         specifier: ^0.28.0
         version: 0.28.0(react-dom@18.2.0)(react@18.2.0)
       sass:
-        specifier: ^1.83.4
-        version: 1.83.4
+        specifier: ^1.85.0
+        version: 1.85.0
       satori:
         specifier: ^0.12.1
         version: 0.12.1
@@ -9714,7 +9714,7 @@ packages:
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
-      braces: 3.0.2
+      braces: 3.0.3
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -9728,7 +9728,7 @@ packages:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
     dependencies:
-      readdirp: 4.1.1
+      readdirp: 4.1.2
 
   /chownr@1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
@@ -17698,7 +17698,7 @@ packages:
       - supports-color
     dev: false
 
-  /next@14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.83.4):
+  /next@14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.0):
     resolution: {integrity: sha512-LcO7WnFu6lYSvCzZoo1dB+IO0xXz5uEv52HF1IUN0IqVTUIZGHuuR10I5efiLadGt+4oZqTcNZyVVEem/TM5nA==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -17724,7 +17724,7 @@ packages:
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      sass: 1.83.4
+      sass: 1.85.0
       styled-jsx: 5.1.1(@babel/core@7.24.4)(react@18.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.16
@@ -19557,7 +19557,6 @@ packages:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
-    dev: false
 
   /postinstall-postinstall@2.1.0:
     resolution: {integrity: sha512-7hQX6ZlZXIoRiWNrbMQaLzUUfH+sSx39u8EJ9HYuDc1kLo9IXKWjM5RSquZN1ad5GnH8CGFM78fsAAQi3OKEEQ==}
@@ -20215,8 +20214,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /readdirp@4.1.1:
-    resolution: {integrity: sha512-h80JrZu/MHUZCyHu5ciuoI0+WxsCxzxJTILn6Fs8rxSnFPh+UVHYfeIxK1nVGugMqkfC4vJcBOYbkfkwYK0+gw==}
+  /readdirp@4.1.2:
+    resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
 
   /recast@0.20.5:
@@ -20859,8 +20858,8 @@ packages:
       webpack: 5.98.0(@swc/core@1.10.17)(esbuild@0.24.2)
     dev: true
 
-  /sass@1.83.4:
-    resolution: {integrity: sha512-B1bozCeNQiOgDcLd33e2Cs2U60wZwjUUXzh900ZyQF5qUasvMdDZYbQ566LJu7cqR+sAHlAfO6RMkaID5s6qpA==}
+  /sass@1.85.0:
+    resolution: {integrity: sha512-3ToiC1xZ1Y8aU7+CkgCI/tqyuPXEmYGJXO7H4uqp0xkLXUqp88rQQ4j1HmP37xSJLbCJPaIiv+cT1y+grssrww==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
