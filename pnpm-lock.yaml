@@ -289,8 +289,8 @@ importers:
         specifier: ^3.0.13
         version: 3.0.14
       '@csstools/postcss-global-data':
-        specifier: 2.1.0
-        version: 2.1.0(postcss@8.5.2)
+        specifier: 3.0.0
+        version: 3.0.0(postcss@8.5.2)
       '@shopify/jest-dom-mocks':
         specifier: ^5.2.0
         version: 5.2.0
@@ -3870,9 +3870,9 @@ packages:
       '@csstools/css-tokenizer': 2.2.1
     dev: true
 
-  /@csstools/postcss-global-data@2.1.0(postcss@8.5.2):
-    resolution: {integrity: sha512-n8SoAaapXATQ/fI8c0GVM+VNfvpNo6fN/79GGTjqatEG8bZNh72b2r+KKLVMcQHvRKjDlXxzurxnf6L5nsxDGA==}
-    engines: {node: ^14 || ^16 || >=18}
+  /@csstools/postcss-global-data@3.0.0(postcss@8.5.2):
+    resolution: {integrity: sha512-3dR5+RDhPW1uqPWZUyTBSVn03gGbxzoSyCEpXugy9UMtXeyKjrB84dX3V8eggzooCsX8wcraKehzdouNO+MlsA==}
+    engines: {node: '>=18'}
     peerDependencies:
       postcss: ^8.4
     dependencies:
@@ -19557,7 +19557,6 @@ packages:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
-    dev: false
 
   /postinstall-postinstall@2.1.0:
     resolution: {integrity: sha512-7hQX6ZlZXIoRiWNrbMQaLzUUfH+sSx39u8EJ9HYuDc1kLo9IXKWjM5RSquZN1ad5GnH8CGFM78fsAAQi3OKEEQ==}
