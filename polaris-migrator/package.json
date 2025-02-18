@@ -38,7 +38,7 @@
   "dependencies": {
     "@shopify/polaris-tokens": "^9.4.0",
     "@shopify/stylelint-polaris": "^16.0.5",
-    "chalk": "^4.1.0",
+    "chalk": "^5.4.1",
     "globby": "11.0.1",
     "is-git-clean": "^1.1.0",
     "jscodeshift": "^0.13.1",
