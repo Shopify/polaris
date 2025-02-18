@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.4.1
+
+### Patch Changes
+
+- [#13179](https://github.com/Shopify/polaris/pull/13179) [`a651dac`](https://github.com/Shopify/polaris/commit/a651dac89f9810e2b9a5f3cde39663fb7d4504ab) Thanks [@simonporter007](https://github.com/simonporter007)! - Remove extra semicolons in CSS declarations that were causing duplicate semicolons in the built output
+
 ## 9.4.0
 
 ### Minor Changes
