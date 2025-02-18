@@ -154,8 +154,8 @@ importers:
         specifier: ^20.10.0
         version: 20.12.5
       '@types/vscode':
-        specifier: ^1.96.0
-        version: 1.96.0
+        specifier: ^1.97.0
+        version: 1.97.0
       globby:
         specifier: ^11.1.0
         version: 11.1.0
@@ -8092,8 +8092,8 @@ packages:
     resolution: {integrity: sha512-rFT3ak0/2trgvp4yYZo5iKFEPsET7vKydKF+VRCxlQ9bpheehyAJH89dAkaLEq/j/RZXJIqcgsmPJKUP1Z28HA==}
     dev: true
 
-  /@types/vscode@1.96.0:
-    resolution: {integrity: sha512-qvZbSZo+K4ZYmmDuaodMbAa67Pl6VDQzLKFka6rq+3WUTY4Kro7Bwoi0CuZLO/wema0ygcmpwow7zZfPJTs5jg==}
+  /@types/vscode@1.97.0:
+    resolution: {integrity: sha512-ueE73loeOTe7olaVyqP9mrRI54kVPJifUPjblZo9fYcv1CuVLPOEKEkqW0GkqPC454+nCEoigLWnC2Pp7prZ9w==}
     dev: true
 
   /@types/wait-on@5.3.4:
@@ -10737,8 +10737,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
-      anymatch: 3.1.3
-      braces: 3.0.3
+      anymatch: 3.1.2
+      braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -11478,7 +11478,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.1)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.1
+      semver: 7.5.4
       webpack: 4.46.0
     dev: true
 
@@ -11497,7 +11497,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.1)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.1
+      semver: 7.5.4
       webpack: 5.76.0
     dev: true
 
