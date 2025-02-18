@@ -43,7 +43,7 @@
     "is-git-clean": "^1.1.0",
     "jscodeshift": "^0.13.1",
     "meow": "^9.0.0",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.2",
     "postcss-scss": "^4.0.4",
     "postcss-value-parser": "^4.2.0",
     "stylelint": "^14.15.0"
