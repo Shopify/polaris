@@ -326,13 +326,13 @@ importers:
         version: 8.5.6(storybook@8.5.6)
       '@storybook/react':
         specifier: ^8.5.8
-        version: 8.5.8(@storybook/test@8.5.6)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)(typescript@4.9.3)
+        version: 8.5.8(@storybook/test@8.5.8)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)(typescript@4.9.3)
       '@storybook/react-vite':
         specifier: ^8.5.8
-        version: 8.5.8(@storybook/test@8.5.6)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.5.6)(typescript@4.9.3)(vite@4.5.6)
+        version: 8.5.8(@storybook/test@8.5.8)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.5.6)(typescript@4.9.3)(vite@4.5.6)
       '@storybook/test':
-        specifier: ^8.5.6
-        version: 8.5.6(storybook@8.5.6)
+        specifier: ^8.5.8
+        version: 8.5.8(storybook@8.5.6)
       '@storybook/test-runner':
         specifier: ^0.21.1
         version: 0.21.1(@types/node@20.12.5)(storybook@8.5.6)(ts-node@10.7.0)
@@ -5875,16 +5875,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@storybook/instrumenter@8.5.6(storybook@8.5.6):
-    resolution: {integrity: sha512-uMOOiq/9dFoFhSl3IxuQ+yq4lClkcRtEuB6cPzD/rVCmlh+i//VkHTqFCNrDvpVA21Lsy9NLmnxLHJpBGN3Avg==}
-    peerDependencies:
-      storybook: ^8.5.6
-    dependencies:
-      '@storybook/global': 5.0.0
-      '@vitest/utils': 2.1.9
-      storybook: 8.5.6(prettier@2.8.8)
-    dev: true
-
   /@storybook/instrumenter@8.5.8(storybook@8.5.6):
     resolution: {integrity: sha512-+d5bbnwqcSQlj0wkZo6/1b+8rge70EU2wTq14DO22/VSXa9nm3bwPJlEyqBT7laWmC4DJQWHVJwF/790KjT9yg==}
     peerDependencies:
@@ -5939,7 +5929,7 @@ packages:
       storybook: 8.5.6(prettier@2.8.8)
     dev: true
 
-  /@storybook/react-vite@8.5.8(@storybook/test@8.5.6)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.5.6)(typescript@4.9.3)(vite@4.5.6):
+  /@storybook/react-vite@8.5.8(@storybook/test@8.5.8)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.5.6)(typescript@4.9.3)(vite@4.5.6):
     resolution: {integrity: sha512-Fa3WjqMsY/52p8IHX52IofbvQpoh88cFA/SQ8Q6RUGCNvUVYG/l025pBYbm+PhAkKDQXTirRul9CwA66gGR9zA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -5955,8 +5945,8 @@ packages:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.5.0(typescript@4.9.3)(vite@4.5.6)
       '@rollup/pluginutils': 5.1.4(rollup@3.29.5)
       '@storybook/builder-vite': 8.5.8(storybook@8.5.6)(vite@4.5.6)
-      '@storybook/react': 8.5.8(@storybook/test@8.5.6)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)(typescript@4.9.3)
-      '@storybook/test': 8.5.6(storybook@8.5.6)
+      '@storybook/react': 8.5.8(@storybook/test@8.5.8)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)(typescript@4.9.3)
+      '@storybook/test': 8.5.8(storybook@8.5.6)
       find-up: 5.0.0
       magic-string: 0.30.17
       react: 18.2.0
@@ -5972,7 +5962,7 @@ packages:
       - typescript
     dev: true
 
-  /@storybook/react@8.5.8(@storybook/test@8.5.6)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)(typescript@4.9.3):
+  /@storybook/react@8.5.8(@storybook/test@8.5.8)(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)(typescript@4.9.3):
     resolution: {integrity: sha512-QYgKpInR2FLiJHsRoGKCzNhKTRNjOssbLZVd3B0ZABUee+AjkwE0Pey7x2XaNAcp9PxSjQXEPGu+DlaP4BWw2Q==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -5992,7 +5982,7 @@ packages:
       '@storybook/manager-api': 8.5.8(storybook@8.5.6)
       '@storybook/preview-api': 8.5.8(storybook@8.5.6)
       '@storybook/react-dom-shim': 8.5.8(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)
-      '@storybook/test': 8.5.6(storybook@8.5.6)
+      '@storybook/test': 8.5.8(storybook@8.5.6)
       '@storybook/theming': 8.5.8(storybook@8.5.6)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -6035,22 +6025,6 @@ packages:
       - node-notifier
       - supports-color
       - ts-node
-    dev: true
-
-  /@storybook/test@8.5.6(storybook@8.5.6):
-    resolution: {integrity: sha512-U4HdyAcCwc/ictwq0HWKI6j2NAUggB9ENfyH3baEWaLEI+mp4pzQMuTnOIF9TvqU7K1D5UqOyfs/hlbFxUFysg==}
-    peerDependencies:
-      storybook: ^8.5.6
-    dependencies:
-      '@storybook/csf': 0.1.12
-      '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.5.6(storybook@8.5.6)
-      '@testing-library/dom': 10.4.0
-      '@testing-library/jest-dom': 6.5.0
-      '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
-      '@vitest/expect': 2.0.5
-      '@vitest/spy': 2.0.5
-      storybook: 8.5.6(prettier@2.8.8)
     dev: true
 
   /@storybook/test@8.5.8(storybook@8.5.6):
