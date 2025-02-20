@@ -313,8 +313,8 @@ importers:
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.6)
       '@storybook/blocks':
-        specifier: ^8.5.6
-        version: 8.5.6(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)
+        specifier: ^8.5.8
+        version: 8.5.8(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)
       '@storybook/components':
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.6)
@@ -5758,12 +5758,12 @@ packages:
       storybook: 8.5.6(prettier@2.8.8)
     dev: true
 
-  /@storybook/blocks@8.5.6(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6):
-    resolution: {integrity: sha512-5RL2hnk3y9MX8TxJUY4OxGw0rBuJ8OhuWtBK4DlFug3dRKd/TuOuAfIqVWzV5KybI6LyQLD0GOgt+REqP4YQeA==}
+  /@storybook/blocks@8.5.8(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6):
+    resolution: {integrity: sha512-O6tJDJM83fDm3ZP1+lTf24l7HOTzSRXkkMDD7zB/JHixzlj9p6wI4UQc2lplLadDCa5ya1IwyE7zUDN/0UfC5Q==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      storybook: ^8.5.6
+      storybook: ^8.5.8
     peerDependenciesMeta:
       react:
         optional: true
