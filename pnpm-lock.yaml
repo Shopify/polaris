@@ -313,8 +313,8 @@ importers:
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.6)
       '@storybook/blocks':
-        specifier: ^8.5.6
-        version: 8.5.6(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)
+        specifier: ^8.5.8
+        version: 8.5.8(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6)
       '@storybook/components':
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.6)
@@ -696,7 +696,7 @@ importers:
         version: 0.2.3
       postcss-scss:
         specifier: ^4.0.9
-        version: 4.0.9(postcss@8.5.2)
+        version: 4.0.9(postcss@8.5.3)
       postcss-value-parser:
         specifier: ^4.2.0
         version: 4.2.0
@@ -5758,12 +5758,12 @@ packages:
       storybook: 8.5.6(prettier@2.8.8)
     dev: true
 
-  /@storybook/blocks@8.5.6(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6):
-    resolution: {integrity: sha512-5RL2hnk3y9MX8TxJUY4OxGw0rBuJ8OhuWtBK4DlFug3dRKd/TuOuAfIqVWzV5KybI6LyQLD0GOgt+REqP4YQeA==}
+  /@storybook/blocks@8.5.8(react-dom@18.2.0)(react@18.2.0)(storybook@8.5.6):
+    resolution: {integrity: sha512-O6tJDJM83fDm3ZP1+lTf24l7HOTzSRXkkMDD7zB/JHixzlj9p6wI4UQc2lplLadDCa5ya1IwyE7zUDN/0UfC5Q==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      storybook: ^8.5.6
+      storybook: ^8.5.8
     peerDependenciesMeta:
       react:
         optional: true
@@ -19192,6 +19192,15 @@ packages:
     dependencies:
       postcss: 8.5.2
 
+  /postcss-scss@4.0.9(postcss@8.5.3):
+    resolution: {integrity: sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.4.29
+    dependencies:
+      postcss: 8.5.3
+    dev: false
+
   /postcss-selector-parser@6.0.15:
     resolution: {integrity: sha512-rEYkQOMUCEMhsKbK66tbEU9QVIxbhN18YiniAwA7XQYTVBqrBy+P2p5JcdqsHgKM2zWylp8d7J6eszocfds5Sw==}
     engines: {node: '>=4'}
@@ -19265,6 +19274,15 @@ packages:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  /postcss@8.5.3:
+    resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.8
+      picocolors: 1.1.1
+      source-map-js: 1.2.1
+    dev: false
 
   /postinstall-postinstall@2.1.0:
     resolution: {integrity: sha512-7hQX6ZlZXIoRiWNrbMQaLzUUfH+sSx39u8EJ9HYuDc1kLo9IXKWjM5RSquZN1ad5GnH8CGFM78fsAAQi3OKEEQ==}
