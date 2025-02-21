@@ -334,8 +334,8 @@ importers:
         specifier: ^8.5.8
         version: 8.5.8(storybook@8.5.8)
       '@storybook/test-runner':
-        specifier: ^0.21.2
-        version: 0.21.2(@types/node@20.12.5)(storybook@8.5.8)(ts-node@10.7.0)
+        specifier: ^0.21.3
+        version: 0.21.3(@types/node@20.12.5)(storybook@8.5.8)(ts-node@10.7.0)
       '@storybook/theming':
         specifier: ^8.5.8
         version: 8.5.8(storybook@8.5.8)
@@ -5966,8 +5966,8 @@ packages:
       typescript: 4.9.3
     dev: true
 
-  /@storybook/test-runner@0.21.2(@types/node@20.12.5)(storybook@8.5.8)(ts-node@10.7.0):
-    resolution: {integrity: sha512-Sey5sAU1Z7W62aS1LLYBSOt7H63EHp6piMLFBru6qM0TEtFJI14hiWwOaCkLTg+RkmSqhy9A8uQ8/qwr8qssuA==}
+  /@storybook/test-runner@0.21.3(@types/node@20.12.5)(storybook@8.5.8)(ts-node@10.7.0):
+    resolution: {integrity: sha512-tsorR0IVYElcaTZrT/ZrH/8YDw7c+wrLDN0e3qj1WdbqU8l2IU4+a32HLXaakzdDpuTn+d8xCk4VZMlzMrmToA==}
     engines: {node: ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -9380,8 +9380,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
-      anymatch: 3.1.2
-      braces: 3.0.2
+      anymatch: 3.1.3
+      braces: 3.0.3
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -10108,7 +10108,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.3)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.5.4
+      semver: 7.7.1
       webpack: 4.46.0
     dev: true
 
@@ -10127,7 +10127,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.3)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.5.4
+      semver: 7.7.1
       webpack: 5.76.0
     dev: true
 
