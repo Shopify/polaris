@@ -1,3 +1,4 @@
+import {useRef, useCallback, useEffect, useState} from 'react';
 import {useTOC} from '../../utils/hooks';
 import {className, toPascalCase} from '../../utils/various';
 import Longform from '../Longform';
@@ -29,6 +30,7 @@ function Layout({
   editPageLinkPath,
   children,
 }: Props) {
+  const [TOCTop, setTOCTop] = useState<number | null>(null);
   const [tocItems] = useTOC(children);
   const {asPath} = useRouter();
 
@@ -41,6 +43,21 @@ function Layout({
     : '';
   const isComponentPage = asPath.includes('/components/');
   const componentTitle = toPascalCase(asPath.split('/').pop() ?? '');
+  const TOCWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  const updateTOCTop = useCallback(() => {
+    if (TOCWrapperRef.current) {
+      setTOCTop(TOCWrapperRef.current.getBoundingClientRect().top);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateTOCTop();
+    window.addEventListener('resize', updateTOCTop);
+    return () => {
+      window.removeEventListener('resize', updateTOCTop);
+    };
+  }, [updateTOCTop]);
 
   return (
     <Container className={className(styles.Page, showTOC && styles.showTOC)}>
@@ -73,7 +90,11 @@ function Layout({
         </footer>
       </Box>
       {showTOC && (
-        <div className={styles.TOCWrapper}>
+        <div
+          className={styles.TOCWrapper}
+          ref={TOCWrapperRef}
+          style={{'--toc-top': `${TOCTop}px`} as React.CSSProperties}
+        >
           <TOC items={tocItems} collapsibleTOC={collapsibleTOC} />
         </div>
       )}
