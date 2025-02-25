@@ -494,7 +494,7 @@ importers:
         version: 4.0.2
       next:
         specifier: ^14.2.7
-        version: 14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.0)
+        version: 14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.1)
       next-mdx-remote:
         specifier: ^4.4.1
         version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -653,8 +653,8 @@ importers:
         specifier: ^0.28.0
         version: 0.28.0(react-dom@18.2.0)(react@18.2.0)
       sass:
-        specifier: ^1.85.0
-        version: 1.85.0
+        specifier: ^1.85.1
+        version: 1.85.1
       satori:
         specifier: ^0.12.1
         version: 0.12.1
@@ -12489,7 +12489,7 @@ packages:
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
-      nan: 2.22.0
+      nan: 2.22.1
     dev: true
     optional: true
 
@@ -17300,8 +17300,8 @@ packages:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
     dev: true
 
-  /nan@2.22.0:
-    resolution: {integrity: sha512-nbajikzWTMwsW+eSsNm3QwlOs7het9gGJU5dDZzRTQGk03vyBOauxgI4VakDzE0PtsGTmXPsXTbbjVhRwR5mpw==}
+  /nan@2.22.1:
+    resolution: {integrity: sha512-pfRR4ZcNTSm2ZFHaztuvbICf+hyiG6ecA06SfAxoPmuHjvMu0KUIae7Y8GyVkbBqeEIidsmXeYooWIX9+qjfRQ==}
     requiresBuild: true
     dev: true
     optional: true
@@ -17394,7 +17394,7 @@ packages:
       - supports-color
     dev: false
 
-  /next@14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.0):
+  /next@14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.1):
     resolution: {integrity: sha512-LcO7WnFu6lYSvCzZoo1dB+IO0xXz5uEv52HF1IUN0IqVTUIZGHuuR10I5efiLadGt+4oZqTcNZyVVEem/TM5nA==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -17420,7 +17420,7 @@ packages:
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      sass: 1.85.0
+      sass: 1.85.1
       styled-jsx: 5.1.1(@babel/core@7.24.4)(react@18.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.16
@@ -20543,8 +20543,8 @@ packages:
       webpack: 5.98.0(@swc/core@1.10.18)(esbuild@0.25.0)
     dev: true
 
-  /sass@1.85.0:
-    resolution: {integrity: sha512-3ToiC1xZ1Y8aU7+CkgCI/tqyuPXEmYGJXO7H4uqp0xkLXUqp88rQQ4j1HmP37xSJLbCJPaIiv+cT1y+grssrww==}
+  /sass@1.85.1:
+    resolution: {integrity: sha512-Uk8WpxM5v+0cMR0XjX9KfRIacmSG86RH4DCCZjLU2rFh5tyutt9siAXJ7G+YfxQ99Q6wrRMbMlVl6KqUms71ag==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
