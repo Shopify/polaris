@@ -337,8 +337,8 @@ importers:
         specifier: ^0.21.3
         version: 0.21.3(@types/node@20.12.5)(storybook@8.5.8)(ts-node@10.7.0)
       '@storybook/theming':
-        specifier: ^8.5.8
-        version: 8.5.8(storybook@8.5.8)
+        specifier: ^8.6.0
+        version: 8.6.0(storybook@8.5.8)
       '@types/js-yaml':
         specifier: ^4.0.5
         version: 4.0.5
@@ -6029,6 +6029,14 @@ packages:
 
   /@storybook/theming@8.5.8(storybook@8.5.8):
     resolution: {integrity: sha512-/Rm6BV778sCT+3Ok861VYmw9BlEV5zcCq2zg5TOVuk8HqZw7H7VHtubVsjukEuhveYCs+oF+i2tv/II6jh6jdg==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.5.8(prettier@2.8.8)
+    dev: true
+
+  /@storybook/theming@8.6.0(storybook@8.5.8):
+    resolution: {integrity: sha512-te7dl0ZXnEyKS4LW+QHc3MP7nurWhWhmClY7G2WKNW9eHenb9zvXkcAQt6c4OWhrJi01CAYoXmZNJP0jEzxRRQ==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
