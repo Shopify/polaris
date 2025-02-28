@@ -319,8 +319,8 @@ importers:
         specifier: ^8.6.0
         version: 8.6.0(storybook@8.6.0)
       '@storybook/manager-api':
-        specifier: ^8.6.0
-        version: 8.6.0(storybook@8.6.0)
+        specifier: ^8.6.2
+        version: 8.6.2(storybook@8.6.0)
       '@storybook/preview-api':
         specifier: ^8.6.0
         version: 8.6.0(storybook@8.6.0)
@@ -5873,6 +5873,14 @@ packages:
 
   /@storybook/manager-api@8.6.0(storybook@8.6.0):
     resolution: {integrity: sha512-ddBibYrO3yQCdtZBqQYqfABjR9eS+llvt2NFDajfyQw+zmuNIZfw4BDGKH1WHE4wm/kXmlFFhPHXaHgAPTRPfQ==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.6.0(prettier@2.8.8)
+    dev: true
+
+  /@storybook/manager-api@8.6.2(storybook@8.6.0):
+    resolution: {integrity: sha512-75yx3xSDRU1B4dsf2OSJev7VAvR+6SjWUExENmMGXa0PpoO0MBZqMKdIufKMPsRtw77ugKGfS04MWt4yc5lgRQ==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
@@ -12482,7 +12490,7 @@ packages:
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
-      nan: 2.22.1
+      nan: 2.22.2
     dev: true
     optional: true
 
@@ -17293,8 +17301,8 @@ packages:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
     dev: true
 
-  /nan@2.22.1:
-    resolution: {integrity: sha512-pfRR4ZcNTSm2ZFHaztuvbICf+hyiG6ecA06SfAxoPmuHjvMu0KUIae7Y8GyVkbBqeEIidsmXeYooWIX9+qjfRQ==}
+  /nan@2.22.2:
+    resolution: {integrity: sha512-DANghxFkS1plDdRsX0X9pm0Z6SJNN6gBdtXfanwoZ8hooC5gosGFSBGRYHUVPz1asKA/kMRqDRdHrluZ61SpBQ==}
     requiresBuild: true
     dev: true
     optional: true
@@ -21969,8 +21977,8 @@ packages:
       webpack: 5.76.0
     dev: true
 
-  /terser-webpack-plugin@5.3.11(@swc/core@1.10.18)(esbuild@0.25.0)(webpack@5.98.0):
-    resolution: {integrity: sha512-RVCsMfuD0+cTt3EwX8hSl2Ks56EbFHWmhluwcqoPKtBnfjiT6olaq7PRIRfhyU8nnC2MrnDrBLfrD/RGE+cVXQ==}
+  /terser-webpack-plugin@5.3.12(@swc/core@1.10.18)(esbuild@0.25.0)(webpack@5.98.0):
+    resolution: {integrity: sha512-jDLYqo7oF8tJIttjXO6jBY5Hk8p3A8W4ttih7cCEq64fQFWmgJ4VqAQjKr7WwIDlmXKEc6QeoRb5ecjZ+2afcg==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@swc/core': '*'
@@ -21995,8 +22003,8 @@ packages:
       webpack: 5.98.0(@swc/core@1.10.18)(esbuild@0.25.0)
     dev: true
 
-  /terser-webpack-plugin@5.3.11(webpack@5.98.0):
-    resolution: {integrity: sha512-RVCsMfuD0+cTt3EwX8hSl2Ks56EbFHWmhluwcqoPKtBnfjiT6olaq7PRIRfhyU8nnC2MrnDrBLfrD/RGE+cVXQ==}
+  /terser-webpack-plugin@5.3.12(webpack@5.98.0):
+    resolution: {integrity: sha512-jDLYqo7oF8tJIttjXO6jBY5Hk8p3A8W4ttih7cCEq64fQFWmgJ4VqAQjKr7WwIDlmXKEc6QeoRb5ecjZ+2afcg==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@swc/core': '*'
@@ -23511,7 +23519,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 4.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.11(webpack@5.98.0)
+      terser-webpack-plugin: 5.3.12(webpack@5.98.0)
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -23550,7 +23558,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 4.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.11(@swc/core@1.10.18)(esbuild@0.25.0)(webpack@5.98.0)
+      terser-webpack-plugin: 5.3.12(@swc/core@1.10.18)(esbuild@0.25.0)(webpack@5.98.0)
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
