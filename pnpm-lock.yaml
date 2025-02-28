@@ -307,8 +307,8 @@ importers:
         specifier: ^8.6.0
         version: 8.6.0(storybook@8.6.0)
       '@storybook/addon-toolbars':
-        specifier: ^8.6.0
-        version: 8.6.0(storybook@8.6.0)
+        specifier: ^8.6.2
+        version: 8.6.2(storybook@8.6.0)
       '@storybook/addon-viewport':
         specifier: ^8.6.0
         version: 8.6.0(storybook@8.6.0)
@@ -5741,10 +5741,10 @@ packages:
       storybook: 8.6.0(prettier@2.8.8)
     dev: true
 
-  /@storybook/addon-toolbars@8.6.0(storybook@8.6.0):
-    resolution: {integrity: sha512-Mg0V9RrnDt/IQe+zjggGS+4Otkv4YFqyjL/ygwnV6aKGgzL5zFpC+5rf8MeBEvNeol9+THC/XltN/Xf+jbtLEQ==}
+  /@storybook/addon-toolbars@8.6.2(storybook@8.6.0):
+    resolution: {integrity: sha512-rfUSMacIfGwPoYYeVro+3I5C3qNy0MgB+qJ16ejuTLTlx4ji0icAOckILmPmhIT577KqIQBo1R2sB+oMVzK9+w==}
     peerDependencies:
-      storybook: ^8.6.0
+      storybook: ^8.6.2
     dependencies:
       storybook: 8.6.0(prettier@2.8.8)
     dev: true
