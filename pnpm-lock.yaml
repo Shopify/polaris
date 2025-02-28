@@ -337,8 +337,8 @@ importers:
         specifier: ^0.21.3
         version: 0.21.3(@types/node@20.12.5)(storybook@8.6.0)(ts-node@10.7.0)
       '@storybook/theming':
-        specifier: ^8.6.0
-        version: 8.6.0(storybook@8.6.0)
+        specifier: ^8.6.2
+        version: 8.6.2(storybook@8.6.0)
       '@types/js-yaml':
         specifier: ^4.0.5
         version: 4.0.5
