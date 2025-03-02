@@ -10,6 +10,7 @@ import type {ButtonProps} from '../../../Button';
 export interface BulkActionsMenuProps extends MenuGroupDescriptor {
   isNewBadgeInBadgeActions: boolean;
   size?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
+  animationDelayIndex?: number;
 }
 
 export function BulkActionMenu({
@@ -17,6 +18,7 @@ export function BulkActionMenu({
   actions,
   isNewBadgeInBadgeActions,
   size,
+  animationDelayIndex,
 }: BulkActionsMenuProps) {
   const {value: isVisible, toggle: toggleMenuVisibility} = useToggle(false);
 
@@ -32,6 +34,7 @@ export function BulkActionMenu({
             content={title}
             indicator={isNewBadgeInBadgeActions}
             size={size}
+            animationDelayIndex={animationDelayIndex}
           />
         }
         onClose={toggleMenuVisibility}
