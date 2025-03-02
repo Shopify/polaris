@@ -1,5 +1,31 @@
 # Changelog
 
+## 13.9.3
+
+### Patch Changes
+
+- [#13179](https://github.com/Shopify/polaris/pull/13179) [`a651dac`](https://github.com/Shopify/polaris/commit/a651dac89f9810e2b9a5f3cde39663fb7d4504ab) Thanks [@simonporter007](https://github.com/simonporter007)! - Remove extra semicolons in CSS declarations that were causing duplicate semicolons in the built output
+
+- Updated dependencies [[`a651dac`](https://github.com/Shopify/polaris/commit/a651dac89f9810e2b9a5f3cde39663fb7d4504ab)]:
+  - @shopify/polaris-tokens@9.4.1
+
+## 13.9.2
+
+### Patch Changes
+
+- [#12967](https://github.com/Shopify/polaris/pull/12967) [`50246bbbd0455c30c6950b08c93ac7f7d1811fc0`](https://github.com/Shopify/polaris/commit/50246bbbd0455c30c6950b08c93ac7f7d1811fc0) Thanks [@moraleslevi](https://github.com/moraleslevi)! - CalloutCard dismiss button improvements:
+
+  - Use tertiary button variant
+  - Use regular sized X icon
+  - Adjust position to match Banner
+  - Add translated label
+
+## 13.9.1
+
+### Patch Changes
+
+- [#12824](https://github.com/Shopify/polaris/pull/12824) [`85c5bb7b4`](https://github.com/Shopify/polaris/commit/85c5bb7b4d96bdf72a246bf996975c7071c40085) Thanks [@moraleslevi](https://github.com/moraleslevi)! - Fix hydration issues with SSR
+
 ## 13.9.0
 
 ### Minor Changes

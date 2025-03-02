@@ -1,0 +1,83 @@
+name: Dependabot auto-merge
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+
+  workflow_run:
+    workflows: ['*', '!changelog']
+    types:
+      - completed
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == 'neutral')
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Enable auto-merge for Dependabot PRs
+        if: ${{ steps.metadata.outputs.update-type != 'version-update:semver-major' }}
+        uses: actions/github-script@v7
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          script: |
+            const getPullRequestIdQuery = `query GetPullRequestId($owner: String!, $repo: String!, $pullRequestNumber: Int!) {
+              repository(owner: $owner, name: $repo) {
+                pullRequest(number: $pullRequestNumber) {
+                  id
+                }
+              }
+            }`
+
+            const repoInfo = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pullRequestNumber: context.issue.number,
+            }
+
+            const response = await github.graphql(getPullRequestIdQuery, repoInfo)
+
+            await github.rest.pulls.createReview({
+              pull_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              event: 'APPROVE',
+            })
+
+            const enableAutoMergeQuery = `mutation ($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+              enablePullRequestAutoMerge(input: {
+                pullRequestId: $pullRequestId,
+                mergeMethod: $mergeMethod
+              }) {
+                pullRequest {
+                  autoMergeRequest {
+                    enabledAt
+                    enabledBy {
+                      login
+                    }
+                  }
+                }
+              }
+            }`
+
+            const data = {
+              pullRequestId: response.repository.pullRequest.id,
+              mergeMethod: 'SQUASH',
+            }
+
+            try {
+              await github.graphql(enableAutoMergeQuery, data)
+            } catch (error) {
+              console.error('Error enabling auto-merge:', error)
+            }

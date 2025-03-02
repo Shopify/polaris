@@ -1,7 +1,8 @@
 import React from 'react';
-import {XSmallIcon} from '@shopify/polaris-icons';
+import {XIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import type {IconableAction} from '../../types';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
@@ -37,6 +38,7 @@ export function CalloutCard({
   secondaryAction,
   onDismiss,
 }: CalloutCardProps) {
+  const i18n = useI18n();
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {
@@ -56,10 +58,10 @@ export function CalloutCard({
   const dismissButton = onDismiss ? (
     <div className={styles.Dismiss}>
       <Button
-        variant="plain"
-        icon={XSmallIcon}
+        variant="tertiary"
+        icon={XIcon}
         onClick={onDismiss}
-        accessibilityLabel="Dismiss card"
+        accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
       />
     </div>
   ) : null;

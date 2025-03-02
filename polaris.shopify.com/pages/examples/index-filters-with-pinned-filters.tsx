@@ -191,7 +191,7 @@ function IndexFiltersWithPinnedFiltersExample() {
           allowMultiple
         />
       ),
-      shortcut: true,
+      pinned: true,
     },
     {
       key: 'taggedWith',
@@ -205,7 +205,7 @@ function IndexFiltersWithPinnedFiltersExample() {
           labelHidden
         />
       ),
-      shortcut: true,
+      pinned: true,
     },
     {
       key: 'moneySpent',

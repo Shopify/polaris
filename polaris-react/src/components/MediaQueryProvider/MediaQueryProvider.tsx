@@ -13,9 +13,7 @@ interface Props {
 export const MediaQueryProvider = function MediaQueryProvider({
   children,
 }: Props) {
-  const [isNavigationCollapsed, setIsNavigationCollapsed] = useState(
-    navigationBarCollapsed().matches,
-  );
+  const [isNavigationCollapsed, setIsNavigationCollapsed] = useState(false);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleResize = useCallback(
