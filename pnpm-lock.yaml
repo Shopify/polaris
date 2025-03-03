@@ -325,8 +325,8 @@ importers:
         specifier: ^8.6.3
         version: 8.6.3(storybook@8.6.2)
       '@storybook/react':
-        specifier: ^8.6.2
-        version: 8.6.2(@storybook/test@8.6.3)(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.2)(typescript@4.9.3)
+        specifier: ^8.6.3
+        version: 8.6.3(@storybook/test@8.6.3)(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.2)(typescript@4.9.3)
       '@storybook/react-vite':
         specifier: ^8.6.3
         version: 8.6.3(@storybook/test@8.6.3)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.6.2)(typescript@4.9.3)(vite@4.5.6)
@@ -5879,24 +5879,8 @@ packages:
       storybook: 8.6.2(prettier@2.8.8)
     dev: true
 
-  /@storybook/manager-api@8.6.2(storybook@8.6.2):
-    resolution: {integrity: sha512-75yx3xSDRU1B4dsf2OSJev7VAvR+6SjWUExENmMGXa0PpoO0MBZqMKdIufKMPsRtw77ugKGfS04MWt4yc5lgRQ==}
-    peerDependencies:
-      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
-    dependencies:
-      storybook: 8.6.2(prettier@2.8.8)
-    dev: true
-
   /@storybook/manager-api@8.6.3(storybook@8.6.2):
     resolution: {integrity: sha512-7m9MQELc6XpuKIuliqMiQWzl8yVWpUDwTcpr+rTT7l3OfRzw7Y00UFct2tI03YG6EXsxsykw8EmueMQhe0lG5Q==}
-    peerDependencies:
-      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
-    dependencies:
-      storybook: 8.6.2(prettier@2.8.8)
-    dev: true
-
-  /@storybook/preview-api@8.6.2(storybook@8.6.2):
-    resolution: {integrity: sha512-hkKmQ9OWlCpS2mHYsuWTbXMfeLx90fiWdUblTBIUQnj8VLhSbNtmeBZdZRkz33uYHFkAqZ3F2nQ9I2iTv8AmwA==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
@@ -5908,18 +5892,6 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
-      storybook: 8.6.2(prettier@2.8.8)
-    dev: true
-
-  /@storybook/react-dom-shim@8.6.2(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.2):
-    resolution: {integrity: sha512-8VTAaYtvtP3dx9AXk2lMTQ/o/hTBpL/a6C48JYWhfbU1UO6O0B4PUGADFJ8XWzobXRkTm7CR3RGLzA2oYgWxdA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.6.2
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
       storybook: 8.6.2(prettier@2.8.8)
     dev: true
 
@@ -5966,34 +5938,6 @@ packages:
       - rollup
       - supports-color
       - typescript
-    dev: true
-
-  /@storybook/react@8.6.2(@storybook/test@8.6.3)(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.2)(typescript@4.9.3):
-    resolution: {integrity: sha512-f6mS9nydU2KGY3nIvu4WVUFmJNEjzmFLj86iznO9CK/pELH53e4RjuzXgIqfWIGxBpR0QyFMdwyWjaOB5ZKr7Q==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      '@storybook/test': 8.6.2
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.6.2
-      typescript: '>= 4.2.x'
-    peerDependenciesMeta:
-      '@storybook/test':
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@storybook/components': 8.6.2(storybook@8.6.2)
-      '@storybook/global': 5.0.0
-      '@storybook/manager-api': 8.6.2(storybook@8.6.2)
-      '@storybook/preview-api': 8.6.2(storybook@8.6.2)
-      '@storybook/react-dom-shim': 8.6.2(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.2)
-      '@storybook/test': 8.6.3(storybook@8.6.2)
-      '@storybook/theming': 8.6.2(storybook@8.6.2)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      storybook: 8.6.2(prettier@2.8.8)
-      typescript: 4.9.3
     dev: true
 
   /@storybook/react@8.6.3(@storybook/test@8.6.3)(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.2)(typescript@4.9.3):
@@ -9449,8 +9393,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
-      anymatch: 3.1.3
-      braces: 3.0.3
+      anymatch: 3.1.2
+      braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -10177,7 +10121,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.3)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.1
+      semver: 7.5.4
       webpack: 4.46.0
     dev: true
 
@@ -10196,7 +10140,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.3)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.1
+      semver: 7.5.4
       webpack: 5.76.0
     dev: true
 
