@@ -1,0 +1,57 @@
+---
+title: Designing for mobile
+description: Shopify's admin experience adapts for mobile, whether it is reponsive within the browser or as a WebView via the native app. 
+order: 4
+icon: MobileIcon
+---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+## Mobile approaches
+On mobile, the Shopify admin utilizes three main approaches: responsive mobile web, native apps built with React Native, and WebViews accessible within the native app. 
+ 
+Most designers at Shopify focus on creating WebViews using a technology stack called [MobileBridge](https://vault.shopify.io/gsd/projects/43312). The MobileBridge project is dedicated to enhancing the mobile 
+experience by improving modal capabilities and page titles, making Shopify WebViews feel more native. This involves extracting MobileBridge from the main Shopify app 
+to allow other applications, like POS and Balance, to leverage its features. 
+ 
+By using Polaris and Web components, MobileBridge ensures proper rendering in mobile environments and simulates native navigation for a seamless user experience. 
+This approach not only enhances the user experience but also supports the integration of Shopify's mobile ecosystem across various applications.
+
+
+
+ 
+    ## Designing with MobileBridge
+
+    **Navigation**
+
+    MobileBridge establishes standard state-based patterns for the top title bar navigation UI on all screens and sheets. Determining which pattern to use 
+    is as simple as following the decision tree below.
+    
+ 
+<Large>
+  ![Navigaion flow chart to determine states](/images/design/mobile/navigational-patterns@2x.png)
+</Large>
+
+ 
+  States in action can be seen here. You can learn more on the 
+  [MobileBridge vault page](https://vault.shopify.io/page/Clean-dirty-states~ysiD.md) and get access to the  components the [Mobile Native Figma Library](https://www.figma.com/design/Jiogjcxw2JRAzk7ggMUboK/Mobile-Polaris---v2-Components?m=auto&node-id=1059-30754&t=XgXohENfHp1d7e28-1). 
+ 
+
+<Large>
+  ![mobile navigation bars in clean and dirty states](/images/design/mobile/mobile-states@2x.png)
+</Large>
+
+ 
+  **Content area**
+
+  The content area is what you see above, this is where the WebView appears. The only real difference between the WebView and responsive mobile web is around navigation. 
+
+On the left is the Edit order screen through a browser and on the right the MobileBridge WebView, notice the Page navigation component.
+ 
+
+  <Large>
+    ![Examples of mobile web and a WebView](/images/design/mobile/content-examples-mobile@2x.png)
+  </Large>
+ 
