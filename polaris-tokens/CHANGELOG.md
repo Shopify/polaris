@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.4.2
+
+### Patch Changes
+
+- [#13318](https://github.com/Shopify/polaris/pull/13318) [`cdb617a`](https://github.com/Shopify/polaris/commit/cdb617a9624215836e25975cc4c371b941e6178a) Thanks [@alex-page](https://github.com/alex-page)! - Add provenance statement
+
 ## 9.4.1
 
 ### Patch Changes
