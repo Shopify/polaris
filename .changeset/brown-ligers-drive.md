@@ -4,7 +4,7 @@
 '@shopify/polaris-migrator': patch
 '@shopify/polaris': patch
 '@shopify/polaris-tokens': patch
-'polaris.shopify.com-get-props': patch
+'polaris.shopify.com': patch
 '@shopify/stylelint-polaris': patch
 ---
 
