@@ -319,8 +319,8 @@ importers:
         specifier: ^8.6.2
         version: 8.6.2(storybook@8.6.2)
       '@storybook/manager-api':
-        specifier: ^8.6.2
-        version: 8.6.2(storybook@8.6.2)
+        specifier: ^8.6.3
+        version: 8.6.3(storybook@8.6.2)
       '@storybook/preview-api':
         specifier: ^8.6.2
         version: 8.6.2(storybook@8.6.2)
