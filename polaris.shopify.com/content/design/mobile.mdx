@@ -10,48 +10,46 @@ icon: MobileIcon
 <Lede>{frontmatter.description}</Lede>
 
 ## Mobile approaches
-On mobile, the Shopify admin utilizes three main approaches: responsive mobile web, native apps built with React Native, and WebViews accessible within the native app. 
+There are two ways that Polaris components can show up on mobile devices:
+        1. Within a mobile browser such as Chrome of Safari
+        2. Within [WebViews](https://developer.apple.com/design/human-interface-guidelines/web-views) inside the Shopify App via [MobileBridge](https://vault.shopify.io/gsd/projects/43312).
+
+Merchants use the Shopify apps on iOS and Android far more than using the browser on their mobile device. Because of this, we recommend mocking up your experiences as WebViews rather than within the mobile browser.
+
+
+## What is a WebView?
  
-Most designers at Shopify focus on creating WebViews using a technology stack called [MobileBridge](https://vault.shopify.io/gsd/projects/43312). The MobileBridge project is dedicated to enhancing the mobile 
-experience by improving modal capabilities and page titles, making Shopify WebViews feel more native. This involves extracting MobileBridge from the main Shopify app 
-to allow other applications, like POS and Balance, to leverage its features. 
- 
-By using Polaris and Web components, MobileBridge ensures proper rendering in mobile environments and simulates native navigation for a seamless user experience. 
-This approach not only enhances the user experience but also supports the integration of Shopify's mobile ecosystem across various applications.
+ A WebView is a way in which we can show web content, in this case the Admin, inside the native Shopify App without having to rewrite things using native code. It is similar to an iframe. Doing this allows us to build most things once and ship it to both the web and our native applications on iOS and Android. 
 
+    **Content area**
 
-
- 
-    ## Designing with MobileBridge
-
-    **Navigation**
-
-    MobileBridge establishes standard state-based patterns for the top title bar navigation UI on all screens and sheets. Determining which pattern to use 
-    is as simple as following the decision tree below.
+The main content area of an Admin page is what makes up a WebView. The TopBar, Navigation and Page components all get removed in favor of their native counterparts.
     
  
 <Large>
-  ![Navigaion flow chart to determine states](/images/design/mobile/navigational-patterns@2x.png)
+  ![The main content area of an Admin page is what makes up a WebView](/images/design/mobile/content-area@2x.png)
 </Large>
 
  
-  States in action can be seen here. You can learn more on the 
-  [MobileBridge vault page](https://vault.shopify.io/page/Clean-dirty-states~ysiD.md) and get access to the  components the [Mobile Native Figma Library](https://www.figma.com/design/Jiogjcxw2JRAzk7ggMUboK/Mobile-Polaris---v2-Components?m=auto&node-id=1059-30754&t=XgXohENfHp1d7e28-1). 
- 
+## MobileBridge
+
+MobileBridge is a Shopify technology that allows us to not just use WebViews, but make them feel native, giving merchants a more consistent and high quality experience.
+
+    **Navigation**
+
+    The Shopify App uses standard navigation patterns for the Title Bar all screens and sheets. Determining which pattern to use is as simple as following the decision tree below. You can see all the variants in the [Mobile Native Figma Library](https://www.figma.com/design/Jiogjcxw2JRAzk7ggMUboK/Mobile-Polaris---v2-Components?node-id=50-187&p=f&t=TRz9CStlTreFneT2-11).
 
 <Large>
-  ![mobile navigation bars in clean and dirty states](/images/design/mobile/mobile-states@2x.png)
+  ![mobile navigation bars in clean and dirty states](/images/design/mobile/navigational-patterns@2x.png)
 </Large>
 
  
-  **Content area**
+  **Modals**
 
-  The content area is what you see above, this is where the WebView appears. The only real difference between the WebView and responsive mobile web is around navigation. 
-
-On the left is the Edit order screen through a browser and on the right the MobileBridge WebView, notice the Page navigation component.
+  A main area we leverage this is in Modals. MobileBridge allows us to take the content of a modal and place it inside of a native Sheet, making the experience feel fast and native for merchants. Actions and navigation can be mapped to the native controls and using native patterns.
  
 
   <Large>
-    ![Examples of mobile web and a WebView](/images/design/mobile/content-examples-mobile@2x.png)
+    ![Examples of mobile web and a WebView](/images/design/mobile/modal-frame@2x.png)
   </Large>
  
