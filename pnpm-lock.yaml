@@ -319,8 +319,8 @@ importers:
         specifier: ^8.6.4
         version: 8.6.4(storybook@8.6.3)
       '@storybook/manager-api':
-        specifier: ^8.6.3
-        version: 8.6.3(storybook@8.6.3)
+        specifier: ^8.6.4
+        version: 8.6.4(storybook@8.6.3)
       '@storybook/preview-api':
         specifier: ^8.6.4
         version: 8.6.4(storybook@8.6.3)
@@ -5891,6 +5891,14 @@ packages:
 
   /@storybook/manager-api@8.6.3(storybook@8.6.3):
     resolution: {integrity: sha512-7m9MQELc6XpuKIuliqMiQWzl8yVWpUDwTcpr+rTT7l3OfRzw7Y00UFct2tI03YG6EXsxsykw8EmueMQhe0lG5Q==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.6.3(prettier@2.8.8)
+    dev: true
+
+  /@storybook/manager-api@8.6.4(storybook@8.6.3):
+    resolution: {integrity: sha512-w/Nn/VznfbIg2oezDfzZNwSTDY5kBZbzxVBHLCnIcyu2AKt2Yto3pfGi60SikFcTrsClaAKT7D92kMQ9qdQNQQ==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
