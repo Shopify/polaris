@@ -316,8 +316,8 @@ importers:
         specifier: ^8.6.3
         version: 8.6.3(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.3)
       '@storybook/components':
-        specifier: ^8.6.3
-        version: 8.6.3(storybook@8.6.3)
+        specifier: ^8.6.4
+        version: 8.6.4(storybook@8.6.3)
       '@storybook/manager-api':
         specifier: ^8.6.3
         version: 8.6.3(storybook@8.6.3)
@@ -5792,6 +5792,14 @@ packages:
 
   /@storybook/components@8.6.3(storybook@8.6.3):
     resolution: {integrity: sha512-q5DQkV+E/j0KfF818RywgqEHjaZTg71q5YY4z0UO8CRSzDQ/VYF6L76oc69corbkJtYAk/GqaYJllzrWykS4sg==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.6.3(prettier@2.8.8)
+    dev: true
+
+  /@storybook/components@8.6.4(storybook@8.6.3):
+    resolution: {integrity: sha512-91VEVFWOgHkEFoNFMk6gs1AuOE9Yp7N283BXQOW+AgP+atpzED6t/fIBPGqJ2ewAuzLJ+cFOrasSzoNwVfg3Jg==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
