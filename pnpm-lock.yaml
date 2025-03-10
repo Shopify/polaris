@@ -347,7 +347,7 @@ importers:
         version: 20.12.5
       axe-playwright:
         specifier: ^2.1.0
-        version: 2.1.0(playwright@1.50.1)
+        version: 2.1.0(playwright@1.51.0)
       babel-core:
         specifier: 7.0.0-bridge.0
         version: 7.0.0-bridge.0(@babel/core@7.26.9)
@@ -490,8 +490,8 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1
       nanoid:
-        specifier: ^4.0.2
-        version: 4.0.2
+        specifier: ^5.1.3
+        version: 5.1.3
       next:
         specifier: ^14.2.7
         version: 14.2.16(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.1)
@@ -5692,7 +5692,7 @@ packages:
       escape-string-regexp: 4.0.0
       file-loader: 6.2.0(webpack@4.46.0)
       mkdirp: 1.0.4
-      nanoid: 3.3.8
+      nanoid: 3.3.9
       optimize-css-assets-webpack-plugin: 6.0.1(webpack@4.46.0)
       pnp-webpack-plugin: 1.7.0(typescript@4.9.3)
       size-limit: 5.0.5
@@ -8199,7 +8199,7 @@ packages:
       mustache: 4.2.0
     dev: true
 
-  /axe-playwright@2.1.0(playwright@1.50.1):
+  /axe-playwright@2.1.0(playwright@1.51.0):
     resolution: {integrity: sha512-tY48SX56XaAp16oHPyD4DXpybz8Jxdz9P7exTjF/4AV70EGUavk+1fUPWirM0OYBR+YyDx6hUeDvuHVA6fB9YA==}
     peerDependencies:
       playwright: '>1.0.0'
@@ -8209,7 +8209,7 @@ packages:
       axe-html-reporter: 2.2.11(axe-core@4.10.2)
       junit-report-builder: 5.1.1
       picocolors: 1.1.1
-      playwright: 1.50.1
+      playwright: 1.51.0
     dev: true
 
   /axios@0.18.1:
@@ -10423,8 +10423,8 @@ packages:
       character-entities: 2.0.1
     dev: false
 
-  /decode-named-character-reference@1.0.2:
-    resolution: {integrity: sha512-O8x12RzrUF8xyVcY0KJowWsmaJxQbmy0/EtnNtHRpsOcT7dFk5W598coHqBVpmWo1oQQfsCqfCmkZN5DJrZVdg==}
+  /decode-named-character-reference@1.1.0:
+    resolution: {integrity: sha512-Wy+JTSbFThEOXQIR2L6mxJvEs+veIzpmqD7ynWxMXGpnk3smkHQOp6forLdHsKpAMW9iJpaBBIxz285t1n1C3w==}
     dependencies:
       character-entities: 2.0.2
     dev: false
@@ -16172,7 +16172,7 @@ packages:
     dependencies:
       '@types/mdast': 3.0.15
       '@types/unist': 2.0.11
-      decode-named-character-reference: 1.0.2
+      decode-named-character-reference: 1.1.0
       mdast-util-to-string: 3.2.0
       micromark: 3.2.0
       micromark-util-decode-numeric-character-reference: 1.1.0
@@ -16490,7 +16490,7 @@ packages:
   /micromark-core-commonmark@1.1.0:
     resolution: {integrity: sha512-BgHO1aRbolh2hcrzL2d1La37V0Aoz73ymF8rAcKnohLy93titmv62E0gP8Hrx9PKcKrqCZ1BbLGbP3bEhoXYlw==}
     dependencies:
-      decode-named-character-reference: 1.0.2
+      decode-named-character-reference: 1.1.0
       micromark-factory-destination: 1.1.0
       micromark-factory-label: 1.1.0
       micromark-factory-space: 1.1.0
@@ -16831,7 +16831,7 @@ packages:
   /micromark-util-decode-string@1.1.0:
     resolution: {integrity: sha512-YphLGCK8gM1tG1bd54azwyrQRjCFcmgj2S2GoJDNnh4vYtnL38JS8M4gpxzOPNyHdNEpheyWXCTnnTDY3N+NVQ==}
     dependencies:
-      decode-named-character-reference: 1.0.2
+      decode-named-character-reference: 1.1.0
       micromark-util-character: 1.2.0
       micromark-util-decode-numeric-character-reference: 1.1.0
       micromark-util-symbol: 1.1.0
@@ -16968,7 +16968,7 @@ packages:
     dependencies:
       '@types/debug': 4.1.12
       debug: 4.4.0
-      decode-named-character-reference: 1.0.2
+      decode-named-character-reference: 1.1.0
       micromark-core-commonmark: 1.1.0
       micromark-factory-space: 1.1.0
       micromark-util-character: 1.2.0
@@ -17330,9 +17330,14 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /nanoid@4.0.2:
-    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
-    engines: {node: ^14 || ^16 || >=18}
+  /nanoid@3.3.9:
+    resolution: {integrity: sha512-SppoicMGpZvbF1l3z4x7No3OlIjP7QJvC9XR7AhZr1kL133KHnKPztkKDc+Ir4aJ/1VhTySrtKhrsycmrMQfvg==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
+  /nanoid@5.1.3:
+    resolution: {integrity: sha512-zAbEOEr7u2CbxwoMRlz/pNSpRP0FdAU4pRaYunCdEezWohXFs+a0Xw7RfkKaezMsmSM1vttcLthJtwRnVtOfHQ==}
+    engines: {node: ^18 || >=20}
     hasBin: true
     dev: false
 
@@ -18668,12 +18673,28 @@ packages:
     hasBin: true
     dev: true
 
+  /playwright-core@1.51.0:
+    resolution: {integrity: sha512-x47yPE3Zwhlil7wlNU/iktF7t2r/URR3VLbH6EknJd/04Qc/PSJ0EY3CMXipmglLG+zyRxW6HNo2EGbKLHPWMg==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dev: true
+
   /playwright@1.50.1:
     resolution: {integrity: sha512-G8rwsOQJ63XG6BbKj2w5rHeavFjy5zynBA9zsJMMtBoe/Uf757oG12NXz6e6OirF7RCrTVAKFXbLmn1RbL7Qaw==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
       playwright-core: 1.50.1
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /playwright@1.51.0:
+    resolution: {integrity: sha512-442pTfGM0xxfCYxuBa/Pu6B2OqxqqaYq39JS8QDMGThUvIOCd6s0ANDog3uwA0cHavVlnTQzGCN7Id2YekDSXA==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.51.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -19250,7 +19271,7 @@ packages:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
-      nanoid: 3.3.8
+      nanoid: 3.3.9
       picocolors: 1.1.1
       source-map-js: 1.2.1
     dev: false
@@ -21973,8 +21994,8 @@ packages:
       webpack: 5.76.0
     dev: true
 
-  /terser-webpack-plugin@5.3.13(@swc/core@1.11.5)(esbuild@0.25.0)(webpack@5.98.0):
-    resolution: {integrity: sha512-JG3pBixF6kx2o0Yfz2K6pqh72DpwTI08nooHd06tcj5WyIt5SsSiUYqRT+kemrGUNSuSzVhwfZ28aO8gogajNQ==}
+  /terser-webpack-plugin@5.3.14(@swc/core@1.11.5)(esbuild@0.25.0)(webpack@5.98.0):
+    resolution: {integrity: sha512-vkZjpUjb6OMS7dhV+tILUW6BhpDR7P2L/aQSAv+Uwk+m8KATX9EccViHTJR2qDtACKPIYndLGCyl3FMo+r2LMw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@swc/core': '*'
@@ -21999,8 +22020,8 @@ packages:
       webpack: 5.98.0(@swc/core@1.11.5)(esbuild@0.25.0)
     dev: true
 
-  /terser-webpack-plugin@5.3.13(webpack@5.98.0):
-    resolution: {integrity: sha512-JG3pBixF6kx2o0Yfz2K6pqh72DpwTI08nooHd06tcj5WyIt5SsSiUYqRT+kemrGUNSuSzVhwfZ28aO8gogajNQ==}
+  /terser-webpack-plugin@5.3.14(webpack@5.98.0):
+    resolution: {integrity: sha512-vkZjpUjb6OMS7dhV+tILUW6BhpDR7P2L/aQSAv+Uwk+m8KATX9EccViHTJR2qDtACKPIYndLGCyl3FMo+r2LMw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@swc/core': '*'
@@ -23515,7 +23536,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 4.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.13(webpack@5.98.0)
+      terser-webpack-plugin: 5.3.14(webpack@5.98.0)
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -23554,7 +23575,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 4.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.13(@swc/core@1.11.5)(esbuild@0.25.0)(webpack@5.98.0)
+      terser-webpack-plugin: 5.3.14(@swc/core@1.11.5)(esbuild@0.25.0)(webpack@5.98.0)
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
