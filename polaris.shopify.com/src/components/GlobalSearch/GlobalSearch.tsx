@@ -8,6 +8,7 @@ import {
 import {useThrottle} from '../../utils/hooks';
 import styles from './GlobalSearch.module.scss';
 import {useRouter} from 'next/router';
+import {useSearchParams} from 'next/navigation'
 import IconGrid from '../IconGrid';
 import {Grid, GridItem} from '../Grid';
 import TokenList from '../TokenList';
@@ -129,6 +130,7 @@ function GlobalSearch() {
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
   const [uuid, setUuid] = useState('');
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   let resultsInRenderedOrder: SearchResults = [];
 
@@ -168,6 +170,14 @@ function GlobalSearch() {
   useEffect(throttledSearch, [searchTerm, throttledSearch]);
 
   useEffect(() => scrollIntoView(), [currentResultIndex]);
+
+  useEffect(() => {
+    if (router.route === '/search' && searchParams.get('q')) {
+      setIsOpen(true);
+      setSearchTerm(searchParams.get('q') ?? '');
+
+    }
+  }, [router.route, searchParams]);
 
   useEffect(() => {
     const handler = () => setIsOpen(false);
