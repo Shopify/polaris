@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.9.5
+
+### Patch Changes
+
+- [#13413](https://github.com/Shopify/polaris/pull/13413) [`730349b`](https://github.com/Shopify/polaris/commit/730349ba23733a8958b4766d76b73de62055fa4b) Thanks [@jeffrey-ben](https://github.com/jeffrey-ben)! - Fixed TextField clear bug in Safari
+
 ## 13.9.4
 
 ### Patch Changes
