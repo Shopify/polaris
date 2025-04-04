@@ -112,10 +112,10 @@ export const font: {
     value: '550',
   },
   'font-weight-semibold': {
-    value: '650',
+    value: '600',
   },
   'font-weight-bold': {
-    value: '700',
+    value: '650',
   },
   'font-letter-spacing-densest': {
     value: '-0.54px',
