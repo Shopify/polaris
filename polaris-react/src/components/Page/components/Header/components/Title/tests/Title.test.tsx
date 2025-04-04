@@ -20,6 +20,22 @@ describe('<Title />', () => {
       const pageTitle = mountWithApp(<Title />);
       expect(pageTitle).not.toContainReactComponent(Text);
     });
+
+    it('uses bold font weight by default', () => {
+      const pageTitle = mountWithApp(<Title {...mockProps} />);
+      expect(pageTitle).toContainReactComponent(Text, {
+        fontWeight: 'bold',
+      });
+    });
+
+    it('uses semibold font weight when specified', () => {
+      const pageTitle = mountWithApp(
+        <Title {...mockProps} titleFontWeight="semibold" />,
+      );
+      expect(pageTitle).toContainReactComponent(Text, {
+        fontWeight: 'semibold',
+      });
+    });
   });
 
   describe('subtitle', () => {

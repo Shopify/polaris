@@ -57,6 +57,15 @@ describe('<Page />', () => {
         title,
       });
     });
+
+    it('passes titleFontWeight to Header', () => {
+      const page = mountWithApp(
+        <Page {...mockProps} titleFontWeight="semibold" />,
+      );
+      expect(page).toContainReactComponent(Header, {
+        titleFontWeight: 'semibold',
+      });
+    });
   });
 
   describe('subtitle', () => {

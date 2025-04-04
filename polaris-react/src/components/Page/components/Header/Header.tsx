@@ -67,6 +67,8 @@ export interface HeaderProps extends TitleProps {
   additionalMetadata?: React.ReactNode | string;
   /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
   onActionRollup?(hasRolledUp: boolean): void;
+  /** Title font weight */
+  titleFontWeight?: 'semibold' | 'bold';
 }
 
 const SHORT_TITLE = 20;
@@ -88,6 +90,7 @@ export function Header({
   actionGroups = [],
   compactTitle = false,
   onActionRollup,
+  titleFontWeight,
 }: HeaderProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -138,6 +141,7 @@ export function Header({
         titleMetadata={titleMetadata}
         compactTitle={compactTitle}
         hasSubtitleMaxWidth={hasActionGroupsOrSecondaryActions}
+        titleFontWeight={titleFontWeight}
       />
     </div>
   );
@@ -178,8 +182,8 @@ export function Header({
         onActionRollup={onActionRollup}
       />
     );
-  } else if (isReactElement(secondaryActions)) {
-    actionMenuMarkup = <>{secondaryActions}</>;
+  } else if (React.isValidElement(secondaryActions)) {
+    actionMenuMarkup = secondaryActions;
   }
 
   const navigationMarkup =

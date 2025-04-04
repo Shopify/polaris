@@ -19,6 +19,8 @@ export interface TitleProps {
    * the presence of either the secondaryActions or actionGroups props on the
    * Header that consumes this component */
   hasSubtitleMaxWidth?: boolean;
+  /** Font weight for the title. Defaults to 'bold' */
+  titleFontWeight?: 'semibold' | 'bold';
 }
 
 export function Title({
@@ -27,6 +29,7 @@ export function Title({
   titleMetadata,
   compactTitle,
   hasSubtitleMaxWidth,
+  titleFontWeight = 'bold',
 }: TitleProps) {
   const className = classNames(
     styles.Title,
@@ -35,7 +38,7 @@ export function Title({
 
   const titleMarkup = title ? (
     <h1 className={className}>
-      <Text as="span" variant="headingLg" fontWeight="bold">
+      <Text as="span" variant="headingLg" fontWeight={titleFontWeight}>
         {title}
       </Text>
     </h1>

@@ -570,3 +570,21 @@ export const WithContentAfterTitleAndSubtitle = {
     );
   },
 };
+
+export const WithSemiboldTitle = {
+  render() {
+    return (
+      <Page
+        title="Semibold title"
+        titleFontWeight="semibold"
+        subtitle="This page uses a semibold title"
+      >
+        <LegacyCard title="Content" sectioned>
+          <Text as="p" variant="bodyMd">
+            Page content
+          </Text>
+        </LegacyCard>
+      </Page>
+    );
+  },
+};
