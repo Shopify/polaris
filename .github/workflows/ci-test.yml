@@ -21,7 +21,7 @@ jobs:
           ]
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
         with:
           fetch-depth: 2
 
@@ -35,17 +35,17 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
 
       - name: Setup Node with v${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         id: setup_node
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
       - name: Restore cache
-        uses: actions/cache@v3
+        uses: actions/cache@2f8e54208210a422b2efd51efaa6bd6d7ca8920f # v3.4.3
         with:
           path: |
             **/.eslintcache
