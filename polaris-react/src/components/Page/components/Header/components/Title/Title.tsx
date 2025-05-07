@@ -7,7 +7,10 @@ import {Text} from '../../../../../Text';
 import styles from './Title.module.css';
 
 export interface TitleProps {
-  /** Page title, in large type */
+  /**
+   * @deprecated Page title, in large type
+   * Use `breadcrumbs` prop instead as documented [here](https://shopify.dev/docs/api/app-bridge/previous-versions/actions/titlebar#using-titlebar-with-polaris)
+   */
   title?: string;
   /** Page subtitle, in regular type */
   subtitle?: string;
