@@ -97,6 +97,7 @@ function MyApp({Component, pageProps}: AppProps) {
       <script dangerouslySetInnerHTML={{__html: noflash}}></script>
 
       <Head>
+        <meta name="robots" content="noai, noimageai" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/images/favicon.png" />
         <meta property="og:image" content={ogImagePath} />

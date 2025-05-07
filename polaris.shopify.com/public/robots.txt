@@ -1,0 +1,34 @@
+# Global directive for all robots
+User-agent: *
+Noai: true
+Noimageai: true
+
+# Block OpenAI's crawler
+User-agent: GPTBot
+Disallow: /
+
+# Block Anthropic's crawler
+User-agent: ClaudeBot
+Disallow: /
+
+# Block Google's AI crawler
+User-agent: Google-Extended
+Disallow: /
+
+# Block Perplexity
+User-agent: PerplexityBot
+Disallow: /
+
+# Block Meta/Facebook AI
+User-agent: FacebookBot
+Disallow: /
+
+# Block other common AI crawlers
+User-agent: Omgilibot
+Disallow: /
+User-agent: Omgili
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
