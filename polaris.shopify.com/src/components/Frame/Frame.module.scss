@@ -328,10 +328,9 @@ $breakpointNav: $breakpointTablet;
 }
 
 .SkipToContentLink {
-  top: 2px;
-  right: 2px;
-  left: 2px;
-  height: calc(var(--header-height) - 4px);
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -340,8 +339,8 @@ $breakpointNav: $breakpointTablet;
   color: var(--text-strong);
   font-weight: var(--font-weight-500);
   z-index: 1;
-  position: absolute;
-  transform: translateY(-115%);
+  position: fixed;
+  transform: translateY(-100%);
 
   &:focus {
     transform: translateY(0%);
