@@ -1,7 +1,4 @@
 import Link from 'next/link';
-import {className} from '../../utils/various';
-import {useMedia} from '../../utils/hooks';
-import Image from '../Image';
 import PageMeta from '../PageMeta';
 import styles from './HomePage.module.scss';
 import Page from '../Page';
@@ -9,8 +6,6 @@ import Page from '../Page';
 interface Props {}
 
 function HomePage({}: Props) {
-  const useMotion = useMedia('(prefers-reduced-motion: no-preference)');
-
   return (
     <Page>
       <div className={styles.HomePage}>
@@ -59,68 +54,6 @@ function HomePage({}: Props) {
               entrepreneurship
             </p>
           </Link>
-        </div>
-
-        <div className={styles.Promos}>
-          <div className={className(styles.Promo, styles.News, 'dark-mode')}>
-            <div className={styles.Text}>
-              <h3>
-                <span>New</span> Version 12
-              </h3>
-              <p>Learn how to upgrade to Polaris&apos; new design language.</p>
-              <Link href="/whats-new/version-12">Read post</Link>
-            </div>
-            <div className={styles.Image}>
-              <Image
-                width={1600}
-                height={800}
-                style={{width: '100%', height: 'auto'}}
-                src="/images/home-v12.png"
-                alt="Polaris v12"
-              />
-            </div>
-          </div>
-          <div
-            className={className(
-              styles.Promo,
-              styles.PolarisForVSCode,
-              'dark-mode',
-            )}
-          >
-            <div className={styles.Text}>
-              <h3>Polaris for VS Code</h3>
-              <p>
-                Autocompletion for Polaris tokens, right inside your favorite
-                code editor
-              </p>
-              <Link href="/tools/polaris-for-vscode">Install</Link>
-            </div>
-            <div className={styles.Image}>
-              {useMotion ? (
-                <div className={styles.Video}>
-                  <video
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                    width="2250"
-                    height="1440"
-                  >
-                    <source src="/images/vscode.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              ) : (
-                <div className={styles.Poster}>
-                  <Image
-                    width="2250"
-                    height="1440"
-                    src="/images/vscode.jpg"
-                    alt="Screen shot of the Polaris VS Code extension actively autocompleting the value of a background CSS rule with the surface success design token."
-                  />
-                </div>
-              )}
-            </div>
-          </div>
         </div>
       </div>
     </Page>
