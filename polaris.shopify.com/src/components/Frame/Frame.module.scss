@@ -364,3 +364,55 @@ $breakpointNav: $breakpointTablet;
 .DarkModeIcon {
   animation: slide-down 0.3s;
 }
+
+.PolarisUnifiedCta {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease-out;
+
+  > div {
+    margin: 0.5rem 1.5rem 1rem;
+  }
+
+  a {
+    padding: 0.5rem;
+    border-radius: 9999px;
+    color: #00936f;
+    background: #d4f5e7;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+
+    @include dark-mode {
+      background: #00936f;
+      color: #d4f5e7;
+    }
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  svg {
+    filter: none;
+    opacity: 1;
+    fill: currentColor;
+
+    @include dark-mode {
+      filter: none;
+    }
+  }
+
+  .ReleaseCandidate {
+    border: 1px solid #14c397;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+    border-radius: 0.25rem;
+  }
+}
