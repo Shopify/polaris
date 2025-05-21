@@ -7,7 +7,7 @@ interface Props {
 }
 
 function PageMeta({title, description, noIndex = false}: Props) {
-  let siteName = 'Shopify Polaris';
+  let siteName = 'Shopify Polaris React';
 
   if (title) {
     siteName = `${title} — ${siteName}`;

@@ -14,6 +14,19 @@ const nextConfig = {
     // this includes files from the monorepo base one directory up
     outputFileTracingRoot: path.join(__dirname, '../'),
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noai, noimageai',
+          },
+        ],
+      },
+    ];
+  },
   async rewrites() {
     return [
       // We want to rewrite the sandbox route in production

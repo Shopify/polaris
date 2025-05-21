@@ -131,7 +131,7 @@ const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
             fontWeight: '500',
           }}
         >
-          {logo} Polaris
+          {logo} Polaris React
         </div>
       </div>
     </div>,
@@ -175,7 +175,7 @@ const genOgImages = async () => {
     Object.entries({
       '/home': {
         frontMatter: {
-          title: 'Polaris',
+          title: 'Polaris React',
         },
       },
       ...typedSiteJSON,

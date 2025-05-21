@@ -328,10 +328,9 @@ $breakpointNav: $breakpointTablet;
 }
 
 .SkipToContentLink {
-  top: 2px;
-  right: 2px;
-  left: 2px;
-  height: calc(var(--header-height) - 4px);
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -340,8 +339,8 @@ $breakpointNav: $breakpointTablet;
   color: var(--text-strong);
   font-weight: var(--font-weight-500);
   z-index: 1;
-  position: absolute;
-  transform: translateY(-115%);
+  position: fixed;
+  transform: translateY(-100%);
 
   &:focus {
     transform: translateY(0%);
@@ -364,4 +363,61 @@ $breakpointNav: $breakpointTablet;
 
 .DarkModeIcon {
   animation: slide-down 0.3s;
+}
+
+.PolarisUnifiedCta {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease-out;
+
+  > div {
+    margin: 0.5rem 1.5rem 1rem;
+  }
+
+  a {
+    padding: 0.5rem;
+    border-radius: 9999px;
+    color: #00936f;
+    background: #d4f5e7;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    position: relative;
+    transition: box-shadow 0.3s ease, scale 0.3s ease-in-out;
+
+    &:hover {
+      scale: 1.01;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    @include dark-mode {
+      background: #00936f;
+      color: #d4f5e7;
+    }
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  svg {
+    filter: none;
+    opacity: 1;
+    fill: currentColor;
+
+    @include dark-mode {
+      filter: none;
+    }
+  }
+
+  .ReleaseCandidate {
+    border: 1px solid #14c397;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+    border-radius: 0.25rem;
+  }
 }
