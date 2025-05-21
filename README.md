@@ -15,7 +15,7 @@
 
 ## About this repo
 
-The shopify/polaris repository is an [intergalactic](https://www.youtube.com/watch?v=qORYO0atB6g) monorepo made up of NPM packages, VSCode extensions, and websites.
+The `shopify/polaris` repository is an [intergalactic](https://www.youtube.com/watch?v=qORYO0atB6g) monorepo made up of NPM packages, VSCode extensions, and websites.
 
 ```sh
 polaris/
