@@ -13,7 +13,8 @@ import {className} from '../../utils/various';
 import {useRouter} from 'next/router';
 import StatusBadge from '../StatusBadge';
 import Icon from '../Icon';
-import {LockIcon} from '@shopify/polaris-icons';
+import {ArrowRightIcon, LockIcon} from '@shopify/polaris-icons';
+import icons from '../../icons';
 
 const NAV_ID = 'nav';
 interface Props {
@@ -93,6 +94,17 @@ function Frame({darkMode, children}: Props) {
 
   return (
     <>
+      <div className={styles.PolarisUnifiedCta}>
+        <div>
+          <a href="LINK-TO-BE-ADDED">
+            {icons.Polaris()}
+            <strong>Introducing the new Polaris</strong> - Unified and for the
+            web.{' '}
+            <span className={styles.ReleaseCandidate}>Release Candidate</span>
+            <Icon source={ArrowRightIcon} />
+          </a>
+        </div>
+      </div>
       <div className={styles.Header}>
         {showSkipToContentLink && (
           <a className={styles.SkipToContentLink} href="#main">
@@ -119,7 +131,7 @@ function Frame({darkMode, children}: Props) {
             width={24}
             height={24}
           />
-          Polaris
+          Polaris React
         </Link>
 
         {isMounted && (

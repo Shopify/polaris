@@ -1,4 +1,4 @@
-# polaris.shopify.com
+# polaris-react.shopify.com
 
 The public facing style guide, available via [https://polaris.shopify.com](https://polaris.shopify.com).
 
