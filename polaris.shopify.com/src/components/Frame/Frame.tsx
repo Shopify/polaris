@@ -96,7 +96,7 @@ function Frame({darkMode, children}: Props) {
     <>
       <div className={styles.PolarisUnifiedCta}>
         <div>
-          <a href="LINK-TO-BE-ADDED">
+          <a href="https://shopify.dev/beta/next-gen-dev-platform/polaris">
             {icons.Polaris()}
             <strong>Introducing the new Polaris</strong> - Unified and for the
             web.{' '}
