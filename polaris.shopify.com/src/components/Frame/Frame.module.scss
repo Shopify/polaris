@@ -387,7 +387,12 @@ $breakpointNav: $breakpointTablet;
     justify-content: center;
     gap: 0.25rem;
     position: relative;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, scale 0.3s ease-in-out;
+
+    &:hover {
+      scale: 1.01;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
     @include dark-mode {
       background: #00936f;
