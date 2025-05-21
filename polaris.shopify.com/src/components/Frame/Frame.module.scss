@@ -378,7 +378,7 @@ $breakpointNav: $breakpointTablet;
 
   a {
     padding: 0.5rem;
-    border-radius: 9999px;
+    border-radius: 0.5rem;
     color: #00936f;
     background: #d4f5e7;
     display: flex;
@@ -397,6 +397,10 @@ $breakpointNav: $breakpointTablet;
     @include dark-mode {
       background: #00936f;
       color: #d4f5e7;
+    }
+
+    @media screen and (min-width: $breakpointMobile) {
+      border-radius: 9999px;
     }
   }
 
