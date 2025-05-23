@@ -19,7 +19,7 @@ jobs:
         uses: pnpm/action-setup@v3
 
       - name: Create snapshot
-        uses: Shopify/snapit@main
+        uses: Shopify/snapit@v0.0.14
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
