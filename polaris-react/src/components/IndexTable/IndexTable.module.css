@@ -51,8 +51,7 @@
   opacity: 0;
   transform: translateY(-100%);
   transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in),
-    transform var(--p-motion-duration-100) var(--p-motion-ease-in),
-    visibility var(--p-motion-duration-0) linear var(--p-motion-duration-100);
+    transform var(--p-motion-duration-100) var(--p-motion-ease-in);
   visibility: hidden;
 
   &.LoadingPanelEntered {
@@ -1395,8 +1394,7 @@
     var(--p-space-300);
   line-height: var(--p-font-line-height-500);
   background-color: var(--p-color-bg-surface);
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
-    visibility var(--p-motion-duration-100) var(--p-motion-ease);
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
 
   &.BulkActionsWrapperVisible {
     visibility: visible;

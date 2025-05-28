@@ -223,7 +223,7 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition-property: opacity, visibility, bottom;
+  transition-property: opacity, bottom;
   transition-duration: var(--p-motion-duration-200);
   transition-timing-function: var(--p-motion-ease);
 

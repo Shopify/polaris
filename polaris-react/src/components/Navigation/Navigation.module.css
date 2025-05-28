@@ -83,8 +83,6 @@
   scrollbar-width: thin;
   scrollbar-gutter: stable;
   scrollbar-color: var(--p-color-nav-bg) transparent;
-  transition: scrollbar-color var(--p-motion-duration-100)
-    var(--p-motion-ease-in);
 
   &:hover {
     scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
