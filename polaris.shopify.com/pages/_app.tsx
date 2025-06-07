@@ -97,6 +97,10 @@ function MyApp({Component, pageProps}: AppProps) {
       <script dangerouslySetInnerHTML={{__html: noflash}}></script>
 
       <Head>
+        <meta
+          name="google-site-verification"
+          content="R1RgccPcS3KbUSlv1WF-HVSBG3djfr2NOXCYO4Wppoo"
+        />
         <meta name="robots" content="noai, noimageai" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/images/favicon.png" />
