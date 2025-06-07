@@ -98,13 +98,13 @@ Banners should:
 - Focus on a single theme, piece of information, or required action to avoid overwhelming merchants.
 - Be concise and scannable—merchants shouldn’t need to spend a lot of time figuring out what they need to know and do.
 - Be limited to a few important calls to action with no more than one primary action.
-- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/callout-card) instead.
+- Not be used for marketing information or upsell—[use callout cards](/components/callout-card) instead.
 
-To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](/content/error-messages).
 
 ### Title
 
-Banner titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
+Banner titles should follow the content guidelines for [headings](/components/deprecated/heading) and [subheadings](/components/deprecated/subheading).
 
 ### Body content
 
@@ -241,8 +241,8 @@ To buy a shipping label, you must enter the total weight of your shipment, inclu
 
 ## Related components
 
-- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/callout-card)
-- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/layout-and-structure/card)
+- To inform merchants about a new feature or opportunity, [use callout cards](/components/callout-card)
+- To group similar concepts together in the interface, [use a card](/components/layout-and-structure/card)
 
 ---
 
@@ -255,7 +255,7 @@ Banners provide context and assist workflows for merchants with disabilities.
 - All banners have an `aria-live` attribute and are announced by assistive technologies when their content is updated. These announcements can be disabled by using the prop `stopAnnouncements`.
 - Banners use `aria-describedby` to describe their purpose to assistive technologies when they’re announced or receive focus. If a banner has a `title`, then the title content is used for the `aria-describedby`. If the banner doesn’t have a `title`, then all of the banner content is used for the `aria-describedby`.
 - Banner containers have a `tabindex=”0”` and display a visible keyboard focus indicator. Because of this, merchants can discover banners while tabbing through forms or other interactions, and developers can programmatically move focus to banners.
-- Banners use a combination of [icons](https://polaris.shopify.com/design/icons) and [colors](https://polaris.shopify.com/design/colors) to show their meaning and level of importance to merchants.
+- Banners use a combination of [icons](/design/icons) and [colors](/design/colors) to show their meaning and level of importance to merchants.
 
 ### Error notifications in forms
 
@@ -265,9 +265,9 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 #### Inline errors
 
-Always include [inline error](https://polaris.shopify.com/components/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
+Always include [inline error](/components/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
-To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
+To learn about creating helpful and accessible error message text, see the guidelines for [error messages](/content/error-messages).
 
 <DoDont>
 
