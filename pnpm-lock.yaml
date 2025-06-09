@@ -337,8 +337,8 @@ importers:
         specifier: ^0.22.1
         version: 0.22.1(@types/node@20.12.5)(storybook@8.6.4)(ts-node@10.7.0)
       '@storybook/theming':
-        specifier: ^8.6.4
-        version: 8.6.4(storybook@8.6.4)
+        specifier: ^8.6.14
+        version: 8.6.14(storybook@8.6.4)
       '@types/js-yaml':
         specifier: ^4.0.5
         version: 4.0.5
@@ -7262,6 +7262,14 @@ packages:
       storybook: 8.6.4(prettier@2.8.8)
     dev: true
 
+  /@storybook/theming@8.6.14(storybook@8.6.4):
+    resolution: {integrity: sha512-r4y+LsiB37V5hzpQo+BM10PaCsp7YlZ0YcZzQP1OCkPlYXmUAFy2VvDKaFRpD8IeNPKug2u4iFm/laDEbs03dg==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.6.4(prettier@2.8.8)
+    dev: true
+
   /@storybook/theming@8.6.4(storybook@8.6.4):
     resolution: {integrity: sha512-g9Ns4uenC9oAWETaJ/tEKEIPMdS+CqjNWZz5Wbw1bLNhXwADZgKrVqawzZi64+bYYtQ+i8VCTjPoFa6s2eHiDQ==}
     peerDependencies:
@@ -10693,8 +10701,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
-      anymatch: 3.1.3
-      braces: 3.0.3
+      anymatch: 3.1.2
+      braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -11427,7 +11435,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.3)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.2
+      semver: 7.5.4
       webpack: 4.46.0
     dev: true
 
@@ -11446,7 +11454,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.3)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.2
+      semver: 7.5.4
       webpack: 5.76.0
     dev: true
 
