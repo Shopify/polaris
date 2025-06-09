@@ -656,8 +656,8 @@ importers:
         specifier: ^1.85.1
         version: 1.85.1
       satori:
-        specifier: ^0.12.1
-        version: 0.12.1
+        specifier: ^0.14.0
+        version: 0.14.0
       style-loader:
         specifier: ^3.3.1
         version: 3.3.1(webpack@5.99.9)
@@ -12263,8 +12263,9 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /emoji-regex@10.3.0:
-    resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
+  /emoji-regex-xs@2.0.1:
+    resolution: {integrity: sha512-1QFuh8l7LqUcKe24LsPUNzjrzJQ7pgRwp1QMcZ5MX6mFplk2zQ08NVCM84++1cveaUUYtcCYHmeFEuNg16sU4g==}
+    engines: {node: '>=10.0.0'}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -21925,8 +21926,8 @@ packages:
     optionalDependencies:
       '@parcel/watcher': 2.5.1
 
-  /satori@0.12.1:
-    resolution: {integrity: sha512-0SbjchvDrDbeXeQgxWVtSWxww7qcFgk3DtSE2/blHOSlLsSHwIqO2fCrtVa/EudJ7Eqno8A33QNx56rUyGbLuw==}
+  /satori@0.14.0:
+    resolution: {integrity: sha512-s9tfkzlvZr9+KGfU17oPCrgz2rN5/juYi12xrMFKOC+ulxnlyUHnU8z3Yy9sR29bfHagz5skyNcbNI3xD+yotA==}
     engines: {node: '>=16'}
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
@@ -21934,7 +21935,7 @@ packages:
       css-box-shadow: 1.0.0-3
       css-gradient-parser: 0.0.16
       css-to-react-native: 3.2.0
-      emoji-regex: 10.3.0
+      emoji-regex-xs: 2.0.1
       escape-html: 1.0.3
       linebreak: 1.1.0
       parse-css-color: 0.2.1
