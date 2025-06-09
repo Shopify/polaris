@@ -494,7 +494,7 @@ importers:
         version: 4.0.2
       next:
         specifier: ^15.2.4
-        version: 15.2.4(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.1)
+        version: 15.2.4(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.89.1)
       next-mdx-remote:
         specifier: ^4.4.1
         version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -653,8 +653,8 @@ importers:
         specifier: ^0.28.0
         version: 0.28.0(react-dom@18.2.0)(react@18.2.0)
       sass:
-        specifier: ^1.85.1
-        version: 1.85.1
+        specifier: ^1.89.1
+        version: 1.89.1
       satori:
         specifier: ^0.14.0
         version: 0.14.0
@@ -15111,8 +15111,8 @@ packages:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
     dev: true
 
-  /immutable@5.0.3:
-    resolution: {integrity: sha512-P8IdPQHq3lA1xVeBRi5VPqUm5HDgKnx0Ru51wZz5mjxHr5n3RWhjIpOFU7ybkUxfB+5IToy+OLaHYDBIWsv+uw==}
+  /immutable@5.1.2:
+    resolution: {integrity: sha512-qHKXW1q6liAk1Oys6umoaZbDRqjcjgSrbnrifHsfsttza7zcvRAsL7mMV6xWcyhwQy7Xj5v4hhbr6b+iDYwlmQ==}
 
   /import-fresh@2.0.0:
     resolution: {integrity: sha512-eZ5H8rcgYazHbKC3PG4ClHNykCSxtAhxSSEM+2mb+7evD2CKF5V7c0dNum7AdpDh0ZdICwZY9sRSn8f+KH96sg==}
@@ -18967,7 +18967,7 @@ packages:
       - supports-color
     dev: false
 
-  /next@15.2.4(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.85.1):
+  /next@15.2.4(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.89.1):
     resolution: {integrity: sha512-VwL+LAaPSxEkd3lU2xWbgEOtrM8oedmyhBqaVNmgKB+GvZlCy9rgaEc+y2on0wv+l0oSFqLtYD6dcC1eAedUaQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
@@ -18996,7 +18996,7 @@ packages:
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      sass: 1.85.1
+      sass: 1.89.1
       styled-jsx: 5.1.6(@babel/core@7.24.4)(react@18.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.2.4
@@ -22126,13 +22126,13 @@ packages:
       webpack: 5.99.9(@swc/core@1.11.31)(esbuild@0.25.0)
     dev: true
 
-  /sass@1.85.1:
-    resolution: {integrity: sha512-Uk8WpxM5v+0cMR0XjX9KfRIacmSG86RH4DCCZjLU2rFh5tyutt9siAXJ7G+YfxQ99Q6wrRMbMlVl6KqUms71ag==}
+  /sass@1.89.1:
+    resolution: {integrity: sha512-eMLLkl+qz7tx/0cJ9wI+w09GQ2zodTkcE/aVfywwdlRcI3EO19xGnbmJwg/JMIm+5MxVJ6outddLZ4Von4E++Q==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
       chokidar: 4.0.3
-      immutable: 5.0.3
+      immutable: 5.1.2
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
