@@ -494,7 +494,7 @@ importers:
         version: 4.0.2
       next:
         specifier: ^15.2.4
-        version: 15.2.4(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.89.1)
+        version: 15.2.4(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.89.2)
       next-mdx-remote:
         specifier: ^4.4.1
         version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -653,8 +653,8 @@ importers:
         specifier: ^0.28.0
         version: 0.28.0(react-dom@18.2.0)(react@18.2.0)
       sass:
-        specifier: ^1.89.1
-        version: 1.89.1
+        specifier: ^1.89.2
+        version: 1.89.2
       satori:
         specifier: ^0.15.2
         version: 0.15.2
@@ -10590,7 +10590,7 @@ packages:
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
-      braces: 3.0.2
+      braces: 3.0.3
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -18634,7 +18634,7 @@ packages:
       - supports-color
     dev: false
 
-  /next@15.2.4(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.89.1):
+  /next@15.2.4(@babel/core@7.24.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.89.2):
     resolution: {integrity: sha512-VwL+LAaPSxEkd3lU2xWbgEOtrM8oedmyhBqaVNmgKB+GvZlCy9rgaEc+y2on0wv+l0oSFqLtYD6dcC1eAedUaQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
@@ -18663,7 +18663,7 @@ packages:
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      sass: 1.89.1
+      sass: 1.89.2
       styled-jsx: 5.1.6(@babel/core@7.24.4)(react@18.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.2.4
@@ -21793,8 +21793,8 @@ packages:
       webpack: 5.99.9(@swc/core@1.11.31)(esbuild@0.25.0)
     dev: true
 
-  /sass@1.89.1:
-    resolution: {integrity: sha512-eMLLkl+qz7tx/0cJ9wI+w09GQ2zodTkcE/aVfywwdlRcI3EO19xGnbmJwg/JMIm+5MxVJ6outddLZ4Von4E++Q==}
+  /sass@1.89.2:
+    resolution: {integrity: sha512-xCmtksBKd/jdJ9Bt9p7nPKiuqrlBMBuuGkQlkhZjjQk3Ty48lv93k5Dq6OPkKt4XwxDJ7tvlfrTa1MPA9bf+QA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
