@@ -656,8 +656,8 @@ importers:
         specifier: ^1.89.1
         version: 1.89.1
       satori:
-        specifier: ^0.14.0
-        version: 0.14.0
+        specifier: ^0.15.2
+        version: 0.15.2
       style-loader:
         specifier: ^3.3.1
         version: 3.3.1(webpack@5.99.9)
@@ -10590,7 +10590,7 @@ packages:
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
-      braces: 3.0.3
+      braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -11342,7 +11342,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.4)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.2
+      semver: 7.5.4
       webpack: 4.46.0
     dev: true
 
@@ -11361,7 +11361,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.4)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.2
+      semver: 7.5.4
       webpack: 5.76.0
     dev: true
 
@@ -21804,8 +21804,8 @@ packages:
     optionalDependencies:
       '@parcel/watcher': 2.5.1
 
-  /satori@0.14.0:
-    resolution: {integrity: sha512-s9tfkzlvZr9+KGfU17oPCrgz2rN5/juYi12xrMFKOC+ulxnlyUHnU8z3Yy9sR29bfHagz5skyNcbNI3xD+yotA==}
+  /satori@0.15.2:
+    resolution: {integrity: sha512-vu/49vdc8MzV5jUchs3TIRDCOkOvMc1iJ11MrZvhg9tE4ziKIEIBjBZvies6a9sfM2vQ2gc3dXeu6rCK7AztHA==}
     engines: {node: '>=16'}
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
@@ -23292,7 +23292,7 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
-      terser: 5.41.0
+      terser: 5.42.0
       webpack: 5.99.9(@swc/core@1.11.31)(esbuild@0.25.0)
     dev: true
 
@@ -23316,7 +23316,7 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
-      terser: 5.41.0
+      terser: 5.42.0
       webpack: 5.99.9
     dev: true
 
@@ -23342,8 +23342,8 @@ packages:
       source-map-support: 0.5.21
     dev: true
 
-  /terser@5.41.0:
-    resolution: {integrity: sha512-H406eLPXpZbAX14+B8psIuvIr8+3c+2hkuYzpMkoE0ij+NdsVATbA78vb8neA/eqrj7rywa2pIkdmWRsXW6wmw==}
+  /terser@5.42.0:
+    resolution: {integrity: sha512-UYCvU9YQW2f/Vwl+P0GfhxJxbUGLwd+5QrrGgLajzWAtC/23AX0vcise32kkP7Eu0Wu9VlzzHAXkLObgjQfFlQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
