@@ -307,8 +307,8 @@ importers:
         specifier: ^8.6.4
         version: 8.6.4(storybook@8.6.4)
       '@storybook/addon-toolbars':
-        specifier: ^8.6.4
-        version: 8.6.4(storybook@8.6.4)
+        specifier: ^9.0.8
+        version: 9.0.8
       '@storybook/addon-viewport':
         specifier: ^8.6.4
         version: 8.6.4(storybook@8.6.4)
@@ -6871,12 +6871,8 @@ packages:
       storybook: 8.6.4(prettier@2.8.8)
     dev: true
 
-  /@storybook/addon-toolbars@8.6.4(storybook@8.6.4):
-    resolution: {integrity: sha512-PU2lvgwCKDn93zpp5MEog103UUmSSugcxDf18xaoa9D15Qtr+YuQHd2hXbxA7+dnYL9lA7MLYsstfxE91ieM4Q==}
-    peerDependencies:
-      storybook: ^8.6.4
-    dependencies:
-      storybook: 8.6.4(prettier@2.8.8)
+  /@storybook/addon-toolbars@9.0.8:
+    resolution: {integrity: sha512-Vgr+TxEXQiaYp1SpUnO8AZamZk4um+QTbj0egQfBLuHMWPtrMRyXgtum4Xnw6Dox83TgG237YTYZHExWV/MnSQ==}
     dev: true
 
   /@storybook/addon-viewport@8.6.4(storybook@8.6.4):
@@ -10585,8 +10581,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
-      anymatch: 3.1.3
-      braces: 3.0.3
+      anymatch: 3.1.2
+      braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -11338,7 +11334,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.4)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.2
+      semver: 7.5.4
       webpack: 4.46.0
     dev: true
 
@@ -11357,7 +11353,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.5.4)
       postcss-value-parser: 4.2.0
       schema-utils: 3.1.1
-      semver: 7.7.2
+      semver: 7.5.4
       webpack: 5.76.0
     dev: true
 
