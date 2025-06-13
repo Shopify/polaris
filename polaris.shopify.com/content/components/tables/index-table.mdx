@@ -107,9 +107,9 @@ An index table displays a collection of objects of the same type, like orders or
 
 Index tables can also:
 
-- Support [customized index rows and columns](https://polaris.shopify.com/components/resource-item)
+- Support [customized index rows and columns](/components/lists/resource-item)
 - Include bulk actions so merchants can act on multiple objects at once
-- Support sorting and [filtering](https://polaris.shopify.com/components/filters) of long lists
+- Support sorting and [filtering](/components/selection-and-input/filters) of long lists
 - Be paired with pagination to make long lists digestible
 
 ---
@@ -119,8 +119,8 @@ Index tables can also:
 Using an index table in a project involves combining the following components and subcomponents:
 
 - IndexTable
-- [IndexTable.Row](#index-table-row)
-- [IndexTable.Cell](#index-table-cell)
+- [IndexTable.Row](#indextablerow)
+- [IndexTable.Cell](#indextablecell)
 - [Filters](/components/selection-and-input/filters) (optional)
 - [IndexFilters](/components/selection-and-input/index-filters) (optional)
 - [Pagination](/components/navigation/pagination) (optional)
@@ -154,13 +154,13 @@ Because a details page displays all the content and actions for an individual re
 Index tables should:
 
 - Have items that perform an action when clicked. The action should navigate to the resource’s details page or otherwise provide more detail about the item.
-- [Customize the content and layout](https://polaris.shopify.com/components/resource-item) of their items rows to surface information to support merchants’ needs.
+- [Customize the content and layout](/components/lists/resource-item) of their items rows to surface information to support merchants’ needs.
 - Support sorting if the list can be long, and especially if different merchant tasks benefit from different sort orders.
-- Support [filtering](https://polaris.shopify.com/components/filters) if the list can be long.
+- Support [filtering](/components/selection-and-input/filters) if the list can be long.
 - Paginate when the current list contains more than 50 items.
-- Use the [skeleton page](https://polaris.shopify.com/components/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
-- Numeric cells and titles should be right aligned with the [Text](https://polaris.shopify.com/components/text) component
-- Numeric cells should use the numeric style with the [Text](https://polaris.shopify.com/components/text) component
+- Use the [skeleton page](/components/feedback-indicators/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
+- Numeric cells and titles should be right aligned with the [Text](/components/typography/text) component
+- Numeric cells should use the numeric style with the [Text](/components/typography/text) component
 
 Index tables can optionally:
 
@@ -205,7 +205,7 @@ Index tables should:
 
 - Follow the verb + noun formula for bulk actions
 
-- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/filters#content-guidelines)
+- Follow the [content guidelines for filter options and applied filters](/components/selection-and-input/filters#content-guidelines)
 
 ---
 
@@ -252,7 +252,7 @@ An `IndexTable.Cell` is used to render a single cell within an `IndexTable.Row`
 
 - To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/lists/resource-list)
 - To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/tables/data-table)
-- To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists/list)
+- To display a simple list of related content, [use the list component](/components/lists)
 
 ---
 
