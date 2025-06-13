@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.10.0
+
+### Minor Changes
+
+- [#13605](https://github.com/Shopify/polaris/pull/13605) [`3b0f5e9`](https://github.com/Shopify/polaris/commit/3b0f5e9964d56391cd9eb4b1e17d58eb8cccc64b) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `title` prop in `Page.Title` and `backAction` prop in `Page.Header` and `Breadcrumbs`
+
 ## 13.9.5
 
 ### Patch Changes
