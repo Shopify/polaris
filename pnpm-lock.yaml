@@ -325,8 +325,8 @@ importers:
         specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.4)
       '@storybook/react':
-        specifier: ^8.6.4
-        version: 8.6.4(@storybook/test@8.6.14)(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)(typescript@4.9.3)
+        specifier: ^9.0.10
+        version: 9.0.10(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)(typescript@4.9.3)
       '@storybook/react-vite':
         specifier: ^8.6.4
         version: 8.6.4(@storybook/test@8.6.14)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.6.4)(typescript@4.9.3)(vite@4.5.6)
@@ -7049,6 +7049,18 @@ packages:
       storybook: 8.6.4(prettier@2.8.8)
     dev: true
 
+  /@storybook/react-dom-shim@9.0.10(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4):
+    resolution: {integrity: sha512-BVDi2/VLHbwR7RE1RkjWfH/DjSZ72Nf30Spu/mah/VbEEizBegc2YQY4jtvWSs78qKlA6qg0S/sxGkoOHag3eQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      storybook: ^9.0.10
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      storybook: 8.6.4(prettier@2.8.8)
+    dev: true
+
   /@storybook/react-vite@8.6.4(@storybook/test@8.6.14)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.6.4)(typescript@4.9.3)(vite@4.5.6):
     resolution: {integrity: sha512-MEmD6sP2tUI/SYCXCeWGTs8umZj+N0e3DHXCQUz0nCsJH7kuCTTipOTBQvr/GuEstNd7BNG5k8aLIRrXLjAvdA==}
     engines: {node: '>=18.0.0'}
@@ -7104,6 +7116,26 @@ packages:
       '@storybook/react-dom-shim': 8.6.4(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)
       '@storybook/test': 8.6.14(storybook@8.6.4)
       '@storybook/theming': 8.6.4(storybook@8.6.4)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      storybook: 8.6.4(prettier@2.8.8)
+      typescript: 4.9.3
+    dev: true
+
+  /@storybook/react@9.0.10(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)(typescript@4.9.3):
+    resolution: {integrity: sha512-HbIizzQOnojJ2MLIeqfBr+ytmzzLiQ9z4wfVbqtclpj3JDlfm/6dHwY68SJdgb+m0kgQvHXNlk25YKbvogmWAQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      storybook: ^9.0.10
+      typescript: '>= 4.9.x'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@storybook/react-dom-shim': 9.0.10(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       storybook: 8.6.4(prettier@2.8.8)
@@ -11656,8 +11688,8 @@ packages:
       character-entities: 2.0.1
     dev: false
 
-  /decode-named-character-reference@1.1.0:
-    resolution: {integrity: sha512-Wy+JTSbFThEOXQIR2L6mxJvEs+veIzpmqD7ynWxMXGpnk3smkHQOp6forLdHsKpAMW9iJpaBBIxz285t1n1C3w==}
+  /decode-named-character-reference@1.2.0:
+    resolution: {integrity: sha512-c6fcElNV6ShtZXmsgNgFFV5tVX2PaV4g+MOAkb8eXHvn6sryJBrZa9r0zV6+dtTyoCKxtDy5tyQ5ZwQuidtd+Q==}
     dependencies:
       character-entities: 2.0.2
     dev: false
@@ -17411,7 +17443,7 @@ packages:
     dependencies:
       '@types/mdast': 3.0.15
       '@types/unist': 2.0.11
-      decode-named-character-reference: 1.1.0
+      decode-named-character-reference: 1.2.0
       mdast-util-to-string: 3.2.0
       micromark: 3.2.0
       micromark-util-decode-numeric-character-reference: 1.1.0
@@ -17729,7 +17761,7 @@ packages:
   /micromark-core-commonmark@1.1.0:
     resolution: {integrity: sha512-BgHO1aRbolh2hcrzL2d1La37V0Aoz73ymF8rAcKnohLy93titmv62E0gP8Hrx9PKcKrqCZ1BbLGbP3bEhoXYlw==}
     dependencies:
-      decode-named-character-reference: 1.1.0
+      decode-named-character-reference: 1.2.0
       micromark-factory-destination: 1.1.0
       micromark-factory-label: 1.1.0
       micromark-factory-space: 1.1.0
@@ -18070,7 +18102,7 @@ packages:
   /micromark-util-decode-string@1.1.0:
     resolution: {integrity: sha512-YphLGCK8gM1tG1bd54azwyrQRjCFcmgj2S2GoJDNnh4vYtnL38JS8M4gpxzOPNyHdNEpheyWXCTnnTDY3N+NVQ==}
     dependencies:
-      decode-named-character-reference: 1.1.0
+      decode-named-character-reference: 1.2.0
       micromark-util-character: 1.2.0
       micromark-util-decode-numeric-character-reference: 1.1.0
       micromark-util-symbol: 1.1.0
@@ -18207,7 +18239,7 @@ packages:
     dependencies:
       '@types/debug': 4.1.12
       debug: 4.4.1
-      decode-named-character-reference: 1.1.0
+      decode-named-character-reference: 1.2.0
       micromark-core-commonmark: 1.1.0
       micromark-factory-space: 1.1.0
       micromark-util-character: 1.2.0
