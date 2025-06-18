@@ -638,8 +638,8 @@ importers:
         specifier: ^4.3.2
         version: 4.3.2
       marked:
-        specifier: ^4.0.16
-        version: 4.0.16
+        specifier: ^15.0.12
+        version: 15.0.12
       ora:
         specifier: ^5.4.1
         version: 5.4.1
@@ -17347,9 +17347,9 @@ packages:
     resolution: {integrity: sha512-y8j3a5/DkJCmS5x4dMCQL+OR0+2EAq3DOtio1COSHsmW2BGXnNCK3v12hJt1LrUz5iZH5g0LmuYOjDdI+czghA==}
     dev: false
 
-  /marked@4.0.16:
-    resolution: {integrity: sha512-wahonIQ5Jnyatt2fn8KqF/nIqZM8mh3oRu2+l5EANGMhu6RFjiSG52QNE2eWzFMI94HqYSgN184NurgNG6CztA==}
-    engines: {node: '>= 12'}
+  /marked@15.0.12:
+    resolution: {integrity: sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==}
+    engines: {node: '>= 18'}
     hasBin: true
     dev: true
 
