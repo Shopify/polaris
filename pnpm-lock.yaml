@@ -325,8 +325,8 @@ importers:
         specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.4)
       '@storybook/react':
-        specifier: ^8.6.4
-        version: 8.6.4(@storybook/test@8.6.14)(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)(typescript@4.9.3)
+        specifier: ^9.0.12
+        version: 9.0.12(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)(typescript@4.9.3)
       '@storybook/react-vite':
         specifier: ^8.6.4
         version: 8.6.4(@storybook/test@8.6.14)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.6.4)(typescript@4.9.3)(vite@4.5.6)
@@ -347,7 +347,7 @@ importers:
         version: 20.12.5
       axe-playwright:
         specifier: ^2.1.0
-        version: 2.1.0(playwright@1.53.0)
+        version: 2.1.0(playwright@1.53.1)
       babel-core:
         specifier: 7.0.0-bridge.0
         version: 7.0.0-bridge.0(@babel/core@7.27.4)
@@ -7064,6 +7064,18 @@ packages:
       storybook: 8.6.4(prettier@2.8.8)
     dev: true
 
+  /@storybook/react-dom-shim@9.0.12(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4):
+    resolution: {integrity: sha512-OMBitzkJRga/UJF1ScSnaxgBSlAVePCK8wzPkGDn0MmsjZ4oDWuNZeKnVO1+tb6n2rZHws7RmKGxHzHAZTY+zQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      storybook: ^9.0.12
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      storybook: 8.6.4(prettier@2.8.8)
+    dev: true
+
   /@storybook/react-vite@8.6.4(@storybook/test@8.6.14)(react-dom@18.2.0)(react@18.2.0)(rollup@3.29.5)(storybook@8.6.4)(typescript@4.9.3)(vite@4.5.6):
     resolution: {integrity: sha512-MEmD6sP2tUI/SYCXCeWGTs8umZj+N0e3DHXCQUz0nCsJH7kuCTTipOTBQvr/GuEstNd7BNG5k8aLIRrXLjAvdA==}
     engines: {node: '>=18.0.0'}
@@ -7119,6 +7131,26 @@ packages:
       '@storybook/react-dom-shim': 8.6.4(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)
       '@storybook/test': 8.6.14(storybook@8.6.4)
       '@storybook/theming': 8.6.4(storybook@8.6.4)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      storybook: 8.6.4(prettier@2.8.8)
+      typescript: 4.9.3
+    dev: true
+
+  /@storybook/react@9.0.12(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)(typescript@4.9.3):
+    resolution: {integrity: sha512-rDrf5MDfsguNDTSOfGqhAjQDhp3jDMdzAoCqLjQ75M647C8nsv9i+fftO3k0rMxIJRrESpZWqVZ4tsjOX+J3DA==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      storybook: ^9.0.12
+      typescript: '>= 4.9.x'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@storybook/react-dom-shim': 9.0.12(react-dom@18.2.0)(react@18.2.0)(storybook@8.6.4)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       storybook: 8.6.4(prettier@2.8.8)
@@ -9397,7 +9429,7 @@ packages:
       mustache: 4.2.0
     dev: true
 
-  /axe-playwright@2.1.0(playwright@1.53.0):
+  /axe-playwright@2.1.0(playwright@1.53.1):
     resolution: {integrity: sha512-tY48SX56XaAp16oHPyD4DXpybz8Jxdz9P7exTjF/4AV70EGUavk+1fUPWirM0OYBR+YyDx6hUeDvuHVA6fB9YA==}
     peerDependencies:
       playwright: '>1.0.0'
@@ -9407,7 +9439,7 @@ packages:
       axe-html-reporter: 2.2.11(axe-core@4.10.2)
       junit-report-builder: 5.1.1
       picocolors: 1.1.1
-      playwright: 1.53.0
+      playwright: 1.53.1
     dev: true
 
   /axios@0.18.1:
@@ -19923,12 +19955,28 @@ packages:
     hasBin: true
     dev: true
 
+  /playwright-core@1.53.1:
+    resolution: {integrity: sha512-Z46Oq7tLAyT0lGoFx4DOuB1IA9D1TPj0QkYxpPVUnGDqHHvDpCftu1J2hM2PiWsNMoZh8+LQaarAWcDfPBc6zg==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dev: true
+
   /playwright@1.53.0:
     resolution: {integrity: sha512-ghGNnIEYZC4E+YtclRn4/p6oYbdPiASELBIYkBXfaTVKreQUYbMUYQDwS12a8F0/HtIjr/CkGjtwABeFPGcS4Q==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
       playwright-core: 1.53.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /playwright@1.53.1:
+    resolution: {integrity: sha512-LJ13YLr/ocweuwxyGf1XNFWIU4M2zUSo149Qbp+A4cpwDjsxRPj7k6H25LBrEHiEwxvRbD8HdwvQmRMSvquhYw==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.53.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
