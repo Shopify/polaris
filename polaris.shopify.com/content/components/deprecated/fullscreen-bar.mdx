@@ -1,6 +1,6 @@
 ---
 title: Fullscreen bar
-category: Navigation
+category: Deprecated
 keywords:
   - topbar
   - top bar
@@ -14,7 +14,8 @@ examples:
   - fileName: fullscreen-bar-no-children.tsx
     title: No children
     description: Use this default to show ONLY the Back button.
-previewImg: /images/components/navigation/fullscreen-bar.png
+status: Deprecated
+previewImg: /images/components/deprecated/fullscreen-bar.png
 ---
 
 # {frontmatter.title}
@@ -24,6 +25,14 @@ previewImg: /images/components/navigation/fullscreen-bar.png
 The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`.
 
 </Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. Please use the [App Bridge Modal
+  API](https://shopify.dev/docs/api/app-bridge-library/web-components/ui-modal?example=modals-with-different-options-opening-a-max-size-modal)
+  in combination with the [App Bridge Title Bar
+  API](https://shopify.dev/docs/api/app-bridge-library/web-components/ui-title-bar)
+  instead.
+</StatusBanner>
 
 <Examples />
 
