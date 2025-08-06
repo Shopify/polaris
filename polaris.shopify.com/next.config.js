@@ -237,11 +237,6 @@ const actions = [
     destination: '/components/actions/button',
     permanent: true,
   },
-  {
-    source: '/components/page-actions',
-    destination: '/components/actions/page-actions',
-    permanent: true,
-  },
 ];
 
 const deprecated = [
@@ -258,6 +253,11 @@ const deprecated = [
   {
     source: '/components/display-text',
     destination: '/components/deprecated/display-text',
+    permanent: true,
+  },
+  {
+    source: '/components/fullscreen-bar',
+    destination: '/components/deprecated/fullscreen-bar',
     permanent: true,
   },
   {
@@ -283,6 +283,11 @@ const deprecated = [
   {
     source: '/components/navigation/legacy-tabs',
     destination: '/components/deprecated/legacy-tabs',
+    permanent: true,
+  },
+  {
+    source: '/components/page-actions',
+    destination: '/components/deprecated/page-actions',
     permanent: true,
   },
   {
@@ -583,11 +588,6 @@ const navigation = [
   {
     source: '/components/footer-help',
     destination: '/components/navigation/footer-help',
-    permanent: true,
-  },
-  {
-    source: '/components/fullscreen-bar',
-    destination: '/components/navigation/fullscreen-bar',
     permanent: true,
   },
   {
