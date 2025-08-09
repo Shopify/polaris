@@ -7,6 +7,8 @@ import {TextOption} from '../TextOption';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
 import {ActionContext} from '../../../../utilities/listbox/context';
+import {Box} from '../../../Box';
+import {InlineStack} from '../../../InlineStack';
 
 import styles from './Option.module.css';
 
@@ -65,14 +67,12 @@ export const Option = memo(function Option({
     event.preventDefault();
   };
 
-  const content =
-    typeof children === 'string' ? (
-      <TextOption selected={selected} disabled={disabled}>
-        {children}
-      </TextOption>
-    ) : (
-      children
-    );
+  // Always use TextOption to ensure consistent behavior and styling
+  const content = (
+    <TextOption selected={selected} disabled={disabled}>
+      {children}
+    </TextOption>
+  );
 
   const sectionAttributes = {
     [listboxWithinSectionDataSelector.attribute]: isWithinSection,

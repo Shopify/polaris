@@ -1,6 +1,10 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-
+import {Badge} from '../../../../Badge';
+import {InlineStack} from '../../../../InlineStack';
+import {Text} from '../../../../Text';
+import {Icon} from '../../../../Icon';
+import {Box} from '../../../../Box';
 import {TextOption} from '../TextOption';
 import {Listbox} from '../../..';
 import {Checkbox} from '../../../../Checkbox';
@@ -62,5 +66,91 @@ describe('TextOption', () => {
     );
 
     expect(textOption).not.toContainReactComponent(Checkbox);
+  });
+
+  const defaultContext = {
+    allowMultiple: false,
+  };
+
+  function mountWithContext(
+    children: React.ReactNode,
+    context = defaultContext,
+  ) {
+    return mountWithApp(
+      <ComboboxListboxOptionContext.Provider value={context}>
+        {children}
+      </ComboboxListboxOptionContext.Provider>,
+    );
+  }
+
+  describe('children', () => {
+    it('renders string children', () => {
+      const textOption = mountWithContext(
+        <TextOption>Simple text</TextOption>,
+      );
+
+      expect(textOption).toContainReactText('Simple text');
+    });
+
+    it('renders ReactNode children', () => {
+      const complexContent = (
+        <InlineStack gap="200">
+          <Text as="span">Complex content</Text>
+          <Badge>New</Badge>
+        </InlineStack>
+      );
+
+      const textOption = mountWithContext(
+        <TextOption>{complexContent}</TextOption>,
+      );
+
+      expect(textOption).toContainReactComponent(InlineStack, {
+        children: [
+          expect.objectContaining({
+            type: Text,
+            props: {as: 'span', children: 'Complex content'},
+          }),
+          expect.objectContaining({
+            type: Badge,
+            props: {children: 'New'},
+          }),
+        ],
+      });
+    });
+
+    it('wraps ReactNode children in Box when selected', () => {
+      const complexContent = (
+        <InlineStack gap="200">
+          <Text as="span">Complex content</Text>
+          <Badge>New</Badge>
+        </InlineStack>
+      );
+
+      const textOption = mountWithContext(
+        <TextOption selected>{complexContent}</TextOption>,
+      );
+
+      expect(textOption).toContainReactComponent(Box, {
+        width: '100%',
+      });
+    });
+
+    it('maintains proper layout with ReactNode children in multiple selection mode', () => {
+      const complexContent = (
+        <InlineStack gap="200">
+          <Text as="span">Complex content</Text>
+          <Badge>New</Badge>
+        </InlineStack>
+      );
+
+      const textOption = mountWithContext(
+        <TextOption>{complexContent}</TextOption>,
+        {allowMultiple: true},
+      );
+
+      expect(textOption).toContainReactComponent(Box, {
+        width: '100%',
+      });
+    });
   });
 });
