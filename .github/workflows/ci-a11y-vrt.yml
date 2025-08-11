@@ -16,6 +16,7 @@ on:
       - 'polaris-react/playground/**'
       - 'polaris-react/.storybook/**'
       - 'polaris-tokens/src/**'
+  workflow_dispatch:
 
 jobs:
   accessibility_test:
