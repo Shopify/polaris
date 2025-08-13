@@ -1,0 +1,408 @@
+{
+  "Polaris": {
+    "ActionMenu": {
+      "Actions": {
+        "moreActions": "Daugiau veiksmų"
+      },
+      "RollupActions": {
+        "rollupButton": "Peržiūrėti veiksmus"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Išvalyti",
+        "search": "Ieškoti",
+        "placeholder": "Ieškoti veiksmų"
+      }
+    },
+    "Avatar": {
+      "label": "Avataras",
+      "labelWithInitials": "Avataras su inicialais {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Kraunama",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Neužbaigta",
+        "partiallyComplete": "Daliniai užbaigta",
+        "complete": "Užbaigta"
+      },
+      "TONE_LABELS": {
+        "info": "Informacija",
+        "success": "Sėkminga",
+        "warning": "Įspėjimas",
+        "critical": "Kritinė",
+        "attention": "Dėmesio",
+        "new": "Nauja",
+        "readOnly": "Tik skaitymui",
+        "enabled": "Įjungta"
+      },
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Atmesti pranešimą"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Kraunama"
+    },
+    "Common": {
+      "checkbox": "žymimasis langelis",
+      "undo": "Atšaukti",
+      "cancel": "Atšaukti",
+      "clear": "Išvalyti",
+      "close": "Uždaryti",
+      "submit": "Pateikti",
+      "more": "Daugiau"
+    },
+    "ContextualSaveBar": {
+      "save": "Išsaugoti",
+      "discard": "Atmesti"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "rūšiuoti pagal {direction}",
+      "navAccessibilityLabel": "Slinkti lentelę {direction} vienu stulpeliu",
+      "totalsRowHeading": "Iš viso",
+      "totalRowHeading": "Iš viso"
+    },
+    "DatePicker": {
+      "previousMonth": "Rodyti ankstesnį mėnesį, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Rodyti kitą mėnesį, {nextMonth} {nextYear}",
+      "today": "Šiandien",
+      "start": "Diapazono pradžia",
+      "end": "Diapazono pabaiga",
+      "months": {
+        "january": "Sausis",
+        "february": "Vasaris",
+        "march": "Kovas",
+        "april": "Balandis",
+        "may": "Gegužė",
+        "june": "Birželis",
+        "july": "Liepa",
+        "august": "Rugpjūtis",
+        "september": "Rugsėjis",
+        "october": "Spalis",
+        "november": "Lapkritis",
+        "december": "Gruodis"
+      },
+      "days": {
+        "monday": "Pirmadienis",
+        "tuesday": "Antradienis",
+        "wednesday": "Trečiadienis",
+        "thursday": "Ketvirtadienis",
+        "friday": "Penktadienis",
+        "saturday": "Šeštadienis",
+        "sunday": "Sekmadienis"
+      },
+      "daysAbbreviated": {
+        "monday": "Pr",
+        "tuesday": "An",
+        "wednesday": "Tr",
+        "thursday": "Ke",
+        "friday": "Pn",
+        "saturday": "Št",
+        "sunday": "Sk"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Atmesti visus neišsaugotus pakeitimus",
+      "message": "Jei atmesite pakeitimus, ištrinsite visus redagavimus, kuriuos atlikote nuo paskutinio išsaugojimo.",
+      "primaryAction": "Atmesti pakeitimus",
+      "secondaryAction": "Tęsti redagavimą"
+    },
+    "DropZone": {
+      "single": {
+        "overlayTextFile": "Numeskite failą, kad įkeltumėte",
+        "overlayTextImage": "Numeskite paveikslėlį, kad įkeltumėte",
+        "overlayTextVideo": "Numeskite vaizdo įrašą, kad įkeltumėte",
+        "actionTitleFile": "Pridėti failą",
+        "actionTitleImage": "Pridėti paveikslėlį",
+        "actionTitleVideo": "Pridėti vaizdo įrašą",
+        "actionHintFile": "arba numeskite failą, kad įkeltumėte",
+        "actionHintImage": "arba numeskite paveikslėlį, kad įkeltumėte",
+        "actionHintVideo": "arba numeskite vaizdo įrašą, kad įkeltumėte",
+        "labelFile": "Įkelti failą",
+        "labelImage": "Įkelti paveikslėlį",
+        "labelVideo": "Įkelti vaizdo įrašą"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Numeskite failus, kad įkeltumėte",
+        "overlayTextImage": "Numeskite paveikslėlius, kad įkeltumėte",
+        "overlayTextVideo": "Numeskite vaizdo įrašus, kad įkeltumėte",
+        "actionTitleFile": "Pridėti failus",
+        "actionTitleImage": "Pridėti paveikslėlius",
+        "actionTitleVideo": "Pridėti vaizdo įrašus",
+        "actionHintFile": "arba numeskite failus, kad įkeltumėte",
+        "actionHintImage": "arba numeskite paveikslėlius, kad įkeltumėte",
+        "actionHintVideo": "arba numeskite vaizdo įrašus, kad įkeltumėte",
+        "labelFile": "Įkelti failus",
+        "labelImage": "Įkelti paveikslėlius",
+        "labelVideo": "Įkelti vaizdo įrašus"
+      },
+      "errorOverlayTextFile": "Failo tipas neteisingas",
+      "errorOverlayTextImage": "Paveikslėlio tipas neteisingas",
+      "errorOverlayTextVideo": "Vaizdo įrašo tipas neteisingas"
+    },
+    "EmptySearchResult": {
+      "altText": "Tušti paieškos rezultatai"
+    },
+    "Frame": {
+      "skipToContent": "Pereiti prie turinio",
+      "navigationLabel": "Navigacija",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Uždaryti navigaciją"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Atgal",
+      "accessibilityLabel": "Išeiti iš viso ekrano režimo"
+    },
+    "Filters": {
+      "moreFilters": "Daugiau filtrų",
+      "moreFiltersWithCount": "Daugiau filtrų ({count})",
+      "filter": "Filtruoti {resourceName}",
+      "noFiltersApplied": "Nėra pritaikytų filtrų",
+      "cancel": "Atšaukti",
+      "done": "Atlikta",
+      "clearAllFilters": "Išvalyti visus filtrus",
+      "clear": "Išvalyti",
+      "clearLabel": "Išvalyti {filterName}",
+      "addFilter": "Pridėti filtrą",
+      "clearFilters": "Išvalyti visus",
+      "searchInView": "peržiūroje:{viewName}"
+    },
+    "FilterPill": {
+      "clear": "Išvalyti",
+      "unsavedChanges": "Neišsaugoti pakeitimai - {label}"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Ieškoti ir filtruoti",
+      "searchFilterTooltipWithShortcut": "Ieškoti ir filtruoti (F)",
+      "searchFilterAccessibilityLabel": "Ieškoti ir filtruoti rezultatus",
+      "sort": "Rūšiuoti rezultatus",
+      "addView": "Pridėti naują peržiūrą",
+      "newView": "Pasirinktinis paieškos",
+      "SortButton": {
+        "ariaLabel": "Rūšiuoti rezultatus",
+        "tooltip": "Rūšiuoti",
+        "title": "Rūšiuoti pagal",
+        "sorting": {
+          "asc": "Didėjimo tvarka",
+          "desc": "Mažėjimo tvarka",
+          "az": "A-Ž",
+          "za": "Ž-A"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Redaguoti stulpelius",
+        "accessibilityLabel": "Pritaikyti lentelės stulpelių tvarką ir matomumą"
+      },
+      "UpdateButtons": {
+        "cancel": "Atšaukti",
+        "update": "Atnaujinti",
+        "save": "Išsaugoti",
+        "saveAs": "Išsaugoti kaip",
+        "modal": {
+          "title": "Išsaugoti peržiūrą kaip",
+          "label": "Pavadinimas",
+          "sameName": "Peržiūra su tokiu pavadinimu jau egzistuoja. Pasirinkite kitą pavadinimą.",
+          "save": "Išsaugoti",
+          "cancel": "Atšaukti"
+        }
+      }
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Elementas",
+      "defaultItemPlural": "Elementai",
+      "allItemsSelected": "Visi {itemsLength}+ {resourceNamePlural} pasirinkti",
+      "selected": "{selectedItemsCount} pasirinkta",
+      "a11yCheckboxDeselectAllSingle": "Atžymėti {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Pasirinkti {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Atžymėti visus {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Pasirinkti visus {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nerasta {resourceNamePlural}",
+      "emptySearchDescription": "Pabandykite pakeisti filtrus ar paieškos terminą",
+      "onboardingBadgeText": "Nauja",
+      "resourceLoadingAccessibilityLabel": "Kraunami {resourceNamePlural}…",
+      "selectAllLabel": "Pasirinkti visus {resourceNamePlural}",
+      "selected": "{selectedItemsCount} pasirinkta",
+      "undo": "Atšaukti",
+      "selectAllItems": "Pasirinkti visus {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Pasirinkti {resourceName}",
+      "selectButtonText": "Pasirinkti",
+      "sortAccessibilityLabel": "rūšiuoti pagal {direction}"
+    },
+    "Loading": {
+      "label": "Puslapio kraunamo juosta"
+    },
+    "Modal": {
+      "iFrameTitle": "kūno žymėjimas",
+      "modalWarning": "Šie būtini savybės trūksta Modal: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Peržiūrėti veiksmus {title}",
+        "pageReadyAccessibilityLabel": "{title}. Šis puslapis paruoštas"
+      }
+    },
+    "Pagination": {
+      "previous": "Ankstesnis",
+      "next": "Kitas",
+      "pagination": "Puslapių numeracija"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Reikšmės, perduotos į progress prop, neturėtų būti neigiamos. Atstatoma {progress} į 0.",
+      "exceedWarningMessage": "Reikšmės, perduotos į progress prop, neturėtų viršyti 100. Nustatoma {progress} į 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Rūšiuoti pagal",
+      "defaultItemSingular": "elementas",
+      "defaultItemPlural": "elementai",
+      "showing": "Rodoma {itemsCount} {resource}",
+      "showingTotalCount": "Rodoma {itemsCount} iš {totalItemsCount} {resource}",
+      "loading": "Kraunami {resource}",
+      "selected": "{selectedItemsCount} pasirinkta",
+      "allItemsSelected": "Visi {itemsLength}+ {resourceNamePlural} jūsų parduotuvėje pasirinkti",
+      "allFilteredItemsSelected": "Visi {itemsLength}+ {resourceNamePlural} šiame filtre pasirinkti",
+      "selectAllItems": "Pasirinkti visus {itemsLength}+ {resourceNamePlural} jūsų parduotuvėje",
+      "selectAllFilteredItems": "Pasirinkti visus {itemsLength}+ {resourceNamePlural} šiame filtre",
+      "emptySearchResultTitle": "Nerasta {resourceNamePlural}",
+      "emptySearchResultDescription": "Pabandykite pakeisti filtrus ar paieškos terminą",
+      "selectButtonText": "Pasirinkti",
+      "a11yCheckboxDeselectAllSingle": "Atžymėti {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Pasirinkti {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Atžymėti visus {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Pasirinkti visus {itemsLength} {resourceNamePlural}",
+      "Item": {
+        "actionsDropdownLabel": "Veiksmai {accessibilityLabel}",
+        "actionsDropdown": "Veiksmų išskleidžiamasis meniu",
+        "viewItem": "Peržiūrėti {itemName} informaciją"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Veiksmai",
+        "moreActionsActivatorLabel": "Daugiau veiksmų"
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Kraunamas puslapis"
+    },
+    "Tabs": {
+      "newViewAccessibilityLabel": "Sukurti naują peržiūrą",
+      "newViewTooltip": "Sukurti peržiūrą",
+      "toggleTabsLabel": "Daugiau peržiūrų",
+      "Tab": {
+        "rename": "Pervadinti peržiūrą",
+        "duplicate": "Dublikuoti peržiūrą",
+        "edit": "Redaguoti peržiūrą",
+        "editColumns": "Redaguoti stulpelius",
+        "delete": "Ištrinti peržiūrą",
+        "copy": "{name} kopija",
+        "deleteModal": {
+          "title": "Ištrinti peržiūrą?",
+          "description": "To negalima atšaukti. {viewName} peržiūra nebus daugiau prieinama jūsų administravimo srityje.",
+          "cancel": "Atšaukti",
+          "delete": "Ištrinti peržiūrą"
+        }
+      },
+      "RenameModal": {
+        "title": "Pervadinti peržiūrą",
+        "label": "Pavadinimas",
+        "cancel": "Atšaukti",
+        "create": "Išsaugoti",
+        "errors": {
+          "sameName": "Peržiūra su tokiu pavadinimu jau egzistuoja. Pasirinkite kitą pavadinimą."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Dublikuoti peržiūrą",
+        "label": "Pavadinimas",
+        "cancel": "Atšaukti",
+        "create": "Sukurti peržiūrą",
+        "errors": {
+          "sameName": "Peržiūra su tokiu pavadinimu jau egzistuoja. Pasirinkite kitą pavadinimą."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Sukurti naują peržiūrą",
+        "label": "Pavadinimas",
+        "cancel": "Atšaukti",
+        "create": "Sukurti peržiūrą",
+        "errors": {
+          "sameName": "Peržiūra su tokiu pavadinimu jau egzistuoja. Pasirinkite kitą pavadinimą."
+        }
+      }
+    },
+    "Tag": {
+      "ariaLabel": "Pašalinti {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} simbolių",
+      "characterCountWithMaxLength": "Naudojama {count} iš {limit} simbolių"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Paaiškinimas: {label}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Perjungti meniu",
+      "SearchField": {
+        "clearButtonLabel": "Išvalyti",
+        "search": "Ieškoti"
+      }
+    },
+    "MediaCard": {
+      "dismissButton": "Atmesti",
+      "popoverButton": "Veiksmai"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Groti vaizdo įrašą",
+        "defaultWithDuration": "Groti vaizdo įrašą, kurio trukmė {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} valandos",
+              "andMinutes": "{hourCount} valandos ir {minuteCount} minutės",
+              "andMinute": "{hourCount} valandos ir {minuteCount} minutė",
+              "minutesAndSeconds": "{hourCount} valandos, {minuteCount} minutės ir {secondCount} sekundės",
+              "minutesAndSecond": "{hourCount} valandos, {minuteCount} minutės ir {secondCount} sekundė",
+              "minuteAndSeconds": "{hourCount} valandos, {minuteCount} minutė ir {secondCount} sekundės",
+              "minuteAndSecond": "{hourCount} valandos, {minuteCount} minutė ir {secondCount} sekundė",
+              "andSeconds": "{hourCount} valandos ir {secondCount} sekundės",
+              "andSecond": "{hourCount} valandos ir {secondCount} sekundė"
+            },
+            "one": {
+              "only": "{hourCount} valanda",
+              "andMinutes": "{hourCount} valanda ir {minuteCount} minutės",
+              "andMinute": "{hourCount} valanda ir {minuteCount} minutė",
+              "minutesAndSeconds": "{hourCount} valanda, {minuteCount} minutės ir {secondCount} sekundės",
+              "minutesAndSecond": "{hourCount} valanda, {minuteCount} minutės ir {secondCount} sekundė",
+              "minuteAndSeconds": "{hourCount} valanda, {minuteCount} minutė ir {secondCount} sekundės",
+              "minuteAndSecond": "{hourCount} valanda, {minuteCount} minutė ir {secondCount} sekundė",
+              "andSeconds": "{hourCount} valanda ir {secondCount} sekundės",
+              "andSecond": "{hourCount} valanda ir {secondCount} sekundė"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minutės",
+              "andSeconds": "{minuteCount} minutės ir {secondCount} sekundės",
+              "andSecond": "{minuteCount} minutės ir {secondCount} sekundė"
+            },
+            "one": {
+              "only": "{minuteCount} minutė",
+              "andSeconds": "{minuteCount} minutė ir {secondCount} sekundės",
+              "andSecond": "{minuteCount} minutė ir {secondCount} sekundė"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} sekundės",
+            "one": "{secondCount} sekundė"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,408 @@
+{
+  "Polaris": {
+    "ActionMenu": {
+      "Actions": {
+        "moreActions": "További műveletek"
+      },
+      "RollupActions": {
+        "rollupButton": "Műveletek megtekintése"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Törlés",
+        "search": "Keresés",
+        "placeholder": "Műveletek keresése"
+      }
+    },
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar {initials} inicialokkal"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Betöltés",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Befejezetlen",
+        "partiallyComplete": "Részben befejezett",
+        "complete": "Befejezett"
+      },
+      "TONE_LABELS": {
+        "info": "Információ",
+        "success": "Sikeres",
+        "warning": "Figyelmeztetés",
+        "critical": "Kritikus",
+        "attention": "Figyelem",
+        "new": "Új",
+        "readOnly": "Csak olvasható",
+        "enabled": "Engedélyezett"
+      },
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Értesítés elutasítása"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Betöltés"
+    },
+    "Common": {
+      "checkbox": "jelölőnégyzet",
+      "undo": "Visszavonás",
+      "cancel": "Mégse",
+      "clear": "Törlés",
+      "close": "Bezárás",
+      "submit": "Küldés",
+      "more": "További"
+    },
+    "ContextualSaveBar": {
+      "save": "Mentés",
+      "discard": "Elvetés"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "rendezés {direction} szerint",
+      "navAccessibilityLabel": "Táblázat görgetése {direction} egy oszloppal",
+      "totalsRowHeading": "Összesen",
+      "totalRowHeading": "Összesen"
+    },
+    "DatePicker": {
+      "previousMonth": "Előző hónap megjelenítése, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Következő hónap megjelenítése, {nextMonth} {nextYear}",
+      "today": "Ma",
+      "start": "Tartomány kezdete",
+      "end": "Tartomány vége",
+      "months": {
+        "january": "Január",
+        "february": "Február",
+        "march": "Március",
+        "april": "Április",
+        "may": "Május",
+        "june": "Június",
+        "july": "Július",
+        "august": "Augusztus",
+        "september": "Szeptember",
+        "october": "Október",
+        "november": "November",
+        "december": "December"
+      },
+      "days": {
+        "monday": "Hétfő",
+        "tuesday": "Kedd",
+        "wednesday": "Szerda",
+        "thursday": "Csütörtök",
+        "friday": "Péntek",
+        "saturday": "Szombat",
+        "sunday": "Vasárnap"
+      },
+      "daysAbbreviated": {
+        "monday": "H",
+        "tuesday": "K",
+        "wednesday": "Sze",
+        "thursday": "Cs",
+        "friday": "P",
+        "saturday": "Szo",
+        "sunday": "V"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Minden nem mentett változtatás elvetése",
+      "message": "Ha elveti a változtatásokat, törölni fogja az összes szerkesztést, amelyet az utolsó mentés óta végzett.",
+      "primaryAction": "Változtatások elvetése",
+      "secondaryAction": "Szerkesztés folytatása"
+    },
+    "DropZone": {
+      "single": {
+        "overlayTextFile": "Fájl eldobása feltöltéshez",
+        "overlayTextImage": "Kép eldobása feltöltéshez",
+        "overlayTextVideo": "Videó eldobása feltöltéshez",
+        "actionTitleFile": "Fájl hozzáadása",
+        "actionTitleImage": "Kép hozzáadása",
+        "actionTitleVideo": "Videó hozzáadása",
+        "actionHintFile": "vagy fájl eldobása feltöltéshez",
+        "actionHintImage": "vagy kép eldobása feltöltéshez",
+        "actionHintVideo": "vagy videó eldobása feltöltéshez",
+        "labelFile": "Fájl feltöltése",
+        "labelImage": "Kép feltöltése",
+        "labelVideo": "Videó feltöltése"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Fájlok eldobása feltöltéshez",
+        "overlayTextImage": "Képek eldobása feltöltéshez",
+        "overlayTextVideo": "Videók eldobása feltöltéshez",
+        "actionTitleFile": "Fájlok hozzáadása",
+        "actionTitleImage": "Képek hozzáadása",
+        "actionTitleVideo": "Videók hozzáadása",
+        "actionHintFile": "vagy fájlok eldobása feltöltéshez",
+        "actionHintImage": "vagy képek eldobása feltöltéshez",
+        "actionHintVideo": "vagy videók eldobása feltöltéshez",
+        "labelFile": "Fájlok feltöltése",
+        "labelImage": "Képek feltöltése",
+        "labelVideo": "Videók feltöltése"
+      },
+      "errorOverlayTextFile": "A fájl típusa nem érvényes",
+      "errorOverlayTextImage": "A kép típusa nem érvényes",
+      "errorOverlayTextVideo": "A videó típusa nem érvényes"
+    },
+    "EmptySearchResult": {
+      "altText": "Üres keresési eredmények"
+    },
+    "Frame": {
+      "skipToContent": "Ugrás a tartalomhoz",
+      "navigationLabel": "Navigáció",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Navigáció bezárása"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Vissza",
+      "accessibilityLabel": "Teljes képernyős módból kilépés"
+    },
+    "Filters": {
+      "moreFilters": "További szűrők",
+      "moreFiltersWithCount": "További szűrők ({count})",
+      "filter": "{resourceName} szűrése",
+      "noFiltersApplied": "Nincsenek alkalmazott szűrők",
+      "cancel": "Mégse",
+      "done": "Kész",
+      "clearAllFilters": "Összes szűrő törlése",
+      "clear": "Törlés",
+      "clearLabel": "{filterName} törlése",
+      "addFilter": "Szűrő hozzáadása",
+      "clearFilters": "Összes törlése",
+      "searchInView": "nézetben:{viewName}"
+    },
+    "FilterPill": {
+      "clear": "Törlés",
+      "unsavedChanges": "Nem mentett változtatások - {label}"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Keresés és szűrés",
+      "searchFilterTooltipWithShortcut": "Keresés és szűrés (F)",
+      "searchFilterAccessibilityLabel": "Keresés és szűrés eredmények",
+      "sort": "Eredmények rendezése",
+      "addView": "Új nézet hozzáadása",
+      "newView": "Egyéni keresés",
+      "SortButton": {
+        "ariaLabel": "Eredmények rendezése",
+        "tooltip": "Rendezés",
+        "title": "Rendezés szerint",
+        "sorting": {
+          "asc": "Növekvő",
+          "desc": "Csökkenő",
+          "az": "A-Á",
+          "za": "Á-A"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Oszlopok szerkesztése",
+        "accessibilityLabel": "Táblázat oszlopok sorrendjének és láthatóságának testreszabása"
+      },
+      "UpdateButtons": {
+        "cancel": "Mégse",
+        "update": "Frissítés",
+        "save": "Mentés",
+        "saveAs": "Mentés másként",
+        "modal": {
+          "title": "Nézet mentése másként",
+          "label": "Név",
+          "sameName": "Már létezik ilyen nevű nézet. Kérjük, válasszon másik nevet.",
+          "save": "Mentés",
+          "cancel": "Mégse"
+        }
+      }
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Elem",
+      "defaultItemPlural": "Elemek",
+      "allItemsSelected": "Minden {itemsLength}+ {resourceNamePlural} ki van választva",
+      "selected": "{selectedItemsCount} kiválasztott",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} kiválasztásának megszüntetése",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kiválasztása",
+      "a11yCheckboxDeselectAllMultiple": "Minden {itemsLength} {resourceNamePlural} kiválasztásának megszüntetése",
+      "a11yCheckboxSelectAllMultiple": "Minden {itemsLength} {resourceNamePlural} kiválasztása"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nem találhatók {resourceNamePlural}",
+      "emptySearchDescription": "Próbálja meg módosítani a szűrőket vagy a keresési kifejezést",
+      "onboardingBadgeText": "Új",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} betöltése…",
+      "selectAllLabel": "Minden {resourceNamePlural} kiválasztása",
+      "selected": "{selectedItemsCount} kiválasztott",
+      "undo": "Visszavonás",
+      "selectAllItems": "Minden {itemsLength}+ {resourceNamePlural} kiválasztása",
+      "selectItem": "{resourceName} kiválasztása",
+      "selectButtonText": "Kiválasztás",
+      "sortAccessibilityLabel": "rendezés {direction} szerint"
+    },
+    "Loading": {
+      "label": "Oldal betöltési sáv"
+    },
+    "Modal": {
+      "iFrameTitle": "törzs jelölés",
+      "modalWarning": "Ezek a kötelező tulajdonságok hiányoznak a Modal-ból: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Műveletek megtekintése {title} számára",
+        "pageReadyAccessibilityLabel": "{title}. Ez az oldal kész"
+      }
+    },
+    "Pagination": {
+      "previous": "Előző",
+      "next": "Következő",
+      "pagination": "Lapozás"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "A progress prop-ba átadott értékek nem lehetnek negatívak. {progress} nullázása 0-ra.",
+      "exceedWarningMessage": "A progress prop-ba átadott értékek nem haladhatják meg a 100-at. {progress} beállítása 100-ra."
+    },
+    "ResourceList": {
+      "sortingLabel": "Rendezés szerint",
+      "defaultItemSingular": "elem",
+      "defaultItemPlural": "elemek",
+      "showing": "{itemsCount} {resource} megjelenítése",
+      "showingTotalCount": "{totalItemsCount} {resource} közül {itemsCount} megjelenítése",
+      "loading": "{resource} betöltése",
+      "selected": "{selectedItemsCount} kiválasztott",
+      "allItemsSelected": "Az üzletében minden {itemsLength}+ {resourceNamePlural} ki van választva",
+      "allFilteredItemsSelected": "Ebben a szűrőben minden {itemsLength}+ {resourceNamePlural} ki van választva",
+      "selectAllItems": "Az üzletében minden {itemsLength}+ {resourceNamePlural} kiválasztása",
+      "selectAllFilteredItems": "Ebben a szűrőben minden {itemsLength}+ {resourceNamePlural} kiválasztása",
+      "emptySearchResultTitle": "Nem találhatók {resourceNamePlural}",
+      "emptySearchResultDescription": "Próbálja meg módosítani a szűrőket vagy a keresési kifejezést",
+      "selectButtonText": "Kiválasztás",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} kiválasztásának megszüntetése",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kiválasztása",
+      "a11yCheckboxDeselectAllMultiple": "Minden {itemsLength} {resourceNamePlural} kiválasztásának megszüntetése",
+      "a11yCheckboxSelectAllMultiple": "Minden {itemsLength} {resourceNamePlural} kiválasztása",
+      "Item": {
+        "actionsDropdownLabel": "Műveletek {accessibilityLabel} számára",
+        "actionsDropdown": "Műveletek legördülő menü",
+        "viewItem": "{itemName} részleteinek megtekintése"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Műveletek",
+        "moreActionsActivatorLabel": "További műveletek"
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Oldal betöltése"
+    },
+    "Tabs": {
+      "newViewAccessibilityLabel": "Új nézet létrehozása",
+      "newViewTooltip": "Nézet létrehozása",
+      "toggleTabsLabel": "További nézetek",
+      "Tab": {
+        "rename": "Nézet átnevezése",
+        "duplicate": "Nézet duplikálása",
+        "edit": "Nézet szerkesztése",
+        "editColumns": "Oszlopok szerkesztése",
+        "delete": "Nézet törlése",
+        "copy": "{name} másolata",
+        "deleteModal": {
+          "title": "Nézet törlése?",
+          "description": "Ez nem vonható vissza. A {viewName} nézet többé nem lesz elérhető az admin felületen.",
+          "cancel": "Mégse",
+          "delete": "Nézet törlése"
+        }
+      },
+      "RenameModal": {
+        "title": "Nézet átnevezése",
+        "label": "Név",
+        "cancel": "Mégse",
+        "create": "Mentés",
+        "errors": {
+          "sameName": "Már létezik ilyen nevű nézet. Kérjük, válasszon másik nevet."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Nézet duplikálása",
+        "label": "Név",
+        "cancel": "Mégse",
+        "create": "Nézet létrehozása",
+        "errors": {
+          "sameName": "Már létezik ilyen nevű nézet. Kérjük, válasszon másik nevet."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Új nézet létrehozása",
+        "label": "Név",
+        "cancel": "Mégse",
+        "create": "Nézet létrehozása",
+        "errors": {
+          "sameName": "Már létezik ilyen nevű nézet. Kérjük, válasszon másik nevet."
+        }
+      }
+    },
+    "Tag": {
+      "ariaLabel": "{children} eltávolítása"
+    },
+    "TextField": {
+      "characterCount": "{count} karakter",
+      "characterCountWithMaxLength": "{limit} karakterből {count} használva"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tipp: {label}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Menü váltása",
+      "SearchField": {
+        "clearButtonLabel": "Törlés",
+        "search": "Keresés"
+      }
+    },
+    "MediaCard": {
+      "dismissButton": "Elvetés",
+      "popoverButton": "Műveletek"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Videó lejátszása",
+        "defaultWithDuration": "Videó lejátszása {duration} hosszúságú",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} óra",
+              "andMinutes": "{hourCount} óra és {minuteCount} perc",
+              "andMinute": "{hourCount} óra és {minuteCount} perc",
+              "minutesAndSeconds": "{hourCount} óra, {minuteCount} perc és {secondCount} másodperc",
+              "minutesAndSecond": "{hourCount} óra, {minuteCount} perc és {secondCount} másodperc",
+              "minuteAndSeconds": "{hourCount} óra, {minuteCount} perc és {secondCount} másodperc",
+              "minuteAndSecond": "{hourCount} óra, {minuteCount} perc és {secondCount} másodperc",
+              "andSeconds": "{hourCount} óra és {secondCount} másodperc",
+              "andSecond": "{hourCount} óra és {secondCount} másodperc"
+            },
+            "one": {
+              "only": "{hourCount} óra",
+              "andMinutes": "{hourCount} óra és {minuteCount} perc",
+              "andMinute": "{hourCount} óra és {minuteCount} perc",
+              "minutesAndSeconds": "{hourCount} óra, {minuteCount} perc és {secondCount} másodperc",
+              "minutesAndSecond": "{hourCount} óra, {minuteCount} perc és {secondCount} másodperc",
+              "minuteAndSeconds": "{hourCount} óra, {minuteCount} perc és {secondCount} másodperc",
+              "minuteAndSecond": "{hourCount} óra, {minuteCount} perc és {secondCount} másodperc",
+              "andSeconds": "{hourCount} óra és {secondCount} másodperc",
+              "andSecond": "{hourCount} óra és {secondCount} másodperc"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} perc",
+              "andSeconds": "{minuteCount} perc és {secondCount} másodperc",
+              "andSecond": "{minuteCount} perc és {secondCount} másodperc"
+            },
+            "one": {
+              "only": "{minuteCount} perc",
+              "andSeconds": "{minuteCount} perc és {secondCount} másodperc",
+              "andSecond": "{minuteCount} perc és {secondCount} másodperc"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} másodperc",
+            "one": "{secondCount} másodperc"
+          }
+        }
+      }
+    }
+  }
+}

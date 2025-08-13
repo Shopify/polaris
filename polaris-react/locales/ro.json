@@ -1,0 +1,408 @@
+{
+  "Polaris": {
+    "ActionMenu": {
+      "Actions": {
+        "moreActions": "Mai multe acțiuni"
+      },
+      "RollupActions": {
+        "rollupButton": "Vizualizează acțiuni"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Șterge",
+        "search": "Caută",
+        "placeholder": "Caută acțiuni"
+      }
+    },
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar cu inițialele {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Se încarcă",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Incomplet",
+        "partiallyComplete": "Parțial complet",
+        "complete": "Complet"
+      },
+      "TONE_LABELS": {
+        "info": "Informații",
+        "success": "Succes",
+        "warning": "Avertisment",
+        "critical": "Critic",
+        "attention": "Atenție",
+        "new": "Nou",
+        "readOnly": "Doar citire",
+        "enabled": "Activat"
+      },
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Respinge notificarea"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Se încarcă"
+    },
+    "Common": {
+      "checkbox": "casetă de selectare",
+      "undo": "Anulează",
+      "cancel": "Anulează",
+      "clear": "Șterge",
+      "close": "Închide",
+      "submit": "Trimite",
+      "more": "Mai multe"
+    },
+    "ContextualSaveBar": {
+      "save": "Salvează",
+      "discard": "Respinge"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "sortează după {direction}",
+      "navAccessibilityLabel": "Derulează tabelul {direction} cu o coloană",
+      "totalsRowHeading": "Total",
+      "totalRowHeading": "Total"
+    },
+    "DatePicker": {
+      "previousMonth": "Arată luna anterioară, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Arată luna următoare, {nextMonth} {nextYear}",
+      "today": "Astăzi",
+      "start": "Începutul intervalului",
+      "end": "Sfârșitul intervalului",
+      "months": {
+        "january": "Ianuarie",
+        "february": "Februarie",
+        "march": "Martie",
+        "april": "Aprilie",
+        "may": "Mai",
+        "june": "Iunie",
+        "july": "Iulie",
+        "august": "August",
+        "september": "Septembrie",
+        "october": "Octombrie",
+        "november": "Noiembrie",
+        "december": "Decembrie"
+      },
+      "days": {
+        "monday": "Luni",
+        "tuesday": "Marți",
+        "wednesday": "Miercuri",
+        "thursday": "Joi",
+        "friday": "Vineri",
+        "saturday": "Sâmbătă",
+        "sunday": "Duminică"
+      },
+      "daysAbbreviated": {
+        "monday": "Lu",
+        "tuesday": "Ma",
+        "wednesday": "Mi",
+        "thursday": "Jo",
+        "friday": "Vi",
+        "saturday": "Sâ",
+        "sunday": "Du"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Respinge toate modificările nesalvate",
+      "message": "Dacă respingi modificările, vei șterge toate editările pe care le-ai făcut de la ultima salvare.",
+      "primaryAction": "Respinge modificările",
+      "secondaryAction": "Continuă editarea"
+    },
+    "DropZone": {
+      "single": {
+        "overlayTextFile": "Trage fișierul pentru încărcare",
+        "overlayTextImage": "Trage imaginea pentru încărcare",
+        "overlayTextVideo": "Trage videoclipul pentru încărcare",
+        "actionTitleFile": "Adaugă fișier",
+        "actionTitleImage": "Adaugă imagine",
+        "actionTitleVideo": "Adaugă videoclip",
+        "actionHintFile": "sau trage fișierul pentru încărcare",
+        "actionHintImage": "sau trage imaginea pentru încărcare",
+        "actionHintVideo": "sau trage videoclipul pentru încărcare",
+        "labelFile": "Încarcă fișier",
+        "labelImage": "Încarcă imagine",
+        "labelVideo": "Încarcă videoclip"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Trage fișierele pentru încărcare",
+        "overlayTextImage": "Trage imaginile pentru încărcare",
+        "overlayTextVideo": "Trage videoclipurile pentru încărcare",
+        "actionTitleFile": "Adaugă fișiere",
+        "actionTitleImage": "Adaugă imagini",
+        "actionTitleVideo": "Adaugă videoclipuri",
+        "actionHintFile": "sau trage fișierele pentru încărcare",
+        "actionHintImage": "sau trage imaginile pentru încărcare",
+        "actionHintVideo": "sau trage videoclipurile pentru încărcare",
+        "labelFile": "Încarcă fișiere",
+        "labelImage": "Încarcă imagini",
+        "labelVideo": "Încarcă videoclipuri"
+      },
+      "errorOverlayTextFile": "Tipul fișierului nu este valid",
+      "errorOverlayTextImage": "Tipul imaginii nu este valid",
+      "errorOverlayTextVideo": "Tipul videoclipului nu este valid"
+    },
+    "EmptySearchResult": {
+      "altText": "Rezultate de căutare goale"
+    },
+    "Frame": {
+      "skipToContent": "Sari la conținut",
+      "navigationLabel": "Navigare",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Închide navigarea"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Înapoi",
+      "accessibilityLabel": "Ieși din modul ecran complet"
+    },
+    "Filters": {
+      "moreFilters": "Mai multe filtre",
+      "moreFiltersWithCount": "Mai multe filtre ({count})",
+      "filter": "Filtrează {resourceName}",
+      "noFiltersApplied": "Nu sunt filtre aplicate",
+      "cancel": "Anulează",
+      "done": "Gata",
+      "clearAllFilters": "Șterge toate filtrele",
+      "clear": "Șterge",
+      "clearLabel": "Șterge {filterName}",
+      "addFilter": "Adaugă filtru",
+      "clearFilters": "Șterge toate",
+      "searchInView": "în:{viewName}"
+    },
+    "FilterPill": {
+      "clear": "Șterge",
+      "unsavedChanges": "Modificări nesalvate - {label}"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Caută și filtrează",
+      "searchFilterTooltipWithShortcut": "Caută și filtrează (F)",
+      "searchFilterAccessibilityLabel": "Caută și filtrează rezultate",
+      "sort": "Sortează rezultatele",
+      "addView": "Adaugă o nouă vizualizare",
+      "newView": "Căutare personalizată",
+      "SortButton": {
+        "ariaLabel": "Sortează rezultatele",
+        "tooltip": "Sortează",
+        "title": "Sortează după",
+        "sorting": {
+          "asc": "Crescător",
+          "desc": "Descrescător",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Editează coloanele",
+        "accessibilityLabel": "Personalizează ordinea și vizibilitatea coloanelor din tabel"
+      },
+      "UpdateButtons": {
+        "cancel": "Anulează",
+        "update": "Actualizează",
+        "save": "Salvează",
+        "saveAs": "Salvează ca",
+        "modal": {
+          "title": "Salvează vizualizarea ca",
+          "label": "Nume",
+          "sameName": "O vizualizare cu acest nume există deja. Te rugăm să alegi un nume diferit.",
+          "save": "Salvează",
+          "cancel": "Anulează"
+        }
+      }
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Element",
+      "defaultItemPlural": "Elemente",
+      "allItemsSelected": "Toate {itemsLength}+ {resourceNamePlural} sunt selectate",
+      "selected": "{selectedItemsCount} selectate",
+      "a11yCheckboxDeselectAllSingle": "Deselectează {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Selectează {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deselectează toate {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Selectează toate {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nu s-au găsit {resourceNamePlural}",
+      "emptySearchDescription": "Încearcă să schimbi filtrele sau termenul de căutare",
+      "onboardingBadgeText": "Nou",
+      "resourceLoadingAccessibilityLabel": "Se încarcă {resourceNamePlural}…",
+      "selectAllLabel": "Selectează toate {resourceNamePlural}",
+      "selected": "{selectedItemsCount} selectate",
+      "undo": "Anulează",
+      "selectAllItems": "Selectează toate {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Selectează {resourceName}",
+      "selectButtonText": "Selectează",
+      "sortAccessibilityLabel": "sortează după {direction}"
+    },
+    "Loading": {
+      "label": "Bara de încărcare a paginii"
+    },
+    "Modal": {
+      "iFrameTitle": "marcajul corpului",
+      "modalWarning": "Aceste proprietăți obligatorii lipsesc din Modal: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Vizualizează acțiuni pentru {title}",
+        "pageReadyAccessibilityLabel": "{title}. Această pagină este gata"
+      }
+    },
+    "Pagination": {
+      "previous": "Anterior",
+      "next": "Următor",
+      "pagination": "Paginare"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Valorile transmise la progress prop nu ar trebui să fie negative. Resetarea {progress} la 0.",
+      "exceedWarningMessage": "Valorile transmise la progress prop nu ar trebui să depășească 100. Setarea {progress} la 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Sortează după",
+      "defaultItemSingular": "element",
+      "defaultItemPlural": "elemente",
+      "showing": "Se afișează {itemsCount} {resource}",
+      "showingTotalCount": "Se afișează {itemsCount} din {totalItemsCount} {resource}",
+      "loading": "Se încarcă {resource}",
+      "selected": "{selectedItemsCount} selectate",
+      "allItemsSelected": "Toate {itemsLength}+ {resourceNamePlural} din magazinul tău sunt selectate",
+      "allFilteredItemsSelected": "Toate {itemsLength}+ {resourceNamePlural} din acest filtru sunt selectate",
+      "selectAllItems": "Selectează toate {itemsLength}+ {resourceNamePlural} din magazinul tău",
+      "selectAllFilteredItems": "Selectează toate {itemsLength}+ {resourceNamePlural} din acest filtru",
+      "emptySearchResultTitle": "Nu s-au găsit {resourceNamePlural}",
+      "emptySearchResultDescription": "Încearcă să schimbi filtrele sau termenul de căutare",
+      "selectButtonText": "Selectează",
+      "a11yCheckboxDeselectAllSingle": "Deselectează {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Selectează {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Deselectează toate {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Selectează toate {itemsLength} {resourceNamePlural}",
+      "Item": {
+        "actionsDropdownLabel": "Acțiuni pentru {accessibilityLabel}",
+        "actionsDropdown": "Meniu derulant acțiuni",
+        "viewItem": "Vizualizează detaliile pentru {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Acțiuni",
+        "moreActionsActivatorLabel": "Mai multe acțiuni"
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Se încarcă pagina"
+    },
+    "Tabs": {
+      "newViewAccessibilityLabel": "Creează o nouă vizualizare",
+      "newViewTooltip": "Creează vizualizare",
+      "toggleTabsLabel": "Mai multe vizualizări",
+      "Tab": {
+        "rename": "Redenumește vizualizarea",
+        "duplicate": "Duplică vizualizarea",
+        "edit": "Editează vizualizarea",
+        "editColumns": "Editează coloanele",
+        "delete": "Șterge vizualizarea",
+        "copy": "Copie a {name}",
+        "deleteModal": {
+          "title": "Ștergi vizualizarea?",
+          "description": "Aceasta nu poate fi anulată. Vizualizarea {viewName} nu va mai fi disponibilă în admin.",
+          "cancel": "Anulează",
+          "delete": "Șterge vizualizarea"
+        }
+      },
+      "RenameModal": {
+        "title": "Redenumește vizualizarea",
+        "label": "Nume",
+        "cancel": "Anulează",
+        "create": "Salvează",
+        "errors": {
+          "sameName": "O vizualizare cu acest nume există deja. Te rugăm să alegi un nume diferit."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplică vizualizarea",
+        "label": "Nume",
+        "cancel": "Anulează",
+        "create": "Creează vizualizare",
+        "errors": {
+          "sameName": "O vizualizare cu acest nume există deja. Te rugăm să alegi un nume diferit."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Creează o nouă vizualizare",
+        "label": "Nume",
+        "cancel": "Anulează",
+        "create": "Creează vizualizare",
+        "errors": {
+          "sameName": "O vizualizare cu acest nume există deja. Te rugăm să alegi un nume diferit."
+        }
+      }
+    },
+    "Tag": {
+      "ariaLabel": "Elimină {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} caractere",
+      "characterCountWithMaxLength": "{count} din {limit} caractere utilizate"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Sfat: {label}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Comută meniul",
+      "SearchField": {
+        "clearButtonLabel": "Șterge",
+        "search": "Caută"
+      }
+    },
+    "MediaCard": {
+      "dismissButton": "Respinge",
+      "popoverButton": "Acțiuni"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Redă videoclipul",
+        "defaultWithDuration": "Redă videoclipul cu durata {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} ore",
+              "andMinutes": "{hourCount} ore și {minuteCount} minute",
+              "andMinute": "{hourCount} ore și {minuteCount} minut",
+              "minutesAndSeconds": "{hourCount} ore, {minuteCount} minute și {secondCount} secunde",
+              "minutesAndSecond": "{hourCount} ore, {minuteCount} minute și {secondCount} secundă",
+              "minuteAndSeconds": "{hourCount} ore, {minuteCount} minut și {secondCount} secunde",
+              "minuteAndSecond": "{hourCount} ore, {minuteCount} minut și {secondCount} secundă",
+              "andSeconds": "{hourCount} ore și {secondCount} secunde",
+              "andSecond": "{hourCount} ore și {secondCount} secundă"
+            },
+            "one": {
+              "only": "{hourCount} oră",
+              "andMinutes": "{hourCount} oră și {minuteCount} minute",
+              "andMinute": "{hourCount} oră și {minuteCount} minut",
+              "minutesAndSeconds": "{hourCount} oră, {minuteCount} minute și {secondCount} secunde",
+              "minutesAndSecond": "{hourCount} oră, {minuteCount} minute și {secondCount} secundă",
+              "minuteAndSeconds": "{hourCount} oră, {minuteCount} minut și {secondCount} secunde",
+              "minuteAndSecond": "{hourCount} oră, {minuteCount} minut și {secondCount} secundă",
+              "andSeconds": "{hourCount} oră și {secondCount} secunde",
+              "andSecond": "{hourCount} oră și {secondCount} secundă"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minute",
+              "andSeconds": "{minuteCount} minute și {secondCount} secunde",
+              "andSecond": "{minuteCount} minute și {secondCount} secundă"
+            },
+            "one": {
+              "only": "{minuteCount} minut",
+              "andSeconds": "{minuteCount} minut și {secondCount} secunde",
+              "andSecond": "{minuteCount} minut și {secondCount} secundă"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} secunde",
+            "one": "{secondCount} secundă"
+          }
+        }
+      }
+    }
+  }
+}
