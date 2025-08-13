@@ -1,0 +1,408 @@
+{
+  "Polaris": {
+    "ActionMenu": {
+      "Actions": {
+        "moreActions": "और कार्रवाई"
+      },
+      "RollupActions": {
+        "rollupButton": "कार्रवाई देखें"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "साफ़ करें",
+        "search": "खोजें",
+        "placeholder": "कार्रवाई खोजें"
+      }
+    },
+    "Avatar": {
+      "label": "अवतार",
+      "labelWithInitials": "{initials} के साथ अवतार"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "लोड हो रहा है",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "अधूरा",
+        "partiallyComplete": "आंशिक रूप से पूरा",
+        "complete": "पूरा"
+      },
+      "TONE_LABELS": {
+        "info": "जानकारी",
+        "success": "सफल",
+        "warning": "चेतावनी",
+        "critical": "गंभीर",
+        "attention": "ध्यान",
+        "new": "नया",
+        "readOnly": "केवल पढ़ने योग्य",
+        "enabled": "सक्षम"
+      },
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "सूचना हटाएं"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "लोड हो रहा है"
+    },
+    "Common": {
+      "checkbox": "चेकबॉक्स",
+      "undo": "वापस लें",
+      "cancel": "रद्द करें",
+      "clear": "साफ़ करें",
+      "close": "बंद करें",
+      "submit": "सबमिट करें",
+      "more": "और"
+    },
+    "ContextualSaveBar": {
+      "save": "सहेजें",
+      "discard": "छोड़ें"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "{direction} के अनुसार क्रमबद्ध करें",
+      "navAccessibilityLabel": "तालिका को {direction} एक कॉलम स्क्रॉल करें",
+      "totalsRowHeading": "कुल",
+      "totalRowHeading": "कुल"
+    },
+    "DatePicker": {
+      "previousMonth": "पिछला महीना दिखाएं, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "अगला महीना दिखाएं, {nextMonth} {nextYear}",
+      "today": "आज",
+      "start": "श्रेणी की शुरुआत",
+      "end": "श्रेणी का अंत",
+      "months": {
+        "january": "जनवरी",
+        "february": "फरवरी",
+        "march": "मार्च",
+        "april": "अप्रैल",
+        "may": "मई",
+        "june": "जून",
+        "july": "जुलाई",
+        "august": "अगस्त",
+        "september": "सितंबर",
+        "october": "अक्टूबर",
+        "november": "नवंबर",
+        "december": "दिसंबर"
+      },
+      "days": {
+        "monday": "सोमवार",
+        "tuesday": "मंगलवार",
+        "wednesday": "बुधवार",
+        "thursday": "गुरुवार",
+        "friday": "शुक्रवार",
+        "saturday": "शनिवार",
+        "sunday": "रविवार"
+      },
+      "daysAbbreviated": {
+        "monday": "सो",
+        "tuesday": "मं",
+        "wednesday": "बु",
+        "thursday": "गु",
+        "friday": "शु",
+        "saturday": "श",
+        "sunday": "र"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "सभी असहेजित परिवर्तन छोड़ें",
+      "message": "यदि आप परिवर्तन छोड़ते हैं, तो आप पिछली बार सहेजने के बाद किए गए सभी संपादन हटा देंगे।",
+      "primaryAction": "परिवर्तन छोड़ें",
+      "secondaryAction": "संपादन जारी रखें"
+    },
+    "DropZone": {
+      "single": {
+        "overlayTextFile": "अपलोड करने के लिए फ़ाइल छोड़ें",
+        "overlayTextImage": "अपलोड करने के लिए छवि छोड़ें",
+        "overlayTextVideo": "अपलोड करने के लिए वीडियो छोड़ें",
+        "actionTitleFile": "फ़ाइल जोड़ें",
+        "actionTitleImage": "छवि जोड़ें",
+        "actionTitleVideo": "वीडियो जोड़ें",
+        "actionHintFile": "या अपलोड करने के लिए फ़ाइल छोड़ें",
+        "actionHintImage": "या अपलोड करने के लिए छवि छोड़ें",
+        "actionHintVideo": "या अपलोड करने के लिए वीडियो छोड़ें",
+        "labelFile": "फ़ाइल अपलोड करें",
+        "labelImage": "छवि अपलोड करें",
+        "labelVideo": "वीडियो अपलोड करें"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "अपलोड करने के लिए फ़ाइलें छोड़ें",
+        "overlayTextImage": "अपलोड करने के लिए छवियां छोड़ें",
+        "overlayTextVideo": "अपलोड करने के लिए वीडियो छोड़ें",
+        "actionTitleFile": "फ़ाइलें जोड़ें",
+        "actionTitleImage": "छवियां जोड़ें",
+        "actionTitleVideo": "वीडियो जोड़ें",
+        "actionHintFile": "या अपलोड करने के लिए फ़ाइलें छोड़ें",
+        "actionHintImage": "या अपलोड करने के लिए छवियां छोड़ें",
+        "actionHintVideo": "या अपलोड करने के लिए वीडियो छोड़ें",
+        "labelFile": "फ़ाइलें अपलोड करें",
+        "labelImage": "छवियां अपलोड करें",
+        "labelVideo": "वीडियो अपलोड करें"
+      },
+      "errorOverlayTextFile": "फ़ाइल प्रकार मान्य नहीं है",
+      "errorOverlayTextImage": "छवि प्रकार मान्य नहीं है",
+      "errorOverlayTextVideo": "वीडियो प्रकार मान्य नहीं है"
+    },
+    "EmptySearchResult": {
+      "altText": "खोज परिणाम खाली"
+    },
+    "Frame": {
+      "skipToContent": "सामग्री पर जाएं",
+      "navigationLabel": "नेविगेशन",
+      "Navigation": {
+        "closeMobileNavigationLabel": "नेविगेशन बंद करें"
+      }
+    },
+    "FullscreenBar": {
+      "back": "वापस",
+      "accessibilityLabel": "पूर्ण स्क्रीन मोड से बाहर निकलें"
+    },
+    "Filters": {
+      "moreFilters": "और फ़िल्टर",
+      "moreFiltersWithCount": "और फ़िल्टर ({count})",
+      "filter": "{resourceName} फ़िल्टर करें",
+      "noFiltersApplied": "कोई फ़िल्टर लागू नहीं",
+      "cancel": "रद्द करें",
+      "done": "हो गया",
+      "clearAllFilters": "सभी फ़िल्टर साफ़ करें",
+      "clear": "साफ़ करें",
+      "clearLabel": "{filterName} साफ़ करें",
+      "addFilter": "फ़िल्टर जोड़ें",
+      "clearFilters": "सभी साफ़ करें",
+      "searchInView": "में:{viewName}"
+    },
+    "FilterPill": {
+      "clear": "साफ़ करें",
+      "unsavedChanges": "असहेजित परिवर्तन - {label}"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "खोजें और फ़िल्टर करें",
+      "searchFilterTooltipWithShortcut": "खोजें और फ़िल्टर करें (F)",
+      "searchFilterAccessibilityLabel": "खोजें और फ़िल्टर परिणाम",
+      "sort": "अपने परिणाम क्रमबद्ध करें",
+      "addView": "नया दृश्य जोड़ें",
+      "newView": "कस्टम खोज",
+      "SortButton": {
+        "ariaLabel": "परिणाम क्रमबद्ध करें",
+        "tooltip": "क्रमबद्ध करें",
+        "title": "इसके अनुसार क्रमबद्ध करें",
+        "sorting": {
+          "asc": "आरोही",
+          "desc": "अवरोही",
+          "az": "ए-ज़ेड",
+          "za": "ज़ेड-ए"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "कॉलम संपादित करें",
+        "accessibilityLabel": "तालिका कॉलम क्रम और दृश्यता अनुकूलित करें"
+      },
+      "UpdateButtons": {
+        "cancel": "रद्द करें",
+        "update": "अपडेट करें",
+        "save": "सहेजें",
+        "saveAs": "इस रूप में सहेजें",
+        "modal": {
+          "title": "दृश्य इस रूप में सहेजें",
+          "label": "नाम",
+          "sameName": "इस नाम का दृश्य पहले से मौजूद है। कृपया कोई अलग नाम चुनें।",
+          "save": "सहेजें",
+          "cancel": "रद्द करें"
+        }
+      }
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "आइटम",
+      "defaultItemPlural": "आइटम",
+      "allItemsSelected": "सभी {itemsLength}+ {resourceNamePlural} चयनित हैं",
+      "selected": "{selectedItemsCount} चयनित",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} का चयन हटाएं",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} चुनें",
+      "a11yCheckboxDeselectAllMultiple": "सभी {itemsLength} {resourceNamePlural} का चयन हटाएं",
+      "a11yCheckboxSelectAllMultiple": "सभी {itemsLength} {resourceNamePlural} चुनें"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "कोई {resourceNamePlural} नहीं मिला",
+      "emptySearchDescription": "फ़िल्टर या खोज शब्द बदलने का प्रयास करें",
+      "onboardingBadgeText": "नया",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} लोड हो रहे हैं…",
+      "selectAllLabel": "सभी {resourceNamePlural} चुनें",
+      "selected": "{selectedItemsCount} चयनित",
+      "undo": "वापस लें",
+      "selectAllItems": "सभी {itemsLength}+ {resourceNamePlural} चुनें",
+      "selectItem": "{resourceName} चुनें",
+      "selectButtonText": "चुनें",
+      "sortAccessibilityLabel": "{direction} के अनुसार क्रमबद्ध करें"
+    },
+    "Loading": {
+      "label": "पृष्ठ लोडिंग बार"
+    },
+    "Modal": {
+      "iFrameTitle": "बॉडी मार्कअप",
+      "modalWarning": "Modal से ये आवश्यक गुण गायब हैं: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title} के लिए कार्रवाई देखें",
+        "pageReadyAccessibilityLabel": "{title}. यह पृष्ठ तैयार है"
+      }
+    },
+    "Pagination": {
+      "previous": "पिछला",
+      "next": "अगला",
+      "pagination": "पेजिनेशन"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "प्रगति प्रॉप में पारित किए गए मान नकारात्मक नहीं होने चाहिए। {progress} को 0 पर रीसेट कर रहा है।",
+      "exceedWarningMessage": "प्रगति प्रॉप में पारित किए गए मान 100 से अधिक नहीं होने चाहिए। {progress} को 100 पर सेट कर रहा है।"
+    },
+    "ResourceList": {
+      "sortingLabel": "इसके अनुसार क्रमबद्ध करें",
+      "defaultItemSingular": "आइटम",
+      "defaultItemPlural": "आइटम",
+      "showing": "{itemsCount} {resource} दिखा रहा है",
+      "showingTotalCount": "{totalItemsCount} में से {itemsCount} {resource} दिखा रहा है",
+      "loading": "{resource} लोड हो रहे हैं",
+      "selected": "{selectedItemsCount} चयनित",
+      "allItemsSelected": "आपके स्टोर में सभी {itemsLength}+ {resourceNamePlural} चयनित हैं",
+      "allFilteredItemsSelected": "इस फ़िल्टर में सभी {itemsLength}+ {resourceNamePlural} चयनित हैं",
+      "selectAllItems": "आपके स्टोर में सभी {itemsLength}+ {resourceNamePlural} चुनें",
+      "selectAllFilteredItems": "इस फ़िल्टर में सभी {itemsLength}+ {resourceNamePlural} चुनें",
+      "emptySearchResultTitle": "कोई {resourceNamePlural} नहीं मिला",
+      "emptySearchResultDescription": "फ़िल्टर या खोज शब्द बदलने का प्रयास करें",
+      "selectButtonText": "चुनें",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} का चयन हटाएं",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} चुनें",
+      "a11yCheckboxDeselectAllMultiple": "सभी {itemsLength} {resourceNamePlural} का चयन हटाएं",
+      "a11yCheckboxSelectAllMultiple": "सभी {itemsLength} {resourceNamePlural} चुनें",
+      "Item": {
+        "actionsDropdownLabel": "{accessibilityLabel} के लिए कार्रवाई",
+        "actionsDropdown": "कार्रवाई ड्रॉपडाउन",
+        "viewItem": "{itemName} के विवरण देखें"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "कार्रवाई",
+        "moreActionsActivatorLabel": "और कार्रवाई"
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "पृष्ठ लोड हो रहा है"
+    },
+    "Tabs": {
+      "newViewAccessibilityLabel": "नया दृश्य बनाएं",
+      "newViewTooltip": "दृश्य बनाएं",
+      "toggleTabsLabel": "और दृश्य",
+      "Tab": {
+        "rename": "दृश्य का नाम बदलें",
+        "duplicate": "दृश्य डुप्लिकेट करें",
+        "edit": "दृश्य संपादित करें",
+        "editColumns": "कॉलम संपादित करें",
+        "delete": "दृश्य हटाएं",
+        "copy": "{name} की प्रति",
+        "deleteModal": {
+          "title": "दृश्य हटाएं?",
+          "description": "इसे पूर्ववत नहीं किया जा सकता। {viewName} दृश्य अब आपके एडमिन में उपलब्ध नहीं होगा।",
+          "cancel": "रद्द करें",
+          "delete": "दृश्य हटाएं"
+        }
+      },
+      "RenameModal": {
+        "title": "दृश्य का नाम बदलें",
+        "label": "नाम",
+        "cancel": "रद्द करें",
+        "create": "सहेजें",
+        "errors": {
+          "sameName": "इस नाम का दृश्य पहले से मौजूद है। कृपया कोई अलग नाम चुनें।"
+        }
+      },
+      "DuplicateModal": {
+        "title": "दृश्य डुप्लिकेट करें",
+        "label": "नाम",
+        "cancel": "रद्द करें",
+        "create": "दृश्य बनाएं",
+        "errors": {
+          "sameName": "इस नाम का दृश्य पहले से मौजूद है। कृपया कोई अलग नाम चुनें।"
+        }
+      },
+      "CreateViewModal": {
+        "title": "नया दृश्य बनाएं",
+        "label": "नाम",
+        "cancel": "रद्द करें",
+        "create": "दृश्य बनाएं",
+        "errors": {
+          "sameName": "इस नाम का दृश्य पहले से मौजूद है। कृपया कोई अलग नाम चुनें।"
+        }
+      }
+    },
+    "Tag": {
+      "ariaLabel": "{children} हटाएं"
+    },
+    "TextField": {
+      "characterCount": "{count} अक्षर",
+      "characterCountWithMaxLength": "{limit} में से {count} अक्षर उपयोग किए गए"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "टूलटिप: {label}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "मेनू टॉगल करें",
+      "SearchField": {
+        "clearButtonLabel": "साफ़ करें",
+        "search": "खोजें"
+      }
+    },
+    "MediaCard": {
+      "dismissButton": "हटाएं",
+      "popoverButton": "कार्रवाई"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "वीडियो चलाएं",
+        "defaultWithDuration": "{duration} लंबाई का वीडियो चलाएं",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} घंटे",
+              "andMinutes": "{hourCount} घंटे और {minuteCount} मिनट",
+              "andMinute": "{hourCount} घंटे और {minuteCount} मिनट",
+              "minutesAndSeconds": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minutesAndSecond": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minuteAndSeconds": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minuteAndSecond": "{hourCount} घंटे, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "andSeconds": "{hourCount} घंटे और {secondCount} सेकंड",
+              "andSecond": "{hourCount} घंटे और {secondCount} सेकंड"
+            },
+            "one": {
+              "only": "{hourCount} घंटा",
+              "andMinutes": "{hourCount} घंटा और {minuteCount} मिनट",
+              "andMinute": "{hourCount} घंटा और {minuteCount} मिनट",
+              "minutesAndSeconds": "{hourCount} घंटा, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minutesAndSecond": "{hourCount} घंटा, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minuteAndSeconds": "{hourCount} घंटा, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "minuteAndSecond": "{hourCount} घंटा, {minuteCount} मिनट, और {secondCount} सेकंड",
+              "andSeconds": "{hourCount} घंटा और {secondCount} सेकंड",
+              "andSecond": "{hourCount} घंटा और {secondCount} सेकंड"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} मिनट",
+              "andSeconds": "{minuteCount} मिनट और {secondCount} सेकंड",
+              "andSecond": "{minuteCount} मिनट और {secondCount} सेकंड"
+            },
+            "one": {
+              "only": "{minuteCount} मिनट",
+              "andSeconds": "{minuteCount} मिनट और {secondCount} सेकंड",
+              "andSecond": "{minuteCount} मिनट और {secondCount} सेकंड"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} सेकंड",
+            "one": "{secondCount} सेकंड"
+          }
+        }
+      }
+    }
+  }
+}

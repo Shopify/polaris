@@ -1,0 +1,408 @@
+{
+  "Polaris": {
+    "ActionMenu": {
+      "Actions": {
+        "moreActions": "Ещё действия"
+      },
+      "RollupActions": {
+        "rollupButton": "Просмотр действий"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Очистить",
+        "search": "Поиск",
+        "placeholder": "Поиск действий"
+      }
+    },
+    "Avatar": {
+      "label": "Аватар",
+      "labelWithInitials": "Аватар с инициалами {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Загрузка",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Не завершено",
+        "partiallyComplete": "Частично завершено",
+        "complete": "Завершено"
+      },
+      "TONE_LABELS": {
+        "info": "Информация",
+        "success": "Успешно",
+        "warning": "Предупреждение",
+        "critical": "Критично",
+        "attention": "Внимание",
+        "new": "Новое",
+        "readOnly": "Только для чтения",
+        "enabled": "Включено"
+      },
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Отклонить уведомление"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Загрузка"
+    },
+    "Common": {
+      "checkbox": "флажок",
+      "undo": "Отменить",
+      "cancel": "Отмена",
+      "clear": "Очистить",
+      "close": "Закрыть",
+      "submit": "Отправить",
+      "more": "Ещё"
+    },
+    "ContextualSaveBar": {
+      "save": "Сохранить",
+      "discard": "Отклонить"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "сортировка по {direction}",
+      "navAccessibilityLabel": "Прокрутка таблицы {direction} на один столбец",
+      "totalsRowHeading": "Итого",
+      "totalRowHeading": "Итого"
+    },
+    "DatePicker": {
+      "previousMonth": "Показать предыдущий месяц, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Показать следующий месяц, {nextMonth} {nextYear}",
+      "today": "Сегодня",
+      "start": "Начало диапазона",
+      "end": "Конец диапазона",
+      "months": {
+        "january": "Январь",
+        "february": "Февраль",
+        "march": "Март",
+        "april": "Апрель",
+        "may": "Май",
+        "june": "Июнь",
+        "july": "Июль",
+        "august": "Август",
+        "september": "Сентябрь",
+        "october": "Октябрь",
+        "november": "Ноябрь",
+        "december": "Декабрь"
+      },
+      "days": {
+        "monday": "Понедельник",
+        "tuesday": "Вторник",
+        "wednesday": "Среда",
+        "thursday": "Четверг",
+        "friday": "Пятница",
+        "saturday": "Суббота",
+        "sunday": "Воскресенье"
+      },
+      "daysAbbreviated": {
+        "monday": "Пн",
+        "tuesday": "Вт",
+        "wednesday": "Ср",
+        "thursday": "Чт",
+        "friday": "Пт",
+        "saturday": "Сб",
+        "sunday": "Вс"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Отклонить все несохранённые изменения",
+      "message": "Если вы отклоните изменения, вы удалите все правки, сделанные с момента последнего сохранения.",
+      "primaryAction": "Отклонить изменения",
+      "secondaryAction": "Продолжить редактирование"
+    },
+    "DropZone": {
+      "single": {
+        "overlayTextFile": "Перетащите файл для загрузки",
+        "overlayTextImage": "Перетащите изображение для загрузки",
+        "overlayTextVideo": "Перетащите видео для загрузки",
+        "actionTitleFile": "Добавить файл",
+        "actionTitleImage": "Добавить изображение",
+        "actionTitleVideo": "Добавить видео",
+        "actionHintFile": "или перетащите файл для загрузки",
+        "actionHintImage": "или перетащите изображение для загрузки",
+        "actionHintVideo": "или перетащите видео для загрузки",
+        "labelFile": "Загрузить файл",
+        "labelImage": "Загрузить изображение",
+        "labelVideo": "Загрузить видео"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Перетащите файлы для загрузки",
+        "overlayTextImage": "Перетащите изображения для загрузки",
+        "overlayTextVideo": "Перетащите видео для загрузки",
+        "actionTitleFile": "Добавить файлы",
+        "actionTitleImage": "Добавить изображения",
+        "actionTitleVideo": "Добавить видео",
+        "actionHintFile": "или перетащите файлы для загрузки",
+        "actionHintImage": "или перетащите изображения для загрузки",
+        "actionHintVideo": "или перетащите видео для загрузки",
+        "labelFile": "Загрузить файлы",
+        "labelImage": "Загрузить изображения",
+        "labelVideo": "Загрузить видео"
+      },
+      "errorOverlayTextFile": "Тип файла недействителен",
+      "errorOverlayTextImage": "Тип изображения недействителен",
+      "errorOverlayTextVideo": "Тип видео недействителен"
+    },
+    "EmptySearchResult": {
+      "altText": "Пустые результаты поиска"
+    },
+    "Frame": {
+      "skipToContent": "Перейти к содержимому",
+      "navigationLabel": "Навигация",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Закрыть навигацию"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Назад",
+      "accessibilityLabel": "Выйти из полноэкранного режима"
+    },
+    "Filters": {
+      "moreFilters": "Ещё фильтры",
+      "moreFiltersWithCount": "Ещё фильтры ({count})",
+      "filter": "Фильтровать {resourceName}",
+      "noFiltersApplied": "Фильтры не применены",
+      "cancel": "Отмена",
+      "done": "Готово",
+      "clearAllFilters": "Очистить все фильтры",
+      "clear": "Очистить",
+      "clearLabel": "Очистить {filterName}",
+      "addFilter": "Добавить фильтр",
+      "clearFilters": "Очистить все",
+      "searchInView": "в:{viewName}"
+    },
+    "FilterPill": {
+      "clear": "Очистить",
+      "unsavedChanges": "Несохранённые изменения - {label}"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Поиск и фильтрация",
+      "searchFilterTooltipWithShortcut": "Поиск и фильтрация (F)",
+      "searchFilterAccessibilityLabel": "Поиск и фильтрация результатов",
+      "sort": "Сортировка результатов",
+      "addView": "Добавить новый вид",
+      "newView": "Пользовательский поиск",
+      "SortButton": {
+        "ariaLabel": "Сортировка результатов",
+        "tooltip": "Сортировка",
+        "title": "Сортировка по",
+        "sorting": {
+          "asc": "По возрастанию",
+          "desc": "По убыванию",
+          "az": "А-Я",
+          "za": "Я-А"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Редактировать столбцы",
+        "accessibilityLabel": "Настройка порядка и видимости столбцов таблицы"
+      },
+      "UpdateButtons": {
+        "cancel": "Отмена",
+        "update": "Обновить",
+        "save": "Сохранить",
+        "saveAs": "Сохранить как",
+        "modal": {
+          "title": "Сохранить вид как",
+          "label": "Имя",
+          "sameName": "Вид с таким именем уже существует. Выберите другое имя.",
+          "save": "Сохранить",
+          "cancel": "Отмена"
+        }
+      }
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Элемент",
+      "defaultItemPlural": "Элементы",
+      "allItemsSelected": "Все {itemsLength}+ {resourceNamePlural} выбраны",
+      "selected": "{selectedItemsCount} выбрано",
+      "a11yCheckboxDeselectAllSingle": "Снять выбор с {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Выбрать {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Снять выбор со всех {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Выбрать все {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} не найдены",
+      "emptySearchDescription": "Попробуйте изменить фильтры или поисковый запрос",
+      "onboardingBadgeText": "Новое",
+      "resourceLoadingAccessibilityLabel": "Загрузка {resourceNamePlural}…",
+      "selectAllLabel": "Выбрать все {resourceNamePlural}",
+      "selected": "{selectedItemsCount} выбрано",
+      "undo": "Отменить",
+      "selectAllItems": "Выбрать все {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Выбрать {resourceName}",
+      "selectButtonText": "Выбрать",
+      "sortAccessibilityLabel": "сортировка по {direction}"
+    },
+    "Loading": {
+      "label": "Полоса загрузки страницы"
+    },
+    "Modal": {
+      "iFrameTitle": "разметка тела",
+      "modalWarning": "Эти обязательные свойства отсутствуют в Modal: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Просмотр действий для {title}",
+        "pageReadyAccessibilityLabel": "{title}. Эта страница готова"
+      }
+    },
+    "Pagination": {
+      "previous": "Предыдущий",
+      "next": "Следующий",
+      "pagination": "Пагинация"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Значения, переданные в progress prop, не должны быть отрицательными. Сброс {progress} на 0.",
+      "exceedWarningMessage": "Значения, переданные в progress prop, не должны превышать 100. Установка {progress} на 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Сортировка по",
+      "defaultItemSingular": "элемент",
+      "defaultItemPlural": "элементы",
+      "showing": "Показано {itemsCount} {resource}",
+      "showingTotalCount": "Показано {itemsCount} из {totalItemsCount} {resource}",
+      "loading": "Загрузка {resource}",
+      "selected": "{selectedItemsCount} выбрано",
+      "allItemsSelected": "Все {itemsLength}+ {resourceNamePlural} в вашем магазине выбраны",
+      "allFilteredItemsSelected": "Все {itemsLength}+ {resourceNamePlural} в этом фильтре выбраны",
+      "selectAllItems": "Выбрать все {itemsLength}+ {resourceNamePlural} в вашем магазине",
+      "selectAllFilteredItems": "Выбрать все {itemsLength}+ {resourceNamePlural} в этом фильтре",
+      "emptySearchResultTitle": "{resourceNamePlural} не найдены",
+      "emptySearchResultDescription": "Попробуйте изменить фильтры или поисковый запрос",
+      "selectButtonText": "Выбрать",
+      "a11yCheckboxDeselectAllSingle": "Снять выбор с {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Выбрать {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Снять выбор со всех {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Выбрать все {itemsLength} {resourceNamePlural}",
+      "Item": {
+        "actionsDropdownLabel": "Действия для {accessibilityLabel}",
+        "actionsDropdown": "Выпадающее меню действий",
+        "viewItem": "Просмотр подробностей для {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Действия",
+        "moreActionsActivatorLabel": "Ещё действия"
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Загрузка страницы"
+    },
+    "Tabs": {
+      "newViewAccessibilityLabel": "Создать новый вид",
+      "newViewTooltip": "Создать вид",
+      "toggleTabsLabel": "Ещё виды",
+      "Tab": {
+        "rename": "Переименовать вид",
+        "duplicate": "Дублировать вид",
+        "edit": "Редактировать вид",
+        "editColumns": "Редактировать столбцы",
+        "delete": "Удалить вид",
+        "copy": "Копия {name}",
+        "deleteModal": {
+          "title": "Удалить вид?",
+          "description": "Это нельзя отменить. Вид {viewName} больше не будет доступен в админке.",
+          "cancel": "Отмена",
+          "delete": "Удалить вид"
+        }
+      },
+      "RenameModal": {
+        "title": "Переименовать вид",
+        "label": "Имя",
+        "cancel": "Отмена",
+        "create": "Сохранить",
+        "errors": {
+          "sameName": "Вид с таким именем уже существует. Выберите другое имя."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Дублировать вид",
+        "label": "Имя",
+        "cancel": "Отмена",
+        "create": "Создать вид",
+        "errors": {
+          "sameName": "Вид с таким именем уже существует. Выберите другое имя."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Создать новый вид",
+        "label": "Имя",
+        "cancel": "Отмена",
+        "create": "Создать вид",
+        "errors": {
+          "sameName": "Вид с таким именем уже существует. Выберите другое имя."
+        }
+      }
+    },
+    "Tag": {
+      "ariaLabel": "Удалить {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} символов",
+      "characterCountWithMaxLength": "Использовано {count} из {limit} символов"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Подсказка: {label}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Переключить меню",
+      "SearchField": {
+        "clearButtonLabel": "Очистить",
+        "search": "Поиск"
+      }
+    },
+    "MediaCard": {
+      "dismissButton": "Отклонить",
+      "popoverButton": "Действия"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Воспроизвести видео",
+        "defaultWithDuration": "Воспроизвести видео длительностью {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} часов",
+              "andMinutes": "{hourCount} часов и {minuteCount} минут",
+              "andMinute": "{hourCount} часов и {minuteCount} минута",
+              "minutesAndSeconds": "{hourCount} часов, {minuteCount} минут и {secondCount} секунд",
+              "minutesAndSecond": "{hourCount} часов, {minuteCount} минут и {secondCount} секунда",
+              "minuteAndSeconds": "{hourCount} часов, {minuteCount} минута и {secondCount} секунд",
+              "minuteAndSecond": "{hourCount} часов, {minuteCount} минута и {secondCount} секунда",
+              "andSeconds": "{hourCount} часов и {secondCount} секунд",
+              "andSecond": "{hourCount} часов и {secondCount} секунда"
+            },
+            "one": {
+              "only": "{hourCount} час",
+              "andMinutes": "{hourCount} час и {minuteCount} минут",
+              "andMinute": "{hourCount} час и {minuteCount} минута",
+              "minutesAndSeconds": "{hourCount} час, {minuteCount} минут и {secondCount} секунд",
+              "minutesAndSecond": "{hourCount} час, {minuteCount} минут и {secondCount} секунда",
+              "minuteAndSeconds": "{hourCount} час, {minuteCount} минута и {secondCount} секунд",
+              "minuteAndSecond": "{hourCount} час, {minuteCount} минута и {secondCount} секунда",
+              "andSeconds": "{hourCount} час и {secondCount} секунд",
+              "andSecond": "{hourCount} час и {secondCount} секунда"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} минут",
+              "andSeconds": "{minuteCount} минут и {secondCount} секунд",
+              "andSecond": "{minuteCount} минут и {secondCount} секунда"
+            },
+            "one": {
+              "only": "{minuteCount} минута",
+              "andSeconds": "{minuteCount} минута и {secondCount} секунд",
+              "andSecond": "{minuteCount} минута и {secondCount} секунда"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} секунд",
+            "one": "{secondCount} секунда"
+          }
+        }
+      }
+    }
+  }
+}

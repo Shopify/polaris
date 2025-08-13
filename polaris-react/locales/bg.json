@@ -1,0 +1,408 @@
+{
+  "Polaris": {
+    "ActionMenu": {
+      "Actions": {
+        "moreActions": "Още действия"
+      },
+      "RollupActions": {
+        "rollupButton": "Преглед на действия"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Изчисти",
+        "search": "Търси",
+        "placeholder": "Търси действия"
+      }
+    },
+    "Avatar": {
+      "label": "Аватар",
+      "labelWithInitials": "Аватар с инициали {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Зареждане",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Незавършено",
+        "partiallyComplete": "Частично завършено",
+        "complete": "Завършено"
+      },
+      "TONE_LABELS": {
+        "info": "Информация",
+        "success": "Успешно",
+        "warning": "Предупреждение",
+        "critical": "Критично",
+        "attention": "Внимание",
+        "new": "Ново",
+        "readOnly": "Само за четене",
+        "enabled": "Активирано"
+      },
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Отхвърли известието"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Зареждане"
+    },
+    "Common": {
+      "checkbox": "флажче",
+      "undo": "Отмени",
+      "cancel": "Отказ",
+      "clear": "Изчисти",
+      "close": "Затвори",
+      "submit": "Изпрати",
+      "more": "Още"
+    },
+    "ContextualSaveBar": {
+      "save": "Запази",
+      "discard": "Отхвърли"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "сортирай по {direction}",
+      "navAccessibilityLabel": "Превърти таблицата {direction} с една колона",
+      "totalsRowHeading": "Общо",
+      "totalRowHeading": "Общо"
+    },
+    "DatePicker": {
+      "previousMonth": "Покажи предходния месец, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Покажи следващия месец, {nextMonth} {nextYear}",
+      "today": "Днес",
+      "start": "Начало на диапазона",
+      "end": "Край на диапазона",
+      "months": {
+        "january": "Януари",
+        "february": "Февруари",
+        "march": "Март",
+        "april": "Април",
+        "may": "Май",
+        "june": "Юни",
+        "july": "Юли",
+        "august": "Август",
+        "september": "Септември",
+        "october": "Октомври",
+        "november": "Ноември",
+        "december": "Декември"
+      },
+      "days": {
+        "monday": "Понеделник",
+        "tuesday": "Вторник",
+        "wednesday": "Сряда",
+        "thursday": "Четвъртък",
+        "friday": "Петък",
+        "saturday": "Събота",
+        "sunday": "Неделя"
+      },
+      "daysAbbreviated": {
+        "monday": "Пн",
+        "tuesday": "Вт",
+        "wednesday": "Ср",
+        "thursday": "Чт",
+        "friday": "Пт",
+        "saturday": "Сб",
+        "sunday": "Нд"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Отхвърли всички незапазени промени",
+      "message": "Ако отхвърлите промените, ще изтриете всички редакции, които сте направили след последното запазване.",
+      "primaryAction": "Отхвърли промените",
+      "secondaryAction": "Продължи редактирането"
+    },
+    "DropZone": {
+      "single": {
+        "overlayTextFile": "Пуснете файл за качване",
+        "overlayTextImage": "Пуснете изображение за качване",
+        "overlayTextVideo": "Пуснете видео за качване",
+        "actionTitleFile": "Добави файл",
+        "actionTitleImage": "Добави изображение",
+        "actionTitleVideo": "Добави видео",
+        "actionHintFile": "или пуснете файл за качване",
+        "actionHintImage": "или пуснете изображение за качване",
+        "actionHintVideo": "или пуснете видео за качване",
+        "labelFile": "Качи файл",
+        "labelImage": "Качи изображение",
+        "labelVideo": "Качи видео"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Пуснете файлове за качване",
+        "overlayTextImage": "Пуснете изображения за качване",
+        "overlayTextVideo": "Пуснете видеа за качване",
+        "actionTitleFile": "Добави файлове",
+        "actionTitleImage": "Добави изображения",
+        "actionTitleVideo": "Добави видеа",
+        "actionHintFile": "или пуснете файлове за качване",
+        "actionHintImage": "или пуснете изображения за качване",
+        "actionHintVideo": "или пуснете видеа за качване",
+        "labelFile": "Качи файлове",
+        "labelImage": "Качи изображения",
+        "labelVideo": "Качи видеа"
+      },
+      "errorOverlayTextFile": "Типът на файла не е валиден",
+      "errorOverlayTextImage": "Типът на изображението не е валиден",
+      "errorOverlayTextVideo": "Типът на видеото не е валиден"
+    },
+    "EmptySearchResult": {
+      "altText": "Празни резултати от търсенето"
+    },
+    "Frame": {
+      "skipToContent": "Премини към съдържанието",
+      "navigationLabel": "Навигация",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Затвори навигацията"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Назад",
+      "accessibilityLabel": "Излез от режим на цял екран"
+    },
+    "Filters": {
+      "moreFilters": "Още филтри",
+      "moreFiltersWithCount": "Още филтри ({count})",
+      "filter": "Филтрирай {resourceName}",
+      "noFiltersApplied": "Няма приложени филтри",
+      "cancel": "Отказ",
+      "done": "Готово",
+      "clearAllFilters": "Изчисти всички филтри",
+      "clear": "Изчисти",
+      "clearLabel": "Изчисти {filterName}",
+      "addFilter": "Добави филтър",
+      "clearFilters": "Изчисти всички",
+      "searchInView": "в:{viewName}"
+    },
+    "FilterPill": {
+      "clear": "Изчисти",
+      "unsavedChanges": "Незапазени промени - {label}"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Търси и филтрирай",
+      "searchFilterTooltipWithShortcut": "Търси и филтрирай (F)",
+      "searchFilterAccessibilityLabel": "Търси и филтрирай резултати",
+      "sort": "Сортирай резултатите си",
+      "addView": "Добави нов изглед",
+      "newView": "Персонализирано търсене",
+      "SortButton": {
+        "ariaLabel": "Сортирай резултатите",
+        "tooltip": "Сортирай",
+        "title": "Сортирай по",
+        "sorting": {
+          "asc": "Възходящо",
+          "desc": "Низходящо",
+          "az": "А-Я",
+          "za": "Я-А"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Редактирай колони",
+        "accessibilityLabel": "Персонализирай реда и видимостта на колоните в таблицата"
+      },
+      "UpdateButtons": {
+        "cancel": "Отказ",
+        "update": "Обнови",
+        "save": "Запази",
+        "saveAs": "Запази като",
+        "modal": {
+          "title": "Запази изгледа като",
+          "label": "Име",
+          "sameName": "Изглед с това име вече съществува. Моля, избери друго име.",
+          "save": "Запази",
+          "cancel": "Отказ"
+        }
+      }
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Елемент",
+      "defaultItemPlural": "Елементи",
+      "allItemsSelected": "Всички {itemsLength}+ {resourceNamePlural} са избрани",
+      "selected": "{selectedItemsCount} избрани",
+      "a11yCheckboxDeselectAllSingle": "Отмени избора на {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Избери {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Отмени избора на всички {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Избери всички {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Не са намерени {resourceNamePlural}",
+      "emptySearchDescription": "Опитай да промениш филтрите или термина за търсене",
+      "onboardingBadgeText": "Ново",
+      "resourceLoadingAccessibilityLabel": "Зареждане на {resourceNamePlural}…",
+      "selectAllLabel": "Избери всички {resourceNamePlural}",
+      "selected": "{selectedItemsCount} избрани",
+      "undo": "Отмени",
+      "selectAllItems": "Избери всички {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Избери {resourceName}",
+      "selectButtonText": "Избери",
+      "sortAccessibilityLabel": "сортирай по {direction}"
+    },
+    "Loading": {
+      "label": "Лента за зареждане на страницата"
+    },
+    "Modal": {
+      "iFrameTitle": "маркиране на тялото",
+      "modalWarning": "Тези задължителни свойства липсват от Modal: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Преглед на действия за {title}",
+        "pageReadyAccessibilityLabel": "{title}. Тази страница е готова"
+      }
+    },
+    "Pagination": {
+      "previous": "Предишен",
+      "next": "Следващ",
+      "pagination": "Пагинация"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Стойностите, предадени към progress prop, не трябва да бъдат отрицателни. Нулиране на {progress} на 0.",
+      "exceedWarningMessage": "Стойностите, предадени към progress prop, не трябва да надвишават 100. Задаване на {progress} на 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Сортирай по",
+      "defaultItemSingular": "елемент",
+      "defaultItemPlural": "елементи",
+      "showing": "Показване на {itemsCount} {resource}",
+      "showingTotalCount": "Показване на {itemsCount} от {totalItemsCount} {resource}",
+      "loading": "Зареждане на {resource}",
+      "selected": "{selectedItemsCount} избрани",
+      "allItemsSelected": "Всички {itemsLength}+ {resourceNamePlural} във вашия магазин са избрани",
+      "allFilteredItemsSelected": "Всички {itemsLength}+ {resourceNamePlural} в този филтър са избрани",
+      "selectAllItems": "Избери всички {itemsLength}+ {resourceNamePlural} във вашия магазин",
+      "selectAllFilteredItems": "Избери всички {itemsLength}+ {resourceNamePlural} в този филтър",
+      "emptySearchResultTitle": "Не са намерени {resourceNamePlural}",
+      "emptySearchResultDescription": "Опитай да промениш филтрите или термина за търсене",
+      "selectButtonText": "Избери",
+      "a11yCheckboxDeselectAllSingle": "Отмени избора на {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Избери {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Отмени избора на всички {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Избери всички {itemsLength} {resourceNamePlural}",
+      "Item": {
+        "actionsDropdownLabel": "Действия за {accessibilityLabel}",
+        "actionsDropdown": "Падащо меню за действия",
+        "viewItem": "Преглед на подробности за {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Действия",
+        "moreActionsActivatorLabel": "Още действия"
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Зареждане на страницата"
+    },
+    "Tabs": {
+      "newViewAccessibilityLabel": "Създай нов изглед",
+      "newViewTooltip": "Създай изглед",
+      "toggleTabsLabel": "Още изгледи",
+      "Tab": {
+        "rename": "Преименувай изгледа",
+        "duplicate": "Дублирай изгледа",
+        "edit": "Редактирай изгледа",
+        "editColumns": "Редактирай колони",
+        "delete": "Изтрий изгледа",
+        "copy": "Копие на {name}",
+        "deleteModal": {
+          "title": "Изтрий изгледа?",
+          "description": "Това не може да бъде отменено. {viewName} изгледът вече няма да бъде достъпен в администрацията ви.",
+          "cancel": "Отказ",
+          "delete": "Изтрий изгледа"
+        }
+      },
+      "RenameModal": {
+        "title": "Преименувай изгледа",
+        "label": "Име",
+        "cancel": "Отказ",
+        "create": "Запази",
+        "errors": {
+          "sameName": "Изглед с това име вече съществува. Моля, избери друго име."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Дублирай изгледа",
+        "label": "Име",
+        "cancel": "Отказ",
+        "create": "Създай изглед",
+        "errors": {
+          "sameName": "Изглед с това име вече съществува. Моля, избери друго име."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Създай нов изглед",
+        "label": "Име",
+        "cancel": "Отказ",
+        "create": "Създай изглед",
+        "errors": {
+          "sameName": "Изглед с това име вече съществува. Моля, избери друго име."
+        }
+      }
+    },
+    "Tag": {
+      "ariaLabel": "Премахни {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} символа",
+      "characterCountWithMaxLength": "Използвани {count} от {limit} символа"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Подсказка: {label}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Превключи менюто",
+      "SearchField": {
+        "clearButtonLabel": "Изчисти",
+        "search": "Търси"
+      }
+    },
+    "MediaCard": {
+      "dismissButton": "Отхвърли",
+      "popoverButton": "Действия"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Пусни видеото",
+        "defaultWithDuration": "Пусни видео с продължителност {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} часа",
+              "andMinutes": "{hourCount} часа и {minuteCount} минути",
+              "andMinute": "{hourCount} часа и {minuteCount} минута",
+              "minutesAndSeconds": "{hourCount} часа, {minuteCount} минути и {secondCount} секунди",
+              "minutesAndSecond": "{hourCount} часа, {minuteCount} минути и {secondCount} секунда",
+              "minuteAndSeconds": "{hourCount} часа, {minuteCount} минута и {secondCount} секунди",
+              "minuteAndSecond": "{hourCount} часа, {minuteCount} минута и {secondCount} секунда",
+              "andSeconds": "{hourCount} часа и {secondCount} секунди",
+              "andSecond": "{hourCount} часа и {secondCount} секунда"
+            },
+            "one": {
+              "only": "{hourCount} час",
+              "andMinutes": "{hourCount} час и {minuteCount} минути",
+              "andMinute": "{hourCount} час и {minuteCount} минута",
+              "minutesAndSeconds": "{hourCount} час, {minuteCount} минути и {secondCount} секунди",
+              "minutesAndSecond": "{hourCount} час, {minuteCount} минути и {secondCount} секунда",
+              "minuteAndSeconds": "{hourCount} час, {minuteCount} минута и {secondCount} секунди",
+              "minuteAndSecond": "{hourCount} час, {minuteCount} минута и {secondCount} секунда",
+              "andSeconds": "{hourCount} час и {secondCount} секунди",
+              "andSecond": "{hourCount} час и {secondCount} секунда"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} минути",
+              "andSeconds": "{minuteCount} минути и {secondCount} секунди",
+              "andSecond": "{minuteCount} минути и {secondCount} секунда"
+            },
+            "one": {
+              "only": "{minuteCount} минута",
+              "andSeconds": "{minuteCount} минута и {secondCount} секунди",
+              "andSecond": "{minuteCount} минута и {secondCount} секунда"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} секунди",
+            "one": "{secondCount} секунда"
+          }
+        }
+      }
+    }
+  }
+}
