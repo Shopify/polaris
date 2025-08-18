@@ -4,9 +4,18 @@
 
 ### Minor Changes
 
+- [#13605](https://github.com/Shopify/polaris/pull/13605) [`3b0f5e9`](https://github.com/Shopify/polaris/commit/3b0f5e9964d56391cd9eb4b1e17d58eb8cccc64b) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `title` prop in `Page.Title` and `backAction` prop in `Page.Header` and `Breadcrumbs`
+
+- [#13995](https://github.com/Shopify/polaris/pull/13995) [`a1dbca8`](https://github.com/Shopify/polaris/commit/a1dbca81f11edfbb8b72d2e02334e59723faa9d5) Thanks [@vvineet-shopify](https://github.com/vvineet-shopify)! - Added support for 8 new languages in Polaris component translations: Hindi (hi), Lithuanian (lt), Bulgarian (bg), Hungarian (hu), Romanian (ro), Russian (ru), Indonesian (id), and Greek (el). These translations provide localized user interfaces for merchants in these language regions, covering all component strings including action menus, form elements, date/time pickers, file upload interfaces, navigation, data tables, filters, modal dialogs, progress indicators, and accessibility labels.
+
+## 13.10.0
+
+### Minor Changes
+
 - Added support for 8 new languages in Polaris component translations:
+
   - Hindi (hi)
-  - Lithuanian (lt) 
+  - Lithuanian (lt)
   - Bulgarian (bg)
   - Hungarian (hu)
   - Romanian (ro)
