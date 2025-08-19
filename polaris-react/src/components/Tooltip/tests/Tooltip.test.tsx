@@ -509,6 +509,46 @@ describe('<Tooltip />', () => {
       });
     });
   });
+
+  describe('tooltip when content is null', () => {
+    it('does not render tooltip when content is null', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content={null}>
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+  
+      expect(tooltip).not.toContainReactComponent(TooltipOverlay);
+      expect(tooltip).toContainReactComponent(Link);
+    });
+  
+    it('renders tooltip when content changes from null to a value', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content={null}>
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+  
+      tooltip.setProps({content: 'New content'});
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+  
+      expect(tooltip).toContainReactComponent(TooltipOverlay);
+    });
+  
+    it('removes tooltip when content changes to null', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content="Initial content">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+  
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+      expect(tooltip).toContainReactComponent(TooltipOverlay);
+  
+      tooltip.setProps({content: null});
+      expect(tooltip).not.toContainReactComponent(TooltipOverlay);
+    });
+  });
 });
 
 function findWrapperComponent(tooltip: any) {
