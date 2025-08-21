@@ -1,11 +1,11 @@
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
-import Script from 'next/script';
-import {useEffect, StrictMode} from 'react';
+import {useEffect, StrictMode, useState} from 'react';
 import {useRouter} from 'next/router';
 import useDarkMode from 'use-dark-mode';
 import '@shopify/polaris/build/esm/styles.css';
 import pkg from '../package.json';
+import {Dux, ConsentBannerTreatment} from '@shopify/dux';
 
 import {className} from '../src/utils/various';
 import Frame from '../src/components/Frame';
@@ -15,14 +15,36 @@ import ViewTransition from '../src/components/ViewTransition';
 const PUBLIC_GA_ID = 'UA-49178120-32';
 
 const gaPageView = (url: string) => {
-  window.gtag('config', PUBLIC_GA_ID, {
-    page_path: url,
-    custom_map: {
-      metric1: 'search_term',
-      metric2: 'result_rank',
-      metric3: 'selected_result',
-    },
-  });
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('config', PUBLIC_GA_ID, {
+      page_path: url,
+      custom_map: {
+        metric1: 'search_term',
+        metric2: 'result_rank',
+        metric3: 'selected_result',
+      },
+    });
+  }
+};
+
+const loadGoogleTagManager = () => {
+  if (typeof window === 'undefined') return;
+
+  const gtmScript = document.createElement('script');
+  gtmScript.async = true;
+  gtmScript.src = `https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GA_ID}`;
+  document.head.appendChild(gtmScript);
+
+  const initScript = document.createElement('script');
+  initScript.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${PUBLIC_GA_ID}', {
+      page_path: window.location.pathname,
+    });
+  `;
+  document.head.appendChild(initScript);
 };
 
 // Remove dark mode flicker. Minified version of https://github.com/donavon/use-dark-mode/blob/develop/noflash.js.txt
@@ -32,14 +54,50 @@ function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
   const isProd = process.env.NODE_ENV === 'production';
   const darkMode = useDarkMode(false);
-
-  // We're using router.pathname here to check for a specific incoming route to render in a Fragment instead of
-  // the Page component. This will work fine for statically generated assets / pages
-  // Any SSR pages may break due to router sometimes being undefined on first render.
-  // see https://stackoverflow.com/questions/61040790/userouter-withrouter-receive-undefined-on-query-in-first-render
+  const [analyticsLoaded, setAnalyticsLoaded] = useState(false);
 
   useEffect(() => {
-    if (!isProd) return;
+    if (analyticsLoaded) return;
+
+    const waitForConsent = () => {
+      if (
+        typeof window !== 'undefined' &&
+        window.cmp &&
+        typeof window.cmp === 'function'
+      ) {
+        try {
+          const cmp = window.cmp();
+
+          const onConsentChanged = (props: any) => {
+            const hasConsent =
+              props &&
+              props.hasConsentedAnalytics === true &&
+              props.hasConsentedMarketing === true;
+
+            if (hasConsent) {
+              loadGoogleTagManager();
+              setAnalyticsLoaded(true);
+            }
+          };
+
+          if (cmp && typeof cmp.updateOnChangeCallback === 'function') {
+            cmp.updateOnChangeCallback(onConsentChanged);
+            onConsentChanged(cmp);
+            return;
+          }
+        } catch (e) {
+          // CMP API not ready yet, will retry
+        }
+      }
+
+      setTimeout(waitForConsent, 100);
+    };
+
+    waitForConsent();
+  }, [analyticsLoaded]);
+
+  useEffect(() => {
+    if (!isProd || !analyticsLoaded) return;
 
     const handleRouteChange = (url: string) => {
       gaPageView(url);
@@ -51,7 +109,7 @@ function MyApp({Component, pageProps}: AppProps) {
       router.events.off('routeChangeComplete', handleRouteChange);
       router.events.off('hashChangeComplete', handleRouteChange);
     };
-  }, [router.events, isProd]);
+  }, [router.events, analyticsLoaded, isProd]);
 
   const ogImagePath = `/og-images${
     router.asPath === '/'
@@ -71,28 +129,14 @@ function MyApp({Component, pageProps}: AppProps) {
 
   return (
     <>
-      {isProd ? (
-        <>
-          <Script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GA_ID}`}
-          />
-          <Script
-            id="gtag-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${PUBLIC_GA_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-            }}
-          />
-        </>
-      ) : null}
+      <Dux
+        service="polaris-react.shopify.com"
+        mode={isProd ? 'production' : 'development'}
+        enableActiveConsent={ConsentBannerTreatment.GranularCompact}
+        enableGtmLoader={false}
+        countryCode="GB" // Force GB so that the consent banner is always shown
+        locale="en" // Force en since the site content is only in English
+      />
 
       <script dangerouslySetInnerHTML={{__html: noflash}}></script>
 
