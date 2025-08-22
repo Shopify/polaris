@@ -37,6 +37,7 @@ jobs:
 
       - name: Configure npm registries for private packages
         run: |
+          echo "registry=https://registry.npmjs.org" >> .npmrc
           echo "@shopify:registry=https://npm.shopify.io/node/" >> .npmrc
           echo "//npm.shopify.io/node/:_authToken=${NPM_AUTH_TOKEN}" >> .npmrc
         env:
