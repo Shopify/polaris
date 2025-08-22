@@ -44,6 +44,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
+      - name: Add a .npmrc file for private registry
+        run: |
+          echo "@shopify:registry=https://npm.shopify.io/node/" > ~/.npmrc
+          echo "@shopify-internal:registry=https://npm.shopify.io/node/" > ~/.npmrc
+          echo "//npm.shopify.io/node/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.CLOUDSMITH_NPM_TOKEN_RO }}
+
       - name: Restore cache
         uses: actions/cache@2f8e54208210a422b2efd51efaa6bd6d7ca8920f # v3.4.3
         with:
