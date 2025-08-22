@@ -44,10 +44,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
-      - name: Add a .npmrc file for private registry
+      - name: Configure npm registries for private packages
         run: |
-          echo "@shopify:registry=https://npm.shopify.io/node/" > ~/.npmrc
-          echo "@shopify-internal:registry=https://npm.shopify.io/node/" > ~/.npmrc
+          echo "@shopify/dux:registry=https://npm.shopify.io/node/" > ~/.npmrc
+          echo "@shopify-internal:registry=https://npm.shopify.io/node/" >> ~/.npmrc
           echo "//npm.shopify.io/node/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc
         env:
           NPM_AUTH_TOKEN: ${{ secrets.CLOUDSMITH_NPM_TOKEN_RO }}
