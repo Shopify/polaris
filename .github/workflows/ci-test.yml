@@ -46,7 +46,8 @@ jobs:
 
       - name: Add a .npmrc file for private registry
         run: |
-          echo "@shopify:registry=https://npm.shopify.io/node/" > ~/.npmrc
+          echo "registry=https://registry.npmjs.org" > ~/.npmrc
+          echo "@shopify:registry=https://npm.shopify.io/node/" >> ~/.npmrc
           echo "//npm.shopify.io/node/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc
         env:
           NPM_AUTH_TOKEN: ${{ secrets.CLOUDSMITH_NPM_TOKEN_RO }}
