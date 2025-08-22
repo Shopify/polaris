@@ -11,6 +11,7 @@ import {className} from '../src/utils/various';
 import Frame from '../src/components/Frame';
 import '../src/styles/globals.scss';
 import ViewTransition from '../src/components/ViewTransition';
+import {ConsentBannerTreatment, Dux} from '@shopify/dux';
 
 const PUBLIC_GA_ID = 'UA-49178120-32';
 
@@ -71,28 +72,19 @@ function MyApp({Component, pageProps}: AppProps) {
 
   return (
     <>
-      {isProd ? (
-        <>
-          <Script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GA_ID}`}
-          />
-          <Script
-            id="gtag-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${PUBLIC_GA_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-            }}
-          />
-        </>
-      ) : null}
+      <Dux
+        service="polaris-react"
+        mode={isProd ? 'production' : 'development'} // anotate with current environment
+        enableGtm={true} // optional emits clicks and componentView events to GTM's dataLayer
+        enableGtmLoader={true} // optional GTM loader if you dont handle loading GTM yourself
+        gtmAccountId={PUBLIC_GA_ID}
+        enableActiveConsent={ConsentBannerTreatment.GranularCompact}
+        countryCode="GB"
+        regionCode="GB"
+        locale="en"
+        eventHandlerEndpoint="https://www.shopify.com/__dux"
+        // onPageView={onGtmPageView} // optional callback to provide additional GTM data
+      />
 
       <script dangerouslySetInnerHTML={{__html: noflash}}></script>
 
