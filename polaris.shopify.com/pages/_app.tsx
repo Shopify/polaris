@@ -1,6 +1,5 @@
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
-import Script from 'next/script';
 import {useEffect, StrictMode} from 'react';
 import {useRouter} from 'next/router';
 import useDarkMode from 'use-dark-mode';
