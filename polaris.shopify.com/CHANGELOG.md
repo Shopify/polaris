@@ -1,5 +1,14 @@
 # polaris.shopify.com
 
+## 1.1.5
+
+### Patch Changes
+
+- [#14015](https://github.com/Shopify/polaris/pull/14015) [`0596ffb`](https://github.com/Shopify/polaris/commit/0596ffb23fdf031dc7d03782f1811564e699dc7a) Thanks [@jppellerin](https://github.com/jppellerin)! - Add Dux and privacy controls. Move GTM to Dux.
+
+- Updated dependencies [[`3b0f5e9`](https://github.com/Shopify/polaris/commit/3b0f5e9964d56391cd9eb4b1e17d58eb8cccc64b), [`a1dbca8`](https://github.com/Shopify/polaris/commit/a1dbca81f11edfbb8b72d2e02334e59723faa9d5)]:
+  - @shopify/polaris@13.10.0
+
 ## 1.1.4
 
 ### Patch Changes
