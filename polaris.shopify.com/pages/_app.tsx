@@ -71,28 +71,46 @@ function MyApp({Component, pageProps}: AppProps) {
 
   return (
     <>
-      {isProd ? (
-        <>
-          <Script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GA_ID}`}
-          />
-          <Script
-            id="gtag-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${PUBLIC_GA_ID}', {
-                page_path: window.location.pathname,
+      <Script
+        id="dux-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+              const loadScript = (src) => {
+                const promise = new Promise((resolve, reject) => {
+                  const script = document.createElement('script');
+                  script.src = src;
+                  script.type = 'module';
+                  script.onload = () => {
+                    resolve(true);
+                  };
+                  script.onerror = () => {
+                    reject(false);
+                  };
+                  document.body.appendChild(script);
+                });
+                return promise;
+              }
+              // example loading from CDN
+              loadScript('https://cdn.shopify.com/shopifycloud/dux/dux-portal-4.4.0.min.js').then(() => {
+                Dux.init({
+                  eventHandlerEndpoint: 'https://www.shopify.com/__dux',
+                  mode: 'production',
+                  service: 'polaris-react',
+                  enableActiveConsent: true,
+                  enableConsentBuffer: true,
+                  enableLogger: {
+                    cookieBlocker: true,
+                  },
+                  countryCode: 'GB',
+                  enableGtm: true,
+                  enableGtmLoader: true,
+                  gtmAccountId: '${PUBLIC_GA_ID}',
+                })
               });
             `,
-            }}
-          />
-        </>
-      ) : null}
+        }}
+      />
 
       <script dangerouslySetInnerHTML={{__html: noflash}}></script>
 
