@@ -34,6 +34,8 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: pnpm
+          registry-url: 'https://npm.shopify.io/node'
+          scope: '@shopify'
 
       - name: Restore cache
         uses: actions/cache@2f8e54208210a422b2efd51efaa6bd6d7ca8920f # v3.4.3
@@ -49,6 +51,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build packages
         run: pnpm build
