@@ -1,7 +1,7 @@
 ---
 title: Page actions
 shortDescription: Allows merchants to take key actions at the bottom of specific pages in the interface.
-category: Actions
+category: Deprecated
 keywords:
   - PageActions
   - bottom of page actions
@@ -25,7 +25,8 @@ examples:
   - fileName: page-actions-with-custom-secondary-action.tsx
     title: With custom secondary action
     description: Use to create a custom secondary action.
-previewImg: /images/components/actions/page-actions.png
+status: Deprecated
+previewImg: /images/components/deprecated/page-actions.png
 ---
 
 # {frontmatter.title}
@@ -35,6 +36,11 @@ previewImg: /images/components/actions/page-actions.png
 Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
 
 </Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. Please use the [App Bridge Save Bar
+  API](https://shopify.dev/docs/api/app-bridge-library/apis/save-bar) instead.
+</StatusBanner>
 
 <Examples />
 
