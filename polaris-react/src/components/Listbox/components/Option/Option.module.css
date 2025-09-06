@@ -11,3 +11,48 @@
 .divider {
   border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
 }
+
+.CustomContent {
+  margin: var(--p-space-100) var(--p-space-200) 0;
+  flex: 1;
+  border-radius: var(--p-border-radius-200);
+  cursor: pointer;
+  display: flex;
+
+  &:hover {
+    background-color: var(--p-color-bg-surface-hover);
+
+    &:not(.disabled) {
+      background-color: var(--p-color-bg-surface-secondary-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--p-color-bg-surface-active);
+
+    &:not(.disabled) {
+      background-color: var(--p-color-bg-surface-secondary-active);
+    }
+  }
+
+  &.selected {
+    background-color: var(--p-color-bg-surface-secondary-selected);
+    font-weight: var(--p-font-weight-semibold);
+  }
+
+  &.disabled {
+    background-color: transparent;
+    color: var(--p-color-text-disabled);
+    cursor: default;
+  }
+}
+
+li:first-of-type .CustomContent {
+  margin-top: 0;
+}
+
+[data-focused] .CustomContent:not(.disabled) {
+  outline: none;
+  background-color: var(--p-color-bg-surface-secondary-selected);
+  transition: background-color var(--p-motion-duration-400);
+}
