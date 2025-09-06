@@ -67,6 +67,15 @@ export function Form({
     [onSubmit, preventDefault],
   );
 
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (!implicitSubmit && event.key === 'Enter' && event.target instanceof HTMLInputElement) {
+        event.preventDefault();
+      }
+    },
+    [implicitSubmit],
+  );
+
   const autoCompleteInputs = normalizeAutoComplete(autoComplete);
 
   const submitMarkup = implicitSubmit ? (
@@ -88,6 +97,7 @@ export function Form({
       noValidate={noValidate}
       target={target}
       onSubmit={handleSubmit}
+      onKeyDown={handleKeyDown}
     >
       {submitMarkup}
       {children}
