@@ -10,11 +10,12 @@ import {NavItem, Breakpoints} from '../../types';
 
 import styles from './Frame.module.scss';
 import {className} from '../../utils/various';
+import {withBasePath} from '../../utils/basePath';
 import {useRouter} from 'next/router';
 import StatusBadge from '../StatusBadge';
 import Icon from '../Icon';
-import {ArrowRightIcon, LockIcon} from '@shopify/polaris-icons';
-import icons from '../../icons';
+import {LockIcon} from '@shopify/polaris-icons';
+import DeprecationBanner from '../DeprecationBanner';
 
 const NAV_ID = 'nav';
 interface Props {
@@ -94,16 +95,7 @@ function Frame({darkMode, children}: Props) {
 
   return (
     <>
-      <div className={styles.PolarisUnifiedCta}>
-        <div>
-          <a href="https://shopify.dev/docs/api/app-home/polaris-web-components">
-            {icons.Polaris()}
-            <strong>Introducing Polaris Web Components</strong>{' '}
-            <span className={styles.ReleaseCandidate}>Now Released</span>
-            <Icon source={ArrowRightIcon} />
-          </a>
-        </div>
-      </div>
+      <DeprecationBanner />
       <div className={styles.Header}>
         {showSkipToContentLink && (
           <a className={styles.SkipToContentLink} href="#main">
@@ -126,7 +118,7 @@ function Frame({darkMode, children}: Props) {
         <Link href="/" className={styles.Logo}>
           <Image
             alt="Shopify logo"
-            src="/images/shopify-logo.svg"
+            src={withBasePath('/images/shopify-logo.svg')}
             width={24}
             height={24}
           />
@@ -256,7 +248,7 @@ function NavItem({
                 >
                   {child.internalOnly ? (
                     <a
-                      href={child.slug}
+                      href={withBasePath(child.slug)}
                       onClick={handleLinkClick}
                       aria-current={isCurrent ? 'page' : 'false'}
                       onKeyDown={(evt) => {

@@ -1,0 +1,77 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.DeprecationBanner {
+  background: var(--surface-warning);
+  border-bottom: var(--border);
+  color: var(--text-strong);
+  font-size: var(--font-size-300);
+
+  @include dark-mode {
+    background: #3a2422;
+  }
+}
+
+.Content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0.625rem 1.5rem;
+
+  p {
+    margin: 0;
+    flex: 1 1 20rem;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--text-strong);
+  }
+
+  code {
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+  }
+}
+
+.Icon {
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+    filter: none;
+    opacity: 1;
+
+    @include dark-mode {
+      filter: none;
+    }
+  }
+}
+
+.Cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--text-link);
+  text-decoration: underline;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+    filter: none;
+    opacity: 1;
+
+    @include dark-mode {
+      filter: none;
+    }
+  }
+}

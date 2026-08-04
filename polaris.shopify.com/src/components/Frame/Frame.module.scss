@@ -230,7 +230,7 @@ $breakpointNav: $breakpointTablet;
     height: 24px;
     border-radius: 100%;
     background-color: transparent;
-    background-image: url(/images/PlusIcon.svg);
+    background-image: url('#{$basePath}/images/PlusIcon.svg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 12px 12px;
@@ -247,7 +247,7 @@ $breakpointNav: $breakpointTablet;
     }
 
     &[aria-expanded='true'] {
-      background-image: url(/images/MinusIcon.svg);
+      background-image: url('#{$basePath}/images/MinusIcon.svg');
     }
   }
 }
@@ -363,65 +363,4 @@ $breakpointNav: $breakpointTablet;
 
 .DarkModeIcon {
   animation: slide-down 0.3s;
-}
-
-.PolarisUnifiedCta {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease-out;
-
-  > div {
-    margin: 0.5rem 1.5rem 1rem;
-  }
-
-  a {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    color: #00936f;
-    background: #d4f5e7;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25rem;
-    position: relative;
-    transition: box-shadow 0.3s ease, scale 0.3s ease-in-out;
-
-    &:hover {
-      scale: 1.01;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    @include dark-mode {
-      background: #00936f;
-      color: #d4f5e7;
-    }
-
-    @media screen and (min-width: $breakpointMobile) {
-      border-radius: 9999px;
-    }
-  }
-
-  strong {
-    font-weight: 600;
-  }
-
-  svg {
-    filter: none;
-    opacity: 1;
-    fill: currentColor;
-
-    @include dark-mode {
-      filter: none;
-    }
-  }
-
-  .ReleaseCandidate {
-    border: 1px solid #14c397;
-    padding: 0 0.5rem;
-    margin: 0 0.25rem;
-    border-radius: 0.25rem;
-  }
 }
