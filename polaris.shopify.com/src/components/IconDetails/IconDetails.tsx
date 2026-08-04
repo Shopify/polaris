@@ -2,6 +2,7 @@ import {useEffect, useState, Fragment} from 'react';
 import Link from 'next/link';
 import Code from '../Code';
 import Icon from '../Icon';
+import {withBasePath} from '../../utils/basePath';
 import styles from './IconDetails.module.scss';
 import * as polarisIcons from '@shopify/polaris-icons';
 
@@ -23,7 +24,10 @@ function IconDetails({fileName, iconData}: Props) {
   }, [fileName]);
 
   async function getBlob(icon: string) {
-    const iconUrl = `https://raw.githubusercontent.com/Shopify/polaris/main/polaris-icons/icons/${icon}.svg`;
+    // Served from our own origin by `scripts/gen-icon-files.ts`; this used to
+    // come from raw.githubusercontent.com, which the archived site shouldn't be
+    // calling out to.
+    const iconUrl = withBasePath(`/icon-svgs/${icon}.svg`);
     fetch(iconUrl)
       .then((r) => r.blob())
       .then((r) => setBlob(URL.createObjectURL(r)));
