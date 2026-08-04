@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState, useCallback} from 'react';
+import React, {useEffect, useRef, useState, useMemo} from 'react';
 import throttle from 'lodash.throttle';
 import {useRouter} from 'next/router';
 
@@ -13,7 +13,15 @@ export const useThrottle = (cb: Function, delay: number) => {
     cbRef.current = cb;
   });
 
-  return useCallback(
+  // `useMemo`, not `useCallback`: the hook has to hand back the throttled
+  // function itself. Returning a factory that *builds* one meant the only
+  // caller — `useEffect(throttledSearch, …)` in `GlobalSearch` — registered the
+  // throttled function as the effect's cleanup instead of running it, so a
+  // search only fired on the next dependency change. Typing slowly hid it
+  // (every keystroke ran the previous keystroke's query); pasting a query, or
+  // typing fast enough that the term settled in one render, showed no results
+  // at all.
+  return useMemo(
     () =>
       throttle((...args) => cbRef.current(...args), delay, {
         leading: true,
