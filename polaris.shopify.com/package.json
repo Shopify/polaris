@@ -73,7 +73,7 @@
     "@types/react": "^18.2.0",
     "@types/unist": "^2.0.6",
     "babel-plugin-preval": "^5.1.0",
-    "chalk": "^5.2.0",
+    "chalk": "^6.0.0",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.2",
     "css-loader": "^5.2.7",
