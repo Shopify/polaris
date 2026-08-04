@@ -16,7 +16,9 @@ export default function Sandbox() {
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
   const search = initialSearchParams ?? '';
   const copyUrl = `${origin}${withBasePath('/sandbox/preview')}${search}`;
-  const editUrl = `${origin}${withBasePath('/sandbox')}${search}`;
+  // `SandboxHeader` hands this to `next/link`, which applies the base path
+  // itself, so this one has to stay unprefixed or it ends up doubled.
+  const editUrl = `/sandbox${search}`;
 
   return (
     <SandboxContainer>
@@ -32,7 +34,12 @@ export default function Sandbox() {
             padding: 0,
             margin: 0,
           }}
-          src={`${withBasePath('/playroom/preview')}${initialSearchParams}`}
+          // Spelled out to `index.html` rather than the directory: GitHub Pages
+          // answers a bare directory with a 301 to the trailing-slash form, and
+          // there's no reason to make the iframe follow a redirect.
+          src={`${withBasePath(
+            '/playroom/preview/index.html',
+          )}${initialSearchParams}`}
           width="100%"
           height="100%"
         />

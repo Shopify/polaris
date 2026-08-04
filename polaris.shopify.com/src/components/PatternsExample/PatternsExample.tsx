@@ -20,23 +20,24 @@ const getISOStringYear = () => new Date().toISOString().split('T')[0];
 const PlayroomButton = ({code, title}: {code: string; title?: string}) => {
   const [encodedUrl, setEncodedUrl] = useState('');
   useEffect(() => {
-    setEncodedUrl(
-      createUrl({
-        baseUrl: '/sandbox/',
-        code: endent`
-          ${title ? `{/* ${title} */}` : ''}
-          {/* Generated on ${getISOStringYear()} from ${
-          window.location.href
-        } */}
-          {/* This example is for guidance purposes. Copying it will come with caveats. */}
-          ${/* intentional blank line */ ''}
-          ${code}
-        `,
-        // TODO: Is this correct?
-        themes: ['locale:en'],
-        paramType: 'search',
-      }),
-    );
+    // `createUrl`'s own `baseUrl` handling appends a trailing slash, which
+    // GitHub Pages resolves against `sandbox/index.html` — a file
+    // `trailingSlash: false` never emits. Build the query separately and prefix
+    // the extensionless route ourselves, the same way `previewUrl` does below.
+    const params = createUrl({
+      code: endent`
+        ${title ? `{/* ${title} */}` : ''}
+        {/* Generated on ${getISOStringYear()} from ${window.location.href} */}
+        {/* This example is for guidance purposes. Copying it will come with caveats. */}
+        ${/* intentional blank line */ ''}
+        ${code}
+      `,
+      // TODO: Is this correct?
+      themes: ['locale:en'],
+      paramType: 'search',
+    });
+
+    setEncodedUrl(`${withBasePath('/sandbox')}${params}`);
   }, [code, title]);
 
   return (

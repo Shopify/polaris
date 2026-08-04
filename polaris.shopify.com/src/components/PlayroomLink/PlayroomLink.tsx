@@ -28,12 +28,14 @@ interface Props {
 const PlayroomButton = (props: Props) => {
   const {code} = props;
 
-  const encodedCode = createUrl({
-    baseUrl: withBasePath('/sandbox/'),
+  // Not `createUrl`'s `baseUrl`: it appends a trailing slash, which GitHub Pages
+  // resolves against `sandbox/index.html` — a file `trailingSlash: false` never
+  // emits. Prefix the extensionless route ourselves instead.
+  const encodedCode = `${withBasePath('/sandbox')}${createUrl({
     code: getAppCode(code), //encodeURL(getAppCode(code));
     themes: ['locale:en'],
     paramType: 'search',
-  });
+  })}`;
 
   return (
     <a

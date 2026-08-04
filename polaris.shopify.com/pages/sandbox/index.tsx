@@ -64,7 +64,10 @@ export default function Sandbox() {
             padding: 0,
             margin: 0,
           }}
-          src={`${withBasePath('/playroom')}${initialSearchParams}`}
+          // Spelled out to `index.html` rather than the directory: GitHub Pages
+          // answers a bare directory with a 301 to the trailing-slash form, and
+          // there's no reason to make the iframe follow a redirect.
+          src={`${withBasePath('/playroom/index.html')}${initialSearchParams}`}
           width="100%"
           height="100%"
         />
