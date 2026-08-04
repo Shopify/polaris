@@ -41,7 +41,7 @@
     "chalk": "^4.1.0",
     "globby": "11.0.1",
     "is-git-clean": "^1.1.0",
-    "jscodeshift": "^0.13.1",
+    "jscodeshift": "^17.4.0",
     "meow": "^9.0.0",
     "postcss": "^8.5.6",
     "postcss-scss": "^4.0.4",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@types/is-git-clean": "^1.1.0",
-    "@types/jscodeshift": "^0.11.5",
+    "@types/jscodeshift": "^17.3.0",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
