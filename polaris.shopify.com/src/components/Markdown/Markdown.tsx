@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, {
   cloneElement,
   useState,
@@ -31,6 +32,7 @@ import Tooltip from '../Tooltip';
 import Icon from '../Icon';
 import {FeaturedCardGrid} from '../FeaturedCardGrid';
 import {useCopyToClipboard} from '../../utils/hooks';
+import {withBasePath} from '../../utils/basePath';
 import {Colors} from './components/Colors';
 import {CollapsibleDetails} from '../../components/CollapsibleDetails';
 import {
@@ -205,12 +207,25 @@ function Markdown<
           src ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={src}
+              src={withBasePath(src)}
               alt={alt ?? ''}
               className={styles.Image}
               style={style}
             />
           ) : null,
+        // Content links are plain markdown, so they miss out on the base path
+        // that `next/link` applies automatically. Routing site-internal ones
+        // through `Link` fixes the URL and gets client-side navigation too.
+        a: ({href, title, children}) =>
+          href?.startsWith('/') ? (
+            <Link href={href} title={title}>
+              {children}
+            </Link>
+          ) : (
+            <a href={href} title={title}>
+              {children}
+            </a>
+          ),
         // `pre` is only for fenced code blocks, so we set the flag here which
         // is then passed to `code`
         pre: ({children}) =>

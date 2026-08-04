@@ -1,6 +1,11 @@
 # polaris-react.shopify.com
 
-The public facing style guide, available via [https://polaris.shopify.com](https://polaris.shopify.com).
+The Polaris React style guide. **Archived.** polaris.shopify.com has been
+decommissioned; this is now published as a static, read-only snapshot to
+[https://shopify.github.io/polaris-react/](https://shopify.github.io/polaris-react/).
+
+New Shopify admin development should use
+[Polaris web components](https://shopify.dev/docs/api/app-home/polaris-web-components).
 
 ## Getting Started
 
@@ -8,6 +13,36 @@ The public facing style guide, available via [https://polaris.shopify.com](https
 pnpm
 pnpm dev
 ```
+
+## Building and previewing the archive
+
+`pnpm build` produces a static export in `out/`, mounted at the `/polaris-react`
+base path so it works as a GitHub Pages project site. To preview it the way
+Pages serves it:
+
+```
+pnpm build
+pnpm serve   # http://localhost:3000/polaris-react
+```
+
+Set `POLARIS_BASE_PATH=""` to build or serve from the root of a domain instead;
+`pnpm dev` already does this.
+
+Publishing is a manual, one-shot job: run the **Deploy to GitHub Pages**
+workflow (`.github/workflows/deploy-github-pages.yml`) from the Actions tab.
+
+### What the archive deliberately does not do
+
+- **No analytics.** Dux, Google Analytics/GTM and the search-telemetry endpoint
+  are gone, and every asset is served from this origin, so browsing the site
+  makes no automatic third-party requests.
+- **No indexing.** Every page carries `<meta name="robots" content="noindex">`
+  and there is no sitemap. `robots.txt` still lets crawlers in — they have to be
+  able to fetch a page to see the tag.
+- **No server.** The `pages/api` routes are gone. Site search runs client-side
+  against `public/search-index.json`, the token API is a set of static JSON/CSS
+  files under `public/api/tokens/v0/`, and the old `redirects()` list is emitted
+  as HTML redirect stubs by `scripts/post-export.ts`.
 
 ## Development tips
 

@@ -15,6 +15,40 @@ import remarkExtractFirstParagraph, {
 } from './remark-extract-first-paragraph';
 import type {SerializedMdx} from '../../types';
 
+const {basePath} = require('../../../constants');
+
+// Literal JSX in MDX (`<video><source src="/images/…"></video>`) is compiled
+// straight to `_jsx('source', …)` rather than being looked up in the component
+// map, so the `img`/`a` overrides in `Markdown.tsx` never see it. Rewriting the
+// attributes here catches those before they're compiled, which keeps content
+// authors free to write plain relative-to-root paths.
+const ASSET_ATTRIBUTES = ['src', 'href', 'poster'];
+
+function basePathAssets(): Plugin {
+  if (!basePath) return () => undefined;
+
+  return (tree) => {
+    visit(tree, ['mdxJsxFlowElement', 'mdxJsxTextElement'], (node) => {
+      if (!('attributes' in node)) return;
+
+      (node.attributes as any[]).forEach((attribute) => {
+        if (
+          attribute.type !== 'mdxJsxAttribute' ||
+          !ASSET_ATTRIBUTES.includes(attribute.name) ||
+          typeof attribute.value !== 'string' ||
+          !attribute.value.startsWith('/') ||
+          attribute.value.startsWith('//') ||
+          attribute.value.startsWith(`${basePath}/`)
+        ) {
+          return;
+        }
+
+        attribute.value = `${basePath}${attribute.value}`;
+      });
+    });
+  };
+}
+
 function codeAsContext(): Plugin {
   return (tree) => {
     // Gather up all the code elements
@@ -159,6 +193,7 @@ export const serializeMdx = async <
         ...(mdxOptions?.remarkPlugins ?? []),
         codeAsContext,
         codeMetaAsDataAttribute,
+        basePathAssets,
         [
           remarkExtractFirstParagraph,
           {

@@ -25,21 +25,9 @@ interface IconGridItemProps {
   icon: IconType;
   query?: string;
   activeIcon?: string;
-  customOnClick?: Function;
-  rank?: number;
-  searchTerm?: string;
-  uuid?: string;
 }
 
-function IconGridItem({
-  icon,
-  activeIcon,
-  query,
-  customOnClick,
-  rank,
-  searchTerm,
-  uuid,
-}: IconGridItemProps) {
+function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
   const {id} = icon;
   const searchAttributes = useGlobalSearchResult();
 
@@ -64,11 +52,6 @@ function IconGridItem({
             styles.Icon,
             activeIcon === id && styles.isSelected,
           )}
-          onClick={() =>
-            uuid &&
-            customOnClick &&
-            customOnClick(uuid, searchTerm, rank, id, `/icons?icon=${id}`)
-          }
         >
           <SearchResultHighlight />
           <Icon source={(polarisIcons as any)[id]} />

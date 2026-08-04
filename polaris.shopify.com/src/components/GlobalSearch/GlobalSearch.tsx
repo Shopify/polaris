@@ -1,9 +1,9 @@
-import {useState, useEffect, createContext, useContext} from 'react';
+import {useState, useEffect, useRef, createContext, useContext} from 'react';
+import type Fuse from 'fuse.js';
 import {
   GroupedSearchResults,
   SearchResultCategory,
   SearchResults,
-  SearchResult,
 } from '../../types';
 import {useThrottle} from '../../utils/hooks';
 import styles from './GlobalSearch.module.scss';
@@ -16,6 +16,12 @@ import {KeyboardEventHandler} from 'react';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 import PatternThumbnailPreview from '../ThumbnailPreview';
 import ComponentThumbnail from '../ComponentThumbnail';
+import {withBasePath} from '../../utils/basePath';
+import {
+  SEARCH_INDEX_PATH,
+  fuseOptions,
+  groupSearchResults,
+} from '../../utils/search';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
   foundations: 'Foundations',
@@ -23,7 +29,6 @@ const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   tokens: 'Tokens',
   icons: 'Icons',
 };
-import {v4 as uuidv4} from 'uuid';
 
 const SearchContext = createContext({id: '', currentItemId: ''});
 
@@ -45,57 +50,43 @@ function scrollToTop() {
   overflowEl?.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function captureSearchClick(
-  searchUuid: string,
-  searchTerm: string,
-  resultRank?: number,
-  gid?: string,
-  selectedResult?: string,
-) {
-  // if we don't meet the minimum search query length, bail
-  if (searchTerm.length < 3) return;
+/**
+ * Loads the pre-built search index and hands back a Fuse instance.
+ *
+ * Search used to POST every keystroke to `/api/search/v0` (and report clicks to
+ * an analytics endpoint). The archived site collects nothing and has no server,
+ * so the corpus is downloaded once — on first open of the dialog — and matched
+ * entirely in the browser.
+ */
+function useSearchIndex(enabled: boolean) {
+  const [fuse, setFuse] = useState<Fuse<SearchResults[number]> | null>(null);
+  const requested = useRef(false);
 
-  const payload = {
-    searchUuid,
-    query: searchTerm,
-    locale: document.documentElement.lang,
-    gid,
-    url: selectedResult,
-    rank: resultRank,
-  };
+  useEffect(() => {
+    if (!enabled || requested.current) return;
+    requested.current = true;
 
-  callServiceEndpoint('searchClick', payload);
-}
+    let cancelled = false;
 
-function captureSearchQuery(
-  searchUuid: string,
-  searchTerm: string,
-  results: SearchResults,
-) {
-  if (searchTerm.length < 3) return;
+    Promise.all([
+      fetch(withBasePath(SEARCH_INDEX_PATH)).then(
+        (response): Promise<SearchResults> => response.json(),
+      ),
+      import('fuse.js').then((module) => module.default),
+    ])
+      .then(([index, FuseConstructor]) => {
+        if (!cancelled) setFuse(new FuseConstructor(index, fuseOptions));
+      })
+      .catch(() => {
+        requested.current = false;
+      });
 
-  const payload: any = {
-    searchUuid,
-    query: searchTerm,
-    locale: document.documentElement.lang,
-  };
+    return () => {
+      cancelled = true;
+    };
+  }, [enabled]);
 
-  results?.slice(0, 10).forEach((result: SearchResult, index: number) => {
-    payload[`gid${index}`] = result.id;
-    payload[`url${index}`] = result.url;
-  });
-
-  callServiceEndpoint('searchQuery', payload);
-}
-
-function callServiceEndpoint(id: string, payload: any) {
-  fetch(`/api/service`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({id, payload}),
-  });
+  return fuse;
 }
 
 function scrollIntoView() {
@@ -127,8 +118,8 @@ function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
-  const [uuid, setUuid] = useState('');
   const router = useRouter();
+  const fuse = useSearchIndex(isOpen);
 
   let resultsInRenderedOrder: SearchResults = [];
 
@@ -153,19 +144,12 @@ function GlobalSearch() {
   }, []);
 
   const throttledSearch = useThrottle(() => {
-    fetch(`/api/search/v0?q=${encodeURIComponent(searchTerm)}`)
-      .then((data) => data.json())
-      .then((json) => {
-        const {results} = json;
-        setSearchResults(results);
-      });
-
-    captureSearchQuery(uuid, searchTerm, resultsInRenderedOrder);
+    setSearchResults(fuse ? groupSearchResults(fuse, searchTerm) : []);
     setCurrentResultIndex(0);
     scrollToTop();
   }, 400);
 
-  useEffect(throttledSearch, [searchTerm, throttledSearch]);
+  useEffect(throttledSearch, [searchTerm, fuse, throttledSearch]);
 
   useEffect(() => scrollIntoView(), [currentResultIndex]);
 
@@ -182,12 +166,7 @@ function GlobalSearch() {
   }, [setIsOpen, router.events]);
 
   useEffect(() => {
-    if (!isOpen) {
-      setSearchTerm('');
-      setUuid('');
-    } else {
-      setUuid(uuidv4());
-    }
+    if (!isOpen) setSearchTerm('');
   }, [isOpen]);
 
   const handleKeyboardNavigation: KeyboardEventHandler<HTMLDivElement> = (
@@ -211,11 +190,7 @@ function GlobalSearch() {
       case 'Enter':
         if (resultsInRenderedOrder.length > 0) {
           setIsOpen(false);
-          const rank = currentResultIndex + 1;
-          const url = resultsInRenderedOrder[currentResultIndex].url;
-          const id = resultsInRenderedOrder[currentResultIndex].id;
-          captureSearchClick(uuid, searchTerm, rank, id, url);
-          router.push(url);
+          router.push(resultsInRenderedOrder[currentResultIndex].url);
         }
         break;
     }
@@ -234,14 +209,7 @@ function GlobalSearch() {
         Search <span className={styles.KeyboardShortcutHint}>/</span>
       </button>
 
-      <Dialog
-        open={isOpen}
-        onClose={() => {
-          setIsOpen(false);
-          // on close we want to capture that no search result was selected
-          captureSearchClick(uuid, searchTerm, 0);
-        }}
-      >
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <div className={styles.PreventBackgroundInteractions}></div>
         <div className="dark-mode styles-for-site-but-not-polaris-examples">
           <Dialog.Panel className={styles.Results}>
@@ -283,9 +251,6 @@ function GlobalSearch() {
                 <SearchResults
                   searchResults={searchResults}
                   currentItemId={currentItemId}
-                  searchTerm={searchTerm}
-                  resultsInRenderedOrder={resultsInRenderedOrder}
-                  uuid={uuid}
                 />
               )}
             </div>
@@ -299,15 +264,9 @@ function GlobalSearch() {
 function SearchResults({
   searchResults,
   currentItemId,
-  searchTerm,
-  resultsInRenderedOrder,
-  uuid,
 }: {
   searchResults: GroupedSearchResults;
   currentItemId: string;
-  searchTerm?: string;
-  resultsInRenderedOrder: SearchResults;
-  uuid: string;
 }) {
   return (
     <>
@@ -322,12 +281,6 @@ function SearchResults({
                     if (!meta.foundations) return null;
                     const {title, description, icon, category} =
                       meta.foundations;
-                    const resultIndex = resultsInRenderedOrder.findIndex(
-                      (r) => {
-                        return r.id === id;
-                      },
-                    );
-                    const rank = resultIndex + 1; // zero-indexed
                     return (
                       <SearchContext.Provider
                         key={title}
@@ -337,10 +290,6 @@ function SearchResults({
                           title={title}
                           description={description}
                           url={url}
-                          customOnClick={() =>
-                            searchTerm &&
-                            captureSearchClick(uuid, searchTerm, rank, id, url)
-                          }
                           renderPreview={() => (
                             <FoundationsThumbnail
                               icon={icon}
@@ -362,12 +311,6 @@ function SearchResults({
                   {results.map(({id, url, meta}) => {
                     if (!meta.patterns) return null;
                     const {title, description, previewImg} = meta.patterns;
-                    const resultIndex = resultsInRenderedOrder.findIndex(
-                      (r) => {
-                        return r.id === id;
-                      },
-                    );
-                    const rank = resultIndex + 1;
                     return (
                       <SearchContext.Provider
                         key={id}
@@ -377,10 +320,6 @@ function SearchResults({
                           url={url}
                           description={description}
                           title={title}
-                          customOnClick={() =>
-                            searchTerm &&
-                            captureSearchClick(uuid, searchTerm, rank, id, url)
-                          }
                           renderPreview={() => (
                             <PatternThumbnailPreview
                               alt={title}
@@ -403,12 +342,6 @@ function SearchResults({
                   {results.map(({id, url, meta}) => {
                     if (!meta.components) return null;
                     const {title, description, status, group} = meta.components;
-                    const resultIndex = resultsInRenderedOrder.findIndex(
-                      (r) => {
-                        return r.id === id;
-                      },
-                    );
-                    const rank = resultIndex + 1;
                     return (
                       <SearchContext.Provider
                         key={id}
@@ -419,10 +352,6 @@ function SearchResults({
                           description={description}
                           title={title}
                           status={status}
-                          customOnClick={() =>
-                            searchTerm &&
-                            captureSearchClick(uuid, searchTerm, rank, id, url)
-                          }
                           renderPreview={() => (
                             <ComponentThumbnail title={title} group={group} />
                           )}
@@ -451,25 +380,12 @@ function SearchResults({
                   {results.map(({id, meta}) => {
                     if (!meta.tokens) return null;
                     const {token, category} = meta.tokens;
-                    const resultIndex = resultsInRenderedOrder.findIndex(
-                      (r) => {
-                        return r.id === id;
-                      },
-                    );
-                    const rank = resultIndex + 1;
                     return (
                       <SearchContext.Provider
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <TokenList.Item
-                          category={category}
-                          token={token}
-                          uuid={uuid}
-                          customOnClick={captureSearchClick}
-                          searchTerm={searchTerm}
-                          rank={rank}
-                        />
+                        <TokenList.Item category={category} token={token} />
                       </SearchContext.Provider>
                     );
                   })}
@@ -485,24 +401,12 @@ function SearchResults({
                   {results.map(({id, meta}) => {
                     if (!meta.icons) return null;
                     const {icon} = meta.icons;
-                    const resultIndex = resultsInRenderedOrder.findIndex(
-                      (r) => {
-                        return r.id === id;
-                      },
-                    );
-                    const rank = resultIndex + 1;
                     return (
                       <SearchContext.Provider
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <IconGrid.Item
-                          icon={icon}
-                          uuid={uuid}
-                          customOnClick={captureSearchClick}
-                          searchTerm={searchTerm}
-                          rank={rank}
-                        />
+                        <IconGrid.Item icon={icon} />
                       </SearchContext.Provider>
                     );
                   })}

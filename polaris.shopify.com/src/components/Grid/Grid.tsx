@@ -64,21 +64,15 @@ export interface GridItemProps {
   description?: string;
   renderPreview?: () => React.ReactNode;
   status?: Status;
-  customOnClick?: React.MouseEventHandler<HTMLAnchorElement>;
-  searchQuery?: string;
-  rank?: number;
 }
 
 export const GridItem = forwardRef(
-  (
-    {as = 'li', title, description, url, renderPreview, status, customOnClick},
-    ref,
-  ) => {
+  ({as = 'li', title, description, url, renderPreview, status}, ref) => {
     const searchAttributes = useGlobalSearchResult();
     return (
       <Box as={as} ref={ref} className={styles.GridItem} {...searchAttributes}>
         <Link legacyBehavior href={url} className={styles.Text}>
-          <a onClick={customOnClick}>
+          <a>
             <SearchResultHighlight />
             {renderPreview && (
               <div className={styles.Preview}>{renderPreview()}</div>

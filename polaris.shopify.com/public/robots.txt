@@ -1,3 +1,10 @@
+# These docs are archived and every page carries `<meta name="robots"
+# content="noindex">`. Search crawlers are deliberately NOT disallowed here:
+# they have to be able to fetch a page to see that tag. Adding `Disallow: /`
+# for them would leave already-indexed URLs in search results forever.
+#
+# The rules below only block AI training crawlers, which is a separate concern.
+
 # Block OpenAI's crawler
 User-agent: GPTBot
 Disallow: /

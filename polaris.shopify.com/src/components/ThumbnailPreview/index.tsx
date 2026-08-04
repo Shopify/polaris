@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import {Box} from '../Box';
+import {withBasePath} from '../../utils/basePath';
 import styles from './ThumbnailPreview.module.scss';
 const Preview = ({
   src,
@@ -36,7 +37,7 @@ const Preview = ({
       {src ? (
         <Image
           alt={alt}
-          src={src}
+          src={withBasePath(src)}
           fill={!aspectRatio}
           {...(aspectRatio && aspectRatios[aspectRatio])}
           style={{

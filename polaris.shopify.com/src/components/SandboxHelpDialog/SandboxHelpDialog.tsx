@@ -1,6 +1,7 @@
 import {Dialog} from '@headlessui/react';
 import styles from './SandboxHelpDialog.module.scss';
 import Button from '../Button';
+import {withBasePath} from '../../utils/basePath';
 
 function SandboxHelpDialog({
   isOpen,
@@ -16,7 +17,10 @@ function SandboxHelpDialog({
         <Dialog.Panel className={styles.DialogPanel}>
           <div className={styles.SandboxVideo}>
             <video muted loop autoPlay playsInline width={1000} height={1500}>
-              <source src="/images/sandbox-usage.mp4" type="video/mp4" />
+              <source
+                src={withBasePath('/images/sandbox-usage.mp4')}
+                type="video/mp4"
+              />
             </video>
           </div>
 

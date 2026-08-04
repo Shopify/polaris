@@ -8,7 +8,7 @@
 
 .Hero {
   padding: 6rem 0 3rem;
-  background: url(/images/home-hero.png);
+  background: url('#{$basePath}/images/home-hero.png');
   background-size: 56% auto;
   background-repeat: no-repeat;
   background-position: 58.5% 33%;

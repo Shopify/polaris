@@ -2,6 +2,9 @@ import type {GetStaticPaths, GetStaticProps, NextPage} from 'next';
 import fs from 'fs';
 import path from 'path';
 import {readdir} from 'fs/promises';
+import {useEffect} from 'react';
+import Link from 'next/link';
+import {useRouter} from 'next/router';
 
 import PatternPage from '../../src/components/PatternPage';
 import type {Props, PatternMDX} from '../../src/components/PatternPage';
@@ -60,9 +63,21 @@ async function loadPatternAndVariants(slug: string): Promise<PatternMDX> {
   };
 }
 
-export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
-  params,
-}) => {
+/**
+ * A pattern with more than one variant has no page of its own — it forwards to
+ * its first variant. That used to be a `redirect` from `getStaticProps`, which
+ * `output: 'export'` can't do, so the root is exported as a page that forwards
+ * on the client instead.
+ */
+type PageProps = Props | {redirectTo: string};
+
+const isRedirect = (props: PageProps): props is {redirectTo: string} =>
+  'redirectTo' in props;
+
+export const getStaticProps: GetStaticProps<
+  PageProps,
+  {slug: string[]}
+> = async ({params}) => {
   const patternSlug = params?.slug;
   if (!patternSlug) {
     throw new Error('Expected params.pattern to be defined (as string[])');
@@ -89,11 +104,10 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   // to the first variant
   if (pattern.frontmatter.variants.length > 1 && !variant) {
     return {
-      redirect: {
-        destination:
+      props: {
+        redirectTo:
           pattern.frontmatter.variants[0].frontmatter.url ??
-          `/patterns/${slug[0]}`,
-        permanent: false,
+          `/patterns/${slug}`,
       },
     };
   }
@@ -140,30 +154,45 @@ export const getStaticPaths: GetStaticPaths<{slug: string[]}> = async () => {
         throw new Error('Variants must have unique title & url front matter');
       }
 
-      // Note that we do not provide the pattern's root path here; we need it to
-      // trigger a redirect in getStaticProps, but that can't be done at build
-      // time. The later "fallback: 'blocking'" will ensure if that route is hit,
-      // it'll be running getStaticProps in a node process where it CAN perform
-      // a redirect.
-      return pattern.frontmatter.variants.map((variant) => ({
-        params: {
-          slug: (
-            variant.frontmatter.url?.replace(/^\/?patterns\//, '') || slug
-          ).split('/'),
-        },
-      }));
+      // The pattern's root path is included so the export has somewhere to put
+      // the forwarding page described above.
+      return [
+        {params: {slug: [slug]}},
+        ...pattern.frontmatter.variants.map((variant) => ({
+          params: {
+            slug: (
+              variant.frontmatter.url?.replace(/^\/?patterns\//, '') || slug
+            ).split('/'),
+          },
+        })),
+      ];
     }),
   );
 
   return {
     paths: paths.flat(),
-    // We have some redirects that have to happen in a node server, not at
-    // pre-render time, so we need to "fallback" here.
-    fallback: 'blocking',
+    // Every pattern route is known at build time; `output: 'export'` has no
+    // server to fall back to.
+    fallback: false,
   };
 };
 
-const PatternsPage: NextPage<Props> = (props: Props) => {
+const PatternRedirect = ({redirectTo}: {redirectTo: string}) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace(redirectTo);
+  }, [redirectTo, router]);
+
+  return (
+    <p>
+      Redirecting to <Link href={redirectTo}>{redirectTo}</Link>&hellip;
+    </p>
+  );
+};
+
+const PatternsPage: NextPage<PageProps> = (props: PageProps) => {
+  if (isRedirect(props)) return <PatternRedirect {...props} />;
   if (props.pattern.frontmatter.draft && process.env.NODE_ENV === 'production')
     return <ComingSoon />;
   return <PatternPage {...props} />;

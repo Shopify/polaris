@@ -125,19 +125,11 @@ function getFigmaUsageForToken(
 interface TokenListItemProps {
   category: string;
   token: TokenPropertiesWithName;
-  customOnClick?: Function;
-  searchTerm?: string;
-  rank?: number;
-  uuid?: string;
 }
 
 function TokenListItem({
   category,
   token: {name, value, description},
-  customOnClick,
-  searchTerm,
-  rank,
-  uuid,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
   const tokenNameWithPrefix = `--p-${name}`;
@@ -146,12 +138,6 @@ function TokenListItem({
   const searchAttributes = useGlobalSearchResult();
   const isClickableSearchResult = !!searchAttributes?.tabIndex;
   const url = `/tokens/${slugify(category)}#${name}`;
-
-  const customOnClickHandler = () => {
-    uuid &&
-      customOnClick &&
-      customOnClick(uuid, searchTerm, rank, searchAttributes?.id, url);
-  };
 
   return (
     <TokenListContext.Consumer>
@@ -173,7 +159,7 @@ function TokenListItem({
                   tabIndex={-1}
                   legacyBehavior
                 >
-                  <a onClick={customOnClickHandler}>View token</a>
+                  <a>View token</a>
                 </Link>
               )}
             </td>
@@ -194,10 +180,7 @@ function TokenListItem({
                     )}
                   >
                     <button
-                      onClick={() => {
-                        copy();
-                        customOnClickHandler();
-                      }}
+                      onClick={copy}
                       tabIndex={searchAttributes?.tabIndex}
                     >
                       <Icon source={ClipboardIcon} width={14} height={14} />

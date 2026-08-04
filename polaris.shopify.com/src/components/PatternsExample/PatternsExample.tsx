@@ -6,6 +6,7 @@ import {createUrl} from 'playroom';
 import {Stack} from '../Stack';
 import styles from './PatternsExample.module.scss';
 import GrowFrame from '../GrowFrame';
+import {withBasePath} from '../../utils/basePath';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
 import {PatternExample} from '../../types';
@@ -212,7 +213,9 @@ const PatternsExample = ({
       )
     : formattedCode;
 
-  const previewUrl = `/playroom/preview/index.html${createUrl({
+  const previewUrl = `${withBasePath(
+    '/playroom/preview/index.html',
+  )}${createUrl({
     code: previewCode,
     themes: ['locale:en'],
     paramType: 'search',

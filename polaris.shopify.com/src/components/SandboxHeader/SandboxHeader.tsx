@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import {ClipboardIcon, EditIcon} from '@shopify/polaris-icons';
 import {useCopyToClipboard} from '../../utils/hooks';
+import {withBasePath} from '../../utils/basePath';
 import Icon from '../Icon';
 import SandboxHelpDialog from '../SandboxHelpDialog';
 
@@ -39,7 +40,7 @@ function SandboxHeader({copyUrl, editUrl}: Props) {
       <div className={styles.Header}>
         <Link href="/" className={styles.Logo}>
           <Image
-            src="/images/shopify-logo.svg"
+            src={withBasePath('/images/shopify-logo.svg')}
             width={24}
             height={24}
             alt="Shopify logo"

@@ -28,7 +28,7 @@
   .ColorsSelected {
     &:after {
       content: '';
-      background: url(/images/icon-do.svg) black no-repeat;
+      background: url('#{$basePath}/images/icon-do.svg') black no-repeat;
       background-position: center;
       display: block;
       width: var(--p-space-500);
@@ -79,7 +79,8 @@
 .ColorsWCAG {
   display: inline-block;
   background-color: var(--surface);
-  padding: var(--p-space-050) var(--p-space-200) var(--p-space-050) var(--p-space-500);
+  padding: var(--p-space-050) var(--p-space-200) var(--p-space-050)
+    var(--p-space-500);
   border-radius: var(--p-space-200);
   font-size: var(--font-size-100);
   font-weight: var(--font-weight-600);
@@ -94,7 +95,7 @@
     top: 0;
     height: 20px;
     width: 20px;
-    background-image: url(/images/icon-indeterminate.svg);
+    background-image: url('#{$basePath}/images/icon-indeterminate.svg');
     background-repeat: no-repeat;
     background-position: left center;
     background-size: cover;
@@ -108,7 +109,7 @@
   color: var(--text-success-onfill);
 
   &:after {
-    background-image: url(/images/icon-do.svg);
+    background-image: url('#{$basePath}/images/icon-do.svg');
   }
 }
 
@@ -117,6 +118,6 @@
   color: var(--text-critical-onfill);
 
   &:after {
-    background-image: url(/images/icon-dont.svg);
+    background-image: url('#{$basePath}/images/icon-dont.svg');
   }
 }

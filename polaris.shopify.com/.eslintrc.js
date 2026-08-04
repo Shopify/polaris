@@ -1,7 +1,9 @@
 module.exports = {
   root: true,
   extends: ['next/core-web-vitals'],
-  ignorePatterns: ['public/playroom'],
+  // `out` is the static export, `public/playroom` the built Playroom bundle —
+  // both are build output, not source.
+  ignorePatterns: ['out', 'public/playroom'],
   rules: {},
   overrides: [
     {

@@ -1,4 +1,5 @@
 import {createUrl} from 'playroom';
+import {withBasePath} from '../../utils/basePath';
 import styles from './PlayroomLink.module.scss';
 
 const getAppCode = (code: string) => {
@@ -28,7 +29,7 @@ const PlayroomButton = (props: Props) => {
   const {code} = props;
 
   const encodedCode = createUrl({
-    baseUrl: '/sandbox/',
+    baseUrl: withBasePath('/sandbox/'),
     code: getAppCode(code), //encodeURL(getAppCode(code));
     themes: ['locale:en'],
     paramType: 'search',

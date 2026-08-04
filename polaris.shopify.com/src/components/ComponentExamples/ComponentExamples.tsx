@@ -3,6 +3,7 @@ import type {SerializedMdx} from '../../types';
 import styles from './ComponentExamples.module.scss';
 import CodesandboxButton from '../CodesandboxButton';
 import {className as classNames} from '../../utils/various';
+import {withBasePath} from '../../utils/basePath';
 import Code from '../Code';
 import {className} from '../../utils/various';
 import Markdown from '../Markdown';
@@ -197,7 +198,9 @@ const ComponentExamples = ({examples, componentTitle}: Props) => {
 
   const examplesMarkup = examples.map(
     ({fileName, description, code}, index) => {
-      const exampleUrl = `/examples/${fileName.replace('.tsx', '')}`;
+      const exampleUrl = withBasePath(
+        `/examples/${fileName.replace('.tsx', '')}`,
+      );
       const isSelected = index === exampleIndex ? true : false;
       const classes = classNames(
         styles.Tab,

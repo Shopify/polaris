@@ -14,7 +14,10 @@ Session.vim
 /polaris-react/src/styles/_media-queries.scss
 /polaris-tokens/build
 /polaris.shopify.com/.cache/
-/polaris.shopify.com/public/sitemap.xml
+/polaris.shopify.com/out
+/polaris.shopify.com/public/api
+/polaris.shopify.com/public/fonts
 /polaris.shopify.com/public/og-images
+/polaris.shopify.com/public/search-index.json
 /polaris.shopify.com/public/playroom
 storybook-static
