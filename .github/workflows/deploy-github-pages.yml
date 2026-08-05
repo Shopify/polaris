@@ -1,5 +1,8 @@
 # Publishes the archived polaris.shopify.com docs to GitHub Pages at
-# https://shopify.github.io/polaris-react/.
+# https://shopify.github.io/polaris-react-archive/.
+#
+# The URL path comes from the repository name, so it has to stay in sync with
+# the `basePath` default in `polaris.shopify.com/constants.js`.
 #
 # Deliberately `workflow_dispatch` only: this is meant to be run once, by hand,
 # before the repository is re-archived. GitHub Pages keeps serving the deployed

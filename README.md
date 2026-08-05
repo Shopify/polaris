@@ -1,4 +1,9 @@
-# Polaris React (⚠️ Deprecated)
+# Polaris React (⚠️ Archived)
+
+> **This repository is archived and unmaintained.**
+>
+> - Archived documentation: <https://shopify.github.io/polaris-react-archive/>
+> - For current Shopify admin development, use Polaris on shopify.dev: <https://shopify.dev/docs/api/polaris>
 
 [![storybook](https://shields.io/badge/storybook-grey?logo=storybook&style=flat)](https://storybook.polaris.shopify.dev) [![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?label=@shopify/polaris)](https://www.npmjs.com/package/@shopify/polaris) [![CI](https://github.com/shopify/polaris/workflows/CI/badge.svg)](https://github.com/Shopify/polaris/actions?query=branch%3Amain)
 

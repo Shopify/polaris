@@ -1,6 +1,11 @@
-# [Polaris React](https://polaris.shopify.com/)
+# Polaris React (⚠️ Archived)
 
-Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify. Visit the [Polaris style guide](https://polaris.shopify.com) to learn more.
+> **`@shopify/polaris` is deprecated and this repository is archived and unmaintained.**
+>
+> - Archived documentation: <https://shopify.github.io/polaris-react-archive/>
+> - For current Shopify admin development, use Polaris on shopify.dev: <https://shopify.dev/docs/api/polaris>
+
+Polaris React is a component library designed to help developers create the best experience for merchants who use Shopify.
 
 ## Using the React components
 

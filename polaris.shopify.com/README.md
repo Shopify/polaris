@@ -2,10 +2,10 @@
 
 The Polaris React style guide. **Archived.** polaris.shopify.com has been
 decommissioned; this is now published as a static, read-only snapshot to
-[https://shopify.github.io/polaris-react/](https://shopify.github.io/polaris-react/).
+[https://shopify.github.io/polaris-react-archive/](https://shopify.github.io/polaris-react-archive/).
 
 New Shopify admin development should use
-[Polaris web components](https://shopify.dev/docs/api/app-home/polaris-web-components).
+[Polaris on shopify.dev](https://shopify.dev/docs/api/polaris).
 
 ## Getting Started
 
@@ -16,13 +16,14 @@ pnpm dev
 
 ## Building and previewing the archive
 
-`pnpm build` produces a static export in `out/`, mounted at the `/polaris-react`
-base path so it works as a GitHub Pages project site. To preview it the way
-Pages serves it:
+`pnpm build` produces a static export in `out/`, mounted at the
+`/polaris-react-archive` base path (the repository name, which is what a GitHub
+Pages project site is served from) so it works as a GitHub Pages project site.
+To preview it the way Pages serves it:
 
 ```
 pnpm build
-pnpm serve   # http://localhost:3000/polaris-react
+pnpm serve   # http://localhost:3000/polaris-react-archive
 ```
 
 Set `POLARIS_BASE_PATH=""` to build or serve from the root of a domain instead;
