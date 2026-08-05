@@ -1,0 +1,45 @@
+# Marks `@shopify/polaris` as deprecated on npm.
+#
+# Deliberately `workflow_dispatch` only: this is a one-shot job, meant to be run
+# by hand (alongside "Deploy to GitHub Pages") before the repository is
+# re-archived. No workflow can run once the repo is archived, so there is
+# nothing to gain from an automatic trigger. `npm deprecate` is reversible from
+# a workstation with publish rights (`npm deprecate "@shopify/polaris@*" ""`),
+# so it does not need to be re-runnable from here.
+#
+# Scope: `@shopify/polaris` only. `changeset publish` also releases
+# `@shopify/polaris-tokens`, `@shopify/polaris-icons`, `@shopify/polaris-migrator`
+# and `@shopify/stylelint-polaris` from this repo, but those have consumers
+# beyond Polaris React and the notice below does not apply to them, so they are
+# left alone on purpose.
+name: Deprecate npm package
+
+on:
+  workflow_dispatch:
+
+# Nothing here writes to the repository; the deprecation is authenticated
+# against npm with secrets.NPM_TOKEN. `contents: read` is only what setup-node
+# needs to pull a Node build it doesn't already have cached.
+permissions:
+  contents: read
+
+jobs:
+  deprecate:
+    name: npm deprecate @shopify/polaris
+    runs-on: ubuntu-latest
+    steps:
+      # No checkout: nothing here reads the repository. `registry-url` is what
+      # makes setup-node write the `~/.npmrc` that picks up NODE_AUTH_TOKEN,
+      # which is the same `secrets.NPM_TOKEN` the release workflow publishes
+      # with.
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '20.10.0'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Deprecate all versions of @shopify/polaris
+        run: npm deprecate "@shopify/polaris@*" "$DEPRECATION_MESSAGE"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          DEPRECATION_MESSAGE: 'Polaris React is deprecated and no longer maintained. For building Shopify admin experiences, use Polaris web components: https://shopify.dev/docs/api/polaris — archived docs for this package: https://shopify.github.io/polaris-react-archive/'
