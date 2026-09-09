@@ -1,0 +1,79 @@
+# Publishes the archived Polaris React Storybook to GitHub Pages at
+# https://storybook.polaris.shopify.dev/.
+#
+# Deliberately workflow_dispatch-only: this repository is archived and the
+# Storybook is a static snapshot. Run once after unarchiving, then re-archive;
+# GitHub Pages keeps serving the deployed artifact after archival.
+name: Deploy Storybook to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+# Only one Pages deployment at a time; don't cancel one that's already publishing.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build Storybook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+
+      - name: Install Polaris React dependencies
+        run: pnpm install --frozen-lockfile --filter=@shopify/polaris...
+
+      - name: Build Polaris React package
+        run: pnpm build --filter=@shopify/polaris
+
+      - name: Build Storybook
+        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
+        env:
+          STORYBOOK_GITHUB_SHA: ${{ github.sha }}
+          STORYBOOK_GITHUB_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+
+      - name: Prepare Pages artifact
+        run: |
+          touch polaris-react/build-internal/storybook/static/.nojekyll
+          echo 'storybook.polaris.shopify.dev' > polaris-react/build-internal/storybook/static/CNAME
+
+      - name: Configure Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+        with:
+          # Turn Pages on (source: GitHub Actions) rather than assuming someone
+          # already did it in Settings. Without this the step fails with "Get
+          # Pages site failed" if it hasn't been enabled.
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: polaris-react/build-internal/storybook/static
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
